@@ -1,4 +1,4 @@
-/* istanbul instrument in package google_maps */
+/* istanbul instrument in package api_google */
 /*jslint
     bitwise: true,
     browser: true,

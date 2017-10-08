@@ -1,13 +1,660 @@
 {
     "basePath": "/",
-    "host": "maps.googleapis.com",
+    "definitions": {
+        "GeolocationV1Geolocate": {
+            "properties": {
+                "carrier": {
+                    "description": "The carrier name.",
+                    "type": "string"
+                },
+                "cellTowers": {
+                    "default": [
+                        {
+                            "cellId": 0,
+                            "locationAreaCode": 123,
+                            "mobileCountryCode": 123,
+                            "mobileNetworkCode": 123
+                        }
+                    ],
+                    "description": "An array of cell tower objects. https://developers.google.com/maps/documentation/geolocation/intro#cell_tower_object",
+                    "items": {
+                        "$ref": "#/definitions/GeolocationV1GeolocateCellTower"
+                    },
+                    "type": "array"
+                },
+                "homeMobileCountryCode": {
+                    "description": "The mobile country code (MCC) for the device's home network.",
+                    "type": "integer"
+                },
+                "homeMobileNetworkCode": {
+                    "description": "The mobile network code (MNC) for the device's home network.",
+                    "type": "integer"
+                },
+                "radioType": {
+                    "description": "The mobile radio type. Supported values are lte, gsm, cdma, and wcdma. While this field is optional, it should be included if a value is available, for more accurate results.",
+                    "enum": [
+                        "lte",
+                        "gsm",
+                        "cdma",
+                        "wcdma"
+                    ],
+                    "type": "string"
+                },
+                "wifiAccessPoints": {
+                    "default": [
+                        {
+                            "macAddress": "00:00:00:00:00:00"
+                        }
+                    ],
+                    "description": "An array of WiFi access point objects. https://developers.google.com/maps/documentation/geolocation/intro#wifi_access_point_object",
+                    "items": {
+                        "$ref": "#/definitions/GeolocationV1GeolocateWifiAccessPoint"
+                    },
+                    "type": "array"
+                }
+            }
+        },
+        "GeolocationV1GeolocateCellTower": {
+            "properties": {
+                "age": {
+                    "description": "The number of milliseconds since this cell was primary. If age is 0, the cellId represents a current measurement.",
+                    "type": "integer"
+                },
+                "cellId": {
+                    "description": "Unique identifier of the cell. On GSM, this is the Cell ID (CID); CDMA networks use the Base Station ID (BID). WCDMA networks use the UTRAN/GERAN Cell Identity (UC-Id), which is a 32-bit value concatenating the Radio Network Controller (RNC) and Cell ID. Specifying only the 16-bit Cell ID value in WCDMA networks may return inaccurate results.",
+                    "type": "integer"
+                },
+                "locationAreaCode": {
+                    "description": "The Location Area Code (LAC) for GSM and WCDMA networks. The Network ID (NID) for CDMA networks.",
+                    "type": "integer"
+                },
+                "mobileCountryCode": {
+                    "description": "The cell tower's Mobile Country Code (MCC).",
+                    "type": "integer"
+                },
+                "mobileNetworkCode": {
+                    "description": "The cell tower's Mobile Network Code. This is the MNC for GSM and WCDMA; CDMA uses the System ID (SID).",
+                    "type": "integer"
+                },
+                "signalStrength": {
+                    "description": "Radio signal strength measured in dBm.",
+                    "type": "integer"
+                },
+                "timingAdvance": {
+                    "description": "The timing advance value. https://en.wikipedia.org/wiki/Timing_advance",
+                    "type": "integer"
+                }
+            },
+            "required": [
+                "cellId",
+                "locationAreaCode",
+                "mobileCountryCode",
+                "mobileNetworkCode"
+            ]
+        },
+        "GeolocationV1GeolocateWifiAccessPoint": {
+            "properties": {
+                "age": {
+                    "description": "The number of milliseconds since this access point was detected.",
+                    "type": "integer"
+                },
+                "channel": {
+                    "description": "The channel over which the client is communicating with the access point.",
+                    "type": "integer"
+                },
+                "macAddress": {
+                    "description": "The MAC address of the WiFi node. Separators must be : (colon).",
+                    "type": "string"
+                },
+                "signalStrength": {
+                    "description": "The current signal strength measured in dBm.",
+                    "type": "integer"
+                },
+                "signalToNoiseRatio": {
+                    "description": "The current signal to noise ratio measured in dB.",
+                    "type": "integer"
+                }
+            },
+            "required": [
+                "macAddress"
+            ]
+        }
+    },
     "info": {
-        "description": "this zero-dependency package will provide an api for google-maps, with a working demo",
-        "title": "google-maps-lite",
-        "version": "2017.10.2",
-        "x-homepage": "https://github.com/kaizhu256/node-google-maps-lite"
+        "description": "this zero-dependency package will provide apis for google's public web-services, with a working demo",
+        "title": "api-google",
+        "version": "2017.10.1",
+        "x-homepage": "https://github.com/kaizhu256/node-api-google"
     },
     "paths": {
+        "/$discovery/rest#google-translate": {
+            "get": {
+                "operationId": "discoveryRestTranslate",
+                "parameters": [
+                    {
+                        "default": "v2",
+                        "description": "version",
+                        "enum": [
+                            "v2"
+                        ],
+                        "in": "query",
+                        "name": "version",
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "default": {
+                        "description": "default response"
+                    }
+                },
+                "summary": "https://cloud.google.com/translate/docs/reference/rest",
+                "tags": [
+                    "google-translate"
+                ],
+                "x-host": "translation.googleapis.com"
+            }
+        },
+        "/geolocation/v1/geolocate": {
+            "post": {
+                "operationId": "geolocationV1Geolocate",
+                "parameters": [
+                    {
+                        "description": "Your application's API key. This key identifies your application for purposes of quota management. https://developers.google.com/maps/documentation/geocoding/get-api-key",
+                        "in": "query",
+                        "name": "key",
+                        "type": "string",
+                        "x-apiKey": true,
+                        "x-example": "xxxxxxxx"
+                    },
+                    {
+                        "description": "Your application's API key. This key identifies your application for purposes of quota management. https://developers.google.com/maps/documentation/geocoding/get-api-key",
+                        "in": "body",
+                        "name": "body",
+                        "schema": {
+                            "$ref": "#/definitions/GeolocationV1Geolocate"
+                        }
+                    }
+                ],
+                "responses": {
+                    "default": {
+                        "description": "default response"
+                    }
+                },
+                "summary": "Geolocation requests. https://developers.google.com/maps/documentation/geolocation/intro",
+                "tags": [
+                    "google-maps"
+                ],
+                "x-host": "www.googleapis.com"
+            }
+        },
+        "/language/translate/v2": {
+            "post": {
+                "operationId": "languageTranslateV2",
+                "parameters": [
+                    {
+                        "description": "A valid API key to handle requests for this API. If you are using OAuth 2.0 service account credentials (recommended), do not supply this parameter.",
+                        "in": "query",
+                        "name": "key",
+                        "type": "string",
+                        "x-apiKey": true,
+                        "x-example": "xxxxxxxx"
+                    },
+                    {
+                        "default": "hello world!",
+                        "description": "The input text to translate. Repeat this parameter to perform translation operations on multiple text inputs.",
+                        "in": "query",
+                        "name": "q",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "default": "en",
+                        "description": "The language to use for translation of the input text, set to one of the language codes listed in Language Support. https://cloud.google.com/translate/docs/languages",
+                        "enum": [
+                            "af",
+                            "sq",
+                            "am",
+                            "ar",
+                            "hy",
+                            "az",
+                            "eu",
+                            "be",
+                            "bn",
+                            "bs",
+                            "bg",
+                            "ca",
+                            "ceb",
+                            "zh-CN",
+                            "zh-TW",
+                            "co",
+                            "hr",
+                            "cs",
+                            "da",
+                            "nl",
+                            "en",
+                            "eo",
+                            "et",
+                            "fi",
+                            "fr",
+                            "fy",
+                            "gl",
+                            "ka",
+                            "de",
+                            "el",
+                            "gu",
+                            "ht",
+                            "ha",
+                            "haw",
+                            "iw",
+                            "hi",
+                            "hmn",
+                            "hu",
+                            "is",
+                            "ig",
+                            "id",
+                            "ga",
+                            "it",
+                            "ja",
+                            "jw",
+                            "kn",
+                            "kk",
+                            "km",
+                            "ko",
+                            "ku",
+                            "ky",
+                            "lo",
+                            "la",
+                            "lv",
+                            "lt",
+                            "lb",
+                            "mk",
+                            "mg",
+                            "ms",
+                            "ml",
+                            "mt",
+                            "mi",
+                            "mr",
+                            "mn",
+                            "my",
+                            "ne",
+                            "no",
+                            "ny",
+                            "ps",
+                            "fa",
+                            "pl",
+                            "pt",
+                            "pa",
+                            "ro",
+                            "ru",
+                            "sm",
+                            "gd",
+                            "sr",
+                            "st",
+                            "sn",
+                            "sd",
+                            "si",
+                            "sk",
+                            "sl",
+                            "so",
+                            "es",
+                            "su",
+                            "sw",
+                            "sv",
+                            "tl",
+                            "tg",
+                            "ta",
+                            "te",
+                            "th",
+                            "tr",
+                            "uk",
+                            "ur",
+                            "uz",
+                            "vi",
+                            "cy",
+                            "xh",
+                            "yi",
+                            "yo",
+                            "zu"
+                        ],
+                        "in": "query",
+                        "name": "target",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "description": "The format of the source text, in either HTML (default) or plain-text. A value of html indicates HTML and a value of text indicates plain-text.",
+                        "enum": [
+                            "html",
+                            "text"
+                        ],
+                        "in": "query",
+                        "name": "format",
+                        "type": "string"
+                    },
+                    {
+                        "description": "The language of the source text, set to one of the language codes listed in Language Support. If the source language is not specified, the API will attempt to detect the source language automatically and return it within the response.",
+                        "enum": [
+                            "af",
+                            "sq",
+                            "am",
+                            "ar",
+                            "hy",
+                            "az",
+                            "eu",
+                            "be",
+                            "bn",
+                            "bs",
+                            "bg",
+                            "ca",
+                            "ceb",
+                            "zh-CN",
+                            "zh-TW",
+                            "co",
+                            "hr",
+                            "cs",
+                            "da",
+                            "nl",
+                            "en",
+                            "eo",
+                            "et",
+                            "fi",
+                            "fr",
+                            "fy",
+                            "gl",
+                            "ka",
+                            "de",
+                            "el",
+                            "gu",
+                            "ht",
+                            "ha",
+                            "haw",
+                            "iw",
+                            "hi",
+                            "hmn",
+                            "hu",
+                            "is",
+                            "ig",
+                            "id",
+                            "ga",
+                            "it",
+                            "ja",
+                            "jw",
+                            "kn",
+                            "kk",
+                            "km",
+                            "ko",
+                            "ku",
+                            "ky",
+                            "lo",
+                            "la",
+                            "lv",
+                            "lt",
+                            "lb",
+                            "mk",
+                            "mg",
+                            "ms",
+                            "ml",
+                            "mt",
+                            "mi",
+                            "mr",
+                            "mn",
+                            "my",
+                            "ne",
+                            "no",
+                            "ny",
+                            "ps",
+                            "fa",
+                            "pl",
+                            "pt",
+                            "pa",
+                            "ro",
+                            "ru",
+                            "sm",
+                            "gd",
+                            "sr",
+                            "st",
+                            "sn",
+                            "sd",
+                            "si",
+                            "sk",
+                            "sl",
+                            "so",
+                            "es",
+                            "su",
+                            "sw",
+                            "sv",
+                            "tl",
+                            "tg",
+                            "ta",
+                            "te",
+                            "th",
+                            "tr",
+                            "uk",
+                            "ur",
+                            "uz",
+                            "vi",
+                            "cy",
+                            "xh",
+                            "yi",
+                            "yo",
+                            "zu"
+                        ],
+                        "in": "query",
+                        "name": "source",
+                        "type": "string"
+                    },
+                    {
+                        "default": "nmt",
+                        "description": "The translation model. Can be either base to use the Phrase-Based Machine Translation (PBMT) model, or nmt to use the Neural Machine Translation (NMT) model. If omitted, then nmt is used. If the model is nmt, and the requested language translation pair is not supported for the NMT model, then the request is translated using the base model.",
+                        "enum": [
+                            "nmt",
+                            "base"
+                        ],
+                        "in": "query",
+                        "name": "model",
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "default": {
+                        "description": "default response"
+                    }
+                },
+                "summary": "Translates input text, returning translated text. https://cloud.google.com/translate/docs/reference/translate",
+                "tags": [
+                    "google-translate"
+                ],
+                "x-host": "translation.googleapis.com"
+            }
+        },
+        "/language/translate/v2/detect": {
+            "post": {
+                "operationId": "languageTranslateV2Detect",
+                "parameters": [
+                    {
+                        "description": "A valid API key to handle requests for this API. If you are using OAuth 2.0 service account credentials (recommended), do not supply this parameter.",
+                        "in": "query",
+                        "name": "key",
+                        "type": "string",
+                        "x-apiKey": true,
+                        "x-example": "xxxxxxxx"
+                    },
+                    {
+                        "collectionFormat": "multi",
+                        "description": "The input text upon which to perform language detection. Repeat this parameter to perform language detection on multiple text inputs.",
+                        "in": "query",
+                        "items": {
+                            "type": "string"
+                        },
+                        "name": "q",
+                        "required": true,
+                        "type": "array",
+                        "x-example": [
+                            "hello world!",
+                            "你好，世界！"
+                        ]
+                    }
+                ],
+                "responses": {
+                    "default": {
+                        "description": "default response"
+                    }
+                },
+                "summary": "Detects the language of text within a request. https://cloud.google.com/translate/docs/reference/detect",
+                "tags": [
+                    "google-translate"
+                ],
+                "x-host": "translation.googleapis.com"
+            }
+        },
+        "/language/translate/v2/languages": {
+            "post": {
+                "operationId": "languageTranslateV2Languages",
+                "parameters": [
+                    {
+                        "description": "A valid API key to handle requests for this API. If you are using OAuth 2.0 service account credentials (recommended), do not supply this parameter.",
+                        "in": "query",
+                        "name": "key",
+                        "type": "string",
+                        "x-apiKey": true,
+                        "x-example": "xxxxxxxx"
+                    },
+                    {
+                        "description": "The target language code for the results. If specified, then the language names are returned in the name field of the response, localized in the target language. If you do not supply a target language, then the name field is omitted from the response and only the language codes are returned.",
+                        "enum": [
+                            "af",
+                            "sq",
+                            "am",
+                            "ar",
+                            "hy",
+                            "az",
+                            "eu",
+                            "be",
+                            "bn",
+                            "bs",
+                            "bg",
+                            "ca",
+                            "ceb",
+                            "zh-CN",
+                            "zh-TW",
+                            "co",
+                            "hr",
+                            "cs",
+                            "da",
+                            "nl",
+                            "en",
+                            "eo",
+                            "et",
+                            "fi",
+                            "fr",
+                            "fy",
+                            "gl",
+                            "ka",
+                            "de",
+                            "el",
+                            "gu",
+                            "ht",
+                            "ha",
+                            "haw",
+                            "iw",
+                            "hi",
+                            "hmn",
+                            "hu",
+                            "is",
+                            "ig",
+                            "id",
+                            "ga",
+                            "it",
+                            "ja",
+                            "jw",
+                            "kn",
+                            "kk",
+                            "km",
+                            "ko",
+                            "ku",
+                            "ky",
+                            "lo",
+                            "la",
+                            "lv",
+                            "lt",
+                            "lb",
+                            "mk",
+                            "mg",
+                            "ms",
+                            "ml",
+                            "mt",
+                            "mi",
+                            "mr",
+                            "mn",
+                            "my",
+                            "ne",
+                            "no",
+                            "ny",
+                            "ps",
+                            "fa",
+                            "pl",
+                            "pt",
+                            "pa",
+                            "ro",
+                            "ru",
+                            "sm",
+                            "gd",
+                            "sr",
+                            "st",
+                            "sn",
+                            "sd",
+                            "si",
+                            "sk",
+                            "sl",
+                            "so",
+                            "es",
+                            "su",
+                            "sw",
+                            "sv",
+                            "tl",
+                            "tg",
+                            "ta",
+                            "te",
+                            "th",
+                            "tr",
+                            "uk",
+                            "ur",
+                            "uz",
+                            "vi",
+                            "cy",
+                            "xh",
+                            "yi",
+                            "yo",
+                            "zu"
+                        ],
+                        "in": "query",
+                        "name": "target",
+                        "type": "string"
+                    },
+                    {
+                        "default": "nmt",
+                        "description": "The translation model of the supported languages. Can be either base to return languages supported by the Phrase-Based Machine Translation (PBMT) model, or nmt to return languages supported by the Neural Machine Translation (NMT) model. If omitted, then all supported languages are returned. Languages supported by the NMT model can only be translated to or from English (en).",
+                        "enum": [
+                            "nmt",
+                            "base"
+                        ],
+                        "in": "query",
+                        "name": "model",
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "default": {
+                        "description": "default response"
+                    }
+                },
+                "summary": "Returns a list of supported languages for translation. https://cloud.google.com/translate/docs/reference/languages",
+                "tags": [
+                    "google-translate"
+                ],
+                "x-host": "translation.googleapis.com"
+            }
+        },
         "/maps/api/directions/json": {
             "get": {
                 "operationId": "mapsApiDirectionsJson",
@@ -224,10 +871,320 @@
                         "description": "default response"
                     }
                 },
-                "summary": "Directions Requests. https://developers.google.com/maps/documentation/directions/intro#RequestParameters",
+                "summary": "Directions Requests. https://developers.google.com/maps/documentation/directions/intro",
                 "tags": [
                     "google-maps"
-                ]
+                ],
+                "x-host": "maps.googleapis.com"
+            }
+        },
+        "/maps/api/distancematrix/json": {
+            "get": {
+                "operationId": "mapsApiDistancematrixJson",
+                "parameters": [
+                    {
+                        "description": "Your application's API key. This key identifies your application for purposes of quota management. https://developers.google.com/maps/documentation/directions/get-api-key",
+                        "in": "query",
+                        "name": "key",
+                        "type": "string",
+                        "x-apiKey": true,
+                        "x-example": "xxxxxxxx"
+                    },
+                    {
+                        "description": "The language in which to return results. https://developers.google.com/maps/faq#languagesupport",
+                        "enum": [
+                            "ar",
+                            "bg",
+                            "bn",
+                            "ca",
+                            "cs",
+                            "da",
+                            "de",
+                            "el",
+                            "en",
+                            "en-AU",
+                            "en-GB",
+                            "es",
+                            "eu",
+                            "fa",
+                            "fi",
+                            "fil",
+                            "fr",
+                            "gl",
+                            "gu",
+                            "hi",
+                            "hr",
+                            "hu",
+                            "id",
+                            "it",
+                            "iw",
+                            "ja",
+                            "kn",
+                            "ko",
+                            "lt",
+                            "lv",
+                            "ml",
+                            "mr",
+                            "nl",
+                            "no",
+                            "pl",
+                            "pt",
+                            "pt-BR",
+                            "pt-PT",
+                            "ro",
+                            "ru",
+                            "sk",
+                            "sl",
+                            "sr",
+                            "sv",
+                            "ta",
+                            "te",
+                            "th",
+                            "tl",
+                            "tr",
+                            "uk",
+                            "vi",
+                            "zh-CN",
+                            "zh-TW"
+                        ],
+                        "in": "query",
+                        "name": "language",
+                        "type": "string"
+                    },
+                    {
+                        "collectionFormat": "pipes",
+                        "default": [
+                            "Bobcaygeon+ON",
+                            "24+Sussex+Drive+Ottawa+ON",
+                            "41.43206,-81.38992",
+                            "-33.86748,151.20699",
+                            "place_id:ChIJ3S-JXmauEmsRUcIaWtf4MzE",
+                            "enc:gfo}EtohhU:"
+                        ],
+                        "description": "The starting point for calculating travel distance and time. You can supply one or more locations separated by the pipe character (|), in the form of an address, latitude/longitude coordinates, or a place ID",
+                        "in": "query",
+                        "items": {
+                            "type": "string"
+                        },
+                        "name": "origins",
+                        "type": "array"
+                    },
+                    {
+                        "collectionFormat": "pipes",
+                        "default": [
+                            "Bobcaygeon+ON",
+                            "24+Sussex+Drive+Ottawa+ON",
+                            "41.43206,-81.38992",
+                            "-33.86748,151.20699",
+                            "place_id:ChIJ3S-JXmauEmsRUcIaWtf4MzE",
+                            "enc:gfo}EtohhU:"
+                        ],
+                        "description": "One or more locations to use as the finishing point for calculating travel distance and time. The options for the destinations parameter are the same as for the origins parameter, described above.",
+                        "in": "query",
+                        "items": {
+                            "type": "string"
+                        },
+                        "name": "destinations",
+                        "type": "array"
+                    },
+                    {
+                        "default": "driving",
+                        "description": "Specifies the mode of transport to use when calculating directions. https://developers.google.com/maps/documentation/directions/intro#TravelModes",
+                        "enum": [
+                            "driving",
+                            "walking",
+                            "bicycling",
+                            "transit"
+                        ],
+                        "in": "query",
+                        "name": "mode",
+                        "type": "string"
+                    },
+                    {
+                        "description": "The region code, specified as a ccTLD (\"top-level domain\") two-character value. https://en.wikipedia.org/wiki/Country_code_top-level_domain",
+                        "in": "query",
+                        "name": "region",
+                        "type": "string",
+                        "x-example": "us"
+                    },
+                    {
+                        "collectionFormat": "pipes",
+                        "description": "Indicates that the calculated route(s) should avoid the indicated features. https://developers.google.com/maps/documentation/directions/intro#Restrictions",
+                        "enum": [
+                            "tolls",
+                            "highways",
+                            "ferries",
+                            "indoor"
+                        ],
+                        "in": "query",
+                        "items": {
+                            "type": "string"
+                        },
+                        "name": "avoid",
+                        "type": "array"
+                    },
+                    {
+                        "description": "Specifies the unit system to use when displaying results. https://developers.google.com/maps/documentation/directions/intro#UnitSystems",
+                        "enum": [
+                            "metric",
+                            "imperial"
+                        ],
+                        "in": "query",
+                        "name": "units",
+                        "type": "string"
+                    },
+                    {
+                        "description": "Specifies the desired time of arrival for transit directions, in seconds since midnight, January 1, 1970 UTC. You can specify either departure_time or arrival_time, but not both. Note that arrival_time must be specified as an integer.",
+                        "in": "query",
+                        "name": "arrival_time",
+                        "type": "integer",
+                        "x-example": 0
+                    },
+                    {
+                        "description": "Specifies the desired time of departure. You can specify the time as an integer in seconds since midnight, January 1, 1970 UTC. Alternatively, you can specify a value of now, which sets the departure time to the current time (correct to the nearest second).",
+                        "in": "query",
+                        "name": "departure_time",
+                        "type": "string",
+                        "x-example": "now"
+                    },
+                    {
+                        "description": "Specifies the assumptions to use when calculating time in traffic. This setting affects the value returned in the duration_in_traffic field in the response, which contains the predicted time in traffic based on historical averages. The traffic_model parameter may only be specified for driving directions where the request includes a departure_time, and only if the request includes an API key or a Google Maps APIs Premium Plan client ID.",
+                        "enum": [
+                            "best_guess",
+                            "pessimistic",
+                            "optimistic"
+                        ],
+                        "in": "query",
+                        "name": "traffic_model",
+                        "type": "string"
+                    },
+                    {
+                        "collectionFormat": "pipes",
+                        "description": "Specifies one or more preferred modes of transit. This parameter may only be specified for transit directions, and only if the request includes an API key or a Google Maps APIs Premium Plan client ID.",
+                        "enum": [
+                            "bus",
+                            "subway",
+                            "train",
+                            "tram",
+                            "rail"
+                        ],
+                        "in": "query",
+                        "items": {
+                            "type": "string"
+                        },
+                        "name": "transit_mode",
+                        "type": "array"
+                    },
+                    {
+                        "description": "Specifies preferences for transit routes. Using this parameter, you can bias the options returned, rather than accepting the default best route chosen by the API. This parameter may only be specified for transit directions, and only if the request includes an API key or a Google Maps APIs Premium Plan client ID.",
+                        "enum": [
+                            "less_walking",
+                            "fewer_transfers"
+                        ],
+                        "in": "query",
+                        "name": "transit_routing_preference",
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "default": {
+                        "description": "default response"
+                    }
+                },
+                "summary": "Distance Matrix Requests https://developers.google.com/maps/documentation/distance-matrix/intro#DistanceMatrixRequests",
+                "tags": [
+                    "google-maps"
+                ],
+                "x-host": "maps.googleapis.com"
+            }
+        },
+        "/maps/api/elevation/json#requireLocations": {
+            "get": {
+                "operationId": "mapsApiElevationJsonRequireLocations",
+                "parameters": [
+                    {
+                        "description": "Your application's API key. This key identifies your application for purposes of quota management. https://developers.google.com/maps/documentation/geocoding/get-api-key",
+                        "in": "query",
+                        "name": "key",
+                        "type": "string",
+                        "x-apiKey": true,
+                        "x-example": "xxxxxxxx"
+                    },
+                    {
+                        "collectionFormat": "pipes",
+                        "default": [
+                            "40.714728,-73.998672",
+                            "-34.397,150.644"
+                        ],
+                        "description": "defines the location(s) on the earth from which to return elevation data. This parameter takes either a single location as a comma-separated {latitude,longitude} pair (e.g. \"40.714728,-73.998672\") or multiple latitude/longitude pairs passed as an array or as an encoded polyline. https://developers.google.com/maps/documentation/elevation/intro#Locations",
+                        "in": "query",
+                        "items": {
+                            "type": "string"
+                        },
+                        "name": "locations",
+                        "required": true,
+                        "type": "array"
+                    }
+                ],
+                "responses": {
+                    "default": {
+                        "description": "default response"
+                    }
+                },
+                "summary": "Elevation Requests. https://developers.google.com/maps/documentation/elevation/intro",
+                "tags": [
+                    "google-maps"
+                ],
+                "x-host": "maps.googleapis.com"
+            }
+        },
+        "/maps/api/elevation/json#requirePath": {
+            "get": {
+                "operationId": "mapsApiElevationJsonRequirePath",
+                "parameters": [
+                    {
+                        "description": "Your application's API key. This key identifies your application for purposes of quota management. https://developers.google.com/maps/documentation/geocoding/get-api-key",
+                        "in": "query",
+                        "name": "key",
+                        "type": "string",
+                        "x-apiKey": true,
+                        "x-example": "xxxxxxxx"
+                    },
+                    {
+                        "collectionFormat": "pipes",
+                        "default": [
+                            "40.714728,-73.998672",
+                            "-34.397,150.644"
+                        ],
+                        "description": "defines a path on the earth for which to return elevation data. This parameter defines a set of two or more ordered {latitude,longitude} pairs defining a path along the surface of the earth. This parameter must be used in conjunction with the samples parameter described below. https://developers.google.com/maps/documentation/elevation/intro#Paths",
+                        "in": "query",
+                        "items": {
+                            "type": "string"
+                        },
+                        "name": "path",
+                        "required": true,
+                        "type": "array"
+                    },
+                    {
+                        "collectionFormat": "pipes",
+                        "default": 10,
+                        "description": "specifies the number of sample points along a path for which to return elevation data. The samples parameter divides the given path into an ordered set of equidistant points along the path.",
+                        "in": "query",
+                        "name": "samples",
+                        "required": true,
+                        "type": "integer"
+                    }
+                ],
+                "responses": {
+                    "default": {
+                        "description": "default response"
+                    }
+                },
+                "summary": "Elevation Requests. https://developers.google.com/maps/documentation/elevation/intro",
+                "tags": [
+                    "google-maps"
+                ],
+                "x-host": "maps.googleapis.com"
             }
         },
         "/maps/api/geocode/json#requireAddress": {
@@ -352,7 +1309,8 @@
                 "summary": "Geocoding (Latitude/Longitude Lookup). https://developers.google.com/maps/documentation/geocoding/intro#geocoding",
                 "tags": [
                     "google-maps"
-                ]
+                ],
+                "x-host": "maps.googleapis.com"
             }
         },
         "/maps/api/geocode/json#requireComponents": {
@@ -476,7 +1434,8 @@
                 "summary": "Geocoding (Latitude/Longitude Lookup). https://developers.google.com/maps/documentation/geocoding/intro#ComponentFiltering",
                 "tags": [
                     "google-maps"
-                ]
+                ],
+                "x-host": "maps.googleapis.com"
             }
         },
         "/maps/api/geocode/json#requireLatLng": {
@@ -620,7 +1579,8 @@
                 "summary": "Reverse Geocoding (Address Lookup). https://developers.google.com/maps/documentation/geocoding/intro#ReverseGeocoding",
                 "tags": [
                     "google-maps"
-                ]
+                ],
+                "x-host": "maps.googleapis.com"
             }
         },
         "/maps/api/geocode/json#requirePlaceId": {
@@ -764,7 +1724,107 @@
                 "summary": "Retrieving an Address for a Place ID. https://developers.google.com/maps/documentation/geocoding/intro#place-id",
                 "tags": [
                     "google-maps"
-                ]
+                ],
+                "x-host": "maps.googleapis.com"
+            }
+        },
+        "/maps/api/timezone/json": {
+            "get": {
+                "operationId": "mapsApiTimezoneJson",
+                "parameters": [
+                    {
+                        "description": "Your application's API key. This key identifies your application for purposes of quota management. https://developers.google.com/maps/documentation/directions/get-api-key",
+                        "in": "query",
+                        "name": "key",
+                        "type": "string",
+                        "x-apiKey": true,
+                        "x-example": "xxxxxxxx"
+                    },
+                    {
+                        "default": "-33.86,151.20",
+                        "description": "a comma-separated lat,lng tuple (eg. location=-33.86,151.20), representing the location to look up.",
+                        "in": "query",
+                        "name": "location",
+                        "type": "string"
+                    },
+                    {
+                        "description": "specifies the desired time as seconds since midnight, January 1, 1970 UTC. The Google Maps Time Zone API uses the timestamp to determine whether or not Daylight Savings should be applied, based on the time zone of the location. Note that the API does not take historical time zones into account. That is, if you specify a past timestamp, the API does not take into account the possibility that the location was previously in a different time zone.",
+                        "in": "query",
+                        "name": "timestamp",
+                        "type": "integer"
+                    },
+                    {
+                        "description": "The language in which to return results. https://developers.google.com/maps/faq#languagesupport",
+                        "enum": [
+                            "ar",
+                            "bg",
+                            "bn",
+                            "ca",
+                            "cs",
+                            "da",
+                            "de",
+                            "el",
+                            "en",
+                            "en-AU",
+                            "en-GB",
+                            "es",
+                            "eu",
+                            "fa",
+                            "fi",
+                            "fil",
+                            "fr",
+                            "gl",
+                            "gu",
+                            "hi",
+                            "hr",
+                            "hu",
+                            "id",
+                            "it",
+                            "iw",
+                            "ja",
+                            "kn",
+                            "ko",
+                            "lt",
+                            "lv",
+                            "ml",
+                            "mr",
+                            "nl",
+                            "no",
+                            "pl",
+                            "pt",
+                            "pt-BR",
+                            "pt-PT",
+                            "ro",
+                            "ru",
+                            "sk",
+                            "sl",
+                            "sr",
+                            "sv",
+                            "ta",
+                            "te",
+                            "th",
+                            "tl",
+                            "tr",
+                            "uk",
+                            "vi",
+                            "zh-CN",
+                            "zh-TW"
+                        ],
+                        "in": "query",
+                        "name": "language",
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "default": {
+                        "description": "default response"
+                    }
+                },
+                "summary": "Time Zone Requests. https://developers.google.com/maps/documentation/timezone/intro",
+                "tags": [
+                    "google-maps"
+                ],
+                "x-host": "maps.googleapis.com"
             }
         }
     },
@@ -774,10 +1834,14 @@
     "swagger": "2.0",
     "tags": [
         {
+            "description": "https://developers.google.com/maps/documentation/directions/intro",
             "name": "google-maps"
+        },
+        {
+            "description": "https://cloud.google.com/translate/docs/reference/rest",
+            "name": "google-translate"
         }
     ],
-    "x-description": "https://developers.google.com/maps/documentation/",
-    "x-githubForwardProxyUrl": "https://h1-proxy1.herokuapp.com",
-    "x-url-console": "https://console.developers.google.com/apis/library"
+    "x-description": "https://console.developers.google.com/apis/library",
+    "x-githubForwardProxyUrl": "https://h1-proxy1.herokuapp.com"
 }

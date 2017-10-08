@@ -36,6 +36,7 @@
         ? window
         : global;
     local.local = local.global.utility2_rollup = local.global.utility2_rollup_old || local;
+    local.global.utility2_rollup_old = null;
 }());
 /* script-end /assets.utility2.rollup.begin.js */
 
@@ -3801,7 +3802,7 @@ vendor\\)s\\{0,1\\}\\(\\b\\|_\\)\
                 console.assert(!error, error);
             });
         };
-        local.cliDict.touchlist = function () {
+        local.cliDict.touchList = function () {
         /*
          * fileRemoteList commitMessage
          * touch comma-separated fileRemoteList on github
@@ -15312,6 +15313,7 @@ local.assetsDict['/assets.utility2.rollup.begin.js'] = '\
         ? window\n\
         : global;\n\
     local.local = local.global.utility2_rollup = local.global.utility2_rollup_old || local;\n\
+    local.global.utility2_rollup_old = null;\n\
 }());\n\
 ';
 
@@ -20494,20 +20496,20 @@ instruction\n\
             if (!(local.modeTest || options.modeTest)) {
                 return;
             }
-            local.global.utility2_modeTestRun = true;
-            if (!options.testRunBeforeDone) {
-                options.testRunBeforeTimer = options.testRunBeforeTimer ||
-                    setTimeout(function () {
-                        local.testRunBefore();
-                        local.onReadyAfter(function () {
-                            options.testRunBeforeDone = true;
-                            local.testRunDefault(options);
-                        });
+            if (!local.global.utility2_modeTestRun) {
+                local.global.utility2_modeTestRun = 1;
+                setTimeout(function () {
+                    local.testRunBefore();
+                    local.onReadyAfter(function () {
+                        local.testRunDefault(options);
                     });
+                });
                 return;
             }
-            // reset testRunBefore
-            options.testRunBeforeDone = options.testRunBeforeTimer = null;
+            if (local.global.utility2_modeTestRun !== 1) {
+                return;
+            }
+            local.global.utility2_modeTestRun = 2;
             // visual notification - testRun
             local.ajaxProgressUpdate();
             // mock serverLog
@@ -20627,6 +20629,7 @@ instruction\n\
             /*
              * this function will create the test-report after all tests isDone
              */
+                local.global.utility2_modeTestRun = 0;
                 local.ajaxProgressUpdate();
                 // stop testPlatform timer
                 local.timeElapsedPoll(testPlatform);
@@ -21887,6 +21890,7 @@ border: 0;\n\
     >Clear api-keys</button>\n\
     <button class="eventDelegateClick onEventUiReload td3">Explore</button>\n\
 </div>\n\
+<div class="coverageHack reset"></div>\n\
 </div>\n\
 <div class="swggAjaxProgressDiv" style="margin-top: 1rem; text-align: center;">fetching resource-list ...</div>\n\
 <script>\n\
@@ -23011,9 +23015,10 @@ swgg\n\
                     'Bearer ' + options.jwtEncrypted;
             }
             // init url
-            options.url = (((local.normalizeValue('list', local.swaggerJson.schemes)[0] ||
+            options.url = (((local.normalizeValue('list', self['x-schemes'] ||
+                local.swaggerJson.schemes)[0] ||
                 local.urlParse('').protocol.slice(0, -1)) + '://' +
-                (local.swaggerJson.host || local.urlParse('').host) +
+                (self['x-host'] || local.swaggerJson.host || local.urlParse('').host) +
                 local.swaggerJsonBasePath) + options.inPath + '?' + options.inQuery.slice(1))
                 .replace((/\?$/), '');
             if (!(options.headers['Content-Type'] || options.headers['content-type'])) {
@@ -23039,7 +23044,7 @@ swgg\n\
          */
             var tmp;
             // init options
-            options = local.normalizeValue('dict', options);
+            options = options || {};
             // init apiDict
             local.apiDict = local.apiDict || {};
             // init swaggerJson
@@ -24790,12 +24795,19 @@ swgg\n\
                 break;
             // persist apiKeyValue to localStorage
             case 'swggApiKeyInput1':
+                if (!event.target.value) {
+                    break;
+                }
                 local.apiKeyValue = event.target.value;
                 local.localStorageSetItemOrClear(local.apiKeyKey, event.target.value);
                 break;
             }
             // if keyup-event is not return-key, then return
-            if (event && event.type === 'keyup' && event.keyCode !== 13) {
+            if (event && event.type === 'keyup' && event.code !== 'Enter') {
+                return;
+            }
+            // do not reload ui during test
+            if (local.global.utility2_modeTestRun >= 2) {
                 return;
             }
             notify = function (message) {
@@ -25589,14 +25601,10 @@ swgg\n\
     // run node js-env code - init-after
     /* istanbul ignore next */
     case 'node':
-        // init cli
-        switch (process.argv[2]) {
-        case 'swagger-ui':
-            local.replStart();
-            local.global.local = local;
-            local.assetsDict['/'] = local.assetsDict['/assets.swgg.html'];
-            local.testRunServer({});
-            break;
+        if (local.fs.existsSync(local.__dirname + '/assets.swgg.swagger.json')) {
+            local.swgg.apiDictUpdate(JSON.parse(
+                local.fs.readFileSync(local.__dirname + '/assets.swgg.swagger.json')
+            ));
         }
         break;
     }
