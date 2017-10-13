@@ -61,9 +61,11 @@ this zero-dependency package will provide apis for google's public web-services,
 - continue adding extra google apis
 - none
 
-#### changelog for v2017.10.1
-- npm publish 2017.10.1
-- initial package with google-maps and and google-translate apis
+#### changelog for v2017.10.12
+- npm publish 2017.10.12
+- add top-level swagger-json property x-definitionsParameters
+- document library-call equivalent to curl-request
+- rename function swgg.apiDictUpdate -> swgg.apiUpdate
 - none
 
 #### this package requires
@@ -431,7 +433,7 @@ instruction
         "start": "PORT=${PORT:-8080} utility2 start test.js",
         "test": "PORT=$(utility2 shServerPortRandom) utility2 test test.js"
     },
-    "version": "2017.10.1"
+    "version": "2017.10.12"
 }
 ```
 
