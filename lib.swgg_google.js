@@ -1,9 +1,9 @@
-/* istanbul instrument in package api_google */
+/* istanbul instrument in package swgg_google */
 /*jslint
     bitwise: true,
     browser: true,
     maxerr: 8,
-    maxlen: 96,
+    maxlen: 100,
     node: true,
     nomen: true,
     regexp: true,
@@ -40,10 +40,10 @@
         // init utility2_rollup
         local = local.global.utility2_rollup || local;
         // init lib
-        local.local = local.api_google = local;
+        local.local = local.swgg_google = local;
         // init exports
         if (local.modeJs === 'browser') {
-            local.global.utility2_api_google = local;
+            local.global.utility2_swgg_google = local;
         } else {
             // require builtins
             Object.keys(process.binding('natives')).forEach(function (key) {

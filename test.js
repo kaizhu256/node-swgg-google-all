@@ -1,9 +1,9 @@
-/* istanbul instrument in package api_google */
+/* istanbul instrument in package swgg_google */
 /*jslint
     bitwise: true,
     browser: true,
     maxerr: 8,
-    maxlen: 96,
+    maxlen: 100,
     node: true,
     nomen: true,
     regexp: true,

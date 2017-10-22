@@ -9,7 +9,7 @@
     bitwise: true,
     browser: true,
     maxerr: 8,
-    maxlen: 96,
+    maxlen: 100,
     node: true,
     nomen: true,
     regexp: true,
@@ -49,7 +49,7 @@
     bitwise: true,
     browser: true,
     maxerr: 8,
-    maxlen: 96,
+    maxlen: 100,
     node: true,
     nomen: true,
     regexp: true,
@@ -765,8 +765,8 @@ vendor\\)s\\{0,1\\}\\(\\b\\|_\\)\
                 local.objectSetDefault(tmp, moduleMain);
             // init circularList - builtin
             Object.keys(process.binding('natives')).forEach(function (key) {
-                if (!(/\/|_linklist|sys/).test(key)) {
-                    options.blacklistDict[key] = options.blacklistDict[key] || require(key);
+                if (!(/\/|^_linklist$|^sys$/).test(key)) {
+                    options.circularList.push(require(key));
                 }
             });
             // init circularList - blacklistDict
@@ -798,8 +798,8 @@ vendor\\)s\\{0,1\\}\\(\\b\\|_\\)\
             ).forEach(function (key) {
                 tmp = options.env.npm_package_name + '.swgg.apiDict';
                 tmp = options.moduleDict[tmp] = options.moduleDict[tmp] || {};
-                tmp[encodeURIComponent(key) + '.ajax'] = moduleMain.swgg.apiDict[key] &&
-                    moduleMain.swgg.apiDict[key].ajax;
+                tmp[encodeURIComponent(key) + '.ajax'] =
+                    moduleMain.swgg.apiDict[key] && moduleMain.swgg.apiDict[key].ajax;
             });
             // init moduleExtraDict
             module = options.moduleExtraDict[options.env.npm_package_name] =
@@ -858,6 +858,7 @@ vendor\\)s\\{0,1\\}\\(\\b\\|_\\)\
                     }
                     console.error('apidocCreate - libFile ' + file);
                     tmp.module = options.require(options.dir + '/' + file);
+                    // filter circular-reference
                     if (!(tmp.module && options.circularList.indexOf(tmp.module) < 0)) {
                         return;
                     }
@@ -1044,7 +1045,7 @@ vendor\\)s\\{0,1\\}\\(\\b\\|_\\)\
     bitwise: true,
     browser: true,
     maxerr: 8,
-    maxlen: 96,
+    maxlen: 100,
     node: true,
     nomen: true,
     regexp: true,
@@ -3057,7 +3058,7 @@ vendor\\)s\\{0,1\\}\\(\\b\\|_\\)\
     bitwise: true,
     browser: true,
     maxerr: 8,
-    maxlen: 96,
+    maxlen: 100,
     node: true,
     nomen: true,
     regexp: true,
@@ -3832,7 +3833,7 @@ vendor\\)s\\{0,1\\}\\(\\b\\|_\\)\
     bitwise: true,
     browser: true,
     maxerr: 8,
-    maxlen: 96,
+    maxlen: 100,
     node: true,
     nomen: true,
     regexp: true,
@@ -6558,7 +6559,7 @@ local.templateCoverageBadgeSvg =
     bitwise: true,
     browser: true,
     maxerr: 8,
-    maxlen: 96,
+    maxlen: 100,
     node: true,
     nomen: true,
     regexp: true,
@@ -12920,7 +12921,7 @@ local.CSSLint = CSSLint; local.JSLINT = JSLINT, local.jslintEs6 = jslint; }());
     bitwise: true,
     browser: true,
     maxerr: 8,
-    maxlen: 96,
+    maxlen: 100,
     node: true,
     nomen: true,
     regexp: true,
@@ -13360,7 +13361,7 @@ s=0;s<i;s++)n[r+s]=e[t+s]|0},sjcl.misc.scrypt.blockxor=function(e,t,n,r,i){var s
     bitwise: true,
     browser: true,
     maxerr: 8,
-    maxlen: 96,
+    maxlen: 100,
     node: true,
     nomen: true,
     regexp: true,
@@ -14177,7 +14178,7 @@ split_lines=split_lines,exports.MAP=MAP,exports.ast_squeeze_more=require("./sque
     bitwise: true,
     browser: true,
     maxerr: 8,
-    maxlen: 96,
+    maxlen: 100,
     node: true,
     nomen: true,
     regexp: true,
@@ -14293,6 +14294,7 @@ local.assetsDict['/assets.index.template.html'] = '\
 <title>{{env.npm_package_name}} (v{{env.npm_package_version}})</title>\n\
 <style>\n\
 /*csslint\n\
+    box-model: false,\n\
     box-sizing: false,\n\
     universal-selector: false\n\
 */\n\
@@ -14316,6 +14318,20 @@ button {\n\
 .uiAnimateSlide {\n\
     overflow-y: hidden;\n\
     transition: border-bottom 250ms, border-top 250ms, margin-bottom 250ms, margin-top 250ms, max-height 250ms, min-height 250ms, padding-bottom 250ms, padding-top 250ms;\n\
+}\n\
+@keyframes uiAnimateSpin {\n\
+    0% { transform: rotate(0deg); }\n\
+    100% { transform: rotate(360deg); }\n\
+}\n\
+.uiAnimateSpin {\n\
+    animation: uiAnimateSpin 2s linear infinite;\n\
+    border: 0.5rem solid #999;\n\
+    border-radius: 50%;\n\
+    border-top: 0.5rem solid #7d7;\n\
+    display: inline-block;\n\
+    height: 2rem;\n\
+    vertical-align: middle;\n\
+    width: 2rem;\n\
 }\n\
 .utility2FooterDiv {\n\
     margin-top: 20px;\n\
@@ -14349,7 +14365,7 @@ textarea[readonly] {\n\
     bitwise: true,\n\
     browser: true,\n\
     maxerr: 8,\n\
-    maxlen: 96,\n\
+    maxlen: 100,\n\
     node: true,\n\
     nomen: true,\n\
     regexp: true,\n\
@@ -14471,7 +14487,7 @@ instruction\n\
     bitwise: true,\n\
     browser: true,\n\
     maxerr: 8,\n\
-    maxlen: 96,\n\
+    maxlen: 100,\n\
     node: true,\n\
     nomen: true,\n\
     regexp: true,\n\
@@ -14705,7 +14721,7 @@ local.assetsDict['/assets.lib.template.js'] = '\
     bitwise: true,\n\
     browser: true,\n\
     maxerr: 8,\n\
-    maxlen: 96,\n\
+    maxlen: 100,\n\
     node: true,\n\
     nomen: true,\n\
     regexp: true,\n\
@@ -15083,7 +15099,7 @@ local.assetsDict['/assets.test.template.js'] = '\
     bitwise: true,\n\
     browser: true,\n\
     maxerr: 8,\n\
-    maxlen: 96,\n\
+    maxlen: 100,\n\
     node: true,\n\
     nomen: true,\n\
     regexp: true,\n\
@@ -15286,7 +15302,7 @@ local.assetsDict['/assets.utility2.rollup.begin.js'] = '\
     bitwise: true,\n\
     browser: true,\n\
     maxerr: 8,\n\
-    maxlen: 96,\n\
+    maxlen: 100,\n\
     node: true,\n\
     nomen: true,\n\
     regexp: true,\n\
@@ -15375,9 +15391,9 @@ local.assetsDict['/favicon.ico'] = '';
         local.Blob = local.modeJs === 'browser'
             ? local.global.Blob
             : function (array, options) {
-              /*
-               * this function will create a node-compatible Blob instance
-               */
+            /*
+             * this function will create a node-compatible Blob instance
+             */
                 this.bff = local.bufferConcat(array);
                 this.type = options && options.type;
             };
@@ -15995,7 +16011,6 @@ local.assetsDict['/favicon.ico'] = '';
             local.bufferToNodeBuffer = local.bufferToNodeBuffer || local.nop;
             local.bufferToString = local.bufferToString || local.nop;
             local.errorMessagePrepend = local.errorMessagePrepend || local.nop;
-            local.githubForwardProxyUrlTest = local.githubForwardProxyUrlTest || local.nop;
             local.onErrorWithStack = local.onErrorWithStack || function (arg) {
                 return arg;
             };
@@ -16022,6 +16037,9 @@ local.assetsDict['/favicon.ico'] = '';
             Object.keys(options.headers || {}).forEach(function (key) {
                 xhr.headers[key.toLowerCase()] = options.headers[key];
             });
+            // init corsForwardProxyHostifNeeded
+            xhr.corsForwardProxyHostifNeeded = xhr.corsForwardProxyHostifNeeded ||
+                local.corsForwardProxyHostifNeeded || local.nop;
             // init method
             xhr.method = xhr.method || 'GET';
             // init timeStart
@@ -16112,15 +16130,17 @@ local.assetsDict['/favicon.ico'] = '';
             xhr.addEventListener('loadstart', local.ajaxProgressUpdate);
             xhr.addEventListener('progress', local.ajaxProgressUpdate);
             xhr.upload.addEventListener('progress', local.ajaxProgressUpdate);
-            // open url
-            xhr.githubForwardProxyUrl = local.modeJs === 'browser' &&
+            // open url through corsForwardProxyHost
+            xhr.corsForwardProxyHost =
+                local.modeJs === 'browser' &&
                 (/^https{0,1}:/).test(xhr.url) &&
                 xhr.url.indexOf(location.protocol + '//' + location.host) !== 0 &&
-                local.githubForwardProxyUrlTest(xhr.url, location);
-            if (xhr.githubForwardProxyUrl) {
-                xhr.open(xhr.method, xhr.githubForwardProxyUrl);
+                xhr.corsForwardProxyHostifNeeded(xhr.url, location);
+            if (xhr.corsForwardProxyHost) {
+                xhr.open(xhr.method, xhr.corsForwardProxyHost);
                 xhr.setRequestHeader('forward-proxy-headers', JSON.stringify(xhr.headers));
                 xhr.setRequestHeader('forward-proxy-url', xhr.url);
+            // open url
             } else {
                 xhr.open(xhr.method, xhr.url);
             }
@@ -16150,8 +16170,8 @@ local.assetsDict['/favicon.ico'] = '';
          * this function will update ajaxProgress
          */
             var ajaxProgressDiv1;
-            ajaxProgressDiv1 = local.modeJs === 'browser' &&
-                document.querySelector('#ajaxProgressDiv1');
+            ajaxProgressDiv1 =
+                local.modeJs === 'browser' && document.querySelector('#ajaxProgressDiv1');
             if (!ajaxProgressDiv1) {
                 return;
             }
@@ -16872,12 +16892,10 @@ function TranslateElementInit() {\n\
                         if (options.modeBrowserTest !== 'test') {
                             return;
                         }
-                        options.global_test_results =
-                            JSON.parse(data.data).global_test_results;
+                        options.global_test_results = JSON.parse(data.data).global_test_results;
                         if (options.global_test_results.testReport) {
                             // merge screenshot into test-report
-                            options.global_test_results.testReport.testPlatformList[0]
-                                .screenshot =
+                            options.global_test_results.testReport.testPlatformList[0].screenshot =
                                 options.fileScreenshot.replace((/.*\//), '');
                             // save browser test-report
                             options.fs.writeFileSync(
@@ -17463,27 +17481,26 @@ return Utf8ArrayToStr(bff);
                 );
                 options.dataTo = options.dataTo.replace(
                     options.rgx,
-                    match0.replace(
-                        match1,
-                        local.jsonStringifyOrdered(options.packageJson, null, 4)
-                    )
+                    match0.replace(match1, local.jsonStringifyOrdered(options.packageJson, null, 4))
                 );
             });
             // init assets.swgg.swagger.json
             if (local.fs.existsSync('assets.swgg.swagger.json')) {
-                local.fs.writeFileSync(
-                    'assets.swgg.swagger.json',
-                    local.jsonStringifyOrdered(local.objectSetOverride(
-                        JSON.parse(local.fs.readFileSync('assets.swgg.swagger.json', 'utf8')),
-                        { info: {
-                            description: options.packageJson.description,
-                            title: options.packageJson.name,
-                            version: options.packageJson.version,
-                            'x-homepage': options.packageJson.homepage
-                        } },
-                        2
-                    ), null, 4) + '\n'
-                );
+                // save assets.swgg.swagger.json
+                local.fs.writeFileSync('assets.swgg.swagger.json', local.jsonStringifyOrdered(
+                    // normalize assets.swgg.swagger.json
+                    local.objectSetOverride(local.swgg.swaggerJsonNormalize(JSON.parse(
+                        // read assets.swgg.swagger.json
+                        local.fs.readFileSync('assets.swgg.swagger.json', 'utf8')
+                    )), { info: {
+                        description: options.packageJson.description,
+                        title: options.packageJson.name,
+                        version: options.packageJson.version,
+                        'x-homepage': options.packageJson.homepage
+                    } }, 2),
+                    null,
+                    4
+                ) + '\n');
             }
             // search-and-replace - customize dataTo
             [
@@ -17521,12 +17538,11 @@ return Utf8ArrayToStr(bff);
                 });
             });
             // customize swaggerdoc
-            if (!local.assetsDict['/assets.swgg.swagger.json'] ||
+            if (process.env.npm_package_name === 'utility2' ||
+                    !local.assetsDict['/assets.swgg.swagger.json'] ||
                     (/\bswggUiContainer\b/).exec(local.assetsDict['/index.html'])) {
-                options.dataTo = options.dataTo.replace(
-                    (/\n#### swagger doc\n[\S\s]*?\n#### /),
-                    '\n#### '
-                );
+                options.dataTo = options.dataTo.replace((/\n#### swagger doc\n[\S\s]*?\n#### /),
+                    '\n#### ');
             }
             // customize comment
             options.dataFrom.replace(
@@ -17820,6 +17836,41 @@ return Utf8ArrayToStr(bff);
             return tmp;
         };
 
+        local.corsBackendHostInject = function (url, backendHost, rgxInject, location) {
+        /*
+         * this function will inject backendHost into the url,
+         * if location.host is a github site
+         */
+            location = location || (typeof window === 'object' && window && window.location);
+            if (!(backendHost && location && (/\bgithub.io$/).test(location.host))) {
+                return url;
+            }
+            // init github-branch
+            location.pathname.replace(
+                (/\/build\.\.(alpha|beta|master)\.\.travis-ci\.org\//),
+                function (match0, match1) {
+                    // jslint-hack
+                    match0 = match1;
+                    backendHost = backendHost.replace('-alpha.', '-' + match0 + '.');
+                }
+            );
+            return url.replace(rgxInject || (/.*()/), backendHost + '$1');
+        };
+
+        local.corsForwardProxyHostifNeeded = function (url, location) {
+        /*
+         * this function will return a corsForwardProxyHost if needed by the url
+         */
+            // jslint-hack
+            local.nop(url);
+            return local.modeJs === 'browser' &&
+                local.env.npm_package_nameLib &&
+                (/\bgithub.io$/).test(location.host)
+                ? local.corsForwardProxyHost ||
+                    'https://h1-' + local.env.npm_package_nameLib + '-alpha.herokuapp.com'
+                : location.protocol + '//' + location.host;
+        };
+
         local.dbTableCustomOrgCreate = function (options, onError) {
         /*
          * this function will create a persistent dbTableCustomOrg
@@ -17865,8 +17916,10 @@ return Utf8ArrayToStr(bff);
             local.onNext(options, function (error, data) {
                 switch (options.modeNext) {
                 case 1:
-                    self = local.dbTableCustomOrg =
-                        local.dbTableCustomOrgCreate(options, options.onNext);
+                    self = local.dbTableCustomOrg = local.dbTableCustomOrgCreate(
+                        options,
+                        options.onNext
+                    );
                     break;
                 case 2:
                     self = local.dbTableCustomOrg = data;
@@ -18080,42 +18133,6 @@ return Utf8ArrayToStr(bff);
                 // re-write to file
                 require('fs').writeFileSync(file, data);
             }
-        };
-
-        local.githubCorsUrlOverride = function (url, hostOverride, rgxHostOverride, location) {
-        /*
-         * this function will return hostOverride over location.host,
-         * if this app is hosted on github.io
-         */
-            location = location || (typeof window === 'object' && window && window.location);
-            if (!(hostOverride && location && (local.githubCorsHostTest ||
-                    (/\bgithub.com$|\bgithub.io$/).test(location.host)))) {
-                return url;
-            }
-            // init github-branch
-            location.pathname.replace(
-                (/\/build\.\.(alpha|beta|master)\.\.travis-ci\.org\//),
-                function (match0, match1) {
-                    // jslint-hack
-                    match0 = match1;
-                    hostOverride = hostOverride.replace('-alpha.', '-' + match0 + '.');
-                }
-            );
-            return url.replace(rgxHostOverride || (/.*()/), hostOverride + '$1');
-        };
-
-        local.githubForwardProxyUrlTest = function (url, location) {
-        /*
-         * this function will test if the url requires forward-proxy
-         */
-            // jslint-hack
-            local.nop(url);
-            return local.modeJs === 'browser' &&
-                local.env.npm_package_nameLib &&
-                (/\bgithub.io$/).test(location.host)
-                ? local.githubForwardProxyUrl ||
-                    'https://h1-' + local.env.npm_package_nameLib + '-alpha.herokuapp.com'
-                : location.protocol + '//' + location.host;
         };
 
         local.httpRequest = function (options, onError) {
@@ -18552,19 +18569,14 @@ return Utf8ArrayToStr(bff);
             });
         };
 
-        local.middlewareCacheControlLastModified = function (
-            request,
-            response,
-            nextMiddleware
-        ) {
+        local.middlewareCacheControlLastModified = function (request, response, nextMiddleware) {
         /*
          * this function will run the middleware that will update the Last-Modified header
          */
             // do not cache if headers already sent or url has '?' search indicator
             if (!(response.headersSent || request.url.indexOf('?') >= 0)) {
                 // init serverResponseHeaderLastModified
-                local.serverResponseHeaderLastModified =
-                    local.serverResponseHeaderLastModified ||
+                local.serverResponseHeaderLastModified = local.serverResponseHeaderLastModified ||
                     // resolve to 1000 ms
                     new Date(new Date(Math.floor(Date.now() / 1000) * 1000).toGMTString());
                 // respond with 304 If-Modified-Since serverResponseHeaderLastModified
@@ -19978,7 +19990,7 @@ instruction\n\
          */
             local.onNext(options, function (error, data) {
                 switch (options.modeNext) {
-                //  1. if cache-hit, then call onError with cacheValue
+                // 1. if cache-hit, then call onError with cacheValue
                 case 1:
                     // read cacheValue from memory-cache
                     local.cacheDict[options.cacheDict] = local.cacheDict[options.cacheDict] ||
@@ -20128,7 +20140,7 @@ instruction\n\
             options.githubRepo[1] = options.githubRepo[1].replace((/\.git$/), '');
             template = template.replace(
                 (/https:\/\/kaizhu256\.github\.io\/node-jslint-lite/g),
-                'https://' +  options.githubRepo[0] + '.github.io/' +  options.githubRepo[1]
+                'https://' + options.githubRepo[0] + '.github.io/' + options.githubRepo[1]
             );
             template = template.replace(
                 (/kaizhu256\/node-jslint-lite/g),
@@ -20454,9 +20466,7 @@ instruction\n\
                                 name: testPlatform.name,
                                 screenshot: testPlatform.screenshot,
                                 // map testCaseList
-                                testCaseList: testPlatform.testCaseList.map(function (
-                                    testCase
-                                ) {
+                                testCaseList: testPlatform.testCaseList.map(function (testCase) {
                                     testCaseNumber += 1;
                                     if (testCase.errorStack) {
                                         errorStackList.push({
@@ -20653,7 +20663,7 @@ instruction\n\
                         JSON.stringify(testReport)
                     );
                     // cleanup $npm_config_dir_tmp
-                    local.child_process.spawnSync('rm -f ' +  local.env.npm_config_dir_tmp +
+                    local.child_process.spawnSync('rm -f ' + local.env.npm_config_dir_tmp +
                         '/electron.*', { shell: true, stdio: ['ignore', 1, 2] });
                     break;
                 }
@@ -21410,7 +21420,7 @@ instruction\n\
     bitwise: true,
     browser: true,
     maxerr: 8,
-    maxlen: 96,
+    maxlen: 100,
     node: true,
     nomen: true,
     regexp: true,
@@ -21774,7 +21784,6 @@ local.assetsDict['/assets.swgg.html'] = local.assetsDict['/assets.index.default.
 .swggUiContainer .operation {\n\
     background: #dfd;\n\
     font-size: smaller;\n\
-    outline: none;\n\
 }\n\
 .swggUiContainer .operation > .content {\n\
     padding: 1rem;\n\
@@ -21789,8 +21798,10 @@ local.assetsDict['/assets.swgg.html'] = local.assetsDict['/assets.index.default.
 .swggUiContainer .operation > .content .tr {\n\
     margin-left: 0.5rem;\n\
 }\n\
+.swggUiContainer .operation > .header:focus,\n\
 .swggUiContainer .operation > .header:hover {\n\
     background: #bfb;\n\
+    outline: none;\n\
 }\n\
 .swggUiContainer .operation > .header > span {\n\
     padding: 2px 0 2px 0;\n\
@@ -21840,16 +21851,16 @@ local.assetsDict['/assets.swgg.html'] = local.assetsDict['/assets.index.default.
 .swggUiContainer .operation .responseList > .td2 {\n\
     flex: 4;\n\
 }\n\
-.swggUiContainer .resource {\n\
+.swggUiContainer .resource > .header {\n\
     outline: none;\n\
 }\n\
 .swggUiContainer .resource > .header > .td1 {\n\
     font-size: large;\n\
 }\n\
-.swggUiContainer .resource > .header > .td2,\n\
-.swggUiContainer .resource > .header > .td3 {\n\
+.swggUiContainer .resource > .header > .td2 {\n\
+    border-left: 1px solid #777;\n\
     border-right: 1px solid #777;\n\
-    padding-right: 1rem;\n\
+    padding: 0 1rem 0 1rem;\n\
 }\n\
 \n\
 \n\
@@ -21914,7 +21925,7 @@ fetching resource-list ...\n\
     bitwise: true,\n\
     browser: true,\n\
     maxerr: 8,\n\
-    maxlen: 96,\n\
+    maxlen: 100,\n\
     node: true,\n\
     nomen: true,\n\
     regexp: true,\n\
@@ -22664,26 +22675,27 @@ local.templateUiMain = '\
 {{#if url}}\n\
 <pre class="code" id="swggAjaxProgressPre1">\n\
 /*\n\
- * initialize client-api\n\
- * 1. if using browser, then embed the client in your webpage\n\
- *        &lt;script src="https://kaizhu256.github.io/node-utility2/build..beta..travis-ci.org/app/assets.utility2.rollup.js"&gt;&lt;/script&gt;\n\
- * 2. if using node, then download the client from cdn\n\
- *        curl -LO https://kaizhu256.github.io/node-utility2/build..beta..travis-ci.org/app/assets.utility2.rollup.js\n\
- * 3. run the code below in browser or node to initialize client-api\n\
+ * initialize swgg-client\n\
+ * 1. if using browser, then embed the client in webpage:\n\
+ *     &lt;script src="https://kaizhu256.github.io/node-utility2/build..beta..travis-ci.org/app/assets.utility2.rollup.js"&gt;&lt;/script&gt;\n\
+ *     &lt;script&gt;window.utility2.corsForwardProxyHostifNeeded=function(){return \"https://h1-proxy1.herokuapp.com\";};&lt;/script&gt;\n\
+ * 2. if using node, then download the client from cdn:\n\
+ *     curl -LO https://kaizhu256.github.io/node-utility2/build..beta..travis-ci.org/app/assets.utility2.rollup.js\n\
+ * 3. run the code below in browser or node to initialize swgg-client\n\
  */\n\
 var swgg;\n\
-swgg = typeof window === "object" && window && window.swgg // browser\n\
+swgg = typeof window === "object" && window && window.swgg; // browser\n\
 swgg = swgg || require("./assets.utility2.rollup.js"); // node\n\
-swgg.apiUpdate(\n\
-    "{{url}}",\n\
-    function (error) {\n\
-        if (error) {\n\
-            console.error(error);\n\
-            return;\n\
-        }\n\
-        console.log("initialized client-api");\n\
+swgg.apiUpdate({\n\
+    modeAjax: true,\n\
+    url: "{{url htmlSafe}}"\n\
+}, function (error) {\n\
+    if (error) {\n\
+        console.error(error);\n\
+        return;\n\
     }\n\
-);\n\
+    console.log("initialized swgg-client");\n\
+});\n\
 </pre>\n\
 {{/if url}}\n\
 <div class="info reset">\n\
@@ -22742,7 +22754,7 @@ swgg.apiUpdate(\n\
 <div class="color777 reset">\n\
     [ <span>base url</span>: {{basePath}} ]\n\
 </div>\n\
-<div class="reset resourceList" style="margin-top: 1rem; text-align: center;">rendering resource-list ...</div>\n\
+<div id="swggAjaxProgressResourceListDiv1" style="margin-top: 1rem; text-align: center;">rendering resource-list &nbsp;<span class="uiAnimateSpin"></span></div>\n\
 ';
 
 
@@ -22753,9 +22765,11 @@ local.templateUiOperation = '\
     class="eventDelegateClick eventDelegateSubmit marginTop05 operation {{_method}}"\n\
     data-_key-operation-id="{{_keyOperationId}}"\n\
     id="{{id}}"\n\
-    tabindex="0"\n\
 >\n\
-    <div class="cursorPointer eventDelegateClick onEventOperationDisplayShow header tr">\n\
+    <div\n\
+        class="cursorPointer eventDelegateClick onEventOperationDisplayShow header tr"\n\
+        tabindex="0"\n\
+    >\n\
         <span class="td1">{{_method}}</span>\n\
         <span\n\
             class="td2 {{#if deprecated}}fontLineThrough{{/if deprecated}}"\n\
@@ -22770,10 +22784,8 @@ local.templateUiOperation = '\
         {{#if deprecated}}\n\
         <h4 class="label marginTop10">Warning: Deprecated</h4>\n\
         {{/if deprecated}}\n\
-        {{#if description}}\n\
         <h4 class="label marginTop10">Description</h4>\n\
-        <div>{{description htmlSafe}}</div>\n\
-        {{/if description}}\n\
+        <div class="marginTop05 tr">{{description htmlSafe}}</div>\n\
         {{#if parameters.length}}\n\
         <h4 class="label marginTop10">Parameters</h4>\n\
         <div class="marginTop05 paramDef tr">\n\
@@ -22857,21 +22869,17 @@ local.templateUiResource = '\
     class="borderBottomBold resource eventDelegateClick"\n\
     data-name="{{name}}"\n\
     id="{{id}}"\n\
-    tabindex="0"\n\
 >\n\
-    <div class="fontWeightBold header tr">\n\
+    <div class="fontWeightBold header tr" tabindex="0">\n\
         <a class="color777 flex1 onEventResourceDisplayAction td1" href="#">{{name}} :\n\
-        {{#if description}}\n\
         {{description htmlSafe}}\n\
-        {{/if description}}\n\
         </a>\n\
-        <a class="color777 onEventResourceDisplayAction td2" href="#">Show</a>\n\
         <a\n\
-            class="color777 onEventResourceDisplayAction td3"\n\
+            class="color777 onEventResourceDisplayAction td2"\n\
             href="#"\n\
         >Expand / Collapse Operations</a>\n\
         <a\n\
-            class="color777 onEventDatatableReload td4"\n\
+            class="color777 onEventDatatableReload td3"\n\
             data-resource-name="{{name}}"\n\
             href="#"\n\
         >Datatable</a>\n\
@@ -22887,7 +22895,7 @@ local.templateUiResource = '\
 local.templateUiResponseAjax = '\
 {{#if error}}\n\
 <h4 class="label marginTop10"></h4>\n\
-<pre class="code error">\n\
+<pre class="code error uiAnimateShake">\n\
 ERROR\n\
 \n\
 {{error.message htmlSafe}}\n\
@@ -22896,8 +22904,8 @@ ERROR\n\
 <h4 class="label marginTop10"></h4>\n\
 <pre class="code">\n\
 /*\n\
- * client-api request {{options.api._keyPath}}\n\
- * run the code below in browser or node to reproduce client-api request\n\
+ * reproduce swgg-client request {{options.api._method}} {{options.api._path}}\n\
+ * run the code below in browser or node to reproduce swgg-client request\n\
  */\n\
 swgg.apiDict[{{options.api._keyPath jsonStringify}}].ajax({{optionsJson}}, \
 function (error, data) {\n\
@@ -22949,16 +22957,14 @@ swgg\n\
          * this function will send a swagger-api ajax-request with the pathObject self
          */
             var errorValidate, isMultipartFormData, tmp;
+            options.pathObject = self;
             isMultipartFormData = (self.consumes && self.consumes[0]) === 'multipart/form-data';
             local.objectSetDefault(options, { data: '', paramDict: {}, url: '' });
             // try to validate paramDict
             local.tryCatchOnError(function () {
                 local.validateByParamDefList({
                     // normalize paramDict
-                    data: local.normalizeParamDictSwagger(
-                        local.jsonCopy(options.paramDict),
-                        self
-                    ),
+                    data: local.swaggerParamDictNormalize(options).paramDict,
                     dataReadonlyRemove: options.paramDict,
                     key: self.operationId,
                     paramDefList: self.parameters
@@ -22993,35 +22999,33 @@ swgg\n\
                 }
                 // serialize array
                 if (paramDef.type === 'array' && paramDef.in !== 'body') {
-                    if (typeof tmp !== 'string') {
-                        switch (paramDef.collectionFormat) {
-                        case 'json':
-                            tmp = JSON.stringify(tmp);
-                            break;
-                        case 'multi':
-                            tmp.forEach(function (value) {
-                                options[paramDef.in === 'formData'
-                                    ? 'inForm'
-                                    : 'inQuery'] += '&' +
-                                    encodeURIComponent(paramDef.name) + '=' +
-                                    encodeURIComponent(paramDef.items.type === 'string'
-                                        ? value
-                                        : JSON.stringify(value));
-                            });
-                            return;
-                        case 'pipes':
-                            tmp = tmp.join('|');
-                            break;
-                        case 'ssv':
-                            tmp = tmp.join(' ');
-                            break;
-                        case 'tsv':
-                            tmp = tmp.join('\t');
-                            break;
-                        // default to csv
-                        default:
-                            tmp = tmp.join(',');
-                        }
+                    switch (paramDef.collectionFormat) {
+                    case 'json':
+                        tmp = JSON.stringify(tmp);
+                        break;
+                    case 'multi':
+                        tmp.forEach(function (value) {
+                            options[paramDef.in === 'formData'
+                                ? 'inForm'
+                                : 'inQuery'] += '&' +
+                                encodeURIComponent(paramDef.name) + '=' +
+                                encodeURIComponent(paramDef.items.type === 'string'
+                                    ? value
+                                    : JSON.stringify(value));
+                        });
+                        return;
+                    case 'pipes':
+                        tmp = tmp.join('|');
+                        break;
+                    case 'ssv':
+                        tmp = tmp.join(' ');
+                        break;
+                    case 'tsv':
+                        tmp = tmp.join('\t');
+                        break;
+                    // default to csv
+                    default:
+                        tmp = tmp.join(',');
                     }
                 } else if (!(paramDef.type === 'string' ||
                         (paramDef.schema && paramDef.schema.type === 'string') ||
@@ -23100,8 +23104,10 @@ swgg\n\
          * this function will update the swagger-api dict of api-calls
          */
             var tmp;
-            if (typeof options === 'string') {
-                local.ajax({ url: options}, function (error, xhr) {
+            // init options
+            options = options || {};
+            if (options.modeAjax) {
+                local.ajax(options, function (error, xhr) {
                     local.tryCatchOnError(function () {
                         // validate no error occurred
                         local.assert(!error, error);
@@ -23119,8 +23125,8 @@ swgg\n\
                 });
                 return;
             }
-            // init options
-            options = options || {};
+            // normalize options
+            options = local.swaggerJsonNormalize(options);
             // init apiDict
             local.apiDict = local.apiDict || {};
             // init swaggerJson
@@ -23319,13 +23325,10 @@ swgg\n\
                     _keyOperationId: key,
                     operationId: self._operationId,
                     parameters: [],
-                    responses: {
-                        200: {
-                            description: 'ok - ' +
-                                'http://jsonapi.org/format/#document-top-level',
-                            schema: { $ref: '#/definitions/BuiltinJsonapiResponse' }
-                        }
-                    },
+                    responses: { 200: {
+                        description: 'ok - ' + 'http://jsonapi.org/format/#document-top-level',
+                        schema: { $ref: '#/definitions/BuiltinJsonapiResponse' }
+                    } },
                     tags: [self._tags0]
                 });
                 // init _method
@@ -23386,9 +23389,9 @@ swgg\n\
             local.tryCatchOnError(function () {
                 local.validateBySwagger(local.swaggerJson);
             }, local.onErrorDefault);
-            // init githubForwardProxyUrl
-            local.githubForwardProxyUrl = local.githubForwardProxyUrl ||
-                local.swaggerJson['x-githubForwardProxyUrl'];
+            // init corsForwardProxyHost
+            local.corsForwardProxyHost = local.corsForwardProxyHost ||
+                local.swaggerJson['x-corsForwardProxyHost'];
             // init assets.swgg.swagger.server.json
             local.assetsDict['/assets.swgg.swagger.server.json'] =
                 JSON.stringify(local.swaggerJson);
@@ -23607,8 +23610,7 @@ swgg\n\
             // aa=hello%20world&bb=bye%20world
             case 'application/x-www-form-urlencoded':
                 request.swgg.bodyParsed = local.bufferToString(request.bodyRaw);
-                request.swgg.bodyParsed =
-                    local.urlParse('?' + request.swgg.bodyParsed, true).query;
+                request.swgg.bodyParsed = local.urlParse('?' + request.swgg.bodyParsed, true).query;
                 break;
             /*
              * https://tools.ietf.org/html/rfc7578
@@ -23901,11 +23903,7 @@ swgg\n\
             // jslint-hack
             local.nop(response);
             // init swgg object
-            local.objectSetDefault(
-                request,
-                { swgg: { crud: { operationId: '' }, user: {} } },
-                2
-            );
+            local.objectSetDefault(request, { swgg: { crud: { operationId: '' }, user: {} } }, 2);
             // if request.url is not prefixed with swaggerJsonBasePath,
             // then default to nextMiddleware
             if (request.urlParsed.pathname.indexOf(local.swaggerJsonBasePath) !== 0) {
@@ -23913,15 +23911,13 @@ swgg\n\
                 return;
             }
             // init pathname
-            request.swgg.pathname = request.method + ' ' + request.urlParsed.pathname
-                .replace(local.swaggerJsonBasePath, '');
+            request.swgg.pathname = request.method + ' ' +
+                request.urlParsed.pathname.replace(local.swaggerJsonBasePath, '');
             // init pathObject
             while (request.swgg.pathname !== tmp) {
-                request.swgg.pathObject =
-                    local.apiDict[request.swgg.pathname] ||
+                request.swgg.pathObject = local.apiDict[request.swgg.pathname] ||
                     // handle /foo/{id}/bar case
-                    local.apiDict[request.swgg.pathname
-                        .replace((/\/[^\/]+\/([^\/]*?)$/), '//$1')];
+                    local.apiDict[request.swgg.pathname.replace((/\/[^\/]+\/([^\/]*?)$/), '//$1')];
                 // if pathObject exists, then break
                 if (request.swgg.pathObject) {
                     request.swgg.pathObject = local.jsonCopy(request.swgg.pathObject);
@@ -23931,8 +23927,7 @@ swgg\n\
                     break;
                 }
                 tmp = request.swgg.pathname;
-                request.swgg.pathname = request.swgg.pathname
-                    .replace((/\/[^\/]+?(\/*?)$/), '/$1');
+                request.swgg.pathname = request.swgg.pathname.replace((/\/[^\/]+?(\/*?)$/), '/$1');
             }
             nextMiddleware();
         };
@@ -23949,7 +23944,8 @@ swgg\n\
                     local.dbTableUser = local.db.dbTableCreateOne({ name: 'User' });
                     crud = request.swgg.crud;
                     user = request.swgg.user = {};
-                    user.jwtEncrypted = request.headers.authorization &&
+                    user.jwtEncrypted =
+                        request.headers.authorization &&
                         request.headers.authorization.replace('Bearer ', '');
                     user.jwtDecrypted = local.jwtA256GcmDecrypt(user.jwtEncrypted);
                     switch (crud.operationId.split('.')[0]) {
@@ -24055,11 +24051,11 @@ swgg\n\
                     request.swgg.paramDict = {};
                     // parse path param
                     tmp = request.urlParsed.pathname
-                        .replace(local.swaggerJsonBasePath, '').split('/');
+                        .replace(local.swaggerJsonBasePath, '')
+                        .split('/');
                     request.swgg.pathObject._path.split('/').forEach(function (key, ii) {
                         if ((/^\{\S*?\}$/).test(key)) {
-                            request.swgg.paramDict[key.slice(1, -1)] =
-                                decodeURIComponent(tmp[ii]);
+                            request.swgg.paramDict[key.slice(1, -1)] = decodeURIComponent(tmp[ii]);
                         }
                     });
                     request.swgg.pathObject.parameters.forEach(function (paramDef) {
@@ -24108,10 +24104,7 @@ swgg\n\
                         }
                     });
                     // normalize paramDict
-                    local.normalizeParamDictSwagger(
-                        request.swgg.paramDict,
-                        request.swgg.pathObject
-                    );
+                    local.swaggerParamDictNormalize(request.swgg);
                     // validate paramDict
                     local.validateByParamDefList({
                         data: request.swgg.paramDict,
@@ -24124,11 +24117,10 @@ swgg\n\
                     // init crud
                     crud = request.swgg.crud;
                     // init crud.dbTable
-                    crud.dbTable = request.swgg.pathObject &&
+                    crud.dbTable =
+                        request.swgg.pathObject &&
                         request.swgg.pathObject._schemaName &&
-                        local.db.dbTableCreateOne({
-                            name: request.swgg.pathObject._schemaName
-                        });
+                        local.db.dbTableCreateOne({ name: request.swgg.pathObject._schemaName });
                     if (!crud.dbTable) {
                         nextMiddleware();
                         return;
@@ -24194,66 +24186,6 @@ swgg\n\
                 }
             };
             onNext();
-        };
-
-        local.normalizeParamDictSwagger = function (data, pathObject) {
-        /*
-         * this function will parse the data according to pathObject.parameters
-         */
-            var tmp;
-            pathObject.parameters.forEach(function (paramDef) {
-                tmp = data[paramDef.name];
-                // init default value
-                if (local.isNullOrUndefined(tmp) && paramDef.default !== undefined) {
-                    tmp = local.jsonCopy(paramDef.default);
-                }
-                // parse array
-                if (paramDef.type === 'array' && paramDef.in !== 'body') {
-                    if (typeof tmp === 'string') {
-                        switch (paramDef.collectionFormat) {
-                        case 'json':
-                            local.tryCatchOnError(function () {
-                                tmp = JSON.parse(tmp);
-                            }, local.nop);
-                            data[paramDef.name] = tmp;
-                            return;
-                        case 'multi':
-                            tmp = local.urlParse('?' + tmp, true).query[paramDef.name];
-                            break;
-                        case 'pipes':
-                            tmp = tmp.split('|');
-                            break;
-                        case 'ssv':
-                            tmp = tmp.split(' ');
-                            break;
-                        case 'tsv':
-                            tmp = tmp.split('\t');
-                            break;
-                        // default to csv
-                        default:
-                            tmp = tmp.split(',');
-                        }
-                        if (paramDef.items && paramDef.items.type !== 'string') {
-                            // try to JSON.parse the string
-                            local.tryCatchOnError(function () {
-                                tmp = tmp.map(function (element) {
-                                    return JSON.parse(element);
-                                });
-                            }, local.nop);
-                        }
-                    }
-                // JSON.parse paramDict
-                } else if (paramDef.type !== 'file' &&
-                        paramDef.type !== 'string' &&
-                        (typeof tmp === 'string' || tmp instanceof local.global.Uint8Array)) {
-                    // try to JSON.parse the string
-                    local.tryCatchOnError(function () {
-                        tmp = JSON.parse(local.bufferToString(tmp));
-                    }, local.nop);
-                }
-                data[paramDef.name] = tmp;
-            });
-            return data;
         };
 
         local.onErrorJsonapi = function (onError) {
@@ -24378,10 +24310,90 @@ swgg\n\
                     local.onErrorDefault(error);
                 }
                 data = error || data;
-                data.meta.statusCode = response.statusCode =
-                    data.meta.statusCode || response.statusCode;
+                data.meta.statusCode = response.statusCode = data.meta.statusCode ||
+                    response.statusCode;
                 response.end(JSON.stringify(data));
             })(error, data, meta);
+        };
+
+        local.swaggerJsonNormalize = function (options) {
+        /*
+         * this function will normalize swaggerJson
+         */
+            var operation;
+            local.objectSetDefault(options, { paths: {} });
+            // auto-create operationId from path
+            Object.keys(options.paths).forEach(function (path) {
+                Object.keys(options.paths[path]).forEach(function (method) {
+                    operation = options.paths[path][method];
+                    if (operation['x-operationIdFromPath']) {
+                        operation.operationId = path + ' ' + method.toUpperCase();
+                    }
+                });
+            });
+            return options;
+        };
+
+        local.swaggerParamDictNormalize = function (options) {
+        /*
+         * this function will parse the options according to pathObject.parameters
+         */
+            var tmp;
+            options.pathObject.parameters.forEach(function (paramDef) {
+                tmp = options.paramDict[paramDef.name];
+                // init default value
+                if (!options.modeNoDefault &&
+                        local.isNullOrUndefined(tmp) &&
+                        paramDef.default !== undefined) {
+                    tmp = local.jsonCopy(paramDef.default);
+                }
+                // parse array
+                if (paramDef.type === 'array' && paramDef.in !== 'body') {
+                    if (typeof tmp === 'string') {
+                        switch (paramDef.collectionFormat) {
+                        case 'json':
+                            local.tryCatchOnError(function () {
+                                tmp = JSON.parse(tmp);
+                            }, local.nop);
+                            options.paramDict[paramDef.name] = tmp;
+                            return;
+                        case 'multi':
+                            tmp = local.urlParse('?' + tmp, true).query[paramDef.name];
+                            break;
+                        case 'pipes':
+                            tmp = tmp.split('|');
+                            break;
+                        case 'ssv':
+                            tmp = tmp.split(' ');
+                            break;
+                        case 'tsv':
+                            tmp = tmp.split('\t');
+                            break;
+                        // default to csv
+                        default:
+                            tmp = tmp.split(',');
+                        }
+                        if (paramDef.items && paramDef.items.type !== 'string') {
+                            // try to JSON.parse the string
+                            local.tryCatchOnError(function () {
+                                tmp = tmp.map(function (element) {
+                                    return JSON.parse(element);
+                                });
+                            }, local.nop);
+                        }
+                    }
+                // JSON.parse paramDict
+                } else if (paramDef.type !== 'file' &&
+                        paramDef.type !== 'string' &&
+                        (typeof tmp === 'string' || tmp instanceof local.global.Uint8Array)) {
+                    // try to JSON.parse the string
+                    local.tryCatchOnError(function () {
+                        tmp = JSON.parse(local.bufferToString(tmp));
+                    }, local.nop);
+                }
+                options.paramDict[paramDef.name] = tmp;
+            });
+            return options;
         };
 
         local.uiAnimateFadeIn = function (element) {
@@ -24662,6 +24674,7 @@ swgg\n\
                     options.api = local.apiDict[event.currentTarget.dataset._keyOperationId];
                     options.domOperationContent = event.target.closest('.operation > .content');
                     options.headers = {};
+                    options.modeNoDefault = true;
                     options.paramDict = {};
                     options.api.parameters.forEach(function (paramDef) {
                         tmp = options.domOperationContent.querySelector(
@@ -24810,16 +24823,20 @@ swgg\n\
         /*
          * this function will toggle the display of the operation
          */
-            var tmp;
+            var element;
             location.hash = '!' + event.target.closest('.operation').id;
-            tmp = event.target.closest('.operation').querySelector('.operation > .content');
-            tmp.closest('.resource').classList.remove('expanded');
+            element = event.target.closest('.operation');
+            element.closest('.resource').classList.remove('expanded');
             // show the operation, but hide all other operations
             local.uiAnimateSlideAccordian(
-                tmp,
+                element.querySelector('.operation > .content'),
                 Array.from(
-                    tmp.closest('.operationList').querySelectorAll('.operation > .content')
-                )
+                    element.closest('.operationList').querySelectorAll('.operation > .content')
+                ),
+                function () {
+                    element.querySelector('.header').blur();
+                    element.querySelector('.header').focus();
+                }
             );
         };
 
@@ -24833,7 +24850,6 @@ swgg\n\
                 // show the resource, but hide all other resources
                 case 'td1':
                 case 'td2':
-                case 'td3':
                     local.uiAnimateSlideAccordian(
                         event.currentTarget.querySelector('.operationList'),
                         Array.from(document.querySelectorAll('.swggUiContainer .operationList'))
@@ -24842,9 +24858,8 @@ swgg\n\
                 }
                 switch (className) {
                 case 'td1':
-                case 'td2':
                     return true;
-                case 'td3':
+                case 'td2':
                     // collapse all operations in the resource
                     if (event.currentTarget.classList.contains('expanded')) {
                         event.currentTarget.classList.remove('expanded');
@@ -24871,7 +24886,6 @@ swgg\n\
         /*
          * this function will reload the ui
          */
-            var notify;
             event = event || {};
             // clear all apiKeyValue's from localStorage
             if (event.target && event.target.id === 'swggApiKeyClearButton1') {
@@ -24898,12 +24912,6 @@ swgg\n\
                     local.global.utility2_modeTestRun >= 2) {
                 return;
             }
-            notify = function (message) {
-            /*
-             * this function will notify with the given message
-             */
-                document.querySelector('#swggAjaxProgressPre1').textContent = message;
-            };
             // reset ui
             Array.from(
                 document.querySelectorAll('.swggUiContainer > .reset')
@@ -24911,31 +24919,47 @@ swgg\n\
                 element.remove();
             });
             // normalize swaggerJsonUrl
-            document.querySelector('.swggUiContainer > .header > .td2').value =
-                local.urlParse(
-                    document.querySelector('.swggUiContainer > .header > .td2').value
-                        .replace((/^\//), '')
-                ).href;
-            notify('fetching resource-list ' +
+            document.querySelector('.swggUiContainer > .header > .td2').value = local.urlParse(
+                document.querySelector('.swggUiContainer > .header > .td2').value
+                    .replace((/^\//), '')
+            ).href;
+            local.uiNotify(null, 'fetching resource-list ' +
                 document.querySelector('.swggUiContainer > .header > .td2').value + ' ...');
-            local.apiUpdate(
-                document.querySelector('.swggUiContainer > .header > .td2').value,
-                function (error, data) {
-                    local.tryCatchOnError(function () {
-                        // validate no error occurred
-                        local.assert(!error, error);
-                        local.objectSetDefault(data, {
-                            host: local.githubCorsUrlOverride(
-                                local.urlParse(document.querySelector(
-                                    '.swggUiContainer > .header > .td2'
-                                ).value).host,
-                                data['x-github-cors-host']
-                            )
-                        });
-                        local.uiRender();
-                    }, notify);
-                }
-            );
+            local.apiUpdate({
+                modeAjax: true,
+                url: document.querySelector('.swggUiContainer > .header > .td2').value
+            }, function (error, data) {
+                local.tryCatchOnError(function () {
+                    // validate no error occurred
+                    local.assert(!error, error);
+                    local.objectSetDefault(data, {
+                        host: local.corsBackendHostInject(
+                            local.urlParse(document.querySelector(
+                                '.swggUiContainer > .header > .td2'
+                            ).value).host,
+                            data['x-corsBackendHost']
+                        )
+                    });
+                    local.uiRender();
+                }, local.uiNotify);
+            });
+        };
+
+        local.uiNotify = function (error, message) {
+        /*
+         * this function will notify with the given error or message
+         */
+            var element;
+            element = document.querySelector('#swggAjaxProgressPre1');
+            if (error) {
+                element.classList.add('error');
+                local.uiAnimateShake(element);
+                element.textContent = error;
+                return element;
+            }
+            element.classList.remove('error');
+            element.textContent = message;
+            return element;
         };
 
         local.uiParamRender = function (paramDef) {
@@ -25124,16 +25148,15 @@ swgg\n\
                     operation.tags.forEach(function (tag) {
                         options.operationDict[operation._keyOperationId] = operation;
                         // init resource
-                        resource = options.resourceDict[tag];
-                        if (!resource && options.tagDict[tag]) {
-                            resource = options.resourceDict[tag] = options.tagDict[tag];
-                            local.objectSetDefault(resource, {
-                                description: 'no description available',
-                                id: local.idDomElementCreate('swgg_id_' + tag),
+                        resource = options.resourceDict[tag] = local.objectSetDefault(
+                            options.resourceDict[tag] || options.tagDict[tag],
+                            {
+                                description: 'no description',
                                 name: tag,
                                 operationListInnerHtml: ''
-                            });
-                        }
+                            }
+                        );
+                        resource.id = resource.id || local.idDomElementCreate('swgg_id_' + tag);
                     });
                 });
                 // init uiFragment
@@ -25163,12 +25186,12 @@ swgg\n\
                         operation = local.jsonCopy(operation);
                         resource = options.resourceDict[tag];
                         local.objectSetDefault(operation, {
-                            description: '',
+                            description: 'no description',
                             responseList: Object.keys(operation.responses).sort()
                                 .map(function (key) {
                                     return { key: key, value: operation.responses[key] };
                                 }),
-                            summary: 'no summary available'
+                            summary: 'no summary'
                         });
                         operation.parameters.forEach(function (element) {
                             // init element.id
@@ -25183,8 +25206,8 @@ swgg\n\
                     });
                 });
                 // append uiFragment to swggUiContainer
-                document.querySelector('.swggUiContainer')
-                    .removeChild(document.querySelector('.resourceList'));
+                document.querySelector('#swggAjaxProgressResourceListDiv1').style.display =
+                    'none';
                 document.querySelector('.swggUiContainer').appendChild(options.uiFragment);
                 // render valueEncoded
                 Array.from(
@@ -25197,21 +25220,20 @@ swgg\n\
                 // scrollTo location.hash
                 local.tryCatchOnError(function () {
                     var element, parent;
-                    element = document.querySelector(
-                        '.swggUiContainer .operation, .swggUiContainer .operation'
-                    );
                     local.tryCatchOnError(function () {
                         element = document.querySelector('#' + location.hash.slice(2));
                     }, local.nop);
+                    element = element || document.querySelector(
+                        '.swggUiContainer .operation, .swggUiContainer .operation'
+                    );
                     parent = element.querySelector('.uiAnimateSlide');
                     while (parent) {
                         local.uiAnimateSlideDown(parent);
                         parent = parent.parentElement;
                     }
-                    document.querySelector('button').focus();
                     setTimeout(function () {
-                        element.focus();
-                    }, 1000);
+                        element.querySelector('.header').focus();
+                    }, 250);
                 }, local.nop);
             });
         };
