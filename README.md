@@ -61,20 +61,11 @@ this zero-dependency package will provide a javascript-client for google's web-a
 - continue adding extra google web-api
 - none
 
-#### changelog for v2017.10.22
-- npm publish 2017.10.22
-- rename package-name api-google -> swgg-google
-- add api GET /maps/api/place/autocomplete/json
-- add api GET /maps/api/place/details/json
-- add api GET /maps/api/place/nearbysearch/json
-- add api GET /maps/api/place/photo
-- add api GET /maps/api/place/queryautocomplete/json
-- add api GET /maps/api/place/textsearch/json
-- add api GET /v1/nearestRoads
-- add api GET /v1/snapToRoads
-- add api GET /v1/speedLimits
-- add feature x-operationIdFromPath
-- fix client-api initialization in browser
+#### changelog for v2017.10.23
+- npm publish 2017.10.23
+- improve apidoc
+- move http-links from summary to description
+- update swgg library
 - none
 
 #### this package requires
@@ -88,13 +79,13 @@ this zero-dependency package will provide a javascript-client for google's web-a
 ```shell
 # example.sh
 
-# this shell script will download and run a web demo of swgg-google as a standalone app
+# this shell script will download and run a web-demo of swgg-google as a standalone app
 
 # 1. download standalone app
 curl -O https://kaizhu256.github.io/node-swgg-google/build..beta..travis-ci.org/app/assets.app.js
 # 2. run standalone app
 node ./assets.app.js
-# 3. open a browser to http://127.0.0.1:8081 and play with the web demo
+# 3. open a browser to http://127.0.0.1:8081 and play with the web-demo
 # 4. edit file assets.app.js to suit your needs
 ```
 
@@ -115,13 +106,13 @@ node ./assets.app.js
 /*
 example.js
 
-this script will run a web demo of swgg-google
+this script will run a web-demo of swgg-google
 
 instruction
     1. save this script as example.js
     2. run the shell command:
         $ npm install swgg-google && PORT=8081 node example.js
-    3. open a browser to http://127.0.0.1:8081 and play with the web demo
+    3. open a browser to http://127.0.0.1:8081 and play with the web-demo
     4. edit this script to suit your needs
 */
 
@@ -422,7 +413,7 @@ instruction
     "license": "MIT",
     "main": "lib.swgg_google.js",
     "name": "swgg-google",
-    "nameAliasPublish": "api-google google-webclient",
+    "nameAliasPublish": "api-google google-lite google-webclient",
     "nameLib": "swgg_google",
     "nameOriginal": "swgg-google",
     "os": [
@@ -441,7 +432,7 @@ instruction
         "start": "PORT=${PORT:-8080} utility2 start test.js",
         "test": "PORT=$(utility2 shServerPortRandom) utility2 test test.js"
     },
-    "version": "2017.10.22"
+    "version": "2017.10.23"
 }
 ```
 
