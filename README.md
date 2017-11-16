@@ -1,7 +1,7 @@
 # swgg-google
-this zero-dependency package will provide a javascript-client for google's web-api, with a working demo
+this zero-dependency package will provide a swagger-client for google's web-apis, with a working web-demo
 
-# live demo
+# live web demo
 - [https://kaizhu256.github.io/node-swgg-google/build..beta..travis-ci.org/app/](https://kaizhu256.github.io/node-swgg-google/build..beta..travis-ci.org/app)
 
 [![screenshot](https://kaizhu256.github.io/node-swgg-google/build/screenshot.deployGithub.browser.%252Fnode-swgg-google%252Fbuild%252Fapp.png)](https://kaizhu256.github.io/node-swgg-google/build..beta..travis-ci.org/app)
@@ -42,8 +42,6 @@ this zero-dependency package will provide a javascript-client for google's web-a
 
 
 # cdn download
-- [https://kaizhu256.github.io/node-swgg-google/build..beta..travis-ci.org/app/assets.swgg_google.js](https://kaizhu256.github.io/node-swgg-google/build..beta..travis-ci.org/app/assets.swgg_google.js)
-
 - [https://kaizhu256.github.io/node-swgg-google/build..beta..travis-ci.org/app/assets.swgg.swagger.json](https://kaizhu256.github.io/node-swgg-google/build..beta..travis-ci.org/app/assets.swgg.swagger.json)
 
 
@@ -58,14 +56,16 @@ this zero-dependency package will provide a javascript-client for google's web-a
 [![apidoc](https://kaizhu256.github.io/node-swgg-google/build/screenshot.buildCi.browser.%252Ftmp%252Fbuild%252Fapidoc.html.png)](https://kaizhu256.github.io/node-swgg-google/build..beta..travis-ci.org/apidoc.html)
 
 #### todo
-- continue adding extra google web-api
+- continue adding extra google web-apis
 - none
 
-#### changelog for v2017.10.23
-- npm publish 2017.10.23
-- improve apidoc
-- move http-links from summary to description
-- update swgg library
+#### changelog for v2017.11.15
+- npm publish 2017.11.15
+- add property swaggerJson.externalDocs
+- merge properties paramDef.x-swgg-example and paramDef.default -> paramDef.default
+- rename x-swgg-ref -> $ref
+- ui - add cross-browser multiline placeholder support for textarea
+- ui - add dynamic input validation
 - none
 
 #### this package requires
@@ -84,7 +84,7 @@ this zero-dependency package will provide a javascript-client for google's web-a
 # 1. download standalone app
 curl -O https://kaizhu256.github.io/node-swgg-google/build..beta..travis-ci.org/app/assets.app.js
 # 2. run standalone app
-node ./assets.app.js
+PORT=8081 node ./assets.app.js
 # 3. open a browser to http://127.0.0.1:8081 and play with the web-demo
 # 4. edit file assets.app.js to suit your needs
 ```
@@ -173,87 +173,6 @@ instruction
     // run browser js-env code - init-test
     /* istanbul ignore next */
     case 'browser':
-        local.testRunBrowser = function (event) {
-            if (!event || (event &&
-                    event.currentTarget &&
-                    event.currentTarget.className &&
-                    event.currentTarget.className.includes &&
-                    event.currentTarget.className.includes('onreset'))) {
-                // reset output
-                Array.from(
-                    document.querySelectorAll('body > .resettable')
-                ).forEach(function (element) {
-                    switch (element.tagName) {
-                    case 'INPUT':
-                    case 'TEXTAREA':
-                        element.value = '';
-                        break;
-                    default:
-                        element.textContent = '';
-                    }
-                });
-            }
-            switch (event && event.currentTarget && event.currentTarget.id) {
-            case 'testRunButton1':
-                // show tests
-                if (document.querySelector('#testReportDiv1').style.maxHeight === '0px') {
-                    local.uiAnimateSlideDown(document.querySelector('#testReportDiv1'));
-                    document.querySelector('#testRunButton1').textContent =
-                        'hide internal test';
-                    local.modeTest = true;
-                    local.testRunDefault(local);
-                // hide tests
-                } else {
-                    local.uiAnimateSlideUp(document.querySelector('#testReportDiv1'));
-                    document.querySelector('#testRunButton1').textContent = 'run internal test';
-                }
-                break;
-            // custom-case
-            default:
-                break;
-            }
-            if (document.querySelector('#inputTextareaEval1') && (!event || (event &&
-                    event.currentTarget &&
-                    event.currentTarget.className &&
-                    event.currentTarget.className.includes &&
-                    event.currentTarget.className.includes('oneval')))) {
-                // try to eval input-code
-                try {
-                    /*jslint evil: true*/
-                    eval(document.querySelector('#inputTextareaEval1').value);
-                } catch (errorCaught) {
-                    console.error(errorCaught);
-                }
-            }
-        };
-        // log stderr and stdout to #outputTextareaStdout1
-        ['error', 'log'].forEach(function (key) {
-            console[key + '_original'] = console[key];
-            console[key] = function () {
-                var element;
-                console[key + '_original'].apply(console, arguments);
-                element = document.querySelector('#outputTextareaStdout1');
-                if (!element) {
-                    return;
-                }
-                // append text to #outputTextareaStdout1
-                element.value += Array.from(arguments).map(function (arg) {
-                    return typeof arg === 'string'
-                        ? arg
-                        : JSON.stringify(arg, null, 4);
-                }).join(' ') + '\n';
-                // scroll textarea to bottom
-                element.scrollTop = element.scrollHeight;
-            };
-        });
-        // init event-handling
-        ['change', 'click', 'keyup'].forEach(function (event) {
-            Array.from(document.querySelectorAll('.on' + event)).forEach(function (element) {
-                element.addEventListener(event, local.testRunBrowser);
-            });
-        });
-        // run tests
-        local.testRunBrowser();
         break;
 
 
@@ -398,7 +317,7 @@ instruction
 ```json
 {
     "author": "kai zhu <kaizhu256@gmail.com>",
-    "description": "this zero-dependency package will provide a javascript-client for google's web-api, with a working demo",
+    "description": "this zero-dependency package will provide a swagger-client for google's web-apis, with a working web-demo",
     "devDependencies": {
         "electron-lite": "kaizhu256/node-electron-lite#alpha",
         "utility2": "kaizhu256/node-utility2#alpha"
@@ -408,7 +327,8 @@ instruction
     },
     "homepage": "https://github.com/kaizhu256/node-swgg-google",
     "keywords": [
-        "google-client"
+        "google-client",
+        "swagger-client"
     ],
     "license": "MIT",
     "main": "lib.swgg_google.js",
@@ -432,7 +352,7 @@ instruction
         "start": "PORT=${PORT:-8080} utility2 start test.js",
         "test": "PORT=$(utility2 shServerPortRandom) utility2 test test.js"
     },
-    "version": "2017.10.23"
+    "version": "2017.11.15"
 }
 ```
 
