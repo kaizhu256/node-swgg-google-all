@@ -1,4 +1,4 @@
-/* istanbul instrument in package swgg_google */
+/* istanbul instrument in package swgg_google_all */
 /*jslint
     bitwise: true,
     browser: true,

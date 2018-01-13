@@ -1,30 +1,30 @@
-# swgg-google
+# swgg-google-all
 this zero-dependency package will provide a swagger-client for google's web-apis, with a working web-demo
 
 # live web demo
-- [https://kaizhu256.github.io/node-swgg-google/build..beta..travis-ci.org/app/](https://kaizhu256.github.io/node-swgg-google/build..beta..travis-ci.org/app)
+- [https://kaizhu256.github.io/node-swgg-google-all/build..beta..travis-ci.org/app/](https://kaizhu256.github.io/node-swgg-google-all/build..beta..travis-ci.org/app)
 
-[![screenshot](https://kaizhu256.github.io/node-swgg-google/build/screenshot.deployGithub.browser.%252Fnode-swgg-google%252Fbuild%252Fapp.png)](https://kaizhu256.github.io/node-swgg-google/build..beta..travis-ci.org/app)
+[![screenshot](https://kaizhu256.github.io/node-swgg-google-all/build/screenshot.deployGithub.browser.%252Fnode-swgg-google-all%252Fbuild%252Fapp.png)](https://kaizhu256.github.io/node-swgg-google-all/build..beta..travis-ci.org/app)
 
 
 
-[![travis-ci.org build-status](https://api.travis-ci.org/kaizhu256/node-swgg-google.svg)](https://travis-ci.org/kaizhu256/node-swgg-google) [![coverage](https://kaizhu256.github.io/node-swgg-google/build/coverage.badge.svg)](https://kaizhu256.github.io/node-swgg-google/build/coverage.html/index.html) [![snyk.io vulnerabilities](https://snyk.io/test/github/kaizhu256/node-swgg-google/badge.svg)](https://snyk.io/test/github/kaizhu256/node-swgg-google)
+[![travis-ci.org build-status](https://api.travis-ci.org/kaizhu256/node-swgg-google-all.svg)](https://travis-ci.org/kaizhu256/node-swgg-google-all) [![coverage](https://kaizhu256.github.io/node-swgg-google-all/build/coverage.badge.svg)](https://kaizhu256.github.io/node-swgg-google-all/build/coverage.html/index.html) [![snyk.io vulnerabilities](https://snyk.io/test/github/kaizhu256/node-swgg-google-all/badge.svg)](https://snyk.io/test/github/kaizhu256/node-swgg-google-all)
 
-[![NPM](https://nodei.co/npm/swgg-google.png?downloads=true)](https://www.npmjs.com/package/swgg-google)
+[![NPM](https://nodei.co/npm/swgg-google-all.png?downloads=true)](https://www.npmjs.com/package/swgg-google-all)
 
-[![build commit status](https://kaizhu256.github.io/node-swgg-google/build/build.badge.svg)](https://travis-ci.org/kaizhu256/node-swgg-google)
+[![build commit status](https://kaizhu256.github.io/node-swgg-google-all/build/build.badge.svg)](https://travis-ci.org/kaizhu256/node-swgg-google-all)
 
-| git-branch : | [master](https://github.com/kaizhu256/node-swgg-google/tree/master) | [beta](https://github.com/kaizhu256/node-swgg-google/tree/beta) | [alpha](https://github.com/kaizhu256/node-swgg-google/tree/alpha)|
+| git-branch : | [master](https://github.com/kaizhu256/node-swgg-google-all/tree/master) | [beta](https://github.com/kaizhu256/node-swgg-google-all/tree/beta) | [alpha](https://github.com/kaizhu256/node-swgg-google-all/tree/alpha)|
 |--:|:--|:--|:--|
-| test-server-github : | [![github.com test-server](https://kaizhu256.github.io/node-swgg-google/GitHub-Mark-32px.png)](https://kaizhu256.github.io/node-swgg-google/build..master..travis-ci.org/app) | [![github.com test-server](https://kaizhu256.github.io/node-swgg-google/GitHub-Mark-32px.png)](https://kaizhu256.github.io/node-swgg-google/build..beta..travis-ci.org/app) | [![github.com test-server](https://kaizhu256.github.io/node-swgg-google/GitHub-Mark-32px.png)](https://kaizhu256.github.io/node-swgg-google/build..alpha..travis-ci.org/app)|
-| test-server-heroku : | [![heroku.com test-server](https://kaizhu256.github.io/node-swgg-google/heroku-logo.75x25.png)](https://h1-swgg-google-master.herokuapp.com) | [![heroku.com test-server](https://kaizhu256.github.io/node-swgg-google/heroku-logo.75x25.png)](https://h1-swgg-google-beta.herokuapp.com) | [![heroku.com test-server](https://kaizhu256.github.io/node-swgg-google/heroku-logo.75x25.png)](https://h1-swgg-google-alpha.herokuapp.com)|
-| test-report : | [![test-report](https://kaizhu256.github.io/node-swgg-google/build..master..travis-ci.org/test-report.badge.svg)](https://kaizhu256.github.io/node-swgg-google/build..master..travis-ci.org/test-report.html) | [![test-report](https://kaizhu256.github.io/node-swgg-google/build..beta..travis-ci.org/test-report.badge.svg)](https://kaizhu256.github.io/node-swgg-google/build..beta..travis-ci.org/test-report.html) | [![test-report](https://kaizhu256.github.io/node-swgg-google/build..alpha..travis-ci.org/test-report.badge.svg)](https://kaizhu256.github.io/node-swgg-google/build..alpha..travis-ci.org/test-report.html)|
-| coverage : | [![coverage](https://kaizhu256.github.io/node-swgg-google/build..master..travis-ci.org/coverage.badge.svg)](https://kaizhu256.github.io/node-swgg-google/build..master..travis-ci.org/coverage.html/index.html) | [![coverage](https://kaizhu256.github.io/node-swgg-google/build..beta..travis-ci.org/coverage.badge.svg)](https://kaizhu256.github.io/node-swgg-google/build..beta..travis-ci.org/coverage.html/index.html) | [![coverage](https://kaizhu256.github.io/node-swgg-google/build..alpha..travis-ci.org/coverage.badge.svg)](https://kaizhu256.github.io/node-swgg-google/build..alpha..travis-ci.org/coverage.html/index.html)|
-| build-artifacts : | [![build-artifacts](https://kaizhu256.github.io/node-swgg-google/glyphicons_144_folder_open.png)](https://github.com/kaizhu256/node-swgg-google/tree/gh-pages/build..master..travis-ci.org) | [![build-artifacts](https://kaizhu256.github.io/node-swgg-google/glyphicons_144_folder_open.png)](https://github.com/kaizhu256/node-swgg-google/tree/gh-pages/build..beta..travis-ci.org) | [![build-artifacts](https://kaizhu256.github.io/node-swgg-google/glyphicons_144_folder_open.png)](https://github.com/kaizhu256/node-swgg-google/tree/gh-pages/build..alpha..travis-ci.org)|
+| test-server-github : | [![github.com test-server](https://kaizhu256.github.io/node-swgg-google-all/GitHub-Mark-32px.png)](https://kaizhu256.github.io/node-swgg-google-all/build..master..travis-ci.org/app) | [![github.com test-server](https://kaizhu256.github.io/node-swgg-google-all/GitHub-Mark-32px.png)](https://kaizhu256.github.io/node-swgg-google-all/build..beta..travis-ci.org/app) | [![github.com test-server](https://kaizhu256.github.io/node-swgg-google-all/GitHub-Mark-32px.png)](https://kaizhu256.github.io/node-swgg-google-all/build..alpha..travis-ci.org/app)|
+| test-server-heroku : | [![heroku.com test-server](https://kaizhu256.github.io/node-swgg-google-all/heroku-logo.75x25.png)](https://h1-swgg-google-all-master.herokuapp.com) | [![heroku.com test-server](https://kaizhu256.github.io/node-swgg-google-all/heroku-logo.75x25.png)](https://h1-swgg-google-all-beta.herokuapp.com) | [![heroku.com test-server](https://kaizhu256.github.io/node-swgg-google-all/heroku-logo.75x25.png)](https://h1-swgg-google-all-alpha.herokuapp.com)|
+| test-report : | [![test-report](https://kaizhu256.github.io/node-swgg-google-all/build..master..travis-ci.org/test-report.badge.svg)](https://kaizhu256.github.io/node-swgg-google-all/build..master..travis-ci.org/test-report.html) | [![test-report](https://kaizhu256.github.io/node-swgg-google-all/build..beta..travis-ci.org/test-report.badge.svg)](https://kaizhu256.github.io/node-swgg-google-all/build..beta..travis-ci.org/test-report.html) | [![test-report](https://kaizhu256.github.io/node-swgg-google-all/build..alpha..travis-ci.org/test-report.badge.svg)](https://kaizhu256.github.io/node-swgg-google-all/build..alpha..travis-ci.org/test-report.html)|
+| coverage : | [![coverage](https://kaizhu256.github.io/node-swgg-google-all/build..master..travis-ci.org/coverage.badge.svg)](https://kaizhu256.github.io/node-swgg-google-all/build..master..travis-ci.org/coverage.html/index.html) | [![coverage](https://kaizhu256.github.io/node-swgg-google-all/build..beta..travis-ci.org/coverage.badge.svg)](https://kaizhu256.github.io/node-swgg-google-all/build..beta..travis-ci.org/coverage.html/index.html) | [![coverage](https://kaizhu256.github.io/node-swgg-google-all/build..alpha..travis-ci.org/coverage.badge.svg)](https://kaizhu256.github.io/node-swgg-google-all/build..alpha..travis-ci.org/coverage.html/index.html)|
+| build-artifacts : | [![build-artifacts](https://kaizhu256.github.io/node-swgg-google-all/glyphicons_144_folder_open.png)](https://github.com/kaizhu256/node-swgg-google-all/tree/gh-pages/build..master..travis-ci.org) | [![build-artifacts](https://kaizhu256.github.io/node-swgg-google-all/glyphicons_144_folder_open.png)](https://github.com/kaizhu256/node-swgg-google-all/tree/gh-pages/build..beta..travis-ci.org) | [![build-artifacts](https://kaizhu256.github.io/node-swgg-google-all/glyphicons_144_folder_open.png)](https://github.com/kaizhu256/node-swgg-google-all/tree/gh-pages/build..alpha..travis-ci.org)|
 
-[![npmPackageListing](https://kaizhu256.github.io/node-swgg-google/build/screenshot.npmPackageListing.svg)](https://github.com/kaizhu256/node-swgg-google)
+[![npmPackageListing](https://kaizhu256.github.io/node-swgg-google-all/build/screenshot.npmPackageListing.svg)](https://github.com/kaizhu256/node-swgg-google-all)
 
-![npmPackageDependencyTree](https://kaizhu256.github.io/node-swgg-google/build/screenshot.npmPackageDependencyTree.svg)
+![npmPackageDependencyTree](https://kaizhu256.github.io/node-swgg-google-all/build/screenshot.npmPackageDependencyTree.svg)
 
 
 
@@ -42,30 +42,27 @@ this zero-dependency package will provide a swagger-client for google's web-apis
 
 
 # cdn download
-- [https://kaizhu256.github.io/node-swgg-google/build..beta..travis-ci.org/app/assets.swgg.swagger.json](https://kaizhu256.github.io/node-swgg-google/build..beta..travis-ci.org/app/assets.swgg.swagger.json)
+- [https://kaizhu256.github.io/node-swgg-google-all/build..beta..travis-ci.org/app/assets.swgg.swagger.json](https://kaizhu256.github.io/node-swgg-google-all/build..beta..travis-ci.org/app/assets.swgg.swagger.json)
 
 
 
 # documentation
 #### cli help
-![screenshot](https://kaizhu256.github.io/node-swgg-google/build/screenshot.npmPackageCliHelp.svg)
+![screenshot](https://kaizhu256.github.io/node-swgg-google-all/build/screenshot.npmPackageCliHelp.svg)
 
 #### api doc
-- [https://kaizhu256.github.io/node-swgg-google/build..beta..travis-ci.org/apidoc.html](https://kaizhu256.github.io/node-swgg-google/build..beta..travis-ci.org/apidoc.html)
+- [https://kaizhu256.github.io/node-swgg-google-all/build..beta..travis-ci.org/apidoc.html](https://kaizhu256.github.io/node-swgg-google-all/build..beta..travis-ci.org/apidoc.html)
 
-[![apidoc](https://kaizhu256.github.io/node-swgg-google/build/screenshot.buildCi.browser.%252Ftmp%252Fbuild%252Fapidoc.html.png)](https://kaizhu256.github.io/node-swgg-google/build..beta..travis-ci.org/apidoc.html)
+[![apidoc](https://kaizhu256.github.io/node-swgg-google-all/build/screenshot.buildCi.browser.%252Ftmp%252Fbuild%252Fapidoc.html.png)](https://kaizhu256.github.io/node-swgg-google-all/build..beta..travis-ci.org/apidoc.html)
 
 #### todo
 - continue adding extra google web-apis
 - none
 
-#### changelog for v2017.11.15
-- npm publish 2017.11.15
-- add property swaggerJson.externalDocs
-- merge properties paramDef.x-swgg-example and paramDef.default -> paramDef.default
-- rename x-swgg-ref -> $ref
-- ui - add cross-browser multiline placeholder support for textarea
-- ui - add dynamic input validation
+#### changelog for v2018.1.12
+- npm publish 2018.1.12
+- rename package-name swgg-google -> swgg-google-all
+- sync with \$npm_package_githubRepoAlias
 - none
 
 #### this package requires
@@ -75,14 +72,14 @@ this zero-dependency package will provide a swagger-client for google's web-apis
 
 # quickstart standalone app
 #### to run this example, follow the instruction in the script below
-- [assets.app.js](https://kaizhu256.github.io/node-swgg-google/build..beta..travis-ci.org/app/assets.app.js)
+- [assets.app.js](https://kaizhu256.github.io/node-swgg-google-all/build..beta..travis-ci.org/app/assets.app.js)
 ```shell
 # example.sh
 
-# this shell script will download and run a web-demo of swgg-google as a standalone app
+# this shell script will download and run a web-demo of swgg-google-all as a standalone app
 
 # 1. download standalone app
-curl -O https://kaizhu256.github.io/node-swgg-google/build..beta..travis-ci.org/app/assets.app.js
+curl -O https://kaizhu256.github.io/node-swgg-google-all/build..beta..travis-ci.org/app/assets.app.js
 # 2. run standalone app
 PORT=8081 node ./assets.app.js
 # 3. open a browser to http://127.0.0.1:8081 and play with the web-demo
@@ -90,35 +87,35 @@ PORT=8081 node ./assets.app.js
 ```
 
 #### output from browser
-[![screenshot](https://kaizhu256.github.io/node-swgg-google/build/screenshot.testExampleSh.browser.%252F.png)](https://kaizhu256.github.io/node-swgg-google/build/app/assets.example.html)
+[![screenshot](https://kaizhu256.github.io/node-swgg-google-all/build/screenshot.testExampleSh.browser.%252F.png)](https://kaizhu256.github.io/node-swgg-google-all/build/app/assets.example.html)
 
 #### output from shell
-![screenshot](https://kaizhu256.github.io/node-swgg-google/build/screenshot.testExampleSh.svg)
+![screenshot](https://kaizhu256.github.io/node-swgg-google-all/build/screenshot.testExampleSh.svg)
 
 
 
 # quickstart example.js
-[![screenshot](https://kaizhu256.github.io/node-swgg-google/build/screenshot.testExampleJs.browser.%252F.png)](https://kaizhu256.github.io/node-swgg-google/build/app/assets.example.html)
+[![screenshot](https://kaizhu256.github.io/node-swgg-google-all/build/screenshot.testExampleJs.browser.%252F.png)](https://kaizhu256.github.io/node-swgg-google-all/build/app/assets.example.html)
 
 #### to run this example, follow the instruction in the script below
-- [example.js](https://kaizhu256.github.io/node-swgg-google/build..beta..travis-ci.org/example.js)
+- [example.js](https://kaizhu256.github.io/node-swgg-google-all/build..beta..travis-ci.org/example.js)
 ```javascript
 /*
 example.js
 
-this script will run a web-demo of swgg-google
+this script will run a web-demo of swgg-google-all
 
 instruction
     1. save this script as example.js
     2. run the shell command:
-        $ npm install swgg-google && PORT=8081 node example.js
+        $ npm install swgg-google-all && PORT=8081 node example.js
     3. open a browser to http://127.0.0.1:8081 and play with the web-demo
     4. edit this script to suit your needs
 */
 
 
 
-/* istanbul instrument in package swgg_google */
+/* istanbul instrument in package swgg_google_all */
 /*jslint
     bitwise: true,
     browser: true,
@@ -159,8 +156,8 @@ instruction
             : global;
         // init utility2_rollup
         local = local.global.utility2_rollup || (local.modeJs === 'browser'
-            ? local.global.utility2_swgg_google
-            : require('swgg-google'));
+            ? local.global.utility2_swgg_google_all
+            : require('swgg-google-all'));
         // init exports
         local.global.local = local;
         // init assets
@@ -215,9 +212,9 @@ instruction
                 case 'npm_package_description':
                     return 'the greatest app in the world!';
                 case 'npm_package_name':
-                    return 'swgg-google';
+                    return 'swgg-google-all';
                 case 'npm_package_nameLib':
-                    return 'swgg_google';
+                    return 'swgg_google_all';
                 case 'npm_package_version':
                     return '0.0.1';
                 default:
@@ -233,10 +230,10 @@ instruction
             local.fs.readFileSync(__filename, 'utf8');
         // bug-workaround - long $npm_package_buildCustomOrg
         /* jslint-ignore-begin */
-        local.assetsDict['/assets.swgg_google.js'] =
-            local.assetsDict['/assets.swgg_google.js'] ||
+        local.assetsDict['/assets.swgg_google_all.js'] =
+            local.assetsDict['/assets.swgg_google_all.js'] ||
             local.fs.readFileSync(
-                local.__dirname + '/lib.swgg_google.js',
+                local.__dirname + '/lib.swgg_google_all.js',
                 'utf8'
             ).replace((/^#!/), '//');
         /* jslint-ignore-end */
@@ -267,49 +264,49 @@ instruction
 ```
 
 #### output from browser
-[![screenshot](https://kaizhu256.github.io/node-swgg-google/build/screenshot.testExampleJs.browser.%252F.png)](https://kaizhu256.github.io/node-swgg-google/build/app/assets.example.html)
+[![screenshot](https://kaizhu256.github.io/node-swgg-google-all/build/screenshot.testExampleJs.browser.%252F.png)](https://kaizhu256.github.io/node-swgg-google-all/build/app/assets.example.html)
 
 #### output from shell
-![screenshot](https://kaizhu256.github.io/node-swgg-google/build/screenshot.testExampleJs.svg)
+![screenshot](https://kaizhu256.github.io/node-swgg-google-all/build/screenshot.testExampleJs.svg)
 
 
 
 # extra screenshots
-1. [https://kaizhu256.github.io/node-swgg-google/build/screenshot.buildCi.browser.%252Ftmp%252Fbuild%252Fapidoc.html.png](https://kaizhu256.github.io/node-swgg-google/build/screenshot.buildCi.browser.%252Ftmp%252Fbuild%252Fapidoc.html.png)
-[![screenshot](https://kaizhu256.github.io/node-swgg-google/build/screenshot.buildCi.browser.%252Ftmp%252Fbuild%252Fapidoc.html.png)](https://kaizhu256.github.io/node-swgg-google/build/screenshot.buildCi.browser.%252Ftmp%252Fbuild%252Fapidoc.html.png)
+1. [https://kaizhu256.github.io/node-swgg-google-all/build/screenshot.buildCi.browser.%252Ftmp%252Fbuild%252Fapidoc.html.png](https://kaizhu256.github.io/node-swgg-google-all/build/screenshot.buildCi.browser.%252Ftmp%252Fbuild%252Fapidoc.html.png)
+[![screenshot](https://kaizhu256.github.io/node-swgg-google-all/build/screenshot.buildCi.browser.%252Ftmp%252Fbuild%252Fapidoc.html.png)](https://kaizhu256.github.io/node-swgg-google-all/build/screenshot.buildCi.browser.%252Ftmp%252Fbuild%252Fapidoc.html.png)
 
-1. [https://kaizhu256.github.io/node-swgg-google/build/screenshot.buildCi.browser.%252Ftmp%252Fbuild%252Fcoverage.lib.html.png](https://kaizhu256.github.io/node-swgg-google/build/screenshot.buildCi.browser.%252Ftmp%252Fbuild%252Fcoverage.lib.html.png)
-[![screenshot](https://kaizhu256.github.io/node-swgg-google/build/screenshot.buildCi.browser.%252Ftmp%252Fbuild%252Fcoverage.lib.html.png)](https://kaizhu256.github.io/node-swgg-google/build/screenshot.buildCi.browser.%252Ftmp%252Fbuild%252Fcoverage.lib.html.png)
+1. [https://kaizhu256.github.io/node-swgg-google-all/build/screenshot.buildCi.browser.%252Ftmp%252Fbuild%252Fcoverage.lib.html.png](https://kaizhu256.github.io/node-swgg-google-all/build/screenshot.buildCi.browser.%252Ftmp%252Fbuild%252Fcoverage.lib.html.png)
+[![screenshot](https://kaizhu256.github.io/node-swgg-google-all/build/screenshot.buildCi.browser.%252Ftmp%252Fbuild%252Fcoverage.lib.html.png)](https://kaizhu256.github.io/node-swgg-google-all/build/screenshot.buildCi.browser.%252Ftmp%252Fbuild%252Fcoverage.lib.html.png)
 
-1. [https://kaizhu256.github.io/node-swgg-google/build/screenshot.buildCi.browser.%252Ftmp%252Fbuild%252Ftest-report.html.png](https://kaizhu256.github.io/node-swgg-google/build/screenshot.buildCi.browser.%252Ftmp%252Fbuild%252Ftest-report.html.png)
-[![screenshot](https://kaizhu256.github.io/node-swgg-google/build/screenshot.buildCi.browser.%252Ftmp%252Fbuild%252Ftest-report.html.png)](https://kaizhu256.github.io/node-swgg-google/build/screenshot.buildCi.browser.%252Ftmp%252Fbuild%252Ftest-report.html.png)
+1. [https://kaizhu256.github.io/node-swgg-google-all/build/screenshot.buildCi.browser.%252Ftmp%252Fbuild%252Ftest-report.html.png](https://kaizhu256.github.io/node-swgg-google-all/build/screenshot.buildCi.browser.%252Ftmp%252Fbuild%252Ftest-report.html.png)
+[![screenshot](https://kaizhu256.github.io/node-swgg-google-all/build/screenshot.buildCi.browser.%252Ftmp%252Fbuild%252Ftest-report.html.png)](https://kaizhu256.github.io/node-swgg-google-all/build/screenshot.buildCi.browser.%252Ftmp%252Fbuild%252Ftest-report.html.png)
 
-1. [https://kaizhu256.github.io/node-swgg-google/build/screenshot.deployGithub.browser.%252Fnode-swgg-google%252Fbuild%252Fapp%252Fassets.swgg.html.png](https://kaizhu256.github.io/node-swgg-google/build/screenshot.deployGithub.browser.%252Fnode-swgg-google%252Fbuild%252Fapp%252Fassets.swgg.html.png)
-[![screenshot](https://kaizhu256.github.io/node-swgg-google/build/screenshot.deployGithub.browser.%252Fnode-swgg-google%252Fbuild%252Fapp%252Fassets.swgg.html.png)](https://kaizhu256.github.io/node-swgg-google/build/screenshot.deployGithub.browser.%252Fnode-swgg-google%252Fbuild%252Fapp%252Fassets.swgg.html.png)
+1. [https://kaizhu256.github.io/node-swgg-google-all/build/screenshot.deployGithub.browser.%252Fnode-swgg-google-all%252Fbuild%252Fapp%252Fassets.swgg.html.png](https://kaizhu256.github.io/node-swgg-google-all/build/screenshot.deployGithub.browser.%252Fnode-swgg-google-all%252Fbuild%252Fapp%252Fassets.swgg.html.png)
+[![screenshot](https://kaizhu256.github.io/node-swgg-google-all/build/screenshot.deployGithub.browser.%252Fnode-swgg-google-all%252Fbuild%252Fapp%252Fassets.swgg.html.png)](https://kaizhu256.github.io/node-swgg-google-all/build/screenshot.deployGithub.browser.%252Fnode-swgg-google-all%252Fbuild%252Fapp%252Fassets.swgg.html.png)
 
-1. [https://kaizhu256.github.io/node-swgg-google/build/screenshot.deployGithub.browser.%252Fnode-swgg-google%252Fbuild%252Fapp.png](https://kaizhu256.github.io/node-swgg-google/build/screenshot.deployGithub.browser.%252Fnode-swgg-google%252Fbuild%252Fapp.png)
-[![screenshot](https://kaizhu256.github.io/node-swgg-google/build/screenshot.deployGithub.browser.%252Fnode-swgg-google%252Fbuild%252Fapp.png)](https://kaizhu256.github.io/node-swgg-google/build/screenshot.deployGithub.browser.%252Fnode-swgg-google%252Fbuild%252Fapp.png)
+1. [https://kaizhu256.github.io/node-swgg-google-all/build/screenshot.deployGithub.browser.%252Fnode-swgg-google-all%252Fbuild%252Fapp.png](https://kaizhu256.github.io/node-swgg-google-all/build/screenshot.deployGithub.browser.%252Fnode-swgg-google-all%252Fbuild%252Fapp.png)
+[![screenshot](https://kaizhu256.github.io/node-swgg-google-all/build/screenshot.deployGithub.browser.%252Fnode-swgg-google-all%252Fbuild%252Fapp.png)](https://kaizhu256.github.io/node-swgg-google-all/build/screenshot.deployGithub.browser.%252Fnode-swgg-google-all%252Fbuild%252Fapp.png)
 
-1. [https://kaizhu256.github.io/node-swgg-google/build/screenshot.deployGithubTest.browser.%252Fnode-swgg-google%252Fbuild%252Fapp.png](https://kaizhu256.github.io/node-swgg-google/build/screenshot.deployGithubTest.browser.%252Fnode-swgg-google%252Fbuild%252Fapp.png)
-[![screenshot](https://kaizhu256.github.io/node-swgg-google/build/screenshot.deployGithubTest.browser.%252Fnode-swgg-google%252Fbuild%252Fapp.png)](https://kaizhu256.github.io/node-swgg-google/build/screenshot.deployGithubTest.browser.%252Fnode-swgg-google%252Fbuild%252Fapp.png)
+1. [https://kaizhu256.github.io/node-swgg-google-all/build/screenshot.deployGithubTest.browser.%252Fnode-swgg-google-all%252Fbuild%252Fapp.png](https://kaizhu256.github.io/node-swgg-google-all/build/screenshot.deployGithubTest.browser.%252Fnode-swgg-google-all%252Fbuild%252Fapp.png)
+[![screenshot](https://kaizhu256.github.io/node-swgg-google-all/build/screenshot.deployGithubTest.browser.%252Fnode-swgg-google-all%252Fbuild%252Fapp.png)](https://kaizhu256.github.io/node-swgg-google-all/build/screenshot.deployGithubTest.browser.%252Fnode-swgg-google-all%252Fbuild%252Fapp.png)
 
-1. [https://kaizhu256.github.io/node-swgg-google/build/screenshot.deployHeroku.browser.%252Fassets.swgg.html.png](https://kaizhu256.github.io/node-swgg-google/build/screenshot.deployHeroku.browser.%252Fassets.swgg.html.png)
-[![screenshot](https://kaizhu256.github.io/node-swgg-google/build/screenshot.deployHeroku.browser.%252Fassets.swgg.html.png)](https://kaizhu256.github.io/node-swgg-google/build/screenshot.deployHeroku.browser.%252Fassets.swgg.html.png)
+1. [https://kaizhu256.github.io/node-swgg-google-all/build/screenshot.deployHeroku.browser.%252Fassets.swgg.html.png](https://kaizhu256.github.io/node-swgg-google-all/build/screenshot.deployHeroku.browser.%252Fassets.swgg.html.png)
+[![screenshot](https://kaizhu256.github.io/node-swgg-google-all/build/screenshot.deployHeroku.browser.%252Fassets.swgg.html.png)](https://kaizhu256.github.io/node-swgg-google-all/build/screenshot.deployHeroku.browser.%252Fassets.swgg.html.png)
 
-1. [https://kaizhu256.github.io/node-swgg-google/build/screenshot.deployHeroku.browser.%252F.png](https://kaizhu256.github.io/node-swgg-google/build/screenshot.deployHeroku.browser.%252F.png)
-[![screenshot](https://kaizhu256.github.io/node-swgg-google/build/screenshot.deployHeroku.browser.%252F.png)](https://kaizhu256.github.io/node-swgg-google/build/screenshot.deployHeroku.browser.%252F.png)
+1. [https://kaizhu256.github.io/node-swgg-google-all/build/screenshot.deployHeroku.browser.%252F.png](https://kaizhu256.github.io/node-swgg-google-all/build/screenshot.deployHeroku.browser.%252F.png)
+[![screenshot](https://kaizhu256.github.io/node-swgg-google-all/build/screenshot.deployHeroku.browser.%252F.png)](https://kaizhu256.github.io/node-swgg-google-all/build/screenshot.deployHeroku.browser.%252F.png)
 
-1. [https://kaizhu256.github.io/node-swgg-google/build/screenshot.deployHerokuTest.browser.%252F.png](https://kaizhu256.github.io/node-swgg-google/build/screenshot.deployHerokuTest.browser.%252F.png)
-[![screenshot](https://kaizhu256.github.io/node-swgg-google/build/screenshot.deployHerokuTest.browser.%252F.png)](https://kaizhu256.github.io/node-swgg-google/build/screenshot.deployHerokuTest.browser.%252F.png)
+1. [https://kaizhu256.github.io/node-swgg-google-all/build/screenshot.deployHerokuTest.browser.%252F.png](https://kaizhu256.github.io/node-swgg-google-all/build/screenshot.deployHerokuTest.browser.%252F.png)
+[![screenshot](https://kaizhu256.github.io/node-swgg-google-all/build/screenshot.deployHerokuTest.browser.%252F.png)](https://kaizhu256.github.io/node-swgg-google-all/build/screenshot.deployHerokuTest.browser.%252F.png)
 
-1. [https://kaizhu256.github.io/node-swgg-google/build/screenshot.npmTest.browser.%252F.png](https://kaizhu256.github.io/node-swgg-google/build/screenshot.npmTest.browser.%252F.png)
-[![screenshot](https://kaizhu256.github.io/node-swgg-google/build/screenshot.npmTest.browser.%252F.png)](https://kaizhu256.github.io/node-swgg-google/build/screenshot.npmTest.browser.%252F.png)
+1. [https://kaizhu256.github.io/node-swgg-google-all/build/screenshot.npmTest.browser.%252F.png](https://kaizhu256.github.io/node-swgg-google-all/build/screenshot.npmTest.browser.%252F.png)
+[![screenshot](https://kaizhu256.github.io/node-swgg-google-all/build/screenshot.npmTest.browser.%252F.png)](https://kaizhu256.github.io/node-swgg-google-all/build/screenshot.npmTest.browser.%252F.png)
 
-1. [https://kaizhu256.github.io/node-swgg-google/build/screenshot.testExampleJs.browser.%252F.png](https://kaizhu256.github.io/node-swgg-google/build/screenshot.testExampleJs.browser.%252F.png)
-[![screenshot](https://kaizhu256.github.io/node-swgg-google/build/screenshot.testExampleJs.browser.%252F.png)](https://kaizhu256.github.io/node-swgg-google/build/screenshot.testExampleJs.browser.%252F.png)
+1. [https://kaizhu256.github.io/node-swgg-google-all/build/screenshot.testExampleJs.browser.%252F.png](https://kaizhu256.github.io/node-swgg-google-all/build/screenshot.testExampleJs.browser.%252F.png)
+[![screenshot](https://kaizhu256.github.io/node-swgg-google-all/build/screenshot.testExampleJs.browser.%252F.png)](https://kaizhu256.github.io/node-swgg-google-all/build/screenshot.testExampleJs.browser.%252F.png)
 
-1. [https://kaizhu256.github.io/node-swgg-google/build/screenshot.testExampleSh.browser.%252F.png](https://kaizhu256.github.io/node-swgg-google/build/screenshot.testExampleSh.browser.%252F.png)
-[![screenshot](https://kaizhu256.github.io/node-swgg-google/build/screenshot.testExampleSh.browser.%252F.png)](https://kaizhu256.github.io/node-swgg-google/build/screenshot.testExampleSh.browser.%252F.png)
+1. [https://kaizhu256.github.io/node-swgg-google-all/build/screenshot.testExampleSh.browser.%252F.png](https://kaizhu256.github.io/node-swgg-google-all/build/screenshot.testExampleSh.browser.%252F.png)
+[![screenshot](https://kaizhu256.github.io/node-swgg-google-all/build/screenshot.testExampleSh.browser.%252F.png)](https://kaizhu256.github.io/node-swgg-google-all/build/screenshot.testExampleSh.browser.%252F.png)
 
 
 
@@ -325,24 +322,25 @@ instruction
     "engines": {
         "node": ">=4.0"
     },
-    "homepage": "https://github.com/kaizhu256/node-swgg-google",
+    "githubRepoAlias": "swgg-io/node-swgg-google-all",
+    "homepage": "https://github.com/kaizhu256/node-swgg-google-all",
     "keywords": [
         "google-client",
         "swagger-client"
     ],
     "license": "MIT",
-    "main": "lib.swgg_google.js",
-    "name": "swgg-google",
-    "nameAliasPublish": "api-google google-lite google-webclient",
-    "nameLib": "swgg_google",
-    "nameOriginal": "swgg-google",
+    "main": "lib.swgg_google_all.js",
+    "name": "swgg-google-all",
+    "nameAliasPublish": "api-google google-lite google-webclient swgg-google",
+    "nameLib": "swgg_google_all",
+    "nameOriginal": "swgg-google-all",
     "os": [
         "darwin",
         "linux"
     ],
     "repository": {
         "type": "git",
-        "url": "https://github.com/kaizhu256/node-swgg-google.git"
+        "url": "https://github.com/kaizhu256/node-swgg-google-all.git"
     },
     "scripts": {
         "build-ci": "utility2 shReadmeTest build_ci.sh",
@@ -352,14 +350,14 @@ instruction
         "start": "PORT=${PORT:-8080} utility2 start test.js",
         "test": "PORT=$(utility2 shServerPortRandom) utility2 test test.js"
     },
-    "version": "2017.11.15"
+    "version": "2018.1.12"
 }
 ```
 
 
 
 # changelog of last 50 commits
-[![screenshot](https://kaizhu256.github.io/node-swgg-google/build/screenshot.gitLog.svg)](https://github.com/kaizhu256/node-swgg-google/commits)
+[![screenshot](https://kaizhu256.github.io/node-swgg-google-all/build/screenshot.gitLog.svg)](https://github.com/kaizhu256/node-swgg-google-all/commits)
 
 
 
