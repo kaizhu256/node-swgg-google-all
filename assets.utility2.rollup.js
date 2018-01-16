@@ -17713,6 +17713,14 @@ return Utf8ArrayToStr(bff);
                     });
                 });
             }
+            // customize local
+            if (local.fs.existsSync('./assets.utility2.rollup.js')) {
+                options.dataTo = options.dataTo.replace(
+                    'module.exports = local;',
+                    "module.exports = local.global.utility2_rollup || " +
+                        "require('./assets.utility2.rollup.js');"
+                );
+            }
             options.customize();
             // save lib.xxx.js
             local.fs.writeFileSync(

@@ -1,8 +1,8 @@
 # swgg-google-all
-this zero-dependency package will provide a swagger-client for google's web-apis, with a working web-demo
+this zero-dependency package will provide a swagger-client for google-all's web-apis, with a working web-demo
 
 # live web demo
-- [https://kaizhu256.github.io/node-swgg-google-all/build..beta..travis-ci.org/app/](https://kaizhu256.github.io/node-swgg-google-all/build..beta..travis-ci.org/app)
+- [https://kaizhu256.github.io/node-swgg-google-all/build..beta..travis-ci.org/app](https://kaizhu256.github.io/node-swgg-google-all/build..beta..travis-ci.org/app)
 
 [![screenshot](https://kaizhu256.github.io/node-swgg-google-all/build/screenshot.deployGithub.browser.%252Fnode-swgg-google-all%252Fbuild%252Fapp.png)](https://kaizhu256.github.io/node-swgg-google-all/build..beta..travis-ci.org/app)
 
@@ -17,7 +17,6 @@ this zero-dependency package will provide a swagger-client for google's web-apis
 | git-branch : | [master](https://github.com/kaizhu256/node-swgg-google-all/tree/master) | [beta](https://github.com/kaizhu256/node-swgg-google-all/tree/beta) | [alpha](https://github.com/kaizhu256/node-swgg-google-all/tree/alpha)|
 |--:|:--|:--|:--|
 | test-server-github : | [![github.com test-server](https://kaizhu256.github.io/node-swgg-google-all/GitHub-Mark-32px.png)](https://kaizhu256.github.io/node-swgg-google-all/build..master..travis-ci.org/app) | [![github.com test-server](https://kaizhu256.github.io/node-swgg-google-all/GitHub-Mark-32px.png)](https://kaizhu256.github.io/node-swgg-google-all/build..beta..travis-ci.org/app) | [![github.com test-server](https://kaizhu256.github.io/node-swgg-google-all/GitHub-Mark-32px.png)](https://kaizhu256.github.io/node-swgg-google-all/build..alpha..travis-ci.org/app)|
-| test-server-heroku : | [![heroku.com test-server](https://kaizhu256.github.io/node-swgg-google-all/heroku-logo.75x25.png)](https://h1-swgg-google-all-master.herokuapp.com) | [![heroku.com test-server](https://kaizhu256.github.io/node-swgg-google-all/heroku-logo.75x25.png)](https://h1-swgg-google-all-beta.herokuapp.com) | [![heroku.com test-server](https://kaizhu256.github.io/node-swgg-google-all/heroku-logo.75x25.png)](https://h1-swgg-google-all-alpha.herokuapp.com)|
 | test-report : | [![test-report](https://kaizhu256.github.io/node-swgg-google-all/build..master..travis-ci.org/test-report.badge.svg)](https://kaizhu256.github.io/node-swgg-google-all/build..master..travis-ci.org/test-report.html) | [![test-report](https://kaizhu256.github.io/node-swgg-google-all/build..beta..travis-ci.org/test-report.badge.svg)](https://kaizhu256.github.io/node-swgg-google-all/build..beta..travis-ci.org/test-report.html) | [![test-report](https://kaizhu256.github.io/node-swgg-google-all/build..alpha..travis-ci.org/test-report.badge.svg)](https://kaizhu256.github.io/node-swgg-google-all/build..alpha..travis-ci.org/test-report.html)|
 | coverage : | [![coverage](https://kaizhu256.github.io/node-swgg-google-all/build..master..travis-ci.org/coverage.badge.svg)](https://kaizhu256.github.io/node-swgg-google-all/build..master..travis-ci.org/coverage.html/index.html) | [![coverage](https://kaizhu256.github.io/node-swgg-google-all/build..beta..travis-ci.org/coverage.badge.svg)](https://kaizhu256.github.io/node-swgg-google-all/build..beta..travis-ci.org/coverage.html/index.html) | [![coverage](https://kaizhu256.github.io/node-swgg-google-all/build..alpha..travis-ci.org/coverage.badge.svg)](https://kaizhu256.github.io/node-swgg-google-all/build..alpha..travis-ci.org/coverage.html/index.html)|
 | build-artifacts : | [![build-artifacts](https://kaizhu256.github.io/node-swgg-google-all/glyphicons_144_folder_open.png)](https://github.com/kaizhu256/node-swgg-google-all/tree/gh-pages/build..master..travis-ci.org) | [![build-artifacts](https://kaizhu256.github.io/node-swgg-google-all/glyphicons_144_folder_open.png)](https://github.com/kaizhu256/node-swgg-google-all/tree/gh-pages/build..beta..travis-ci.org) | [![build-artifacts](https://kaizhu256.github.io/node-swgg-google-all/glyphicons_144_folder_open.png)](https://github.com/kaizhu256/node-swgg-google-all/tree/gh-pages/build..alpha..travis-ci.org)|
@@ -56,13 +55,13 @@ this zero-dependency package will provide a swagger-client for google's web-apis
 [![apidoc](https://kaizhu256.github.io/node-swgg-google-all/build/screenshot.buildCi.browser.%252Ftmp%252Fbuild%252Fapidoc.html.png)](https://kaizhu256.github.io/node-swgg-google-all/build..beta..travis-ci.org/apidoc.html)
 
 #### todo
-- continue adding extra google web-apis
+- npm publish 2018.1.13
+- continue adding extra google-all web-apis
 - none
 
-#### changelog for v2018.1.12
-- npm publish 2018.1.12
-- rename package-name swgg-google -> swgg-google-all
-- sync with \$npm_package_githubRepoAlias
+#### changelog for v2018.1.13
+- auto-sync master swagger.json from ../swgg-$npm_package_swggAll/assets.swgg.swagger.json
+- disable heroku test-server
 - none
 
 #### this package requires
@@ -290,15 +289,6 @@ instruction
 1. [https://kaizhu256.github.io/node-swgg-google-all/build/screenshot.deployGithubTest.browser.%252Fnode-swgg-google-all%252Fbuild%252Fapp.png](https://kaizhu256.github.io/node-swgg-google-all/build/screenshot.deployGithubTest.browser.%252Fnode-swgg-google-all%252Fbuild%252Fapp.png)
 [![screenshot](https://kaizhu256.github.io/node-swgg-google-all/build/screenshot.deployGithubTest.browser.%252Fnode-swgg-google-all%252Fbuild%252Fapp.png)](https://kaizhu256.github.io/node-swgg-google-all/build/screenshot.deployGithubTest.browser.%252Fnode-swgg-google-all%252Fbuild%252Fapp.png)
 
-1. [https://kaizhu256.github.io/node-swgg-google-all/build/screenshot.deployHeroku.browser.%252Fassets.swgg.html.png](https://kaizhu256.github.io/node-swgg-google-all/build/screenshot.deployHeroku.browser.%252Fassets.swgg.html.png)
-[![screenshot](https://kaizhu256.github.io/node-swgg-google-all/build/screenshot.deployHeroku.browser.%252Fassets.swgg.html.png)](https://kaizhu256.github.io/node-swgg-google-all/build/screenshot.deployHeroku.browser.%252Fassets.swgg.html.png)
-
-1. [https://kaizhu256.github.io/node-swgg-google-all/build/screenshot.deployHeroku.browser.%252F.png](https://kaizhu256.github.io/node-swgg-google-all/build/screenshot.deployHeroku.browser.%252F.png)
-[![screenshot](https://kaizhu256.github.io/node-swgg-google-all/build/screenshot.deployHeroku.browser.%252F.png)](https://kaizhu256.github.io/node-swgg-google-all/build/screenshot.deployHeroku.browser.%252F.png)
-
-1. [https://kaizhu256.github.io/node-swgg-google-all/build/screenshot.deployHerokuTest.browser.%252F.png](https://kaizhu256.github.io/node-swgg-google-all/build/screenshot.deployHerokuTest.browser.%252F.png)
-[![screenshot](https://kaizhu256.github.io/node-swgg-google-all/build/screenshot.deployHerokuTest.browser.%252F.png)](https://kaizhu256.github.io/node-swgg-google-all/build/screenshot.deployHerokuTest.browser.%252F.png)
-
 1. [https://kaizhu256.github.io/node-swgg-google-all/build/screenshot.npmTest.browser.%252F.png](https://kaizhu256.github.io/node-swgg-google-all/build/screenshot.npmTest.browser.%252F.png)
 [![screenshot](https://kaizhu256.github.io/node-swgg-google-all/build/screenshot.npmTest.browser.%252F.png)](https://kaizhu256.github.io/node-swgg-google-all/build/screenshot.npmTest.browser.%252F.png)
 
@@ -314,7 +304,7 @@ instruction
 ```json
 {
     "author": "kai zhu <kaizhu256@gmail.com>",
-    "description": "this zero-dependency package will provide a swagger-client for google's web-apis, with a working web-demo",
+    "description": "this zero-dependency package will provide a swagger-client for google-all's web-apis, with a working web-demo",
     "devDependencies": {
         "electron-lite": "kaizhu256/node-electron-lite#alpha",
         "utility2": "kaizhu256/node-utility2#alpha"
@@ -325,7 +315,7 @@ instruction
     "githubRepoAlias": "swgg-io/node-swgg-google-all",
     "homepage": "https://github.com/kaizhu256/node-swgg-google-all",
     "keywords": [
-        "google-client",
+        "google-all",
         "swagger-client"
     ],
     "license": "MIT",
@@ -350,7 +340,7 @@ instruction
         "start": "PORT=${PORT:-8080} utility2 start test.js",
         "test": "PORT=$(utility2 shServerPortRandom) utility2 test test.js"
     },
-    "version": "2018.1.12"
+    "version": "2018.1.13"
 }
 ```
 
@@ -370,7 +360,7 @@ instruction
 
 shBuildCiAfter() {(set -e
     shDeployGithub
-    shDeployHeroku
+    # shDeployHeroku
     shReadmeTest example.sh
 )}
 
