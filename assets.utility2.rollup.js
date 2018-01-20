@@ -24735,15 +24735,16 @@ document.querySelector(".swggUiContainer > .thead > .td2").value =\n\
                 });
             });
             // override tag.description with x-swgg-tags0-override
-            options.tags.forEach(function (tag) {
-                tmp = local.objectSetDefault(options['x-swgg-tags0-override'] &&
-                    options['x-swgg-tags0-override'][tag.name] &&
-                    options['x-swgg-tags0-override'][tag.name].externalDocs, {
-                        description: tag.description,
-                        url: ''
-                    });
-                tag.description = (tmp.description + '\n\n' + tmp.url).trim();
-            });
+            if (options['x-swgg-tags0-override']) {
+                options.tags.forEach(function (tag) {
+                    tmp = local.objectSetDefault(options['x-swgg-tags0-override'][tag.name] &&
+                        options['x-swgg-tags0-override'][tag.name].externalDocs, {
+                            description: tag.description,
+                            url: ''
+                        });
+                    tag.description = (tmp.description + '\n\n' + tmp.url).trim();
+                });
+            }
             if (!local.env.npm_package_swggTags0 ||
                     (/-all$/).test(local.env.npm_package_swggTags0)) {
                 return options;
