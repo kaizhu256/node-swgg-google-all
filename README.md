@@ -17,6 +17,7 @@ this zero-dependency package will provide a swagger-client for google-all's web-
 | git-branch : | [master](https://github.com/kaizhu256/node-swgg-google-all/tree/master) | [beta](https://github.com/kaizhu256/node-swgg-google-all/tree/beta) | [alpha](https://github.com/kaizhu256/node-swgg-google-all/tree/alpha)|
 |--:|:--|:--|:--|
 | test-server-github : | [![github.com test-server](https://kaizhu256.github.io/node-swgg-google-all/GitHub-Mark-32px.png)](https://kaizhu256.github.io/node-swgg-google-all/build..master..travis-ci.org/app) | [![github.com test-server](https://kaizhu256.github.io/node-swgg-google-all/GitHub-Mark-32px.png)](https://kaizhu256.github.io/node-swgg-google-all/build..beta..travis-ci.org/app) | [![github.com test-server](https://kaizhu256.github.io/node-swgg-google-all/GitHub-Mark-32px.png)](https://kaizhu256.github.io/node-swgg-google-all/build..alpha..travis-ci.org/app)|
+| test-server-heroku : | [![heroku.com test-server](https://kaizhu256.github.io/node-swgg-google-all/heroku-logo.75x25.png)](https://h1-swgg-google-all-master.herokuapp.com) | [![heroku.com test-server](https://kaizhu256.github.io/node-swgg-google-all/heroku-logo.75x25.png)](https://h1-swgg-google-all-beta.herokuapp.com) | [![heroku.com test-server](https://kaizhu256.github.io/node-swgg-google-all/heroku-logo.75x25.png)](https://h1-swgg-google-all-alpha.herokuapp.com)|
 | test-report : | [![test-report](https://kaizhu256.github.io/node-swgg-google-all/build..master..travis-ci.org/test-report.badge.svg)](https://kaizhu256.github.io/node-swgg-google-all/build..master..travis-ci.org/test-report.html) | [![test-report](https://kaizhu256.github.io/node-swgg-google-all/build..beta..travis-ci.org/test-report.badge.svg)](https://kaizhu256.github.io/node-swgg-google-all/build..beta..travis-ci.org/test-report.html) | [![test-report](https://kaizhu256.github.io/node-swgg-google-all/build..alpha..travis-ci.org/test-report.badge.svg)](https://kaizhu256.github.io/node-swgg-google-all/build..alpha..travis-ci.org/test-report.html)|
 | coverage : | [![coverage](https://kaizhu256.github.io/node-swgg-google-all/build..master..travis-ci.org/coverage.badge.svg)](https://kaizhu256.github.io/node-swgg-google-all/build..master..travis-ci.org/coverage.html/index.html) | [![coverage](https://kaizhu256.github.io/node-swgg-google-all/build..beta..travis-ci.org/coverage.badge.svg)](https://kaizhu256.github.io/node-swgg-google-all/build..beta..travis-ci.org/coverage.html/index.html) | [![coverage](https://kaizhu256.github.io/node-swgg-google-all/build..alpha..travis-ci.org/coverage.badge.svg)](https://kaizhu256.github.io/node-swgg-google-all/build..alpha..travis-ci.org/coverage.html/index.html)|
 | build-artifacts : | [![build-artifacts](https://kaizhu256.github.io/node-swgg-google-all/glyphicons_144_folder_open.png)](https://github.com/kaizhu256/node-swgg-google-all/tree/gh-pages/build..master..travis-ci.org) | [![build-artifacts](https://kaizhu256.github.io/node-swgg-google-all/glyphicons_144_folder_open.png)](https://github.com/kaizhu256/node-swgg-google-all/tree/gh-pages/build..beta..travis-ci.org) | [![build-artifacts](https://kaizhu256.github.io/node-swgg-google-all/glyphicons_144_folder_open.png)](https://github.com/kaizhu256/node-swgg-google-all/tree/gh-pages/build..alpha..travis-ci.org)|
@@ -289,6 +290,15 @@ instruction
 1. [https://kaizhu256.github.io/node-swgg-google-all/build/screenshot.deployGithubTest.browser.%252Fnode-swgg-google-all%252Fbuild%252Fapp.png](https://kaizhu256.github.io/node-swgg-google-all/build/screenshot.deployGithubTest.browser.%252Fnode-swgg-google-all%252Fbuild%252Fapp.png)
 [![screenshot](https://kaizhu256.github.io/node-swgg-google-all/build/screenshot.deployGithubTest.browser.%252Fnode-swgg-google-all%252Fbuild%252Fapp.png)](https://kaizhu256.github.io/node-swgg-google-all/build/screenshot.deployGithubTest.browser.%252Fnode-swgg-google-all%252Fbuild%252Fapp.png)
 
+1. [https://kaizhu256.github.io/node-swgg-google-all/build/screenshot.deployHeroku.browser.%252Fassets.swgg.html.png](https://kaizhu256.github.io/node-swgg-google-all/build/screenshot.deployHeroku.browser.%252Fassets.swgg.html.png)
+[![screenshot](https://kaizhu256.github.io/node-swgg-google-all/build/screenshot.deployHeroku.browser.%252Fassets.swgg.html.png)](https://kaizhu256.github.io/node-swgg-google-all/build/screenshot.deployHeroku.browser.%252Fassets.swgg.html.png)
+
+1. [https://kaizhu256.github.io/node-swgg-google-all/build/screenshot.deployHeroku.browser.%252F.png](https://kaizhu256.github.io/node-swgg-google-all/build/screenshot.deployHeroku.browser.%252F.png)
+[![screenshot](https://kaizhu256.github.io/node-swgg-google-all/build/screenshot.deployHeroku.browser.%252F.png)](https://kaizhu256.github.io/node-swgg-google-all/build/screenshot.deployHeroku.browser.%252F.png)
+
+1. [https://kaizhu256.github.io/node-swgg-google-all/build/screenshot.deployHerokuTest.browser.%252F.png](https://kaizhu256.github.io/node-swgg-google-all/build/screenshot.deployHerokuTest.browser.%252F.png)
+[![screenshot](https://kaizhu256.github.io/node-swgg-google-all/build/screenshot.deployHerokuTest.browser.%252F.png)](https://kaizhu256.github.io/node-swgg-google-all/build/screenshot.deployHerokuTest.browser.%252F.png)
+
 1. [https://kaizhu256.github.io/node-swgg-google-all/build/screenshot.npmTest.browser.%252F.png](https://kaizhu256.github.io/node-swgg-google-all/build/screenshot.npmTest.browser.%252F.png)
 [![screenshot](https://kaizhu256.github.io/node-swgg-google-all/build/screenshot.npmTest.browser.%252F.png)](https://kaizhu256.github.io/node-swgg-google-all/build/screenshot.npmTest.browser.%252F.png)
 
@@ -360,7 +370,7 @@ instruction
 
 shBuildCiAfter() {(set -e
     shDeployGithub
-    # shDeployHeroku
+    shDeployHeroku
     shReadmeTest example.sh
 )}
 
