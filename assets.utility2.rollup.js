@@ -24734,7 +24734,8 @@ document.querySelector(".swggUiContainer > .thead > .td2").value =\n\
                     }
                 });
             });
-            if (!local.env.npm_package_swggTags0) {
+            if (!local.env.npm_package_swggTags0 ||
+                    (/-all$/).test(local.env.npm_package_swggTags0)) {
                 return options;
             }
             // override options with x-swgg-tags0-override

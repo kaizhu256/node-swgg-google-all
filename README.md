@@ -63,6 +63,7 @@ this zero-dependency package will provide a swagger-client for google-all's web-
 #### changelog for v2018.1.13
 - auto-sync master swagger.json from ../swgg-$npm_package_swggAll/assets.swgg.swagger.json
 - disable heroku test-server
+- ignore env var \$npm_package_swggAll and \$npm_package_swggTags0 if package-name has -all sufix
 - none
 
 #### this package requires
@@ -350,6 +351,8 @@ instruction
         "start": "PORT=${PORT:-8080} utility2 start test.js",
         "test": "PORT=$(utility2 shServerPortRandom) utility2 test test.js"
     },
+    "swggAll": "google-all",
+    "swggTags0": "google-all",
     "version": "2018.1.13"
 }
 ```
