@@ -319,11 +319,15 @@
         local.stringHtmlSafe = function (text) {
         /*
          * this function will make the text html-safe
+         * https://stackoverflow.com/questions/7381974/which-characters-need-to-be-escaped-on-html
          */
-            // new RegExp('[' + '"&\'<>'.split('').sort().join('') + ']', 'g')
-            return text.replace((/["&'<>]/g), function (match0) {
-                return '&#x' + match0.charCodeAt(0).toString(16) + ';';
-            });
+            return text
+                .replace((/"/g), '&quot;')
+                .replace((/&/g), '&amp;')
+                .replace((/'/g), '&apos;')
+                .replace((/</g), '&lt;')
+                .replace((/>/g), '&gt;')
+                .replace((/&amp;(amp;|apos;|gt;|lt;|quot;)/ig), '&$1');
         };
 
         local.templateRender = function (template, dict, options) {
@@ -455,12 +459,17 @@
                     value = String(value);
                     // default to htmlSafe
                     if (!notHtmlSafe) {
-                        value = value.replace((/["&'<>]/g), function (match0) {
-                            return '&#x' + match0.charCodeAt(0).toString(16) + ';';
-                        });
+                        value = value
+                            .replace((/"/g), '&quot;')
+                            .replace((/&/g), '&amp;')
+                            .replace((/'/g), '&apos;')
+                            .replace((/</g), '&lt;')
+                            .replace((/>/g), '&gt;')
+                            .replace((/&amp;(amp;|apos;|gt;|lt;|quot;)/ig), '&$1');
                     }
                     if (markdownToHtml && typeof local.marked === 'function') {
-                        value = local.marked(value);
+                        value = local.marked(value)
+                            .replace((/&amp;(amp;|apos;|gt;|lt;|quot;)/ig), '&$1');
                     }
                     return value;
                 }, 'templateRender could not render expression ' + JSON.stringify(match0) + '\n');
@@ -20228,44 +20237,42 @@ vendor\\)s\\{0,1\\}\\(\\b\\|_\\)\
             // start repl-debugger
             local.replStart();
             // debug dir
-            [__dirname, process.cwd()].forEach(function (dir) {
-                local.fs.readdirSync(dir).forEach(function (file) {
-                    file = dir + '/' + file;
-                    // if the file is modified, then restart the process
-                    local.onFileModifiedRestart(file);
-                    switch (local.path.basename(file)) {
-                    // swagger-validate assets.swgg.swagger.json
-                    case 'assets.swgg.swagger.json':
-                        local.fs.readFile(file, 'utf8', function (error, data) {
-                            local.tryCatchOnError(function () {
-                                // validate no error occurred
-                                local.assert(!error, error);
-                                local.swgg.swaggerValidateJson(JSON.parse(data));
-                            }, local.onErrorDefault);
-                        });
-                        break;
+            local.fs.readdirSync(process.cwd()).forEach(function (file) {
+                file = process.cwd() + '/' + file;
+                // if the file is modified, then restart the process
+                local.onFileModifiedRestart(file);
+                switch (local.path.basename(file)) {
+                // swagger-validate assets.swgg.swagger.json
+                case 'assets.swgg.swagger.json':
+                    local.fs.readFile(file, 'utf8', function (error, data) {
+                        local.tryCatchOnError(function () {
+                            // validate no error occurred
+                            local.assert(!error, error);
+                            local.swgg.swaggerValidateJson(JSON.parse(data));
+                        }, local.onErrorDefault);
+                    });
+                    break;
+                }
+                switch (local.path.extname(file)) {
+                case '.css':
+                case '.html':
+                case '.js':
+                case '.json':
+                    if ((/\brollup\b/).test(file)) {
+                        return;
                     }
-                    switch (local.path.extname(file)) {
-                    case '.css':
-                    case '.html':
-                    case '.js':
-                    case '.json':
-                        if ((/\brollup\b/).test(file)) {
-                            return;
-                        }
-                        // jslint file
-                        local.fs.readFile(file, 'utf8', function (error, data) {
-                            local.jslintAndPrintConditional(!error && data, file);
-                        });
-                        break;
-                    case '.sh':
-                        // jslint file
-                        local.fs.readFile(file, 'utf8', function (error, data) {
-                            local.jslintAndPrintConditional(!error && data, file + '.html');
-                        });
-                        break;
-                    }
-                });
+                    // jslint file
+                    local.fs.readFile(file, 'utf8', function (error, data) {
+                        local.jslintAndPrintConditional(!error && data, file);
+                    });
+                    break;
+                case '.sh':
+                    // jslint file
+                    local.fs.readFile(file, 'utf8', function (error, data) {
+                        local.jslintAndPrintConditional(!error && data, file + '.html');
+                    });
+                    break;
+                }
             });
             if (local.global.utility2_rollup || local.env.npm_config_mode_start) {
                 // init assets
@@ -20724,7 +20731,13 @@ instruction\n\
          * this function will make the text html-safe
          * https://stackoverflow.com/questions/7381974/which-characters-need-to-be-escaped-on-html
          */
-            return text.replace((/&/g), '&amp;').replace((/</g), '&lt;').replace((/>/g), '&gt;');
+            return text
+                .replace((/"/g), '&quot;')
+                .replace((/&/g), '&amp;')
+                .replace((/'/g), '&apos;')
+                .replace((/</g), '&lt;')
+                .replace((/>/g), '&gt;')
+                .replace((/&amp;(amp;|apos;|gt;|lt;|quot;)/ig), '&$1');
         };
 
         local.stringRegexpEscape = function (text) {
@@ -20995,12 +21008,16 @@ instruction\n\
                     // default to htmlSafe
                     if (!notHtmlSafe) {
                         value = value
+                            .replace((/"/g), '&quot;')
                             .replace((/&/g), '&amp;')
+                            .replace((/'/g), '&apos;')
                             .replace((/</g), '&lt;')
-                            .replace((/>/g), '&gt;');
+                            .replace((/>/g), '&gt;')
+                            .replace((/&amp;(amp;|apos;|gt;|lt;|quot;)/ig), '&$1');
                     }
                     if (markdownToHtml && typeof local.marked === 'function') {
-                        value = local.marked(value);
+                        value = local.marked(value)
+                            .replace((/&amp;(amp;|apos;|gt;|lt;|quot;)/ig), '&$1');
                     }
                     return value;
                 }, 'templateRender could not render expression ' + JSON.stringify(match0) + '\n');

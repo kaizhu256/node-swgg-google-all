@@ -56,7 +56,7 @@ this zero-dependency package will provide a swagger-client for google-all's web-
 [![apidoc](https://kaizhu256.github.io/node-swgg-google-all/build/screenshot.buildCi.browser.%252Ftmp%252Fbuild%252Fapidoc.html.png)](https://kaizhu256.github.io/node-swgg-google-all/build..beta..travis-ci.org/apidoc.html)
 
 #### todo
-- npm publish 2018.1.13
+- npm publish v2018.1.13
 - continue adding extra google-all web-apis
 - none
 
