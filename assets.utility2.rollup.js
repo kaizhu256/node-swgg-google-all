@@ -17595,7 +17595,7 @@ local.assetsDict['/favicon.ico'] = '';
                         onError(null, options);
                         return;
                     }
-                    options.file = (options.url.replace((/^https?:\/\//), '/tmp/ajaxCrawl') +
+                    options.file = (options.url.replace((/^https?:\/\//), '/tmp/ajaxCrawl/') +
                         '/index.html').replace((/\/{2,}/g), '/');
                     local.fsWriteFileWithMkdirpSync(options.file, options.xhr.responseText);
                     console.error(options.ii + '.  ajaxCrawl  -  ' +
@@ -17636,9 +17636,9 @@ local.assetsDict['/favicon.ico'] = '';
                     }
                     options.url = options.url.replace((/\/{2,}/g), '/').replace('/', '//');
                     // optimization - hasOwnProperty
-                    if (options.dict.hasOwnProperty(options.url.replace((/^https?:\/\//), '')) ||
-                            options.filterBlacklist(options) ||
-                            !options.filterWhitelist(options)) {
+                    if (!options.dict.hasOwnProperty(options.url.replace((/^https?:\/\//), '')) &&
+                            !options.filterBlacklist(options) &&
+                            options.filterWhitelist(options)) {
                         options.modeNext = 2;
                         options.dict[options.url.replace((/^https?:\/\//), '')] = true;
                         options.list.push(options);

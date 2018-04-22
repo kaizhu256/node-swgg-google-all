@@ -37,15 +37,11 @@ local = require("../../assets.utility2.rollup.js");
 local.ajaxCrawl({
     depth: 1,
     filterWhitelist: function (options) {
-        return options.url.replace((/^https?:\/\//), "").indexOf(options.urlParsed0.href
-            .replace((/^https?:\/\//), "")
-            .replace((/([^\/])$/), "$1/")
-            .replace((/\b(?:reference|rest)\b/), "")
-            .replace((/\/{2,}/), "/")) === 0;
+        return (/^https?:\/\/(?:cloud.google.com|developers.google.com)/).test(options.url);
     },
     list: process.argv[1].split("\n")
         .filter(function (element) {
-            return element;
+            return element && element[0] !== "#";
         })
         .map(function (element) {
             return { url: element };
@@ -53,38 +49,38 @@ local.ajaxCrawl({
 }, local.onErrorDefault);
 // </script>
 ' '
-https://cloud.google.com/bigquery/docs/reference/datatransfer/rest/
-https://cloud.google.com/bigquery/docs/reference/rest/v2/
-https://cloud.google.com/billing/reference/rest/
-https://cloud.google.com/compute/docs/oslogin/rest/
-https://cloud.google.com/container-builder/docs/api/reference/rest/
-https://cloud.google.com/dlp/docs/reference/rest/
-https://cloud.google.com/kms/docs/reference/rest/
-https://cloud.google.com/ml-engine/reference/rest/
-https://cloud.google.com/natural-language/docs/reference/rest/
-https://cloud.google.com/resource-manager/reference/rest/
-https://cloud.google.com/speech-to-text/docs/reference/rest/
-https://cloud.google.com/translate/docs/reference/rest
-https://cloud.google.com/vision/docs/reference/rest/
-https://developers.google.com/ad-exchange/buyer-rest/reference/rest/
-https://developers.google.com/ad-exchange/buyer-rest/v1.4/
-https://developers.google.com/ad-exchange/seller-rest/reference/v2.0/
-https://developers.google.com/admin-sdk/reports/v1/reference/
-https://developers.google.com/adsense/management/v1.4/reference/
-https://developers.google.com/amp/cache/reference/acceleratedmobilepageurl/rest/
-https://developers.google.com/android/management/reference/rest/
-https://developers.google.com/android/over-the-air/reference/rest/
-https://developers.google.com/apps-script/api/reference/rest/
-https://developers.google.com/blogger/docs/3.0/reference/
-https://developers.google.com/civic-information/docs/v2/
-https://developers.google.com/fusiontables/docs/v2/reference/
-https://developers.google.com/google-apps/activity/v1/reference/
-https://developers.google.com/gsuite/marketplace/v2/reference/
+#!! https://cloud.google.com/bigquery/docs/reference/datatransfer/rest/
+#!! https://cloud.google.com/bigquery/docs/reference/rest/v2/
+#!! https://cloud.google.com/billing/reference/rest/
+#!! https://cloud.google.com/compute/docs/oslogin/rest/
+#!! https://cloud.google.com/container-builder/docs/api/reference/rest/
+#!! https://cloud.google.com/dlp/docs/reference/rest/
+#!! https://cloud.google.com/kms/docs/reference/rest/
+#!! https://cloud.google.com/ml-engine/reference/rest/
+#!! https://cloud.google.com/natural-language/docs/reference/rest/
+#!! https://cloud.google.com/resource-manager/reference/rest/
+#!! https://cloud.google.com/speech-to-text/docs/reference/rest/
+#!! https://cloud.google.com/translate/docs/reference/rest
+#!! https://cloud.google.com/vision/docs/reference/rest/
+#!! https://developers.google.com/ad-exchange/buyer-rest/reference/rest/
+#!! https://developers.google.com/ad-exchange/buyer-rest/v1.4/
+#!! https://developers.google.com/ad-exchange/seller-rest/reference/v2.0/
+#!! https://developers.google.com/admin-sdk/reports/v1/reference/
+#!! https://developers.google.com/adsense/management/v1.4/reference/
+#!! https://developers.google.com/amp/cache/reference/acceleratedmobilepageurl/rest/
+#!! https://developers.google.com/android/management/reference/rest/
+#!! https://developers.google.com/android/over-the-air/reference/rest/
+#!! https://developers.google.com/apps-script/api/reference/rest/
+#!! https://developers.google.com/blogger/docs/3.0/reference/
+#!! https://developers.google.com/civic-information/docs/v2/
+#!! https://developers.google.com/fusiontables/docs/v2/reference/
+#!! https://developers.google.com/google-apps/activity/v1/reference/
+#!! https://developers.google.com/gsuite/marketplace/v2/reference/
 https://developers.google.com/maps/documentation/
-https://developers.google.com/speed/docs/insights/v4/reference/
-https://developers.google.com/youtube/v3/docs/
-https://developers.google.com/youtube/v3/live/docs/
-https://developers.google.com/zero-touch/reference/reseller/rest/
+#!! https://developers.google.com/speed/docs/insights/v4/reference/
+#!! https://developers.google.com/youtube/v3/docs/
+#!! https://developers.google.com/youtube/v3/live/docs/
+#!! https://developers.google.com/zero-touch/reference/reseller/rest/
 ' 2>&1 | tee -a apidocRawFetch.log
 )}
 
