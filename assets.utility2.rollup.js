@@ -17573,6 +17573,107 @@ local.assetsDict['/favicon.ico'] = '';
             return xhr;
         };
 
+        /* istanbul ignore next */
+        local.ajaxCrawl = function (options, onError) {
+        /*
+         * this function will crawl options.url
+         */
+            options = local.objectSetDefault(options, {
+                depth: 0,
+                dict: {},
+                filterBlacklist: local.nop,
+                filterWhitelist: function (options) {
+                    return options.url.replace((/^https?:\/\//), '').indexOf(options.urlParsed0.href
+                        .replace((/^https?:\/\//), '')
+                        .replace((/([^\/])$/), '$1/')) === 0;
+                },
+                list: [],
+                onEach: function (options, onError) {
+                    if (options.xhr.responseText.replace((/\w/g), '').length <
+                            0.5 * options.xhr.responseText.length) {
+                        onError(null, options);
+                        return;
+                    }
+                    options.file = (options.url.replace((/^https?:\/\//), '/tmp/ajaxCrawl') +
+                        '/index.html').replace((/\/{2,}/g), '/');
+                    local.fsWriteFileWithMkdirpSync(options.file, options.xhr.responseText);
+                    console.error(options.ii + '. fetched    ' + options.url + '\n    ->    ' +
+                        options.file);
+                    onError(null, options);
+                },
+                rgx: (/href="(.*?)"/g)
+            });
+            local.onNext(options, function (error, data) {
+                switch (options.modeNext) {
+                // onParallelList(options);
+                case 1:
+                    local.onParallelList(options, function (options2, onParallel) {
+                        onParallel.counter += 1;
+                        options2.modeNext = 2;
+                        // recurse
+                        local.ajaxCrawl(local.objectSetDefault(options2, options), onParallel);
+                    }, onError);
+                    break;
+                // options.list.push(options);
+                case 2:
+                    options.url = options.url.replace((/[?#].*?$/), '');
+                    if (!(/^https?:\/\//).test(options.url)) {
+                        if (options.url[0] !== '/') {
+                            options.url = options.urlParsed0.pathname + '/' + options.url;
+                        }
+                        options.url = options.urlParsed0.protocol + '//' + options.urlParsed0.host +
+                            '/' + options.url;
+                    }
+                    options.url = options.url.replace((/\/{2,}/g), '/').replace('/', '//');
+                    // optimization - hasOwnProperty
+                    if (options.dict.hasOwnProperty(options.url.replace((/^https?:\/\//), '')) ||
+                            options.filterBlacklist(options) ||
+                            !options.filterWhitelist(options)) {
+                        options.dict[options.url.replace((/^https?:\/\//), '')] = true;
+                        options.list.push(options);
+                    }
+                    break;
+                // ajax(options);
+                case 3:
+                    options.dict[options.url.replace((/^https?:\/\//), '')] = true;
+                    local.ajax(options, options.onNext);
+                    break;
+                case 4:
+                    options.xhr = data;
+                    options.onEach(options, options.onNext);
+                    break;
+                case 5:
+                    if (!(options.depth > 0)) {
+                        onError(error, options);
+                        return;
+                    }
+                    options.xhr.responseText.replace(options.rgx, function (match0, match1) {
+                        match0 = match1;
+                        // recurse
+                        local.ajaxCrawl({
+                            depth: options.depth - 1,
+                            dict: options.dict,
+                            filterBlacklist: options.filterBlacklist,
+                            filterWhitelist: options.filterWhitelist,
+                            list: options.list,
+                            modeNext: 1,
+                            onEach: options.onEach,
+                            rgx: options.rgx,
+                            url: match0,
+                            urlParsed0: options.urlParsed
+                        }, local.nop);
+                    });
+                    options.onNext(error, options);
+                    break;
+                default:
+                    options.xhr = options.xhr || data;
+                    onError(error, options);
+                }
+            });
+            options.modeNext = options.modeNext || 0;
+            options.onNext();
+        };
+
         local.ajaxProgressUpdate = function () {
         /*
          * this function will update ajaxProgress
@@ -20667,19 +20768,23 @@ return Utf8ArrayToStr(bff);
          * this function will
          * 1. async-run onEach in parallel,
          *    with the given options.rateLimit and options.retryLimit
-         * 2. call onError when isDone
+         * 2. call onError when onParallel.ii + 1 === options.list.length
          */
-            var ii, onEach2, onParallel;
+            var isListEnd, onEach2, onParallel;
             options.list = options.list || [];
             onEach2 = function () {
-                while (ii + 1 < options.list.length &&
-                        onParallel.counter < options.rateLimit + 1) {
-                    ii += 1;
+                while (true) {
+                    if (!(onParallel.ii + 1 < options.list.length)) {
+                        isListEnd = true;
+                        return;
+                    }
+                    if (!(onParallel.counter < options.rateLimit + 1)) {
+                        return;
+                    }
                     onParallel.ii += 1;
-                    onParallel.remaining -= 1;
                     onEach({
-                        element: options.list[ii],
-                        ii: ii,
+                        element: options.list[onParallel.ii],
+                        ii: onParallel.ii,
                         list: options.list,
                         retry: 0
                     }, onParallel);
@@ -20695,10 +20800,13 @@ return Utf8ArrayToStr(bff);
                     }, 1000);
                     return true;
                 }
+                // restart if options.list has grown
+                if (isListEnd && (onParallel.ii + 1 < options.list.length)) {
+                    isListEnd = null;
+                    onEach2();
+                }
             });
-            ii = -1;
             onParallel.ii = -1;
-            onParallel.remaining = options.list.length;
             options.rateLimit = Number(options.rateLimit) || 6;
             options.rateLimit = Math.max(options.rateLimit, 1);
             options.retryLimit = Number(options.retryLimit) || 2;
@@ -29840,7 +29948,7 @@ $/).test(xhr.responseText), xhr.responseText);\n\
             }\n\
             local.testMock([\n\
                 [local, { ajaxProgressCounter: 0, ajaxProgressState: 0 }],\n\
-                [local.global, { clearTimeou: local.nop, setTimeout: function (fnc) {\n\
+                [local.global, { clearTimeout: local.nop, setTimeout: function (fnc) {\n\
                     local.ajaxProgressState = 1;\n\
                     fnc();\n\
                 } }]\n\
@@ -31567,15 +31675,21 @@ undefined ff');\n\
                     // test retryLimit handling-behavior\n\
                     options.retryLimit = 1;\n\
                     local.onParallelList({\n\
-                        list: [1, 2, 3, 4, 5],\n\
+                        list: [1, 2, 3, 4],\n\
                         rateLimit: options.rateLimit\n\
                     }, function (options2, onParallel) {\n\
                         onParallel.counter += 1;\n\
                         options.rateMax = Math.max(onParallel.counter - 1, options.rateMax);\n\
                         // test async handling-behavior\n\
                         setTimeout(function () {\n\
+                            // test list-growth handling-behavior\n\
+                            if (options2.ii === 3) {\n\
+                                options2.list.push(5);\n\
+                            }\n\
                             options.data[options2.ii] = options2.element;\n\
-                            onParallel(options2.retry < 1 && local.onErrorDefault, options2);\n\
+                            // test retry handling-behavior\n\
+                            local.assert(options2.retry < 1);\n\
+                            onParallel(null, options2);\n\
                         });\n\
                     }, options.onNext, options.rateLimit);\n\
                     break;\n\
@@ -31805,7 +31919,7 @@ undefined ff');\n\
                         onError(null, '{}', file, options);\n\
                     },\n\
                     readdirSync: function () {\n\
-                        // test jslintAndPrintConditional behavior\n\
+                        // test jslintAndPrintConditional handling-behavior\n\
                         return [\n\
                             'aa.css',\n\
                             'aa.html',\n\
