@@ -1,8 +1,9 @@
 /* istanbul instrument in package swgg_google_all */
+/* jslint-utility2 */
 /*jslint
     bitwise: true,
     browser: true,
-    maxerr: 8,
+    maxerr: 4,
     maxlen: 100,
     node: true,
     nomen: true,

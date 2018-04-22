@@ -1,5 +1,5 @@
 # swgg-google-all
-this zero-dependency package will provide a swagger-client for google-all's web-apis, with a working web-demo
+this zero-dependency package will provide a (nodejs-compatible) swagger-client for google-all's web-apis, with a working web-demo
 
 # live web demo
 - [https://kaizhu256.github.io/node-swgg-google-all/build..beta..travis-ci.org/app](https://kaizhu256.github.io/node-swgg-google-all/build..beta..travis-ci.org/app)
@@ -8,7 +8,7 @@ this zero-dependency package will provide a swagger-client for google-all's web-
 
 
 
-[![travis-ci.org build-status](https://api.travis-ci.org/kaizhu256/node-swgg-google-all.svg)](https://travis-ci.org/kaizhu256/node-swgg-google-all) [![coverage](https://kaizhu256.github.io/node-swgg-google-all/build/coverage.badge.svg)](https://kaizhu256.github.io/node-swgg-google-all/build/coverage.html/index.html) [![snyk.io vulnerabilities](https://snyk.io/test/github/kaizhu256/node-swgg-google-all/badge.svg)](https://snyk.io/test/github/kaizhu256/node-swgg-google-all)
+[![travis-ci.org build-status](https://api.travis-ci.org/kaizhu256/node-swgg-google-all.svg)](https://travis-ci.org/kaizhu256/node-swgg-google-all) [![coverage](https://kaizhu256.github.io/node-swgg-google-all/build/coverage.badge.svg)](https://kaizhu256.github.io/node-swgg-google-all/build/coverage.html/index.html)
 
 [![NPM](https://nodei.co/npm/swgg-google-all.png?downloads=true)](https://www.npmjs.com/package/swgg-google-all)
 
@@ -117,10 +117,11 @@ instruction
 
 
 /* istanbul instrument in package swgg_google_all */
+/* jslint-utility2 */
 /*jslint
     bitwise: true,
     browser: true,
-    maxerr: 8,
+    maxerr: 4,
     maxlen: 100,
     node: true,
     nomen: true,
@@ -181,11 +182,40 @@ instruction
         // init exports
         module.exports = local;
         // require builtins
-        Object.keys(process.binding('natives')).forEach(function (key) {
-            if (!local[key] && !(/\/|^_|^sys$/).test(key)) {
-                local[key] = require(key);
-            }
-        });
+        // local.assert = require('assert');
+        local.buffer = require('buffer');
+        local.child_process = require('child_process');
+        local.cluster = require('cluster');
+        local.console = require('console');
+        local.constants = require('constants');
+        local.crypto = require('crypto');
+        local.dgram = require('dgram');
+        local.dns = require('dns');
+        local.domain = require('domain');
+        local.events = require('events');
+        local.fs = require('fs');
+        local.http = require('http');
+        local.https = require('https');
+        local.module = require('module');
+        local.net = require('net');
+        local.os = require('os');
+        local.path = require('path');
+        local.process = require('process');
+        local.punycode = require('punycode');
+        local.querystring = require('querystring');
+        local.readline = require('readline');
+        local.repl = require('repl');
+        local.stream = require('stream');
+        local.string_decoder = require('string_decoder');
+        local.timers = require('timers');
+        local.tls = require('tls');
+        local.tty = require('tty');
+        local.url = require('url');
+        local.util = require('util');
+        local.v8 = require('v8');
+        local.vm = require('vm');
+        local.zlib = require('zlib');
+/* validateLineSortedReset */
         // init assets
         local.assetsDict = local.assetsDict || {};
         [
@@ -203,12 +233,17 @@ instruction
                 );
             }
         });
+/* validateLineSortedReset */
+        // bug-workaround - long $npm_package_buildCustomOrg
+        /* jslint-ignore-begin */
+        local.assetsDict['/assets.swgg_google_all.js'] = local.assetsDict['/assets.swgg_google_all.js'] ||
+            local.fs.readFileSync(local.__dirname + '/lib.swgg_google_all.js', 'utf8'
+        ).replace((/^#!/), '//');
+/* validateLineSortedReset */
         local.assetsDict['/'] =
             local.assetsDict['/assets.example.html'] =
             local.assetsDict['/assets.index.template.html']
             .replace((/\{\{env\.(\w+?)\}\}/g), function (match0, match1) {
-                // jslint-hack
-                String(match0);
                 switch (match1) {
                 case 'npm_package_description':
                     return 'the greatest app in the world!';
@@ -229,14 +264,6 @@ instruction
         local.assetsDict['/assets.example.js'] =
             local.assetsDict['/assets.example.js'] ||
             local.fs.readFileSync(__filename, 'utf8');
-        // bug-workaround - long $npm_package_buildCustomOrg
-        /* jslint-ignore-begin */
-        local.assetsDict['/assets.swgg_google_all.js'] =
-            local.assetsDict['/assets.swgg_google_all.js'] ||
-            local.fs.readFileSync(
-                local.__dirname + '/lib.swgg_google_all.js',
-                'utf8'
-            ).replace((/^#!/), '//');
         /* jslint-ignore-end */
         local.assetsDict['/favicon.ico'] = local.assetsDict['/favicon.ico'] || '';
         // if $npm_config_timeout_exit exists,
@@ -315,7 +342,7 @@ instruction
 ```json
 {
     "author": "kai zhu <kaizhu256@gmail.com>",
-    "description": "this zero-dependency package will provide a swagger-client for google-all's web-apis, with a working web-demo",
+    "description": "this zero-dependency package will provide a (nodejs-compatible) swagger-client for google-all's web-apis, with a working web-demo",
     "devDependencies": {
         "electron-lite": "kaizhu256/node-electron-lite#alpha",
         "utility2": "kaizhu256/node-utility2#alpha"
@@ -348,8 +375,7 @@ instruction
         "apidocRawFetch": "[ ! -f npm_scripts.sh ] || ./npm_scripts.sh shNpmScriptApidocRawFetch",
         "build-ci": "utility2 shReadmeTest build_ci.sh",
         "env": "env",
-        "heroku-postbuild": "npm uninstall utility2 2>/dev/null; npm install kaizhu256/node-utility2#alpha && utility2 shDeployHeroku",
-        "nameAliasPublish": "",
+        "heroku-postbuild": "npm install kaizhu256/node-utility2#alpha --prefix . && utility2 shDeployHeroku",
         "postinstall": "[ ! -f npm_scripts.sh ] || ./npm_scripts.sh shNpmScriptPostinstall",
         "start": "PORT=${PORT:-8080} utility2 start test.js",
         "test": "PORT=$(utility2 shServerPortRandom) utility2 test test.js"
@@ -374,13 +400,13 @@ instruction
 
 # this shell script will run the build for this package
 
-shBuildCiAfter() {(set -e
+shBuildCiAfter () {(set -e
     shDeployGithub
     shDeployHeroku
     shReadmeTest example.sh
 )}
 
-shBuildCiBefore() {(set -e
+shBuildCiBefore () {(set -e
     shNpmTestPublished
     shReadmeTest example.js
 )}
