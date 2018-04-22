@@ -1,0 +1,1307 @@
+
+
+
+
+
+
+<!DOCTYPE html><html lang="en"
+      class="chekov"><head><script>var a=window.devsite||{};window.devsite=a;a.readyCallbacks=[];window.devsite.readyCallbacks=a.readyCallbacks;a.ready=function(b){a.readyCallbacks.push(b)};window.devsite.ready=a.ready;
+</script><meta charset="utf-8"><meta name="xsrf_token" content="DUIIlKvVcj1BXMBH7NFLYhYf2D0QafXcpKId4N9a8ZQ6MTUyNDQyODU5MDY2MzUzMA" /><link rel="canonical" href="https://developers.google.com/places/ios-api/place-id"><link rel="alternate" href="https://developers.google.com/places/ios-api/place-id?hl=ko" hreflang="ko"><link rel="alternate" href="https://developers.google.com/places/ios-api/place-id?hl=ja" hreflang="ja"><link rel="alternate" href="https://developers.google.com/places/ios-api/place-id?hl=es" hreflang="es"><link rel="alternate" href="https://developers.google.com/places/ios-api/place-id?hl=fr" hreflang="fr"><link rel="alternate" href="https://developers.google.com/places/ios-api/place-id?hl=id" hreflang="id"><link rel="alternate" href="https://developers.google.com/places/ios-api/place-id?hl=pt-br" hreflang="pt-br"><link rel="alternate" href="https://developers.google.com/places/ios-api/place-id?hl=zh-tw" hreflang="zh-Hant"><link rel="alternate" href="https://developers.google.com/places/ios-api/place-id?hl=ru" hreflang="ru"><link rel="alternate" href="https://developers.google.com/places/ios-api/place-id?hl=zh-cn" hreflang="zh-Hans"><link rel="alternate" href="https://developers.google.com/places/ios-api/place-id?hl=de" hreflang="de"><link rel="alternate" href="https://developers.google.com/places/ios-api/place-id" hreflang="en"><link rel="alternate" href="https://developers.google.cn/places/ios-api/place-id?hl=ko" hreflang="ko-cn"><link rel="alternate" href="https://developers.google.cn/places/ios-api/place-id?hl=ja" hreflang="ja-cn"><link rel="alternate" href="https://developers.google.cn/places/ios-api/place-id?hl=es" hreflang="es-cn"><link rel="alternate" href="https://developers.google.cn/places/ios-api/place-id?hl=fr" hreflang="fr-cn"><link rel="alternate" href="https://developers.google.cn/places/ios-api/place-id?hl=id" hreflang="id-cn"><link rel="alternate" href="https://developers.google.cn/places/ios-api/place-id?hl=pt-br" hreflang="pt-br-cn"><link rel="alternate" href="https://developers.google.cn/places/ios-api/place-id?hl=zh-tw" hreflang="zh-Hant-cn"><link rel="alternate" href="https://developers.google.cn/places/ios-api/place-id?hl=ru" hreflang="ru-cn"><link rel="alternate" href="https://developers.google.cn/places/ios-api/place-id?hl=zh-cn" hreflang="zh-Hans-cn"><link rel="alternate" href="https://developers.google.cn/places/ios-api/place-id?hl=de" hreflang="de-cn"><link rel="alternate" href="https://developers.google.cn/places/ios-api/place-id" hreflang="en-cn"><link rel="alternate" href="https://developers.google.com/places/ios-api/place-id" hreflang="x-default"><link rel="shortcut icon" href="https://developers.google.com/_static/d7147bb846/images/favicon.png"><link rel="apple-touch-icon" href="https://developers.google.com/_static/d7147bb846/images/touch-icon.png"><meta name="viewport" content="width=device-width, initial-scale=1"><link rel="stylesheet"
+      
+      href="//fonts.googleapis.com/css?family=Google+Sans:400|Roboto:400,400italic,500,500italic,700,700italic|Roboto+Mono:400,500,700|Material+Icons"
+      ><link rel="stylesheet"
+        href="https://developers.google.com/_static/d7147bb846/css/devsite-indigo.css"><link rel="search"
+        type="application/opensearchdescription+xml"
+        title="Google Developers"
+        href="https://developers.google.com/s/opensearch.xml"><script src="https://developers.google.com/_static/d7147bb846/js/jquery-bundle.js"></script><meta property="og:site_name" content="Google Developers"><meta property="og:type" content="website"><meta property="og:url" content="https://developers.google.com/places/ios-api/place-id"><meta property="og:locale" content="en"><script>
+    var ___gcfg = ___gcfg || {};
+    ___gcfg.lang = 'en';
+  </script><title>Place IDs &nbsp;|&nbsp; Google Places API for iOS
+      &nbsp;|&nbsp; Google Developers</title><meta property="og:title" content="Place IDs &nbsp;|&nbsp; Google Places API for iOS
+      &nbsp;|&nbsp; Google Developers"><meta property="og:image"
+          content="https://developers.google.com/_static/d7147bb846/images/share/devsite-indigo.png"><meta property="og:image:secure_url"
+          content="https://developers.google.com/_static/d7147bb846/images/share/devsite-indigo.png"><meta property="og:image:width" content="1200"><meta property="og:image:height" content="630"><link href="https://developers.google.com/maps/documentation/local_extensions.css" rel="stylesheet" type="text/css"><link href="https://developers.google.com/appengine/css/local_extensions.css" rel="stylesheet" type="text/css"><link href="https://developers.google.com/places/styles/local_extensions.css" rel="stylesheet" type="text/css"></head><body class="
+               devsite-doc-page
+               
+               
+               
+               
+               "
+        data-family="endorsed"
+        id="top_of_page"><div class="devsite-wrapper"><div class="devsite-top-section-wrapper
+            "><header class="devsite-top-section nocontent"><div class="devsite-top-logo-row-wrapper-wrapper"><div class="devsite-top-logo-row-wrapper"><div class="devsite-top-logo-row devsite-full-site-width"><button type="button" class="devsite-expand-section-nav devsite-header-icon-button
+                                       button-flat material-icons gc-analytics-event"
+                  data-category="Site-Wide Custom Events" data-label="Hamburger menu"></button><div class="devsite-product-name-wrapper"><a class="devsite-product-name-link gc-analytics-event"
+       href="https://developers.google.com/places/"
+       data-category="Site-Wide Custom Events"
+       data-label="Project logo (header)"><div class="devsite-product-logo material-icons">location_on</div></a><span class="devsite-product-name"><ul class="devsite-breadcrumb-list"><li class="devsite-breadcrumb-item"><a href="https://developers.google.com/places/" class="devsite-breadcrumb-link gc-analytics-event"
+       data-category="Site-Wide Custom Events" data-label="Upper Header"
+       data-value="1">
+    
+    
+      
+        Google Places API
+      
+    
+    
+    </a></li></ul></span></div><div class="devsite-header-upper-tabs"><nav class="devsite-doc-set-nav devsite-nav devsite-overflow-tabs-scroll-wrapper"><ul class="devsite-doc-set-nav-tab-list devsite-overflow-tabs-scroll"><li class="devsite-doc-set-nav-tab-container devsite-nav-tab
+               "><a href="https://developers.google.com/places/"
+         class=" devsite-nav-tab
+                devsite-doc-set-nav-tab devsite-doc-set-nav-tab-link gc-analytics-event"
+         
+       
+         data-category="home"
+       
+         data-label="navTopMenu"
+       
+         data-action="tabClick"
+       >
+        Home
+      </a></li><li class="devsite-doc-set-nav-tab-container devsite-nav-tab
+               devsite-dropdown-menu-container"><a href="https://developers.google.com/places/documentation/"
+         class="devsite-doc-set-nav-active devsite-nav-tab
+                devsite-doc-set-nav-tab devsite-doc-set-nav-tab-link gc-analytics-event"
+         aria-label="Documentation, selected"
+       
+         data-category="documentation"
+       
+         data-label="navTopMenu"
+       
+         data-action="tabClick"
+       >
+        Documentation
+      </a><span class="devsite-menu-toggle devsite-nav-tab material-icons"></span><div class="devsite-dropdown-menu-wrapper
+                  devsite-dropdown-menu-full"><div class="devsite-dropdown-menu"><div class="devsite-dropdown-menu-column"><ul class="devsite-nav-list devsite-dropdown-menu-section"><li class="devsite-nav-item devsite-nav-item-heading"><span class="devsite-nav-title devsite-nav-title-no-path">
+                        Android APIs
+                      </span></li><li class="devsite-nav-item"><a class="devsite-nav-title" href="https://developers.google.com/maps/documentation/android-api/">
+                        Google Maps Android API
+                      </a></li><li class="devsite-nav-item"><a class="devsite-nav-title" href="https://developers.google.com/places/android-api/">
+                        Google Places API for Android
+                      </a></li></ul><ul class="devsite-nav-list devsite-dropdown-menu-section"><li class="devsite-nav-item devsite-nav-item-heading"><span class="devsite-nav-title devsite-nav-title-no-path">
+                        iOS APIs
+                      </span></li><li class="devsite-nav-item"><a class="devsite-nav-title" href="https://developers.google.com/maps/documentation/ios-sdk/">
+                        Google Maps SDK for iOS
+                      </a></li><li class="devsite-nav-item"><a class="devsite-nav-title" href="https://developers.google.com/places/ios-api/">
+                        Google Places API for iOS
+                      </a></li></ul></div><div class="devsite-dropdown-menu-column"><ul class="devsite-nav-list devsite-dropdown-menu-section"><li class="devsite-nav-item devsite-nav-item-heading"><span class="devsite-nav-title devsite-nav-title-no-path">
+                        Web APIs
+                      </span></li><li class="devsite-nav-item"><a class="devsite-nav-title" href="https://developers.google.com/maps/documentation/embed/">
+                        Embed API
+                      </a></li><li class="devsite-nav-item"><a class="devsite-nav-title" href="https://developers.google.com/maps/documentation/javascript/">
+                        JavaScript API
+                      </a></li><li class="devsite-nav-item"><a class="devsite-nav-title" href="https://developers.google.com/maps/documentation/static-maps/">
+                        Static Maps API
+                      </a></li><li class="devsite-nav-item"><a class="devsite-nav-title" href="https://developers.google.com/maps/documentation/streetview/">
+                        Street View Image API
+                      </a></li><li class="devsite-nav-item"><a class="devsite-nav-title" href="https://developers.google.com/places/javascript/">
+                        Google Places API JavaScript Library
+                      </a></li></ul></div><div class="devsite-dropdown-menu-column"><ul class="devsite-nav-list devsite-dropdown-menu-section"><li class="devsite-nav-item devsite-nav-item-heading"><span class="devsite-nav-title devsite-nav-title-no-path">
+                        Web Service APIs
+                      </span></li><li class="devsite-nav-item"><a class="devsite-nav-title" href="https://developers.google.com/maps/documentation/directions/">
+                        Directions API
+                      </a></li><li class="devsite-nav-item"><a class="devsite-nav-title" href="https://developers.google.com/maps/documentation/distance-matrix/">
+                        Distance Matrix API
+                      </a></li><li class="devsite-nav-item"><a class="devsite-nav-title" href="https://developers.google.com/maps/documentation/elevation/">
+                        Elevation API
+                      </a></li><li class="devsite-nav-item"><a class="devsite-nav-title" href="https://developers.google.com/maps/documentation/geocoding/">
+                        Geocoding API
+                      </a></li><li class="devsite-nav-item"><a class="devsite-nav-title" href="https://developers.google.com/maps/documentation/geolocation/">
+                        Geolocation API
+                      </a></li><li class="devsite-nav-item"><a class="devsite-nav-title" href="https://developers.google.com/places/web-service/">
+                        Places API Web Service
+                      </a></li><li class="devsite-nav-item"><a class="devsite-nav-title" href="https://developers.google.com/maps/documentation/roads/">
+                        Roads API
+                      </a></li><li class="devsite-nav-item"><a class="devsite-nav-title" href="https://developers.google.com/maps/documentation/timezone/">
+                        Time Zone API
+                      </a></li></ul></div><div class="devsite-dropdown-menu-column"><ul class="devsite-nav-list devsite-dropdown-menu-section"><li class="devsite-nav-item devsite-nav-item-heading"><span class="devsite-nav-title devsite-nav-title-no-path">
+                        Google Maps APIs Premium Plan
+                      </span></li><li class="devsite-nav-item"><a class="devsite-nav-title" href="https://developers.google.com/maps/premium/">
+                        Documentation
+                      </a></li></ul></div></div></div></li><li class="devsite-doc-set-nav-tab-container devsite-nav-tab
+               "><a href="https://developers.google.com/maps/pricing-and-plans/"
+         class=" devsite-nav-tab
+                devsite-doc-set-nav-tab devsite-doc-set-nav-tab-link gc-analytics-event"
+         
+       
+         data-category="pricingAndPlans"
+       
+         data-label="navTopMenu"
+       
+         data-action="tabClick"
+       >
+        Pricing and Plans
+      </a></li></ul></nav></div><form class="devsite-search-form"
+                action="https://developers.google.com/s/results/"
+                method="GET"
+                id="top-search"
+                search-placeholder='Search'><div id="searchbox" class="devsite-searchbox"><input placeholder='Search'
+         
+         type="text"
+         class="devsite-search-field devsite-search-query"
+         name="q"
+         value=""
+         autocomplete="off"
+         
+         aria-label="Search box"><div class="devsite-search-image material-icons"></div></div><input type="hidden"
+       name="p"
+       id="search_project"
+       value="/places/ios-api/"
+       data-project-name="Google Places API for iOS"
+       data-project-path="/places/ios-api/"
+       data-query-match=""><input type="hidden" class="suggest-project" value="Google Places API for iOS" /><div class="suggest-project-metadata" data-home_url="/places/" data-path="/places/" data-name="Google Places API" ></div></form><a class="devsite-header-link devsite-top-button button gc-analytics-event"
+               href="https://developers.google.com/products/"
+               data-category="Site-Wide Custom Events"
+               data-label="Site header link"
+               track-type="navigateTo"
+               track-name="all products"
+               track-metadata-position="nav"><div class="devsite-header-link-label">All Products</div></a><button type="button" class="devsite-search-button devsite-header-icon-button button-flat
+                                       material-icons"></button><a href="https://www.google.com/accounts/ServiceLogin?passive=true&continue=https%3A%2F%2Fdevelopers.google.com%2Fplaces%2Fios-api%2Fplace-id%3Frefresh%3D1&service=ahsid"
+   class="devsite-user-signin devsite-top-button button gc-analytics-event"
+   data-category="Site-Wide Custom Events" data-label="Sign in button">
+  
+  Sign in
+</a></div></div></div><div class="devsite-collapsible-section"><div class="devsite-header-background devsite-full-site-width"><div class="devsite-product-id-row devsite-full-site-width"><div class="devsite-product-description-row"><ul class="devsite-breadcrumb-list"><li class="devsite-breadcrumb-item"><a href="https://developers.google.com/places/ios-api/" class="devsite-breadcrumb-link gc-analytics-event"
+       data-category="Site-Wide Custom Events" data-label="Lower Header"
+       data-value="1">
+    
+    
+      Places API for iOS
+    
+    
+    </a></li></ul></div><div class="devsite-product-button-row
+            "><a
+    
+    
+      class="devsite-api-getstarted-widget gc-analytics-event devsite-dialog-button button button-text-blue medium"
+    
+    
+      
+      data-category="getKey"
+      
+      data-action="buttonClick"
+      
+      data-label="hero"
+      
+      data-api-id="placesios"
+      
+      data-henhouse-platforms-list="IOS"
+      
+      data-henhouse-link-docs="/places/ios-api/start"
+      
+      data-henhouse-link-support="/places/ios-api/releases"
+      
+    >
+    Get a Key
+  </a><a
+    
+      href="https://developers.google.com/maps/pricing-and-plans/"
+    
+    
+      class="button button-text-blue"
+    
+    
+      
+      data-category="viewPlans"
+      
+      data-action="buttonClick"
+      
+      data-label="hero"
+      
+    >
+    View Pricing and Plans
+  </a></div></div><div class="devsite-doc-set-nav-row devsite-full-site-width"><nav class="devsite-doc-set-nav devsite-nav devsite-overflow-tabs-scroll-wrapper"><ul class="devsite-doc-set-nav-tab-list devsite-overflow-tabs-scroll"><li class="devsite-doc-set-nav-tab-container devsite-nav-tab
+               "><a href="https://developers.google.com/places/ios-api/"
+         class=" devsite-nav-tab
+                devsite-doc-set-nav-tab devsite-doc-set-nav-tab-link gc-analytics-event"
+         
+       
+         data-category="Site-Wide Custom Events"
+       
+         data-label="Tab: Overview"
+       >
+        Overview
+      </a></li><li class="devsite-doc-set-nav-tab-container devsite-nav-tab
+               "><a href="https://developers.google.com/places/ios-api/intro"
+         class="devsite-doc-set-nav-active devsite-nav-tab
+                devsite-doc-set-nav-tab devsite-doc-set-nav-tab-link gc-analytics-event"
+         aria-label="Guides, selected"
+       
+         data-category="Site-Wide Custom Events"
+       
+         data-label="Tab: Guides"
+       >
+        Guides
+      </a></li><li class="devsite-doc-set-nav-tab-container devsite-nav-tab
+               "><a href="https://developers.google.com/places/ios-api/reference/index"
+         class=" devsite-nav-tab
+                devsite-doc-set-nav-tab devsite-doc-set-nav-tab-link gc-analytics-event"
+         
+       
+         data-category="Site-Wide Custom Events"
+       
+         data-label="Tab: Reference"
+       >
+        Reference
+      </a></li><li class="devsite-doc-set-nav-tab-container devsite-nav-tab
+               "><a href="https://developers.google.com/places/ios-api/code-samples"
+         class=" devsite-nav-tab
+                devsite-doc-set-nav-tab devsite-doc-set-nav-tab-link gc-analytics-event"
+         
+       
+         data-category="Site-Wide Custom Events"
+       
+         data-label="Tab: Samples"
+       >
+        Samples
+      </a></li><li class="devsite-doc-set-nav-tab-container devsite-nav-tab
+               "><a href="https://developers.google.com/places/ios-api/support"
+         class=" devsite-nav-tab
+                devsite-doc-set-nav-tab devsite-doc-set-nav-tab-link gc-analytics-event"
+         
+       
+         data-category="Site-Wide Custom Events"
+       
+         data-label="Tab: Support"
+       >
+        Support
+      </a></li><button type="button" id="devsite-feedback-project"
+          class="devsite-feedback-button devsite-top-button gc-analytics-event"
+          data-category="Site-Wide Custom Events" data-label="Send Feedback Button"
+          track-type="feedback" track-name="sendFeedbackLink" track-metadata-position="header">
+  
+  Send feedback
+  </button></ul></nav></div></div></div></header><link rel="stylesheet" href="/maps/styles/lhstyles/landing/css/landing.css"><!-- exit getkey modal --><div id="devsite-dialog-onload-getkey-enabled"
+  class="devsite-dialog devsite-enable-getkey-dialog"><div class="get-key-check"></div><div class="devsite-dialog-contents"><h3>You're all set!</h3><p>
+      To start developing, please head over to our
+      <a href="/places/ios-api/start">developer documentation</a>.
+    </p></div><div class="devsite-dialog-buttons"><button class="devsite-dialog-close button-white">Dismiss</button></div></div><!-- enter getkey modal --><div id="enable-getkey-modal-dialog"
+  class="devsite-dialog devsite-enable-getkey-dialog"><div class="devsite-dialog-contents"><h3>Activate the Google Places API for iOS</h3><p>To get you started we'll guide you through the Google Developers
+    Console to do a few things first:</p><ol><li>Create or choose a project</li><li>Activate the Google Places API for iOS</li><li>Create appropriate keys</li></ol></div><div class="devsite-dialog-buttons devsite-landing-row-item-buttons"><button class="devsite-dialog-close button-white"
+    data-category="getKeyModalCancel"
+    data-action="linkClick"
+    data-label="modal">Cancel</button><a class="button button-white gc-analytics-event"
+    data-category="getKeyModalContinue"
+    data-action="linkClick" data-label="modal"
+    href="https://console.developers.google.com/flows/enableapi?apiid=maps_ios_backend,placesios&reusekey=true"
+    target="_blank"
+    onclick="devsite.utils.showSiteMask().click()">Continue</a></div></div><script>
+    if (window.jQuery) {
+      $(document).ready(function() {
+        if (window.devsite && window.devsite.search) {
+          
+          window.devsite.search.init('en')
+        }
+      });
+    }
+  </script></div><div id="gc-wrapper"itemscope itemtype="http://schema.org/Article"><input class="google-analytics-id-json" type="hidden" value="{&quot;dimensions&quot;: {}, &quot;gaid&quot;: &quot;UA-42966870-1&quot;}"><input class="google-analytics-id-json" type="hidden" value="{&quot;dimensions&quot;: {&quot;dimension6&quot;: &quot;en&quot;, &quot;dimension4&quot;: &quot;Google Places API for iOS&quot;, &quot;dimension5&quot;: &quot;en&quot;, &quot;dimension3&quot;: false, &quot;dimension1&quot;: &quot;Signed out&quot;, &quot;dimension8&quot;: null}, &quot;gaid&quot;: &quot;UA-24532603-1&quot;}"><input class="google-tag-manager-id" type="hidden" value="GTM-W546ZN"><script>
+      var dataLayer = [{"freeTrialEligibleUser": "False", "userCountry": "HK", "language": {"requested": "en", "served": "en"}, "projectName": "Google Places API for iOS", "scriptsafe": null, "signedIn": "False", "internalUser": "False"}];
+    </script>
+
+      
+        <div class="devsite-site-mask"></div>
+        
+  
+
+
+<nav class="devsite-nav-responsive devsite-nav nocontent" tabindex="0">
+  
+  <div class="devsite-nav-responsive-tabs-panel">
+    
+      
+        
+
+
+
+<nav class="devsite-nav-responsive-tabs devsite-nav">
+  <ul class="devsite-nav-list">
+  
+    <li class="devsite-nav-item devsite-nav-item-heading">
+    
+      <a 
+           href="https://developers.google.com/places/"
+         
+         class="devsite-nav-responsive-tab devsite-nav-title gc-analytics-event
+                "
+         data-category="Site-Wide Custom Events" data-label="Responsive Tab: Home">
+        Home
+      </a>
+      
+      
+    
+    </li>
+  
+    <li class="devsite-nav-item devsite-nav-item-heading">
+    
+      <a 
+           href="https://developers.google.com/places/documentation/?nav=true"
+         
+         class="devsite-nav-responsive-tab devsite-nav-title gc-analytics-event
+                devsite-nav-active"
+         data-category="Site-Wide Custom Events" data-label="Responsive Tab: Documentation">
+        Documentation
+      </a>
+      
+      <span class="devsite-nav-index-forward devsite-nav-responsive-tab devsite-nav-title
+                   gc-analytics-event"
+            data-category="Site-Wide Custom Events" data-label="Responsive Tab: Index"
+            tabindex="0"
+            data-tab="Documentation">Index</span>
+      
+      
+        
+
+
+
+<nav class="devsite-nav-responsive-tabs devsite-nav">
+  <ul class="devsite-nav-list">
+  
+    <li class="devsite-nav-item devsite-nav-item-heading">
+    
+      <a 
+           href="https://developers.google.com/places/ios-api/"
+         
+         class="devsite-nav-responsive-tab devsite-nav-title gc-analytics-event
+                "
+         data-category="Site-Wide Custom Events" data-label="Responsive Tab: Overview">
+        Overview
+      </a>
+      
+      
+    
+    </li>
+  
+    <li class="devsite-nav-item devsite-nav-item-heading">
+    
+      <span class="devsite-nav-responsive-forward devsite-nav-responsive-tab devsite-nav-title
+                   devsite-nav-active gc-analytics-event"
+            data-category="Site-Wide Custom Events" data-label="Responsive Tab: Guides"
+            tabindex="0">
+        Guides
+      </span>
+    
+    </li>
+  
+    <li class="devsite-nav-item devsite-nav-item-heading">
+    
+      <a 
+           href="https://developers.google.com/places/ios-api/reference/index"
+         
+         class="devsite-nav-responsive-tab devsite-nav-title gc-analytics-event
+                "
+         data-category="Site-Wide Custom Events" data-label="Responsive Tab: Reference">
+        Reference
+      </a>
+      
+      
+    
+    </li>
+  
+    <li class="devsite-nav-item devsite-nav-item-heading">
+    
+      <a 
+           href="https://developers.google.com/places/ios-api/code-samples"
+         
+         class="devsite-nav-responsive-tab devsite-nav-title gc-analytics-event
+                "
+         data-category="Site-Wide Custom Events" data-label="Responsive Tab: Samples">
+        Samples
+      </a>
+      
+      
+    
+    </li>
+  
+    <li class="devsite-nav-item devsite-nav-item-heading">
+    
+      <a 
+           href="https://developers.google.com/places/ios-api/support?nav=true"
+         
+         class="devsite-nav-responsive-tab devsite-nav-title gc-analytics-event
+                "
+         data-category="Site-Wide Custom Events" data-label="Responsive Tab: Support">
+        Support
+      </a>
+      
+      
+    
+    </li>
+  
+  
+    <li class="devsite-nav-item devsite-nav-item-heading">
+      <a href="https://developers.google.com/products/"
+         class="devsite-nav-responsive-tab devsite-nav-title gc-analytics-event"
+         data-category="Site-Wide Custom Events"
+         data-label="Responsive Tab: all_products">
+        All Products
+      </a>
+    </li>
+  
+  </ul>
+</nav>
+
+
+      
+    
+    </li>
+  
+    <li class="devsite-nav-item devsite-nav-item-heading">
+    
+      <a 
+           href="https://developers.google.com/maps/pricing-and-plans/"
+         
+         class="devsite-nav-responsive-tab devsite-nav-title gc-analytics-event
+                "
+         data-category="Site-Wide Custom Events" data-label="Responsive Tab: Pricing and Plans">
+        Pricing and Plans
+      </a>
+      
+      
+    
+    </li>
+  
+  
+    <li class="devsite-nav-item devsite-nav-item-heading">
+      <a href="https://developers.google.com/products/"
+         class="devsite-nav-responsive-tab devsite-nav-title gc-analytics-event"
+         data-category="Site-Wide Custom Events"
+         data-label="Responsive Tab: all_products">
+        All Products
+      </a>
+    </li>
+  
+  </ul>
+</nav>
+
+
+      
+    
+  </div>
+  
+  
+  <div class="devsite-nav-responsive-sidebar-panel">
+    
+    <div class="devsite-nav-responsive-back" tabindex="0"></div>
+    
+    <nav class="devsite-nav-responsive-sidebar"></nav>
+  </div>
+  
+  
+    <div class="devsite-nav-responsive-index-panel">
+      <div class="devsite-nav-index-back" tabindex="0"></div>
+      <nav>
+      
+        
+      
+        
+        <ul class="devsite-nav-list" data-tab="Documentation">
+        
+          
+            
+            <li class="devsite-nav-item devsite-nav-item-heading">
+              <span class="devsite-nav-title devsite-nav-title-no-path">Android APIs</span>
+            </li>
+            
+            
+            <li class="devsite-nav-item">
+              <a class="devsite-nav-title" href="https://developers.google.com/maps/documentation/android-api/">
+                Google Maps Android API
+              </a>
+            </li>
+            
+            <li class="devsite-nav-item">
+              <a class="devsite-nav-title" href="https://developers.google.com/places/android-api/">
+                Google Places API for Android
+              </a>
+            </li>
+            
+          
+            
+            <li class="devsite-nav-item devsite-nav-item-heading">
+              <span class="devsite-nav-title devsite-nav-title-no-path">iOS APIs</span>
+            </li>
+            
+            
+            <li class="devsite-nav-item">
+              <a class="devsite-nav-title" href="https://developers.google.com/maps/documentation/ios-sdk/">
+                Google Maps SDK for iOS
+              </a>
+            </li>
+            
+            <li class="devsite-nav-item">
+              <a class="devsite-nav-title" href="https://developers.google.com/places/ios-api/">
+                Google Places API for iOS
+              </a>
+            </li>
+            
+          
+        
+          
+            
+            <li class="devsite-nav-item devsite-nav-item-heading">
+              <span class="devsite-nav-title devsite-nav-title-no-path">Web APIs</span>
+            </li>
+            
+            
+            <li class="devsite-nav-item">
+              <a class="devsite-nav-title" href="https://developers.google.com/maps/documentation/embed/">
+                Embed API
+              </a>
+            </li>
+            
+            <li class="devsite-nav-item">
+              <a class="devsite-nav-title" href="https://developers.google.com/maps/documentation/javascript/">
+                JavaScript API
+              </a>
+            </li>
+            
+            <li class="devsite-nav-item">
+              <a class="devsite-nav-title" href="https://developers.google.com/maps/documentation/static-maps/">
+                Static Maps API
+              </a>
+            </li>
+            
+            <li class="devsite-nav-item">
+              <a class="devsite-nav-title" href="https://developers.google.com/maps/documentation/streetview/">
+                Street View Image API
+              </a>
+            </li>
+            
+            <li class="devsite-nav-item">
+              <a class="devsite-nav-title" href="https://developers.google.com/places/javascript/">
+                Google Places API JavaScript Library
+              </a>
+            </li>
+            
+          
+        
+          
+            
+            <li class="devsite-nav-item devsite-nav-item-heading">
+              <span class="devsite-nav-title devsite-nav-title-no-path">Web Service APIs</span>
+            </li>
+            
+            
+            <li class="devsite-nav-item">
+              <a class="devsite-nav-title" href="https://developers.google.com/maps/documentation/directions/">
+                Directions API
+              </a>
+            </li>
+            
+            <li class="devsite-nav-item">
+              <a class="devsite-nav-title" href="https://developers.google.com/maps/documentation/distance-matrix/">
+                Distance Matrix API
+              </a>
+            </li>
+            
+            <li class="devsite-nav-item">
+              <a class="devsite-nav-title" href="https://developers.google.com/maps/documentation/elevation/">
+                Elevation API
+              </a>
+            </li>
+            
+            <li class="devsite-nav-item">
+              <a class="devsite-nav-title" href="https://developers.google.com/maps/documentation/geocoding/">
+                Geocoding API
+              </a>
+            </li>
+            
+            <li class="devsite-nav-item">
+              <a class="devsite-nav-title" href="https://developers.google.com/maps/documentation/geolocation/">
+                Geolocation API
+              </a>
+            </li>
+            
+            <li class="devsite-nav-item">
+              <a class="devsite-nav-title" href="https://developers.google.com/places/web-service/">
+                Places API Web Service
+              </a>
+            </li>
+            
+            <li class="devsite-nav-item">
+              <a class="devsite-nav-title" href="https://developers.google.com/maps/documentation/roads/">
+                Roads API
+              </a>
+            </li>
+            
+            <li class="devsite-nav-item">
+              <a class="devsite-nav-title" href="https://developers.google.com/maps/documentation/timezone/">
+                Time Zone API
+              </a>
+            </li>
+            
+          
+        
+          
+            
+            <li class="devsite-nav-item devsite-nav-item-heading">
+              <span class="devsite-nav-title devsite-nav-title-no-path">Google Maps APIs Premium Plan</span>
+            </li>
+            
+            
+            <li class="devsite-nav-item">
+              <a class="devsite-nav-title" href="https://developers.google.com/maps/premium/">
+                Documentation
+              </a>
+            </li>
+            
+          
+        
+        </ul>
+        
+      
+        
+      
+      </nav>
+    </div>
+  
+</nav>
+
+
+        <div class="devsite-main-content clearfix">
+
+        
+        
+
+        
+  
+  
+    
+    
+      
+  <nav class="devsite-section-nav devsite-nav nocontent">
+    <ul class="devsite-nav-list"><li class="devsite-nav-item"><a href="https://developers.google.com/places/ios-api/intro" class="devsite-nav-title">Overview</a></li><li class="devsite-nav-item"><a href="https://developers.google.com/places/ios-api/start" class="devsite-nav-title">Get Started</a></li><li class="devsite-nav-item devsite-nav-item-heading"><span class="devsite-nav-title devsite-nav-title-no-path">Dev Guides</span></li><li class="devsite-nav-item"><a href="https://developers.google.com/places/ios-api/placepicker" class="devsite-nav-title">Place Picker</a></li><li class="devsite-nav-item"><a href="https://developers.google.com/places/ios-api/current-place" class="devsite-nav-title">Current Place</a></li><li class="devsite-nav-item"><a href="https://developers.google.com/places/ios-api/autocomplete" class="devsite-nav-title">Place Autocomplete</a></li><li class="devsite-nav-item devsite-nav-deprecated devsite-nav-has-status"><a href="https://developers.google.com/places/ios-api/add-place" class="devsite-nav-title"><span class="devsite-nav-text">Place Add</span><span class="devsite-nav-icon-wrapper"><span class="devsite-nav-icon material-icons" title="Deprecated"></span></span></a></li><li class="devsite-nav-item"><a href="https://developers.google.com/places/ios-api/photos" class="devsite-nav-title">Place Photos</a></li><li class="devsite-nav-item"><a href="https://developers.google.com/places/ios-api/report-place" class="devsite-nav-title">Place Report</a></li><li class="devsite-nav-item"><a href="https://developers.google.com/places/ios-api/place-details" class="devsite-nav-title">Place IDs and Details</a></li><li class="devsite-nav-item devsite-nav-item-heading"><span class="devsite-nav-title devsite-nav-title-no-path">Overviews</span></li><li class="devsite-nav-item devsite-nav-active"><a href="https://developers.google.com/places/ios-api/place-id" class="devsite-nav-title">Place IDs</a></li><li class="devsite-nav-item"><a href="https://developers.google.com/places/ios-api/supported_types" class="devsite-nav-title">Place Types</a></li><li class="devsite-nav-item devsite-nav-item-heading"><span class="devsite-nav-title devsite-nav-title-no-path">Tutorials</span></li><li class="devsite-nav-item"><a href="https://developers.google.com/places/ios-api/address-form-tutorial" class="devsite-nav-title">Address Autocomplete</a></li><li class="devsite-nav-item"><a href="https://developers.google.com/places/ios-api/current-place-tutorial" class="devsite-nav-title">Select Current Place</a></li><li class="devsite-nav-item"><a href="https://developers.google.com/places/ios-api/my-places-tutorial" class="devsite-nav-title">My Places</a></li><li class="devsite-nav-item devsite-nav-item-heading"><span class="devsite-nav-title devsite-nav-title-no-path">Policies and Terms</span></li><li class="devsite-nav-item"><a href="https://developers.google.com/places/ios-api/attributions" class="devsite-nav-title">Displaying Attributions</a></li><li class="devsite-nav-item"><a href="https://developers.google.com/places/ios-api/usage" class="devsite-nav-title">Usage Limits</a></li><li class="devsite-nav-item"><a href="https://developers.google.com/maps/terms" class="devsite-nav-title">Terms of Service</a></li></ul>
+  </nav>
+
+    
+
+    
+  <nav class="devsite-page-nav devsite-nav"></nav>
+
+
+      <article class="devsite-article">
+        <article class="devsite-article-inner">
+  
+          
+  
+
+
+
+  
+  <nav class="devsite-breadcrumb-nav devsite-nav">
+    
+
+
+<ul class="devsite-breadcrumb-list">
+  
+  <li class="devsite-breadcrumb-item">
+    
+    
+    <a href="https://developers.google.com/products/" class="devsite-breadcrumb-link gc-analytics-event"
+       data-category="Site-Wide Custom Events" data-label="Breadcrumbs"
+       data-value="1">
+    
+    
+      Products
+    
+    
+    </a>
+    
+  </li>
+  
+  <li class="devsite-breadcrumb-item">
+    
+    
+    <div class="devsite-breadcrumb-guillemet material-icons"></div>
+    
+    
+    <a href="https://developers.google.com/places/" class="devsite-breadcrumb-link gc-analytics-event"
+       data-category="Site-Wide Custom Events" data-label="Breadcrumbs"
+       data-value="2">
+    
+    
+      Google Places API
+    
+    
+    </a>
+    
+  </li>
+  
+  <li class="devsite-breadcrumb-item">
+    
+    
+    <div class="devsite-breadcrumb-guillemet material-icons"></div>
+    
+    
+    <a href="https://developers.google.com/places/ios-api/" class="devsite-breadcrumb-link gc-analytics-event"
+       data-category="Site-Wide Custom Events" data-label="Breadcrumbs"
+       data-value="3">
+    
+    
+      Places API for iOS
+    
+    
+    </a>
+    
+  </li>
+  
+  <li class="devsite-breadcrumb-item">
+    
+    
+    <div class="devsite-breadcrumb-guillemet material-icons"></div>
+    
+    
+    <a href="https://developers.google.com/places/documentation/" class="devsite-breadcrumb-link gc-analytics-event"
+       data-category="Site-Wide Custom Events" data-label="Breadcrumbs"
+       data-value="4">
+    
+    
+      Documentation
+    
+    
+    </a>
+    
+  </li>
+  
+  <li class="devsite-breadcrumb-item">
+    
+    
+    <div class="devsite-breadcrumb-guillemet material-icons"></div>
+    
+    
+    <a href="https://developers.google.com/places/ios-api/intro" class="devsite-breadcrumb-link gc-analytics-event"
+       data-category="Site-Wide Custom Events" data-label="Breadcrumbs"
+       data-value="5">
+    
+    
+      Guides
+    
+    
+    </a>
+    
+  </li>
+  
+</ul>
+
+  </nav>
+  
+  
+  <h1 itemprop="name" class="devsite-page-title">
+    Place IDs
+  </h1>
+  
+  
+  <nav class="devsite-page-nav-embedded devsite-nav"></nav>
+  
+  <div class="devsite-article-body clearfix
+            "
+       itemprop="articleBody">
+    
+
+<p>Place IDs uniquely identify a place in the Google Places database and on
+  Google Maps.</p>
+
+<h2 id="find-id">Find the ID of a particular place</h2>
+
+<p>Are you looking for the place ID of a specific place? Use the place ID
+  finder below to search for a place and get its ID:</p>
+
+<iframe style="width:600px; height:600px"
+src="https://developers.google.com/maps/documentation/javascript/examples/full/places-placeid-finder">
+</iframe>
+
+<p>Alternatively, you can
+  <a href="https://developers.google.com/maps/documentation/javascript/examples/places-placeid-finder">view
+  the place ID finder</a> with its code in the Google Maps JavaScript API
+  documentation.</p>
+
+<h2 id="id-overview">Overview</h2>
+
+<p>A place ID is a textual identifier that uniquely identifies a place. The
+  length of the identifier may vary. Examples:<p>
+
+<ul>
+  <li>
+<pre class="prettyprint notranslate">
+ChIJrTLr-GyuEmsRBfy61i59si0
+</pre>
+  </li>
+  <li>
+<pre class="prettyprint notranslate">
+EisxMyBNYXJrZXQgU3RyZWV0LCBXaWxtaW5ndG9uLCBOQyAyODQwMSwgVVNB
+</pre>
+  </li>
+</ul>
+
+<p>Place IDs are available for most locations, including businesses, landmarks,
+  parks, and intersections.</p>
+
+<p>You can use the same place ID across the Google Places API and a
+  number of Google Maps APIs. For example, you can use the same place ID to
+  reference a place in the
+  <a href="https://developers.google.com/places/">Places API</a>, the
+  <a href="https://developers.google.com/maps/documentation/javascript/places">Google Maps JavaScript API</a>,
+  the <a href="https://developers.google.com/maps/documentation/geocoding">Google Maps Geocoding API</a>,
+  the <a href="https://developers.google.com/maps/documentation/embed">Google Maps Embed API</a>
+  and the <a href="https://developers.google.com/maps/documentation/roads/speed-limits">Google Maps Roads API</a>.</p>
+
+<h2 id="place-details">Retrieve place details using the place ID</h2>
+
+<p>The place ID provides a reliable means of referencing information for a
+  particular place. These IDs are stable, meaning that once you've
+  identified the place ID for a place, you can reuse that value when you next
+  look up that place. If the place still exists, the API returns the same
+  place. Read about <a href="#multiple-ids">multiple IDs and scoping</a> below.
+
+<p>A common way of using place IDs is to search for a place
+  (using the <a href="https://developers.google.com/places/web-service/search">Google Places API Web Service</a>
+  or the <a href="https://developers.google.com/maps/documentation/javascript/places#place_searches">Places
+  library</a> in the Google Maps JavaScript API, for example) then use the
+  returned place ID to retrieve place details. You can store the place ID and
+  use it to retrieve the same place details later. Read about
+  <a href="#save-id">saving place IDs</a> below.</p>
+
+
+
+
+
+
+
+
+<h3>Example using the Google Places API for iOS</h3>
+<aside class="note"><strong>Note:</strong> Use of the
+  <a href="https://developers.google.com/places/ios-api/reference/interface_g_m_s_places_client"><code>GMSPlacesClient
+  lookUpPlaceID:callback:</code></a> method is subject to tiered query
+  limits. See the documentation on <a href="https://developers.google.com/places/ios-api/usage">usage limits</a>.
+</aside>
+
+<p><p>A place ID is a textual identifier that uniquely identifies a place. In
+  the Google Places API for iOS, you can retrieve the ID of a place from a
+  <a href="https://developers.google.com/places/ios-api/reference/interface_g_m_s_place"><code>GMSPlace</code></a>
+  object. You can store the place ID and use it to retrieve the
+  <a href="https://developers.google.com/places/ios-api/reference/interface_g_m_s_place"><code>GMSPlace</code></a>
+  object again later.</p>
+
+<p>To get a place by ID, call
+    <a href="https://developers.google.com/places/ios-api/reference/interface_g_m_s_places_client"><code>GMSPlacesClient
+    lookUpPlaceID:callback:</code></a>, passing a place ID and a callback
+    method.</p>
+
+<p>The API invokes the specified callback method, passing in a
+  <a href="https://developers.google.com/places/ios-api/reference/interface_g_m_s_place"><code>GMSPlace</code></a>
+  object. If the place is not found, the place object is nil.</p>
+
+<div class="ds-selector-tabs" data-ds-scope="code">
+  <section data-ds-value="Swift">
+    <h3>Swift</h3>
+    <pre class="prettyprint notranslate">
+// A hotel in Saigon with an attribution.
+let placeID = &quot;ChIJV4k8_9UodTERU5KXbkYpSYs&quot;
+
+placesClient.lookUpPlaceID(placeID, callback: { (place, error) -&gt; Void in
+  if let error = error {
+    print(&quot;lookup place id query error: \(error.localizedDescription)&quot;)
+    return
+  }
+
+  guard let place = place else {
+    print(&quot;No place details for \(placeID)&quot;)
+    return
+  }
+
+  print(&quot;Place name \(place.name)&quot;)
+  print(&quot;Place address \(place.formattedAddress)&quot;)
+  print(&quot;Place placeID \(place.placeID)&quot;)
+  print(&quot;Place attributions \(place.attributions)&quot;)
+})</pre>
+  </section>
+  <section data-ds-value="Objective-C">
+    <h3>Objective-C</h3>
+    <pre class="prettyprint notranslate">
+// A hotel in Saigon with an attribution.
+NSString *placeID = @&quot;ChIJV4k8_9UodTERU5KXbkYpSYs&quot;;
+
+[_placesClient lookUpPlaceID:placeID callback:^(GMSPlace *place, NSError *error) {
+  if (error != nil) {
+    NSLog(@&quot;Place Details error %@&quot;, [error localizedDescription]);
+    return;
+  }
+
+  if (place != nil) {
+    NSLog(@&quot;Place name %@&quot;, place.name);
+    NSLog(@&quot;Place address %@&quot;, place.formattedAddress);
+    NSLog(@&quot;Place placeID %@&quot;, place.placeID);
+    NSLog(@&quot;Place attributions %@&quot;, place.attributions);
+  } else {
+    NSLog(@&quot;No place details for %@&quot;, placeID);
+  }
+}];
+</pre>
+  </section>
+</div>
+
+
+
+<h2 id="multiple-ids">Handle multiple place IDs and place ID scoping</h2>
+
+<p>Each place ID can refer to only one place, but a single place can have more
+  than one place ID.</p>
+
+<p>A place may get a new ID in the following situations:</p>
+
+<ul>
+  <li>When a business moves to a new location.</li>
+  <li>When your application adds a place. If you add a place using the
+    Places API Web Service, you receive a place ID for the new
+    place immediately. This place ID is scoped for your application only. The
+    place then enters a moderation queue, awaiting approval for addition to the
+    Google Places database. If approved, the place receives a new place ID,
+    available to all applications and on Google Maps. See the documentation on
+    <a href="https://developers.google.com/places/web-service/add-place">adding a place</a>.</li>
+</ul>
+
+<p>The following diagram shows a possible scenario where a place has more
+  than one place ID:</p>
+
+<figure>
+  <img src="https://developers.google.com/places/documentation/images/place-ids.png"
+    style="max-width:75%;"
+    alt="Retrieving a place with multiple IDs">
+</figure>
+
+<p>When a place has multiple IDs, it will have no impact on a
+  Places API request. However, it will affect the
+  response.</p>
+
+<p>When you request a place by specifying a place ID, you can be confident that
+  you will always receive the most up-to-date details for that place, provided
+  the place still exists and the place ID is still active.</p>
+
+<p>Note, however, that the place ID in the response may be
+  different from the one specified in your request, if the place has received
+  a new primary ID. You can safely continue to use the previous place ID to access
+  the place, but it's best practice to swap to the most recently-returned place
+  ID whenever possible.</p>
+
+<p>If the place has multiple IDs scoped for your application, the
+  Places API Web Service will return the primary ID for the
+  place, and an array containing alternative IDs for that place. This array will
+  contain alternative IDs scoped for your application, but not the non-primary IDs
+  for that place. See the documentation on
+  <a href="https://developers.google.com/places/web-service/details#PlaceDetailsResults">place details</a>
+  and <a href="https://developers.google.com/places/web-service/search#PlaceSearchResults">place search</a>.</p>
+
+<h2 id="save-id">Save place IDs for later use</h2>
+
+<p>Place IDs are <strong>exempt from</strong> the caching restrictions stated in
+  <a href="https://developers.google.com/maps/terms#section_10_5">Section 10.5.d</a> of the Google Maps APIs Terms of Service.
+  You can therefore store place ID values for later use.</p>
+
+<p>Note that you may receive a <code>NOT_FOUND</code> status code when you use
+  a saved place ID. <strong>Best practise</strong> is to refresh your stored
+  place IDs periodically, after 100 days for example. One strategy is to store
+  the original request that returned each place ID. If a place ID becomes
+  invalid, you can re-issue that request to get fresh results. These results may
+  or may not include the original place.</p>
+
+<p>A place ID may become obsolete if a business closes or moves to a new
+  location.</p>
+
+<p>Place IDs may change due to large-scale updates on the Google Maps database.
+  In such cases, a place may receive a new place ID, and the old ID returns a
+  <code>NOT_FOUND</code> response.</p>
+
+<p>In particular, some types of place IDs may sometimes cause a
+  <code>NOT_FOUND</code> response, or the API may return a different place ID in
+  the response. These place ID types include:</p>
+
+<ul>
+  <li>Street addresses that do not exist in Google Maps as precise addresses,
+    but are inferred from a range of addresses.</li>
+  <li>Segments of a long route, where the request also specifies a city or
+    locality.</li>
+  <li>Intersections.</li>
+  <li>Places with an address component of type <code>subpremise</code>.</li>
+</ul>
+
+<p>These IDs often take the form of a long string. Example:</p>
+
+<pre class="prettyprint notranslate">
+ElMxNjIsIExhbmUgTnVtYmVyIDcsIEJsb2NrIEgsIE5lYiBTYXJhaSwgU2FpbmlrIEZhcm0sIE5ldyBEZWxoaSwgRGVsaGkgMTEwMDYyLCBJbmRpYQ
+</pre>
+
+
+  </div>
+  
+
+  
+        
+  
+
+
+
+
+
+
+
+        
+<div class="devsite-content-footer nocontent">
+  
+  
+    <p>Except as otherwise noted, the content of this page is licensed under the <a href="http://creativecommons.org/licenses/by/3.0/">Creative Commons Attribution 3.0 License</a>, and code samples are licensed under the <a href="http://www.apache.org/licenses/LICENSE-2.0">Apache 2.0 License</a>. For details, see our <a href="https://developers.google.com/terms/site-policies">Site Policies</a>. Java is a registered trademark of Oracle and/or its affiliates.</p>
+  
+
+  
+    
+    <p class="devsite-content-footer-date" itemprop="datePublished"
+       content="2018-01-18T19:12:46.045100">
+      
+      Last updated January 18, 2018.
+    </p>
+  
+
+</div>
+
+        </article>
+      </article>
+  
+
+        </div>
+      
+
+<footer class="devsite-footer-linkboxes nocontent
+               
+               devsite-footer-linkboxes-with-sites"><nav class="devsite-full-site-width"><ul class="devsite-footer-linkboxes-list"><li class="devsite-footer-linkbox "><h3 class="devsite-footer-linkbox-heading">Quickstart</h3><ul class="devsite-footer-linkbox-list"><li class="devsite-footer-linkbox-item"><a href="https://developers.google.com/places/ios-api/start" class="gc-analytics-event"
+               data-category="Site-Wide Custom Events"
+               data-label="Content Page Footer Linkbox">
+                Get Started
+            </a></li><li class="devsite-footer-linkbox-item"><a href="https://developers.google.com/places/ios-api/reference" class="gc-analytics-event"
+               data-category="Site-Wide Custom Events"
+               data-label="Content Page Footer Linkbox">
+                Reference
+            </a></li><li class="devsite-footer-linkbox-item"><a href="https://developers.google.com/places/ios-api/code-samples" class="gc-analytics-event"
+               data-category="Site-Wide Custom Events"
+               data-label="Content Page Footer Linkbox">
+                Code Samples
+            </a></li></ul></li><li class="devsite-footer-linkbox "><h3 class="devsite-footer-linkbox-heading">Location APIs</h3><ul class="devsite-footer-linkbox-list"><li class="devsite-footer-linkbox-item"><a href="https://developers.google.com/places/android-api/" class="gc-analytics-event"
+               data-category="Site-Wide Custom Events"
+               data-label="Content Page Footer Linkbox">
+                Places API for Android
+            </a></li><li class="devsite-footer-linkbox-item"><a href="https://developers.google.com/places/ios-api/" class="gc-analytics-event"
+               data-category="Site-Wide Custom Events"
+               data-label="Content Page Footer Linkbox">
+                Places API for iOS
+            </a></li><li class="devsite-footer-linkbox-item"><a href="https://developers.google.com/places/javascript/" class="gc-analytics-event"
+               data-category="Site-Wide Custom Events"
+               data-label="Content Page Footer Linkbox">
+                Places JavaScript Library
+            </a></li><li class="devsite-footer-linkbox-item"><a href="https://developers.google.com/places/web-service/" class="gc-analytics-event"
+               data-category="Site-Wide Custom Events"
+               data-label="Content Page Footer Linkbox">
+                Places API Web Service
+            </a></li><li class="devsite-footer-linkbox-item"><a href="https://developer.android.com/training/location/" class="gc-analytics-event"
+               data-category="Site-Wide Custom Events"
+               data-label="Content Page Footer Linkbox">
+                Android Location APIs
+            </a></li><li class="devsite-footer-linkbox-item"><a href="https://developers.google.com/maps/" class="gc-analytics-event"
+               data-category="Site-Wide Custom Events"
+               data-label="Content Page Footer Linkbox">
+                Maps APIs
+            </a></li></ul></li><li class="devsite-footer-linkbox "><h3 class="devsite-footer-linkbox-heading">Resources</h3><ul class="devsite-footer-linkbox-list"><li class="devsite-footer-linkbox-item"><a href="https://developers.google.com/places/support" class="gc-analytics-event"
+               data-category="Site-Wide Custom Events"
+               data-label="Content Page Footer Linkbox">
+                Community and Support
+            </a></li><li class="devsite-footer-linkbox-item"><a href="https://issuetracker.google.com/savedsearches/558482" class="gc-analytics-event"
+               data-category="Site-Wide Custom Events"
+               data-label="Content Page Footer Linkbox">
+                Issue Tracker
+            </a></li><li class="devsite-footer-linkbox-item"><a href="https://stackoverflow.com/questions/tagged/google-places-api" class="gc-analytics-event"
+               data-category="Site-Wide Custom Events"
+               data-label="Content Page Footer Linkbox">
+                Stack Overflow
+            </a></li><li class="devsite-footer-linkbox-item"><a href="https://developers.google.com/maps/terms" class="gc-analytics-event"
+               data-category="Site-Wide Custom Events"
+               data-label="Content Page Footer Linkbox">
+                Terms of Service
+            </a></li><li class="devsite-footer-linkbox-item"><a href="https://googlegeodevelopers.blogspot.com" class="gc-analytics-event"
+               data-category="Site-Wide Custom Events"
+               data-label="Content Page Footer Linkbox">
+                Blog
+            </a></li><li class="devsite-footer-linkbox-item"><a href="https://developers.google.com/maps/documentation/javascript/examples/places-placeid-finder" class="gc-analytics-event"
+               data-category="Site-Wide Custom Events"
+               data-label="Content Page Footer Linkbox">
+                Place ID Finder
+            </a></li></ul></li><li class="devsite-footer-linkbox devsite-footer-linkbox-sites"><a href="https://developers.google.com/"
+           class="gc-analytics-event devsite-footer-linkbox-logo-link"
+           data-category="Site-Wide Custom Events" data-label="Footer Google Developers Link"><img class="devsite-footer-linkbox-logo"
+               src="https://developers.google.com/_static/d7147bb846/images/redesign-14/lockup-color-knockout.png"
+               alt="Google Developers"></a><ul class="devsite-footer-linkbox-list"><li class="devsite-footer-linkbox-item"><a href="//developer.android.com/index.html" class="gc-analytics-event"
+               data-category="Site-Wide Custom Events"
+               data-label="Footer Android Link">
+                Android
+            </a></li><li class="devsite-footer-linkbox-item"><a href="//developer.chrome.com/home" class="gc-analytics-event"
+               data-category="Site-Wide Custom Events"
+               data-label="Footer Chrome Link">
+                Chrome
+            </a></li><li class="devsite-footer-linkbox-item"><a href="//firebase.google.com" class="gc-analytics-event"
+               data-category="Site-Wide Custom Events"
+               data-label="Footer Firebase Link">
+                Firebase
+            </a></li><li class="devsite-footer-linkbox-item"><a href="//cloud.google.com" class="gc-analytics-event"
+               data-category="Site-Wide Custom Events"
+               data-label="Footer Cloud Link">
+                Google Cloud Platform
+            </a></li><li class="devsite-footer-linkbox-item"><a href="//developers.google.com/products/" class="gc-analytics-event"
+               data-category="Site-Wide Custom Events"
+               data-label="Footer Products Link">
+                All Products
+            </a></li></ul></li></ul></nav></footer><footer class="devsite-utility-footer"><nav class="devsite-utility-footer-nav devsite-nav devsite-full-site-width"><div class="devsite-utility-footer-nav-left"><form class="devsite-utility-footer-language" action="/i18n/setlang/" method="post"><input type="hidden" name="xsrf_token" value="DUIIlKvVcj1BXMBH7NFLYhYf2D0QafXcpKId4N9a8ZQ6MTUyNDQyODU5MDY2MzUzMA" /><input type="hidden" name="next" value="/places/ios-api/place-id"><select class="devsite-utility-footer-language-select kd-select" name="language"
+                track-type="languageSelector" track-name="click"><option value="id"
+                
+                track-type="languageSelector" track-name="changed"
+                track-metadata-original-language="en"
+                track-metadata-selected-language="id">
+            Bahasa Indonesia
+          </option><option value="de"
+                
+                track-type="languageSelector" track-name="changed"
+                track-metadata-original-language="en"
+                track-metadata-selected-language="de">
+            Deutsch
+          </option><option value="en"
+                 selected="selected" 
+                track-type="languageSelector" track-name="changed"
+                track-metadata-original-language="en"
+                track-metadata-selected-language="en">
+            English
+          </option><option value="es"
+                
+                track-type="languageSelector" track-name="changed"
+                track-metadata-original-language="en"
+                track-metadata-selected-language="es">
+            español
+          </option><option value="fr"
+                
+                track-type="languageSelector" track-name="changed"
+                track-metadata-original-language="en"
+                track-metadata-selected-language="fr">
+            français
+          </option><option value="pt-br"
+                
+                track-type="languageSelector" track-name="changed"
+                track-metadata-original-language="en"
+                track-metadata-selected-language="pt-br">
+            Português Brasileiro
+          </option><option value="ru"
+                
+                track-type="languageSelector" track-name="changed"
+                track-metadata-original-language="en"
+                track-metadata-selected-language="ru">
+            Русский
+          </option><option value="ja"
+                
+                track-type="languageSelector" track-name="changed"
+                track-metadata-original-language="en"
+                track-metadata-selected-language="ja">
+            日本語
+          </option><option value="zh-cn"
+                
+                track-type="languageSelector" track-name="changed"
+                track-metadata-original-language="en"
+                track-metadata-selected-language="zh-cn">
+            简体中文
+          </option><option value="zh-tw"
+                
+                track-type="languageSelector" track-name="changed"
+                track-metadata-original-language="en"
+                track-metadata-selected-language="zh-tw">
+            繁體中文
+          </option><option value="ko"
+                
+                track-type="languageSelector" track-name="changed"
+                track-metadata-original-language="en"
+                track-metadata-selected-language="ko">
+            한국어
+          </option></select></form><span class="devsite-utility-footer-links"><a class="devsite-utility-footer-link gc-analytics-event"
+           href="https://developers.google.com/terms/site-terms"
+           data-category="Site-Wide Custom Events"
+           data-label="Footer terms link"
+           data-footer-link-id="terms"
+           >Terms
+         </a><a class="devsite-utility-footer-link gc-analytics-event"
+           href="//www.google.com/policies/privacy/"
+           data-category="Site-Wide Custom Events"
+           data-label="Footer privacy link"
+           data-footer-link-id="privacy"
+           >Privacy
+         </a></span></div><div class="devsite-utility-footer-nav-right"><div class="devsite-utility-footer-newsletter-signup-text">
+        Sign up for the Google Developers newsletter
+      </div><a class="button button-primary devsite-utility-footer-newsletter-signup-button"
+         href="//services.google.com/fb/forms/googledevelopersnewsletter/?utm_medium=referral&amp;utm_source=google-products&amp;utm_team=googledevs&amp;utm_campaign=201611-newsletter-launch">
+        
+        Subscribe
+      </a></div></nav></footer><div class="devsite-feedback-dialog devsite-dialog"><div class="devsite-dialog-contents"><h3>Send feedback about...</h3><div class="devsite-feedback-item"><a data-type="documentation" class="gc-analytics-event"
+           data-category="Site-Wide Custom Events" data-label="Docs Feedback Image"
+           track-type="feedback" track-name="feedbackDocIcon" track-metadata-position="header"><div class="devsite-feedback-item-icon-container"><div class="devsite-feedback-item-icon-white devsite-feedback-item-icon-docs
+                        material-icons"></div></div></a><div class="devsite-feedback-item-name">
+          
+          This page
+        </div><div class="devsite-feedback-item-description"><a data-type="documentation" tabindex="0" class="gc-analytics-event"
+             data-category="Site-Wide Custom Events" data-label="Docs Feedback Text"
+             track-type="feedback" track-name="feedbackDocText" track-metadata-position="header">
+            
+            Documentation feedback
+          </a></div></div><div class="devsite-feedback-item"><a data-type="product" tabindex="0" class="gc-analytics-event"
+           data-category="Site-Wide Custom Events" data-label="Product Feedback Image"
+           track-type="feedback" track-name="feedbackProductIcon" track-metadata-position="header"
+         ><div class="devsite-feedback-item-icon material-icons">
+              location_on
+            </div></a><div class="devsite-feedback-item-name">
+        Google Places API for iOS
+        </div><div class="devsite-feedback-item-description"><a data-type="product" tabindex="0" class="gc-analytics-event"
+             data-category="Site-Wide Custom Events" data-label="Product Feedback Text"
+             track-type="feedback" track-name="feedbackProductText" track-metadata-position="header"
+           >
+            
+            Product feedback
+          </a></div></div></div><div class="devsite-dialog-buttons"><button type="button" class="devsite-feedback-cancel button-white gc-analytics-event"
+              data-category="Site-Wide Custom Events" data-label="Cancel Feedback Button"
+              track-type="feedback" track-name="cancelFeedbackButton"
+              track-metadata-position="header">
+        
+        Cancel
+      </button></div></div><script>
+  $(document).ready(function() {
+    new devsite.feedback.Widget({
+        'product_id': '81777',
+        'bucket': '',
+        'context': 'Places API Docs',
+        'version': 'devsite-20180420-r00-rc00.default'
+      },
+      document.querySelectorAll('.devsite-feedback-button'),
+      'en',
+      document.querySelector('.devsite-site-mask'),
+      document.querySelector('.devsite-feedback-dialog'),
+      document.querySelector('.devsite-feedback-cancel'),
+      document.querySelectorAll('.devsite-feedback-item a:not([href])')
+    );
+  });
+  </script></div><script async defer src="//www.gstatic.com/feedback/api.js"></script><script src="https://developers.google.com/_static2/d7147bb846/jsi18n/"></script><script src="https://developers.google.com/_static/d7147bb846/js/script_foot_closure.js"></script><script src="https://developers.google.com/_static/d7147bb846/js/script_foot.js"></script><script>
+        (function($) {
+          
+          devsite.devsite.Init($, {'ENABLE_BLOCKED_VIDEO_PLACEHOLDER': 0, 'SITE_NAME': 'devsite', 'FULL_SITE_SEARCH_ENABLED': 1, 'ENABLE_CLOUDTRACK': 0, 'VTAGS_ENABLED': 0, 'HISTORY_ENABLED': 1, 'VERSION_HASH': 'd7147bb846', 'SCRIPTSAFE_DOMAIN': 'google-developers.appspot.com', 'ENABLE_BLOCKED_LINK_TOOLTIP': 0, 'ALLOWED_HOSTS': ['.android.com', '.anvato.com', '.apigee.com', '.appspot.com', '.dialogflow.com', '.gonglchuangl.net', '.google.cn', '.google.com', '.googleplex.com', '.nest.com', '.openthread.io', '.openweave.io', '.orbitera.com', '.tensorflow.org'], 'BLOCK_RSS_FEEDS': 0},
+                               '[]','en',
+                               true, '',
+                               {"f62218c009ec029abef196bba5aa34cf": true, "8de7a048f21618359bd37f5ce44be073": false, "098dafe57affddc137df300142652cfd": false, "8e03e230de0bd8a6fe173fdf172e8b3f": true, "cb025a64a50094835616312f4774a53d": true, "51470233c56fc1fde50f00b73c52b216": false, "d169d485cf24243a263783dbe42029b1": true, "039e5d84b87fd75807ffb37b7f1bbf2c": true, "700def1a83e356c06c0925afb05de4b0": false, "6749dcb526ce9bde6993550c7d928d24": true}, '/places/ios-api/',
+                               'https://developers.google.com/');
+        })(jQuery);
+
+        
+        devsite.localInit = function() {
+          
+        };
+
+      </script><script>
+      $('.devsite-utility-footer-language-select').each(function() {
+        $(this).change(function(){$('.devsite-utility-footer-language').submit();});
+      });
+      </script><script async defer src="//survey.g.doubleclick.net/async_survey?site=a77fymgs2gce7iudli6fatxx2a"></script></div><span id="devsite-request-elapsed" data-request-elapsed="232.189893723"></span></body></html>

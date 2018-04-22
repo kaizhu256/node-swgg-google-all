@@ -1,0 +1,2000 @@
+
+
+
+
+
+
+<!DOCTYPE html><html lang="en"
+      class="chekov"><head><script>var a=window.devsite||{};window.devsite=a;a.readyCallbacks=[];window.devsite.readyCallbacks=a.readyCallbacks;a.ready=function(b){a.readyCallbacks.push(b)};window.devsite.ready=a.ready;
+</script><meta charset="utf-8"><meta name="xsrf_token" content="btPdmMcXiAhFjKH3dpwgFGH2V1u6M7MNC5qMA57OU-Y6MTUyNDQyODU3MTk3MDg5MA" /><link rel="canonical" href="https://developers.google.com/maps/documentation/javascript/places-autocomplete"><link rel="alternate" href="https://developers.google.com/maps/documentation/javascript/places-autocomplete?hl=de" hreflang="de"><link rel="alternate" href="https://developers.google.com/maps/documentation/javascript/places-autocomplete?hl=es" hreflang="es"><link rel="alternate" href="https://developers.google.com/maps/documentation/javascript/places-autocomplete?hl=fr" hreflang="fr"><link rel="alternate" href="https://developers.google.com/maps/documentation/javascript/places-autocomplete?hl=id" hreflang="id"><link rel="alternate" href="https://developers.google.com/maps/documentation/javascript/places-autocomplete?hl=ja" hreflang="ja"><link rel="alternate" href="https://developers.google.com/maps/documentation/javascript/places-autocomplete?hl=ko" hreflang="ko"><link rel="alternate" href="https://developers.google.com/maps/documentation/javascript/places-autocomplete?hl=pt-br" hreflang="pt-br"><link rel="alternate" href="https://developers.google.com/maps/documentation/javascript/places-autocomplete?hl=ru" hreflang="ru"><link rel="alternate" href="https://developers.google.com/maps/documentation/javascript/places-autocomplete?hl=zh-cn" hreflang="zh-Hans"><link rel="alternate" href="https://developers.google.com/maps/documentation/javascript/places-autocomplete?hl=zh-tw" hreflang="zh-Hant"><link rel="alternate" href="https://developers.google.com/maps/documentation/javascript/places-autocomplete" hreflang="en"><link rel="alternate" href="https://developers.google.cn/maps/documentation/javascript/places-autocomplete?hl=de" hreflang="de-cn"><link rel="alternate" href="https://developers.google.cn/maps/documentation/javascript/places-autocomplete?hl=es" hreflang="es-cn"><link rel="alternate" href="https://developers.google.cn/maps/documentation/javascript/places-autocomplete?hl=fr" hreflang="fr-cn"><link rel="alternate" href="https://developers.google.cn/maps/documentation/javascript/places-autocomplete?hl=id" hreflang="id-cn"><link rel="alternate" href="https://developers.google.cn/maps/documentation/javascript/places-autocomplete?hl=ja" hreflang="ja-cn"><link rel="alternate" href="https://developers.google.cn/maps/documentation/javascript/places-autocomplete?hl=ko" hreflang="ko-cn"><link rel="alternate" href="https://developers.google.cn/maps/documentation/javascript/places-autocomplete?hl=pt-br" hreflang="pt-br-cn"><link rel="alternate" href="https://developers.google.cn/maps/documentation/javascript/places-autocomplete?hl=ru" hreflang="ru-cn"><link rel="alternate" href="https://developers.google.cn/maps/documentation/javascript/places-autocomplete?hl=zh-cn" hreflang="zh-Hans-cn"><link rel="alternate" href="https://developers.google.cn/maps/documentation/javascript/places-autocomplete?hl=zh-tw" hreflang="zh-Hant-cn"><link rel="alternate" href="https://developers.google.cn/maps/documentation/javascript/places-autocomplete" hreflang="en-cn"><link rel="alternate" href="https://developers.google.com/maps/documentation/javascript/places-autocomplete" hreflang="x-default"><link rel="shortcut icon" href="https://developers.google.com/_static/d7147bb846/images/favicon.png"><link rel="apple-touch-icon" href="https://developers.google.com/_static/d7147bb846/images/touch-icon.png"><meta name="viewport" content="width=device-width, initial-scale=1"><link rel="stylesheet"
+      
+      href="//fonts.googleapis.com/css?family=Google+Sans:400|Roboto:400,400italic,500,500italic,700,700italic|Roboto+Mono:400,500,700|Material+Icons"
+      ><link rel="stylesheet"
+        href="https://developers.google.com/_static/d7147bb846/css/devsite-google-blue.css"><link rel="search"
+        type="application/opensearchdescription+xml"
+        title="Google Developers"
+        href="https://developers.google.com/s/opensearch.xml"><script src="https://developers.google.com/_static/d7147bb846/js/jquery-bundle.js"></script><meta property="og:site_name" content="Google Developers"><meta property="og:type" content="website"><meta property="og:url" content="https://developers.google.com/maps/documentation/javascript/places-autocomplete"><meta property="og:locale" content="en"><script>
+    var ___gcfg = ___gcfg || {};
+    ___gcfg.lang = 'en';
+  </script><title>Autocomplete for Addresses and Search Terms &nbsp;|&nbsp; Google Maps JavaScript API
+      &nbsp;|&nbsp; Google Developers</title><meta property="og:title" content="Autocomplete for Addresses and Search Terms &nbsp;|&nbsp; Google Maps JavaScript API
+      &nbsp;|&nbsp; Google Developers"><meta property="og:image"
+          content="https://developers.google.com/_static/d7147bb846/images/share/devsite-google-blue.png"><meta property="og:image:secure_url"
+          content="https://developers.google.com/_static/d7147bb846/images/share/devsite-google-blue.png"><meta property="og:image:width" content="1200"><meta property="og:image:height" content="630"><link rel="stylesheet" href="https://developers.google.com/maps/styles/tos-cards.css"><link href="https://developers.google.com/maps/styles/common.css" rel="stylesheet" type="text/css"></head><body class="
+               devsite-doc-page
+               
+               
+               
+               
+               "
+        data-family="endorsed"
+        id="top_of_page"><div class="devsite-wrapper"><div class="devsite-top-section-wrapper
+            "><header class="devsite-top-section nocontent"><div class="devsite-top-logo-row-wrapper-wrapper"><div class="devsite-top-logo-row-wrapper"><div class="devsite-top-logo-row devsite-full-site-width"><button type="button" class="devsite-expand-section-nav devsite-header-icon-button
+                                       button-flat material-icons gc-analytics-event"
+                  data-category="Site-Wide Custom Events" data-label="Hamburger menu"></button><div class="devsite-product-name-wrapper"><a class="devsite-product-name-link gc-analytics-event"
+       href="https://developers.google.com/maps/"
+       data-category="Site-Wide Custom Events"
+       data-label="Project logo (header)"><img src="https://www.gstatic.com/images/branding/product/1x/maps_64dp.png" class="devsite-product-logo"
+               alt="Google Maps APIs"></a><span class="devsite-product-name"><ul class="devsite-breadcrumb-list"><li class="devsite-breadcrumb-item"><a href="https://developers.google.com/maps/" class="devsite-breadcrumb-link gc-analytics-event"
+       data-category="Site-Wide Custom Events" data-label="Upper Header"
+       data-value="1">
+    
+    
+      
+        Google Maps APIs
+      
+    
+    
+    </a></li></ul></span></div><div class="devsite-header-upper-tabs"><nav class="devsite-doc-set-nav devsite-nav devsite-overflow-tabs-scroll-wrapper"><ul class="devsite-doc-set-nav-tab-list devsite-overflow-tabs-scroll"><li class="devsite-doc-set-nav-tab-container devsite-nav-tab
+               "><a href="https://developers.google.com/maps/"
+         class=" devsite-nav-tab
+                devsite-doc-set-nav-tab devsite-doc-set-nav-tab-link gc-analytics-event"
+         
+       
+         data-category="home"
+       
+         data-label="navTopMenu"
+       
+         data-action="tabClick"
+       >
+        Home
+      </a></li><li class="devsite-doc-set-nav-tab-container devsite-nav-tab
+               devsite-dropdown-menu-container"><a href="https://developers.google.com/maps/documentation/"
+         class="devsite-doc-set-nav-active devsite-nav-tab
+                devsite-doc-set-nav-tab devsite-doc-set-nav-tab-link gc-analytics-event"
+         aria-label="Documentation, selected"
+       
+         data-category="documentation"
+       
+         data-label="navTopMenu"
+       
+         data-action="tabClick"
+       >
+        Documentation
+      </a><span class="devsite-menu-toggle devsite-nav-tab material-icons"></span><div class="devsite-dropdown-menu-wrapper
+                  devsite-dropdown-menu-full"><div class="devsite-dropdown-menu"><div class="devsite-dropdown-menu-column"><ul class="devsite-nav-list devsite-dropdown-menu-section"><li class="devsite-nav-item devsite-nav-item-heading"><span class="devsite-nav-title devsite-nav-title-no-path">
+                        Android APIs
+                      </span></li><li class="devsite-nav-item"><a class="devsite-nav-title" href="https://developers.google.com/maps/documentation/android-api/">
+                        Google Maps Android API
+                      </a></li><li class="devsite-nav-item"><a class="devsite-nav-title" href="https://developers.google.com/places/android-api/">
+                        Google Places API for Android
+                      </a></li></ul><ul class="devsite-nav-list devsite-dropdown-menu-section"><li class="devsite-nav-item devsite-nav-item-heading"><span class="devsite-nav-title devsite-nav-title-no-path">
+                        iOS APIs
+                      </span></li><li class="devsite-nav-item"><a class="devsite-nav-title" href="https://developers.google.com/maps/documentation/ios-sdk/">
+                        Google Maps SDK for iOS
+                      </a></li><li class="devsite-nav-item"><a class="devsite-nav-title" href="https://developers.google.com/places/ios-api/">
+                        Google Places API for iOS
+                      </a></li></ul></div><div class="devsite-dropdown-menu-column"><ul class="devsite-nav-list devsite-dropdown-menu-section"><li class="devsite-nav-item devsite-nav-item-heading"><span class="devsite-nav-title devsite-nav-title-no-path">
+                        Web APIs
+                      </span></li><li class="devsite-nav-item"><a class="devsite-nav-title" href="https://developers.google.com/maps/documentation/embed/">
+                        Embed API
+                      </a></li><li class="devsite-nav-item"><a class="devsite-nav-title" href="https://developers.google.com/maps/documentation/javascript/">
+                        JavaScript API
+                      </a></li><li class="devsite-nav-item"><a class="devsite-nav-title" href="https://developers.google.com/maps/documentation/static-maps/">
+                        Static Maps API
+                      </a></li><li class="devsite-nav-item"><a class="devsite-nav-title" href="https://developers.google.com/maps/documentation/streetview/">
+                        Street View Image API
+                      </a></li><li class="devsite-nav-item"><a class="devsite-nav-title" href="https://developers.google.com/places/javascript/">
+                        Google Places API JavaScript Library
+                      </a></li></ul></div><div class="devsite-dropdown-menu-column"><ul class="devsite-nav-list devsite-dropdown-menu-section"><li class="devsite-nav-item devsite-nav-item-heading"><span class="devsite-nav-title devsite-nav-title-no-path">
+                        Web Service APIs
+                      </span></li><li class="devsite-nav-item"><a class="devsite-nav-title" href="https://developers.google.com/maps/documentation/directions/">
+                        Directions API
+                      </a></li><li class="devsite-nav-item"><a class="devsite-nav-title" href="https://developers.google.com/maps/documentation/distance-matrix/">
+                        Distance Matrix API
+                      </a></li><li class="devsite-nav-item"><a class="devsite-nav-title" href="https://developers.google.com/maps/documentation/elevation/">
+                        Elevation API
+                      </a></li><li class="devsite-nav-item"><a class="devsite-nav-title" href="https://developers.google.com/maps/documentation/geocoding/">
+                        Geocoding API
+                      </a></li><li class="devsite-nav-item"><a class="devsite-nav-title" href="https://developers.google.com/maps/documentation/geolocation/">
+                        Geolocation API
+                      </a></li><li class="devsite-nav-item"><a class="devsite-nav-title" href="https://developers.google.com/places/web-service/">
+                        Places API Web Service
+                      </a></li><li class="devsite-nav-item"><a class="devsite-nav-title" href="https://developers.google.com/maps/documentation/roads/">
+                        Roads API
+                      </a></li><li class="devsite-nav-item"><a class="devsite-nav-title" href="https://developers.google.com/maps/documentation/timezone/">
+                        Time Zone API
+                      </a></li></ul></div><div class="devsite-dropdown-menu-column"><ul class="devsite-nav-list devsite-dropdown-menu-section"><li class="devsite-nav-item devsite-nav-item-heading"><span class="devsite-nav-title devsite-nav-title-no-path">
+                        Google Maps APIs Premium Plan
+                      </span></li><li class="devsite-nav-item"><a class="devsite-nav-title" href="https://developers.google.com/maps/premium/">
+                        Documentation
+                      </a></li></ul></div></div></div></li><li class="devsite-doc-set-nav-tab-container devsite-nav-tab
+               "><a href="https://developers.google.com/maps/pricing-and-plans/"
+         class=" devsite-nav-tab
+                devsite-doc-set-nav-tab devsite-doc-set-nav-tab-link gc-analytics-event"
+         
+       
+         data-category="pricingAndPlans"
+       
+         data-label="navTopMenu"
+       
+         data-action="tabClick"
+       >
+        Pricing and Plans
+      </a></li></ul></nav></div><form class="devsite-search-form"
+                action="https://developers.google.com/s/results/"
+                method="GET"
+                id="top-search"
+                search-placeholder='Search'><div id="searchbox" class="devsite-searchbox"><input placeholder='Search'
+         
+         type="text"
+         class="devsite-search-field devsite-search-query"
+         name="q"
+         value=""
+         autocomplete="off"
+         
+         aria-label="Search box"><div class="devsite-search-image material-icons"></div></div><input type="hidden"
+       name="p"
+       id="search_project"
+       value="/maps/documentation/javascript/"
+       data-project-name="Google Maps JavaScript API"
+       data-project-path="/maps/documentation/javascript/"
+       data-query-match=""><input type="hidden" class="suggest-project" value="Google Maps JavaScript API" /><div class="suggest-project-metadata" data-home_url="/maps/documentation/urls/guide" data-path="/maps/documentation/urls/" data-name="Maps URLs" ></div><div class="suggest-project-metadata" data-home_url="/maps/solutions/" data-path="/maps/solutions/" data-name="Maps APIs Solutions" ></div><div class="suggest-project-metadata" data-home_url="/maps/solutions/transport-tracker/" data-path="/maps/solutions/transport-tracker/" data-name="Transport Tracker Solution" ></div></form><a class="devsite-header-link devsite-top-button button gc-analytics-event"
+               href="https://developers.google.com/products/"
+               data-category="Site-Wide Custom Events"
+               data-label="Site header link"
+               track-type="navigateTo"
+               track-name="all products"
+               track-metadata-position="nav"><div class="devsite-header-link-label">All Products</div></a><button type="button" class="devsite-search-button devsite-header-icon-button button-flat
+                                       material-icons"></button><a href="https://www.google.com/accounts/ServiceLogin?passive=true&continue=https%3A%2F%2Fdevelopers.google.com%2Fmaps%2Fdocumentation%2Fjavascript%2Fplaces-autocomplete%3Frefresh%3D1&service=ahsid"
+   class="devsite-user-signin devsite-top-button button gc-analytics-event"
+   data-category="Site-Wide Custom Events" data-label="Sign in button">
+  
+  Sign in
+</a></div></div></div><div class="devsite-collapsible-section"><div class="devsite-header-background devsite-full-site-width"><div class="devsite-product-id-row devsite-full-site-width"><div class="devsite-product-description-row"><ul class="devsite-breadcrumb-list"><li class="devsite-breadcrumb-item"><a href="https://developers.google.com/maps/web/" class="devsite-breadcrumb-link gc-analytics-event"
+       data-category="Site-Wide Custom Events" data-label="Lower Header"
+       data-value="1">
+    
+    
+      Web
+    
+    
+    </a></li><li class="devsite-breadcrumb-item"><div class="devsite-breadcrumb-guillemet material-icons"></div><a href="https://developers.google.com/maps/documentation/javascript/" class="devsite-breadcrumb-link gc-analytics-event"
+       data-category="Site-Wide Custom Events" data-label="Lower Header"
+       data-value="2">
+    
+    
+      Maps JavaScript API
+    
+    
+    </a></li></ul></div><div class="devsite-product-button-row
+            "><a
+    
+    
+      class="devsite-api-getstarted-widget button gc-analytics-event devsite-dialog-button"
+    
+    
+      
+      data-category="getKey"
+      
+      data-action="buttonClick"
+      
+      data-label="hero"
+      
+      data-api-id="maps_backend"
+      
+      data-henhouse-platforms-list="WEB_BROWSER"
+      
+      data-henhouse-link-docs="/maps/documentation/javascript/tutorial"
+      
+      data-henhouse-link-support="/maps/documentation/javascript/support"
+      
+      data-henhouse-extra-api-ids="geocoding_backend,directions_backend,distance_matrix_backend,elevation_backend,places_backend"
+      
+    >
+    Get a Key
+  </a><a
+    
+      href="https://developers.google.com/maps/pricing-and-plans/"
+    
+    
+      class="button button-text-blue"
+    
+    
+      
+      data-category="viewPlans"
+      
+      data-action="buttonClick"
+      
+      data-label="hero"
+      
+    >
+    View Pricing and Plans
+  </a></div></div><div class="devsite-doc-set-nav-row devsite-full-site-width"><nav class="devsite-doc-set-nav devsite-nav devsite-overflow-tabs-scroll-wrapper"><ul class="devsite-doc-set-nav-tab-list devsite-overflow-tabs-scroll"><li class="devsite-doc-set-nav-tab-container devsite-nav-tab
+               "><a href="https://developers.google.com/maps/documentation/javascript/"
+         class=" devsite-nav-tab
+                devsite-doc-set-nav-tab devsite-doc-set-nav-tab-link gc-analytics-event"
+         
+       
+         data-category="Site-Wide Custom Events"
+       
+         data-label="Tab: Overview"
+       >
+        Overview
+      </a></li><li class="devsite-doc-set-nav-tab-container devsite-nav-tab
+               "><a href="https://developers.google.com/maps/documentation/javascript/tutorial"
+         class="devsite-doc-set-nav-active devsite-nav-tab
+                devsite-doc-set-nav-tab devsite-doc-set-nav-tab-link gc-analytics-event"
+         aria-label="Guides, selected"
+       
+         data-category="Site-Wide Custom Events"
+       
+         data-label="Tab: Guides"
+       >
+        Guides
+      </a></li><li class="devsite-doc-set-nav-tab-container devsite-nav-tab
+               "><a href="https://developers.google.com/maps/documentation/javascript/reference/3.exp"
+         class=" devsite-nav-tab
+                devsite-doc-set-nav-tab devsite-doc-set-nav-tab-link gc-analytics-event"
+         
+       
+         data-category="Site-Wide Custom Events"
+       
+         data-label="Tab: Reference"
+       >
+        Reference
+      </a></li><li class="devsite-doc-set-nav-tab-container devsite-nav-tab
+               "><a href="https://developers.google.com/maps/documentation/javascript/examples/"
+         class=" devsite-nav-tab
+                devsite-doc-set-nav-tab devsite-doc-set-nav-tab-link gc-analytics-event"
+         
+       
+         data-category="Site-Wide Custom Events"
+       
+         data-label="Tab: Samples"
+       >
+        Samples
+      </a></li><li class="devsite-doc-set-nav-tab-container devsite-nav-tab
+               "><a href="https://developers.google.com/maps/documentation/javascript/support"
+         class=" devsite-nav-tab
+                devsite-doc-set-nav-tab devsite-doc-set-nav-tab-link gc-analytics-event"
+         
+       
+         data-category="Site-Wide Custom Events"
+       
+         data-label="Tab: Support"
+       >
+        Support
+      </a></li><button type="button" id="devsite-feedback-project"
+          class="devsite-feedback-button devsite-top-button gc-analytics-event"
+          data-category="Site-Wide Custom Events" data-label="Send Feedback Button"
+          track-type="feedback" track-name="sendFeedbackLink" track-metadata-position="header">
+  
+  Send feedback
+  </button></ul></nav></div></div></div></header><link rel="stylesheet" href="/maps/styles/lhstyles/landing/css/landing.css"><!-- exit getkey modal --><div id="devsite-dialog-onload-getkey-enabled"
+  class="devsite-dialog devsite-enable-getkey-dialog"><div class="get-key-check"></div><div class="devsite-dialog-contents"><h3>You're all set!</h3><p>
+      To start developing, please head over to our
+      <a href="/maps/documentation/javascript/tutorial/">developer documentation</a>.
+    </p></div><div class="devsite-dialog-buttons"><button class="gc-analytics-event devsite-dialog-close button-white"
+      data-category="getKeySuccessModalDismiss"
+      data-action="linkClick" data-label="modal">Dismiss</button></div></div><!-- enter getkey modal --><div id="enable-getkey-modal-dialog"
+  class="devsite-dialog devsite-enable-getkey-dialog"><div class="devsite-dialog-contents"><h3>Activate the Google Maps JavaScript API</h3><p>To get you started we'll guide you through the Google Developers
+    Console to do a few things first:</p><ol><li>Create or choose a project</li><li>Activate the Google Maps JavaScript API and related
+        services</li><li>Create appropriate keys</li></ol></div><div class="devsite-dialog-buttons devsite-landing-row-item-buttons"><button class="devsite-dialog-close button-white"
+    data-category="getKeyModalCancel"
+    data-action="linkClick"
+    data-label="modal">Cancel</button><a class="button button-white gc-analytics-event"
+    data-category="getKeyModalContinue"
+    data-action="linkClick" data-label="modal"
+    href="https://console.developers.google.com/flows/enableapi?apiid=maps_backend,geocoding_backend,directions_backend,distance_matrix_backend,elevation_backend,places_backend&reusekey=true"
+    target="_blank"
+    onclick="devsite.utils.showSiteMask().click()">Continue</a></div></div><script>
+    if (window.jQuery) {
+      $(document).ready(function() {
+        if (window.devsite && window.devsite.search) {
+          
+          window.devsite.search.init('en')
+        }
+      });
+    }
+  </script></div><div id="gc-wrapper"itemscope itemtype="http://schema.org/Article"><input class="google-analytics-id-json" type="hidden" value="{&quot;dimensions&quot;: {}, &quot;gaid&quot;: &quot;UA-42966870-1&quot;}"><input class="google-analytics-id-json" type="hidden" value="{&quot;dimensions&quot;: {&quot;dimension6&quot;: &quot;en&quot;, &quot;dimension4&quot;: &quot;Google Maps JavaScript API&quot;, &quot;dimension5&quot;: &quot;en&quot;, &quot;dimension3&quot;: false, &quot;dimension1&quot;: &quot;Signed out&quot;, &quot;dimension8&quot;: null}, &quot;gaid&quot;: &quot;UA-24532603-1&quot;}"><input class="google-tag-manager-id" type="hidden" value="GTM-W546ZN"><script>
+      var dataLayer = [{"freeTrialEligibleUser": "False", "userCountry": "HK", "language": {"requested": "en", "served": "en"}, "projectName": "Google Maps JavaScript API", "scriptsafe": null, "signedIn": "False", "internalUser": "False"}];
+    </script>
+
+      
+        <div class="devsite-site-mask"></div>
+        
+  
+
+
+<nav class="devsite-nav-responsive devsite-nav nocontent" tabindex="0">
+  
+  <div class="devsite-nav-responsive-tabs-panel">
+    
+      
+        
+
+
+
+<nav class="devsite-nav-responsive-tabs devsite-nav">
+  <ul class="devsite-nav-list">
+  
+    <li class="devsite-nav-item devsite-nav-item-heading">
+    
+      <a 
+           href="https://developers.google.com/maps/"
+         
+         class="devsite-nav-responsive-tab devsite-nav-title gc-analytics-event
+                "
+         data-category="Site-Wide Custom Events" data-label="Responsive Tab: Home">
+        Home
+      </a>
+      
+      
+    
+    </li>
+  
+    <li class="devsite-nav-item devsite-nav-item-heading">
+    
+      <a 
+           href="https://developers.google.com/maps/documentation/?nav=true"
+         
+         class="devsite-nav-responsive-tab devsite-nav-title gc-analytics-event
+                devsite-nav-active"
+         data-category="Site-Wide Custom Events" data-label="Responsive Tab: Documentation">
+        Documentation
+      </a>
+      
+      <span class="devsite-nav-index-forward devsite-nav-responsive-tab devsite-nav-title
+                   gc-analytics-event"
+            data-category="Site-Wide Custom Events" data-label="Responsive Tab: Index"
+            tabindex="0"
+            data-tab="Documentation">Index</span>
+      
+      
+        
+
+
+
+<nav class="devsite-nav-responsive-tabs devsite-nav">
+  <ul class="devsite-nav-list">
+  
+    <li class="devsite-nav-item devsite-nav-item-heading">
+    
+      <a 
+           href="https://developers.google.com/maps/documentation/javascript/"
+         
+         class="devsite-nav-responsive-tab devsite-nav-title gc-analytics-event
+                "
+         data-category="Site-Wide Custom Events" data-label="Responsive Tab: Overview">
+        Overview
+      </a>
+      
+      
+    
+    </li>
+  
+    <li class="devsite-nav-item devsite-nav-item-heading">
+    
+      <span class="devsite-nav-responsive-forward devsite-nav-responsive-tab devsite-nav-title
+                   devsite-nav-active gc-analytics-event"
+            data-category="Site-Wide Custom Events" data-label="Responsive Tab: Guides"
+            tabindex="0">
+        Guides
+      </span>
+    
+    </li>
+  
+    <li class="devsite-nav-item devsite-nav-item-heading">
+    
+      <a 
+           href="https://developers.google.com/maps/documentation/javascript/reference/3.exp?nav=true"
+         
+         class="devsite-nav-responsive-tab devsite-nav-title gc-analytics-event
+                "
+         data-category="Site-Wide Custom Events" data-label="Responsive Tab: Reference">
+        Reference
+      </a>
+      
+      
+    
+    </li>
+  
+    <li class="devsite-nav-item devsite-nav-item-heading">
+    
+      <a 
+           href="https://developers.google.com/maps/documentation/javascript/examples/?nav=true"
+         
+         class="devsite-nav-responsive-tab devsite-nav-title gc-analytics-event
+                "
+         data-category="Site-Wide Custom Events" data-label="Responsive Tab: Samples">
+        Samples
+      </a>
+      
+      
+    
+    </li>
+  
+    <li class="devsite-nav-item devsite-nav-item-heading">
+    
+      <a 
+           href="https://developers.google.com/maps/documentation/javascript/support?nav=true"
+         
+         class="devsite-nav-responsive-tab devsite-nav-title gc-analytics-event
+                "
+         data-category="Site-Wide Custom Events" data-label="Responsive Tab: Support">
+        Support
+      </a>
+      
+      
+    
+    </li>
+  
+  
+    <li class="devsite-nav-item devsite-nav-item-heading">
+      <a href="https://developers.google.com/products/"
+         class="devsite-nav-responsive-tab devsite-nav-title gc-analytics-event"
+         data-category="Site-Wide Custom Events"
+         data-label="Responsive Tab: all_products">
+        All Products
+      </a>
+    </li>
+  
+  </ul>
+</nav>
+
+
+      
+    
+    </li>
+  
+    <li class="devsite-nav-item devsite-nav-item-heading">
+    
+      <a 
+           href="https://developers.google.com/maps/pricing-and-plans/"
+         
+         class="devsite-nav-responsive-tab devsite-nav-title gc-analytics-event
+                "
+         data-category="Site-Wide Custom Events" data-label="Responsive Tab: Pricing and Plans">
+        Pricing and Plans
+      </a>
+      
+      
+    
+    </li>
+  
+  
+    <li class="devsite-nav-item devsite-nav-item-heading">
+      <a href="https://developers.google.com/products/"
+         class="devsite-nav-responsive-tab devsite-nav-title gc-analytics-event"
+         data-category="Site-Wide Custom Events"
+         data-label="Responsive Tab: all_products">
+        All Products
+      </a>
+    </li>
+  
+  </ul>
+</nav>
+
+
+      
+    
+  </div>
+  
+  
+  <div class="devsite-nav-responsive-sidebar-panel">
+    
+    <div class="devsite-nav-responsive-back" tabindex="0"></div>
+    
+    <nav class="devsite-nav-responsive-sidebar"></nav>
+  </div>
+  
+  
+    <div class="devsite-nav-responsive-index-panel">
+      <div class="devsite-nav-index-back" tabindex="0"></div>
+      <nav>
+      
+        
+      
+        
+        <ul class="devsite-nav-list" data-tab="Documentation">
+        
+          
+            
+            <li class="devsite-nav-item devsite-nav-item-heading">
+              <span class="devsite-nav-title devsite-nav-title-no-path">Android APIs</span>
+            </li>
+            
+            
+            <li class="devsite-nav-item">
+              <a class="devsite-nav-title" href="https://developers.google.com/maps/documentation/android-api/">
+                Google Maps Android API
+              </a>
+            </li>
+            
+            <li class="devsite-nav-item">
+              <a class="devsite-nav-title" href="https://developers.google.com/places/android-api/">
+                Google Places API for Android
+              </a>
+            </li>
+            
+          
+            
+            <li class="devsite-nav-item devsite-nav-item-heading">
+              <span class="devsite-nav-title devsite-nav-title-no-path">iOS APIs</span>
+            </li>
+            
+            
+            <li class="devsite-nav-item">
+              <a class="devsite-nav-title" href="https://developers.google.com/maps/documentation/ios-sdk/">
+                Google Maps SDK for iOS
+              </a>
+            </li>
+            
+            <li class="devsite-nav-item">
+              <a class="devsite-nav-title" href="https://developers.google.com/places/ios-api/">
+                Google Places API for iOS
+              </a>
+            </li>
+            
+          
+        
+          
+            
+            <li class="devsite-nav-item devsite-nav-item-heading">
+              <span class="devsite-nav-title devsite-nav-title-no-path">Web APIs</span>
+            </li>
+            
+            
+            <li class="devsite-nav-item">
+              <a class="devsite-nav-title" href="https://developers.google.com/maps/documentation/embed/">
+                Embed API
+              </a>
+            </li>
+            
+            <li class="devsite-nav-item">
+              <a class="devsite-nav-title" href="https://developers.google.com/maps/documentation/javascript/">
+                JavaScript API
+              </a>
+            </li>
+            
+            <li class="devsite-nav-item">
+              <a class="devsite-nav-title" href="https://developers.google.com/maps/documentation/static-maps/">
+                Static Maps API
+              </a>
+            </li>
+            
+            <li class="devsite-nav-item">
+              <a class="devsite-nav-title" href="https://developers.google.com/maps/documentation/streetview/">
+                Street View Image API
+              </a>
+            </li>
+            
+            <li class="devsite-nav-item">
+              <a class="devsite-nav-title" href="https://developers.google.com/places/javascript/">
+                Google Places API JavaScript Library
+              </a>
+            </li>
+            
+          
+        
+          
+            
+            <li class="devsite-nav-item devsite-nav-item-heading">
+              <span class="devsite-nav-title devsite-nav-title-no-path">Web Service APIs</span>
+            </li>
+            
+            
+            <li class="devsite-nav-item">
+              <a class="devsite-nav-title" href="https://developers.google.com/maps/documentation/directions/">
+                Directions API
+              </a>
+            </li>
+            
+            <li class="devsite-nav-item">
+              <a class="devsite-nav-title" href="https://developers.google.com/maps/documentation/distance-matrix/">
+                Distance Matrix API
+              </a>
+            </li>
+            
+            <li class="devsite-nav-item">
+              <a class="devsite-nav-title" href="https://developers.google.com/maps/documentation/elevation/">
+                Elevation API
+              </a>
+            </li>
+            
+            <li class="devsite-nav-item">
+              <a class="devsite-nav-title" href="https://developers.google.com/maps/documentation/geocoding/">
+                Geocoding API
+              </a>
+            </li>
+            
+            <li class="devsite-nav-item">
+              <a class="devsite-nav-title" href="https://developers.google.com/maps/documentation/geolocation/">
+                Geolocation API
+              </a>
+            </li>
+            
+            <li class="devsite-nav-item">
+              <a class="devsite-nav-title" href="https://developers.google.com/places/web-service/">
+                Places API Web Service
+              </a>
+            </li>
+            
+            <li class="devsite-nav-item">
+              <a class="devsite-nav-title" href="https://developers.google.com/maps/documentation/roads/">
+                Roads API
+              </a>
+            </li>
+            
+            <li class="devsite-nav-item">
+              <a class="devsite-nav-title" href="https://developers.google.com/maps/documentation/timezone/">
+                Time Zone API
+              </a>
+            </li>
+            
+          
+        
+          
+            
+            <li class="devsite-nav-item devsite-nav-item-heading">
+              <span class="devsite-nav-title devsite-nav-title-no-path">Google Maps APIs Premium Plan</span>
+            </li>
+            
+            
+            <li class="devsite-nav-item">
+              <a class="devsite-nav-title" href="https://developers.google.com/maps/premium/">
+                Documentation
+              </a>
+            </li>
+            
+          
+        
+        </ul>
+        
+      
+        
+      
+      </nav>
+    </div>
+  
+</nav>
+
+
+        <div class="devsite-main-content clearfix">
+
+        
+        
+
+        
+  
+  
+    
+    
+      
+  <nav class="devsite-section-nav devsite-nav nocontent">
+    <ul class="devsite-nav-list"><li class="devsite-nav-item"><a href="https://developers.google.com/maps/documentation/javascript/tutorial" class="devsite-nav-title">Overview</a></li><li class="devsite-nav-item"><a href="https://developers.google.com/maps/documentation/javascript/get-api-key" class="devsite-nav-title">Get API Key</a></li><li class="devsite-nav-item devsite-nav-item-heading"><span class="devsite-nav-title devsite-nav-title-no-path">Tutorials</span></li><li class="devsite-nav-item"><a href="https://developers.google.com/maps/documentation/javascript/adding-a-google-map" class="devsite-nav-title">Adding a Map with a Marker</a></li><li class="devsite-nav-item"><a href="https://developers.google.com/maps/documentation/javascript/marker-clustering" class="devsite-nav-title">Marker Clustering</a></li><li class="devsite-nav-item"><a href="https://developers.google.com/maps/documentation/javascript/importing_data" class="devsite-nav-title">Importing Data into Maps</a></li><li class="devsite-nav-item"><a href="https://developers.google.com/maps/documentation/javascript/earthquakes" class="devsite-nav-title">Visualizing Data</a></li><li class="devsite-nav-item"><a href="https://developers.google.com/maps/documentation/javascript/combining-data" class="devsite-nav-title">Combining Data</a></li><li class="devsite-nav-item"><a href="https://developers.google.com/maps/documentation/javascript/firebase" class="devsite-nav-title">Mapping with Firebase</a></li><li class="devsite-nav-item"><a href="https://developers.google.com/maps/documentation/javascript/geolocation" class="devsite-nav-title">Geolocation</a></li><li class="devsite-nav-item"><a href="https://developers.google.com/maps/documentation/javascript/mysql-to-maps" class="devsite-nav-title">Using MySQL and PHP with Maps</a></li><li class="devsite-nav-item"><a href="https://developers.google.com/maps/documentation/javascript/info-windows-to-db" class="devsite-nav-title">Saving User-Added Data with Maps</a></li><li class="devsite-nav-item devsite-nav-item-heading"><span class="devsite-nav-title devsite-nav-title-no-path">Experimental Features</span></li><li class="devsite-nav-item"><a href="https://developers.google.com/maps/documentation/javascript/beta-renderer" class="devsite-nav-title">Experimental Renderer</a></li><li class="devsite-nav-item"><a href="https://developers.google.com/maps/documentation/javascript/basemap" class="devsite-nav-title">Experimental Base Map</a></li><li class="devsite-nav-item devsite-nav-item-heading"><span class="devsite-nav-title devsite-nav-title-no-path">Concepts</span></li><li class="devsite-nav-item"><a href="https://developers.google.com/maps/documentation/javascript/basics" class="devsite-nav-title">Overview</a></li><li class="devsite-nav-item"><a href="https://developers.google.com/maps/documentation/javascript/maptypes" class="devsite-nav-title">Map Types</a></li><li class="devsite-nav-item"><a href="https://developers.google.com/maps/documentation/javascript/coordinates" class="devsite-nav-title">Map and Tile Coordinates</a></li><li class="devsite-nav-item"><a href="https://developers.google.com/maps/documentation/javascript/localization" class="devsite-nav-title">Localizing the Map</a></li><li class="devsite-nav-item"><a href="https://developers.google.com/maps/documentation/javascript/versions" class="devsite-nav-title">Versioning</a></li><li class="devsite-nav-item devsite-nav-item-heading"><span class="devsite-nav-title devsite-nav-title-no-path">Styling a Map</span></li><li class="devsite-nav-item"><a href="https://developers.google.com/maps/documentation/javascript/styling" class="devsite-nav-title">Start Styling your Map</a></li><li class="devsite-nav-item"><a href="https://developers.google.com/maps/documentation/javascript/adding-a-legend" class="devsite-nav-title">Custom Legends</a></li><li class="devsite-nav-item"><a href="https://developers.google.com/maps/documentation/javascript/style-reference" class="devsite-nav-title">Style Reference</a></li><li class="devsite-nav-item devsite-nav-item-heading"><span class="devsite-nav-title devsite-nav-title-no-path">Interacting with the Map</span></li><li class="devsite-nav-item"><a href="https://developers.google.com/maps/documentation/javascript/controls" class="devsite-nav-title">Controls</a></li><li class="devsite-nav-item"><a href="https://developers.google.com/maps/documentation/javascript/events" class="devsite-nav-title">Events</a></li><li class="devsite-nav-item"><a href="https://developers.google.com/maps/documentation/javascript/interaction" class="devsite-nav-title">Controlling Zoom and Pan</a></li><li class="devsite-nav-item devsite-nav-deprecated devsite-nav-has-status"><a href="https://developers.google.com/maps/documentation/javascript/signedin" class="devsite-nav-title"><span class="devsite-nav-text">Signed-in Maps</span><span class="devsite-nav-icon-wrapper"><span class="devsite-nav-icon material-icons" title="Deprecated"></span></span></a></li><li class="devsite-nav-item devsite-nav-item-heading"><span class="devsite-nav-title devsite-nav-title-no-path">Drawing on the Map</span></li><li class="devsite-nav-item"><a href="https://developers.google.com/maps/documentation/javascript/overlays" class="devsite-nav-title">Overview</a></li><li class="devsite-nav-item"><a href="https://developers.google.com/maps/documentation/javascript/markers" class="devsite-nav-title">Markers</a></li><li class="devsite-nav-item"><a href="https://developers.google.com/maps/documentation/javascript/custom-markers" class="devsite-nav-title">Custom Markers</a></li><li class="devsite-nav-item"><a href="https://developers.google.com/maps/documentation/javascript/infowindows" class="devsite-nav-title">Info Windows</a></li><li class="devsite-nav-item"><a href="https://developers.google.com/maps/documentation/javascript/shapes" class="devsite-nav-title">Shapes</a></li><li class="devsite-nav-item"><a href="https://developers.google.com/maps/documentation/javascript/symbols" class="devsite-nav-title">Symbols</a></li><li class="devsite-nav-item"><a href="https://developers.google.com/maps/documentation/javascript/groundoverlays" class="devsite-nav-title">Ground Overlays</a></li><li class="devsite-nav-item"><a href="https://developers.google.com/maps/documentation/javascript/customoverlays" class="devsite-nav-title">Custom Overlays</a></li><li class="devsite-nav-item devsite-nav-item-heading"><span class="devsite-nav-title devsite-nav-title-no-path">Displaying data</span></li><li class="devsite-nav-item"><a href="https://developers.google.com/maps/documentation/javascript/layers" class="devsite-nav-title">Overview</a></li><li class="devsite-nav-item"><a href="https://developers.google.com/maps/documentation/javascript/datalayer" class="devsite-nav-title">Data layer</a></li><li class="devsite-nav-item"><a href="https://developers.google.com/maps/documentation/javascript/fusiontableslayer" class="devsite-nav-title">Fusion Tables</a></li><li class="devsite-nav-item"><a href="https://developers.google.com/maps/documentation/javascript/heatmaplayer" class="devsite-nav-title">Heatmap</a></li><li class="devsite-nav-item"><a href="https://developers.google.com/maps/documentation/javascript/kml" class="devsite-nav-title">Displaying KML</a></li><li class="devsite-nav-item"><a href="https://developers.google.com/maps/documentation/javascript/kmllayer" class="devsite-nav-title">KML and GeoRSS</a></li><li class="devsite-nav-item"><a href="https://developers.google.com/maps/documentation/javascript/trafficlayer" class="devsite-nav-title">Traffic, Transit, and Bicycling Layers</a></li><li class="devsite-nav-item devsite-nav-item-heading"><span class="devsite-nav-title devsite-nav-title-no-path">Services</span></li><li class="devsite-nav-item"><a href="https://developers.google.com/maps/documentation/javascript/directions" class="devsite-nav-title">Directions</a></li><li class="devsite-nav-item"><a href="https://developers.google.com/maps/documentation/javascript/distancematrix" class="devsite-nav-title">Distance Matrix</a></li><li class="devsite-nav-item"><a href="https://developers.google.com/maps/documentation/javascript/elevation" class="devsite-nav-title">Elevation</a></li><li class="devsite-nav-item"><a href="https://developers.google.com/maps/documentation/javascript/geocoding" class="devsite-nav-title">Geocoding</a></li><li class="devsite-nav-item"><a href="https://developers.google.com/maps/documentation/javascript/maxzoom" class="devsite-nav-title">Maximum Zoom Imagery</a></li><li class="devsite-nav-item"><a href="https://developers.google.com/maps/documentation/javascript/streetview" class="devsite-nav-title">Street View</a></li><li class="devsite-nav-item devsite-nav-item-heading"><span class="devsite-nav-title devsite-nav-title-no-path">Libraries</span></li><li class="devsite-nav-item"><a href="https://developers.google.com/maps/documentation/javascript/libraries" class="devsite-nav-title">Overview</a></li><li class="devsite-nav-item"><a href="https://developers.google.com/maps/documentation/javascript/drawinglayer" class="devsite-nav-title">Drawing Library</a></li><li class="devsite-nav-item"><a href="https://developers.google.com/maps/documentation/javascript/geometry" class="devsite-nav-title">Geometry Library</a></li><li class="devsite-nav-item"><a href="https://developers.google.com/maps/documentation/javascript/places" class="devsite-nav-title">Places Library</a></li><li class="devsite-nav-item devsite-nav-active"><a href="https://developers.google.com/maps/documentation/javascript/places-autocomplete" class="devsite-nav-title">Autocomplete for Addresses and Search</a></li><li class="devsite-nav-item"><a href="https://developers.google.com/maps/documentation/javascript/visualization" class="devsite-nav-title">Visualization Library</a></li><li class="devsite-nav-item devsite-nav-item-heading"><span class="devsite-nav-title devsite-nav-title-no-path">More Guides</span></li><li class="devsite-nav-item"><a href="https://developers.google.com/maps/documentation/javascript/v2tov3" class="devsite-nav-title">Upgrading from v2 to v3</a></li><li class="devsite-nav-item devsite-nav-item-heading"><span class="devsite-nav-title devsite-nav-title-no-path">Policies and Terms</span></li><li class="devsite-nav-item"><a href="https://developers.google.com/maps/documentation/javascript/usage" class="devsite-nav-title">Usage Limits</a></li><li class="devsite-nav-item devsite-nav-item-heading"><span class="devsite-nav-title devsite-nav-title-no-path">Other APIs</span></li><li class="devsite-nav-item"><a href="https://developers.google.com/maps/documentation/embed/" class="devsite-nav-title">Embed API</a></li><li class="devsite-nav-item"><a href="https://developers.google.com/maps/documentation/static-maps/" class="devsite-nav-title">Static Maps API</a></li><li class="devsite-nav-item"><a href="https://developers.google.com/maps/documentation/streetview/" class="devsite-nav-title">Street View Image API</a></li></ul>
+  </nav>
+
+    
+
+    
+  <nav class="devsite-page-nav devsite-nav"></nav>
+
+
+      <article class="devsite-article">
+        <article class="devsite-article-inner">
+  
+          
+  
+
+
+
+  
+  <nav class="devsite-breadcrumb-nav devsite-nav">
+    
+
+
+<ul class="devsite-breadcrumb-list">
+  
+  <li class="devsite-breadcrumb-item">
+    
+    
+    <a href="https://developers.google.com/products/" class="devsite-breadcrumb-link gc-analytics-event"
+       data-category="Site-Wide Custom Events" data-label="Breadcrumbs"
+       data-value="1">
+    
+    
+      Products
+    
+    
+    </a>
+    
+  </li>
+  
+  <li class="devsite-breadcrumb-item">
+    
+    
+    <div class="devsite-breadcrumb-guillemet material-icons"></div>
+    
+    
+    <a href="https://developers.google.com/maps/" class="devsite-breadcrumb-link gc-analytics-event"
+       data-category="Site-Wide Custom Events" data-label="Breadcrumbs"
+       data-value="2">
+    
+    
+      Google Maps APIs
+    
+    
+    </a>
+    
+  </li>
+  
+  <li class="devsite-breadcrumb-item">
+    
+    
+    <div class="devsite-breadcrumb-guillemet material-icons"></div>
+    
+    
+    <a href="https://developers.google.com/maps/web/" class="devsite-breadcrumb-link gc-analytics-event"
+       data-category="Site-Wide Custom Events" data-label="Breadcrumbs"
+       data-value="3">
+    
+    
+      Web
+    
+    
+    </a>
+    
+  </li>
+  
+  <li class="devsite-breadcrumb-item">
+    
+    
+    <div class="devsite-breadcrumb-guillemet material-icons"></div>
+    
+    
+    <a href="https://developers.google.com/maps/documentation/javascript/" class="devsite-breadcrumb-link gc-analytics-event"
+       data-category="Site-Wide Custom Events" data-label="Breadcrumbs"
+       data-value="4">
+    
+    
+      Maps JavaScript API
+    
+    
+    </a>
+    
+  </li>
+  
+  <li class="devsite-breadcrumb-item">
+    
+    
+    <div class="devsite-breadcrumb-guillemet material-icons"></div>
+    
+    
+    <a href="https://developers.google.com/maps/documentation/" class="devsite-breadcrumb-link gc-analytics-event"
+       data-category="Site-Wide Custom Events" data-label="Breadcrumbs"
+       data-value="5">
+    
+    
+      Documentation
+    
+    
+    </a>
+    
+  </li>
+  
+  <li class="devsite-breadcrumb-item">
+    
+    
+    <div class="devsite-breadcrumb-guillemet material-icons"></div>
+    
+    
+    <a href="https://developers.google.com/maps/documentation/javascript/tutorial" class="devsite-breadcrumb-link gc-analytics-event"
+       data-category="Site-Wide Custom Events" data-label="Breadcrumbs"
+       data-value="6">
+    
+    
+      Guides
+    
+    
+    </a>
+    
+  </li>
+  
+</ul>
+
+  </nav>
+  
+  
+  <h1 itemprop="name" class="devsite-page-title">
+    Autocomplete for Addresses and Search Terms
+  </h1>
+  
+  
+  <nav class="devsite-page-nav-embedded devsite-nav"></nav>
+  
+  <div class="devsite-article-body clearfix
+            "
+       itemprop="articleBody">
+    
+
+<section class="expandable">
+  <span class="showalways" style="color:#039BE5"><b>Note: Server-side
+    libraries</b></span>
+  <p class="note">This page describes the client-side library available with
+    the Google Maps JavaScript API. If you want to work with the
+    Google Places API web service on your server, take a look at the
+    <a href="https://developers.google.com/maps/web-services/client-library">Node.js Client for Google Maps Services</a>. The page at
+    that link also introduces the Java Client,
+    Python Client and Go Client for Google Maps Services.</p>
+</section>
+
+<h2 id="introduction">Introduction</h2>
+
+<p>Autocomplete is a feature of the Places library in the
+  Google Maps JavaScript API. You can use autocomplete to give your
+  applications the type-ahead-search behavior of the Google Maps search field.
+  When a user starts typing an address, autocomplete will fill in the rest.</p>
+
+<aside class="note"><strong>Note:</strong> As defined by the Google Places API,
+  a 'place' can be an establishment, a geographic location, or a prominent
+  point of interest.</aside>
+
+<h2 id="GetStarted">Getting started</h2>
+
+<p>Before using the Places library in the Google Maps JavaScript API, first ensure
+  that the Google Places API Web Service is enabled in the Google API Console, in the same
+  project you set up for the Google Maps JavaScript API.</p>
+<p>To view your list of enabled APIs:</p>
+<ol>
+  <li>Go to the
+    <a href="https://console.developers.google.com/project/_/apiui/apis/enabled" target="_blank">
+      Google API Console</a>.
+  </li>
+  <li>Click the <strong>Select a project</strong> button, then select the same project you set up
+    for the Google Maps JavaScript API and click <strong>Open</strong>.</li>
+  <li>From the list of APIs on the <strong>Dashboard</strong>, look for
+    <strong>Google Places API Web Service</strong>.</li>
+  <li>If you see the API in the list, you’re all set. If the API is <em>not</em> listed,
+    enable it:
+  <ol>
+    <li>At the top of the page, select <strong>ENABLE API</strong> to display the
+      <strong>Library</strong> tab. Alternatively, from the left side menu,
+      select <strong>Library</strong>.</li>
+    <li>Search for <strong>Google Places API Web Service</strong>, then select it from the
+      results list.
+</li>
+    <li>Select <strong>ENABLE</strong>. When the process finishes,
+      <strong>Google Places API Web Service</strong> appears in the list of APIs on the
+      <strong>Dashboard</strong>.</li>
+  </ol>
+  </li>
+</ol>
+
+<h4 id="loading_the_library">Loading the library</h4>
+<p>The Places service is a self-contained library, separate from the main
+  Maps JavaScript API code. To use the functionality contained
+  within this library, you must first load it using the <code>libraries</code>
+  parameter in the Maps API bootstrap URL:</p>
+
+<pre class="prettyprint notranslate">
+&lt;script type=&quot;text/javascript&quot; src=&quot;https://maps.googleapis.com/maps/api/js?key=<var class="apiparam replaceable-credential">YOUR_API_KEY</var>&amp;<strong>libraries=places</strong>&quot;&gt;&lt;/script&gt;
+</pre>
+
+<p>See the <a href="https://developers.google.com/maps/documentation/javascript/libraries">
+  Libraries Overview</a> for more information.</p>
+
+<h2 id="UsageLimits">Usage limits and policies</h2>
+<h3>Quotas</h3>
+  <p>The Google Places API Web Service and Place Autocomplete share a usage quota as described
+    in the <a href="https://developers.google.com/places/web-service/usage">Usage Limits documentation</a> for
+    Google Places API Web Service. These usage limits also apply when using the
+    Places Library in the Google Maps JavaScript API. The daily usage is calculated as the sum
+    of client-side and server-side requests combined.</p>
+
+  <h3>Policies</h3>
+    <p>Use of the Places Library in the Google Maps JavaScript API must be in accordance with the
+      <a href="https://developers.google.com/places/web-service/policies">policies described
+        for the Google Places API Web Service</a>.</p>
+
+<!--
+When adding this include to a page, also add the CSS link to the page:
+<link rel="stylesheet" href="https://developers.google.com/maps/styles/tos-cards.css">
+-->
+<div id="tos-maincontainer" class="tos-02">
+  <div id="tos-leftcolumn">
+  <p id="tos-top" class="tos-02">From our Terms of Service</p>
+
+  <h1 id="tos-head">Display the required<br/>logos and attributions</h1>
+
+  <p class="tos-text">Respect Google's copyrights and attribution. Ensure that
+  the logo and copyright notice are visible, and display the "powered by
+  Google" logo if you're using data without a map.</p>
+
+  <p><a class="button devsite-top-button button-unindented gc-analytics-event"
+        data-category="learnMore"
+        data-action="termsCardLinkClick"
+        data-label="body-tos02-displayLogosAttributes"
+        href="https://developers.google.com/places/web-service/policies#logo_requirements">Learn More</a></p>
+
+  </div>
+  <div id="tos-contentwrapper">
+    <img id="tos-img" src="https://developers.google.com/maps/images/ToS-02.jpg" />
+  </div>
+</div>
+
+
+
+<h2 id="summary-of-classes">Summary of classes</h2>
+
+<p>The API offers two types of autocomplete widgets, which you can add via
+  the <code>Autocomplete</code> and <code>SearchBox</code> classes respectively.
+  In addition, you can use the <code>AutocompleteService</code> class to
+  retrieve autocomplete results programmatically.</p>
+
+<p>Below is a summary of the classes available:</p>
+
+<ul>
+  <li><a href="https://developers.google.com/maps/documentation/javascript/reference#Autocomplete">
+    <code>Autocomplete</code></a> adds a text input field to your web page,
+    and monitors that field for character entries. As the user enters text,
+    autocomplete returns place predictions in the form of a
+    dropdown pick list. When the user selects a place from the list, information
+    about the place is returned to the autocomplete object, and can be retrieved
+    by your application. See the details <a href="#add_autocomplete">below</a>.
+  </li>
+  <li><a href="https://developers.google.com/maps/documentation/javascript/reference#SearchBox">
+    <code>SearchBox</code></a> adds a text input field to your web page, in much
+    the same way as <code>Autocomplete</code>. The differences are as follows:
+    <ul>
+      <li>The main difference lies in the
+      results that appear in the pick list. <code>SearchBox</code> supplies
+      an extended list of predictions, which can include places (as defined by
+      the Google Places API) plus suggested search terms. For example, if the user
+      enters 'pizza in new', the pick list may include the phrase
+      'pizza in New York, NY' as well as the names of various pizza
+      outlets.</li>
+      <li><code>SearchBox</code> offers fewer options than
+      <code>Autocomplete</code> for restricting the search. In the former, you
+      can bias the search towards a given <code>LatLngBounds</code>. In the
+      latter, you can restrict the search to a particular country and particular
+      place types, as well as setting the bounds.</li>
+    </ul>
+    See the details <a href="#places_searchbox">below</a>.
+  </li>
+  <li>You can create an
+    <a href="https://developers.google.com/maps/documentation/javascript/reference#AutocompleteService">
+    <code>AutocompleteService</code></a> object to retrieve
+    predictions programmatically. Call <code>getPlacePredictions()</code> to
+    retrieve matching places, or call <code>getQueryPredictions()</code> to
+    retrieve matching places plus suggested search terms.
+    Note: <code>AutocompleteService</code> does not add any UI controls.
+    Instead, the above methods return an array of prediction objects. Each
+    prediction object contains the text of the prediction, as well as reference
+    information and details of how the result matches the user input. See the
+    details <a href="#place_autocomplete_service">below</a>.</li>
+</ul>
+
+<p>The rest of this page provides example use cases, and details on using the
+  above classes.</p>
+
+<h2 id="video">How to use Autocomplete</h2>
+
+<p>This video shows you how to use
+  <a href="https://developers.google.com/maps/documentation/javascript/reference#Autocomplete">
+  <code>Autocomplete</code></a>, including demos and code samples.</p>
+
+<div class="video-wrapper">
+  <iframe class="devsite-embedded-youtube-video" data-video-id="lSdM3yZkj1w"
+          data-autohide="1" data-showinfo="0"
+          frameborder="0" allowfullscreen>
+  </iframe>
+</div>
+
+<h2 id="address_forms">Example: Autocomplete for address forms</h2>
+
+<p>Does your application include an address form, such as the shipping address
+  for an online order, a credit card billing address, or a taxi booking form?
+  Autocomplete can help users supply the details.</p>
+
+<aside class="note"><strong>Hint:</strong> You can use Place Autocomplete even
+  without a map. If you do show a map, it must be a Google map.</aside>
+
+<p>Figure 1 shows an autocomplete text field, and the pick list of place
+  predictions supplied as the user enters the search query:</p>
+
+<figure id="fig1">
+<img src="https://developers.google.com/maps/documentation/javascript/images/places-autocomplete-suggest.png"
+    alt="An autocomplete text field, and the pick list of place
+    predictions supplied as the user enters the search query." >
+<figcaption>Figure 1: Autocomplete text field and pick list</figcaption>
+</figure>
+
+<aside class="note"><strong>Note: </strong> When you display predictions from
+  Place Autocomplete, you must include the
+  '<a href="https://developers.google.com/places/web-service/policies">powered
+  by Google</a>' logo. This logo is included in the results list by
+  default, as shown in the above example.</aside>
+
+<p>When the user selects an address from the pick list, your application can
+  populate the address form:</p>
+
+<figure id="fig2">
+<img src="https://developers.google.com/maps/documentation/javascript/images/places-autocomplete-filled.png"
+    alt="A completed address form." >
+<figcaption>Figure 2: Completed address form</figcaption>
+</figure>
+
+<p>See an address form in action:
+<a href="https://developers.google.com/maps/documentation/javascript/examples/places-autocomplete-addressform">
+  view example</a>.</p>
+
+<p>Read on to see how to add autocomplete to your web page.</p>
+
+<h2 id="map_controls">Example: Autocomplete for map controls</h2>
+
+<p>Autocomplete is useful for prompting users for information as part of a map
+application, as shown in figure 3:</p>
+
+<figure id="fig3">
+<img src="https://developers.google.com/maps/documentation/javascript/images/places-autocomplete-hotels.png"
+    alt="An autocomplete text field showing a partial city search query
+    and matching places." >
+<figcaption>Figure 3: Autocomplete text field and pick list</figcaption>
+</figure>
+
+<p>See it in action:
+<a href="https://developers.google.com/maps/documentation/javascript/examples/places-autocomplete-hotelsearch">view example</a>.</p>
+
+<p>Read on to see how to add autocomplete to your web page.</p>
+
+<h2 id="add_autocomplete">Add Autocomplete for places and addresses</h2>
+
+<p><a href="https://developers.google.com/maps/documentation/javascript/reference#Autocomplete">
+  <code>Autocomplete</code></a> creates a text input field on your web page,
+  supplies predictions of places in a UI pick list, and returns place details
+  in response to a <code>getPlace()</code> request. Each entry in
+  the pick list corresponds to a single place (as defined by the
+  Google Places API).
+</p>
+
+<p>The <code>Autocomplete</code> constructor takes two arguments:</p>
+<ul>
+  <li>An HTML <code>input</code> element of type <code>text</code>. This is
+    the input field that the autocomplete service will monitor and attach its
+    results to.</li>
+  <li>An <code>options</code> argument, which can contain the following
+    properties:
+    <ul>
+      <li>An array of <code>types</code> specifies an explicit
+        type or a type collection, as listed in the supported types below. If
+        nothing is specified, all types are returned. In general only a single
+        type is allowed. The exception is that you can safely mix the
+        <code>geocode</code> and <code>establishment</code>
+        types, but note that this will have the same effect as specifying no types.
+        The supported types are:
+      <ul>
+        <li><code>geocode</code> instructs the Places service to
+          return only geocoding results, rather than business results.</li>
+        <li><code>address</code> instructs the Places service to
+          return only geocoding results with a precise address.</li>
+        <li><code>establishment</code> instructs the Places service to return
+          only business results.</li>
+        <li>the <code>(regions)</code> type collection instructs the Places
+          service to return any result matching the following types:
+          <ul>
+            <li><code>locality</code></li>
+            <li><code>sublocality</code></li>
+            <li><code>postal_code</code></li>
+            <li><code>country</code></li>
+            <li><code>administrative_area1</code></li>
+            <li><code>administrative_area2</code></li>
+          </ul></li>
+        <li>the <code>(cities)</code> type collection instructs the Places
+            service to return results that match either <code>locality</code> or
+            <code>administrative_area3</code>.</li>
+      </ul></li>
+      <li><code>bounds</code> is a <code>google.maps.LatLngBounds</code>
+        object specifying the area in which to search for places. The results
+        are biased towards, but not restricted to, places contained within
+        these bounds.</li>
+      <li><code>strictBounds</code> is a <code>boolean</code> specifying whether
+        the API must return only those places that are strictly within the region
+        defined by the given <code>bounds</code>. The API does not return results
+        outside this region even if they match the user input.</li>
+      <li><code>componentRestrictions</code> can be used to restrict results to
+        specific groups. Currently, you can use
+        <code>componentRestrictions</code> to filter by up to 5 countries. Countries
+        must be passed as as a two-character, ISO 3166-1 Alpha-2 compatible
+        country code. Multiple countries must be passed as a list of country codes.</li>
+      <li id="placeidonly"><code>placeIdOnly</code> can be used to instruct the
+        <code>Autocomplete</code> widget to retrieve only Place IDs. On calling
+        <code>getPlace()</code> on the <code>Autocomplete</code> object, the
+        <code>PlaceResult</code> made available will only have the <code>place id</code>,
+        <code>types</code> and <code>name</code> properties set. You can use the returned
+        place ID with calls to the Places, Geocoding, Directions or Distance Matrix
+        services.
+        <aside class="note"><strong>Note:</strong> The <code>name</code> property will contain the
+          <code>description</code> from Places Autocomplete predictions. You can read more about the
+          <code>description</code> in the
+          <a href="https://developers.google.com/maps/documentation/javascript/places-autocomplete#place_autocomplete_service">
+            Places Autocomplete documentation</a>.
+        </aside>
+      </li>
+      </ul>
+  </li>
+</ul>
+
+<h3 id="set_search_area">Set biases and search-area boundaries for
+  Autocomplete</h3>
+
+<p>You can bias the autocomplete results to favor an approximate
+  location or area, in the following ways:</p>
+
+<ul>
+  <li>Set the bounds on creation of the <code>Autocomplete</code> object.</li>
+  <li>Change the bounds on an existing <code>Autocomplete</code>.</li>
+  <li>Set the bounds to the map's viewport.</li>
+  <li>Restrict the search to the bounds.</li>
+  <li>Restrict the search to a specific country.</li>
+</ul>
+
+<p>Details are in the sections below.</p>
+
+<aside class="note"><strong>Note:</strong> If you do not supply any bounds or a
+  map viewport, the API will attempt to detect the user's location from their
+  IP address, and will bias the results to that location. If you would prefer
+  to have no location bias, set the bounds to encompass the whole world:
+  (-90,-180),(90,180).</aside>
+
+<h4>Set the bounds on creation of the Autocomplete object</h4>
+
+<p>The example below uses the <code>bounds</code> and <code>types</code>
+  options to request businesses of type 'establishment,' favoring those
+  within the specified geographic area.</p>
+
+<pre class="prettyprint notranslate">
+var defaultBounds = new google.maps.LatLngBounds(
+  new google.maps.LatLng(-33.8902, 151.1759),
+  new google.maps.LatLng(-33.8474, 151.2631));
+
+var input = document.getElementById('searchTextField');
+var options = {
+  bounds: defaultBounds,
+  types: ['establishment']
+};
+
+autocomplete = new google.maps.places.Autocomplete(input, options);
+</pre>
+
+<h4 id="change_search_area">Change the bounds of an existing Autocomplete</h4>
+
+<p>Call <code>setBounds()</code> to change the search area on an existing
+<code>Autocomplete</code>.</p>
+
+<pre class="prettyprint notranslate lang-javascript">
+// Bias the autocomplete object to the user&#39;s geographical location,
+// as supplied by the browser&#39;s &#39;navigator.geolocation&#39; object.
+function geolocate() {
+  if (navigator.geolocation) {
+    navigator.geolocation.getCurrentPosition(function(position) {
+      var geolocation = {
+        lat: position.coords.latitude,
+        lng: position.coords.longitude
+      };
+      var circle = new google.maps.Circle({
+        center: geolocation,
+        radius: position.coords.accuracy
+      });
+      autocomplete.setBounds(circle.getBounds());
+    });
+  }
+}
+</pre>
+
+<p>
+<a href="https://developers.google.com/maps/documentation/javascript/examples/places-autocomplete-addressform">View example</a>.</p>
+
+<h4>Set the bounds to the map's viewport</h4>
+
+<p>Use <code>bindTo()</code> to bias the results to the map's viewport,
+even while that viewport changes.</p>
+
+<pre class="prettyprint notranslate">
+autocomplete.bindTo('bounds', map);
+</pre>
+
+<h4>Restrict the search to the bounds</h4>
+
+<p>Set the <code>strictBounds</code> option to restrict the results to the given bounds,
+even while the viewport changes.</p>
+
+<pre class="prettyprint notranslate">
+autocomplete.setOptions({strictBounds: true})
+</pre>
+
+<p><a href="https://developers.google.com/maps/documentation/javascript/examples/places-autocomplete">View example</a>.</p>
+
+<h4>Restrict the search to a specific country</h4>
+
+<p>Use the <code>componentRestrictions</code> option to restrict the
+  autocomplete search to a particular country. The following code restricts the
+  results to cities within France.</p>
+
+<pre class="prettyprint notranslate">
+var input = document.getElementById('searchTextField');
+var options = {
+  types: ['(cities)'],
+  componentRestrictions: {country: 'fr'}
+};
+
+autocomplete = new google.maps.places.Autocomplete(input, options);
+</pre>
+
+<p>The following example allows the user to choose a country, then restricts
+  the autocomplete results to that country.</p>
+
+<pre class="prettyprint notranslate lang-javascript">
+// Set the country restriction based on user input.
+// Also center and zoom the map on the given country.
+function setAutocompleteCountry() {
+  var country = document.getElementById(&#39;country&#39;).value;
+  if (country == &#39;all&#39;) {
+    autocomplete.setComponentRestrictions({&#39;country&#39;: []});
+    map.setCenter({lat: 15, lng: 0});
+    map.setZoom(2);
+  } else {
+    autocomplete.setComponentRestrictions({&#39;country&#39;: country});
+    map.setCenter(countries[country].center);
+    map.setZoom(countries[country].zoom);
+  }
+  clearResults();
+  clearMarkers();
+}
+</pre>
+
+<p><a href="https://developers.google.com/maps/documentation/javascript/examples/places-autocomplete-hotelsearch">View example</a>.</p>
+
+<p>The following example specifies a number of countries in the <code>componentRestrictions</code>
+  option:
+<a href="https://developers.google.com/maps/documentation/javascript/examples/places-autocomplete-multiple-countries">view example</a>.</p>
+
+<h3 id="placeholder_text">Customize the placeholder text for Autocomplete</h3>
+
+<p>By default, the text field created by the autocomplete service contains
+  standard placeholder text. To modify the text, set the
+  <code>placeholder</code> attribute on the <code>input</code> element:</p>
+
+<pre class="notranslate">&lt;input id="searchTextField" type="text" size="50" placeholder="Anything you want!"&gt;</pre>
+
+<p>Note: The default placeholder text is localized automatically. If you
+  specify your own placeholder value, you must handle the localization of that
+  value in your application. For information on how the Google Maps
+  JavaScript API chooses the language to use, please read the documentation on
+  <a href="https://developers.google.com/maps/documentation/javascript/localization">
+  localization</a>.</p>
+
+<h3 id="get_place_information">Get place information from Autocomplete</h3>
+
+<p>When a user selects a place from the predictions attached to the autocomplete
+  text field, the service fires a <code>place_changed</code> event. You can call
+  <code>getPlace()</code> on the <code>Autocomplete</code> object, to retrieve
+  a <code>PlaceResult</code> object.</p>
+
+<p>By default, autocomplete will give you the full address as a single line of
+  text. For an address form, it is useful to get the address in structured
+  format. You can use <code>Autocomplete.getPlace()</code> to retrieve the full
+  details for each autocomplete prediction, including the structured
+  address.</p>
+
+<p>If you use the <code>placeIdOnly</code> option, the <code>Autocomplete</code> object will not
+  get place details, as the <code>PlaceResult</code> object has only the <code>place_id</code>,
+  <code>types</code> and <code>name</code> properties set.</p>
+<aside class="note"><strong>Note:</strong> The <code>name</code> property will contain the
+  <code>description</code> from Places Autocomplete predictions. You can read more about the
+  <code>description</code> in the
+  <a href="https://developers.google.com/maps/documentation/javascript/places-autocomplete#place_autocomplete_service">Places
+    Autocomplete documentation</a>.
+</aside>
+<p>To get place details, retrieve a <code>PlaceResult</code> object by calling
+  <code>getPlace()</code> on the <code>Autocomplete</code> object when you get the
+  <code>place_changed</code> event. You could then use geocoding to get the location coordinates,
+  or the Places service to get more information on the selected place.</p>
+
+<p>For more information about the <code>PlaceResult</code> object, refer to
+  the documentation on
+  <a href="https://developers.google.com/maps/documentation/javascript/places#place_details_results">
+    place detail results</a>.</p>
+
+<p>The following example uses autocomplete to fill the fields in an address
+form.</p>
+
+<pre class="prettyprint notranslate lang-javascript">
+function fillInAddress() {
+  // Get the place details from the autocomplete object.
+  var place = autocomplete.getPlace();
+
+  for (var component in componentForm) {
+    document.getElementById(component).value = &#39;&#39;;
+    document.getElementById(component).disabled = false;
+  }
+
+  // Get each component of the address from the place details
+  // and fill the corresponding field on the form.
+  for (var i = 0; i &lt; place.address_components.length; i++) {
+    var addressType = place.address_components[i].types[0];
+    if (componentForm[addressType]) {
+      var val = place.address_components[i][componentForm[addressType]];
+      document.getElementById(addressType).value = val;
+    }
+  }
+}
+</pre>
+
+<p>
+  <a href="https://developers.google.com/maps/documentation/javascript/examples/places-autocomplete-addressform">View example</a>.</p>
+
+<h2 id="places_searchbox">Add SearchBox for autocompleting search terms</h2>
+
+<p>The <a href="https://developers.google.com/maps/documentation/javascript/reference#SearchBox">
+  <code>SearchBox</code></a> allows users to perform a text-based geographic
+  search, such as 'pizza in New York' or 'shoe stores near robson street'.
+  You can attach the <code>SearchBox</code> to a text field and, as
+  text is entered, the service will return predictions in the
+  form of a drop-down pick list.</p>
+
+<p><code>SearchBox</code> supplies an extended list of predictions, which
+  can include places (as defined by the Google Places API) plus suggested search
+  terms. For example, if the user enters 'pizza in new', the pick list may
+  include the phrase 'pizza in New York, NY' as well as the names of various
+  pizza outlets. When a user selects a place from the list,
+  information about that place is returned to the SearchBox object, and can be
+  retrieved by your application.<p>
+
+<aside class="note"><strong>Note: </strong> When you display predictions from
+  the Google Places search box, you must include the
+  '<a href="https://developers.google.com/maps/documentation/javascript/places#LogoRequirements">powered
+  by Google</a>' logo. This logo is included in the results list by
+  default, for your convenience.</aside>
+
+<p>The <code>SearchBox</code> constructor takes two arguments:</p>
+<ul>
+  <li>An HTML <code>input</code> element of type <code>text</code>. This is
+    the input field that the <code>SearchBox</code> service will monitor and
+    attach its results to.</li>
+  <li>An <code>options</code> argument, which can contain the
+    <code>bounds</code> property:
+    <code>bounds</code> is a <code>google.maps.LatLngBounds</code>
+    object specifying the area in which to search for places. The results
+    are biased towards, but not restricted to, places contained within
+    these bounds.</li>
+</ul>
+
+<p>The following code uses the bounds parameter to bias the results
+  towards places within a particular geographic area, specified via
+  laitude/longitude coordinates.</p>
+
+<pre class="prettyprint notranslate">
+var defaultBounds = new google.maps.LatLngBounds(
+  new google.maps.LatLng(-33.8902, 151.1759),
+  new google.maps.LatLng(-33.8474, 151.2631));
+
+var input = document.getElementById('searchTextField');
+
+var searchBox = new google.maps.places.SearchBox(input, {
+  bounds: defaultBounds
+});
+</pre>
+
+<h3 id="change_searchbox_area">Change the search area for SearchBox</h3>
+
+<p>To change the search area for an existing <code>SearchBox</code>, call
+  <code>setBounds()</code> on the <code>SearchBox</code> object and pass the
+  relevant <code>LatLngBounds</code> object.</p>
+
+<p><a href="https://developers.google.com/maps/documentation/javascript/examples/places-searchbox">View example</a>.</p>
+
+<h3 id="get_searchbox_information">Get SearchBox information</h3>
+
+<p>When the user selects an item from the predictions attached to the search
+  box, the service fires a <code>places_changed</code> event. You can
+  call <code>getPlaces()</code> on the <code>SearchBox</code> object, to
+  retrieve an array containing several predictions, each of which is a
+  <code>PlaceResult</code> object.</p>
+
+<p>For more information about the <code>PlaceResult</code> object, refer to
+  the documentation on
+  <a href="https://developers.google.com/maps/documentation/javascript/places#place_details_results">
+    place detail results</a>.</p>
+
+<pre class="prettyprint notranslate lang-javascript">
+// Listen for the event fired when the user selects a prediction and retrieve
+// more details for that place.
+searchBox.addListener(&#39;places_changed&#39;, function() {
+  var places = searchBox.getPlaces();
+
+  if (places.length == 0) {
+    return;
+  }
+
+  // Clear out the old markers.
+  markers.forEach(function(marker) {
+    marker.setMap(null);
+  });
+  markers = [];
+
+  // For each place, get the icon, name and location.
+  var bounds = new google.maps.LatLngBounds();
+  places.forEach(function(place) {
+    if (!place.geometry) {
+      console.log(&quot;Returned place contains no geometry&quot;);
+      return;
+    }
+    var icon = {
+      url: place.icon,
+      size: new google.maps.Size(71, 71),
+      origin: new google.maps.Point(0, 0),
+      anchor: new google.maps.Point(17, 34),
+      scaledSize: new google.maps.Size(25, 25)
+    };
+
+    // Create a marker for each place.
+    markers.push(new google.maps.Marker({
+      map: map,
+      icon: icon,
+      title: place.name,
+      position: place.geometry.location
+    }));
+
+    if (place.geometry.viewport) {
+      // Only geocodes have viewport.
+      bounds.union(place.geometry.viewport);
+    } else {
+      bounds.extend(place.geometry.location);
+    }
+  });
+  map.fitBounds(bounds);
+});
+</pre>
+
+<p><a href="https://developers.google.com/maps/documentation/javascript/examples/places-searchbox">View example</a>.</p>
+
+<h2 id="style_autocomplete">Style the Autocomplete and SearchBox widgets</h2>
+
+<p>By default, the UI elements provided by <code>Autocomplete</code> and
+  <code>SearchBox</code> are styled for inclusion on a Google map. You may want
+  to adjust the styling to suit your own site. The following CSS classes are
+  available. All classes listed below apply to both the
+  <code>Autocomplete</code> and the <code>SearchBox</code> widgets.</p>
+
+<figure id="figure1">
+  <img
+    src="https://developers.google.com/maps/documentation/javascript/images/place-autocomplete-css-diagram.png"
+    width="600"
+    alt="A graphical illustration of the CSS classes for the Autocomplete and
+      SearchBox widgets">
+  <figcaption>CSS classes for Autocomplete and SearchBox widgets</figcaption>
+</figure>
+
+<table>
+  <tr>
+    <th>CSS class</th>
+    <th>Description</th>
+  </tr>
+  <tr>
+    <td><code>pac-container</code></td>
+    <td>The visual element containing the list of predictions returned by the
+      Place Autocomplete service. This list appears as a dropdown list below the
+      <code>Autocomplete</code> or <code>SearchBox</code> widget.</td>
+  </tr>
+  <tr>
+    <td><code>pac-icon</code></td>
+    <td>The icon displayed to the left of each item in the list of
+      predictions.</td>
+  </tr>
+  <tr>
+    <td><code>pac-item</code></td>
+    <td>An item in the list of predictions supplied by the
+      <code>Autocomplete</code> or <code>SearchBox</code> widget.</td>
+  </tr>
+  <tr>
+    <td><code>pac-item:hover</code></td>
+    <td>The item when the user hovers their mouse pointer over it.</td>
+  </tr>
+  <tr>
+    <td><code>pac-item-selected</code></td>
+    <td>The item when the user selects it via the keyboard. Note: Selected items
+      will be a member of this class and of the <code>pac-item</code> class.
+    </td>
+  </tr>
+  <tr>
+    <td><code>pac-item-query</code></td>
+    <td>A span inside a <code>pac-item</code> that is the main part of the
+      prediction. For geographic locations, this contains a place name, like
+      'Sydney', or a street name and number, like '10 King Street'. For
+      text-based searches such as 'pizza in New York', it contains the full text
+      of the query. By default, the <code>pac-item-query</code> is colored
+      black. If there is any additional text in the <code>pac-item</code>, it is
+      outside <code>pac-item-query</code> and inherits its styling from
+      <code>pac-item</code>. It is colored gray by default. The additional text
+      is typically an address.</td>
+  </tr>
+  <tr>
+    <td><code>pac-matched</code></td>
+    <td>The part of the returned prediction that matches the user’s input. By
+      default, this matched text is highlighted in bold text. Note that the
+      matched text may be anywhere within <code>pac-item</code>. It is not
+      necessarily part of <code>pac-item-query</code>, and it could be partly
+      within <code>pac-item-query</code> as well as partly in the remaining text
+      in <code>pac-item</code>.</td>
+  </tr>
+</table>
+
+<h2 id="place_autocomplete_service">Retrieve predictions from the autocomplete
+service</h2>
+
+<p>To retrieve predictions programmatically, use the
+  <a href="https://developers.google.com/maps/documentation/javascript/reference#AutocompleteService">
+  <code>AutocompleteService</code></a> class. <code>AutocompleteService</code>
+  does not add any UI controls. Instead, it returns an array of prediction
+  objects, each containing the text of the prediction, reference information,
+  and details of how the result matches the user input.
+  This is useful if you want more control over the user interface than is
+  offered by the <code>Autocomplete</code> and <code>SearchBox</code>
+  described above.</p>
+
+<p><code>AutocompleteService</code> exposes the following methods:</p>
+
+<ul>
+  <li><code>getPlacePredictions()</code> returns place predictions.
+    Note: A 'place' can be an establishment, geographic location, or prominent
+    point of interest, as defined by the Places API.</li>
+  <li><code>getQueryPredictions()</code> returns an extended list of
+    predictions, which can include places (as defined by the Places API)
+    plus suggested search terms. For example, if the user
+    enters 'pizza in new', the pick list may include the phrase
+    'pizza in New York, NY' as well as the names of various pizza outlets.</li>
+</ul>
+
+<p>Both of the above methods return an array of
+  <a href="https://developers.google.com/maps/documentation/javascript/reference#AutocompletePrediction">prediction
+  objects</a> of the following form:</p>
+
+<ul>
+  <li><code>description</code> is the matched prediction.</li>
+  <li><code>matched_substrings</code> contains a set of substrings in the
+    description that match elements in the user's input. This is useful for
+    highlighting those substrings in your application. In many cases, the
+    query will appear as a substring of the description field.
+    <ul>
+      <li><code>length</code> is the length of the substring.</li>
+      <li><code>offset</code> is the character offset, measured from the
+        beginning of the description string, at which the matched substring
+        appears.</li>
+    </ul>
+  </li>
+  <li><code>place_id</code> is a textual identifier that uniquely identifies
+    a place. To retrieve information about the place, pass this identifier in
+    the <code>placeId</code> field of a
+    <a href="https://developers.google.com/maps/documentation/javascript/places#place_details">Place Details
+    request</a>. Learn more about how to
+    <a href="https://developers.google.com/maps/documentation/javascript/places#placeid">reference a place
+    with a place ID</a>.</li>
+  <li><code>terms</code> is an array containing elements of the query. For
+    a place, each element will typically make up a portion of the address.
+    <ul>
+      <li><code>offset</code> is the character offset, measured from the
+        beginning of the description string, at which the matched substring
+        appears.</li>
+      <li><code>value</code> is the matching term.</li>
+    </ul>
+  </li>
+</ul>
+
+<p>The example below executes a query prediction request for the phrase
+  'pizza near' and displays the result in a list.</p>
+
+<div class="devsite-jsfiddle-code-sample devsite-jsfiddle-hide" data-scope="places-queryprediction">
+  <pre data-type="js">// This example retrieves autocomplete predictions programmatically from the
+// autocomplete service, and displays them as an HTML list.
+
+// This example requires the Places library. Include the libraries=places
+// parameter when you first load the API. For example:
+// &lt;script src=&quot;https://maps.googleapis.com/maps/api/js?key=YOUR_API_KEY&amp;libraries=places&quot;&gt;
+
+function initService() {
+  var displaySuggestions = function(predictions, status) {
+    if (status != google.maps.places.PlacesServiceStatus.OK) {
+      alert(status);
+      return;
+    }
+
+    predictions.forEach(function(prediction) {
+      var li = document.createElement(&#39;li&#39;);
+      li.appendChild(document.createTextNode(prediction.description));
+      document.getElementById(&#39;results&#39;).appendChild(li);
+    });
+  };
+
+  var service = new google.maps.places.AutocompleteService();
+  service.getQueryPredictions({ input: &#39;pizza near Syd&#39; }, displaySuggestions);
+}</pre>
+  <pre data-type="html">&lt;div id=&quot;right-panel&quot;&gt;
+  &lt;p&gt;Query suggestions for &#39;pizza near Syd&#39;:&lt;/p&gt;
+  &lt;ul id=&quot;results&quot;&gt;&lt;/ul&gt;
+&lt;/div&gt;</pre>
+  <pre data-type="css">/* Always set the map height explicitly to define the size of the div
+ * element that contains the map. */
+#map {
+  height: 100%;
+}
+/* Optional: Makes the sample page fill the window. */
+html, body {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+}</pre>
+  <pre data-type="css">#right-panel {
+  font-family: &#39;Roboto&#39;,&#39;sans-serif&#39;;
+  line-height: 30px;
+  padding-left: 10px;
+}
+
+#right-panel select, #right-panel input {
+  font-size: 15px;
+}
+
+#right-panel select {
+  width: 100%;
+}
+
+#right-panel i {
+  font-size: 12px;
+}</pre>
+  <pre data-type="html">&lt;!-- Replace the value of the key parameter with your own API key. --&gt;
+&lt;script type=&quot;text/javascript&quot; src=&quot;https://maps.googleapis.com/maps/api/js?key=AIzaSyCkUOdZ5y7hMm0yrcCQoCvLwzdM6M8s5qk&amp;libraries=places&amp;callback=initService&quot;
+    async defer&gt;&lt;/script&gt;
+</pre>
+</div>
+<pre class="prettyprint notranslate lang-javascript devsite-enable-open-in-jsfiddle" data-scope="places-queryprediction" data-jsfiddle-title="Retrieving Autocomplete Predictions">// This example retrieves autocomplete predictions programmatically from the
+// autocomplete service, and displays them as an HTML list.
+
+// This example requires the Places library. Include the libraries=places
+// parameter when you first load the API. For example:
+// &lt;script src=&quot;https://maps.googleapis.com/maps/api/js?key=YOUR_API_KEY&amp;libraries=places&quot;&gt;
+
+function initService() {
+  var displaySuggestions = function(predictions, status) {
+    if (status != google.maps.places.PlacesServiceStatus.OK) {
+      alert(status);
+      return;
+    }
+
+    predictions.forEach(function(prediction) {
+      var li = document.createElement(&#39;li&#39;);
+      li.appendChild(document.createTextNode(prediction.description));
+      document.getElementById(&#39;results&#39;).appendChild(li);
+    });
+  };
+
+  var service = new google.maps.places.AutocompleteService();
+  service.getQueryPredictions({ input: &#39;pizza near Syd&#39; }, displaySuggestions);
+}</pre>
+
+<p><a href="https://developers.google.com/maps/documentation/javascript/examples/places-queryprediction">View example</a>.</p>
+
+
+  </div>
+  
+
+  
+        
+  
+
+
+
+
+
+
+
+        
+<div class="devsite-content-footer nocontent">
+  
+  
+    <p>Except as otherwise noted, the content of this page is licensed under the <a href="http://creativecommons.org/licenses/by/3.0/">Creative Commons Attribution 3.0 License</a>, and code samples are licensed under the <a href="http://www.apache.org/licenses/LICENSE-2.0">Apache 2.0 License</a>. For details, see our <a href="https://developers.google.com/terms/site-policies">Site Policies</a>. Java is a registered trademark of Oracle and/or its affiliates.</p>
+  
+
+  
+    
+    <p class="devsite-content-footer-date" itemprop="datePublished"
+       content="2018-03-26T21:22:00.661690">
+      
+      Last updated March 26, 2018.
+    </p>
+  
+
+</div>
+
+        </article>
+      </article>
+  
+
+        </div>
+      
+
+<footer class="devsite-footer-promos nocontent"><nav class="devsite-full-site-width"><ul class="devsite-footer-promos-list"><li class="devsite-footer-promo"><a href="http://stackoverflow.com/questions/tagged/google-maps-api-3"
+           class="devsite-footer-promo-title gc-analytics-event"
+           data-category="Site-Wide Custom Events"
+           data-label="Content Page Footer Promo"
+           ><img class="devsite-footer-promo-icon" src="https://developers.google.com/site-assets/logo-stack-overflow.svg">
+          
+          
+            Stack Overflow
+          
+        </a><div class="devsite-footer-promo-description">Ask a question under the google-maps-api-3 tag.</div></li><li class="devsite-footer-promo"><a href="https://github.com/googlemaps/"
+           class="devsite-footer-promo-title gc-analytics-event"
+           data-category="Site-Wide Custom Events"
+           data-label="Content Page Footer Promo"
+           ><img class="devsite-footer-promo-icon" src="https://developers.google.com/site-assets/logo-github.svg">
+          
+          
+            GitHub
+          
+        </a><div class="devsite-footer-promo-description">Fork our samples and try them yourself.</div></li><li class="devsite-footer-promo"><a href="https://googlegeodevelopers.blogspot.com"
+           class="devsite-footer-promo-title gc-analytics-event"
+           data-category="Site-Wide Custom Events"
+           data-label="Content Page Footer Promo"
+           ><img class="devsite-footer-promo-icon" src="https://developers.google.com/site-assets/blogger_64dp.png">
+          
+          
+            Blog
+          
+        </a><div class="devsite-footer-promo-description">Read the latest updates, customer stories, and tips.</div></li><li class="devsite-footer-promo"><a href="https://issuetracker.google.com/issues/new?component=188853&template=788207"
+           class="devsite-footer-promo-title gc-analytics-event"
+           data-category="Site-Wide Custom Events"
+           data-label="Content Page Footer Promo"
+           ><img class="devsite-footer-promo-icon" src="https://developers.google.com/site-assets/developers_64dp.png">
+          
+          
+            Issue Tracker
+          
+        </a><div class="devsite-footer-promo-description">Something wrong? Send us a bug report!</div></li></ul></nav></footer><footer class="devsite-footer-linkboxes nocontent
+               
+               devsite-footer-linkboxes-with-sites"><nav class="devsite-full-site-width"><ul class="devsite-footer-linkboxes-list"><li class="devsite-footer-linkbox "><h3 class="devsite-footer-linkbox-heading">Learn More</h3><ul class="devsite-footer-linkbox-list"><li class="devsite-footer-linkbox-item"><a href="https://developers.google.com/maps/documentation/javascript/tutorials/" class="gc-analytics-event"
+               data-category="Site-Wide Custom Events"
+               data-label="Content Page Footer Linkbox">
+                Tutorials
+            </a></li><li class="devsite-footer-linkbox-item"><a href="https://developers.google.com/maps/pricing-and-plans/" class="gc-analytics-event"
+               data-category="Site-Wide Custom Events"
+               data-label="Content Page Footer Linkbox">
+                Pricing and Plans
+            </a></li><li class="devsite-footer-linkbox-item"><a href="https://developers.google.com/maps/documentation/api-picker" class="gc-analytics-event"
+               data-category="Site-Wide Custom Events"
+               data-label="Content Page Footer Linkbox">
+                API Picker
+            </a></li><li class="devsite-footer-linkbox-item"><a href="https://developers.google.com/maps/" class="gc-analytics-event"
+               data-category="Site-Wide Custom Events"
+               data-label="Content Page Footer Linkbox">
+                Maps APIs Overview
+            </a></li></ul></li><li class="devsite-footer-linkbox "><h3 class="devsite-footer-linkbox-heading">Platforms</h3><ul class="devsite-footer-linkbox-list"><li class="devsite-footer-linkbox-item"><a href="https://developers.google.com/maps/android/" class="gc-analytics-event"
+               data-category="Site-Wide Custom Events"
+               data-label="Content Page Footer Linkbox">
+                Android
+            </a></li><li class="devsite-footer-linkbox-item"><a href="https://developers.google.com/maps/ios/" class="gc-analytics-event"
+               data-category="Site-Wide Custom Events"
+               data-label="Content Page Footer Linkbox">
+                iOS
+            </a></li><li class="devsite-footer-linkbox-item"><a href="https://developers.google.com/maps/web/" class="gc-analytics-event"
+               data-category="Site-Wide Custom Events"
+               data-label="Content Page Footer Linkbox">
+                Web
+            </a></li><li class="devsite-footer-linkbox-item"><a href="https://developers.google.com/maps/web-services/" class="gc-analytics-event"
+               data-category="Site-Wide Custom Events"
+               data-label="Content Page Footer Linkbox">
+                Web Services
+            </a></li></ul></li><li class="devsite-footer-linkbox "><h3 class="devsite-footer-linkbox-heading">Product Info</h3><ul class="devsite-footer-linkbox-list"><li class="devsite-footer-linkbox-item"><a href="https://developers.google.com/maps/contact-sales" class="gc-analytics-event"
+               data-category="Site-Wide Custom Events"
+               data-label="Content Page Footer Linkbox">
+                Contact sales
+            </a></li><li class="devsite-footer-linkbox-item"><a href="https://developers.google.com/maps/documentation/javascript/support" class="gc-analytics-event"
+               data-category="Site-Wide Custom Events"
+               data-label="Content Page Footer Linkbox">
+                Community support
+            </a></li><li class="devsite-footer-linkbox-item"><a href="https://developers.google.com/maps/premium/support" class="gc-analytics-event"
+               data-category="Site-Wide Custom Events"
+               data-label="Content Page Footer Linkbox">
+                Paid support
+            </a></li><li class="devsite-footer-linkbox-item"><a href="https://developers.google.com/maps/terms" class="gc-analytics-event"
+               data-category="Site-Wide Custom Events"
+               data-label="Content Page Footer Linkbox">
+                Terms of Service
+            </a></li></ul></li><li class="devsite-footer-linkbox devsite-footer-linkbox-sites"><a href="https://developers.google.com/"
+           class="gc-analytics-event devsite-footer-linkbox-logo-link"
+           data-category="Site-Wide Custom Events" data-label="Footer Google Developers Link"><img class="devsite-footer-linkbox-logo"
+               src="https://developers.google.com/_static/d7147bb846/images/redesign-14/lockup-color-knockout.png"
+               alt="Google Developers"></a><ul class="devsite-footer-linkbox-list"><li class="devsite-footer-linkbox-item"><a href="//developer.android.com/index.html" class="gc-analytics-event"
+               data-category="Site-Wide Custom Events"
+               data-label="Footer Android Link">
+                Android
+            </a></li><li class="devsite-footer-linkbox-item"><a href="//developer.chrome.com/home" class="gc-analytics-event"
+               data-category="Site-Wide Custom Events"
+               data-label="Footer Chrome Link">
+                Chrome
+            </a></li><li class="devsite-footer-linkbox-item"><a href="//firebase.google.com" class="gc-analytics-event"
+               data-category="Site-Wide Custom Events"
+               data-label="Footer Firebase Link">
+                Firebase
+            </a></li><li class="devsite-footer-linkbox-item"><a href="//cloud.google.com" class="gc-analytics-event"
+               data-category="Site-Wide Custom Events"
+               data-label="Footer Cloud Link">
+                Google Cloud Platform
+            </a></li><li class="devsite-footer-linkbox-item"><a href="//developers.google.com/products/" class="gc-analytics-event"
+               data-category="Site-Wide Custom Events"
+               data-label="Footer Products Link">
+                All Products
+            </a></li></ul></li></ul></nav></footer><footer class="devsite-utility-footer"><nav class="devsite-utility-footer-nav devsite-nav devsite-full-site-width"><div class="devsite-utility-footer-nav-left"><form class="devsite-utility-footer-language" action="/i18n/setlang/" method="post"><input type="hidden" name="xsrf_token" value="btPdmMcXiAhFjKH3dpwgFGH2V1u6M7MNC5qMA57OU-Y6MTUyNDQyODU3MTk3MDg5MA" /><input type="hidden" name="next" value="/maps/documentation/javascript/places-autocomplete"><select class="devsite-utility-footer-language-select kd-select" name="language"
+                track-type="languageSelector" track-name="click"><option value="id"
+                
+                track-type="languageSelector" track-name="changed"
+                track-metadata-original-language="en"
+                track-metadata-selected-language="id">
+            Bahasa Indonesia
+          </option><option value="de"
+                
+                track-type="languageSelector" track-name="changed"
+                track-metadata-original-language="en"
+                track-metadata-selected-language="de">
+            Deutsch
+          </option><option value="en"
+                 selected="selected" 
+                track-type="languageSelector" track-name="changed"
+                track-metadata-original-language="en"
+                track-metadata-selected-language="en">
+            English
+          </option><option value="es"
+                
+                track-type="languageSelector" track-name="changed"
+                track-metadata-original-language="en"
+                track-metadata-selected-language="es">
+            español
+          </option><option value="fr"
+                
+                track-type="languageSelector" track-name="changed"
+                track-metadata-original-language="en"
+                track-metadata-selected-language="fr">
+            français
+          </option><option value="pt-br"
+                
+                track-type="languageSelector" track-name="changed"
+                track-metadata-original-language="en"
+                track-metadata-selected-language="pt-br">
+            Português Brasileiro
+          </option><option value="ru"
+                
+                track-type="languageSelector" track-name="changed"
+                track-metadata-original-language="en"
+                track-metadata-selected-language="ru">
+            Русский
+          </option><option value="ja"
+                
+                track-type="languageSelector" track-name="changed"
+                track-metadata-original-language="en"
+                track-metadata-selected-language="ja">
+            日本語
+          </option><option value="zh-cn"
+                
+                track-type="languageSelector" track-name="changed"
+                track-metadata-original-language="en"
+                track-metadata-selected-language="zh-cn">
+            简体中文
+          </option><option value="zh-tw"
+                
+                track-type="languageSelector" track-name="changed"
+                track-metadata-original-language="en"
+                track-metadata-selected-language="zh-tw">
+            繁體中文
+          </option><option value="ko"
+                
+                track-type="languageSelector" track-name="changed"
+                track-metadata-original-language="en"
+                track-metadata-selected-language="ko">
+            한국어
+          </option></select></form><span class="devsite-utility-footer-links"><a class="devsite-utility-footer-link gc-analytics-event"
+           href="https://developers.google.com/terms/site-terms"
+           data-category="Site-Wide Custom Events"
+           data-label="Footer terms link"
+           data-footer-link-id="terms"
+           >Terms
+         </a><a class="devsite-utility-footer-link gc-analytics-event"
+           href="//www.google.com/policies/privacy/"
+           data-category="Site-Wide Custom Events"
+           data-label="Footer privacy link"
+           data-footer-link-id="privacy"
+           >Privacy
+         </a></span></div><div class="devsite-utility-footer-nav-right"><div class="devsite-utility-footer-newsletter-signup-text">
+        Sign up for the Google Developers newsletter
+      </div><a class="button button-primary devsite-utility-footer-newsletter-signup-button"
+         href="//services.google.com/fb/forms/googledevelopersnewsletter/?utm_medium=referral&amp;utm_source=google-products&amp;utm_team=googledevs&amp;utm_campaign=201611-newsletter-launch">
+        
+        Subscribe
+      </a></div></nav></footer><div class="devsite-feedback-dialog devsite-dialog"><div class="devsite-dialog-contents"><h3>Send feedback about...</h3><div class="devsite-feedback-item"><a data-type="documentation" class="gc-analytics-event"
+           data-category="Site-Wide Custom Events" data-label="Docs Feedback Image"
+           track-type="feedback" track-name="feedbackDocIcon" track-metadata-position="header"><div class="devsite-feedback-item-icon-container"><div class="devsite-feedback-item-icon-white devsite-feedback-item-icon-docs
+                        material-icons"></div></div></a><div class="devsite-feedback-item-name">
+          
+          This page
+        </div><div class="devsite-feedback-item-description"><a data-type="documentation" tabindex="0" class="gc-analytics-event"
+             data-category="Site-Wide Custom Events" data-label="Docs Feedback Text"
+             track-type="feedback" track-name="feedbackDocText" track-metadata-position="header">
+            
+            Documentation feedback
+          </a></div></div><div class="devsite-feedback-item"><a data-type="product" tabindex="0" class="gc-analytics-event"
+           data-category="Site-Wide Custom Events" data-label="Product Feedback Image"
+           track-type="feedback" track-name="feedbackProductIcon" track-metadata-position="header"
+         ><img src="https://www.gstatic.com/images/branding/product/1x/maps_64dp.png"
+                 class="devsite-feedback-item-icon"
+                 alt="Google Maps JavaScript API"></a><div class="devsite-feedback-item-name">
+        Google Maps JavaScript API
+        </div><div class="devsite-feedback-item-description"><a data-type="product" tabindex="0" class="gc-analytics-event"
+             data-category="Site-Wide Custom Events" data-label="Product Feedback Text"
+             track-type="feedback" track-name="feedbackProductText" track-metadata-position="header"
+           >
+            
+            Product feedback
+          </a></div></div><div class="devsite-feedback-support"><img src="https://developers.google.com/_static/d7147bb846/images/feedback/ic_help_24px.svg">
+        
+        
+        Need help? Visit our <a href="https://developers.google.com/maps/documentation/javascript/support" >support page</a>.
+      </div></div><div class="devsite-dialog-buttons"><button type="button" class="devsite-feedback-cancel button-white gc-analytics-event"
+              data-category="Site-Wide Custom Events" data-label="Cancel Feedback Button"
+              track-type="feedback" track-name="cancelFeedbackButton"
+              track-metadata-position="header">
+        
+        Cancel
+      </button></div></div><script>
+  $(document).ready(function() {
+    new devsite.feedback.Widget({
+        'product_id': '81777',
+        'bucket': '',
+        'context': 'Maps JS API v3',
+        'version': 'devsite-20180420-r00-rc00.default'
+      },
+      document.querySelectorAll('.devsite-feedback-button'),
+      'en',
+      document.querySelector('.devsite-site-mask'),
+      document.querySelector('.devsite-feedback-dialog'),
+      document.querySelector('.devsite-feedback-cancel'),
+      document.querySelectorAll('.devsite-feedback-item a:not([href])')
+    );
+  });
+  </script></div><script async defer src="//www.gstatic.com/feedback/api.js"></script><script src="https://developers.google.com/_static2/d7147bb846/jsi18n/"></script><script src="https://developers.google.com/_static/d7147bb846/js/script_foot_closure.js"></script><script src="https://developers.google.com/_static/d7147bb846/js/script_foot.js"></script><script>
+        (function($) {
+          
+          devsite.devsite.Init($, {'ENABLE_BLOCKED_VIDEO_PLACEHOLDER': 0, 'SITE_NAME': 'devsite', 'FULL_SITE_SEARCH_ENABLED': 1, 'ENABLE_CLOUDTRACK': 0, 'VTAGS_ENABLED': 0, 'HISTORY_ENABLED': 1, 'VERSION_HASH': 'd7147bb846', 'SCRIPTSAFE_DOMAIN': 'google-developers.appspot.com', 'ENABLE_BLOCKED_LINK_TOOLTIP': 0, 'ALLOWED_HOSTS': ['.android.com', '.anvato.com', '.apigee.com', '.appspot.com', '.dialogflow.com', '.gonglchuangl.net', '.google.cn', '.google.com', '.googleplex.com', '.nest.com', '.openthread.io', '.openweave.io', '.orbitera.com', '.tensorflow.org'], 'BLOCK_RSS_FEEDS': 0},
+                               '[]','en',
+                               true, '',
+                               {"f62218c009ec029abef196bba5aa34cf": true, "8de7a048f21618359bd37f5ce44be073": false, "098dafe57affddc137df300142652cfd": false, "8e03e230de0bd8a6fe173fdf172e8b3f": true, "cb025a64a50094835616312f4774a53d": true, "51470233c56fc1fde50f00b73c52b216": false, "d169d485cf24243a263783dbe42029b1": true, "039e5d84b87fd75807ffb37b7f1bbf2c": true, "700def1a83e356c06c0925afb05de4b0": false, "6749dcb526ce9bde6993550c7d928d24": true}, '/maps/documentation/javascript/',
+                               'https://developers.google.com/');
+        })(jQuery);
+
+        
+        devsite.localInit = function() {
+          
+        };
+
+      </script><script>
+      $('.devsite-utility-footer-language-select').each(function() {
+        $(this).change(function(){$('.devsite-utility-footer-language').submit();});
+      });
+      </script><script async defer src="//survey.g.doubleclick.net/async_survey?site=7e6fbbkvyahh4bsgtzwpq7uv3a"></script></div><span id="devsite-request-elapsed" data-request-elapsed="365.339994431"></span></body></html>

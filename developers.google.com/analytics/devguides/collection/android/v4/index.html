@@ -1,0 +1,843 @@
+
+
+
+
+
+
+<!DOCTYPE html><html lang="en"
+      class="chekov"><head><script>var a=window.devsite||{};window.devsite=a;a.readyCallbacks=[];window.devsite.readyCallbacks=a.readyCallbacks;a.ready=function(b){a.readyCallbacks.push(b)};window.devsite.ready=a.ready;
+</script><meta charset="utf-8"><meta name="xsrf_token" content="JPaW8Pv28I1REPimEcOJNjjFBijgoW3TBLbBRs5GuLQ6MTUyNDQyODU5NDgzNjk5MA" /><link rel="canonical" href="https://developers.google.com/analytics/devguides/collection/android/v4/"><link rel="alternate" href="https://developers.google.com/analytics/devguides/collection/android/v4/?hl=ja" hreflang="ja"><link rel="alternate" href="https://developers.google.com/analytics/devguides/collection/android/v4/?hl=zh-cn" hreflang="zh-Hans"><link rel="alternate" href="https://developers.google.com/analytics/devguides/collection/android/v4/?hl=ru" hreflang="ru"><link rel="alternate" href="https://developers.google.com/analytics/devguides/collection/android/v4/?hl=es" hreflang="es"><link rel="alternate" href="https://developers.google.com/analytics/devguides/collection/android/v4/?hl=pt-br" hreflang="pt-br"><link rel="alternate" href="https://developers.google.com/analytics/devguides/collection/android/v4/" hreflang="en"><link rel="alternate" href="https://developers.google.cn/analytics/devguides/collection/android/v4/?hl=ja" hreflang="ja-cn"><link rel="alternate" href="https://developers.google.cn/analytics/devguides/collection/android/v4/?hl=zh-cn" hreflang="zh-Hans-cn"><link rel="alternate" href="https://developers.google.cn/analytics/devguides/collection/android/v4/?hl=ru" hreflang="ru-cn"><link rel="alternate" href="https://developers.google.cn/analytics/devguides/collection/android/v4/?hl=es" hreflang="es-cn"><link rel="alternate" href="https://developers.google.cn/analytics/devguides/collection/android/v4/?hl=pt-br" hreflang="pt-br-cn"><link rel="alternate" href="https://developers.google.cn/analytics/devguides/collection/android/v4/" hreflang="en-cn"><link rel="alternate" href="https://developers.google.com/analytics/devguides/collection/android/v4/" hreflang="x-default"><link rel="shortcut icon" href="https://developers.google.com/_static/d7147bb846/images/favicon.png"><link rel="apple-touch-icon" href="https://developers.google.com/_static/d7147bb846/images/touch-icon.png"><meta name="viewport" content="width=device-width, initial-scale=1"><link rel="stylesheet"
+      
+      href="//fonts.googleapis.com/css?family=Google+Sans:400|Roboto:400,400italic,500,500italic,700,700italic|Roboto+Mono:400,500,700|Material+Icons"
+      ><link rel="stylesheet"
+        href="https://developers.google.com/_static/d7147bb846/css/devsite-orange.css"><link rel="search"
+        type="application/opensearchdescription+xml"
+        title="Google Developers"
+        href="https://developers.google.com/s/opensearch.xml"><script src="https://developers.google.com/_static/d7147bb846/js/jquery-bundle.js"></script><meta property="og:site_name" content="Google Developers"><meta property="og:type" content="website"><meta property="og:url" content="https://developers.google.com/analytics/devguides/collection/android/v4/"><meta property="og:locale" content="en"><script>
+    var ___gcfg = ___gcfg || {};
+    ___gcfg.lang = 'en';
+  </script><title>Add Analytics to Your Android App &nbsp;|&nbsp; Analytics for Android
+      &nbsp;|&nbsp; Google Developers</title><meta property="og:title" content="Add Analytics to Your Android App &nbsp;|&nbsp; Analytics for Android
+      &nbsp;|&nbsp; Google Developers"><meta name="description" content="Measure user interaction with Android apps."><meta property="og:description" content="Measure user interaction with Android apps."><meta property="og:image"
+          content="https://developers.google.com/_static/d7147bb846/images/share/devsite-orange.png"><meta property="og:image:secure_url"
+          content="https://developers.google.com/_static/d7147bb846/images/share/devsite-orange.png"><meta property="og:image:width" content="1200"><meta property="og:image:height" content="630"><link rel="stylesheet" href="https://developers.google.com/analytics/main.css"></head><body class="
+               devsite-doc-page
+               
+               
+               
+               devsite-header-no-upper-tabs
+               "
+        data-family="endorsed"
+        id="top_of_page"><div class="devsite-wrapper"><div class="devsite-top-section-wrapper
+            "><header class="devsite-top-section nocontent"><div class="devsite-top-logo-row-wrapper-wrapper"><div class="devsite-top-logo-row-wrapper"><div class="devsite-top-logo-row devsite-full-site-width"><button type="button" class="devsite-expand-section-nav devsite-header-icon-button
+                                       button-flat material-icons gc-analytics-event"
+                  data-category="Site-Wide Custom Events" data-label="Hamburger menu"></button><div class="devsite-product-name-wrapper"><a class="devsite-product-name-link gc-analytics-event"
+       href="https://developers.google.com/analytics/"
+       data-category="Site-Wide Custom Events"
+       data-label="Project logo (header)"><img src="https://developers.google.com/analytics/images/logo_google_analytics_color_1x_web_64dp.png" class="devsite-product-logo"
+               alt="Google Analytics"></a><span class="devsite-product-name"><ul class="devsite-breadcrumb-list"><li class="devsite-breadcrumb-item"><a href="https://developers.google.com/analytics/" class="devsite-breadcrumb-link gc-analytics-event"
+       data-category="Site-Wide Custom Events" data-label="Upper Header"
+       data-value="1">
+    
+    
+      
+        Google Analytics
+      
+    
+    
+    </a></li><li class="devsite-breadcrumb-item"><div class="devsite-breadcrumb-guillemet material-icons"></div><a href="https://developers.google.com/analytics/devguides/collection/" class="devsite-breadcrumb-link gc-analytics-event"
+       data-category="Site-Wide Custom Events" data-label="Upper Header"
+       data-value="2">
+    
+    
+      Tracking
+    
+    
+    </a></li><li class="devsite-breadcrumb-item"><div class="devsite-breadcrumb-guillemet material-icons"></div><a href="https://developers.google.com/analytics/devguides/collection/android/v4/" class="devsite-breadcrumb-link gc-analytics-event"
+       data-category="Site-Wide Custom Events" data-label="Upper Header"
+       data-value="3">
+    
+    
+      Android
+    
+    
+    </a></li></ul></span></div><div class="devsite-header-upper-tabs"></div><form class="devsite-search-form"
+                action="https://developers.google.com/s/results/"
+                method="GET"
+                id="top-search"
+                search-placeholder='Search'><div id="searchbox" class="devsite-searchbox"><input placeholder='Search'
+         
+         type="text"
+         class="devsite-search-field devsite-search-query"
+         name="q"
+         value=""
+         autocomplete="off"
+         
+         aria-label="Search box"><div class="devsite-search-image material-icons"></div></div><input type="hidden"
+       name="p"
+       id="search_project"
+       value="/analytics/devguides/collection/android/v4/"
+       data-project-name="Analytics for Android"
+       data-project-path="/analytics/devguides/collection/android/v4/"
+       data-query-match=""><input type="hidden" class="suggest-project" value="Analytics for Android" /><div class="suggest-project-metadata" data-home_url="/analytics/" data-path="/analytics/" data-name="Google Analytics" ></div></form><a class="devsite-header-link devsite-top-button button gc-analytics-event"
+               href="https://developers.google.com/products/"
+               data-category="Site-Wide Custom Events"
+               data-label="Site header link"
+               track-type="navigateTo"
+               track-name="all products"
+               track-metadata-position="nav"><div class="devsite-header-link-label">All Products</div></a><button type="button" class="devsite-search-button devsite-header-icon-button button-flat
+                                       material-icons"></button><a href="https://www.google.com/accounts/ServiceLogin?passive=true&continue=https%3A%2F%2Fdevelopers.google.com%2Fanalytics%2Fdevguides%2Fcollection%2Fandroid%2Fv4%2F%3Frefresh%3D1&service=ahsid"
+   class="devsite-user-signin devsite-top-button button gc-analytics-event"
+   data-category="Site-Wide Custom Events" data-label="Sign in button">
+  
+  Sign in
+</a></div></div></div><div class="devsite-collapsible-section"><div class="devsite-header-background devsite-full-site-width"><div class="devsite-doc-set-nav-row devsite-full-site-width"><nav class="devsite-doc-set-nav devsite-nav devsite-overflow-tabs-scroll-wrapper"><ul class="devsite-doc-set-nav-tab-list devsite-overflow-tabs-scroll"><li class="devsite-doc-set-nav-tab-container devsite-nav-tab
+               "><a href="https://developers.google.com/analytics/devguides/collection/android/v4/"
+         class="devsite-doc-set-nav-active devsite-nav-tab
+                devsite-doc-set-nav-tab devsite-doc-set-nav-tab-link gc-analytics-event"
+         aria-label="Guides, selected"
+       
+         data-category="Site-Wide Custom Events"
+       
+         data-label="Tab: Guides"
+       >
+        Guides
+      </a></li><li class="devsite-doc-set-nav-tab-container devsite-nav-tab
+               "><a href="https://developers.google.com/analytics/devguides/collection/android/v4/parameters"
+         class=" devsite-nav-tab
+                devsite-doc-set-nav-tab devsite-doc-set-nav-tab-link gc-analytics-event"
+         
+       
+         data-category="Site-Wide Custom Events"
+       
+         data-label="Tab: Reference"
+       >
+        Reference
+      </a></li><li class="devsite-doc-set-nav-tab-container devsite-nav-tab
+               "><a href="https://developers.google.com/analytics/devguides/collection/android/v4/samples"
+         class=" devsite-nav-tab
+                devsite-doc-set-nav-tab devsite-doc-set-nav-tab-link gc-analytics-event"
+         
+       
+         data-category="Site-Wide Custom Events"
+       
+         data-label="Tab: Samples"
+       >
+        Samples
+      </a></li><li class="devsite-doc-set-nav-tab-container devsite-nav-tab
+               "><a href="https://developers.google.com/analytics/devguides/collection/android/v4/help"
+         class=" devsite-nav-tab
+                devsite-doc-set-nav-tab devsite-doc-set-nav-tab-link gc-analytics-event"
+         
+       
+         data-category="Site-Wide Custom Events"
+       
+         data-label="Tab: Support"
+       >
+        Support
+      </a></li></ul></nav></div></div></div></header><script>
+    if (window.jQuery) {
+      $(document).ready(function() {
+        if (window.devsite && window.devsite.search) {
+          
+          window.devsite.search.init('en')
+        }
+      });
+    }
+  </script></div><div id="gc-wrapper"itemscope itemtype="http://schema.org/Article"><input class="google-analytics-id-json" type="hidden" value="{&quot;dimensions&quot;: {&quot;dimension6&quot;: &quot;en&quot;, &quot;dimension4&quot;: &quot;Analytics for Android&quot;, &quot;dimension5&quot;: &quot;en&quot;, &quot;dimension3&quot;: false, &quot;dimension1&quot;: &quot;Signed out&quot;, &quot;dimension8&quot;: null}, &quot;gaid&quot;: &quot;UA-24532603-1&quot;}"><input class="google-analytics-id-json" type="hidden" value="{&quot;dimensions&quot;: {}, &quot;gaid&quot;: &quot;UA-41425441-2&quot;}"><script>
+      var dataLayer = [{"freeTrialEligibleUser": "False", "userCountry": "HK", "language": {"requested": "en", "served": "en"}, "projectName": "Analytics for Android", "scriptsafe": null, "signedIn": "False", "internalUser": "False"}];
+    </script>
+
+      
+        <div class="devsite-site-mask"></div>
+        
+  
+
+
+<nav class="devsite-nav-responsive devsite-nav nocontent" tabindex="0">
+  
+  <div class="devsite-nav-responsive-tabs-panel">
+    
+      
+
+
+
+<nav class="devsite-nav-responsive-tabs devsite-nav">
+  <ul class="devsite-nav-list">
+  
+    <li class="devsite-nav-item devsite-nav-item-heading">
+    
+      <span class="devsite-nav-responsive-forward devsite-nav-responsive-tab devsite-nav-title
+                   devsite-nav-active gc-analytics-event"
+            data-category="Site-Wide Custom Events" data-label="Responsive Tab: Guides"
+            tabindex="0">
+        Guides
+      </span>
+    
+    </li>
+  
+    <li class="devsite-nav-item devsite-nav-item-heading">
+    
+      <a 
+           href="https://developers.google.com/analytics/devguides/collection/android/v4/parameters?nav=true"
+         
+         class="devsite-nav-responsive-tab devsite-nav-title gc-analytics-event
+                "
+         data-category="Site-Wide Custom Events" data-label="Responsive Tab: Reference">
+        Reference
+      </a>
+      
+      
+    
+    </li>
+  
+    <li class="devsite-nav-item devsite-nav-item-heading">
+    
+      <a 
+           href="https://developers.google.com/analytics/devguides/collection/android/v4/samples?nav=true"
+         
+         class="devsite-nav-responsive-tab devsite-nav-title gc-analytics-event
+                "
+         data-category="Site-Wide Custom Events" data-label="Responsive Tab: Samples">
+        Samples
+      </a>
+      
+      
+    
+    </li>
+  
+    <li class="devsite-nav-item devsite-nav-item-heading">
+    
+      <a 
+           href="https://developers.google.com/analytics/devguides/collection/android/v4/help?nav=true"
+         
+         class="devsite-nav-responsive-tab devsite-nav-title gc-analytics-event
+                "
+         data-category="Site-Wide Custom Events" data-label="Responsive Tab: Support">
+        Support
+      </a>
+      
+      
+    
+    </li>
+  
+  
+    <li class="devsite-nav-item devsite-nav-item-heading">
+      <a href="https://developers.google.com/products/"
+         class="devsite-nav-responsive-tab devsite-nav-title gc-analytics-event"
+         data-category="Site-Wide Custom Events"
+         data-label="Responsive Tab: all_products">
+        All Products
+      </a>
+    </li>
+  
+  </ul>
+</nav>
+
+
+    
+  </div>
+  
+  
+  <div class="devsite-nav-responsive-sidebar-panel">
+    
+    <div class="devsite-nav-responsive-back" tabindex="0"></div>
+    
+    <nav class="devsite-nav-responsive-sidebar"></nav>
+  </div>
+  
+  
+</nav>
+
+
+        <div class="devsite-main-content clearfix">
+
+        
+        
+
+        
+  
+  
+    
+    
+      
+  <nav class="devsite-section-nav devsite-nav nocontent">
+    <ul class="devsite-nav-list"><li class="devsite-nav-item devsite-nav-active"><a href="https://developers.google.com/analytics/devguides/collection/android/v4/" class="devsite-nav-title">Add Analytics to your Android App</a></li><li class="devsite-nav-item"><a href="https://developers.google.com/analytics/devguides/collection/android/v4/start" class="devsite-nav-title">Try Analytics for Android</a></li><li class="devsite-nav-item devsite-nav-item-heading"><span class="devsite-nav-title devsite-nav-title-no-path" aria-label="Fundamentals, click to expand/collapse" role="link">Fundamentals</span><li class="devsite-nav-item"><a href="https://developers.google.com/analytics/devguides/collection/android/v4/campaigns" class="devsite-nav-title">Campaigns</a></li><li class="devsite-nav-item"><a href="https://developers.google.com/analytics/devguides/collection/android/v4/exceptions" class="devsite-nav-title">Crashes &amp; Exceptions</a></li><li class="devsite-nav-item"><a href="https://developers.google.com/analytics/devguides/collection/android/v4/customdimsmets" class="devsite-nav-title">Custom Dimensions &amp; Metrics</a></li><li class="devsite-nav-item"><a href="https://developers.google.com/analytics/devguides/collection/android/v4/dispatch" class="devsite-nav-title">Dispatch</a></li><li class="devsite-nav-item"><a href="https://developers.google.com/analytics/devguides/collection/android/v4/display-features" class="devsite-nav-title">Display Features</a></li><li class="devsite-nav-item devsite-nav-deprecated devsite-nav-has-status"><a href="https://developers.google.com/analytics/devguides/collection/android/v4/ecommerce" class="devsite-nav-title"><span class="devsite-nav-text">Ecommerce</span><span class="devsite-nav-icon-wrapper"><span class="devsite-nav-icon material-icons" title="Deprecated"></span></span></a></li><li class="devsite-nav-item"><a href="https://developers.google.com/analytics/devguides/collection/android/v4/enhanced-ecommerce" class="devsite-nav-title">Enhanced Ecommerce</a></li><li class="devsite-nav-item"><a href="https://developers.google.com/analytics/devguides/collection/android/v4/events" class="devsite-nav-title">Events</a></li><li class="devsite-nav-item"><a href="https://developers.google.com/analytics/devguides/collection/android/v4/screens" class="devsite-nav-title">Screens</a></li><li class="devsite-nav-item"><a href="https://developers.google.com/analytics/devguides/collection/android/v4/sessions" class="devsite-nav-title">Sessions</a></li><li class="devsite-nav-item"><a href="https://developers.google.com/analytics/devguides/collection/android/v4/social" class="devsite-nav-title">Social Interactions</a></li><li class="devsite-nav-item"><a href="https://developers.google.com/analytics/devguides/collection/android/v4/user-id" class="devsite-nav-title">User ID</a></li><li class="devsite-nav-item"><a href="https://developers.google.com/analytics/devguides/collection/android/v4/usertimings" class="devsite-nav-title">User Timings</a></li></li><li class="devsite-nav-item devsite-nav-item-heading"><span class="devsite-nav-title devsite-nav-title-no-path" aria-label="Advanced, click to expand/collapse" role="link">Advanced</span><li class="devsite-nav-item"><a href="https://developers.google.com/analytics/devguides/collection/android/v4/advanced" class="devsite-nav-title">Configuration</a></li><li class="devsite-nav-item"><a href="https://developers.google.com/analytics/devguides/collection/android/v4/optional-features" class="devsite-nav-title">Optional Features</a></li></li><li class="devsite-nav-item devsite-nav-item-heading"><span class="devsite-nav-title devsite-nav-title-no-path" aria-label="Resources, click to expand/collapse" role="link">Resources</span><li class="devsite-nav-item"><a href="https://developers.google.com/analytics/devguides/collection/android/v4/mobile-implementation-guide" class="devsite-nav-title">Mobile App Implementation Guide</a></li><li class="devsite-nav-item"><a href="https://developers.google.com/analytics/devguides/collection/android/v4/policy" class="devsite-nav-title">Protocol / SDK / User ID Policy</a></li><li class="devsite-nav-item"><a href="https://developers.google.com/analytics/devguides/collection/android/v4/limits-quotas" class="devsite-nav-title">Limits and Quotas</a></li></li><li class="devsite-nav-item devsite-nav-item-heading"><span class="devsite-nav-title devsite-nav-title-no-path" aria-label="Mobile Ad Networks, click to expand/collapse" role="link">Mobile Ad Networks</span><li class="devsite-nav-item"><a href="https://developers.google.com/analytics/solutions/gmc-program" class="devsite-nav-title">Google mobile conversion (GMC) provider program</a></li></li></ul>
+  </nav>
+
+    
+
+    
+  <nav class="devsite-page-nav devsite-nav"></nav>
+
+
+      <article class="devsite-article">
+        <article class="devsite-article-inner">
+  
+          
+  
+
+
+
+  
+  <nav class="devsite-breadcrumb-nav devsite-nav">
+    
+
+
+<ul class="devsite-breadcrumb-list">
+  
+  <li class="devsite-breadcrumb-item">
+    
+    
+    <a href="https://developers.google.com/products/" class="devsite-breadcrumb-link gc-analytics-event"
+       data-category="Site-Wide Custom Events" data-label="Breadcrumbs"
+       data-value="1">
+    
+    
+      Products
+    
+    
+    </a>
+    
+  </li>
+  
+  <li class="devsite-breadcrumb-item">
+    
+    
+    <div class="devsite-breadcrumb-guillemet material-icons"></div>
+    
+    
+    <a href="https://developers.google.com/analytics/" class="devsite-breadcrumb-link gc-analytics-event"
+       data-category="Site-Wide Custom Events" data-label="Breadcrumbs"
+       data-value="2">
+    
+    
+      Google Analytics
+    
+    
+    </a>
+    
+  </li>
+  
+  <li class="devsite-breadcrumb-item">
+    
+    
+    <div class="devsite-breadcrumb-guillemet material-icons"></div>
+    
+    
+    <a href="https://developers.google.com/analytics/devguides/collection/" class="devsite-breadcrumb-link gc-analytics-event"
+       data-category="Site-Wide Custom Events" data-label="Breadcrumbs"
+       data-value="3">
+    
+    
+      Tracking
+    
+    
+    </a>
+    
+  </li>
+  
+  <li class="devsite-breadcrumb-item">
+    
+    
+    <div class="devsite-breadcrumb-guillemet material-icons"></div>
+    
+    
+    <a href="https://developers.google.com/analytics/devguides/collection/android/v4/" class="devsite-breadcrumb-link gc-analytics-event"
+       data-category="Site-Wide Custom Events" data-label="Breadcrumbs"
+       data-value="4">
+    
+    
+      Android
+    
+    
+    </a>
+    
+  </li>
+  
+  <li class="devsite-breadcrumb-item">
+    
+    
+    <div class="devsite-breadcrumb-guillemet material-icons"></div>
+    
+    
+    <a href="https://developers.google.com/analytics/devguides/collection/android/v4/" class="devsite-breadcrumb-link gc-analytics-event"
+       data-category="Site-Wide Custom Events" data-label="Breadcrumbs"
+       data-value="5">
+    
+    
+      Guides
+    
+    
+    </a>
+    
+  </li>
+  
+</ul>
+
+  </nav>
+  
+  
+  <h1 itemprop="name" class="devsite-page-title">
+    Add Analytics to Your Android App
+  </h1>
+  
+  
+  <nav class="devsite-page-nav-embedded devsite-nav"></nav>
+  
+  <div class="devsite-article-body clearfix
+            "
+       itemprop="articleBody">
+    
+
+
+
+
+
+
+<aside class="note"><strong>Note:</strong>
+The <a href="//firebase.google.com/docs/analytics/android/start/">Firebase SDK</a>
+is the recommended method to track Android apps. You can also use
+<a href="https://developers.google.com/tag-manager/android/v5/">Tag Manager + Firebase</a>
+to track them. If you choose to use Google Analytics Services SDK for Android,
+continue with this guide. For more information
+on methods to track Android apps, see
+<a href="https://support.google.com/analytics/answer/7385763">
+Measurement options for mobile apps</a>.
+</aside>
+
+<p>This guide shows how to add Analytics to your Android app to measure user activity
+to named screens. If you don't have an application yet and just want to see how
+Analytics works, take a look at our
+<a href="https://developers.google.com/analytics/devguides/collection/android/v4/start">sample application</a>.</p>
+
+<p><b>Required:</b> Latest versions of
+<a href="//developer.android.com/sdk/index.html">Android Studio</a> and
+<a href="//developer.android.com/google/play-services/setup.html">
+Google Play Services</a></p>
+
+<aside class="special"><strong>Note</strong>: Google Analytics can be used
+and will work on devices that do not have Google Play Services. In this case
+you still download and use the Google Play Services SDK and Google Analytics
+will automatically fall back to local dispatching.
+  <a href="https://developers.google.com/analytics/devguides/collection/android/v4/dispatch#background">
+    Learn how to update your project's manifest file to enable background
+    dispatching on non-Google Play devices</a>.
+</aside>
+
+<h2>Set up your project</h2>
+
+<p>Update your project's <code>AndroidManifest.xml</code> file to include the
+<code>INTERNET</code> and <code>ACCESS_NETWORK_STATE</code> permissions:</p>
+
+<pre class="prettyprint">
+&lt;manifest xmlns:android=&quot;http://schemas.android.com/apk/res/android&quot;
+          package=&quot;com.example.analytics&quot;&gt;
+
+  &lt;uses-permission android:name=&quot;android.permission.INTERNET&quot;/&gt;
+  &lt;uses-permission android:name=&quot;android.permission.ACCESS_NETWORK_STATE&quot;/&gt;
+
+  &lt;application android:name=&quot;AnalyticsApplication&quot;&gt;
+    ...
+  &lt;/application&gt;
+&lt;/manifest&gt;
+
+</pre>
+
+<p>Add the following dependency to your project-level <code>build.gradle</code>:</p>
+<pre class="prettyprint">
+dependencies {
+  // ...
+  classpath 'com.google.gms:google-services:3.0.0'
+}
+</pre>
+
+<p>Add the following dependency on Google Play Services to
+<code>app/build.gradle</code>:</p>
+<pre class="prettyprint">
+dependencies {
+  // ...
+  compile 'com.google.android.gms:play-services-analytics:10.2.4'
+}
+</pre>
+
+<h2>Create global_tracker.xml</h2>
+
+<p>Create the file <code>app/src/res/xml/global_tracker.xml</code>
+with the following content:</p>
+<pre class="prettyprint">
+&lt;?xml version=&quot;1.0&quot; encoding=&quot;utf-8&quot;?&gt;
+&lt;resources&gt;
+  &lt;string name=&quot;ga_trackingId&quot; translatable=&quot;false&quot;&gt;${YOUR_TRACKING_ID}&lt;/string&gt;
+&lt;/resources&gt;
+
+</pre>
+
+<p>Replace <code>${YOUR_TRACKING_ID}</code> with your tracking ID.</p>
+
+<h2>Add screen tracking</h2>
+
+<p>Here you’ll send a named screen view to Analytics whenever the user opens or
+changes screens on your app. Your code should do the following:</p>
+
+<ul>
+  <li>Provide the shared tracker via an Application subclass.</li>
+  <li>Override the callback method for the foreground activity.</li>
+  <li>Provide a name for the screen and execute tracking.</li>
+</ul>
+
+<h3>Application</h3>
+
+<p>You should subclass <code>Application</code> and provide a helper method
+that returns your application's tracker.</p>
+
+<pre class="prettyprint" style="position: relative;">
+/*
+ * Copyright Google Inc. All Rights Reserved.
+ *
+ * Licensed under the Apache License, Version 2.0 (the &quot;License&quot;);
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *     http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an &quot;AS IS&quot; BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
+
+package com.google.samples.quickstart.analytics;
+
+import android.app.Application;
+
+import com.google.android.gms.analytics.GoogleAnalytics;
+import com.google.android.gms.analytics.Tracker;
+
+/**
+ * This is a subclass of {@link Application} used to provide shared objects for this app, such as
+ * the {@link Tracker}.
+ */
+public class AnalyticsApplication extends Application {
+
+  private static GoogleAnalytics sAnalytics;
+  private static Tracker sTracker;
+
+  @Override
+  public void onCreate() {
+    super.onCreate();
+
+    sAnalytics = GoogleAnalytics.getInstance(this);
+  }
+
+  /**
+   * Gets the default {@link Tracker} for this {@link Application}.
+   * @return tracker
+   */
+  synchronized public Tracker getDefaultTracker() {
+    // To enable debug logging use: adb shell setprop log.tag.GAv4 DEBUG
+    if (sTracker == null) {
+      sTracker = sAnalytics.newTracker(R.xml.global_tracker);
+    }
+
+    return sTracker;
+  }
+}
+<div class="devsite-github-link nocode"><a target="_top" href="https://github.com/googlesamples/google-services/blob/ce5cb7660dc3e9620cd2e12d933e40d3fab03906/android/analytics/app/src/main/java/com/google/samples/quickstart/analytics/AnalyticsApplication.java" class="gc-analytics-event" data-category="github_link" data-label="googlesamples/google-services/android/analytics/app/src/main/java/com/google/samples/quickstart/analytics/AnalyticsApplication.java">AnalyticsApplication.java</a></div>
+</pre>
+
+<h3>Activity or fragment</h3>
+
+<p>Open the Activity that you'd like to track.
+You could also track a <code>Fragment</code>, but ensure that it
+correctly represents a screen view.</p>
+
+<p>Override the <code>onCreate</code> method of the <code>Activity</code> or
+<code>Fragment</code> you want to track to obtain the shared
+<code>Tracker</code> instance:</p>
+
+<pre class="prettyprint" style="position: relative;">
+// Obtain the shared Tracker instance.
+AnalyticsApplication application = (AnalyticsApplication) getApplication();
+mTracker = application.getDefaultTracker();<div class="devsite-github-link nocode"><a target="_top" href="https://github.com/googlesamples/google-services/blob/ce5cb7660dc3e9620cd2e12d933e40d3fab03906/android/analytics/app/src/main/java/com/google/samples/quickstart/analytics/MainActivity.java#L81-L83" class="gc-analytics-event" data-category="github_link" data-label="googlesamples/google-services/android/analytics/app/src/main/java/com/google/samples/quickstart/analytics/MainActivity.java#shared_tracker">MainActivity.java</a></div>
+</pre>
+
+<p>Override the appropriate method, such as <code>onResume</code> for an <code>Activity</code> or
+<code>onPageSelected</code> for a <code>ViewPager</code> to log when the screen changes.</p>
+
+<pre class="prettyprint" style="position: relative;">
+Log.i(TAG, &quot;Setting screen name: &quot; + name);
+mTracker.setScreenName(&quot;Image~&quot; + name);
+mTracker.send(new HitBuilders.ScreenViewBuilder().build());<div class="devsite-github-link nocode"><a target="_top" href="https://github.com/googlesamples/google-services/blob/ce5cb7660dc3e9620cd2e12d933e40d3fab03906/android/analytics/app/src/main/java/com/google/samples/quickstart/analytics/MainActivity.java#L153-L155" class="gc-analytics-event" data-category="github_link" data-label="googlesamples/google-services/android/analytics/app/src/main/java/com/google/samples/quickstart/analytics/MainActivity.java#screen_view_hit">MainActivity.java</a></div>
+</pre>
+
+<p>Add tracking code to every <code>Activity</code> or <code>Fragment</code> that represents a screen.
+Be sure to set a name inside every <code>Activity</code> or <code>Fragment</code> if you want to
+differentiate between screen views for your app in Analytics. All activity
+recorded on the shared tracker sends the most recent screen name until replaced
+or cleared (set to <code>null</code>).</p>
+
+<h2>Send an event</h2>
+
+<p>To send an event, set the screen field values on the tracker, then send the hit.
+The following example uses the <code>HitBuilders.EventBuilder</code> to send an
+<code>Event</code>:</p>
+
+<pre class="prettyprint" style="position: relative;">
+mTracker.send(new HitBuilders.EventBuilder()
+    .setCategory(&quot;Action&quot;)
+    .setAction(&quot;Share&quot;)
+    .build());<div class="devsite-github-link nocode"><a target="_top" href="https://github.com/googlesamples/google-services/blob/ce5cb7660dc3e9620cd2e12d933e40d3fab03906/android/analytics/app/src/main/java/com/google/samples/quickstart/analytics/MainActivity.java#L116-L119" class="gc-analytics-event" data-category="github_link" data-label="googlesamples/google-services/android/analytics/app/src/main/java/com/google/samples/quickstart/analytics/MainActivity.java#custom_event">MainActivity.java</a></div>
+</pre>
+
+<h2>Next steps</h2>
+
+<ul>
+  <li>Read the <a href="https://developers.google.com/analytics/devguides/collection/android/v4/mobile-implementation-guide">
+  Mobile App Implementation Guide</a> to learn how to use Google Analytics to
+  measure user interactions and answer questions about app usage.</li>
+
+  <li>Review additional <a href="https://developers.google.com/analytics/devguides/collection/android/v4/advanced">
+  configuration options</a> such as sampling, testing and debugging,
+  opt-out settings, etc.</li>
+
+  <li>If your app needs to collect advertising identifiers, enable
+  <a href="https://developers.google.com/analytics/devguides/collection/android/v4/optional-features">
+  advertising features</a> for the app.</li>
+</ul>
+
+<p style="margin-bottom: 12%;"></p>
+
+  </div>
+  
+
+  
+        
+  
+
+
+
+
+
+
+
+        
+<div class="devsite-content-footer nocontent">
+  
+  
+    <p>Except as otherwise noted, the content of this page is licensed under the <a href="http://creativecommons.org/licenses/by/3.0/">Creative Commons Attribution 3.0 License</a>, and code samples are licensed under the <a href="http://www.apache.org/licenses/LICENSE-2.0">Apache 2.0 License</a>. For details, see our <a href="https://developers.google.com/terms/site-policies">Site Policies</a>. Java is a registered trademark of Oracle and/or its affiliates.</p>
+  
+
+  
+    
+    <p class="devsite-content-footer-date" itemprop="datePublished"
+       content="2018-04-13T23:18:53.755830">
+      
+      Last updated April 13, 2018.
+    </p>
+  
+
+</div>
+
+        </article>
+      </article>
+  
+
+        </div>
+      
+
+<footer class="devsite-footer-promos nocontent"><nav class="devsite-full-site-width"><ul class="devsite-footer-promos-list"><li class="devsite-footer-promo"><a href="https://github.com/googleanalytics/"
+           class="devsite-footer-promo-title gc-analytics-event"
+           data-category="Site-Wide Custom Events"
+           data-label="Content Page Footer Promo"
+           ><img class="devsite-footer-promo-icon" src="https://developers.google.com/site-assets/logo-github.svg">
+          
+          
+            GitHub
+          
+        </a><div class="devsite-footer-promo-description">Try Google Analytics samples</div></li><li class="devsite-footer-promo"><a href="https://plus.google.com/+GoogleAnalytics"
+           class="devsite-footer-promo-title gc-analytics-event"
+           data-category="Site-Wide Custom Events"
+           data-label="Content Page Footer Promo"
+           ><img class="devsite-footer-promo-icon" src="https://developers.google.com/site-assets/google_plus_64dp.png">
+          
+          
+            Google+
+          
+        </a><div class="devsite-footer-promo-description">Follow us on Google+</div></li><li class="devsite-footer-promo"><a href="http://stackoverflow.com/questions/tagged/google-analytics"
+           class="devsite-footer-promo-title gc-analytics-event"
+           data-category="Site-Wide Custom Events"
+           data-label="Content Page Footer Promo"
+           ><img class="devsite-footer-promo-icon" src="https://developers.google.com/site-assets/logo-stack-overflow.svg">
+          
+          
+            Stack Overflow
+          
+        </a><div class="devsite-footer-promo-description">Ask questions using the google-analytics tag</div></li><li class="devsite-footer-promo"><a href="https://twitter.com/googleanalytics"
+           class="devsite-footer-promo-title gc-analytics-event"
+           data-category="Site-Wide Custom Events"
+           data-label="Content Page Footer Promo"
+           ><img class="devsite-footer-promo-icon" src="https://developers.google.com/site-assets/logo-twitter.svg">
+          
+          
+            Twitter
+          
+        </a><div class="devsite-footer-promo-description">Follow @googleanalytics on Twitter</div></li><li class="devsite-footer-promo"><a href="https://www.youtube.com/user/googleanalytics"
+           class="devsite-footer-promo-title gc-analytics-event"
+           data-category="Site-Wide Custom Events"
+           data-label="Content Page Footer Promo"
+           ><img class="devsite-footer-promo-icon" src="https://www.gstatic.com/images/icons/material/product/2x/youtube_64dp.png">
+          
+          
+            Videos
+          
+        </a><div class="devsite-footer-promo-description">View Google Analytics videos on YouTube</div></li></ul></nav></footer><footer class="devsite-footer-linkboxes nocontent
+               
+               devsite-footer-linkboxes-with-sites"><nav class="devsite-full-site-width"><ul class="devsite-footer-linkboxes-list"><li class="devsite-footer-linkbox "><h3 class="devsite-footer-linkbox-heading">Partners</h3><ul class="devsite-footer-linkbox-list"><li class="devsite-footer-linkbox-item"><a href="https://developers.google.com/analytics/program/" class="gc-analytics-event"
+               data-category="Site-Wide Custom Events"
+               data-label="Content Page Footer Linkbox">
+                Technology Partner Program
+            </a></li></ul></li><li class="devsite-footer-linkbox "><h3 class="devsite-footer-linkbox-heading">Connect</h3><ul class="devsite-footer-linkbox-list"><li class="devsite-footer-linkbox-item"><a href="https://developers.google.com/analytics/community/" class="gc-analytics-event"
+               data-category="Site-Wide Custom Events"
+               data-label="Content Page Footer Linkbox">
+                Community &amp; Updates
+            </a></li><li class="devsite-footer-linkbox-item"><a href="https://developers.google.com/analytics/help/" class="gc-analytics-event"
+               data-category="Site-Wide Custom Events"
+               data-label="Content Page Footer Linkbox">
+                Getting Help
+            </a></li><li class="devsite-footer-linkbox-item"><a href="https://issuetracker.google.com/issues?q=componentid:187400" class="gc-analytics-event"
+               data-category="Site-Wide Custom Events"
+               data-label="Content Page Footer Linkbox">
+                Reporting an Issue
+            </a></li></ul></li><li class="devsite-footer-linkbox "><h3 class="devsite-footer-linkbox-heading">Product Info</h3><ul class="devsite-footer-linkbox-list"><li class="devsite-footer-linkbox-item"><a href="https://developers.google.com/analytics/policy" class="gc-analytics-event"
+               data-category="Site-Wide Custom Events"
+               data-label="Content Page Footer Linkbox">
+                Protocol / SDK Policy
+            </a></li><li class="devsite-footer-linkbox-item"><a href="https://developers.google.com/analytics/terms/branding-policy" class="gc-analytics-event"
+               data-category="Site-Wide Custom Events"
+               data-label="Content Page Footer Linkbox">
+                Branding Policy
+            </a></li></ul></li><li class="devsite-footer-linkbox devsite-footer-linkbox-sites"><a href="https://developers.google.com/"
+           class="gc-analytics-event devsite-footer-linkbox-logo-link"
+           data-category="Site-Wide Custom Events" data-label="Footer Google Developers Link"><img class="devsite-footer-linkbox-logo"
+               src="https://developers.google.com/_static/d7147bb846/images/redesign-14/lockup-color-knockout.png"
+               alt="Google Developers"></a><ul class="devsite-footer-linkbox-list"><li class="devsite-footer-linkbox-item"><a href="//developer.android.com/index.html" class="gc-analytics-event"
+               data-category="Site-Wide Custom Events"
+               data-label="Footer Android Link">
+                Android
+            </a></li><li class="devsite-footer-linkbox-item"><a href="//developer.chrome.com/home" class="gc-analytics-event"
+               data-category="Site-Wide Custom Events"
+               data-label="Footer Chrome Link">
+                Chrome
+            </a></li><li class="devsite-footer-linkbox-item"><a href="//firebase.google.com" class="gc-analytics-event"
+               data-category="Site-Wide Custom Events"
+               data-label="Footer Firebase Link">
+                Firebase
+            </a></li><li class="devsite-footer-linkbox-item"><a href="//cloud.google.com" class="gc-analytics-event"
+               data-category="Site-Wide Custom Events"
+               data-label="Footer Cloud Link">
+                Google Cloud Platform
+            </a></li><li class="devsite-footer-linkbox-item"><a href="//developers.google.com/products/" class="gc-analytics-event"
+               data-category="Site-Wide Custom Events"
+               data-label="Footer Products Link">
+                All Products
+            </a></li></ul></li></ul></nav></footer><footer class="devsite-utility-footer"><nav class="devsite-utility-footer-nav devsite-nav devsite-full-site-width"><div class="devsite-utility-footer-nav-left"><form class="devsite-utility-footer-language" action="/i18n/setlang/" method="post"><input type="hidden" name="xsrf_token" value="JPaW8Pv28I1REPimEcOJNjjFBijgoW3TBLbBRs5GuLQ6MTUyNDQyODU5NDgzNjk5MA" /><input type="hidden" name="next" value="/analytics/devguides/collection/android/v4/"><select class="devsite-utility-footer-language-select kd-select" name="language"
+                track-type="languageSelector" track-name="click"><option value="id"
+                
+                track-type="languageSelector" track-name="changed"
+                track-metadata-original-language="en"
+                track-metadata-selected-language="id">
+            Bahasa Indonesia
+          </option><option value="de"
+                
+                track-type="languageSelector" track-name="changed"
+                track-metadata-original-language="en"
+                track-metadata-selected-language="de">
+            Deutsch
+          </option><option value="en"
+                 selected="selected" 
+                track-type="languageSelector" track-name="changed"
+                track-metadata-original-language="en"
+                track-metadata-selected-language="en">
+            English
+          </option><option value="es"
+                
+                track-type="languageSelector" track-name="changed"
+                track-metadata-original-language="en"
+                track-metadata-selected-language="es">
+            español
+          </option><option value="fr"
+                
+                track-type="languageSelector" track-name="changed"
+                track-metadata-original-language="en"
+                track-metadata-selected-language="fr">
+            français
+          </option><option value="pt-br"
+                
+                track-type="languageSelector" track-name="changed"
+                track-metadata-original-language="en"
+                track-metadata-selected-language="pt-br">
+            Português Brasileiro
+          </option><option value="ru"
+                
+                track-type="languageSelector" track-name="changed"
+                track-metadata-original-language="en"
+                track-metadata-selected-language="ru">
+            Русский
+          </option><option value="ja"
+                
+                track-type="languageSelector" track-name="changed"
+                track-metadata-original-language="en"
+                track-metadata-selected-language="ja">
+            日本語
+          </option><option value="zh-cn"
+                
+                track-type="languageSelector" track-name="changed"
+                track-metadata-original-language="en"
+                track-metadata-selected-language="zh-cn">
+            简体中文
+          </option><option value="ko"
+                
+                track-type="languageSelector" track-name="changed"
+                track-metadata-original-language="en"
+                track-metadata-selected-language="ko">
+            한국어
+          </option></select></form><span class="devsite-utility-footer-links"><a class="devsite-utility-footer-link gc-analytics-event"
+           href="https://developers.google.com/terms/site-terms"
+           data-category="Site-Wide Custom Events"
+           data-label="Footer terms link"
+           data-footer-link-id="terms"
+           >Terms
+         </a><a class="devsite-utility-footer-link gc-analytics-event"
+           href="//www.google.com/policies/privacy/"
+           data-category="Site-Wide Custom Events"
+           data-label="Footer privacy link"
+           data-footer-link-id="privacy"
+           >Privacy
+         </a></span></div><div class="devsite-utility-footer-nav-right"><div class="devsite-utility-footer-newsletter-signup-text">
+        Sign up for the Google Developers newsletter
+      </div><a class="button button-primary devsite-utility-footer-newsletter-signup-button"
+         href="//services.google.com/fb/forms/googledevelopersnewsletter/?utm_medium=referral&amp;utm_source=google-products&amp;utm_team=googledevs&amp;utm_campaign=201611-newsletter-launch">
+        
+        Subscribe
+      </a></div></nav></footer></div><script async defer src="//www.gstatic.com/feedback/api.js"></script><script src="https://developers.google.com/_static2/d7147bb846/jsi18n/"></script><script src="https://developers.google.com/_static/d7147bb846/js/script_foot_closure.js"></script><script src="https://developers.google.com/_static/d7147bb846/js/script_foot.js"></script><script>
+        (function($) {
+          
+          devsite.devsite.Init($, {'ENABLE_BLOCKED_VIDEO_PLACEHOLDER': 0, 'SITE_NAME': 'devsite', 'FULL_SITE_SEARCH_ENABLED': 1, 'ENABLE_CLOUDTRACK': 0, 'VTAGS_ENABLED': 0, 'HISTORY_ENABLED': 1, 'VERSION_HASH': 'd7147bb846', 'SCRIPTSAFE_DOMAIN': 'google-developers.appspot.com', 'ENABLE_BLOCKED_LINK_TOOLTIP': 0, 'ALLOWED_HOSTS': ['.android.com', '.anvato.com', '.apigee.com', '.appspot.com', '.dialogflow.com', '.gonglchuangl.net', '.google.cn', '.google.com', '.googleplex.com', '.nest.com', '.openthread.io', '.openweave.io', '.orbitera.com', '.tensorflow.org'], 'BLOCK_RSS_FEEDS': 0},
+                               '[]','en',
+                               true, '',
+                               {"f62218c009ec029abef196bba5aa34cf": true, "8de7a048f21618359bd37f5ce44be073": false, "098dafe57affddc137df300142652cfd": false, "8e03e230de0bd8a6fe173fdf172e8b3f": true, "cb025a64a50094835616312f4774a53d": true, "51470233c56fc1fde50f00b73c52b216": false, "d169d485cf24243a263783dbe42029b1": true, "039e5d84b87fd75807ffb37b7f1bbf2c": true, "700def1a83e356c06c0925afb05de4b0": false, "6749dcb526ce9bde6993550c7d928d24": true}, '/analytics/devguides/collection/android/v4/',
+                               'https://developers.google.com/');
+        })(jQuery);
+
+        
+        devsite.localInit = function() {
+          
+        };
+
+      </script><script>
+      $('.devsite-utility-footer-language-select').each(function() {
+        $(this).change(function(){$('.devsite-utility-footer-language').submit();});
+      });
+      </script></div><span id="devsite-request-elapsed" data-request-elapsed="225.559949875"></span></body></html>

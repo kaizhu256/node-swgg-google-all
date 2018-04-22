@@ -1,0 +1,858 @@
+
+
+
+
+
+
+<!DOCTYPE html><html lang="en"
+      class="chekov"><head><script>var a=window.devsite||{};window.devsite=a;a.readyCallbacks=[];window.devsite.readyCallbacks=a.readyCallbacks;a.ready=function(b){a.readyCallbacks.push(b)};window.devsite.ready=a.ready;
+</script><meta charset="utf-8"><meta name="xsrf_token" content="w3F8vrMzZidjG4J_uOHhDDIgMObYPKr59SX8xOuBEc46MTUyNDQyODU5NDg5MTk4MA" /><link rel="canonical" href="https://developers.google.com/analytics/devguides/collection/amp-analytics/"><link rel="alternate" href="https://developers.google.com/analytics/devguides/collection/amp-analytics/" hreflang="en"><link rel="alternate" href="https://developers.google.com/analytics/devguides/collection/amp-analytics/?hl=ja" hreflang="ja"><link rel="alternate" href="https://developers.google.com/analytics/devguides/collection/amp-analytics/?hl=pt-br" hreflang="pt-br"><link rel="alternate" href="https://developers.google.com/analytics/devguides/collection/amp-analytics/?hl=es" hreflang="es"><link rel="alternate" href="https://developers.google.com/analytics/devguides/collection/amp-analytics/?hl=zh-cn" hreflang="zh-Hans"><link rel="alternate" href="https://developers.google.com/analytics/devguides/collection/amp-analytics/?hl=ru" hreflang="ru"><link rel="alternate" href="https://developers.google.cn/analytics/devguides/collection/amp-analytics/" hreflang="en-cn"><link rel="alternate" href="https://developers.google.cn/analytics/devguides/collection/amp-analytics/?hl=ja" hreflang="ja-cn"><link rel="alternate" href="https://developers.google.cn/analytics/devguides/collection/amp-analytics/?hl=pt-br" hreflang="pt-br-cn"><link rel="alternate" href="https://developers.google.cn/analytics/devguides/collection/amp-analytics/?hl=es" hreflang="es-cn"><link rel="alternate" href="https://developers.google.cn/analytics/devguides/collection/amp-analytics/?hl=zh-cn" hreflang="zh-Hans-cn"><link rel="alternate" href="https://developers.google.cn/analytics/devguides/collection/amp-analytics/?hl=ru" hreflang="ru-cn"><link rel="alternate" href="https://developers.google.com/analytics/devguides/collection/amp-analytics/" hreflang="x-default"><link rel="shortcut icon" href="https://developers.google.com/_static/d7147bb846/images/favicon.png"><link rel="apple-touch-icon" href="https://developers.google.com/_static/d7147bb846/images/touch-icon.png"><meta name="viewport" content="width=device-width, initial-scale=1"><link rel="stylesheet"
+      
+      href="//fonts.googleapis.com/css?family=Google+Sans:400|Roboto:400,400italic,500,500italic,700,700italic|Roboto+Mono:400,500,700|Material+Icons"
+      ><link rel="stylesheet"
+        href="https://developers.google.com/_static/d7147bb846/css/devsite-orange.css"><link rel="search"
+        type="application/opensearchdescription+xml"
+        title="Google Developers"
+        href="https://developers.google.com/s/opensearch.xml"><script src="https://developers.google.com/_static/d7147bb846/js/jquery-bundle.js"></script><meta property="og:site_name" content="Google Developers"><meta property="og:type" content="website"><meta property="og:url" content="https://developers.google.com/analytics/devguides/collection/amp-analytics/"><meta property="og:locale" content="en"><script>
+    var ___gcfg = ___gcfg || {};
+    ___gcfg.lang = 'en';
+  </script><title>Adding Analytics to your AMP pages &nbsp;|&nbsp; Analytics for AMP Pages
+      &nbsp;|&nbsp; Google Developers</title><meta property="og:title" content="Adding Analytics to your AMP pages &nbsp;|&nbsp; Analytics for AMP Pages
+      &nbsp;|&nbsp; Google Developers"><meta name="description" content="Measure user interaction with AMP pages."><meta property="og:description" content="Measure user interaction with AMP pages."><meta property="og:image"
+          content="https://developers.google.com/_static/d7147bb846/images/share/devsite-orange.png"><meta property="og:image:secure_url"
+          content="https://developers.google.com/_static/d7147bb846/images/share/devsite-orange.png"><meta property="og:image:width" content="1200"><meta property="og:image:height" content="630"></head><body class="
+               devsite-doc-page
+               
+               
+               
+               devsite-header-no-upper-tabs
+               devsite-header-no-lower-tabs"
+        data-family="endorsed"
+        id="top_of_page"><div class="devsite-wrapper"><div class="devsite-top-section-wrapper
+            "><header class="devsite-top-section nocontent"><div class="devsite-top-logo-row-wrapper-wrapper"><div class="devsite-top-logo-row-wrapper"><div class="devsite-top-logo-row devsite-full-site-width"><button type="button" class="devsite-expand-section-nav devsite-header-icon-button
+                                       button-flat material-icons gc-analytics-event"
+                  data-category="Site-Wide Custom Events" data-label="Hamburger menu"></button><div class="devsite-product-name-wrapper"><a class="devsite-product-name-link gc-analytics-event"
+       href="https://developers.google.com/analytics/"
+       data-category="Site-Wide Custom Events"
+       data-label="Project logo (header)"><img src="https://developers.google.com/analytics/images/logo_google_analytics_color_1x_web_64dp.png" class="devsite-product-logo"
+               alt="Google Analytics"></a><span class="devsite-product-name"><ul class="devsite-breadcrumb-list"><li class="devsite-breadcrumb-item"><a href="https://developers.google.com/analytics/" class="devsite-breadcrumb-link gc-analytics-event"
+       data-category="Site-Wide Custom Events" data-label="Upper Header"
+       data-value="1">
+    
+    
+      
+        Google Analytics
+      
+    
+    
+    </a></li><li class="devsite-breadcrumb-item"><div class="devsite-breadcrumb-guillemet material-icons"></div><a href="https://developers.google.com/analytics/devguides/collection/" class="devsite-breadcrumb-link gc-analytics-event"
+       data-category="Site-Wide Custom Events" data-label="Upper Header"
+       data-value="2">
+    
+    
+      Tracking
+    
+    
+    </a></li><li class="devsite-breadcrumb-item"><div class="devsite-breadcrumb-guillemet material-icons"></div><a href="https://developers.google.com/analytics/devguides/collection/amp-analytics/" class="devsite-breadcrumb-link gc-analytics-event"
+       data-category="Site-Wide Custom Events" data-label="Upper Header"
+       data-value="3">
+    
+    
+      AMP Pages
+    
+    
+    </a></li></ul></span></div><div class="devsite-header-upper-tabs"></div><form class="devsite-search-form"
+                action="https://developers.google.com/s/results/"
+                method="GET"
+                id="top-search"
+                search-placeholder='Search'><div id="searchbox" class="devsite-searchbox"><input placeholder='Search'
+         
+         type="text"
+         class="devsite-search-field devsite-search-query"
+         name="q"
+         value=""
+         autocomplete="off"
+         
+         aria-label="Search box"><div class="devsite-search-image material-icons"></div></div><input type="hidden"
+       name="p"
+       id="search_project"
+       value="/analytics/devguides/collection/amp-analytics/"
+       data-project-name="Analytics for AMP Pages"
+       data-project-path="/analytics/devguides/collection/amp-analytics/"
+       data-query-match=""><input type="hidden" class="suggest-project" value="Analytics for AMP Pages" /><div class="suggest-project-metadata" data-home_url="/analytics/" data-path="/analytics/" data-name="Google Analytics" ></div></form><a class="devsite-header-link devsite-top-button button gc-analytics-event"
+               href="https://developers.google.com/products/"
+               data-category="Site-Wide Custom Events"
+               data-label="Site header link"
+               track-type="navigateTo"
+               track-name="all products"
+               track-metadata-position="nav"><div class="devsite-header-link-label">All Products</div></a><button type="button" class="devsite-search-button devsite-header-icon-button button-flat
+                                       material-icons"></button><a href="https://www.google.com/accounts/ServiceLogin?passive=true&continue=https%3A%2F%2Fdevelopers.google.com%2Fanalytics%2Fdevguides%2Fcollection%2Famp-analytics%2F%3Frefresh%3D1&service=ahsid"
+   class="devsite-user-signin devsite-top-button button gc-analytics-event"
+   data-category="Site-Wide Custom Events" data-label="Sign in button">
+  
+  Sign in
+</a></div></div></div><div class="devsite-collapsible-section"><div class="devsite-header-background devsite-full-site-width"></div></div></header><script>
+    if (window.jQuery) {
+      $(document).ready(function() {
+        if (window.devsite && window.devsite.search) {
+          
+          window.devsite.search.init('en')
+        }
+      });
+    }
+  </script></div><div id="gc-wrapper"itemscope itemtype="http://schema.org/Article"><input class="google-analytics-id-json" type="hidden" value="{&quot;dimensions&quot;: {&quot;dimension6&quot;: &quot;en&quot;, &quot;dimension4&quot;: &quot;Analytics for AMP Pages&quot;, &quot;dimension5&quot;: &quot;en&quot;, &quot;dimension3&quot;: false, &quot;dimension1&quot;: &quot;Signed out&quot;, &quot;dimension8&quot;: null}, &quot;gaid&quot;: &quot;UA-24532603-1&quot;}"><input class="google-analytics-id-json" type="hidden" value="{&quot;dimensions&quot;: {}, &quot;gaid&quot;: &quot;UA-41425441-2&quot;}"><script>
+      var dataLayer = [{"freeTrialEligibleUser": "False", "userCountry": "HK", "language": {"requested": "en", "served": "en"}, "projectName": "Analytics for AMP Pages", "scriptsafe": null, "signedIn": "False", "internalUser": "False"}];
+    </script>
+
+      
+        <div class="devsite-site-mask"></div>
+        
+  
+
+
+<nav class="devsite-nav-responsive devsite-nav nocontent" tabindex="0">
+  
+  
+  <div class="devsite-nav-responsive-sidebar-panel">
+    
+    <nav class="devsite-nav-responsive-sidebar"></nav>
+  </div>
+  
+  
+</nav>
+
+
+        <div class="devsite-main-content clearfix">
+
+        
+        
+
+        
+  
+  
+    
+    
+      
+  <nav class="devsite-section-nav devsite-nav nocontent">
+    <ul class="devsite-nav-list"><li class="devsite-nav-item devsite-nav-item-heading"><span class="devsite-nav-title devsite-nav-title-no-path" aria-label="Fundamentals, click to expand/collapse" role="link">Fundamentals</span><li class="devsite-nav-item devsite-nav-active"><a href="https://developers.google.com/analytics/devguides/collection/amp-analytics/" class="devsite-nav-title">Adding Analytics to your AMP pages</a></li><li class="devsite-nav-item"><a href="https://developers.google.com/analytics/devguides/collection/amp-analytics/client-id" class="devsite-nav-title">Client IDs in AMP pages</a></li></li><li class="devsite-nav-item devsite-nav-item-heading"><span class="devsite-nav-title devsite-nav-title-no-path" aria-label="Resources, click to expand/collapse" role="link">Resources</span><li class="devsite-nav-item"><a href="https://developers.google.com/analytics/devguides/collection/protocol/policy" class="devsite-nav-title">Protocol / SDK / User ID Policy</a></li><li class="devsite-nav-item"><a href="https://developers.google.com/analytics/devguides/collection/protocol/v1/limits-quotas" class="devsite-nav-title">Limits and Quotas</a></li></li><li class="devsite-nav-item devsite-nav-item-heading"><span class="devsite-nav-title devsite-nav-title-no-path" aria-label="AMP HTML Resources, click to expand/collapse" role="link">AMP HTML Resources</span><li class="devsite-nav-item devsite-nav-external devsite-nav-has-status"><a href="https://www.ampproject.org/" class="devsite-nav-title"><span class="devsite-nav-text">AMP Project</span><span class="devsite-nav-icon-wrapper"><span class="devsite-nav-icon material-icons" title="External"></span></span></a></li><li class="devsite-nav-item devsite-nav-external devsite-nav-has-status"><a href="https://www.ampproject.org/docs/reference/extended.html" class="devsite-nav-title"><span class="devsite-nav-text">AMP HTML Extended Components</span><span class="devsite-nav-icon-wrapper"><span class="devsite-nav-icon material-icons" title="External"></span></span></a></li><li class="devsite-nav-item devsite-nav-external devsite-nav-has-status"><a href="https://www.ampproject.org/docs/reference/extended/amp-analytics.html" class="devsite-nav-title"><span class="devsite-nav-text">amp-analytics Reference</span><span class="devsite-nav-icon-wrapper"><span class="devsite-nav-icon material-icons" title="External"></span></span></a></li></li><li class="devsite-nav-item devsite-nav-item-heading"><span class="devsite-nav-title devsite-nav-title-no-path" aria-label="Support, click to expand/collapse" role="link">Support</span><li class="devsite-nav-item devsite-nav-external devsite-nav-has-status"><a href="https://amphtml.wordpress.com/" class="devsite-nav-title"><span class="devsite-nav-text">AMP Project Blog</span><span class="devsite-nav-icon-wrapper"><span class="devsite-nav-icon material-icons" title="External"></span></span></a></li><li class="devsite-nav-item devsite-nav-external devsite-nav-has-status"><a href="https://stackoverflow.com/questions/tagged/amp-html" class="devsite-nav-title"><span class="devsite-nav-text">Stack Overflow</span><span class="devsite-nav-icon-wrapper"><span class="devsite-nav-icon material-icons" title="External"></span></span></a></li><li class="devsite-nav-item devsite-nav-external devsite-nav-has-status"><a href="https://www.ampproject.org/docs/support/faqs.html" class="devsite-nav-title"><span class="devsite-nav-text">FAQ</span><span class="devsite-nav-icon-wrapper"><span class="devsite-nav-icon material-icons" title="External"></span></span></a></li><li class="devsite-nav-item devsite-nav-external devsite-nav-has-status"><a href="https://www.ampproject.org/docs/support/contribute.html" class="devsite-nav-title"><span class="devsite-nav-text">How To Contribute</span><span class="devsite-nav-icon-wrapper"><span class="devsite-nav-icon material-icons" title="External"></span></span></a></li></li></ul>
+  </nav>
+
+    
+
+    
+  <nav class="devsite-page-nav devsite-nav"></nav>
+
+
+      <article class="devsite-article">
+        <article class="devsite-article-inner">
+  
+          
+  
+
+
+
+  
+  <nav class="devsite-breadcrumb-nav devsite-nav">
+    
+
+
+<ul class="devsite-breadcrumb-list">
+  
+  <li class="devsite-breadcrumb-item">
+    
+    
+    <a href="https://developers.google.com/products/" class="devsite-breadcrumb-link gc-analytics-event"
+       data-category="Site-Wide Custom Events" data-label="Breadcrumbs"
+       data-value="1">
+    
+    
+      Products
+    
+    
+    </a>
+    
+  </li>
+  
+  <li class="devsite-breadcrumb-item">
+    
+    
+    <div class="devsite-breadcrumb-guillemet material-icons"></div>
+    
+    
+    <a href="https://developers.google.com/analytics/" class="devsite-breadcrumb-link gc-analytics-event"
+       data-category="Site-Wide Custom Events" data-label="Breadcrumbs"
+       data-value="2">
+    
+    
+      Google Analytics
+    
+    
+    </a>
+    
+  </li>
+  
+  <li class="devsite-breadcrumb-item">
+    
+    
+    <div class="devsite-breadcrumb-guillemet material-icons"></div>
+    
+    
+    <a href="https://developers.google.com/analytics/devguides/collection/" class="devsite-breadcrumb-link gc-analytics-event"
+       data-category="Site-Wide Custom Events" data-label="Breadcrumbs"
+       data-value="3">
+    
+    
+      Tracking
+    
+    
+    </a>
+    
+  </li>
+  
+  <li class="devsite-breadcrumb-item">
+    
+    
+    <div class="devsite-breadcrumb-guillemet material-icons"></div>
+    
+    
+    <a href="https://developers.google.com/analytics/devguides/collection/amp-analytics/" class="devsite-breadcrumb-link gc-analytics-event"
+       data-category="Site-Wide Custom Events" data-label="Breadcrumbs"
+       data-value="4">
+    
+    
+      AMP Pages
+    
+    
+    </a>
+    
+  </li>
+  
+</ul>
+
+  </nav>
+  
+  
+  <h1 itemprop="name" class="devsite-page-title">
+    Adding Analytics to your AMP pages
+  </h1>
+  
+  
+  <nav class="devsite-page-nav-embedded devsite-nav"></nav>
+  
+  <div class="devsite-article-body clearfix
+            "
+       itemprop="articleBody">
+    
+
+<p>AMP is a way to build web pages for static content that render fast. AMP includes
+an <code>amp-analytics</code> element that allows you to track user interactions with AMP
+pages and it has built-in support for Google Analytics.</p>
+<p>To learn more about analytics for AMP pages see the
+<a href="https://www.ampproject.org/docs/reference/extended/amp-analytics.html">amp-analytics</a>
+reference. For general information about AMP see <a href="https://www.ampproject.org/docs/get_started/about-amp.html">What Is
+AMP?</a> on the <a href="https://www.ampproject.org/">Accelerated Mobile Pages (AMP) Project</a> site.</p>
+<p>For requirements and capabilities of the Google Analytics built-in support for AMP pages see <a href="https://support.google.com/analytics/answer/6343176">Accelerated Mobile Pages (AMP)</a> in the Google Analytics Help Center.</p>
+<h2 id="supported_user_interactions_for_google_analytics">Supported user interactions for Google Analytics</h2>
+<p><code>amp-analytics</code> is an <a href="https://www.ampproject.org/docs/reference/extended.html">extended component</a> and must be explicitly included into the document as a custom element to use it. To add AMP analytics functionality to your page include the following script in the <code>&lt;head&gt;</code>, <strong>before</strong> the <a href="https://github.com/ampproject/amphtml#the-amp-js-library">AMP JS library</a>:</p>
+<pre class="prettyprint notranslate" translate="no"><code>&lt;script async custom-element="amp-analytics"
+    src="https://cdn.ampproject.org/v0/amp-analytics-0.1.js"&gt;&lt;/script&gt;
+</code></pre>
+<p>Add the <code>amp-analytics</code> element to the <strong>body</strong> of your page. Then to enable the built-in support for Google Analytics, set the <code>type</code> attribute of the <code>amp-analytics</code> element to <code>googleanalytics</code>. It is recommended to include an <code>id</code> attribute so that you can easily identify each <code>amp-analytics</code> element (e.g. debugging).</p>
+<pre class="prettyprint notranslate" translate="no"><code>&lt;amp-analytics type="googleanalytics"&gt;
+  ...
+&lt;/amp-analytics&gt;
+</code></pre>
+<p>The following trigger <code>request</code> values are supported for the Google Analytics configuration:</p>
+<ul>
+<li><code>pageview</code> for page tracking</li>
+<li><code>event</code> for event tracking</li>
+<li><code>social</code> for social tracking.</li>
+</ul>
+<aside class="note">When defining a trigger, any string value can be used for the trigger name. If there are multiple triggers with identical names then the last defined trigger will apply.</aside>
+
+<h3 id="page_tracking">Page tracking</h3>
+<p>Page tracking allows you to measure the number of views you had for a particular page on your website.</p>
+<p>Pageview hits can be sent by setting the trigger <code>request</code> value to <code>pageview</code>.</p>
+<pre class="prettyprint notranslate" translate="no"><code>&lt;amp-analytics type="googleanalytics"&gt;
+&lt;script type="application/json"&gt;
+{
+  "vars": {
+    "account": "UA-XXXXX-Y"
+  },
+  "triggers": {
+    "trackPageview": {
+      "on": "visible",
+      "request": "pageview"
+    }
+  }
+}
+&lt;/script&gt;
+&lt;/amp-analytics&gt;
+</code></pre>
+<aside class="note"><strong>Note</strong>: The property ID `UA-XXXXX-Y` should be replaced with a real property ID that you own in the code snippet above and rest of the document.</aside>
+
+<p>You can set key-value pairs for the following pageview fields in the <code>vars</code> attribute of the trigger.</p>
+<table>
+<thead>
+<tr>
+<th>Value</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>title</code></td>
+<td><code>string</code></td>
+<td>no</td>
+<td>The title of the page (e.g. homepage). Defaults to <a href="https://github.com/ampproject/amphtml/blob/master/extensions/amp-analytics/analytics-vars.md#title"><code>title</code></a>.</td>
+</tr>
+<tr>
+<td><code>documentLocation</code></td>
+<td><code>string</code></td>
+<td>no</td>
+<td>URL of the page being tracked (e.g. https://www.ampproject.org/). Defaults to <a href="https://github.com/ampproject/amphtml/blob/master/spec/amp-var-substitutions.md#source-url"><code>sourceUrl</code></a>.</td>
+</tr>
+</tbody>
+</table>
+<p>The following example overrides the default pageview values for <code>title</code> and <code>documentLocation</code>:</p>
+<pre class="prettyprint notranslate" translate="no"><code>&lt;amp-analytics type="googleanalytics"&gt;
+&lt;script type="application/json"&gt;
+{
+  "vars": {
+    "account": "UA-XXXXX-Y"
+  },
+  "triggers": {
+    "trackPageviewWithCustomUrl": {
+      "on": "visible",
+      "request": "pageview",
+      "vars": {
+        "title": "My page",
+        "documentLocation": "https://www.examplepetstore.com/pets.html"
+      }
+    }
+  }
+}
+&lt;/script&gt;
+&lt;/amp-analytics&gt;
+</code></pre>
+<h3 id="event_tracking">Event tracking</h3>
+<p>Events are user interactions with content that can be tracked independently from a web page or a screen load. If you're unfamiliar with events in Google Analytics you should first read the article <a href="https://support.google.com/analytics/answer/1033068">About Events</a> in the <a href="https://support.google.com/analytics">Analytics Help Center</a>.</p>
+<p>Event hits can be sent by setting the trigger <code>request</code> value to <code>event</code> and setting the required event category and action fields.</p>
+<p>The following example uses the <code>selector</code> attribute of the trigger to send an event when a particular element is clicked:</p>
+<pre class="prettyprint notranslate" translate="no"><code>&lt;amp-analytics type="googleanalytics"&gt;
+&lt;script type="application/json"&gt;
+{
+  "vars": {
+    "account": "UA-XXXXX-Y"
+  },
+  "triggers": {
+    "trackClickOnHeader" : {
+      "on": "click",
+      "selector": "#header",
+      "request": "event",
+      "vars": {
+        "eventCategory": "ui-components",
+        "eventAction": "header-click"
+      }
+    }
+  }
+}
+&lt;/script&gt;
+&lt;/amp-analytics&gt;
+</code></pre>
+<p>You can set key-value pairs for the following event fields in the <code>vars</code> attribute of the trigger.</p>
+<table>
+<thead>
+<tr>
+<th>Value</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>eventCategory</code></td>
+<td><code>string</code></td>
+<td><strong>yes</strong></td>
+<td>Typically the object that was interacted with (e.g. 'Video').</td>
+</tr>
+<tr>
+<td><code>eventAction</code></td>
+<td><code>string</code></td>
+<td><strong>yes</strong></td>
+<td>The type of interaction (e.g. 'play').</td>
+</tr>
+<tr>
+<td><code>eventLabel</code></td>
+<td><code>string</code></td>
+<td>no</td>
+<td>Useful for categorizing events (e.g. 'Fall Campaign').</td>
+</tr>
+<tr>
+<td><code>eventValue</code></td>
+<td><code>integer</code></td>
+<td>no</td>
+<td>A numeric value associated with the event (e.g. 42). Defaults to 0.</td>
+</tr>
+</tbody>
+</table>
+<h3 id="non-interaction_events">Non-interaction events</h3>
+<p>In some cases you might want to send an event as a
+<a href="//support.google.com/analytics/answer/1033068#NonInteractionEvents">non-interaction event</a>.
+To send such an event, in the <code>extraUrlParams</code> section,
+set the <code>ni</code> parameter to <code>"1"</code>:</p>
+<pre class="prettyprint"><code>&quot;extraUrlParams&quot;: {
+   &quot;ni&quot;: &quot;1&quot;
+}
+</code></pre>
+
+<p>For a complete example, see <a href="#extending-ga">Extending <code>googleanalytics</code></a>.</p>
+<h3 id="social_interactions">Social interactions</h3>
+<p>Social interaction analytics allows you to measure the number of times users perform social network related actions. For example, you might measure when a user clicks on a Twitter "Tweet" link.</p>
+<p>If you're unfamiliar with social interactions in Google Analytics, or you're not sure what values to use for the social network, action, or target, you should first read the article <a href="https://support.google.com/analytics/answer/6209874">About Social plugins and interactions</a> in the <a href="https://support.google.com/analytics">Analytics Help Center</a>.</p>
+<p>Social interaction hits can be sent by setting the trigger <code>request</code> value to <code>social</code> and setting the required social network, action, and target fields.</p>
+<p>The following example uses the <code>selector</code> attribute of the trigger to send an event when a particular social button is clicked:</p>
+<pre class="prettyprint notranslate" translate="no"><code>&lt;amp-analytics type="googleanalytics"&gt;
+&lt;script type="application/json"&gt;
+{
+  "vars": {
+    "account": "UA-XXXXX-Y"
+  },
+  "triggers": {
+    "trackClickOnTwitterLink" : {
+      "on": "click",
+      "selector": "#tweet-link",
+      "request": "social",
+      "vars": {
+          "socialNetwork": "twitter",
+          "socialAction": "tweet",
+          "socialTarget": "https://www.examplepetstore.com"
+      }
+    }
+  }
+}
+&lt;/script&gt;
+&lt;/amp-analytics&gt;
+</code></pre>
+<p>You can set key-value pairs for the following event fields in the <code>vars</code> attribute of the trigger.</p>
+<table>
+<thead>
+<tr>
+<th>Value</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>socialNetwork</code></td>
+<td><code>string</code></td>
+<td><strong>yes</strong></td>
+<td>The network on which the action occurs (e.g. Facebook, Twitter).</td>
+</tr>
+<tr>
+<td><code>socialAction</code></td>
+<td><code>string</code></td>
+<td><strong>yes</strong></td>
+<td>The type of action that happens (e.g. Like, Send, Tweet)..</td>
+</tr>
+<tr>
+<td><code>socialTarget</code></td>
+<td><code>string</code></td>
+<td><strong>yes</strong></td>
+<td>Specifies the target of a social interaction. This value is typically a URL but can be any text. (e.g. http://mycoolpage.com).</td>
+</tr>
+</tbody>
+</table>
+<h2 id="extending-ga">Extending <code>googleanalytics</code></h2>
+<p>Since the underlying request endpoint for the <code>googleanalytics</code> configuration is the <a href="https://developers.google.com/analytics/devguides/collection/protocol/">Measurement Protocol</a>, it is possible to send additional <a href="https://developers.google.com/analytics/devguides/collection/protocol/v1/parameters">Measurement Protocol parameters</a> with hits. This is useful for sending values for parameters like custom dimensions and custom metrics which are expected to be sent along with hits.</p>
+<aside class="note">When extending `googleanalytics` it is up to you to verify the validity of the hit you intend to send. You can use the <a href="https://ga-dev-tools.appspot.com/hit-builder/">Hit Builder</a> for validation.</aside>
+
+<p>For example, you can send a custom dimension with a pageview by including the <a href="https://developers.google.com/analytics/devguides/collection/protocol/v1/parameters#cd_">Custom Dimension</a> parameter (or any other parameters you want to include with the hit) in the <code>extraUrlParams</code> section. This section can be included at the trigger level for single requests or at a global level to send the data with all requests.</p>
+<pre class="prettyprint notranslate" translate="no"><code>&lt;amp-analytics type="googleanalytics"&gt;
+&lt;script type="application/json"&gt;
+{
+  "vars": {
+    "account": "UA-XXXXX-Y"
+  },
+  "extraUrlParams": {
+    "cd3": "AMP"
+  },
+  "triggers": {
+    "trackPageviewWithCustomData": {
+      "on": "visible",
+      "request": "pageview"
+    },
+    "trackEvent" : {
+      "on": "visible",
+      "request": "event",
+      "vars": {
+        "eventCategory": "ui-components",
+        "eventAction": "header-click"
+      },
+      "extraUrlParams": {
+        "ni": "1"
+      }
+    }
+  }
+}
+&lt;/script&gt;
+&lt;/amp-analytics&gt;
+</code></pre>
+<aside class="note">Note that `pageview` will send `cd3` whereas `event` will send `cd3` and `ni`.</aside>
+
+<h2 id="sampling">Sampling</h2>
+<p>AMP analytics allows you to add sampling to your AMP pages just like non-AMP pages. To implement sampling for one or more of the requests sent from your AMP page, you can use the following configuration to sample at 1%.</p>
+<pre class="prettyprint notranslate" translate="no"><code>&lt;amp-analytics type="googleanalytics"&gt;
+&lt;script type="application/json"&gt;
+{
+  "vars": {
+    "account": "UA-XXXXX-Y"
+  },
+  "triggers": {
+    "trackPageviewWithCustom" : {
+      "on": "visible",
+      "request": "pageview",
+      "sampleSpec": {
+        "sampleOn": "${clientId}",
+        "threshold": 1
+      }
+    }
+  }
+}
+&lt;/script&gt;
+&lt;/amp-analytics&gt;
+</code></pre>
+<aside class="note">You can use `threshold` to control the sampling rate for the trigger. The value represents the percentage of hits to be sent.</aside>
+
+<h2 id="outbound_link_tracking">Outbound link tracking</h2>
+<p>You can add outbound link tracking to various links on your AMP page by annotating the links and configuring a trigger to act on link clicks. This can be done with two steps:</p>
+<p>Adding a trigger to track link clicks:</p>
+<pre class="prettyprint notranslate" translate="no"><code>&lt;amp-analytics type="googleanalytics"&gt;
+&lt;script type="application/json"&gt;
+{
+  "vars": {
+    "account": "UA-XXXXX-Y"
+  },
+  "triggers": {
+    "outboundLinks": {
+        "on": "click",
+        "selector": "a",
+        "request": "event",
+        "vars": {
+          "eventCategory": "outbound",
+          "eventAction": "click",
+          "eventLabel": "${outboundLink}"
+        }
+      }
+  }
+}
+&lt;/script&gt;
+&lt;/amp-analytics&gt;
+</code></pre>
+<p>Annotating the link with appropriate data:</p>
+<pre class="prettyprint notranslate" translate="no"><code>&lt;a href="http://example.com/page" data-vars-outbound-link="http://example.com/page"&gt;Some link&lt;/a&gt;
+</code></pre>
+<aside class="note">This technique can be used to define arbitrary variables for use in your configuration. A variable with format `data-vars-variable-name` will be made available as `variableName` in the analytics configuration.</aside>
+
+<h2 id="amp_vs_non-amp_traffic">AMP vs non-AMP traffic</h2>
+<p>Due to various technical restrictions, AMP traffic uses different Client IDs from those for web traffic by default. AMP pages also load faster and show different traffic patterns thus resulting in different metrics. Using a separate property to measure AMP traffic allows for better analysis of metrics and a more accurate picture of your traffic. If you use a single property to measure both AMP and non-AMP traffic, use the <a href="https://developers.google.com/analytics/devguides/collection/protocol/v1/parameters#ds">data source</a> dimension or a custom dimension to distinguish them. By default, Google Analytics will send the value "AMP" within the data source dimension, which is the value you can use to segment/filter or otherwise analyze AMP vs non-AMP content within a single View. To configure a custom dimension, see <a href="#extending-ga">Extending googleanalytics</a>. In addition, you can use the <a href="https://support.google.com/analytics/answer/7486764">AMP Client ID integration</a> to use a single Client ID for a user across AMP and non-AMP traffic.</p>
+<h2 id="example_amp_page">Example AMP Page</h2>
+<p>The following is an example AMP page with Google Analytics pageview and event tracking.</p>
+<pre class="prettyprint notranslate" translate="no"><code>&lt;!doctype html&gt;
+&lt;html amp lang="en"&gt;
+  &lt;head&gt;
+    &lt;meta charset="utf-8"&gt;
+    &lt;title&gt;Hello, AMP Analytics&lt;/title&gt;
+    &lt;link rel="canonical" href="http://example.ampproject.org/article-metadata.html" /&gt;
+    &lt;meta name="viewport" content="width=device-width,minimum-scale=1,initial-scale=1"&gt;
+    &lt;script async custom-element="amp-analytics"
+        src="https://cdn.ampproject.org/v0/amp-analytics-0.1.js"&gt;&lt;/script&gt;
+    &lt;style&gt;body {opacity: 0}&lt;/style&gt;&lt;noscript&gt;&lt;style&gt;body {opacity: 1}&lt;/style&gt;&lt;/noscript&gt;
+    &lt;script async src="https://cdn.ampproject.org/v0.js"&gt;&lt;/script&gt;
+  &lt;/head&gt;
+  &lt;body&gt;
+
+  &lt;amp-analytics type="googleanalytics"&gt;
+  &lt;script type="application/json"&gt;
+  {
+    "vars": {
+      "account": "UA-XXXXX-Y"
+    },
+    "triggers": {
+      "trackPageview": {
+        "on": "visible",
+        "request": "pageview"
+      },
+      "trackEvent": {
+        "selector": "#event-test",
+        "on": "click",
+        "request": "event",
+        "vars": {
+          "eventCategory": "ui-components",
+          "eventAction": "click"
+        }
+      }
+    }
+  }
+  &lt;/script&gt;
+  &lt;/amp-analytics&gt;
+
+  &lt;h1 id="header"&gt;AMP Page&lt;/h1&gt;
+
+  &lt;span id="event-test" class="box"&gt;
+    Click here to generate an event
+  &lt;/span&gt;
+
+  &lt;/body&gt;
+&lt;/html&gt;
+</code></pre>
+<h2 id="debugging">Debugging</h2>
+<p>The <a href="https://github.com/ampproject/amphtml#the-amp-validator">AMP Validator</a> can be used to identify if a web page doesn't meet the AMP HTML specification. Adding <code>#development=1</code> to the URL of a page will turn on the validator.</p>
+<p>The <code>amp-analytics</code> extension provides warning and error messages to help debug and troubleshoot a configuration. Messages are logged to the browser's console. Add <code>#log=1</code> to the URL of a page to enable logging.</p>
+<h2 id="customization">Customization</h2>
+<p>The built-in support for Google Analytics in the <code>amp-analytics</code> extension provides an easy way to measure user interactions with your AMP pages. However, for more advanced use cases you may want to create your own configuration to send additional fields and hit types available in the <a href="https://developers.google.com/analytics/devguides/collection/protocol">Measurement Protocol</a>.</p>
+<p>The following resources will help you to get started with a customized solution:</p>
+<ul>
+<li><a href="https://github.com/ampproject/amphtml/blob/master/extensions/amp-analytics/amp-analytics.md">amp-analytics extension</a> - An overview on how to capture analytics data from an AMP document.</li>
+<li><a href="https://github.com/ampproject/amphtml/blob/master/spec/amp-var-substitutions.md">amp-analytics variables</a> - A list of variables supported in <code>amp-analytics</code>.</li>
+<li><a href="https://github.com/ampproject/amphtml/blob/master/extensions/amp-analytics/0.1/vendors.js">vendor.js</a> - This file includes <code>request</code> templates for vendors, including the <code>googleanalytics</code> template. You can use the <code>googleanalytics</code> template as a reference on how to create your own configuration.</li>
+<li><a href="https://developers.google.com/analytics/devguides/collection/protocol/v1/devguide">Working with the Measurement Protocol</a> and <a href="https://developers.google.com/analytics/devguides/collection/protocol/v1/parameters">parameter reference</a> - An overview of how to work with the Measurement Protocol and the list of all parameters for the Measurement Protocol.</li>
+</ul>
+
+  </div>
+  
+
+  
+        
+  
+
+
+
+
+
+
+
+        
+<div class="devsite-content-footer nocontent">
+  
+  
+    <p>Except as otherwise noted, the content of this page is licensed under the <a href="http://creativecommons.org/licenses/by/3.0/">Creative Commons Attribution 3.0 License</a>, and code samples are licensed under the <a href="http://www.apache.org/licenses/LICENSE-2.0">Apache 2.0 License</a>. For details, see our <a href="https://developers.google.com/terms/site-policies">Site Policies</a>. Java is a registered trademark of Oracle and/or its affiliates.</p>
+  
+
+  
+    
+    <p class="devsite-content-footer-date" itemprop="datePublished"
+       content="2017-09-05T22:23:09.332370">
+      
+      Last updated September 5, 2017.
+    </p>
+  
+
+</div>
+
+        </article>
+      </article>
+  
+
+        </div>
+      
+
+<footer class="devsite-footer-promos nocontent"><nav class="devsite-full-site-width"><ul class="devsite-footer-promos-list"><li class="devsite-footer-promo"><a href="https://github.com/googleanalytics/"
+           class="devsite-footer-promo-title gc-analytics-event"
+           data-category="Site-Wide Custom Events"
+           data-label="Content Page Footer Promo"
+           ><img class="devsite-footer-promo-icon" src="https://developers.google.com/site-assets/logo-github.svg">
+          
+          
+            GitHub
+          
+        </a><div class="devsite-footer-promo-description">Try Google Analytics samples</div></li><li class="devsite-footer-promo"><a href="https://plus.google.com/+GoogleAnalytics"
+           class="devsite-footer-promo-title gc-analytics-event"
+           data-category="Site-Wide Custom Events"
+           data-label="Content Page Footer Promo"
+           ><img class="devsite-footer-promo-icon" src="https://developers.google.com/site-assets/google_plus_64dp.png">
+          
+          
+            Google+
+          
+        </a><div class="devsite-footer-promo-description">Follow us on Google+</div></li><li class="devsite-footer-promo"><a href="http://stackoverflow.com/questions/tagged/google-analytics"
+           class="devsite-footer-promo-title gc-analytics-event"
+           data-category="Site-Wide Custom Events"
+           data-label="Content Page Footer Promo"
+           ><img class="devsite-footer-promo-icon" src="https://developers.google.com/site-assets/logo-stack-overflow.svg">
+          
+          
+            Stack Overflow
+          
+        </a><div class="devsite-footer-promo-description">Ask questions using the google-analytics tag</div></li><li class="devsite-footer-promo"><a href="https://twitter.com/googleanalytics"
+           class="devsite-footer-promo-title gc-analytics-event"
+           data-category="Site-Wide Custom Events"
+           data-label="Content Page Footer Promo"
+           ><img class="devsite-footer-promo-icon" src="https://developers.google.com/site-assets/logo-twitter.svg">
+          
+          
+            Twitter
+          
+        </a><div class="devsite-footer-promo-description">Follow @googleanalytics on Twitter</div></li><li class="devsite-footer-promo"><a href="https://www.youtube.com/user/googleanalytics"
+           class="devsite-footer-promo-title gc-analytics-event"
+           data-category="Site-Wide Custom Events"
+           data-label="Content Page Footer Promo"
+           ><img class="devsite-footer-promo-icon" src="https://www.gstatic.com/images/icons/material/product/2x/youtube_64dp.png">
+          
+          
+            Videos
+          
+        </a><div class="devsite-footer-promo-description">View Google Analytics videos on YouTube</div></li></ul></nav></footer><footer class="devsite-footer-linkboxes nocontent
+               
+               devsite-footer-linkboxes-with-sites"><nav class="devsite-full-site-width"><ul class="devsite-footer-linkboxes-list"><li class="devsite-footer-linkbox "><h3 class="devsite-footer-linkbox-heading">Partners</h3><ul class="devsite-footer-linkbox-list"><li class="devsite-footer-linkbox-item"><a href="https://developers.google.com/analytics/program/" class="gc-analytics-event"
+               data-category="Site-Wide Custom Events"
+               data-label="Content Page Footer Linkbox">
+                Technology Partner Program
+            </a></li></ul></li><li class="devsite-footer-linkbox "><h3 class="devsite-footer-linkbox-heading">Connect</h3><ul class="devsite-footer-linkbox-list"><li class="devsite-footer-linkbox-item"><a href="https://developers.google.com/analytics/community/" class="gc-analytics-event"
+               data-category="Site-Wide Custom Events"
+               data-label="Content Page Footer Linkbox">
+                Community &amp; Updates
+            </a></li><li class="devsite-footer-linkbox-item"><a href="https://developers.google.com/analytics/help/" class="gc-analytics-event"
+               data-category="Site-Wide Custom Events"
+               data-label="Content Page Footer Linkbox">
+                Getting Help
+            </a></li><li class="devsite-footer-linkbox-item"><a href="https://issuetracker.google.com/issues?q=componentid:187400" class="gc-analytics-event"
+               data-category="Site-Wide Custom Events"
+               data-label="Content Page Footer Linkbox">
+                Reporting an Issue
+            </a></li></ul></li><li class="devsite-footer-linkbox "><h3 class="devsite-footer-linkbox-heading">Product Info</h3><ul class="devsite-footer-linkbox-list"><li class="devsite-footer-linkbox-item"><a href="https://developers.google.com/analytics/policy" class="gc-analytics-event"
+               data-category="Site-Wide Custom Events"
+               data-label="Content Page Footer Linkbox">
+                Protocol / SDK Policy
+            </a></li><li class="devsite-footer-linkbox-item"><a href="https://developers.google.com/analytics/terms/branding-policy" class="gc-analytics-event"
+               data-category="Site-Wide Custom Events"
+               data-label="Content Page Footer Linkbox">
+                Branding Policy
+            </a></li></ul></li><li class="devsite-footer-linkbox devsite-footer-linkbox-sites"><a href="https://developers.google.com/"
+           class="gc-analytics-event devsite-footer-linkbox-logo-link"
+           data-category="Site-Wide Custom Events" data-label="Footer Google Developers Link"><img class="devsite-footer-linkbox-logo"
+               src="https://developers.google.com/_static/d7147bb846/images/redesign-14/lockup-color-knockout.png"
+               alt="Google Developers"></a><ul class="devsite-footer-linkbox-list"><li class="devsite-footer-linkbox-item"><a href="//developer.android.com/index.html" class="gc-analytics-event"
+               data-category="Site-Wide Custom Events"
+               data-label="Footer Android Link">
+                Android
+            </a></li><li class="devsite-footer-linkbox-item"><a href="//developer.chrome.com/home" class="gc-analytics-event"
+               data-category="Site-Wide Custom Events"
+               data-label="Footer Chrome Link">
+                Chrome
+            </a></li><li class="devsite-footer-linkbox-item"><a href="//firebase.google.com" class="gc-analytics-event"
+               data-category="Site-Wide Custom Events"
+               data-label="Footer Firebase Link">
+                Firebase
+            </a></li><li class="devsite-footer-linkbox-item"><a href="//cloud.google.com" class="gc-analytics-event"
+               data-category="Site-Wide Custom Events"
+               data-label="Footer Cloud Link">
+                Google Cloud Platform
+            </a></li><li class="devsite-footer-linkbox-item"><a href="//developers.google.com/products/" class="gc-analytics-event"
+               data-category="Site-Wide Custom Events"
+               data-label="Footer Products Link">
+                All Products
+            </a></li></ul></li></ul></nav></footer><footer class="devsite-utility-footer"><nav class="devsite-utility-footer-nav devsite-nav devsite-full-site-width"><div class="devsite-utility-footer-nav-left"><form class="devsite-utility-footer-language" action="/i18n/setlang/" method="post"><input type="hidden" name="xsrf_token" value="w3F8vrMzZidjG4J_uOHhDDIgMObYPKr59SX8xOuBEc46MTUyNDQyODU5NDg5MTk4MA" /><input type="hidden" name="next" value="/analytics/devguides/collection/amp-analytics/"><select class="devsite-utility-footer-language-select kd-select" name="language"
+                track-type="languageSelector" track-name="click"><option value="id"
+                
+                track-type="languageSelector" track-name="changed"
+                track-metadata-original-language="en"
+                track-metadata-selected-language="id">
+            Bahasa Indonesia
+          </option><option value="de"
+                
+                track-type="languageSelector" track-name="changed"
+                track-metadata-original-language="en"
+                track-metadata-selected-language="de">
+            Deutsch
+          </option><option value="en"
+                 selected="selected" 
+                track-type="languageSelector" track-name="changed"
+                track-metadata-original-language="en"
+                track-metadata-selected-language="en">
+            English
+          </option><option value="es"
+                
+                track-type="languageSelector" track-name="changed"
+                track-metadata-original-language="en"
+                track-metadata-selected-language="es">
+            español
+          </option><option value="fr"
+                
+                track-type="languageSelector" track-name="changed"
+                track-metadata-original-language="en"
+                track-metadata-selected-language="fr">
+            français
+          </option><option value="pt-br"
+                
+                track-type="languageSelector" track-name="changed"
+                track-metadata-original-language="en"
+                track-metadata-selected-language="pt-br">
+            Português Brasileiro
+          </option><option value="ru"
+                
+                track-type="languageSelector" track-name="changed"
+                track-metadata-original-language="en"
+                track-metadata-selected-language="ru">
+            Русский
+          </option><option value="ja"
+                
+                track-type="languageSelector" track-name="changed"
+                track-metadata-original-language="en"
+                track-metadata-selected-language="ja">
+            日本語
+          </option><option value="zh-cn"
+                
+                track-type="languageSelector" track-name="changed"
+                track-metadata-original-language="en"
+                track-metadata-selected-language="zh-cn">
+            简体中文
+          </option><option value="ko"
+                
+                track-type="languageSelector" track-name="changed"
+                track-metadata-original-language="en"
+                track-metadata-selected-language="ko">
+            한국어
+          </option></select></form><span class="devsite-utility-footer-links"><a class="devsite-utility-footer-link gc-analytics-event"
+           href="https://developers.google.com/terms/site-terms"
+           data-category="Site-Wide Custom Events"
+           data-label="Footer terms link"
+           data-footer-link-id="terms"
+           >Terms
+         </a><a class="devsite-utility-footer-link gc-analytics-event"
+           href="//www.google.com/policies/privacy/"
+           data-category="Site-Wide Custom Events"
+           data-label="Footer privacy link"
+           data-footer-link-id="privacy"
+           >Privacy
+         </a></span></div><div class="devsite-utility-footer-nav-right"><div class="devsite-utility-footer-newsletter-signup-text">
+        Sign up for the Google Developers newsletter
+      </div><a class="button button-primary devsite-utility-footer-newsletter-signup-button"
+         href="//services.google.com/fb/forms/googledevelopersnewsletter/?utm_medium=referral&amp;utm_source=google-products&amp;utm_team=googledevs&amp;utm_campaign=201611-newsletter-launch">
+        
+        Subscribe
+      </a></div></nav></footer></div><script async defer src="//www.gstatic.com/feedback/api.js"></script><script src="https://developers.google.com/_static2/d7147bb846/jsi18n/"></script><script src="https://developers.google.com/_static/d7147bb846/js/script_foot_closure.js"></script><script src="https://developers.google.com/_static/d7147bb846/js/script_foot.js"></script><script>
+        (function($) {
+          
+          devsite.devsite.Init($, {'ENABLE_BLOCKED_VIDEO_PLACEHOLDER': 0, 'SITE_NAME': 'devsite', 'FULL_SITE_SEARCH_ENABLED': 1, 'ENABLE_CLOUDTRACK': 0, 'VTAGS_ENABLED': 0, 'HISTORY_ENABLED': 1, 'VERSION_HASH': 'd7147bb846', 'SCRIPTSAFE_DOMAIN': 'google-developers.appspot.com', 'ENABLE_BLOCKED_LINK_TOOLTIP': 0, 'ALLOWED_HOSTS': ['.android.com', '.anvato.com', '.apigee.com', '.appspot.com', '.dialogflow.com', '.gonglchuangl.net', '.google.cn', '.google.com', '.googleplex.com', '.nest.com', '.openthread.io', '.openweave.io', '.orbitera.com', '.tensorflow.org'], 'BLOCK_RSS_FEEDS': 0},
+                               '[]','en',
+                               true, '',
+                               {"f62218c009ec029abef196bba5aa34cf": true, "8de7a048f21618359bd37f5ce44be073": false, "098dafe57affddc137df300142652cfd": false, "8e03e230de0bd8a6fe173fdf172e8b3f": true, "cb025a64a50094835616312f4774a53d": true, "51470233c56fc1fde50f00b73c52b216": false, "d169d485cf24243a263783dbe42029b1": true, "039e5d84b87fd75807ffb37b7f1bbf2c": true, "700def1a83e356c06c0925afb05de4b0": false, "6749dcb526ce9bde6993550c7d928d24": true}, '/analytics/devguides/collection/amp-analytics/',
+                               'https://developers.google.com/');
+        })(jQuery);
+
+        
+        devsite.localInit = function() {
+          
+        };
+
+      </script><script>
+      $('.devsite-utility-footer-language-select').each(function() {
+        $(this).change(function(){$('.devsite-utility-footer-language').submit();});
+      });
+      </script></div><span id="devsite-request-elapsed" data-request-elapsed="421.10991478"></span></body></html>

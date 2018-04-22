@@ -1,0 +1,1533 @@
+
+
+
+
+
+
+<!DOCTYPE html><html lang="en"
+      class="chekov"><head><script>var a=window.devsite||{};window.devsite=a;a.readyCallbacks=[];window.devsite.readyCallbacks=a.readyCallbacks;a.ready=function(b){a.readyCallbacks.push(b)};window.devsite.ready=a.ready;
+</script><meta charset="utf-8"><meta name="xsrf_token" content="QslOk9m8hXukprBsG_XFRgt9JwJqhcghibef837k27o6MTUyNDQyODU2ODI1MTA4MA" /><link rel="canonical" href="https://developers.google.com/places/android-api/autocomplete"><link rel="alternate" href="https://developers.google.com/places/android-api/autocomplete?hl=ko" hreflang="ko"><link rel="alternate" href="https://developers.google.com/places/android-api/autocomplete?hl=ja" hreflang="ja"><link rel="alternate" href="https://developers.google.com/places/android-api/autocomplete?hl=es" hreflang="es"><link rel="alternate" href="https://developers.google.com/places/android-api/autocomplete?hl=fr" hreflang="fr"><link rel="alternate" href="https://developers.google.com/places/android-api/autocomplete?hl=id" hreflang="id"><link rel="alternate" href="https://developers.google.com/places/android-api/autocomplete?hl=pt-br" hreflang="pt-br"><link rel="alternate" href="https://developers.google.com/places/android-api/autocomplete?hl=zh-tw" hreflang="zh-Hant"><link rel="alternate" href="https://developers.google.com/places/android-api/autocomplete?hl=ru" hreflang="ru"><link rel="alternate" href="https://developers.google.com/places/android-api/autocomplete?hl=zh-cn" hreflang="zh-Hans"><link rel="alternate" href="https://developers.google.com/places/android-api/autocomplete?hl=de" hreflang="de"><link rel="alternate" href="https://developers.google.com/places/android-api/autocomplete" hreflang="en"><link rel="alternate" href="https://developers.google.cn/places/android-api/autocomplete?hl=ko" hreflang="ko-cn"><link rel="alternate" href="https://developers.google.cn/places/android-api/autocomplete?hl=ja" hreflang="ja-cn"><link rel="alternate" href="https://developers.google.cn/places/android-api/autocomplete?hl=es" hreflang="es-cn"><link rel="alternate" href="https://developers.google.cn/places/android-api/autocomplete?hl=fr" hreflang="fr-cn"><link rel="alternate" href="https://developers.google.cn/places/android-api/autocomplete?hl=id" hreflang="id-cn"><link rel="alternate" href="https://developers.google.cn/places/android-api/autocomplete?hl=pt-br" hreflang="pt-br-cn"><link rel="alternate" href="https://developers.google.cn/places/android-api/autocomplete?hl=zh-tw" hreflang="zh-Hant-cn"><link rel="alternate" href="https://developers.google.cn/places/android-api/autocomplete?hl=ru" hreflang="ru-cn"><link rel="alternate" href="https://developers.google.cn/places/android-api/autocomplete?hl=zh-cn" hreflang="zh-Hans-cn"><link rel="alternate" href="https://developers.google.cn/places/android-api/autocomplete?hl=de" hreflang="de-cn"><link rel="alternate" href="https://developers.google.cn/places/android-api/autocomplete" hreflang="en-cn"><link rel="alternate" href="https://developers.google.com/places/android-api/autocomplete" hreflang="x-default"><link rel="shortcut icon" href="https://developers.google.com/_static/d7147bb846/images/favicon.png"><link rel="apple-touch-icon" href="https://developers.google.com/_static/d7147bb846/images/touch-icon.png"><meta name="viewport" content="width=device-width, initial-scale=1"><link rel="stylesheet"
+      
+      href="//fonts.googleapis.com/css?family=Google+Sans:400|Roboto:400,400italic,500,500italic,700,700italic|Roboto+Mono:400,500,700|Material+Icons"
+      ><link rel="stylesheet"
+        href="https://developers.google.com/_static/d7147bb846/css/devsite-indigo.css"><link rel="search"
+        type="application/opensearchdescription+xml"
+        title="Google Developers"
+        href="https://developers.google.com/s/opensearch.xml"><script src="https://developers.google.com/_static/d7147bb846/js/jquery-bundle.js"></script><meta property="og:site_name" content="Google Developers"><meta property="og:type" content="website"><meta property="og:url" content="https://developers.google.com/places/android-api/autocomplete"><meta property="og:locale" content="en"><script>
+    var ___gcfg = ___gcfg || {};
+    ___gcfg.lang = 'en';
+  </script><title>Place Autocomplete &nbsp;|&nbsp; Google Places API for Android
+      &nbsp;|&nbsp; Google Developers</title><meta property="og:title" content="Place Autocomplete &nbsp;|&nbsp; Google Places API for Android
+      &nbsp;|&nbsp; Google Developers"><meta property="og:image"
+          content="https://developers.google.com/_static/d7147bb846/images/share/devsite-indigo.png"><meta property="og:image:secure_url"
+          content="https://developers.google.com/_static/d7147bb846/images/share/devsite-indigo.png"><meta property="og:image:width" content="1200"><meta property="og:image:height" content="630"></head><body class="
+               devsite-doc-page
+               
+               
+               
+               
+               "
+        data-family="endorsed"
+        id="top_of_page"><div class="devsite-wrapper"><div class="devsite-top-section-wrapper
+            "><header class="devsite-top-section nocontent"><div class="devsite-top-logo-row-wrapper-wrapper"><div class="devsite-top-logo-row-wrapper"><div class="devsite-top-logo-row devsite-full-site-width"><button type="button" class="devsite-expand-section-nav devsite-header-icon-button
+                                       button-flat material-icons gc-analytics-event"
+                  data-category="Site-Wide Custom Events" data-label="Hamburger menu"></button><div class="devsite-product-name-wrapper"><a class="devsite-product-name-link gc-analytics-event"
+       href="https://developers.google.com/places/"
+       data-category="Site-Wide Custom Events"
+       data-label="Project logo (header)"><div class="devsite-product-logo material-icons">location_on</div></a><span class="devsite-product-name"><ul class="devsite-breadcrumb-list"><li class="devsite-breadcrumb-item"><a href="https://developers.google.com/places/" class="devsite-breadcrumb-link gc-analytics-event"
+       data-category="Site-Wide Custom Events" data-label="Upper Header"
+       data-value="1">
+    
+    
+      
+        Google Places API
+      
+    
+    
+    </a></li></ul></span></div><div class="devsite-header-upper-tabs"><nav class="devsite-doc-set-nav devsite-nav devsite-overflow-tabs-scroll-wrapper"><ul class="devsite-doc-set-nav-tab-list devsite-overflow-tabs-scroll"><li class="devsite-doc-set-nav-tab-container devsite-nav-tab
+               "><a href="https://developers.google.com/places/"
+         class=" devsite-nav-tab
+                devsite-doc-set-nav-tab devsite-doc-set-nav-tab-link gc-analytics-event"
+         
+       
+         data-category="home"
+       
+         data-label="navTopMenu"
+       
+         data-action="tabClick"
+       >
+        Home
+      </a></li><li class="devsite-doc-set-nav-tab-container devsite-nav-tab
+               devsite-dropdown-menu-container"><a href="https://developers.google.com/places/documentation/"
+         class="devsite-doc-set-nav-active devsite-nav-tab
+                devsite-doc-set-nav-tab devsite-doc-set-nav-tab-link gc-analytics-event"
+         aria-label="Documentation, selected"
+       
+         data-category="documentation"
+       
+         data-label="navTopMenu"
+       
+         data-action="tabClick"
+       >
+        Documentation
+      </a><span class="devsite-menu-toggle devsite-nav-tab material-icons"></span><div class="devsite-dropdown-menu-wrapper
+                  devsite-dropdown-menu-full"><div class="devsite-dropdown-menu"><div class="devsite-dropdown-menu-column"><ul class="devsite-nav-list devsite-dropdown-menu-section"><li class="devsite-nav-item devsite-nav-item-heading"><span class="devsite-nav-title devsite-nav-title-no-path">
+                        Android APIs
+                      </span></li><li class="devsite-nav-item"><a class="devsite-nav-title" href="https://developers.google.com/maps/documentation/android-api/">
+                        Google Maps Android API
+                      </a></li><li class="devsite-nav-item"><a class="devsite-nav-title" href="https://developers.google.com/places/android-api/">
+                        Google Places API for Android
+                      </a></li></ul><ul class="devsite-nav-list devsite-dropdown-menu-section"><li class="devsite-nav-item devsite-nav-item-heading"><span class="devsite-nav-title devsite-nav-title-no-path">
+                        iOS APIs
+                      </span></li><li class="devsite-nav-item"><a class="devsite-nav-title" href="https://developers.google.com/maps/documentation/ios-sdk/">
+                        Google Maps SDK for iOS
+                      </a></li><li class="devsite-nav-item"><a class="devsite-nav-title" href="https://developers.google.com/places/ios-api/">
+                        Google Places API for iOS
+                      </a></li></ul></div><div class="devsite-dropdown-menu-column"><ul class="devsite-nav-list devsite-dropdown-menu-section"><li class="devsite-nav-item devsite-nav-item-heading"><span class="devsite-nav-title devsite-nav-title-no-path">
+                        Web APIs
+                      </span></li><li class="devsite-nav-item"><a class="devsite-nav-title" href="https://developers.google.com/maps/documentation/embed/">
+                        Embed API
+                      </a></li><li class="devsite-nav-item"><a class="devsite-nav-title" href="https://developers.google.com/maps/documentation/javascript/">
+                        JavaScript API
+                      </a></li><li class="devsite-nav-item"><a class="devsite-nav-title" href="https://developers.google.com/maps/documentation/static-maps/">
+                        Static Maps API
+                      </a></li><li class="devsite-nav-item"><a class="devsite-nav-title" href="https://developers.google.com/maps/documentation/streetview/">
+                        Street View Image API
+                      </a></li><li class="devsite-nav-item"><a class="devsite-nav-title" href="https://developers.google.com/places/javascript/">
+                        Google Places API JavaScript Library
+                      </a></li></ul></div><div class="devsite-dropdown-menu-column"><ul class="devsite-nav-list devsite-dropdown-menu-section"><li class="devsite-nav-item devsite-nav-item-heading"><span class="devsite-nav-title devsite-nav-title-no-path">
+                        Web Service APIs
+                      </span></li><li class="devsite-nav-item"><a class="devsite-nav-title" href="https://developers.google.com/maps/documentation/directions/">
+                        Directions API
+                      </a></li><li class="devsite-nav-item"><a class="devsite-nav-title" href="https://developers.google.com/maps/documentation/distance-matrix/">
+                        Distance Matrix API
+                      </a></li><li class="devsite-nav-item"><a class="devsite-nav-title" href="https://developers.google.com/maps/documentation/elevation/">
+                        Elevation API
+                      </a></li><li class="devsite-nav-item"><a class="devsite-nav-title" href="https://developers.google.com/maps/documentation/geocoding/">
+                        Geocoding API
+                      </a></li><li class="devsite-nav-item"><a class="devsite-nav-title" href="https://developers.google.com/maps/documentation/geolocation/">
+                        Geolocation API
+                      </a></li><li class="devsite-nav-item"><a class="devsite-nav-title" href="https://developers.google.com/places/web-service/">
+                        Places API Web Service
+                      </a></li><li class="devsite-nav-item"><a class="devsite-nav-title" href="https://developers.google.com/maps/documentation/roads/">
+                        Roads API
+                      </a></li><li class="devsite-nav-item"><a class="devsite-nav-title" href="https://developers.google.com/maps/documentation/timezone/">
+                        Time Zone API
+                      </a></li></ul></div><div class="devsite-dropdown-menu-column"><ul class="devsite-nav-list devsite-dropdown-menu-section"><li class="devsite-nav-item devsite-nav-item-heading"><span class="devsite-nav-title devsite-nav-title-no-path">
+                        Google Maps APIs Premium Plan
+                      </span></li><li class="devsite-nav-item"><a class="devsite-nav-title" href="https://developers.google.com/maps/premium/">
+                        Documentation
+                      </a></li></ul></div></div></div></li><li class="devsite-doc-set-nav-tab-container devsite-nav-tab
+               "><a href="https://developers.google.com/maps/pricing-and-plans/"
+         class=" devsite-nav-tab
+                devsite-doc-set-nav-tab devsite-doc-set-nav-tab-link gc-analytics-event"
+         
+       
+         data-category="pricingAndPlans"
+       
+         data-label="navTopMenu"
+       
+         data-action="tabClick"
+       >
+        Pricing and Plans
+      </a></li></ul></nav></div><form class="devsite-search-form"
+                action="https://developers.google.com/s/results/"
+                method="GET"
+                id="top-search"
+                search-placeholder='Search'><div id="searchbox" class="devsite-searchbox"><input placeholder='Search'
+         
+         type="text"
+         class="devsite-search-field devsite-search-query"
+         name="q"
+         value=""
+         autocomplete="off"
+         
+         aria-label="Search box"><div class="devsite-search-image material-icons"></div></div><input type="hidden"
+       name="p"
+       id="search_project"
+       value="/places/android-api/"
+       data-project-name="Google Places API for Android"
+       data-project-path="/places/android-api/"
+       data-query-match=""><input type="hidden" class="suggest-project" value="Google Places API for Android" /><div class="suggest-project-metadata" data-home_url="/places/" data-path="/places/" data-name="Google Places API" ></div></form><a class="devsite-header-link devsite-top-button button gc-analytics-event"
+               href="https://developers.google.com/products/"
+               data-category="Site-Wide Custom Events"
+               data-label="Site header link"
+               track-type="navigateTo"
+               track-name="all products"
+               track-metadata-position="nav"><div class="devsite-header-link-label">All Products</div></a><button type="button" class="devsite-search-button devsite-header-icon-button button-flat
+                                       material-icons"></button><a href="https://www.google.com/accounts/ServiceLogin?passive=true&continue=https%3A%2F%2Fdevelopers.google.com%2Fplaces%2Fandroid-api%2Fautocomplete%3Frefresh%3D1&service=ahsid"
+   class="devsite-user-signin devsite-top-button button gc-analytics-event"
+   data-category="Site-Wide Custom Events" data-label="Sign in button">
+  
+  Sign in
+</a></div></div></div><div class="devsite-collapsible-section"><div class="devsite-header-background devsite-full-site-width"><div class="devsite-product-id-row devsite-full-site-width"><div class="devsite-product-description-row"><ul class="devsite-breadcrumb-list"><li class="devsite-breadcrumb-item"><a href="https://developers.google.com/places/android-api/" class="devsite-breadcrumb-link gc-analytics-event"
+       data-category="Site-Wide Custom Events" data-label="Lower Header"
+       data-value="1">
+    
+    
+      Places API for Android
+    
+    
+    </a></li></ul></div><div class="devsite-product-button-row
+            "><a
+    
+    
+      class="devsite-api-getstarted-widget gc-analytics-event devsite-dialog-button button button-text-blue medium"
+    
+    
+      
+      data-category="getKey"
+      
+      data-action="buttonClick"
+      
+      data-label="hero"
+      
+      data-api-id="placesandroid"
+      
+      data-henhouse-platforms-list="ANDROID"
+      
+      data-henhouse-link-docs="/places/android-api/start"
+      
+      data-henhouse-link-support="/places/android-api/releases"
+      
+    >
+    Get a Key
+  </a><a
+    
+      href="https://developers.google.com/maps/pricing-and-plans/"
+    
+    
+      class="button button-text-blue"
+    
+    
+      
+      data-category="viewPlans"
+      
+      data-action="buttonClick"
+      
+      data-label="hero"
+      
+    >
+    View Pricing and Plans
+  </a></div></div><div class="devsite-doc-set-nav-row devsite-full-site-width"><nav class="devsite-doc-set-nav devsite-nav devsite-overflow-tabs-scroll-wrapper"><ul class="devsite-doc-set-nav-tab-list devsite-overflow-tabs-scroll"><li class="devsite-doc-set-nav-tab-container devsite-nav-tab
+               "><a href="https://developers.google.com/places/android-api/"
+         class=" devsite-nav-tab
+                devsite-doc-set-nav-tab devsite-doc-set-nav-tab-link gc-analytics-event"
+         
+       
+         data-category="Site-Wide Custom Events"
+       
+         data-label="Tab: Overview"
+       >
+        Overview
+      </a></li><li class="devsite-doc-set-nav-tab-container devsite-nav-tab
+               "><a href="https://developers.google.com/places/android-api/intro"
+         class="devsite-doc-set-nav-active devsite-nav-tab
+                devsite-doc-set-nav-tab devsite-doc-set-nav-tab-link gc-analytics-event"
+         aria-label="Guides, selected"
+       
+         data-category="Site-Wide Custom Events"
+       
+         data-label="Tab: Guides"
+       >
+        Guides
+      </a></li><li class="devsite-doc-set-nav-tab-container devsite-nav-tab
+               "><a href="https://developers.google.com/places/android-api/reference"
+         class=" devsite-nav-tab
+                devsite-doc-set-nav-tab devsite-doc-set-nav-tab-link gc-analytics-event"
+         
+       
+         data-category="Site-Wide Custom Events"
+       
+         data-label="Tab: Reference"
+       >
+        Reference
+      </a></li><li class="devsite-doc-set-nav-tab-container devsite-nav-tab
+               "><a href="https://developers.google.com/places/android-api/code-samples"
+         class=" devsite-nav-tab
+                devsite-doc-set-nav-tab devsite-doc-set-nav-tab-link gc-analytics-event"
+         
+       
+         data-category="Site-Wide Custom Events"
+       
+         data-label="Tab: Samples"
+       >
+        Samples
+      </a></li><li class="devsite-doc-set-nav-tab-container devsite-nav-tab
+               "><a href="https://developers.google.com/places/android-api/support"
+         class=" devsite-nav-tab
+                devsite-doc-set-nav-tab devsite-doc-set-nav-tab-link gc-analytics-event"
+         
+       
+         data-category="Site-Wide Custom Events"
+       
+         data-label="Tab: Support"
+       >
+        Support
+      </a></li><button type="button" id="devsite-feedback-project"
+          class="devsite-feedback-button devsite-top-button gc-analytics-event"
+          data-category="Site-Wide Custom Events" data-label="Send Feedback Button"
+          track-type="feedback" track-name="sendFeedbackLink" track-metadata-position="header">
+  
+  Send feedback
+  </button></ul></nav></div></div></div></header><link rel="stylesheet" href="/maps/styles/lhstyles/landing/css/landing.css"><!-- exit getkey modal --><div id="devsite-dialog-onload-getkey-enabled"
+  class="devsite-dialog devsite-enable-getkey-dialog"><div class="get-key-check"></div><div class="devsite-dialog-contents"><h3>You're all set!</h3><p>
+      To start developing, please head over to our
+      <a href="/places/android-api/signup">developer documentation</a>.
+    </p></div><div class="devsite-dialog-buttons"><button
+    class="gc-analytics-event devsite-dialog-close button-white"
+    data-category="getKeySuccessModalDismiss"
+    data-action="linkClick" data-label="modal">Dismiss</button></div></div><!-- enter getkey modal --><div id="enable-getkey-modal-dialog"
+  class="devsite-dialog devsite-enable-getkey-dialog"><div class="devsite-dialog-contents"><h3>Activate the Google Places API for Android</h3><p>To get you started we'll guide you through the Google Developers
+    Console to do a few things first:</p><ol><li>Create or choose a project</li><li>Activate the Google Places API for Android</li><li>Create appropriate keys</li></ol></div><div class="devsite-dialog-buttons devsite-landing-row-item-buttons"><button class="devsite-dialog-close button-white"
+    data-category="getKeyModalCancel"
+    data-action="linkClick"
+    data-label="modal">Cancel</button><a class="button button-white gc-analytics-event"
+    data-category="getKeyModalContinue"
+    data-action="linkClick" data-label="modal"
+    href="https://console.developers.google.com/flows/enableapi?apiid=placesandroid&reusekey=true"
+    target="_blank"
+    onclick="devsite.utils.showSiteMask().click()">Continue</a></div></div><script>
+    if (window.jQuery) {
+      $(document).ready(function() {
+        if (window.devsite && window.devsite.search) {
+          
+          window.devsite.search.init('en')
+        }
+      });
+    }
+  </script></div><div id="gc-wrapper"itemscope itemtype="http://schema.org/Article"><input class="google-analytics-id-json" type="hidden" value="{&quot;dimensions&quot;: {}, &quot;gaid&quot;: &quot;UA-42966870-1&quot;}"><input class="google-analytics-id-json" type="hidden" value="{&quot;dimensions&quot;: {&quot;dimension6&quot;: &quot;en&quot;, &quot;dimension4&quot;: &quot;Google Places API for Android&quot;, &quot;dimension5&quot;: &quot;en&quot;, &quot;dimension3&quot;: false, &quot;dimension1&quot;: &quot;Signed out&quot;, &quot;dimension8&quot;: null}, &quot;gaid&quot;: &quot;UA-24532603-1&quot;}"><input class="google-tag-manager-id" type="hidden" value="GTM-W546ZN"><script>
+      var dataLayer = [{"freeTrialEligibleUser": "False", "userCountry": "HK", "language": {"requested": "en", "served": "en"}, "projectName": "Google Places API for Android", "scriptsafe": null, "signedIn": "False", "internalUser": "False"}];
+    </script>
+
+      
+        <div class="devsite-site-mask"></div>
+        
+  
+
+
+<nav class="devsite-nav-responsive devsite-nav nocontent" tabindex="0">
+  
+  <div class="devsite-nav-responsive-tabs-panel">
+    
+      
+        
+
+
+
+<nav class="devsite-nav-responsive-tabs devsite-nav">
+  <ul class="devsite-nav-list">
+  
+    <li class="devsite-nav-item devsite-nav-item-heading">
+    
+      <a 
+           href="https://developers.google.com/places/"
+         
+         class="devsite-nav-responsive-tab devsite-nav-title gc-analytics-event
+                "
+         data-category="Site-Wide Custom Events" data-label="Responsive Tab: Home">
+        Home
+      </a>
+      
+      
+    
+    </li>
+  
+    <li class="devsite-nav-item devsite-nav-item-heading">
+    
+      <a 
+           href="https://developers.google.com/places/documentation/?nav=true"
+         
+         class="devsite-nav-responsive-tab devsite-nav-title gc-analytics-event
+                devsite-nav-active"
+         data-category="Site-Wide Custom Events" data-label="Responsive Tab: Documentation">
+        Documentation
+      </a>
+      
+      <span class="devsite-nav-index-forward devsite-nav-responsive-tab devsite-nav-title
+                   gc-analytics-event"
+            data-category="Site-Wide Custom Events" data-label="Responsive Tab: Index"
+            tabindex="0"
+            data-tab="Documentation">Index</span>
+      
+      
+        
+
+
+
+<nav class="devsite-nav-responsive-tabs devsite-nav">
+  <ul class="devsite-nav-list">
+  
+    <li class="devsite-nav-item devsite-nav-item-heading">
+    
+      <a 
+           href="https://developers.google.com/places/android-api/"
+         
+         class="devsite-nav-responsive-tab devsite-nav-title gc-analytics-event
+                "
+         data-category="Site-Wide Custom Events" data-label="Responsive Tab: Overview">
+        Overview
+      </a>
+      
+      
+    
+    </li>
+  
+    <li class="devsite-nav-item devsite-nav-item-heading">
+    
+      <span class="devsite-nav-responsive-forward devsite-nav-responsive-tab devsite-nav-title
+                   devsite-nav-active gc-analytics-event"
+            data-category="Site-Wide Custom Events" data-label="Responsive Tab: Guides"
+            tabindex="0">
+        Guides
+      </span>
+    
+    </li>
+  
+    <li class="devsite-nav-item devsite-nav-item-heading">
+    
+      <a 
+           href="https://developers.google.com/places/android-api/reference"
+         
+         class="devsite-nav-responsive-tab devsite-nav-title gc-analytics-event
+                "
+         data-category="Site-Wide Custom Events" data-label="Responsive Tab: Reference">
+        Reference
+      </a>
+      
+      
+    
+    </li>
+  
+    <li class="devsite-nav-item devsite-nav-item-heading">
+    
+      <a 
+           href="https://developers.google.com/places/android-api/code-samples"
+         
+         class="devsite-nav-responsive-tab devsite-nav-title gc-analytics-event
+                "
+         data-category="Site-Wide Custom Events" data-label="Responsive Tab: Samples">
+        Samples
+      </a>
+      
+      
+    
+    </li>
+  
+    <li class="devsite-nav-item devsite-nav-item-heading">
+    
+      <a 
+           href="https://developers.google.com/places/android-api/support?nav=true"
+         
+         class="devsite-nav-responsive-tab devsite-nav-title gc-analytics-event
+                "
+         data-category="Site-Wide Custom Events" data-label="Responsive Tab: Support">
+        Support
+      </a>
+      
+      
+    
+    </li>
+  
+  
+    <li class="devsite-nav-item devsite-nav-item-heading">
+      <a href="https://developers.google.com/products/"
+         class="devsite-nav-responsive-tab devsite-nav-title gc-analytics-event"
+         data-category="Site-Wide Custom Events"
+         data-label="Responsive Tab: all_products">
+        All Products
+      </a>
+    </li>
+  
+  </ul>
+</nav>
+
+
+      
+    
+    </li>
+  
+    <li class="devsite-nav-item devsite-nav-item-heading">
+    
+      <a 
+           href="https://developers.google.com/maps/pricing-and-plans/"
+         
+         class="devsite-nav-responsive-tab devsite-nav-title gc-analytics-event
+                "
+         data-category="Site-Wide Custom Events" data-label="Responsive Tab: Pricing and Plans">
+        Pricing and Plans
+      </a>
+      
+      
+    
+    </li>
+  
+  
+    <li class="devsite-nav-item devsite-nav-item-heading">
+      <a href="https://developers.google.com/products/"
+         class="devsite-nav-responsive-tab devsite-nav-title gc-analytics-event"
+         data-category="Site-Wide Custom Events"
+         data-label="Responsive Tab: all_products">
+        All Products
+      </a>
+    </li>
+  
+  </ul>
+</nav>
+
+
+      
+    
+  </div>
+  
+  
+  <div class="devsite-nav-responsive-sidebar-panel">
+    
+    <div class="devsite-nav-responsive-back" tabindex="0"></div>
+    
+    <nav class="devsite-nav-responsive-sidebar"></nav>
+  </div>
+  
+  
+    <div class="devsite-nav-responsive-index-panel">
+      <div class="devsite-nav-index-back" tabindex="0"></div>
+      <nav>
+      
+        
+      
+        
+        <ul class="devsite-nav-list" data-tab="Documentation">
+        
+          
+            
+            <li class="devsite-nav-item devsite-nav-item-heading">
+              <span class="devsite-nav-title devsite-nav-title-no-path">Android APIs</span>
+            </li>
+            
+            
+            <li class="devsite-nav-item">
+              <a class="devsite-nav-title" href="https://developers.google.com/maps/documentation/android-api/">
+                Google Maps Android API
+              </a>
+            </li>
+            
+            <li class="devsite-nav-item">
+              <a class="devsite-nav-title" href="https://developers.google.com/places/android-api/">
+                Google Places API for Android
+              </a>
+            </li>
+            
+          
+            
+            <li class="devsite-nav-item devsite-nav-item-heading">
+              <span class="devsite-nav-title devsite-nav-title-no-path">iOS APIs</span>
+            </li>
+            
+            
+            <li class="devsite-nav-item">
+              <a class="devsite-nav-title" href="https://developers.google.com/maps/documentation/ios-sdk/">
+                Google Maps SDK for iOS
+              </a>
+            </li>
+            
+            <li class="devsite-nav-item">
+              <a class="devsite-nav-title" href="https://developers.google.com/places/ios-api/">
+                Google Places API for iOS
+              </a>
+            </li>
+            
+          
+        
+          
+            
+            <li class="devsite-nav-item devsite-nav-item-heading">
+              <span class="devsite-nav-title devsite-nav-title-no-path">Web APIs</span>
+            </li>
+            
+            
+            <li class="devsite-nav-item">
+              <a class="devsite-nav-title" href="https://developers.google.com/maps/documentation/embed/">
+                Embed API
+              </a>
+            </li>
+            
+            <li class="devsite-nav-item">
+              <a class="devsite-nav-title" href="https://developers.google.com/maps/documentation/javascript/">
+                JavaScript API
+              </a>
+            </li>
+            
+            <li class="devsite-nav-item">
+              <a class="devsite-nav-title" href="https://developers.google.com/maps/documentation/static-maps/">
+                Static Maps API
+              </a>
+            </li>
+            
+            <li class="devsite-nav-item">
+              <a class="devsite-nav-title" href="https://developers.google.com/maps/documentation/streetview/">
+                Street View Image API
+              </a>
+            </li>
+            
+            <li class="devsite-nav-item">
+              <a class="devsite-nav-title" href="https://developers.google.com/places/javascript/">
+                Google Places API JavaScript Library
+              </a>
+            </li>
+            
+          
+        
+          
+            
+            <li class="devsite-nav-item devsite-nav-item-heading">
+              <span class="devsite-nav-title devsite-nav-title-no-path">Web Service APIs</span>
+            </li>
+            
+            
+            <li class="devsite-nav-item">
+              <a class="devsite-nav-title" href="https://developers.google.com/maps/documentation/directions/">
+                Directions API
+              </a>
+            </li>
+            
+            <li class="devsite-nav-item">
+              <a class="devsite-nav-title" href="https://developers.google.com/maps/documentation/distance-matrix/">
+                Distance Matrix API
+              </a>
+            </li>
+            
+            <li class="devsite-nav-item">
+              <a class="devsite-nav-title" href="https://developers.google.com/maps/documentation/elevation/">
+                Elevation API
+              </a>
+            </li>
+            
+            <li class="devsite-nav-item">
+              <a class="devsite-nav-title" href="https://developers.google.com/maps/documentation/geocoding/">
+                Geocoding API
+              </a>
+            </li>
+            
+            <li class="devsite-nav-item">
+              <a class="devsite-nav-title" href="https://developers.google.com/maps/documentation/geolocation/">
+                Geolocation API
+              </a>
+            </li>
+            
+            <li class="devsite-nav-item">
+              <a class="devsite-nav-title" href="https://developers.google.com/places/web-service/">
+                Places API Web Service
+              </a>
+            </li>
+            
+            <li class="devsite-nav-item">
+              <a class="devsite-nav-title" href="https://developers.google.com/maps/documentation/roads/">
+                Roads API
+              </a>
+            </li>
+            
+            <li class="devsite-nav-item">
+              <a class="devsite-nav-title" href="https://developers.google.com/maps/documentation/timezone/">
+                Time Zone API
+              </a>
+            </li>
+            
+          
+        
+          
+            
+            <li class="devsite-nav-item devsite-nav-item-heading">
+              <span class="devsite-nav-title devsite-nav-title-no-path">Google Maps APIs Premium Plan</span>
+            </li>
+            
+            
+            <li class="devsite-nav-item">
+              <a class="devsite-nav-title" href="https://developers.google.com/maps/premium/">
+                Documentation
+              </a>
+            </li>
+            
+          
+        
+        </ul>
+        
+      
+        
+      
+      </nav>
+    </div>
+  
+</nav>
+
+
+        <div class="devsite-main-content clearfix">
+
+        
+        
+
+        
+  
+  
+    
+    
+      
+  <nav class="devsite-section-nav devsite-nav nocontent">
+    <ul class="devsite-nav-list"><li class="devsite-nav-item"><a href="https://developers.google.com/places/android-api/intro" class="devsite-nav-title">Overview</a></li><li class="devsite-nav-item"><a href="https://developers.google.com/places/android-api/start" class="devsite-nav-title">Get Started</a></li><li class="devsite-nav-item"><a href="https://developers.google.com/places/android-api/signup" class="devsite-nav-title">Get API Key and Signup</a></li><li class="devsite-nav-item devsite-nav-item-heading"><span class="devsite-nav-title devsite-nav-title-no-path">Dev Guides</span></li><li class="devsite-nav-item"><a href="https://developers.google.com/places/android-api/placepicker" class="devsite-nav-title">Place Picker</a></li><li class="devsite-nav-item"><a href="https://developers.google.com/places/android-api/current-place" class="devsite-nav-title">Current Place</a></li><li class="devsite-nav-item devsite-nav-active"><a href="https://developers.google.com/places/android-api/autocomplete" class="devsite-nav-title">Place Autocomplete</a></li><li class="devsite-nav-item devsite-nav-deprecated devsite-nav-has-status"><a href="https://developers.google.com/places/android-api/add-place" class="devsite-nav-title"><span class="devsite-nav-text">Place Add</span><span class="devsite-nav-icon-wrapper"><span class="devsite-nav-icon material-icons" title="Deprecated"></span></span></a></li><li class="devsite-nav-item"><a href="https://developers.google.com/places/android-api/photos" class="devsite-nav-title">Place Photos</a></li><li class="devsite-nav-item"><a href="https://developers.google.com/places/android-api/report-place" class="devsite-nav-title">Place Report</a></li><li class="devsite-nav-item"><a href="https://developers.google.com/places/android-api/place-details" class="devsite-nav-title">Place IDs and Details</a></li><li class="devsite-nav-item devsite-nav-item-heading"><span class="devsite-nav-title devsite-nav-title-no-path">Tutorials</span></li><li class="devsite-nav-item"><a href="https://developers.google.com/places/android-api/current-place-tutorial" class="devsite-nav-title">Select Current Place</a></li><li class="devsite-nav-item"><a href="https://developers.google.com/places/android-api/googleapi-migration" class="devsite-nav-title">Migrating to the GoogleApi client</a></li><li class="devsite-nav-item devsite-nav-item-heading"><span class="devsite-nav-title devsite-nav-title-no-path">Overviews</span></li><li class="devsite-nav-item"><a href="https://developers.google.com/places/android-api/buffers" class="devsite-nav-title">Buffers</a></li><li class="devsite-nav-item"><a href="https://developers.google.com/places/android-api/place-id" class="devsite-nav-title">Place IDs</a></li><li class="devsite-nav-item"><a href="https://developers.google.com/places/android-api/supported_types" class="devsite-nav-title">Place Types</a></li><li class="devsite-nav-item devsite-nav-item-heading"><span class="devsite-nav-title devsite-nav-title-no-path">Policies and Terms</span></li><li class="devsite-nav-item"><a href="https://developers.google.com/places/android-api/attributions" class="devsite-nav-title">Displaying Attributions</a></li><li class="devsite-nav-item"><a href="https://developers.google.com/places/android-api/usage" class="devsite-nav-title">Usage Limits</a></li><li class="devsite-nav-item"><a href="https://developers.google.com/maps/terms" class="devsite-nav-title">Terms of Service</a></li></ul>
+  </nav>
+
+    
+
+    
+  <nav class="devsite-page-nav devsite-nav"></nav>
+
+
+      <article class="devsite-article">
+        <article class="devsite-article-inner">
+  
+          
+  
+
+
+
+  
+  <nav class="devsite-breadcrumb-nav devsite-nav">
+    
+
+
+<ul class="devsite-breadcrumb-list">
+  
+  <li class="devsite-breadcrumb-item">
+    
+    
+    <a href="https://developers.google.com/products/" class="devsite-breadcrumb-link gc-analytics-event"
+       data-category="Site-Wide Custom Events" data-label="Breadcrumbs"
+       data-value="1">
+    
+    
+      Products
+    
+    
+    </a>
+    
+  </li>
+  
+  <li class="devsite-breadcrumb-item">
+    
+    
+    <div class="devsite-breadcrumb-guillemet material-icons"></div>
+    
+    
+    <a href="https://developers.google.com/places/" class="devsite-breadcrumb-link gc-analytics-event"
+       data-category="Site-Wide Custom Events" data-label="Breadcrumbs"
+       data-value="2">
+    
+    
+      Google Places API
+    
+    
+    </a>
+    
+  </li>
+  
+  <li class="devsite-breadcrumb-item">
+    
+    
+    <div class="devsite-breadcrumb-guillemet material-icons"></div>
+    
+    
+    <a href="https://developers.google.com/places/android-api/" class="devsite-breadcrumb-link gc-analytics-event"
+       data-category="Site-Wide Custom Events" data-label="Breadcrumbs"
+       data-value="3">
+    
+    
+      Places API for Android
+    
+    
+    </a>
+    
+  </li>
+  
+  <li class="devsite-breadcrumb-item">
+    
+    
+    <div class="devsite-breadcrumb-guillemet material-icons"></div>
+    
+    
+    <a href="https://developers.google.com/places/documentation/" class="devsite-breadcrumb-link gc-analytics-event"
+       data-category="Site-Wide Custom Events" data-label="Breadcrumbs"
+       data-value="4">
+    
+    
+      Documentation
+    
+    
+    </a>
+    
+  </li>
+  
+  <li class="devsite-breadcrumb-item">
+    
+    
+    <div class="devsite-breadcrumb-guillemet material-icons"></div>
+    
+    
+    <a href="https://developers.google.com/places/android-api/intro" class="devsite-breadcrumb-link gc-analytics-event"
+       data-category="Site-Wide Custom Events" data-label="Breadcrumbs"
+       data-value="5">
+    
+    
+      Guides
+    
+    
+    </a>
+    
+  </li>
+  
+</ul>
+
+  </nav>
+  
+  
+  <h1 itemprop="name" class="devsite-page-title">
+    Place Autocomplete
+  </h1>
+  
+  
+  <nav class="devsite-page-nav-embedded devsite-nav"></nav>
+  
+  <div class="devsite-article-body clearfix
+            "
+       itemprop="articleBody">
+    
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<link href="https://developers.google.com/maps/documentation/local_extensions.css" rel="stylesheet" type="text/css">
+<link href="https://developers.google.com/appengine/css/local_extensions.css" rel="stylesheet" type="text/css">
+<link href="https://developers.google.com/places/styles/local_extensions.css" rel="stylesheet" type="text/css">
+</p>
+
+<p>The autocomplete service in the Google Places API for Android returns place
+predictions in response to user search queries. As the user types, the
+autocomplete service returns suggestions for places such as businesses,
+addresses and points of interest.</p>
+<p>You can add autocomplete to your app in the following ways:</p>
+<ul>
+<li><a href="#add_an_autocomplete_widget">Add an autocomplete widget</a> to save development
+time and ensure a consistent user experience.</li>
+<li><a href="#get_place_predictions_programmatically">Get place predictions programmatically</a> to create a customized user
+experience.</li>
+</ul>
+<aside class="note">The 11.2.0 release of the Google Play services SDK includes
+a new way to access the Google Places API for Android. Learn how to
+<a href="https://developers.google.com/places/android-api/googleapi-migration">migrate your app to use the
+<code>GoogleApi</code> client</a>.</aside>
+
+<h2 id="add_an_autocomplete_widget">Add an autocomplete widget</h2>
+<p><img src="https://developers.google.com/places/images/autocomplete-android.png" class="attempt-right" width="30%" height="30%"/></p>
+
+<p>The autocomplete widget is a search dialog with built-in autocomplete
+functionality. As a user enters search terms, the widget presents a
+list of predicted places to choose from. When the user makes a selection,
+a <a href="https://developers.google.com/android/reference/com/google/android/gms/location/places/Place"><code>Place</code></a>
+instance is returned, which your app can then use to get
+details about the selected place.</p>
+<p>There are two options for adding the autocomplete widget to your app:</p>
+<ul>
+<li><a href="#option_1_embed_a_placeautocompletefragment_or_a_supportplaceautocompletefragment">Option 1: Embed a <code>PlaceAutocompleteFragment</code></a>.</li>
+<li><a href="#option_2_use_an_intent_to_launch_the_autocomplete_activity">Option 2: Use an intent to launch the autocomplete activity</a>.</li>
+</ul>
+<h3 id="option_1_embed_a_placeautocompletefragment_or_a_supportplaceautocompletefragment">Option 1: Embed a PlaceAutocompleteFragment or a SupportPlaceAutocompleteFragment</h3>
+<p>To add a <code>PlaceAutocompleteFragment</code> to your app, take the following steps:</p>
+<ol>
+<li>Add a fragment to your activity's XML layout.</li>
+<li>Add a listener to your activity or fragment.</li>
+</ol>
+<h4 id="add_placeautocompletefragment_to_an_activity">Add PlaceAutocompleteFragment to an activity</h4>
+<p>To add <code>PlaceAutocompleteFragment</code> to an activity, add a new fragment named
+<code>com.google.android.gms.location.places.ui.PlaceAutocompleteFragment</code> to an
+XML layout. For example:</p>
+<pre class="prettyprint notranslate" translate="no"><code>&lt;fragment
+  android:id="@+id/place_autocomplete_fragment"
+  android:layout_width="match_parent"
+  android:layout_height="wrap_content"
+  android:name="com.google.android.gms.location.places.ui.PlaceAutocompleteFragment"
+  /&gt;
+</code></pre>
+<aside class="note"><strong>Note:</strong><span> By default, the fragment has no border or background. To provide a
+consistent visual appearance, nest the fragment within another layout element
+such as a <a href="http://developer.android.com/training/material/lists-cards.html">CardView</a>.</span></aside>
+<h4 id="add_a_placeselectionlistener_to_an_activity">Add a PlaceSelectionListener to an activity</h4>
+<p>The <code>PlaceSelectionListener</code> handles returning a place in response to the
+user's selection. The following code shows creating a reference to the
+fragment and adding a listener to your <code>PlaceAutocompleteFragment</code>:</p>
+<pre class="prettyprint notranslate" translate="no"><code>PlaceAutocompleteFragment autocompleteFragment = (PlaceAutocompleteFragment)
+getFragmentManager().findFragmentById(R.id.place_autocomplete_fragment);
+
+autocompleteFragment.setOnPlaceSelectedListener(new PlaceSelectionListener() {
+    @Override
+    public void onPlaceSelected(Place place) {
+        // TODO: Get info about the selected place.
+        Log.i(TAG, "Place: " + place.getName());
+    }
+
+    @Override
+    public void onError(Status status) {
+        // TODO: Handle the error.
+        Log.i(TAG, "An error occurred: " + status);
+    }
+  });
+</code></pre>
+<h4 id="use_supportplaceautocompletefragment_older_platforms">Use <code>SupportPlaceAutocompleteFragment</code> (older platforms)</h4>
+<p>The Google Places API requires API level 12 or higher for the support of
+<code>PlaceAutocompleteFragment</code> objects. If you are targeting an application
+earlier than API level 12, you can access the same functionality through the
+<code>SupportPlaceAutocompleteFragment</code> class. You must also include the Android v4
+<a href="https://developer.android.com/tools/support-library/setup.html">Support Library</a>.
+To support Android versions earlier than API level 12, follow these steps:</p>
+<ul>
+<li>Extend <code>FragmentActivity</code> or <code>AppCompatActivity</code> in your main activity.</li>
+<li>Use <code>SupportPlaceAutocompleteFragment</code> instead of <code>PlaceAutocompleteFragment</code>.</li>
+<li>Use <code>getSupportFragmentManager()</code> instead of <code>getFragmentManager()</code>.</li>
+</ul>
+<h3 id="option_2_use_an_intent_to_launch_the_autocomplete_activity">Option 2: Use an intent to launch the autocomplete activity</h3>
+<p>If you want your app to use a different navigational flow (for example, to
+trigger the autocomplete experience from an icon rather than a search field),
+your app can launch autocomplete by using an intent.</p>
+<aside class="note"><strong>Note:</strong><span> These steps aren't needed if you are <a href="#embed_a_placeautocompletefragment">embedding a fragment</a>.</span></aside>
+<p>To launch the autocomplete widget using an intent, follow these steps:</p>
+<ol>
+<li>Use <a href="https://developers.google.com/android/reference/com/google/android/gms/location/places/ui/PlaceAutocomplete.IntentBuilder.html"><code>PlaceAutocomplete.IntentBuilder</code></a>
+to create an intent, passing the desired <code>PlaceAutocomplete</code> mode. The intent
+must call <code>startActivityForResult</code>, passing in a request code that identifies
+your intent.</li>
+<li>Override the <code>onActivityResult</code> callback to receive the selected place.</li>
+</ol>
+<h4 id="create_an_autocomplete_intent">Create an autocomplete intent</h4>
+<p>The example below shows using <a href="https://developers.google.com/android/reference/com/google/android/gms/location/places/ui/PlaceAutocomplete.IntentBuilder.html"><code>PlaceAutocomplete.IntentBuilder</code></a>
+to create an intent to launch the autocomplete widget as an intent:</p>
+<pre class="prettyprint notranslate" translate="no"><code>int PLACE_AUTOCOMPLETE_REQUEST_CODE = 1;
+...
+try {
+    Intent intent =
+            new PlaceAutocomplete.IntentBuilder(PlaceAutocomplete.MODE_FULLSCREEN)
+                    .build(this);
+    startActivityForResult(intent, PLACE_AUTOCOMPLETE_REQUEST_CODE);
+} catch (GooglePlayServicesRepairableException e) {
+    // TODO: Handle the error.
+} catch (GooglePlayServicesNotAvailableException e) {
+    // TODO: Handle the error.
+}
+</code></pre>
+<p>When using an intent to launch the autocomplete widget, you can choose from
+overlay or full-screen display modes. The following screenshots show each
+display mode respectively:</p>
+<div class="attempt-left">
+  <figure id="ac-overlay">
+    <img src="https://developers.google.com/places/images/acw_overlay.png" width=""
+      alt="When displayed in overlay mode, the autocomplete widget appears superimposed over the calling UI.">
+    <figcaption><b>Figure 1</b>: Autocomplete widget in overlay mode
+    (MODE_OVERLAY)</figcaption>
+  </figure>
+</div>
+
+<div class="attempt-right">
+  <figure id="ac-fullscreen">
+    <img src="https://developers.google.com/places/images/acw_fullscreen.png" width=""
+      alt="When displayed in fullscreen mode, the autocomplete widget fills the entire screen.">
+    <figcaption><b>Figure 2</b>: Autocomplete widget in fullscreen mode
+    (MODE_FULLSCREEN)</figcaption>
+  </figure>
+</div>
+
+<div style="clear:both"></div>
+
+<h4 id="override_the_onactivityresult_callback">Override the <code>onActivityResult</code> callback</h4>
+<p>To receive notification when a user has selected a place, your app should
+override the activity's <code>onActivityResult()</code>, checking for the request code you
+have passed for your intent, as shown in the following example.</p>
+<pre class="prettyprint notranslate" translate="no"><code>@Override
+protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+    if (requestCode == PLACE_AUTOCOMPLETE_REQUEST_CODE) {
+        if (resultCode == RESULT_OK) {
+            Place place = PlaceAutocomplete.getPlace(this, data);
+            Log.i(TAG, "Place: " + place.getName());
+        } else if (resultCode == PlaceAutocomplete.RESULT_ERROR) {
+            Status status = PlaceAutocomplete.getStatus(this, data);
+            // TODO: Handle the error.
+            Log.i(TAG, status.getStatusMessage());
+
+        } else if (resultCode == RESULT_CANCELED) {
+            // The user canceled the operation.
+        }
+    }
+}
+</code></pre>
+<h3 id="restrict_autocomplete_results">Restrict autocomplete results</h3>
+<p>You can set the autocomplete widget to bias results to a specific geographic
+region, and/or filter the results to one or more place types.</p>
+<h4 id="bias_results_to_a_specific_region">Bias results to a specific region</h4>
+<p>To bias autocomplete results to a specific geographic region:</p>
+<ul>
+<li>Call <code>setBoundsBias()</code> off your app's <code>PlaceAutocompleteFragment</code> instance,
+or <code>IntentBuilder</code> instance, passing a <a href="https://developers.google.com/android/reference/com/google/android/gms/maps/model/LatLngBounds"><code>LatLngBounds</code></a>.
+The following code example shows calling <code>setBoundsBias()</code> on a fragment
+instance to bias its autocomplete suggestions to a region of Sydney, Australia.</li>
+</ul>
+<pre class="prettyprint notranslate" translate="no"><code>autocompleteFragment.setBoundsBias(new LatLngBounds(
+        new LatLng(-33.880490, 151.184363),
+        new LatLng(-33.858754, 151.229596)));
+</code></pre>
+
+<h4 id="filter_results_by_place_type">Filter results by place type</h4>
+<p>To filter autocomplete results to a specific place type, call
+<a href="https://developers.google.com/android/reference/com/google/android/gms/location/places/AutocompleteFilter.Builder.html"><code>AutocompleteFilter.Builder</code></a>
+to create a new <a href="https://developers.google.com/android/reference/com/google/android/gms/location/places/AutocompleteFilter.html"><code>AutocompleteFilter</code></a>,
+calling <a href="https://developers.google.com/android/reference/com/google/android/gms/location/places/AutocompleteFilter.Builder.html#setTypeFilter(int)"><code>setTypeFilter()</code></a>
+to set the filter to use. Then, pass the filter to a fragment or intent.</p>
+<p>The following code example shows setting an <code>AutocompleteFilter</code> on a
+<code>PlaceAutocompleteFragment</code> to set a filter returning only results with a
+precise address.</p>
+<pre class="prettyprint notranslate" translate="no"><code>AutocompleteFilter typeFilter = new AutocompleteFilter.Builder()
+        .setTypeFilter(AutocompleteFilter.TYPE_FILTER_ADDRESS)
+        .build();
+
+autocompleteFragment.setFilter(typeFilter);
+</code></pre>
+<p>The following code example shows setting an <code>AutocompleteFilter</code> on an intent
+to set a filter returning only results with a precise address.</p>
+<pre class="prettyprint notranslate" translate="no"><code>AutocompleteFilter typeFilter = new AutocompleteFilter.Builder()
+        .setTypeFilter(AutocompleteFilter.TYPE_FILTER_ADDRESS)
+        .build();
+
+Intent intent =
+        new PlaceAutocomplete.IntentBuilder(PlaceAutocomplete.MODE_FULLSCREEN)
+                .setFilter(typeFilter)
+                .build(this);
+</code></pre>
+<p>For information about place types, see the guide to <a href="https://developers.google.com/places/android-api/supported_types#table3">place types</a>,
+and <a href="https://developers.google.com/android/reference/com/google/android/gms/location/places/AutocompleteFilter.Builder.html"><code>AutocompleteFilter.Builder</code></a>.</p>
+<h4 id="filter_results_by_country">Filter results by country</h4>
+<p>To filter autocomplete results to a specific country, call
+<a href="https://developers.google.com/android/reference/com/google/android/gms/location/places/AutocompleteFilter.Builder.html"><code>AutocompleteFilter.Builder</code></a>
+to create a new <a href="https://developers.google.com/android/reference/com/google/android/gms/location/places/AutocompleteFilter.html"><code>AutocompleteFilter</code></a>,
+calling <a href="https://developers.google.com/android/reference/com/google/android/gms/location/places/AutocompleteFilter.Builder#setCountry(java.lang.String)"><code>setCountry()</code></a>
+to set the <a href="https://en.wikipedia.org/wiki/ISO_3166-1_alpha-2">country code</a>.
+Then, pass the filter to a fragment or intent.</p>
+<p>The following code example shows setting an <code>AutocompleteFilter</code> on a
+<code>PlaceAutocompleteFragment</code> to set a filter returning only results within the
+specified country.</p>
+<pre class="prettyprint notranslate" translate="no"><code>AutocompleteFilter typeFilter = new AutocompleteFilter.Builder()
+        .setCountry("AU")
+        .build();
+
+autocompleteFragment.setFilter(typeFilter);
+</code></pre>
+<h2 id="get_place_predictions_programmatically">Get place predictions programmatically</h2>
+<p>You can create a custom search UI as an alternative to the UI provided by the
+autocomplete widget. To do this, your app must get place predictions
+programmatically. Your app can get a list of predicted place names and/or
+addresses from the autocomplete service by calling <a href="https://developers.google.com/android/reference/com/google/android/gms/location/places/GeoDataClient.html#getAutocompletePredictions(java.lang.String, com.google.android.gms.maps.model.LatLngBounds, com.google.android.gms.location.places.AutocompleteFilter)"><code>GeoDataClient.getAutocompletePredictions()</code></a>,
+passing the following parameters:</p>
+<ul>
+<li><em>Required:</em> A <code>query</code> string containing the text typed by the user.</li>
+<li><em>Required:</em> A <a href="https://developers.google.com/android/reference/com/google/android/gms/maps/model/LatLngBounds"><code>LatLngBounds</code></a>
+object, biasing the results to a specific area specified by latitude and
+longitude bounds.</li>
+<li>
+<p><em>Optional:</em> An <a href="https://developers.google.com/android/reference/com/google/android/gms/location/places/AutocompleteFilter"><code>AutocompleteFilter</code></a>
+containing a set of place types, which you can use to restrict the results to
+one or more types of place. The following place types are supported:</p>
+<ul>
+<li><code>TYPE_FILTER_NONE</code> &ndash; An empty filter; all results are returned.</li>
+<li><code>TYPE_FILTER_GEOCODE</code> &ndash; Returns only geocoding results, rather
+  than businesses. Use this request to disambiguate results where the
+  specified location may be indeterminate.</li>
+<li><code>TYPE_FILTER_ADDRESS</code> &ndash; Returns only autocomplete results with a
+  precise address. Use this type when you know the user is looking for a
+  fully specified address.</li>
+<li><code>TYPE_FILTER_ESTABLISHMENT</code> &ndash; Returns only places that are
+  businesses.</li>
+<li>
+<p><code>TYPE_FILTER_REGIONS</code> &ndash; Returns only places that match one of the
+following types:</p>
+<ul>
+<li><code>locality</code></li>
+<li><code>sublocality</code></li>
+<li><code>postal_code</code></li>
+<li><code>country</code></li>
+<li><code>administrative_area_level_1</code></li>
+<li><code>administrative_area_level_2</code></li>
+</ul>
+</li>
+<li>
+<p><code>TYPE_FILTER_CITIES</code> &ndash; Returns only results matching <code>locality</code> or
+  <code>administrative_area_level_3</code>.</p>
+</li>
+</ul>
+</li>
+</ul>
+<p>For information about place types, see the guide to <a href="https://developers.google.com/places/android-api/supported_types#table3">place types</a>,
+and <a href="https://developers.google.com/android/reference/com/google/android/gms/location/places/AutocompleteFilter.Builder.html#setTypeFilter(int)"><code>AutocompleteFilter.Builder</code></a>.</p>
+<p>The example below shows a simplified call to <a href="https://developers.google.com/android/reference/com/google/android/gms/location/places/GeoDataClient.html#getAutocompletePredictions(java.lang.String, com.google.android.gms.maps.model.LatLngBounds, com.google.android.gms.location.places.AutocompleteFilter)"><code>GeoDataClient.getAutocompletePredictions()</code></a>. For a complete example, see the <a href="https://developers.google.com/places/android-api/code-samples">sample apps</a>.</p>
+<pre class="prettyprint notranslate" translate="no"><code>  Task&lt;AutocompletePredictionBufferResponse&gt; results =
+      mGeoDataClient.getAutocompletePredictions(constraint.toString(), mBounds,
+          mPlaceFilter);
+</code></pre>
+<p>The API returns an <a href="https://developers.google.com/android/reference/com/google/android/gms/location/places/AutocompletePredictionBufferResponse"><code>AutocompletePredictionBufferResponse</code></a>
+in a <a href="https://developers.google.com/android/reference/com/google/android/gms/tasks/Task">
+<code>Task</code></a>. The <a href="https://developers.google.com/android/reference/com/google/android/gms/location/places/AutocompletePredictionBufferResponse"><code>AutocompletePredictionBufferResponse</code></a>
+contains a list of <a href="https://developers.google.com/android/reference/com/google/android/gms/location/places/AutocompletePrediction"><code>AutocompletePrediction</code></a>
+objects representing predicted places. The buffer may be empty, if there is no
+known place corresponding to the query and the filter criteria.</p>
+<p>For each predicted place, you can call the following methods to retrieve
+place details:</p>
+<ul>
+<li><a href="https://developers.google.com/android/reference/com/google/android/gms/location/places/AutocompletePrediction.html#getFullText(/android.text.style.CharacterStyle)"><code>getFullText(CharacterStyle matchStyle)</code></a>
+returns the full text of a place description. This is a combination of the
+primary and secondary text. Example: "<em>Eiffel Tower, Avenue Anatole France,
+Paris, France</em>". In addition, this method lets you highlight the sections of
+the description that match the search with a style of your choice, using
+<a href="http://developer.android.com/reference/android/text/style/CharacterStyle.html"><code>CharacterStyle</code></a>.
+The <code>CharacterStyle</code> parameter is optional. Set it to null if  you don't need
+any highlighting.</li>
+<li><a href="https://developers.google.com/android/reference/com/google/android/gms/location/places/AutocompletePrediction.html#getPrimaryText(/android.text.style.CharacterStyle)"><code>getPrimaryText(CharacterStyle matchStyle)</code></a>
+returns the main text describing a place. This is usually the name of the
+place. Examples: "<em>Eiffel Tower</em>", and "<em>123 Pitt Street</em>".</li>
+<li><a href="https://developers.google.com/android/reference/com/google/android/gms/location/places/AutocompletePrediction.html#getSecondaryText(/android.text.style.CharacterStyle)"><code>getSecondaryText(CharacterStyle matchStyle)</code></a>
+returns the subsidiary text of a place description. This is useful, for
+example, as a second line when showing autocomplete predictions. Examples:
+"<em>Avenue Anatole France, Paris, France</em>", and "<em>Sydney, New South Wales</em>".</li>
+<li><a href="https://developers.google.com/android/reference/com/google/android/gms/location/places/AutocompletePrediction.html#getPlaceId()"><code>getPlaceId()</code></a>
+returns the place ID of the predicted place. A place ID is a textual identifier
+that uniquely identifies a place, which you can use to retrieve the
+<a href="https://developers.google.com/android/reference/com/google/android/gms/location/places/Place.html"><code>Place</code></a>
+object again later. For more information about place IDs in
+Google Places API for Android, see the
+<a href="https://developers.google.com/places/android-api/place-details">Place IDs and Details</a>. For general
+information about place IDs, see the <a href="https://developers.google.com/places/android-api/place-id">Place ID overview</a>.</li>
+<li><a href="https://developers.google.com/android/reference/com/google/android/gms/location/places/AutocompletePrediction.html#getPlaceTypes()"><code>getPlaceTypes()</code></a>
+returns the list of place types associated with this place.</li>
+</ul>
+<h2 id="usage_limits">Usage limits</h2>
+<ul>
+<li>Use of the <a href="https://developers.google.com/android/reference/com/google/android/gms/location/places/GeoDataClient.html#getAutocompletePredictions(com.google.android.gms.common.api.GoogleApiClient, java.lang.String, com.google.android.gms.maps.model.LatLngBounds, com.google.android.gms.location.places.AutocompleteFilter)"><code>GeoDataClient.getAutocompletePredictions()</code></a>
+method is subject to tiered query limits. See the documentation on
+<a href="https://developers.google.com/places/android-api/usage">Usage Limits</a>.</li>
+</ul>
+<h2 id="display_attributions_in_your_app">Display attributions in your app</h2>
+<ul>
+<li>If your app uses the autocomplete service programmatically, your UI must
+either display a 'Powered by Google' attribution, or appear within a
+Google-branded map.</li>
+<li>If your app uses the autocomplete widget no additional action is required
+(the required attribution is displayed by default).</li>
+<li>If you retrieve and display additional place information after
+<a href="https://developers.google.com/places/android-api/place-details#get-place">getting a place by ID</a>,
+you must display third-party attributions too.</li>
+</ul>
+<p>For more details, see the documentation on
+<a href="https://developers.google.com/places/android-api/attributions">attributions</a>.</p>
+<h2 id="troubleshooting">Troubleshooting</h2>
+<p>Although a wide variety of errors can occur, the majority of the errors your
+app is likely to experience are usually caused by configuration errors (for
+example, the wrong API key was used, or the API key was configured incorrectly),
+or quota errors (your app has exceeded its quota). See <a href="https://developers.google.com/places/android-api/usage">Usage Limits</a>
+for more information about quotas.</p>
+<p>Errors that occur in the use of the autocomplete controls are returned in the
+<code>onActivityResult()</code> callback. Call <code>PlaceAutocomplete.getStatus()</code> to get the
+status message for the result.</p>
+
+  </div>
+  
+
+  
+        
+  
+
+
+
+
+
+
+
+        
+<div class="devsite-content-footer nocontent">
+  
+  
+    <p>Except as otherwise noted, the content of this page is licensed under the <a href="http://creativecommons.org/licenses/by/3.0/">Creative Commons Attribution 3.0 License</a>, and code samples are licensed under the <a href="http://www.apache.org/licenses/LICENSE-2.0">Apache 2.0 License</a>. For details, see our <a href="https://developers.google.com/terms/site-policies">Site Policies</a>. Java is a registered trademark of Oracle and/or its affiliates.</p>
+  
+
+  
+    
+    <p class="devsite-content-footer-date" itemprop="datePublished"
+       content="2018-01-18T19:12:45.958790">
+      
+      Last updated January 18, 2018.
+    </p>
+  
+
+</div>
+
+        </article>
+      </article>
+  
+
+        </div>
+      
+
+<footer class="devsite-footer-linkboxes nocontent
+               
+               devsite-footer-linkboxes-with-sites"><nav class="devsite-full-site-width"><ul class="devsite-footer-linkboxes-list"><li class="devsite-footer-linkbox "><h3 class="devsite-footer-linkbox-heading">Quickstart</h3><ul class="devsite-footer-linkbox-list"><li class="devsite-footer-linkbox-item"><a href="https://developers.google.com/places/android-api/start" class="gc-analytics-event"
+               data-category="Site-Wide Custom Events"
+               data-label="Content Page Footer Linkbox">
+                Get Started
+            </a></li><li class="devsite-footer-linkbox-item"><a href="https://developer.android.com/reference/com/google/android/gms/location/places/package-summary.html" class="gc-analytics-event"
+               data-category="Site-Wide Custom Events"
+               data-label="Content Page Footer Linkbox">
+                Reference
+            </a></li><li class="devsite-footer-linkbox-item"><a href="https://developers.google.com/places/android-api/code-samples" class="gc-analytics-event"
+               data-category="Site-Wide Custom Events"
+               data-label="Content Page Footer Linkbox">
+                Code Samples
+            </a></li></ul></li><li class="devsite-footer-linkbox "><h3 class="devsite-footer-linkbox-heading">Location APIs</h3><ul class="devsite-footer-linkbox-list"><li class="devsite-footer-linkbox-item"><a href="https://developers.google.com/places/android-api/" class="gc-analytics-event"
+               data-category="Site-Wide Custom Events"
+               data-label="Content Page Footer Linkbox">
+                Places API for Android
+            </a></li><li class="devsite-footer-linkbox-item"><a href="https://developers.google.com/places/ios-api/" class="gc-analytics-event"
+               data-category="Site-Wide Custom Events"
+               data-label="Content Page Footer Linkbox">
+                Places API for iOS
+            </a></li><li class="devsite-footer-linkbox-item"><a href="https://developers.google.com/places/javascript/" class="gc-analytics-event"
+               data-category="Site-Wide Custom Events"
+               data-label="Content Page Footer Linkbox">
+                Places JavaScript Library
+            </a></li><li class="devsite-footer-linkbox-item"><a href="https://developers.google.com/places/web-service/" class="gc-analytics-event"
+               data-category="Site-Wide Custom Events"
+               data-label="Content Page Footer Linkbox">
+                Places API Web Service
+            </a></li><li class="devsite-footer-linkbox-item"><a href="https://developer.android.com/training/location/" class="gc-analytics-event"
+               data-category="Site-Wide Custom Events"
+               data-label="Content Page Footer Linkbox">
+                Android Location APIs
+            </a></li><li class="devsite-footer-linkbox-item"><a href="https://developers.google.com/maps/" class="gc-analytics-event"
+               data-category="Site-Wide Custom Events"
+               data-label="Content Page Footer Linkbox">
+                Maps APIs
+            </a></li></ul></li><li class="devsite-footer-linkbox "><h3 class="devsite-footer-linkbox-heading">Resources</h3><ul class="devsite-footer-linkbox-list"><li class="devsite-footer-linkbox-item"><a href="https://developers.google.com/places/support" class="gc-analytics-event"
+               data-category="Site-Wide Custom Events"
+               data-label="Content Page Footer Linkbox">
+                Community and Support
+            </a></li><li class="devsite-footer-linkbox-item"><a href="https://issuetracker.google.com/bookmark-groups/76561" class="gc-analytics-event"
+               data-category="Site-Wide Custom Events"
+               data-label="Content Page Footer Linkbox">
+                Issue Tracker
+            </a></li><li class="devsite-footer-linkbox-item"><a href="https://stackoverflow.com/questions/tagged/google-places-api" class="gc-analytics-event"
+               data-category="Site-Wide Custom Events"
+               data-label="Content Page Footer Linkbox">
+                Stack Overflow
+            </a></li><li class="devsite-footer-linkbox-item"><a href="https://developers.google.com/maps/terms" class="gc-analytics-event"
+               data-category="Site-Wide Custom Events"
+               data-label="Content Page Footer Linkbox">
+                Terms of Service
+            </a></li><li class="devsite-footer-linkbox-item"><a href="https://googlegeodevelopers.blogspot.com" class="gc-analytics-event"
+               data-category="Site-Wide Custom Events"
+               data-label="Content Page Footer Linkbox">
+                Blog
+            </a></li><li class="devsite-footer-linkbox-item"><a href="https://developers.google.com/maps/documentation/javascript/examples/places-placeid-finder" class="gc-analytics-event"
+               data-category="Site-Wide Custom Events"
+               data-label="Content Page Footer Linkbox">
+                Place ID Finder
+            </a></li></ul></li><li class="devsite-footer-linkbox devsite-footer-linkbox-sites"><a href="https://developers.google.com/"
+           class="gc-analytics-event devsite-footer-linkbox-logo-link"
+           data-category="Site-Wide Custom Events" data-label="Footer Google Developers Link"><img class="devsite-footer-linkbox-logo"
+               src="https://developers.google.com/_static/d7147bb846/images/redesign-14/lockup-color-knockout.png"
+               alt="Google Developers"></a><ul class="devsite-footer-linkbox-list"><li class="devsite-footer-linkbox-item"><a href="//developer.android.com/index.html" class="gc-analytics-event"
+               data-category="Site-Wide Custom Events"
+               data-label="Footer Android Link">
+                Android
+            </a></li><li class="devsite-footer-linkbox-item"><a href="//developer.chrome.com/home" class="gc-analytics-event"
+               data-category="Site-Wide Custom Events"
+               data-label="Footer Chrome Link">
+                Chrome
+            </a></li><li class="devsite-footer-linkbox-item"><a href="//firebase.google.com" class="gc-analytics-event"
+               data-category="Site-Wide Custom Events"
+               data-label="Footer Firebase Link">
+                Firebase
+            </a></li><li class="devsite-footer-linkbox-item"><a href="//cloud.google.com" class="gc-analytics-event"
+               data-category="Site-Wide Custom Events"
+               data-label="Footer Cloud Link">
+                Google Cloud Platform
+            </a></li><li class="devsite-footer-linkbox-item"><a href="//developers.google.com/products/" class="gc-analytics-event"
+               data-category="Site-Wide Custom Events"
+               data-label="Footer Products Link">
+                All Products
+            </a></li></ul></li></ul></nav></footer><footer class="devsite-utility-footer"><nav class="devsite-utility-footer-nav devsite-nav devsite-full-site-width"><div class="devsite-utility-footer-nav-left"><form class="devsite-utility-footer-language" action="/i18n/setlang/" method="post"><input type="hidden" name="xsrf_token" value="QslOk9m8hXukprBsG_XFRgt9JwJqhcghibef837k27o6MTUyNDQyODU2ODI1MTA4MA" /><input type="hidden" name="next" value="/places/android-api/autocomplete"><select class="devsite-utility-footer-language-select kd-select" name="language"
+                track-type="languageSelector" track-name="click"><option value="id"
+                
+                track-type="languageSelector" track-name="changed"
+                track-metadata-original-language="en"
+                track-metadata-selected-language="id">
+            Bahasa Indonesia
+          </option><option value="de"
+                
+                track-type="languageSelector" track-name="changed"
+                track-metadata-original-language="en"
+                track-metadata-selected-language="de">
+            Deutsch
+          </option><option value="en"
+                 selected="selected" 
+                track-type="languageSelector" track-name="changed"
+                track-metadata-original-language="en"
+                track-metadata-selected-language="en">
+            English
+          </option><option value="es"
+                
+                track-type="languageSelector" track-name="changed"
+                track-metadata-original-language="en"
+                track-metadata-selected-language="es">
+            español
+          </option><option value="fr"
+                
+                track-type="languageSelector" track-name="changed"
+                track-metadata-original-language="en"
+                track-metadata-selected-language="fr">
+            français
+          </option><option value="pt-br"
+                
+                track-type="languageSelector" track-name="changed"
+                track-metadata-original-language="en"
+                track-metadata-selected-language="pt-br">
+            Português Brasileiro
+          </option><option value="ru"
+                
+                track-type="languageSelector" track-name="changed"
+                track-metadata-original-language="en"
+                track-metadata-selected-language="ru">
+            Русский
+          </option><option value="ja"
+                
+                track-type="languageSelector" track-name="changed"
+                track-metadata-original-language="en"
+                track-metadata-selected-language="ja">
+            日本語
+          </option><option value="zh-cn"
+                
+                track-type="languageSelector" track-name="changed"
+                track-metadata-original-language="en"
+                track-metadata-selected-language="zh-cn">
+            简体中文
+          </option><option value="zh-tw"
+                
+                track-type="languageSelector" track-name="changed"
+                track-metadata-original-language="en"
+                track-metadata-selected-language="zh-tw">
+            繁體中文
+          </option><option value="ko"
+                
+                track-type="languageSelector" track-name="changed"
+                track-metadata-original-language="en"
+                track-metadata-selected-language="ko">
+            한국어
+          </option></select></form><span class="devsite-utility-footer-links"><a class="devsite-utility-footer-link gc-analytics-event"
+           href="https://developers.google.com/terms/site-terms"
+           data-category="Site-Wide Custom Events"
+           data-label="Footer terms link"
+           data-footer-link-id="terms"
+           >Terms
+         </a><a class="devsite-utility-footer-link gc-analytics-event"
+           href="//www.google.com/policies/privacy/"
+           data-category="Site-Wide Custom Events"
+           data-label="Footer privacy link"
+           data-footer-link-id="privacy"
+           >Privacy
+         </a></span></div><div class="devsite-utility-footer-nav-right"><div class="devsite-utility-footer-newsletter-signup-text">
+        Sign up for the Google Developers newsletter
+      </div><a class="button button-primary devsite-utility-footer-newsletter-signup-button"
+         href="//services.google.com/fb/forms/googledevelopersnewsletter/?utm_medium=referral&amp;utm_source=google-products&amp;utm_team=googledevs&amp;utm_campaign=201611-newsletter-launch">
+        
+        Subscribe
+      </a></div></nav></footer><div class="devsite-feedback-dialog devsite-dialog"><div class="devsite-dialog-contents"><h3>Send feedback about...</h3><div class="devsite-feedback-item"><a data-type="documentation" class="gc-analytics-event"
+           data-category="Site-Wide Custom Events" data-label="Docs Feedback Image"
+           track-type="feedback" track-name="feedbackDocIcon" track-metadata-position="header"><div class="devsite-feedback-item-icon-container"><div class="devsite-feedback-item-icon-white devsite-feedback-item-icon-docs
+                        material-icons"></div></div></a><div class="devsite-feedback-item-name">
+          
+          This page
+        </div><div class="devsite-feedback-item-description"><a data-type="documentation" tabindex="0" class="gc-analytics-event"
+             data-category="Site-Wide Custom Events" data-label="Docs Feedback Text"
+             track-type="feedback" track-name="feedbackDocText" track-metadata-position="header">
+            
+            Documentation feedback
+          </a></div></div><div class="devsite-feedback-item"><a data-type="product" tabindex="0" class="gc-analytics-event"
+           data-category="Site-Wide Custom Events" data-label="Product Feedback Image"
+           track-type="feedback" track-name="feedbackProductIcon" track-metadata-position="header"
+         ><div class="devsite-feedback-item-icon material-icons">
+              location_on
+            </div></a><div class="devsite-feedback-item-name">
+        Google Places API for Android
+        </div><div class="devsite-feedback-item-description"><a data-type="product" tabindex="0" class="gc-analytics-event"
+             data-category="Site-Wide Custom Events" data-label="Product Feedback Text"
+             track-type="feedback" track-name="feedbackProductText" track-metadata-position="header"
+           >
+            
+            Product feedback
+          </a></div></div></div><div class="devsite-dialog-buttons"><button type="button" class="devsite-feedback-cancel button-white gc-analytics-event"
+              data-category="Site-Wide Custom Events" data-label="Cancel Feedback Button"
+              track-type="feedback" track-name="cancelFeedbackButton"
+              track-metadata-position="header">
+        
+        Cancel
+      </button></div></div><script>
+  $(document).ready(function() {
+    new devsite.feedback.Widget({
+        'product_id': '81777',
+        'bucket': '',
+        'context': 'Places API Docs',
+        'version': 'devsite-20180420-r00-rc00.default'
+      },
+      document.querySelectorAll('.devsite-feedback-button'),
+      'en',
+      document.querySelector('.devsite-site-mask'),
+      document.querySelector('.devsite-feedback-dialog'),
+      document.querySelector('.devsite-feedback-cancel'),
+      document.querySelectorAll('.devsite-feedback-item a:not([href])')
+    );
+  });
+  </script></div><script async defer src="//www.gstatic.com/feedback/api.js"></script><script src="https://developers.google.com/_static2/d7147bb846/jsi18n/"></script><script src="https://developers.google.com/_static/d7147bb846/js/script_foot_closure.js"></script><script src="https://developers.google.com/_static/d7147bb846/js/script_foot.js"></script><script>
+        (function($) {
+          
+          devsite.devsite.Init($, {'ENABLE_BLOCKED_VIDEO_PLACEHOLDER': 0, 'SITE_NAME': 'devsite', 'FULL_SITE_SEARCH_ENABLED': 1, 'ENABLE_CLOUDTRACK': 0, 'VTAGS_ENABLED': 0, 'HISTORY_ENABLED': 1, 'VERSION_HASH': 'd7147bb846', 'SCRIPTSAFE_DOMAIN': 'google-developers.appspot.com', 'ENABLE_BLOCKED_LINK_TOOLTIP': 0, 'ALLOWED_HOSTS': ['.android.com', '.anvato.com', '.apigee.com', '.appspot.com', '.dialogflow.com', '.gonglchuangl.net', '.google.cn', '.google.com', '.googleplex.com', '.nest.com', '.openthread.io', '.openweave.io', '.orbitera.com', '.tensorflow.org'], 'BLOCK_RSS_FEEDS': 0},
+                               '[]','en',
+                               true, '',
+                               {"f62218c009ec029abef196bba5aa34cf": true, "8de7a048f21618359bd37f5ce44be073": false, "098dafe57affddc137df300142652cfd": false, "8e03e230de0bd8a6fe173fdf172e8b3f": true, "cb025a64a50094835616312f4774a53d": true, "51470233c56fc1fde50f00b73c52b216": false, "d169d485cf24243a263783dbe42029b1": true, "039e5d84b87fd75807ffb37b7f1bbf2c": true, "700def1a83e356c06c0925afb05de4b0": false, "6749dcb526ce9bde6993550c7d928d24": true}, '/places/android-api/',
+                               'https://developers.google.com/');
+        })(jQuery);
+
+        
+        devsite.localInit = function() {
+          
+        };
+
+      </script><script>
+      $('.devsite-utility-footer-language-select').each(function() {
+        $(this).change(function(){$('.devsite-utility-footer-language').submit();});
+      });
+      </script><script async defer src="//survey.g.doubleclick.net/async_survey?site=wfxh6tom236fgphjesdirdtl3m"></script></div><span id="devsite-request-elapsed" data-request-elapsed="180.889844894"></span></body></html>

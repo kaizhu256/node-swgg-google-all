@@ -1,0 +1,2561 @@
+
+
+
+
+
+
+<!DOCTYPE html><html lang="en"
+      class="chekov"><head><script>var a=window.devsite||{};window.devsite=a;a.readyCallbacks=[];window.devsite.readyCallbacks=a.readyCallbacks;a.ready=function(b){a.readyCallbacks.push(b)};window.devsite.ready=a.ready;
+</script><meta charset="utf-8"><meta name="xsrf_token" content="8J4NgLqx1CK5roHz_XkqEANDeMdekQc8P_BBErn7reI6MTUyNDQyODU4MTg2Mzc1MA" /><link rel="canonical" href="https://developers.google.com/maps/documentation/javascript/streetview"><link rel="alternate" href="https://developers.google.com/maps/documentation/javascript/streetview?hl=de" hreflang="de"><link rel="alternate" href="https://developers.google.com/maps/documentation/javascript/streetview?hl=es" hreflang="es"><link rel="alternate" href="https://developers.google.com/maps/documentation/javascript/streetview?hl=fr" hreflang="fr"><link rel="alternate" href="https://developers.google.com/maps/documentation/javascript/streetview?hl=id" hreflang="id"><link rel="alternate" href="https://developers.google.com/maps/documentation/javascript/streetview?hl=ja" hreflang="ja"><link rel="alternate" href="https://developers.google.com/maps/documentation/javascript/streetview?hl=ko" hreflang="ko"><link rel="alternate" href="https://developers.google.com/maps/documentation/javascript/streetview?hl=pt-br" hreflang="pt-br"><link rel="alternate" href="https://developers.google.com/maps/documentation/javascript/streetview?hl=ru" hreflang="ru"><link rel="alternate" href="https://developers.google.com/maps/documentation/javascript/streetview?hl=zh-cn" hreflang="zh-Hans"><link rel="alternate" href="https://developers.google.com/maps/documentation/javascript/streetview?hl=zh-tw" hreflang="zh-Hant"><link rel="alternate" href="https://developers.google.com/maps/documentation/javascript/streetview" hreflang="en"><link rel="alternate" href="https://developers.google.cn/maps/documentation/javascript/streetview?hl=de" hreflang="de-cn"><link rel="alternate" href="https://developers.google.cn/maps/documentation/javascript/streetview?hl=es" hreflang="es-cn"><link rel="alternate" href="https://developers.google.cn/maps/documentation/javascript/streetview?hl=fr" hreflang="fr-cn"><link rel="alternate" href="https://developers.google.cn/maps/documentation/javascript/streetview?hl=id" hreflang="id-cn"><link rel="alternate" href="https://developers.google.cn/maps/documentation/javascript/streetview?hl=ja" hreflang="ja-cn"><link rel="alternate" href="https://developers.google.cn/maps/documentation/javascript/streetview?hl=ko" hreflang="ko-cn"><link rel="alternate" href="https://developers.google.cn/maps/documentation/javascript/streetview?hl=pt-br" hreflang="pt-br-cn"><link rel="alternate" href="https://developers.google.cn/maps/documentation/javascript/streetview?hl=ru" hreflang="ru-cn"><link rel="alternate" href="https://developers.google.cn/maps/documentation/javascript/streetview?hl=zh-cn" hreflang="zh-Hans-cn"><link rel="alternate" href="https://developers.google.cn/maps/documentation/javascript/streetview?hl=zh-tw" hreflang="zh-Hant-cn"><link rel="alternate" href="https://developers.google.cn/maps/documentation/javascript/streetview" hreflang="en-cn"><link rel="alternate" href="https://developers.google.com/maps/documentation/javascript/streetview" hreflang="x-default"><link rel="shortcut icon" href="https://developers.google.com/_static/d7147bb846/images/favicon.png"><link rel="apple-touch-icon" href="https://developers.google.com/_static/d7147bb846/images/touch-icon.png"><meta name="viewport" content="width=device-width, initial-scale=1"><link rel="stylesheet"
+      
+      href="//fonts.googleapis.com/css?family=Google+Sans:400|Roboto:400,400italic,500,500italic,700,700italic|Roboto+Mono:400,500,700|Material+Icons"
+      ><link rel="stylesheet"
+        href="https://developers.google.com/_static/d7147bb846/css/devsite-google-blue.css"><link rel="search"
+        type="application/opensearchdescription+xml"
+        title="Google Developers"
+        href="https://developers.google.com/s/opensearch.xml"><script src="https://developers.google.com/_static/d7147bb846/js/jquery-bundle.js"></script><meta property="og:site_name" content="Google Developers"><meta property="og:type" content="website"><meta property="og:url" content="https://developers.google.com/maps/documentation/javascript/streetview"><meta property="og:locale" content="en"><script>
+    var ___gcfg = ___gcfg || {};
+    ___gcfg.lang = 'en';
+  </script><title>Street View Service &nbsp;|&nbsp; Google Maps JavaScript API
+      &nbsp;|&nbsp; Google Developers</title><meta property="og:title" content="Street View Service &nbsp;|&nbsp; Google Maps JavaScript API
+      &nbsp;|&nbsp; Google Developers"><meta property="og:image"
+          content="https://developers.google.com/_static/d7147bb846/images/share/devsite-google-blue.png"><meta property="og:image:secure_url"
+          content="https://developers.google.com/_static/d7147bb846/images/share/devsite-google-blue.png"><meta property="og:image:width" content="1200"><meta property="og:image:height" content="630"><link href="https://developers.google.com/maps/styles/common.css" rel="stylesheet" type="text/css"></head><body class="
+               devsite-doc-page
+               
+               
+               
+               
+               "
+        data-family="endorsed"
+        id="top_of_page"><div class="devsite-wrapper"><div class="devsite-top-section-wrapper
+            "><header class="devsite-top-section nocontent"><div class="devsite-top-logo-row-wrapper-wrapper"><div class="devsite-top-logo-row-wrapper"><div class="devsite-top-logo-row devsite-full-site-width"><button type="button" class="devsite-expand-section-nav devsite-header-icon-button
+                                       button-flat material-icons gc-analytics-event"
+                  data-category="Site-Wide Custom Events" data-label="Hamburger menu"></button><div class="devsite-product-name-wrapper"><a class="devsite-product-name-link gc-analytics-event"
+       href="https://developers.google.com/maps/"
+       data-category="Site-Wide Custom Events"
+       data-label="Project logo (header)"><img src="https://www.gstatic.com/images/branding/product/1x/maps_64dp.png" class="devsite-product-logo"
+               alt="Google Maps APIs"></a><span class="devsite-product-name"><ul class="devsite-breadcrumb-list"><li class="devsite-breadcrumb-item"><a href="https://developers.google.com/maps/" class="devsite-breadcrumb-link gc-analytics-event"
+       data-category="Site-Wide Custom Events" data-label="Upper Header"
+       data-value="1">
+    
+    
+      
+        Google Maps APIs
+      
+    
+    
+    </a></li></ul></span></div><div class="devsite-header-upper-tabs"><nav class="devsite-doc-set-nav devsite-nav devsite-overflow-tabs-scroll-wrapper"><ul class="devsite-doc-set-nav-tab-list devsite-overflow-tabs-scroll"><li class="devsite-doc-set-nav-tab-container devsite-nav-tab
+               "><a href="https://developers.google.com/maps/"
+         class=" devsite-nav-tab
+                devsite-doc-set-nav-tab devsite-doc-set-nav-tab-link gc-analytics-event"
+         
+       
+         data-category="home"
+       
+         data-label="navTopMenu"
+       
+         data-action="tabClick"
+       >
+        Home
+      </a></li><li class="devsite-doc-set-nav-tab-container devsite-nav-tab
+               devsite-dropdown-menu-container"><a href="https://developers.google.com/maps/documentation/"
+         class="devsite-doc-set-nav-active devsite-nav-tab
+                devsite-doc-set-nav-tab devsite-doc-set-nav-tab-link gc-analytics-event"
+         aria-label="Documentation, selected"
+       
+         data-category="documentation"
+       
+         data-label="navTopMenu"
+       
+         data-action="tabClick"
+       >
+        Documentation
+      </a><span class="devsite-menu-toggle devsite-nav-tab material-icons"></span><div class="devsite-dropdown-menu-wrapper
+                  devsite-dropdown-menu-full"><div class="devsite-dropdown-menu"><div class="devsite-dropdown-menu-column"><ul class="devsite-nav-list devsite-dropdown-menu-section"><li class="devsite-nav-item devsite-nav-item-heading"><span class="devsite-nav-title devsite-nav-title-no-path">
+                        Android APIs
+                      </span></li><li class="devsite-nav-item"><a class="devsite-nav-title" href="https://developers.google.com/maps/documentation/android-api/">
+                        Google Maps Android API
+                      </a></li><li class="devsite-nav-item"><a class="devsite-nav-title" href="https://developers.google.com/places/android-api/">
+                        Google Places API for Android
+                      </a></li></ul><ul class="devsite-nav-list devsite-dropdown-menu-section"><li class="devsite-nav-item devsite-nav-item-heading"><span class="devsite-nav-title devsite-nav-title-no-path">
+                        iOS APIs
+                      </span></li><li class="devsite-nav-item"><a class="devsite-nav-title" href="https://developers.google.com/maps/documentation/ios-sdk/">
+                        Google Maps SDK for iOS
+                      </a></li><li class="devsite-nav-item"><a class="devsite-nav-title" href="https://developers.google.com/places/ios-api/">
+                        Google Places API for iOS
+                      </a></li></ul></div><div class="devsite-dropdown-menu-column"><ul class="devsite-nav-list devsite-dropdown-menu-section"><li class="devsite-nav-item devsite-nav-item-heading"><span class="devsite-nav-title devsite-nav-title-no-path">
+                        Web APIs
+                      </span></li><li class="devsite-nav-item"><a class="devsite-nav-title" href="https://developers.google.com/maps/documentation/embed/">
+                        Embed API
+                      </a></li><li class="devsite-nav-item"><a class="devsite-nav-title" href="https://developers.google.com/maps/documentation/javascript/">
+                        JavaScript API
+                      </a></li><li class="devsite-nav-item"><a class="devsite-nav-title" href="https://developers.google.com/maps/documentation/static-maps/">
+                        Static Maps API
+                      </a></li><li class="devsite-nav-item"><a class="devsite-nav-title" href="https://developers.google.com/maps/documentation/streetview/">
+                        Street View Image API
+                      </a></li><li class="devsite-nav-item"><a class="devsite-nav-title" href="https://developers.google.com/places/javascript/">
+                        Google Places API JavaScript Library
+                      </a></li></ul></div><div class="devsite-dropdown-menu-column"><ul class="devsite-nav-list devsite-dropdown-menu-section"><li class="devsite-nav-item devsite-nav-item-heading"><span class="devsite-nav-title devsite-nav-title-no-path">
+                        Web Service APIs
+                      </span></li><li class="devsite-nav-item"><a class="devsite-nav-title" href="https://developers.google.com/maps/documentation/directions/">
+                        Directions API
+                      </a></li><li class="devsite-nav-item"><a class="devsite-nav-title" href="https://developers.google.com/maps/documentation/distance-matrix/">
+                        Distance Matrix API
+                      </a></li><li class="devsite-nav-item"><a class="devsite-nav-title" href="https://developers.google.com/maps/documentation/elevation/">
+                        Elevation API
+                      </a></li><li class="devsite-nav-item"><a class="devsite-nav-title" href="https://developers.google.com/maps/documentation/geocoding/">
+                        Geocoding API
+                      </a></li><li class="devsite-nav-item"><a class="devsite-nav-title" href="https://developers.google.com/maps/documentation/geolocation/">
+                        Geolocation API
+                      </a></li><li class="devsite-nav-item"><a class="devsite-nav-title" href="https://developers.google.com/places/web-service/">
+                        Places API Web Service
+                      </a></li><li class="devsite-nav-item"><a class="devsite-nav-title" href="https://developers.google.com/maps/documentation/roads/">
+                        Roads API
+                      </a></li><li class="devsite-nav-item"><a class="devsite-nav-title" href="https://developers.google.com/maps/documentation/timezone/">
+                        Time Zone API
+                      </a></li></ul></div><div class="devsite-dropdown-menu-column"><ul class="devsite-nav-list devsite-dropdown-menu-section"><li class="devsite-nav-item devsite-nav-item-heading"><span class="devsite-nav-title devsite-nav-title-no-path">
+                        Google Maps APIs Premium Plan
+                      </span></li><li class="devsite-nav-item"><a class="devsite-nav-title" href="https://developers.google.com/maps/premium/">
+                        Documentation
+                      </a></li></ul></div></div></div></li><li class="devsite-doc-set-nav-tab-container devsite-nav-tab
+               "><a href="https://developers.google.com/maps/pricing-and-plans/"
+         class=" devsite-nav-tab
+                devsite-doc-set-nav-tab devsite-doc-set-nav-tab-link gc-analytics-event"
+         
+       
+         data-category="pricingAndPlans"
+       
+         data-label="navTopMenu"
+       
+         data-action="tabClick"
+       >
+        Pricing and Plans
+      </a></li></ul></nav></div><form class="devsite-search-form"
+                action="https://developers.google.com/s/results/"
+                method="GET"
+                id="top-search"
+                search-placeholder='Search'><div id="searchbox" class="devsite-searchbox"><input placeholder='Search'
+         
+         type="text"
+         class="devsite-search-field devsite-search-query"
+         name="q"
+         value=""
+         autocomplete="off"
+         
+         aria-label="Search box"><div class="devsite-search-image material-icons"></div></div><input type="hidden"
+       name="p"
+       id="search_project"
+       value="/maps/documentation/javascript/"
+       data-project-name="Google Maps JavaScript API"
+       data-project-path="/maps/documentation/javascript/"
+       data-query-match=""><input type="hidden" class="suggest-project" value="Google Maps JavaScript API" /><div class="suggest-project-metadata" data-home_url="/maps/documentation/urls/guide" data-path="/maps/documentation/urls/" data-name="Maps URLs" ></div><div class="suggest-project-metadata" data-home_url="/maps/solutions/" data-path="/maps/solutions/" data-name="Maps APIs Solutions" ></div><div class="suggest-project-metadata" data-home_url="/maps/solutions/transport-tracker/" data-path="/maps/solutions/transport-tracker/" data-name="Transport Tracker Solution" ></div></form><a class="devsite-header-link devsite-top-button button gc-analytics-event"
+               href="https://developers.google.com/products/"
+               data-category="Site-Wide Custom Events"
+               data-label="Site header link"
+               track-type="navigateTo"
+               track-name="all products"
+               track-metadata-position="nav"><div class="devsite-header-link-label">All Products</div></a><button type="button" class="devsite-search-button devsite-header-icon-button button-flat
+                                       material-icons"></button><a href="https://www.google.com/accounts/ServiceLogin?passive=true&continue=https%3A%2F%2Fdevelopers.google.com%2Fmaps%2Fdocumentation%2Fjavascript%2Fstreetview%3Frefresh%3D1&service=ahsid"
+   class="devsite-user-signin devsite-top-button button gc-analytics-event"
+   data-category="Site-Wide Custom Events" data-label="Sign in button">
+  
+  Sign in
+</a></div></div></div><div class="devsite-collapsible-section"><div class="devsite-header-background devsite-full-site-width"><div class="devsite-product-id-row devsite-full-site-width"><div class="devsite-product-description-row"><ul class="devsite-breadcrumb-list"><li class="devsite-breadcrumb-item"><a href="https://developers.google.com/maps/web/" class="devsite-breadcrumb-link gc-analytics-event"
+       data-category="Site-Wide Custom Events" data-label="Lower Header"
+       data-value="1">
+    
+    
+      Web
+    
+    
+    </a></li><li class="devsite-breadcrumb-item"><div class="devsite-breadcrumb-guillemet material-icons"></div><a href="https://developers.google.com/maps/documentation/javascript/" class="devsite-breadcrumb-link gc-analytics-event"
+       data-category="Site-Wide Custom Events" data-label="Lower Header"
+       data-value="2">
+    
+    
+      Maps JavaScript API
+    
+    
+    </a></li></ul></div><div class="devsite-product-button-row
+            "><a
+    
+    
+      class="devsite-api-getstarted-widget button gc-analytics-event devsite-dialog-button"
+    
+    
+      
+      data-category="getKey"
+      
+      data-action="buttonClick"
+      
+      data-label="hero"
+      
+      data-api-id="maps_backend"
+      
+      data-henhouse-platforms-list="WEB_BROWSER"
+      
+      data-henhouse-link-docs="/maps/documentation/javascript/tutorial"
+      
+      data-henhouse-link-support="/maps/documentation/javascript/support"
+      
+      data-henhouse-extra-api-ids="geocoding_backend,directions_backend,distance_matrix_backend,elevation_backend,places_backend"
+      
+    >
+    Get a Key
+  </a><a
+    
+      href="https://developers.google.com/maps/pricing-and-plans/"
+    
+    
+      class="button button-text-blue"
+    
+    
+      
+      data-category="viewPlans"
+      
+      data-action="buttonClick"
+      
+      data-label="hero"
+      
+    >
+    View Pricing and Plans
+  </a></div></div><div class="devsite-doc-set-nav-row devsite-full-site-width"><nav class="devsite-doc-set-nav devsite-nav devsite-overflow-tabs-scroll-wrapper"><ul class="devsite-doc-set-nav-tab-list devsite-overflow-tabs-scroll"><li class="devsite-doc-set-nav-tab-container devsite-nav-tab
+               "><a href="https://developers.google.com/maps/documentation/javascript/"
+         class=" devsite-nav-tab
+                devsite-doc-set-nav-tab devsite-doc-set-nav-tab-link gc-analytics-event"
+         
+       
+         data-category="Site-Wide Custom Events"
+       
+         data-label="Tab: Overview"
+       >
+        Overview
+      </a></li><li class="devsite-doc-set-nav-tab-container devsite-nav-tab
+               "><a href="https://developers.google.com/maps/documentation/javascript/tutorial"
+         class="devsite-doc-set-nav-active devsite-nav-tab
+                devsite-doc-set-nav-tab devsite-doc-set-nav-tab-link gc-analytics-event"
+         aria-label="Guides, selected"
+       
+         data-category="Site-Wide Custom Events"
+       
+         data-label="Tab: Guides"
+       >
+        Guides
+      </a></li><li class="devsite-doc-set-nav-tab-container devsite-nav-tab
+               "><a href="https://developers.google.com/maps/documentation/javascript/reference/3.exp"
+         class=" devsite-nav-tab
+                devsite-doc-set-nav-tab devsite-doc-set-nav-tab-link gc-analytics-event"
+         
+       
+         data-category="Site-Wide Custom Events"
+       
+         data-label="Tab: Reference"
+       >
+        Reference
+      </a></li><li class="devsite-doc-set-nav-tab-container devsite-nav-tab
+               "><a href="https://developers.google.com/maps/documentation/javascript/examples/"
+         class=" devsite-nav-tab
+                devsite-doc-set-nav-tab devsite-doc-set-nav-tab-link gc-analytics-event"
+         
+       
+         data-category="Site-Wide Custom Events"
+       
+         data-label="Tab: Samples"
+       >
+        Samples
+      </a></li><li class="devsite-doc-set-nav-tab-container devsite-nav-tab
+               "><a href="https://developers.google.com/maps/documentation/javascript/support"
+         class=" devsite-nav-tab
+                devsite-doc-set-nav-tab devsite-doc-set-nav-tab-link gc-analytics-event"
+         
+       
+         data-category="Site-Wide Custom Events"
+       
+         data-label="Tab: Support"
+       >
+        Support
+      </a></li><button type="button" id="devsite-feedback-project"
+          class="devsite-feedback-button devsite-top-button gc-analytics-event"
+          data-category="Site-Wide Custom Events" data-label="Send Feedback Button"
+          track-type="feedback" track-name="sendFeedbackLink" track-metadata-position="header">
+  
+  Send feedback
+  </button></ul></nav></div></div></div></header><link rel="stylesheet" href="/maps/styles/lhstyles/landing/css/landing.css"><!-- exit getkey modal --><div id="devsite-dialog-onload-getkey-enabled"
+  class="devsite-dialog devsite-enable-getkey-dialog"><div class="get-key-check"></div><div class="devsite-dialog-contents"><h3>You're all set!</h3><p>
+      To start developing, please head over to our
+      <a href="/maps/documentation/javascript/tutorial/">developer documentation</a>.
+    </p></div><div class="devsite-dialog-buttons"><button class="gc-analytics-event devsite-dialog-close button-white"
+      data-category="getKeySuccessModalDismiss"
+      data-action="linkClick" data-label="modal">Dismiss</button></div></div><!-- enter getkey modal --><div id="enable-getkey-modal-dialog"
+  class="devsite-dialog devsite-enable-getkey-dialog"><div class="devsite-dialog-contents"><h3>Activate the Google Maps JavaScript API</h3><p>To get you started we'll guide you through the Google Developers
+    Console to do a few things first:</p><ol><li>Create or choose a project</li><li>Activate the Google Maps JavaScript API and related
+        services</li><li>Create appropriate keys</li></ol></div><div class="devsite-dialog-buttons devsite-landing-row-item-buttons"><button class="devsite-dialog-close button-white"
+    data-category="getKeyModalCancel"
+    data-action="linkClick"
+    data-label="modal">Cancel</button><a class="button button-white gc-analytics-event"
+    data-category="getKeyModalContinue"
+    data-action="linkClick" data-label="modal"
+    href="https://console.developers.google.com/flows/enableapi?apiid=maps_backend,geocoding_backend,directions_backend,distance_matrix_backend,elevation_backend,places_backend&reusekey=true"
+    target="_blank"
+    onclick="devsite.utils.showSiteMask().click()">Continue</a></div></div><script>
+    if (window.jQuery) {
+      $(document).ready(function() {
+        if (window.devsite && window.devsite.search) {
+          
+          window.devsite.search.init('en')
+        }
+      });
+    }
+  </script></div><div id="gc-wrapper"itemscope itemtype="http://schema.org/Article"><input class="google-analytics-id-json" type="hidden" value="{&quot;dimensions&quot;: {}, &quot;gaid&quot;: &quot;UA-42966870-1&quot;}"><input class="google-analytics-id-json" type="hidden" value="{&quot;dimensions&quot;: {&quot;dimension6&quot;: &quot;en&quot;, &quot;dimension4&quot;: &quot;Google Maps JavaScript API&quot;, &quot;dimension5&quot;: &quot;en&quot;, &quot;dimension3&quot;: false, &quot;dimension1&quot;: &quot;Signed out&quot;, &quot;dimension8&quot;: null}, &quot;gaid&quot;: &quot;UA-24532603-1&quot;}"><input class="google-tag-manager-id" type="hidden" value="GTM-W546ZN"><script>
+      var dataLayer = [{"freeTrialEligibleUser": "False", "userCountry": "HK", "language": {"requested": "en", "served": "en"}, "projectName": "Google Maps JavaScript API", "scriptsafe": null, "signedIn": "False", "internalUser": "False"}];
+    </script>
+
+      
+        <div class="devsite-site-mask"></div>
+        
+  
+
+
+<nav class="devsite-nav-responsive devsite-nav nocontent" tabindex="0">
+  
+  <div class="devsite-nav-responsive-tabs-panel">
+    
+      
+        
+
+
+
+<nav class="devsite-nav-responsive-tabs devsite-nav">
+  <ul class="devsite-nav-list">
+  
+    <li class="devsite-nav-item devsite-nav-item-heading">
+    
+      <a 
+           href="https://developers.google.com/maps/"
+         
+         class="devsite-nav-responsive-tab devsite-nav-title gc-analytics-event
+                "
+         data-category="Site-Wide Custom Events" data-label="Responsive Tab: Home">
+        Home
+      </a>
+      
+      
+    
+    </li>
+  
+    <li class="devsite-nav-item devsite-nav-item-heading">
+    
+      <a 
+           href="https://developers.google.com/maps/documentation/?nav=true"
+         
+         class="devsite-nav-responsive-tab devsite-nav-title gc-analytics-event
+                devsite-nav-active"
+         data-category="Site-Wide Custom Events" data-label="Responsive Tab: Documentation">
+        Documentation
+      </a>
+      
+      <span class="devsite-nav-index-forward devsite-nav-responsive-tab devsite-nav-title
+                   gc-analytics-event"
+            data-category="Site-Wide Custom Events" data-label="Responsive Tab: Index"
+            tabindex="0"
+            data-tab="Documentation">Index</span>
+      
+      
+        
+
+
+
+<nav class="devsite-nav-responsive-tabs devsite-nav">
+  <ul class="devsite-nav-list">
+  
+    <li class="devsite-nav-item devsite-nav-item-heading">
+    
+      <a 
+           href="https://developers.google.com/maps/documentation/javascript/"
+         
+         class="devsite-nav-responsive-tab devsite-nav-title gc-analytics-event
+                "
+         data-category="Site-Wide Custom Events" data-label="Responsive Tab: Overview">
+        Overview
+      </a>
+      
+      
+    
+    </li>
+  
+    <li class="devsite-nav-item devsite-nav-item-heading">
+    
+      <span class="devsite-nav-responsive-forward devsite-nav-responsive-tab devsite-nav-title
+                   devsite-nav-active gc-analytics-event"
+            data-category="Site-Wide Custom Events" data-label="Responsive Tab: Guides"
+            tabindex="0">
+        Guides
+      </span>
+    
+    </li>
+  
+    <li class="devsite-nav-item devsite-nav-item-heading">
+    
+      <a 
+           href="https://developers.google.com/maps/documentation/javascript/reference/3.exp?nav=true"
+         
+         class="devsite-nav-responsive-tab devsite-nav-title gc-analytics-event
+                "
+         data-category="Site-Wide Custom Events" data-label="Responsive Tab: Reference">
+        Reference
+      </a>
+      
+      
+    
+    </li>
+  
+    <li class="devsite-nav-item devsite-nav-item-heading">
+    
+      <a 
+           href="https://developers.google.com/maps/documentation/javascript/examples/?nav=true"
+         
+         class="devsite-nav-responsive-tab devsite-nav-title gc-analytics-event
+                "
+         data-category="Site-Wide Custom Events" data-label="Responsive Tab: Samples">
+        Samples
+      </a>
+      
+      
+    
+    </li>
+  
+    <li class="devsite-nav-item devsite-nav-item-heading">
+    
+      <a 
+           href="https://developers.google.com/maps/documentation/javascript/support?nav=true"
+         
+         class="devsite-nav-responsive-tab devsite-nav-title gc-analytics-event
+                "
+         data-category="Site-Wide Custom Events" data-label="Responsive Tab: Support">
+        Support
+      </a>
+      
+      
+    
+    </li>
+  
+  
+    <li class="devsite-nav-item devsite-nav-item-heading">
+      <a href="https://developers.google.com/products/"
+         class="devsite-nav-responsive-tab devsite-nav-title gc-analytics-event"
+         data-category="Site-Wide Custom Events"
+         data-label="Responsive Tab: all_products">
+        All Products
+      </a>
+    </li>
+  
+  </ul>
+</nav>
+
+
+      
+    
+    </li>
+  
+    <li class="devsite-nav-item devsite-nav-item-heading">
+    
+      <a 
+           href="https://developers.google.com/maps/pricing-and-plans/"
+         
+         class="devsite-nav-responsive-tab devsite-nav-title gc-analytics-event
+                "
+         data-category="Site-Wide Custom Events" data-label="Responsive Tab: Pricing and Plans">
+        Pricing and Plans
+      </a>
+      
+      
+    
+    </li>
+  
+  
+    <li class="devsite-nav-item devsite-nav-item-heading">
+      <a href="https://developers.google.com/products/"
+         class="devsite-nav-responsive-tab devsite-nav-title gc-analytics-event"
+         data-category="Site-Wide Custom Events"
+         data-label="Responsive Tab: all_products">
+        All Products
+      </a>
+    </li>
+  
+  </ul>
+</nav>
+
+
+      
+    
+  </div>
+  
+  
+  <div class="devsite-nav-responsive-sidebar-panel">
+    
+    <div class="devsite-nav-responsive-back" tabindex="0"></div>
+    
+    <nav class="devsite-nav-responsive-sidebar"></nav>
+  </div>
+  
+  
+    <div class="devsite-nav-responsive-index-panel">
+      <div class="devsite-nav-index-back" tabindex="0"></div>
+      <nav>
+      
+        
+      
+        
+        <ul class="devsite-nav-list" data-tab="Documentation">
+        
+          
+            
+            <li class="devsite-nav-item devsite-nav-item-heading">
+              <span class="devsite-nav-title devsite-nav-title-no-path">Android APIs</span>
+            </li>
+            
+            
+            <li class="devsite-nav-item">
+              <a class="devsite-nav-title" href="https://developers.google.com/maps/documentation/android-api/">
+                Google Maps Android API
+              </a>
+            </li>
+            
+            <li class="devsite-nav-item">
+              <a class="devsite-nav-title" href="https://developers.google.com/places/android-api/">
+                Google Places API for Android
+              </a>
+            </li>
+            
+          
+            
+            <li class="devsite-nav-item devsite-nav-item-heading">
+              <span class="devsite-nav-title devsite-nav-title-no-path">iOS APIs</span>
+            </li>
+            
+            
+            <li class="devsite-nav-item">
+              <a class="devsite-nav-title" href="https://developers.google.com/maps/documentation/ios-sdk/">
+                Google Maps SDK for iOS
+              </a>
+            </li>
+            
+            <li class="devsite-nav-item">
+              <a class="devsite-nav-title" href="https://developers.google.com/places/ios-api/">
+                Google Places API for iOS
+              </a>
+            </li>
+            
+          
+        
+          
+            
+            <li class="devsite-nav-item devsite-nav-item-heading">
+              <span class="devsite-nav-title devsite-nav-title-no-path">Web APIs</span>
+            </li>
+            
+            
+            <li class="devsite-nav-item">
+              <a class="devsite-nav-title" href="https://developers.google.com/maps/documentation/embed/">
+                Embed API
+              </a>
+            </li>
+            
+            <li class="devsite-nav-item">
+              <a class="devsite-nav-title" href="https://developers.google.com/maps/documentation/javascript/">
+                JavaScript API
+              </a>
+            </li>
+            
+            <li class="devsite-nav-item">
+              <a class="devsite-nav-title" href="https://developers.google.com/maps/documentation/static-maps/">
+                Static Maps API
+              </a>
+            </li>
+            
+            <li class="devsite-nav-item">
+              <a class="devsite-nav-title" href="https://developers.google.com/maps/documentation/streetview/">
+                Street View Image API
+              </a>
+            </li>
+            
+            <li class="devsite-nav-item">
+              <a class="devsite-nav-title" href="https://developers.google.com/places/javascript/">
+                Google Places API JavaScript Library
+              </a>
+            </li>
+            
+          
+        
+          
+            
+            <li class="devsite-nav-item devsite-nav-item-heading">
+              <span class="devsite-nav-title devsite-nav-title-no-path">Web Service APIs</span>
+            </li>
+            
+            
+            <li class="devsite-nav-item">
+              <a class="devsite-nav-title" href="https://developers.google.com/maps/documentation/directions/">
+                Directions API
+              </a>
+            </li>
+            
+            <li class="devsite-nav-item">
+              <a class="devsite-nav-title" href="https://developers.google.com/maps/documentation/distance-matrix/">
+                Distance Matrix API
+              </a>
+            </li>
+            
+            <li class="devsite-nav-item">
+              <a class="devsite-nav-title" href="https://developers.google.com/maps/documentation/elevation/">
+                Elevation API
+              </a>
+            </li>
+            
+            <li class="devsite-nav-item">
+              <a class="devsite-nav-title" href="https://developers.google.com/maps/documentation/geocoding/">
+                Geocoding API
+              </a>
+            </li>
+            
+            <li class="devsite-nav-item">
+              <a class="devsite-nav-title" href="https://developers.google.com/maps/documentation/geolocation/">
+                Geolocation API
+              </a>
+            </li>
+            
+            <li class="devsite-nav-item">
+              <a class="devsite-nav-title" href="https://developers.google.com/places/web-service/">
+                Places API Web Service
+              </a>
+            </li>
+            
+            <li class="devsite-nav-item">
+              <a class="devsite-nav-title" href="https://developers.google.com/maps/documentation/roads/">
+                Roads API
+              </a>
+            </li>
+            
+            <li class="devsite-nav-item">
+              <a class="devsite-nav-title" href="https://developers.google.com/maps/documentation/timezone/">
+                Time Zone API
+              </a>
+            </li>
+            
+          
+        
+          
+            
+            <li class="devsite-nav-item devsite-nav-item-heading">
+              <span class="devsite-nav-title devsite-nav-title-no-path">Google Maps APIs Premium Plan</span>
+            </li>
+            
+            
+            <li class="devsite-nav-item">
+              <a class="devsite-nav-title" href="https://developers.google.com/maps/premium/">
+                Documentation
+              </a>
+            </li>
+            
+          
+        
+        </ul>
+        
+      
+        
+      
+      </nav>
+    </div>
+  
+</nav>
+
+
+        <div class="devsite-main-content clearfix">
+
+        
+        
+
+        
+  
+  
+    
+    
+      
+  <nav class="devsite-section-nav devsite-nav nocontent">
+    <ul class="devsite-nav-list"><li class="devsite-nav-item"><a href="https://developers.google.com/maps/documentation/javascript/tutorial" class="devsite-nav-title">Overview</a></li><li class="devsite-nav-item"><a href="https://developers.google.com/maps/documentation/javascript/get-api-key" class="devsite-nav-title">Get API Key</a></li><li class="devsite-nav-item devsite-nav-item-heading"><span class="devsite-nav-title devsite-nav-title-no-path">Tutorials</span></li><li class="devsite-nav-item"><a href="https://developers.google.com/maps/documentation/javascript/adding-a-google-map" class="devsite-nav-title">Adding a Map with a Marker</a></li><li class="devsite-nav-item"><a href="https://developers.google.com/maps/documentation/javascript/marker-clustering" class="devsite-nav-title">Marker Clustering</a></li><li class="devsite-nav-item"><a href="https://developers.google.com/maps/documentation/javascript/importing_data" class="devsite-nav-title">Importing Data into Maps</a></li><li class="devsite-nav-item"><a href="https://developers.google.com/maps/documentation/javascript/earthquakes" class="devsite-nav-title">Visualizing Data</a></li><li class="devsite-nav-item"><a href="https://developers.google.com/maps/documentation/javascript/combining-data" class="devsite-nav-title">Combining Data</a></li><li class="devsite-nav-item"><a href="https://developers.google.com/maps/documentation/javascript/firebase" class="devsite-nav-title">Mapping with Firebase</a></li><li class="devsite-nav-item"><a href="https://developers.google.com/maps/documentation/javascript/geolocation" class="devsite-nav-title">Geolocation</a></li><li class="devsite-nav-item"><a href="https://developers.google.com/maps/documentation/javascript/mysql-to-maps" class="devsite-nav-title">Using MySQL and PHP with Maps</a></li><li class="devsite-nav-item"><a href="https://developers.google.com/maps/documentation/javascript/info-windows-to-db" class="devsite-nav-title">Saving User-Added Data with Maps</a></li><li class="devsite-nav-item devsite-nav-item-heading"><span class="devsite-nav-title devsite-nav-title-no-path">Experimental Features</span></li><li class="devsite-nav-item"><a href="https://developers.google.com/maps/documentation/javascript/beta-renderer" class="devsite-nav-title">Experimental Renderer</a></li><li class="devsite-nav-item"><a href="https://developers.google.com/maps/documentation/javascript/basemap" class="devsite-nav-title">Experimental Base Map</a></li><li class="devsite-nav-item devsite-nav-item-heading"><span class="devsite-nav-title devsite-nav-title-no-path">Concepts</span></li><li class="devsite-nav-item"><a href="https://developers.google.com/maps/documentation/javascript/basics" class="devsite-nav-title">Overview</a></li><li class="devsite-nav-item"><a href="https://developers.google.com/maps/documentation/javascript/maptypes" class="devsite-nav-title">Map Types</a></li><li class="devsite-nav-item"><a href="https://developers.google.com/maps/documentation/javascript/coordinates" class="devsite-nav-title">Map and Tile Coordinates</a></li><li class="devsite-nav-item"><a href="https://developers.google.com/maps/documentation/javascript/localization" class="devsite-nav-title">Localizing the Map</a></li><li class="devsite-nav-item"><a href="https://developers.google.com/maps/documentation/javascript/versions" class="devsite-nav-title">Versioning</a></li><li class="devsite-nav-item devsite-nav-item-heading"><span class="devsite-nav-title devsite-nav-title-no-path">Styling a Map</span></li><li class="devsite-nav-item"><a href="https://developers.google.com/maps/documentation/javascript/styling" class="devsite-nav-title">Start Styling your Map</a></li><li class="devsite-nav-item"><a href="https://developers.google.com/maps/documentation/javascript/adding-a-legend" class="devsite-nav-title">Custom Legends</a></li><li class="devsite-nav-item"><a href="https://developers.google.com/maps/documentation/javascript/style-reference" class="devsite-nav-title">Style Reference</a></li><li class="devsite-nav-item devsite-nav-item-heading"><span class="devsite-nav-title devsite-nav-title-no-path">Interacting with the Map</span></li><li class="devsite-nav-item"><a href="https://developers.google.com/maps/documentation/javascript/controls" class="devsite-nav-title">Controls</a></li><li class="devsite-nav-item"><a href="https://developers.google.com/maps/documentation/javascript/events" class="devsite-nav-title">Events</a></li><li class="devsite-nav-item"><a href="https://developers.google.com/maps/documentation/javascript/interaction" class="devsite-nav-title">Controlling Zoom and Pan</a></li><li class="devsite-nav-item devsite-nav-deprecated devsite-nav-has-status"><a href="https://developers.google.com/maps/documentation/javascript/signedin" class="devsite-nav-title"><span class="devsite-nav-text">Signed-in Maps</span><span class="devsite-nav-icon-wrapper"><span class="devsite-nav-icon material-icons" title="Deprecated"></span></span></a></li><li class="devsite-nav-item devsite-nav-item-heading"><span class="devsite-nav-title devsite-nav-title-no-path">Drawing on the Map</span></li><li class="devsite-nav-item"><a href="https://developers.google.com/maps/documentation/javascript/overlays" class="devsite-nav-title">Overview</a></li><li class="devsite-nav-item"><a href="https://developers.google.com/maps/documentation/javascript/markers" class="devsite-nav-title">Markers</a></li><li class="devsite-nav-item"><a href="https://developers.google.com/maps/documentation/javascript/custom-markers" class="devsite-nav-title">Custom Markers</a></li><li class="devsite-nav-item"><a href="https://developers.google.com/maps/documentation/javascript/infowindows" class="devsite-nav-title">Info Windows</a></li><li class="devsite-nav-item"><a href="https://developers.google.com/maps/documentation/javascript/shapes" class="devsite-nav-title">Shapes</a></li><li class="devsite-nav-item"><a href="https://developers.google.com/maps/documentation/javascript/symbols" class="devsite-nav-title">Symbols</a></li><li class="devsite-nav-item"><a href="https://developers.google.com/maps/documentation/javascript/groundoverlays" class="devsite-nav-title">Ground Overlays</a></li><li class="devsite-nav-item"><a href="https://developers.google.com/maps/documentation/javascript/customoverlays" class="devsite-nav-title">Custom Overlays</a></li><li class="devsite-nav-item devsite-nav-item-heading"><span class="devsite-nav-title devsite-nav-title-no-path">Displaying data</span></li><li class="devsite-nav-item"><a href="https://developers.google.com/maps/documentation/javascript/layers" class="devsite-nav-title">Overview</a></li><li class="devsite-nav-item"><a href="https://developers.google.com/maps/documentation/javascript/datalayer" class="devsite-nav-title">Data layer</a></li><li class="devsite-nav-item"><a href="https://developers.google.com/maps/documentation/javascript/fusiontableslayer" class="devsite-nav-title">Fusion Tables</a></li><li class="devsite-nav-item"><a href="https://developers.google.com/maps/documentation/javascript/heatmaplayer" class="devsite-nav-title">Heatmap</a></li><li class="devsite-nav-item"><a href="https://developers.google.com/maps/documentation/javascript/kml" class="devsite-nav-title">Displaying KML</a></li><li class="devsite-nav-item"><a href="https://developers.google.com/maps/documentation/javascript/kmllayer" class="devsite-nav-title">KML and GeoRSS</a></li><li class="devsite-nav-item"><a href="https://developers.google.com/maps/documentation/javascript/trafficlayer" class="devsite-nav-title">Traffic, Transit, and Bicycling Layers</a></li><li class="devsite-nav-item devsite-nav-item-heading"><span class="devsite-nav-title devsite-nav-title-no-path">Services</span></li><li class="devsite-nav-item"><a href="https://developers.google.com/maps/documentation/javascript/directions" class="devsite-nav-title">Directions</a></li><li class="devsite-nav-item"><a href="https://developers.google.com/maps/documentation/javascript/distancematrix" class="devsite-nav-title">Distance Matrix</a></li><li class="devsite-nav-item"><a href="https://developers.google.com/maps/documentation/javascript/elevation" class="devsite-nav-title">Elevation</a></li><li class="devsite-nav-item"><a href="https://developers.google.com/maps/documentation/javascript/geocoding" class="devsite-nav-title">Geocoding</a></li><li class="devsite-nav-item"><a href="https://developers.google.com/maps/documentation/javascript/maxzoom" class="devsite-nav-title">Maximum Zoom Imagery</a></li><li class="devsite-nav-item devsite-nav-active"><a href="https://developers.google.com/maps/documentation/javascript/streetview" class="devsite-nav-title">Street View</a></li><li class="devsite-nav-item devsite-nav-item-heading"><span class="devsite-nav-title devsite-nav-title-no-path">Libraries</span></li><li class="devsite-nav-item"><a href="https://developers.google.com/maps/documentation/javascript/libraries" class="devsite-nav-title">Overview</a></li><li class="devsite-nav-item"><a href="https://developers.google.com/maps/documentation/javascript/drawinglayer" class="devsite-nav-title">Drawing Library</a></li><li class="devsite-nav-item"><a href="https://developers.google.com/maps/documentation/javascript/geometry" class="devsite-nav-title">Geometry Library</a></li><li class="devsite-nav-item"><a href="https://developers.google.com/maps/documentation/javascript/places" class="devsite-nav-title">Places Library</a></li><li class="devsite-nav-item"><a href="https://developers.google.com/maps/documentation/javascript/places-autocomplete" class="devsite-nav-title">Autocomplete for Addresses and Search</a></li><li class="devsite-nav-item"><a href="https://developers.google.com/maps/documentation/javascript/visualization" class="devsite-nav-title">Visualization Library</a></li><li class="devsite-nav-item devsite-nav-item-heading"><span class="devsite-nav-title devsite-nav-title-no-path">More Guides</span></li><li class="devsite-nav-item"><a href="https://developers.google.com/maps/documentation/javascript/v2tov3" class="devsite-nav-title">Upgrading from v2 to v3</a></li><li class="devsite-nav-item devsite-nav-item-heading"><span class="devsite-nav-title devsite-nav-title-no-path">Policies and Terms</span></li><li class="devsite-nav-item"><a href="https://developers.google.com/maps/documentation/javascript/usage" class="devsite-nav-title">Usage Limits</a></li><li class="devsite-nav-item devsite-nav-item-heading"><span class="devsite-nav-title devsite-nav-title-no-path">Other APIs</span></li><li class="devsite-nav-item"><a href="https://developers.google.com/maps/documentation/embed/" class="devsite-nav-title">Embed API</a></li><li class="devsite-nav-item"><a href="https://developers.google.com/maps/documentation/static-maps/" class="devsite-nav-title">Static Maps API</a></li><li class="devsite-nav-item"><a href="https://developers.google.com/maps/documentation/streetview/" class="devsite-nav-title">Street View Image API</a></li></ul>
+  </nav>
+
+    
+
+    
+  <nav class="devsite-page-nav devsite-nav"></nav>
+
+
+      <article class="devsite-article">
+        <article class="devsite-article-inner">
+  
+          
+  
+
+
+
+  
+  <nav class="devsite-breadcrumb-nav devsite-nav">
+    
+
+
+<ul class="devsite-breadcrumb-list">
+  
+  <li class="devsite-breadcrumb-item">
+    
+    
+    <a href="https://developers.google.com/products/" class="devsite-breadcrumb-link gc-analytics-event"
+       data-category="Site-Wide Custom Events" data-label="Breadcrumbs"
+       data-value="1">
+    
+    
+      Products
+    
+    
+    </a>
+    
+  </li>
+  
+  <li class="devsite-breadcrumb-item">
+    
+    
+    <div class="devsite-breadcrumb-guillemet material-icons"></div>
+    
+    
+    <a href="https://developers.google.com/maps/" class="devsite-breadcrumb-link gc-analytics-event"
+       data-category="Site-Wide Custom Events" data-label="Breadcrumbs"
+       data-value="2">
+    
+    
+      Google Maps APIs
+    
+    
+    </a>
+    
+  </li>
+  
+  <li class="devsite-breadcrumb-item">
+    
+    
+    <div class="devsite-breadcrumb-guillemet material-icons"></div>
+    
+    
+    <a href="https://developers.google.com/maps/web/" class="devsite-breadcrumb-link gc-analytics-event"
+       data-category="Site-Wide Custom Events" data-label="Breadcrumbs"
+       data-value="3">
+    
+    
+      Web
+    
+    
+    </a>
+    
+  </li>
+  
+  <li class="devsite-breadcrumb-item">
+    
+    
+    <div class="devsite-breadcrumb-guillemet material-icons"></div>
+    
+    
+    <a href="https://developers.google.com/maps/documentation/javascript/" class="devsite-breadcrumb-link gc-analytics-event"
+       data-category="Site-Wide Custom Events" data-label="Breadcrumbs"
+       data-value="4">
+    
+    
+      Maps JavaScript API
+    
+    
+    </a>
+    
+  </li>
+  
+  <li class="devsite-breadcrumb-item">
+    
+    
+    <div class="devsite-breadcrumb-guillemet material-icons"></div>
+    
+    
+    <a href="https://developers.google.com/maps/documentation/" class="devsite-breadcrumb-link gc-analytics-event"
+       data-category="Site-Wide Custom Events" data-label="Breadcrumbs"
+       data-value="5">
+    
+    
+      Documentation
+    
+    
+    </a>
+    
+  </li>
+  
+  <li class="devsite-breadcrumb-item">
+    
+    
+    <div class="devsite-breadcrumb-guillemet material-icons"></div>
+    
+    
+    <a href="https://developers.google.com/maps/documentation/javascript/tutorial" class="devsite-breadcrumb-link gc-analytics-event"
+       data-category="Site-Wide Custom Events" data-label="Breadcrumbs"
+       data-value="6">
+    
+    
+      Guides
+    
+    
+    </a>
+    
+  </li>
+  
+</ul>
+
+  </nav>
+  
+  
+  <h1 itemprop="name" class="devsite-page-title">
+    Street View Service
+  </h1>
+  
+  
+  <nav class="devsite-page-nav-embedded devsite-nav"></nav>
+  
+  <div class="devsite-article-body clearfix
+            "
+       itemprop="articleBody">
+    
+
+
+<h2 id="StreetView">Overview</h2>
+
+<p>Google Street View provides panoramic 360 degree views from
+  designated roads throughout its coverage area. Street View's API
+  coverage is the same as that for the Google Maps application
+  (<code>https://maps.google.com/</code>). The list of currently
+  supported cities for Street View is available at the
+  <a href="http://www.google.com/maps/about/behind-the-scenes/streetview/#where">Google
+  Maps website</a>.</p>
+
+<p>A sample Street View image is shown below.</p>
+<br>
+
+<iframe width="425" height="240" frameborder="0" scrolling="no" marginheight="0" marginwidth="0"
+src="https://developers.google.com/maps/documentation/javascript/examples/full/streetview-embed" allowfullscreen>
+</iframe>
+
+
+
+
+
+
+
+<p>The Google Maps JavaScript API provides a Street View service
+  for obtaining and manipulating the imagery used in Google Maps
+  Street View. This Street View service is supported natively within the
+  browser.</p>
+
+<h2 id="StreetViewMapUsage">Street View Map Usage</h2>
+
+<p>Although Street View can be used within a
+  <a href="#StreetViewContainers">standalone DOM element</a>, it is most
+  useful when indicating a location on a map. By default, Street View is
+  enabled on a map, and a Street View <em>Pegman control</em> appears
+  integrated within the navigation (zoom and pan) controls. You may hide this
+  control within the map's <code>MapOptions</code> by setting
+  <code>streetViewControl</code> to <code>false</code>. You may also change
+  the default position of the Street View control by
+  setting the <code>Map</code>'s <code>streetViewControlOptions.position</code>
+  property to a new <code>ControlPosition</code>.</p>
+
+<p>The Street View Pegman control allows you to view Street View
+  panoramas directly within the map. When the user clicks and holds the Pegman,
+  the map updates to show blue outlines around Street View-enabled streets,
+  offering a user experience similar to the Google Maps app.</p>
+
+<p>When the user drops the Pegman marker onto a street, the map updates to
+  display a Street View panorama of the indicated location.</p>
+
+<h2 id="StreetViewPanoramas">Street View Panoramas</h2>
+
+<p>Street View images are supported through use of the
+  <code>StreetViewPanorama</code> object, which provides an API
+  interface to a Street View "viewer." Each map contains a default
+  Street View panorama, which you can retrieve by calling the
+  map's <code>getStreetView()</code> method. When you add a Street View
+  control to the map by setting its <code>streetViewControl</code>
+  option to <code>true</code>, you automatically connect the Pegman
+  control to this default Street View panorama.</p>
+
+<p>You may also create your own <code>StreetViewPanorama</code>
+  object and set the map to use that instead of the default, by
+  setting the map's <code>streetView</code> property explicitly to
+  that constructed object. You may wish to override the default panorama
+  if you want to modify default behavior, such as the automatic
+  sharing of overlays between the map and the panorama. (See
+  <a href="#StreetViewOverlays">Overlays within Street View</a> below.)</p>
+
+<h2 id="StreetViewContainers">Street View Containers</h2>
+
+<p>You may instead wish to display a <code>StreetViewPanorama</code>
+  within a separate DOM element, often a <code>&lt;div&gt;</code> element.
+  Simply pass the DOM element within the <code>StreetViewPanorama</code>'s
+  constructor. For optimum display of images, we recommend a minimum size of
+  200 pixels by 200 pixels.</p>
+
+<p><span style="color:red">Note: </span> although Street View
+  functionality is designed to be used in conjunction with a map, this
+  usage is not required. You may use a standalone Street View object
+  without a map.</p>
+
+<h2 id="StreetViewLocation">Street View Locations and Point-of-View (POV)</h2>
+
+<p>The <code>StreetViewPanorama</code> constructor also allows you to
+  set the Street View location and point of view using the
+  <code>StreetViewOptions</code> parameter. You may call <code>
+  setPosition()</code> and <code>setPov()</code> on the object after
+  construction to change its location and POV.</p>
+
+<p>The Street View location defines the placement of the camera focus
+  for an image, but it does not define the orientation of the camera
+  for that image. For that purpose, the <code>StreetViewPov</code> object
+  defines two properties:</p>
+
+<ul>
+  <li><code>heading</code> (default <code>0</code>) defines the rotation angle
+    around the camera locus in degrees relative from true north. Headings are
+    measured clockwise (90 degrees is true east).</li>
+  <li><code>pitch</code> (default <code>0</code>) defines the angle variance
+    "up" or "down" from the camera's initial default pitch, which is often (but
+    not always) flat horizontal. (For example, an image taken on a hill will
+    likely exhibit a default pitch that is not horizontal.) Pitch angles are
+    measured with positive values looking up (to +90 degrees straight up and
+    orthogonal to the default pitch) and negative values looking down (to -90
+    degrees straight down and orthogonal to the default pitch).</li>
+</ul>
+
+<p>The <code>StreetViewPov</code> object is most often used to determine the
+  point of view of the Street View camera. You can also determine the
+  point-of-view of the photographer &mdash; typically the direction the
+  <a href="https://maps.google.com/help/maps/streetview/learn/cars-trikes-and-more.html">car
+  or trike</a> was facing &mdash; with the
+  <code>StreetViewPanorama.getPhotographerPov()</code> method.</a></p>
+
+<p>The following code displays a map of Boston with an initial view of Fenway
+  Park. Selecting the Pegman and dragging it to a supported location on the map
+  will change the Street View panorama:</p>
+
+<div class="devsite-jsfiddle-code-sample devsite-jsfiddle-hide" data-scope="streetview-simple">
+  <pre data-type="js">function initialize() {
+  var fenway = {lat: 42.345573, lng: -71.098326};
+  var map = new google.maps.Map(document.getElementById(&#39;map&#39;), {
+    center: fenway,
+    zoom: 14
+  });
+  var panorama = new google.maps.StreetViewPanorama(
+      document.getElementById(&#39;pano&#39;), {
+        position: fenway,
+        pov: {
+          heading: 34,
+          pitch: 10
+        }
+      });
+  map.setStreetView(panorama);
+}</pre>
+  <pre data-type="html">&lt;div id=&quot;map&quot;&gt;&lt;/div&gt;
+&lt;div id=&quot;pano&quot;&gt;&lt;/div&gt;</pre>
+  <pre data-type="css">html, body {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+}
+#map, #pano {
+  float: left;
+  height: 100%;
+  width: 45%;
+}</pre>
+  <pre data-type="html">&lt;!-- Replace the value of the key parameter with your own API key. --&gt;
+&lt;script async defer
+    src=&quot;https://maps.googleapis.com/maps/api/js?key=AIzaSyCkUOdZ5y7hMm0yrcCQoCvLwzdM6M8s5qk&amp;callback=initialize&quot;&gt;
+&lt;/script&gt;
+</pre>
+</div>
+<pre class="prettyprint notranslate lang-javascript devsite-enable-open-in-jsfiddle" data-scope="streetview-simple" data-jsfiddle-title="Street View service">function initialize() {
+  var fenway = {lat: 42.345573, lng: -71.098326};
+  var map = new google.maps.Map(document.getElementById(&#39;map&#39;), {
+    center: fenway,
+    zoom: 14
+  });
+  var panorama = new google.maps.StreetViewPanorama(
+      document.getElementById(&#39;pano&#39;), {
+        position: fenway,
+        pov: {
+          heading: 34,
+          pitch: 10
+        }
+      });
+  map.setStreetView(panorama);
+}</pre>
+
+<p><a href="https://developers.google.com/maps/documentation/javascript/examples/streetview-simple">View example</a>.</p>
+
+<h2 id="motion-tracking">Motion tracking on mobile devices</h2>
+
+<p>On devices that support device orientation events, the API offers users the
+  ability to change the Street View point of view based on the movement of the
+  device. Users can look around by moving their devices. This is called motion
+  tracking or device rotation tracking.</p>
+
+<p>As app developer, you can change the default behavior as follows:
+<ul>
+  <li>Enable or disable the motion tracking functionality. By default, motion
+    tracking is enabled on any device that supports it. The following sample
+    disables motion tracking, but leaves the motion tracking control visible.
+    (Note that the user can turn on motion tracking by tapping the control.)
+<pre class="prettyprint notranslate lang-javascript">
+var panorama = new google.maps.StreetViewPanorama(
+    document.getElementById('pano'), {
+      position: {lat: 37.869260, lng: -122.254811},
+      pov: {heading: 165, pitch: 0},
+      motionTracking: false
+    });
+</pre>
+  </li>
+  <li>
+    <p>Hide or show the motion tracking control. By default, the control is
+      shown on devices that support motion tracking. The user can tap the
+      control to turn motion tracking on or off. Note that the control will
+      never appear if the device doesn't support motion tracking, regardless of
+      the value of <code>motionTrackingControl</code>.</p>
+    <p>The following sample disables both motion tracking and
+      the motion tracking control. In this case, the user can't turn motion
+      tracking on:</p>
+<pre class="prettyprint notranslate lang-javascript">
+var panorama = new google.maps.StreetViewPanorama(
+    document.getElementById('pano'), {
+      position: {lat: 37.869260, lng: -122.254811},
+      pov: {heading: 165, pitch: 0},
+      motionTracking: false,
+      motionTrackingControl: false
+    });
+</pre>
+  </li>
+  <li>Change the default position of the motion tracking control. By default,
+    the control appears near the bottom right of the panorama (position
+    <code>RIGHT_BOTTOM</code>). The following sample sets the position of the
+    control to left bottom:
+<pre class="prettyprint notranslate lang-javascript">
+var panorama = new google.maps.StreetViewPanorama(
+    document.getElementById('pano'), {
+      position: {lat: 37.869260, lng: -122.254811},
+      pov: {heading: 165, pitch: 0},
+      motionTrackingControlOptions: {
+        position: google.maps.ControlPosition.LEFT_BOTTOM
+      }
+    });
+</pre>
+  </li>
+</ul>
+
+<p>To see motion tracking in action, view the following sample on a mobile
+  device (or any device that supports device orientation events):</p>
+<br>
+
+<iframe width="425" height="240" frameborder="0" scrolling="no" marginheight="0"
+      marginwidth="0"
+      src="https://developers.google.com/maps/documentation/javascript/examples/full/streetview-embed" allowfullscreen>
+</iframe>
+
+
+
+
+
+
+
+<p><a href="https://developers.google.com/maps/documentation/javascript/examples/streetview-embed">View example</a>.</p>
+
+<h2 id="StreetViewOverlays">Overlays within Street View</h2>
+
+<p>The default <code>StreetViewPanorama</code> object supports the native
+  display of map
+  <a href="https://developers.google.com/maps/documentation/javascript/overlays">overlays</a>.
+  Overlays generally appear at "street level" anchored at <code>LatLng</code>
+  positions. (Markers will appear with their tails anchored to the location's
+  horizontal plane within the Street View panorama for example.)</p>
+
+<p>Currently, the types of overlays which are supported on Street View
+  panoramas are limited to <code>Marker</code>s, <code>InfoWindow</code>s and
+  custom <code>OverlayView</code>s. Overlays which you display on a map may be
+  displayed on a Street View panorama by treating the panorama as a substitute
+  for the <code>Map</code> object, calling <code>setMap()</code> and passing
+  the <code>StreetViewPanorama</code> as an argument instead of a map. Info
+  windows similarly may be opened within a Street View panorama by calling
+  <code>open()</code>, passing the <code>StreetViewPanorama()</code> instead of
+  a map.</p>
+
+<p>Additionally, when creating a map with a default
+  <code>StreetViewPanorama</code>, any markers created on a map are shared
+  automatically with the map's associated Street View panorama, provided that
+  panorama is visible. To retrieve the default Street View panorama, call
+  <code>getStreetView()</code> on the <code>Map</code> object. Note that if you
+  explicitly set the map's <code>streetView</code> property to a
+  <code>StreetViewPanorama</code> of your own construction, you will override
+  the default panorama and disable automatic overlay sharing.</p>
+
+<p>The following example shows markers denoting various locations around
+  Astor Place, New York City. Toggle the display to Street View to show the
+  shared markers displaying within the <code>StreetViewPanorama</code>.</p>
+
+<div class="devsite-jsfiddle-code-sample devsite-jsfiddle-hide" data-scope="streetview-overlays">
+  <pre data-type="js">var panorama;
+
+function initMap() {
+  var astorPlace = {lat: 40.729884, lng: -73.990988};
+
+  // Set up the map
+  var map = new google.maps.Map(document.getElementById(&#39;map&#39;), {
+    center: astorPlace,
+    zoom: 18,
+    streetViewControl: false
+  });
+
+  // Set up the markers on the map
+  var cafeMarker = new google.maps.Marker({
+      position: {lat: 40.730031, lng: -73.991428},
+      map: map,
+      icon: &#39;https://chart.apis.google.com/chart?chst=d_map_pin_icon&amp;chld=cafe|FFFF00&#39;,
+      title: &#39;Cafe&#39;
+  });
+
+  var bankMarker = new google.maps.Marker({
+      position: {lat: 40.729681, lng: -73.991138},
+      map: map,
+      icon: &#39;https://chart.apis.google.com/chart?chst=d_map_pin_icon&amp;chld=dollar|FFFF00&#39;,
+      title: &#39;Bank&#39;
+  });
+
+  var busMarker = new google.maps.Marker({
+      position: {lat: 40.729559, lng: -73.990741},
+      map: map,
+      icon: &#39;https://chart.apis.google.com/chart?chst=d_map_pin_icon&amp;chld=bus|FFFF00&#39;,
+      title: &#39;Bus Stop&#39;
+  });
+
+  // We get the map&#39;s default panorama and set up some defaults.
+  // Note that we don&#39;t yet set it visible.
+  panorama = map.getStreetView();
+  panorama.setPosition(astorPlace);
+  panorama.setPov(/** @type {google.maps.StreetViewPov} */({
+    heading: 265,
+    pitch: 0
+  }));
+}
+
+function toggleStreetView() {
+  var toggle = panorama.getVisible();
+  if (toggle == false) {
+    panorama.setVisible(true);
+  } else {
+    panorama.setVisible(false);
+  }
+}</pre>
+  <pre data-type="html">&lt;div id=&quot;floating-panel&quot;&gt;
+  &lt;input type=&quot;button&quot; value=&quot;Toggle Street View&quot; onclick=&quot;toggleStreetView();&quot;&gt;&lt;/input&gt;
+&lt;/div&gt;
+&lt;div id=&quot;map&quot;&gt;&lt;/div&gt;</pre>
+  <pre data-type="css">/* Always set the map height explicitly to define the size of the div
+ * element that contains the map. */
+#map {
+  height: 100%;
+}
+/* Optional: Makes the sample page fill the window. */
+html, body {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+}</pre>
+  <pre data-type="css">#floating-panel {
+  position: absolute;
+  top: 10px;
+  left: 25%;
+  z-index: 5;
+  background-color: #fff;
+  padding: 5px;
+  border: 1px solid #999;
+  text-align: center;
+  font-family: &#39;Roboto&#39;,&#39;sans-serif&#39;;
+  line-height: 30px;
+  padding-left: 10px;
+}</pre>
+  <pre data-type="css">#floating-panel {
+  margin-left: -100px;
+}</pre>
+  <pre data-type="html">
+&lt;!-- Replace the value of the key parameter with your own API key. --&gt;
+&lt;script async defer
+src=&quot;https://maps.googleapis.com/maps/api/js?key=AIzaSyCkUOdZ5y7hMm0yrcCQoCvLwzdM6M8s5qk&amp;callback=initMap&quot;&gt;
+&lt;/script&gt;</pre>
+</div>
+<pre class="prettyprint notranslate lang-javascript devsite-enable-open-in-jsfiddle" data-scope="streetview-overlays" data-jsfiddle-title="Overlays within Street View">var panorama;
+
+function initMap() {
+  var astorPlace = {lat: 40.729884, lng: -73.990988};
+
+  // Set up the map
+  var map = new google.maps.Map(document.getElementById(&#39;map&#39;), {
+    center: astorPlace,
+    zoom: 18,
+    streetViewControl: false
+  });
+
+  // Set up the markers on the map
+  var cafeMarker = new google.maps.Marker({
+      position: {lat: 40.730031, lng: -73.991428},
+      map: map,
+      icon: &#39;https://chart.apis.google.com/chart?chst=d_map_pin_icon&amp;chld=cafe|FFFF00&#39;,
+      title: &#39;Cafe&#39;
+  });
+
+  var bankMarker = new google.maps.Marker({
+      position: {lat: 40.729681, lng: -73.991138},
+      map: map,
+      icon: &#39;https://chart.apis.google.com/chart?chst=d_map_pin_icon&amp;chld=dollar|FFFF00&#39;,
+      title: &#39;Bank&#39;
+  });
+
+  var busMarker = new google.maps.Marker({
+      position: {lat: 40.729559, lng: -73.990741},
+      map: map,
+      icon: &#39;https://chart.apis.google.com/chart?chst=d_map_pin_icon&amp;chld=bus|FFFF00&#39;,
+      title: &#39;Bus Stop&#39;
+  });
+
+  // We get the map&#39;s default panorama and set up some defaults.
+  // Note that we don&#39;t yet set it visible.
+  panorama = map.getStreetView();
+  panorama.setPosition(astorPlace);
+  panorama.setPov(/** @type {google.maps.StreetViewPov} */({
+    heading: 265,
+    pitch: 0
+  }));
+}
+
+function toggleStreetView() {
+  var toggle = panorama.getVisible();
+  if (toggle == false) {
+    panorama.setVisible(true);
+  } else {
+    panorama.setVisible(false);
+  }
+}</pre>
+
+<p><a href="https://developers.google.com/maps/documentation/javascript/examples/streetview-overlays">View example</a>.</p>
+
+<h2 id="StreetViewEvents">Street View Events</h2>
+
+<p>When navigating between Street View or manipulating its
+  orientation, you may wish to monitor several events that indicate
+  changes to the <code>StreetViewPanorama</code>'s state:</p>
+
+<ul>
+  <li><code>pano_changed</code> fires whenever the individual pano
+    ID changes. This event does not guarantee that any associated data within
+    the panorama (such as the links) has also changed by the time this event
+    is triggered; this event only indicates that a pano
+    ID has changed. Note that the pano ID (which you can use to reference
+    this panorama) is only stable within the current browser session.</li>
+  <li><code>position_changed</code> fires whenever the underlying
+    (<code>LatLng</code>) position of the panorama changes. Rotating
+    a panorama will not trigger this event. Note that you could change
+    a panorama's underlying position without changing the associated
+    pano ID, since the API will automatically associate the nearest
+    pano ID to the panorama's position.</li>
+  <li><code>pov_changed</code> fires whenever the Street View's
+    <code>StreetViewPov</code> changes. Note that this event may fire
+    while the position, and pano ID, remain stable.</li>
+  <li><code>links_changed</code> fires whenever the Street View's
+    links change. Note that this event may fire asynchronously after a
+    change in the pano ID indicated through <code>pano_changed</code>.</li>
+  <li><code>visible_changed</code> fires whenever the Street View's
+    visibility changes. Note that this event may fire asynchronously after a
+    change in the pano ID indicated through <code>pano_changed</code>.</li>
+</ul>
+
+<p>The following code illustrates how these events can be handled
+  to collect data about the underlying <code>StreetViewPanorama</code>:</p>
+
+<div class="devsite-jsfiddle-code-sample devsite-jsfiddle-hide" data-scope="streetview-events">
+  <pre data-type="js">function initPano() {
+  var panorama = new google.maps.StreetViewPanorama(
+      document.getElementById(&#39;pano&#39;), {
+        position: {lat: 37.869, lng: -122.255},
+        pov: {
+          heading: 270,
+          pitch: 0
+        },
+        visible: true
+  });
+
+  panorama.addListener(&#39;pano_changed&#39;, function() {
+      var panoCell = document.getElementById(&#39;pano-cell&#39;);
+      panoCell.innerHTML = panorama.getPano();
+  });
+
+  panorama.addListener(&#39;links_changed&#39;, function() {
+      var linksTable = document.getElementById(&#39;links_table&#39;);
+      while (linksTable.hasChildNodes()) {
+        linksTable.removeChild(linksTable.lastChild);
+      }
+      var links = panorama.getLinks();
+      for (var i in links) {
+        var row = document.createElement(&#39;tr&#39;);
+        linksTable.appendChild(row);
+        var labelCell = document.createElement(&#39;td&#39;);
+        labelCell.innerHTML = &#39;&lt;b&gt;Link: &#39; + i + &#39;&lt;/b&gt;&#39;;
+        var valueCell = document.createElement(&#39;td&#39;);
+        valueCell.innerHTML = links[i].description;
+        linksTable.appendChild(labelCell);
+        linksTable.appendChild(valueCell);
+      }
+  });
+
+  panorama.addListener(&#39;position_changed&#39;, function() {
+      var positionCell = document.getElementById(&#39;position-cell&#39;);
+      positionCell.firstChild.nodeValue = panorama.getPosition() + &#39;&#39;;
+  });
+
+  panorama.addListener(&#39;pov_changed&#39;, function() {
+      var headingCell = document.getElementById(&#39;heading-cell&#39;);
+      var pitchCell = document.getElementById(&#39;pitch-cell&#39;);
+      headingCell.firstChild.nodeValue = panorama.getPov().heading + &#39;&#39;;
+      pitchCell.firstChild.nodeValue = panorama.getPov().pitch + &#39;&#39;;
+  });
+}</pre>
+  <pre data-type="html">&lt;div id=&quot;pano&quot;&gt;&lt;/div&gt;
+&lt;div id=&quot;floating-panel&quot;&gt;
+&lt;table&gt;
+  &lt;tr&gt;
+    &lt;td&gt;&lt;b&gt;Position&lt;/b&gt;&lt;/td&gt;&lt;td id=&quot;position-cell&quot;&gt;&amp;nbsp;&lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+    &lt;td&gt;&lt;b&gt;POV Heading&lt;/b&gt;&lt;/td&gt;&lt;td id=&quot;heading-cell&quot;&gt;270&lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+    &lt;td&gt;&lt;b&gt;POV Pitch&lt;/b&gt;&lt;/td&gt;&lt;td id=&quot;pitch-cell&quot;&gt;0.0&lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+    &lt;td&gt;&lt;b&gt;Pano ID&lt;/b&gt;&lt;/td&gt;&lt;td id=&quot;pano-cell&quot;&gt;&amp;nbsp;&lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;table id=&quot;links_table&quot;&gt;&lt;/table&gt;
+&lt;/table&gt;
+&lt;/div&gt;</pre>
+  <pre data-type="css">/* Always set the map height explicitly to define the size of the div
+ * element that contains the map. */
+#map {
+  height: 100%;
+}
+/* Optional: Makes the sample page fill the window. */
+html, body {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+}</pre>
+  <pre data-type="css">#floating-panel {
+  position: absolute;
+  top: 10px;
+  left: 25%;
+  z-index: 5;
+  background-color: #fff;
+  padding: 5px;
+  border: 1px solid #999;
+  text-align: center;
+  font-family: &#39;Roboto&#39;,&#39;sans-serif&#39;;
+  line-height: 30px;
+  padding-left: 10px;
+}</pre>
+  <pre data-type="css">#pano {
+  width: 50%;
+  height: 100%;
+  float: left;
+}
+#floating-panel {
+  width: 45%;
+  height: 100%;
+  float: right;
+  text-align: left;
+  overflow: auto;
+  position: static;
+  border: 0px solid #999;
+}</pre>
+  <pre data-type="html">&lt;!-- Replace the value of the key parameter with your own API key. --&gt;
+&lt;script async defer
+src=&quot;https://maps.googleapis.com/maps/api/js?key=AIzaSyCkUOdZ5y7hMm0yrcCQoCvLwzdM6M8s5qk&amp;callback=initPano&quot;&gt;
+&lt;/script&gt;
+</pre>
+</div>
+<pre class="prettyprint notranslate lang-javascript devsite-enable-open-in-jsfiddle" data-scope="streetview-events" data-jsfiddle-title="Street View events">function initPano() {
+  var panorama = new google.maps.StreetViewPanorama(
+      document.getElementById(&#39;pano&#39;), {
+        position: {lat: 37.869, lng: -122.255},
+        pov: {
+          heading: 270,
+          pitch: 0
+        },
+        visible: true
+  });
+
+  panorama.addListener(&#39;pano_changed&#39;, function() {
+      var panoCell = document.getElementById(&#39;pano-cell&#39;);
+      panoCell.innerHTML = panorama.getPano();
+  });
+
+  panorama.addListener(&#39;links_changed&#39;, function() {
+      var linksTable = document.getElementById(&#39;links_table&#39;);
+      while (linksTable.hasChildNodes()) {
+        linksTable.removeChild(linksTable.lastChild);
+      }
+      var links = panorama.getLinks();
+      for (var i in links) {
+        var row = document.createElement(&#39;tr&#39;);
+        linksTable.appendChild(row);
+        var labelCell = document.createElement(&#39;td&#39;);
+        labelCell.innerHTML = &#39;&lt;b&gt;Link: &#39; + i + &#39;&lt;/b&gt;&#39;;
+        var valueCell = document.createElement(&#39;td&#39;);
+        valueCell.innerHTML = links[i].description;
+        linksTable.appendChild(labelCell);
+        linksTable.appendChild(valueCell);
+      }
+  });
+
+  panorama.addListener(&#39;position_changed&#39;, function() {
+      var positionCell = document.getElementById(&#39;position-cell&#39;);
+      positionCell.firstChild.nodeValue = panorama.getPosition() + &#39;&#39;;
+  });
+
+  panorama.addListener(&#39;pov_changed&#39;, function() {
+      var headingCell = document.getElementById(&#39;heading-cell&#39;);
+      var pitchCell = document.getElementById(&#39;pitch-cell&#39;);
+      headingCell.firstChild.nodeValue = panorama.getPov().heading + &#39;&#39;;
+      pitchCell.firstChild.nodeValue = panorama.getPov().pitch + &#39;&#39;;
+  });
+}</pre>
+
+<p><a href="https://developers.google.com/maps/documentation/javascript/examples/streetview-events">View example</a>.</p>
+
+<h2 id="StreetViewControls">Street View Controls</h2>
+
+<p>When displaying a <code>StreetViewPanorama</code>, a variety of
+  controls appear on the panorama by default. You can enable or disable
+  these controls by setting their appropriate fields within the
+  <a href="https://developers.google.com/maps/documentation/javascript/3.exp/reference#StreetViewPanoramaOptions"><code>StreetViewPanoramaOptions</code></a>
+  to <code>true</code> or <code>false</code>:</p>
+
+<ul>
+  <li>A <code>panControl</code> provides a way to rotate the
+    panorama. This control appears by default as a standard integrated compass
+    and pan control. You may alter the control's position by providing
+    <code>PanControlOptions</code> within the
+    <code>panControlOptions</code> field.</li>
+  <li>A <code>zoomControl</code> provides a way to zoom within the image. This
+    control appears by default near the bottom right of the panorama.
+    You can alter the control's appearance by providing
+    <code>ZoomControlOptions</code> within the
+    <code>zoomControlOptions</code> field.</li>
+  <li>An <code>addressControl</code> provides a textual overlay indicating
+    the address of the associated location, and offers a link to open the
+    location in Google Maps. You can alter the control's appearance by providing
+    <code>StreetViewAddressControlOptions</code> within the
+    <code>addressControlOptions</code> field.</li>
+  <li>A <code>fullscreenControl</code> offers the option to open Street View
+    in fullscreen mode. You can alter the control's appearance by providing
+    <code>FullscreenControlOptions</code> within the
+    <code>fullscreenControlOptions</code> field.</li>
+  <li>A <code>motionTrackingControl</code> offers the option to enable or
+    disable motion tracking on mobile devices. This control appears only
+    on devices that support device orientation events. By default, the control
+    appears near the bottom right of the panorama. You can alter the control's
+    position by providing <code>MotionTrackingControlOptions</code>.
+    For more information, see the section on <a href="#motion-tracking">motion
+    tracking</a>.</li>
+  <li>A <code>linksControl</code> provides guide arrows on the image for
+    traveling to adjacent panorama images.</li>
+  <li>A Close control allows the user to close the Street View viewer. You can
+    enable or disable the Close control by setting
+    <code>enableCloseButton</code> to <code>true</code> or <code>false</code>.
+</ul>
+
+<p>The following example alters the controls displayed within the associated
+  Street View and removes the view's links:</p>
+
+<p>View this example <a href="https://developers.google.com/maps/documentation/javascript/examples/full/streetview-controls">full screen</a>.</p>
+
+<div class="devsite-jsfiddle-code-sample devsite-jsfiddle-hide" data-scope="streetview-controls">
+  <pre data-type="js">function initPano() {
+  // Note: constructed panorama objects have visible: true
+  // set by default.
+  var panorama = new google.maps.StreetViewPanorama(
+      document.getElementById(&#39;map&#39;), {
+        position: {lat: 42.345573, lng: -71.098326},
+        addressControlOptions: {
+          position: google.maps.ControlPosition.BOTTOM_CENTER
+        },
+        linksControl: false,
+        panControl: false,
+        enableCloseButton: false
+  });
+}</pre>
+  <pre data-type="html">&lt;div id=&quot;map&quot;&gt;&lt;/div&gt;</pre>
+  <pre data-type="css">/* Always set the map height explicitly to define the size of the div
+ * element that contains the map. */
+#map {
+  height: 100%;
+}
+/* Optional: Makes the sample page fill the window. */
+html, body {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+}</pre>
+  <pre data-type="html">&lt;!-- Replace the value of the key parameter with your own API key. --&gt;
+&lt;script async defer
+src=&quot;https://maps.googleapis.com/maps/api/js?key=AIzaSyCkUOdZ5y7hMm0yrcCQoCvLwzdM6M8s5qk&amp;callback=initPano&quot;&gt;
+&lt;/script&gt;</pre>
+</div>
+<pre class="prettyprint notranslate lang-javascript devsite-enable-open-in-jsfiddle" data-scope="streetview-controls" data-jsfiddle-title="Street View controls">function initPano() {
+  // Note: constructed panorama objects have visible: true
+  // set by default.
+  var panorama = new google.maps.StreetViewPanorama(
+      document.getElementById(&#39;map&#39;), {
+        position: {lat: 42.345573, lng: -71.098326},
+        addressControlOptions: {
+          position: google.maps.ControlPosition.BOTTOM_CENTER
+        },
+        linksControl: false,
+        panControl: false,
+        enableCloseButton: false
+  });
+}</pre>
+
+<p><a href="https://developers.google.com/maps/documentation/javascript/examples/streetview-controls">View example</a>.</p>
+
+<h2 id="StreetViewService">Directly Accessing Street View Data</h2>
+
+<p>You may wish to programmatically determine the availability of
+  Street View data, or return information about particular panoramas,
+  without requiring direct manipulation of a map/panorama. You may do so
+  using the <code>StreetViewService</code> object, which provides an
+  interface to the data stored in Google's Street View service.</p>
+
+<h3 id="StreetViewServiceRequests">Street View Service Requests</h3>
+
+<p>Accessing the Street View service is asynchronous, since the Google Maps API
+  needs to make a call to an external server. For that reason, you need to pass
+  a <em>callback</em> method to execute upon completion of the request. This
+  callback method processes the result.</p>
+
+<p>You may initiate two types of requests to the
+  <code>StreetViewService</code>:</p>
+
+<ul>
+  <li>Request with a <code>StreetViewPanoRequest</code>, this returns panorama
+    data given a reference ID  which uniquely identifies the panorama. Note that
+    these reference IDs are only stable for the lifetime of the imagery of that
+    panorama.</li>
+  <li>Request with a <code>StreetViewLocationRequest</code> this searches for
+    panorama data over a given area, given a passed <code>LatLng</code>.
+</ul>
+
+<h3 id="StreetViewServiceResponses">Street View Service Responses</h3>
+
+<p><The function <code>getPanorama()</code>
+  needs a <em>callback</em> function to execute upon retrieval of a result
+  from the Street View service. This callback function returns a set of
+  panorama data within a <code>StreetViewPanoramaData</code> object and a
+  <code>StreetViewStatus</code> code denoting the status of the request, in
+  that order.</p>
+
+<p>A <code>StreetViewPanoramaData</code> object specification contains
+  meta-data about a Street View panorama of the following form:</p>
+
+<pre class="prettyprint notranslate lang-javascript">
+{
+  "location": {
+    "latLng": LatLng,
+    "description": string,
+    "pano": string
+  },
+  "copyright": string,
+  "links": [{
+      "heading": number,
+      "description": string,
+      "pano": string,
+      "roadColor": string,
+      "roadOpacity": number
+    }],
+  "tiles": {
+    "worldSize": Size,
+    "tileSize": Size,
+    "centerHeading": number
+  }
+}
+</pre>
+
+<p>Note that this data object is not a <code>StreetViewPanorama</code>
+  object itself. To create a Street View object using this data, you would
+  need to create a <code>StreetViewPanorama</code> and call
+  <code>setPano()</code>, passing it the ID as noted in the returned
+  <code>location.pano</code> field.</p>
+
+<p>The <code>status</code> code may return one of the following values:</p>
+
+<ul>
+  <li><code>OK</code> indicates that the service found a matching
+    panorama.</li>
+  <li><code>ZERO_RESULTS</code> indicates that the service could not find a
+    matching panorama with the passed criteria.</li>
+  <li><code>UNKNOWN_ERROR</code> indicates that a Street View request
+    could not be processed, though the exact reason is unknown.</li>
+</ul>
+
+<p>The following code creates a <code>StreetViewService</code>
+  that responds to user clicks on a map by creating markers which,
+  when clicked, display a <code>StreetViewPanorama</code> of that
+  location. The code uses the contents of <code>StreetViewPanoramaData</code>
+  returned from the service.</p>
+
+<div class="devsite-jsfiddle-code-sample devsite-jsfiddle-hide" data-scope="streetview-service">
+      <pre data-type="js">/*
+ * Click the map to set a new location for the Street View camera.
+ */
+
+var map;
+var panorama;
+
+function initMap() {
+  var berkeley = {lat: 37.869085, lng: -122.254775};
+  var sv = new google.maps.StreetViewService();
+
+  panorama = new google.maps.StreetViewPanorama(document.getElementById(&#39;pano&#39;));
+
+  // Set up the map.
+  map = new google.maps.Map(document.getElementById(&#39;map&#39;), {
+    center: berkeley,
+    zoom: 16,
+    streetViewControl: false
+  });
+
+  // Set the initial Street View camera to the center of the map
+  sv.getPanorama({location: berkeley, radius: 50}, processSVData);
+
+  // Look for a nearby Street View panorama when the map is clicked.
+  // getPanorama will return the nearest pano when the given
+  // radius is 50 meters or less.
+  map.addListener(&#39;click&#39;, function(event) {
+    sv.getPanorama({location: event.latLng, radius: 50}, processSVData);
+  });
+}
+
+function processSVData(data, status) {
+  if (status === &#39;OK&#39;) {
+    var marker = new google.maps.Marker({
+      position: data.location.latLng,
+      map: map,
+      title: data.location.description
+    });
+
+    panorama.setPano(data.location.pano);
+    panorama.setPov({
+      heading: 270,
+      pitch: 0
+    });
+    panorama.setVisible(true);
+
+    marker.addListener(&#39;click&#39;, function() {
+      var markerPanoID = data.location.pano;
+      // Set the Pano to use the passed panoID.
+      panorama.setPano(markerPanoID);
+      panorama.setPov({
+        heading: 270,
+        pitch: 0
+      });
+      panorama.setVisible(true);
+    });
+  } else {
+    console.error(&#39;Street View data not found for this location.&#39;);
+  }
+}</pre>
+      <pre data-type="html">&lt;div id=&quot;map&quot; style=&quot;width: 45%; height: 100%;float:left&quot;&gt;&lt;/div&gt;
+&lt;div id=&quot;pano&quot; style=&quot;width: 45%; height: 100%;float:left&quot;&gt;&lt;/div&gt;</pre>
+      <pre data-type="css">/* Always set the map height explicitly to define the size of the div
+ * element that contains the map. */
+#map {
+  height: 100%;
+}
+/* Optional: Makes the sample page fill the window. */
+html, body {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+}</pre>
+      <pre data-type="html">
+&lt;!-- Replace the value of the key parameter with your own API key. --&gt;
+&lt;script async defer
+src=&quot;https://maps.googleapis.com/maps/api/js?key=AIzaSyCkUOdZ5y7hMm0yrcCQoCvLwzdM6M8s5qk&amp;callback=initMap&quot;&gt;
+&lt;/script&gt;</pre>
+    </div>
+<pre class="prettyprint notranslate lang-javascript devsite-enable-open-in-jsfiddle" data-scope="streetview-service" data-jsfiddle-title="Directly accessing Street View data">/*
+ * Click the map to set a new location for the Street View camera.
+ */
+
+var map;
+var panorama;
+
+function initMap() {
+  var berkeley = {lat: 37.869085, lng: -122.254775};
+  var sv = new google.maps.StreetViewService();
+
+  panorama = new google.maps.StreetViewPanorama(document.getElementById(&#39;pano&#39;));
+
+  // Set up the map.
+  map = new google.maps.Map(document.getElementById(&#39;map&#39;), {
+    center: berkeley,
+    zoom: 16,
+    streetViewControl: false
+  });
+
+  // Set the initial Street View camera to the center of the map
+  sv.getPanorama({location: berkeley, radius: 50}, processSVData);
+
+  // Look for a nearby Street View panorama when the map is clicked.
+  // getPanorama will return the nearest pano when the given
+  // radius is 50 meters or less.
+  map.addListener(&#39;click&#39;, function(event) {
+    sv.getPanorama({location: event.latLng, radius: 50}, processSVData);
+  });
+}
+
+function processSVData(data, status) {
+  if (status === &#39;OK&#39;) {
+    var marker = new google.maps.Marker({
+      position: data.location.latLng,
+      map: map,
+      title: data.location.description
+    });
+
+    panorama.setPano(data.location.pano);
+    panorama.setPov({
+      heading: 270,
+      pitch: 0
+    });
+    panorama.setVisible(true);
+
+    marker.addListener(&#39;click&#39;, function() {
+      var markerPanoID = data.location.pano;
+      // Set the Pano to use the passed panoID.
+      panorama.setPano(markerPanoID);
+      panorama.setPov({
+        heading: 270,
+        pitch: 0
+      });
+      panorama.setVisible(true);
+    });
+  } else {
+    console.error(&#39;Street View data not found for this location.&#39;);
+  }
+}</pre>
+
+<p><a href="https://developers.google.com/maps/documentation/javascript/examples/streetview-service">View example</a>.</p>
+
+<h2 id="CustomStreetView">Providing Custom Street View Panoramas</h2>
+
+<p>The Google Maps JavaScript API supports the display of custom panoramas
+  within the <code>StreetViewPanorama</code> object. Using custom
+  panoramas, you can display the interior of buildings, views from
+  scenic locations, or anything from your imagination. You can even
+  link these custom panoramas to Google's existing Street View
+  panoramas.</p>
+
+<p>Setting up a set of custom panorama imagery involves the
+  following steps:</p>
+
+<ul>
+  <li>Create a base panoramic image for each custom panorama. This
+    base image should be at the highest resolution image with which
+    you wish to serve zoomed in imagery.</li>
+  <li>(Optional, but recommended) Create a set of panoramic tiles
+    at different zoom levels from the basic image.</li>
+  <li>Create links between your custom panoramas.</li>
+  <li>(Optional) Designate "entry" panoramas within
+    Google's existing Street View imagery and customize links
+    to/from the custom set to the standard set.</li>
+  <li>Define metadata for each panorama image
+    within a <code>StreetViewPanoramaData</code> object.</li>
+  <li>Implement a method which determines the custom panorama
+    data and images and designate that method as your custom handler
+    within the <code>StreetViewPanorama</code> object.</li>
+</ul>
+
+<p>The following sections explain this process.</p>
+
+<h3 id="CreatingPanoramas">Creating Custom Panoramas</h3>
+
+<p>Each Street View panorama is an image or set of images
+  that provides a full 360 degree view from a single location.
+  The <code>StreetViewPanorama</code> object
+  uses images that conform to the equirectangular (Plate
+  Carrée) projection. Such a projection contains 360 degrees
+  of horizontal view (a full wrap-around) and 180 degrees of
+  vertical view (from straight up to straight down). These fields
+  of view result in an image with an aspect ratio of 2:1. A
+  full wrap-around panorama is shown below.</p>
+
+<p style="text-align:center"><img src="https://developers.google.com/maps/documentation/javascript/images/samplePanorama.png" /></p>
+
+<p>Panorama images are generally obtained by taking multiple
+  photos from one position and stitching them together using
+  panorama software. (See Wikipedia's
+  <a href="https://en.wikipedia.org/wiki/Comparison_of_photo_stitching_applications_(software)">
+  Comparison of photo stitching applications</a> for more information.)
+  Such images should share a single "camera"
+  locus, from which each of the panorama images are taken. The
+  resulting 360 degree panorama can then define a projection on
+  a sphere with the image wrapped to the two-dimensional surface
+  of the sphere.</p>
+
+<p style="text-align:center"><img src="https://developers.google.com/maps/documentation/javascript/images/panoramaSphere.png" /></p>
+
+<p>Treating the panorama as a projection on a sphere with a rectilinear
+  coordinate system is advantageous when dividing up the image into
+  rectilinear <em>tiles</em>, and serving images based on computed tile
+  coordinates.</p>
+
+<h3 id="TilingPanoramas">Creating Custom Panorama Tiles</h3>
+
+<p>Street View also supports different levels of image detail through
+  the use of a zoom control, which allows you to zoom in and out from the
+  default view. Generally, Street View provides five
+  levels of zoom resolution for any given panorama image. If you were to
+  rely on a single panorama image to serve all zoom levels, such an image
+  would either necessarily be quite large and significantly slow down
+  your application, or be of such poor resolution at higher zoom levels
+  that you would serve a poorly pixellated image. Luckily, however, we can use
+  a similar design pattern used to serve
+  <a href="https://developers.google.com/maps/documentation/javascript/coordinates#tile-coordinates">
+  Google's map tiles</a> at different zoom levels to provide
+  appropriate resolution imagery for panoramas at each zoom level.</p>
+
+<p>When a <code>StreetViewPanorama</code> first loads, by default
+  it displays an image consisting of 25% (90 degrees of arc) of the
+  horizontal breadth of the panorama at zoom level 1. This view
+  corresponds roughly with a normal human field of view. Zooming
+  "out" from this default view essentially provides a wider arc,
+  while zooming in narrows the field of a view to a smaller arc. The
+  <code>StreetViewPanorama</code> automatically calculates the
+  appropriate field of view for the selected zoom level, and then
+  selects imagery most appropriate for that resolution by selecting
+  a tile set that roughly matches the dimensions of the horizontal
+  field of view. The following fields of view map to Street View
+  zoom levels:</p>
+
+<table>
+  <tr>
+    <th>Street View zoom level</th>
+    <th>Field of View (degrees)</th>
+  </tr>
+  <tr>
+    <td>0</td>
+    <td>180</td>
+  </tr>
+  <tr>
+    <td>1 (default)</td>
+    <td>90</td>
+  </tr><tr>
+    <td>2</td>
+    <td>45</td>
+  </tr><tr>
+    <td>3</td>
+    <td>22.5</td>
+  </tr><tr>
+    <td>4</td>
+    <td>11.25</td>
+  </tr>
+</table>
+
+<p>Note that the size of the image shown within Street View is
+  entirely dependent on the screen size (width) of the Street View
+  container. If you provide a wider container, the service
+  will still provide the same field of view for any given
+  zoom level, though it may select tiles more appropriate
+  for that resolution instead.</p>
+
+<p>Because each panorama consists of an equirectangular projection,
+  creating panorama tiles is relatively easy. As the projection
+  provides an image with an aspect ratio of 2:1, tiles with 2:1 ratios
+  are easier to use, though square tiles may provide better performance
+  on square maps (since the field of view will be square).</p>
+
+<p>For 2:1 tiles, a single image encompassing the entire panorama
+  represents the entire panorama "world" (the base image) at zoom
+  level 0, with each increasing zoom level offering
+  4<sup><em>zoomLevel</em></sup> tiles. (E.g. at
+  zoom level 2, the entire panorama consists of 16 tiles.)
+  <span style="color:red">Note: </span> zoom levels in Street View
+  tiling do not match directly to zoom levels as provided using
+  the Street View control; instead the Street View control zoom
+  levels select a Field of View (FoV), from which appropriate
+  tiles are selected.</p>
+
+<p style="text-align:center"><img src="https://developers.google.com/maps/documentation/javascript/images/panoramaTiles.png" /></p>
+
+<p>Generally, you will want to name your image tiles so they can be
+  selected programmatically. Such a naming scheme is
+  discussed below in <a href="#CustomPanoramaMethod">Handling Custom
+  Panorama Requests</a>.</p>
+
+<h3 id="CustomPanoramaMethod">Handling Custom Panorama Requests</h3>
+
+<p>To use a custom panorama, call
+  <code>StreetViewPanorama.registerPanoProvider()</code>, specifying the name
+  of your custom panorama provider method. The panorama provider
+  method must return a <code>StreetViewPanoramaData</code> object, and has the
+  following signature:</p>
+
+<pre class="prettyprint notranslate lang-javascript">
+Function(pano):StreetViewPanoramaData
+</pre>
+
+<p>A <code>StreetViewPanoramaData</code> is an object of the following
+  form:</p>
+
+<pre class="prettyprint notranslate lang-javascript">
+{
+  copyright: string,
+  location: {
+    description: string,
+    latLng: google.maps.LatLng,
+    pano: string
+  },
+  tiles: {
+    tileSize: google.maps.Size,
+    worldSize: google.maps.Size,
+    heading: number,
+    getTileUrl: Function
+  },
+  links: [
+    description: string,
+    heading: number,
+    pano: string,
+    roadColor: string,
+    roadOpacity: number
+  ]
+}
+</pre>
+
+<p>Display a custom panorama as follows:</p>
+<ul>
+  <li>Set the
+    <a href="https://developers.google.com/maps/documentation/javascript/3.exp/reference#StreetViewPanoramaOptions"><code>StreetViewPanoramaOptions.pano</code></a>
+    property to a custom value.</li>
+  <li>Call
+    <a href="https://developers.google.com/maps/documentation/javascript/3.exp/reference#StreetViewPanorama"><code>StreetViewPanorama.registerPanoProvider()</code></a>
+    to supply a custom panorama provider function.</li>
+  <li>Implement your custom panorama provider function to handle the
+    specified <code>pano</code> value.</li>
+  <li>Construct a
+    <a href="https://developers.google.com/maps/documentation/javascript/3.exp/reference#StreetViewPanoramaData"><code>StreetViewPanoramaData</code></a>
+    object.</li>
+  <li>Set the
+    <a href="https://developers.google.com/maps/documentation/javascript/3.exp/reference#StreetViewTileData"><code>StreetViewTileData.getTileUrl</code></a>
+    property to the name of a custom tile provider function that you supply. For
+    example, <code>getCustomPanoramaTileUrl</code>.</li>
+  <li>Implement your custom tile provider function, as shown in the samples
+    below.</li>
+  <li>Return the <code>StreetViewPanoramaData</code> object.</li>
+</ul>
+
+<p class="note">Note: do not directly set a <code>position</code>
+  on the <code>StreetViewPanorama</code> when you wish to display
+  custom panoramas, as such a position will instruct the Street
+  View service to request the default Street View imagery close
+  to that location. Instead, set this position within the
+  custom <code>StreetViewPanoramaData</code> object's
+  <code>location.latLng</code> field.</p>
+
+<p>The following example displays a custom panorama of the Google Sydney
+  office. Note that that this example doesn't use a map or default Street View
+  imagery:</p>
+
+<div class="devsite-jsfiddle-code-sample devsite-jsfiddle-hide" data-scope="streetview-custom-simple">
+  <pre data-type="js">function initPano() {
+  // Set up Street View and initially set it visible. Register the
+  // custom panorama provider function. Set the StreetView to display
+  // the custom panorama &#39;reception&#39; which we check for below.
+  var panorama = new google.maps.StreetViewPanorama(
+      document.getElementById(&#39;map&#39;), {pano: &#39;reception&#39;, visible: true});
+  panorama.registerPanoProvider(getCustomPanorama);
+}
+
+// Return a pano image given the panoID.
+function getCustomPanoramaTileUrl(pano, zoom, tileX, tileY) {
+  return &#39;https://developers.google.com/maps/documentation/javascript/examples/full/images/&#39;
+      + &#39;panoReception1024-&#39; + zoom + &#39;-&#39; + tileX + &#39;-&#39; + tileY + &#39;.jpg&#39;;
+}
+
+// Construct the appropriate StreetViewPanoramaData given
+// the passed pano IDs.
+function getCustomPanorama(pano) {
+  if (pano === &#39;reception&#39;) {
+    return {
+      location: {
+        pano: &#39;reception&#39;,
+        description: &#39;Google Sydney - Reception&#39;
+      },
+      links: [],
+      // The text for the copyright control.
+      copyright: &#39;Imagery (c) 2010 Google&#39;,
+      // The definition of the tiles for this panorama.
+      tiles: {
+        tileSize: new google.maps.Size(1024, 512),
+        worldSize: new google.maps.Size(2048, 1024),
+        // The heading in degrees at the origin of the panorama
+        // tile set.
+        centerHeading: 105,
+        getTileUrl: getCustomPanoramaTileUrl
+      }
+    };
+  }
+}</pre>
+  <pre data-type="html">&lt;div id=&quot;map&quot;&gt;&lt;/div&gt;</pre>
+  <pre data-type="css">/* Always set the map height explicitly to define the size of the div
+ * element that contains the map. */
+#map {
+  height: 100%;
+}
+/* Optional: Makes the sample page fill the window. */
+html, body {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+}</pre>
+  <pre data-type="html">&lt;!-- Replace the value of the key parameter with your own API key. --&gt;
+&lt;script async defer
+src=&quot;https://maps.googleapis.com/maps/api/js?key=AIzaSyCkUOdZ5y7hMm0yrcCQoCvLwzdM6M8s5qk&amp;callback=initPano&quot;&gt;
+&lt;/script&gt;</pre>
+</div>
+<pre class="prettyprint notranslate lang-javascript devsite-enable-open-in-jsfiddle" data-scope="streetview-custom-simple" data-jsfiddle-title="Custom Street View panoramas">function initPano() {
+  // Set up Street View and initially set it visible. Register the
+  // custom panorama provider function. Set the StreetView to display
+  // the custom panorama &#39;reception&#39; which we check for below.
+  var panorama = new google.maps.StreetViewPanorama(
+      document.getElementById(&#39;map&#39;), {pano: &#39;reception&#39;, visible: true});
+  panorama.registerPanoProvider(getCustomPanorama);
+}
+
+// Return a pano image given the panoID.
+function getCustomPanoramaTileUrl(pano, zoom, tileX, tileY) {
+  return &#39;https://developers.google.com/maps/documentation/javascript/examples/full/images/&#39;
+      + &#39;panoReception1024-&#39; + zoom + &#39;-&#39; + tileX + &#39;-&#39; + tileY + &#39;.jpg&#39;;
+}
+
+// Construct the appropriate StreetViewPanoramaData given
+// the passed pano IDs.
+function getCustomPanorama(pano) {
+  if (pano === &#39;reception&#39;) {
+    return {
+      location: {
+        pano: &#39;reception&#39;,
+        description: &#39;Google Sydney - Reception&#39;
+      },
+      links: [],
+      // The text for the copyright control.
+      copyright: &#39;Imagery (c) 2010 Google&#39;,
+      // The definition of the tiles for this panorama.
+      tiles: {
+        tileSize: new google.maps.Size(1024, 512),
+        worldSize: new google.maps.Size(2048, 1024),
+        // The heading in degrees at the origin of the panorama
+        // tile set.
+        centerHeading: 105,
+        getTileUrl: getCustomPanoramaTileUrl
+      }
+    };
+  }
+}</pre>
+
+<p><a href="https://developers.google.com/maps/documentation/javascript/examples/streetview-custom-simple">View example</a>.</p>
+
+<p>The custom panorama provider returns the appropriate tile given
+  the passed panorama ID, zoom level, and panorama tile coordinates.
+  Since image selection depends on these passed values, it is useful
+  to name images that can be selected programmatically given those
+  passed values, such as
+  <code><em>pano</em>_<em>zoom</em>_<em>tileX</em>_<em>tileY</em>.png</code>.
+</p>
+
+<p>The following example adds another arrow to the image, in addition to the
+  default Street View navigation arrows, that points into Google Sydney and links
+  to the custom imagery:
+</p>
+
+<div class="devsite-jsfiddle-code-sample devsite-jsfiddle-hide" data-scope="streetview-custom-tiles">
+  <pre data-type="js">var panorama;
+
+// StreetViewPanoramaData of a panorama just outside the Google Sydney office.
+var outsideGoogle;
+
+// StreetViewPanoramaData for a custom panorama: the Google Sydney reception.
+function getReceptionPanoramaData() {
+  return {
+    location: {
+      pano: &#39;reception&#39;,  // The ID for this custom panorama.
+      description: &#39;Google Sydney - Reception&#39;,
+      latLng: new google.maps.LatLng(-33.86684, 151.19583)
+    },
+    links: [{
+      heading: 195,
+      description: &#39;Exit&#39;,
+      pano: outsideGoogle.location.pano
+    }],
+    copyright: &#39;Imagery (c) 2010 Google&#39;,
+    tiles: {
+      tileSize: new google.maps.Size(1024, 512),
+      worldSize: new google.maps.Size(2048, 1024),
+      centerHeading: 105,
+      getTileUrl: function(pano, zoom, tileX, tileY) {
+        return &#39;https://developers.google.com/maps/documentation/javascript/examples/full/images/&#39; +
+            &#39;panoReception1024-&#39; + zoom + &#39;-&#39; + tileX + &#39;-&#39; + tileY + &#39;.jpg&#39;;
+      }
+    }
+  };
+}
+
+function initPanorama() {
+  panorama = new google.maps.StreetViewPanorama(
+      document.getElementById(&#39;street-view&#39;),
+      {pano: outsideGoogle.location.pano});
+  // Register a provider for the custom panorama.
+  panorama.registerPanoProvider(function(pano) {
+    if (pano === &#39;reception&#39;) {
+      return getReceptionPanoramaData();
+    }
+    return null;
+  });
+
+  // Add a link to our custom panorama from outside the Google Sydney office.
+  panorama.addListener(&#39;links_changed&#39;, function() {
+    if (panorama.getPano() === outsideGoogle.location.pano) {
+      panorama.getLinks().push({
+        description: &#39;Google Sydney&#39;,
+        heading: 25,
+        pano: &#39;reception&#39;
+      });
+    }
+  });
+}
+
+function initialize() {
+  // Use the Street View service to find a pano ID on Pirrama Rd, outside the
+  // Google office.
+  var streetviewService = new google.maps.StreetViewService;
+  streetviewService.getPanorama(
+      {location: {lat: -33.867386, lng: 151.195767}},
+      function(result, status) {
+        if (status === &#39;OK&#39;) {
+          outsideGoogle = result;
+          initPanorama();
+        }
+      });
+}</pre>
+  <pre data-type="html">&lt;div id=&quot;street-view&quot;&gt;&lt;/div&gt;</pre>
+  <pre data-type="css">html, body {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+}
+#street-view {
+  height: 100%;
+}</pre>
+  <pre data-type="html">&lt;!-- Replace the value of the key parameter with your own API key. --&gt;
+&lt;script async defer
+    src=&quot;https://maps.googleapis.com/maps/api/js?key=AIzaSyCkUOdZ5y7hMm0yrcCQoCvLwzdM6M8s5qk&amp;callback=initialize&quot;&gt;
+&lt;/script&gt;
+</pre>
+</div>
+<pre class="prettyprint notranslate lang-javascript devsite-enable-open-in-jsfiddle" data-scope="streetview-custom-tiles" data-jsfiddle-title="Custom Street View panorama tiles">var panorama;
+
+// StreetViewPanoramaData of a panorama just outside the Google Sydney office.
+var outsideGoogle;
+
+// StreetViewPanoramaData for a custom panorama: the Google Sydney reception.
+function getReceptionPanoramaData() {
+  return {
+    location: {
+      pano: &#39;reception&#39;,  // The ID for this custom panorama.
+      description: &#39;Google Sydney - Reception&#39;,
+      latLng: new google.maps.LatLng(-33.86684, 151.19583)
+    },
+    links: [{
+      heading: 195,
+      description: &#39;Exit&#39;,
+      pano: outsideGoogle.location.pano
+    }],
+    copyright: &#39;Imagery (c) 2010 Google&#39;,
+    tiles: {
+      tileSize: new google.maps.Size(1024, 512),
+      worldSize: new google.maps.Size(2048, 1024),
+      centerHeading: 105,
+      getTileUrl: function(pano, zoom, tileX, tileY) {
+        return &#39;https://developers.google.com/maps/documentation/javascript/examples/full/images/&#39; +
+            &#39;panoReception1024-&#39; + zoom + &#39;-&#39; + tileX + &#39;-&#39; + tileY + &#39;.jpg&#39;;
+      }
+    }
+  };
+}
+
+function initPanorama() {
+  panorama = new google.maps.StreetViewPanorama(
+      document.getElementById(&#39;street-view&#39;),
+      {pano: outsideGoogle.location.pano});
+  // Register a provider for the custom panorama.
+  panorama.registerPanoProvider(function(pano) {
+    if (pano === &#39;reception&#39;) {
+      return getReceptionPanoramaData();
+    }
+    return null;
+  });
+
+  // Add a link to our custom panorama from outside the Google Sydney office.
+  panorama.addListener(&#39;links_changed&#39;, function() {
+    if (panorama.getPano() === outsideGoogle.location.pano) {
+      panorama.getLinks().push({
+        description: &#39;Google Sydney&#39;,
+        heading: 25,
+        pano: &#39;reception&#39;
+      });
+    }
+  });
+}
+
+function initialize() {
+  // Use the Street View service to find a pano ID on Pirrama Rd, outside the
+  // Google office.
+  var streetviewService = new google.maps.StreetViewService;
+  streetviewService.getPanorama(
+      {location: {lat: -33.867386, lng: 151.195767}},
+      function(result, status) {
+        if (status === &#39;OK&#39;) {
+          outsideGoogle = result;
+          initPanorama();
+        }
+      });
+}</pre>
+
+<p><a href="https://developers.google.com/maps/documentation/javascript/examples/streetview-custom-tiles">View example</a>.</p>
+
+  
+  </div>
+  
+
+  
+        
+  
+
+
+
+
+
+
+
+        
+<div class="devsite-content-footer nocontent">
+  
+  
+    <p>Except as otherwise noted, the content of this page is licensed under the <a href="http://creativecommons.org/licenses/by/3.0/">Creative Commons Attribution 3.0 License</a>, and code samples are licensed under the <a href="http://www.apache.org/licenses/LICENSE-2.0">Apache 2.0 License</a>. For details, see our <a href="https://developers.google.com/terms/site-policies">Site Policies</a>. Java is a registered trademark of Oracle and/or its affiliates.</p>
+  
+
+  
+    
+    <p class="devsite-content-footer-date" itemprop="datePublished"
+       content="2018-04-05T22:23:56.677210">
+      
+      Last updated April 5, 2018.
+    </p>
+  
+
+</div>
+
+        </article>
+      </article>
+  
+
+        </div>
+      
+
+<footer class="devsite-footer-promos nocontent"><nav class="devsite-full-site-width"><ul class="devsite-footer-promos-list"><li class="devsite-footer-promo"><a href="http://stackoverflow.com/questions/tagged/google-maps-api-3"
+           class="devsite-footer-promo-title gc-analytics-event"
+           data-category="Site-Wide Custom Events"
+           data-label="Content Page Footer Promo"
+           ><img class="devsite-footer-promo-icon" src="https://developers.google.com/site-assets/logo-stack-overflow.svg">
+          
+          
+            Stack Overflow
+          
+        </a><div class="devsite-footer-promo-description">Ask a question under the google-maps-api-3 tag.</div></li><li class="devsite-footer-promo"><a href="https://github.com/googlemaps/"
+           class="devsite-footer-promo-title gc-analytics-event"
+           data-category="Site-Wide Custom Events"
+           data-label="Content Page Footer Promo"
+           ><img class="devsite-footer-promo-icon" src="https://developers.google.com/site-assets/logo-github.svg">
+          
+          
+            GitHub
+          
+        </a><div class="devsite-footer-promo-description">Fork our samples and try them yourself.</div></li><li class="devsite-footer-promo"><a href="https://googlegeodevelopers.blogspot.com"
+           class="devsite-footer-promo-title gc-analytics-event"
+           data-category="Site-Wide Custom Events"
+           data-label="Content Page Footer Promo"
+           ><img class="devsite-footer-promo-icon" src="https://developers.google.com/site-assets/blogger_64dp.png">
+          
+          
+            Blog
+          
+        </a><div class="devsite-footer-promo-description">Read the latest updates, customer stories, and tips.</div></li><li class="devsite-footer-promo"><a href="https://issuetracker.google.com/issues/new?component=188853&template=788207"
+           class="devsite-footer-promo-title gc-analytics-event"
+           data-category="Site-Wide Custom Events"
+           data-label="Content Page Footer Promo"
+           ><img class="devsite-footer-promo-icon" src="https://developers.google.com/site-assets/developers_64dp.png">
+          
+          
+            Issue Tracker
+          
+        </a><div class="devsite-footer-promo-description">Something wrong? Send us a bug report!</div></li></ul></nav></footer><footer class="devsite-footer-linkboxes nocontent
+               
+               devsite-footer-linkboxes-with-sites"><nav class="devsite-full-site-width"><ul class="devsite-footer-linkboxes-list"><li class="devsite-footer-linkbox "><h3 class="devsite-footer-linkbox-heading">Learn More</h3><ul class="devsite-footer-linkbox-list"><li class="devsite-footer-linkbox-item"><a href="https://developers.google.com/maps/documentation/javascript/tutorials/" class="gc-analytics-event"
+               data-category="Site-Wide Custom Events"
+               data-label="Content Page Footer Linkbox">
+                Tutorials
+            </a></li><li class="devsite-footer-linkbox-item"><a href="https://developers.google.com/maps/pricing-and-plans/" class="gc-analytics-event"
+               data-category="Site-Wide Custom Events"
+               data-label="Content Page Footer Linkbox">
+                Pricing and Plans
+            </a></li><li class="devsite-footer-linkbox-item"><a href="https://developers.google.com/maps/documentation/api-picker" class="gc-analytics-event"
+               data-category="Site-Wide Custom Events"
+               data-label="Content Page Footer Linkbox">
+                API Picker
+            </a></li><li class="devsite-footer-linkbox-item"><a href="https://developers.google.com/maps/" class="gc-analytics-event"
+               data-category="Site-Wide Custom Events"
+               data-label="Content Page Footer Linkbox">
+                Maps APIs Overview
+            </a></li></ul></li><li class="devsite-footer-linkbox "><h3 class="devsite-footer-linkbox-heading">Platforms</h3><ul class="devsite-footer-linkbox-list"><li class="devsite-footer-linkbox-item"><a href="https://developers.google.com/maps/android/" class="gc-analytics-event"
+               data-category="Site-Wide Custom Events"
+               data-label="Content Page Footer Linkbox">
+                Android
+            </a></li><li class="devsite-footer-linkbox-item"><a href="https://developers.google.com/maps/ios/" class="gc-analytics-event"
+               data-category="Site-Wide Custom Events"
+               data-label="Content Page Footer Linkbox">
+                iOS
+            </a></li><li class="devsite-footer-linkbox-item"><a href="https://developers.google.com/maps/web/" class="gc-analytics-event"
+               data-category="Site-Wide Custom Events"
+               data-label="Content Page Footer Linkbox">
+                Web
+            </a></li><li class="devsite-footer-linkbox-item"><a href="https://developers.google.com/maps/web-services/" class="gc-analytics-event"
+               data-category="Site-Wide Custom Events"
+               data-label="Content Page Footer Linkbox">
+                Web Services
+            </a></li></ul></li><li class="devsite-footer-linkbox "><h3 class="devsite-footer-linkbox-heading">Product Info</h3><ul class="devsite-footer-linkbox-list"><li class="devsite-footer-linkbox-item"><a href="https://developers.google.com/maps/contact-sales" class="gc-analytics-event"
+               data-category="Site-Wide Custom Events"
+               data-label="Content Page Footer Linkbox">
+                Contact sales
+            </a></li><li class="devsite-footer-linkbox-item"><a href="https://developers.google.com/maps/documentation/javascript/support" class="gc-analytics-event"
+               data-category="Site-Wide Custom Events"
+               data-label="Content Page Footer Linkbox">
+                Community support
+            </a></li><li class="devsite-footer-linkbox-item"><a href="https://developers.google.com/maps/premium/support" class="gc-analytics-event"
+               data-category="Site-Wide Custom Events"
+               data-label="Content Page Footer Linkbox">
+                Paid support
+            </a></li><li class="devsite-footer-linkbox-item"><a href="https://developers.google.com/maps/terms" class="gc-analytics-event"
+               data-category="Site-Wide Custom Events"
+               data-label="Content Page Footer Linkbox">
+                Terms of Service
+            </a></li></ul></li><li class="devsite-footer-linkbox devsite-footer-linkbox-sites"><a href="https://developers.google.com/"
+           class="gc-analytics-event devsite-footer-linkbox-logo-link"
+           data-category="Site-Wide Custom Events" data-label="Footer Google Developers Link"><img class="devsite-footer-linkbox-logo"
+               src="https://developers.google.com/_static/d7147bb846/images/redesign-14/lockup-color-knockout.png"
+               alt="Google Developers"></a><ul class="devsite-footer-linkbox-list"><li class="devsite-footer-linkbox-item"><a href="//developer.android.com/index.html" class="gc-analytics-event"
+               data-category="Site-Wide Custom Events"
+               data-label="Footer Android Link">
+                Android
+            </a></li><li class="devsite-footer-linkbox-item"><a href="//developer.chrome.com/home" class="gc-analytics-event"
+               data-category="Site-Wide Custom Events"
+               data-label="Footer Chrome Link">
+                Chrome
+            </a></li><li class="devsite-footer-linkbox-item"><a href="//firebase.google.com" class="gc-analytics-event"
+               data-category="Site-Wide Custom Events"
+               data-label="Footer Firebase Link">
+                Firebase
+            </a></li><li class="devsite-footer-linkbox-item"><a href="//cloud.google.com" class="gc-analytics-event"
+               data-category="Site-Wide Custom Events"
+               data-label="Footer Cloud Link">
+                Google Cloud Platform
+            </a></li><li class="devsite-footer-linkbox-item"><a href="//developers.google.com/products/" class="gc-analytics-event"
+               data-category="Site-Wide Custom Events"
+               data-label="Footer Products Link">
+                All Products
+            </a></li></ul></li></ul></nav></footer><footer class="devsite-utility-footer"><nav class="devsite-utility-footer-nav devsite-nav devsite-full-site-width"><div class="devsite-utility-footer-nav-left"><form class="devsite-utility-footer-language" action="/i18n/setlang/" method="post"><input type="hidden" name="xsrf_token" value="8J4NgLqx1CK5roHz_XkqEANDeMdekQc8P_BBErn7reI6MTUyNDQyODU4MTg2Mzc1MA" /><input type="hidden" name="next" value="/maps/documentation/javascript/streetview"><select class="devsite-utility-footer-language-select kd-select" name="language"
+                track-type="languageSelector" track-name="click"><option value="id"
+                
+                track-type="languageSelector" track-name="changed"
+                track-metadata-original-language="en"
+                track-metadata-selected-language="id">
+            Bahasa Indonesia
+          </option><option value="de"
+                
+                track-type="languageSelector" track-name="changed"
+                track-metadata-original-language="en"
+                track-metadata-selected-language="de">
+            Deutsch
+          </option><option value="en"
+                 selected="selected" 
+                track-type="languageSelector" track-name="changed"
+                track-metadata-original-language="en"
+                track-metadata-selected-language="en">
+            English
+          </option><option value="es"
+                
+                track-type="languageSelector" track-name="changed"
+                track-metadata-original-language="en"
+                track-metadata-selected-language="es">
+            español
+          </option><option value="fr"
+                
+                track-type="languageSelector" track-name="changed"
+                track-metadata-original-language="en"
+                track-metadata-selected-language="fr">
+            français
+          </option><option value="pt-br"
+                
+                track-type="languageSelector" track-name="changed"
+                track-metadata-original-language="en"
+                track-metadata-selected-language="pt-br">
+            Português Brasileiro
+          </option><option value="ru"
+                
+                track-type="languageSelector" track-name="changed"
+                track-metadata-original-language="en"
+                track-metadata-selected-language="ru">
+            Русский
+          </option><option value="ja"
+                
+                track-type="languageSelector" track-name="changed"
+                track-metadata-original-language="en"
+                track-metadata-selected-language="ja">
+            日本語
+          </option><option value="zh-cn"
+                
+                track-type="languageSelector" track-name="changed"
+                track-metadata-original-language="en"
+                track-metadata-selected-language="zh-cn">
+            简体中文
+          </option><option value="zh-tw"
+                
+                track-type="languageSelector" track-name="changed"
+                track-metadata-original-language="en"
+                track-metadata-selected-language="zh-tw">
+            繁體中文
+          </option><option value="ko"
+                
+                track-type="languageSelector" track-name="changed"
+                track-metadata-original-language="en"
+                track-metadata-selected-language="ko">
+            한국어
+          </option></select></form><span class="devsite-utility-footer-links"><a class="devsite-utility-footer-link gc-analytics-event"
+           href="https://developers.google.com/terms/site-terms"
+           data-category="Site-Wide Custom Events"
+           data-label="Footer terms link"
+           data-footer-link-id="terms"
+           >Terms
+         </a><a class="devsite-utility-footer-link gc-analytics-event"
+           href="//www.google.com/policies/privacy/"
+           data-category="Site-Wide Custom Events"
+           data-label="Footer privacy link"
+           data-footer-link-id="privacy"
+           >Privacy
+         </a></span></div><div class="devsite-utility-footer-nav-right"><div class="devsite-utility-footer-newsletter-signup-text">
+        Sign up for the Google Developers newsletter
+      </div><a class="button button-primary devsite-utility-footer-newsletter-signup-button"
+         href="//services.google.com/fb/forms/googledevelopersnewsletter/?utm_medium=referral&amp;utm_source=google-products&amp;utm_team=googledevs&amp;utm_campaign=201611-newsletter-launch">
+        
+        Subscribe
+      </a></div></nav></footer><div class="devsite-feedback-dialog devsite-dialog"><div class="devsite-dialog-contents"><h3>Send feedback about...</h3><div class="devsite-feedback-item"><a data-type="documentation" class="gc-analytics-event"
+           data-category="Site-Wide Custom Events" data-label="Docs Feedback Image"
+           track-type="feedback" track-name="feedbackDocIcon" track-metadata-position="header"><div class="devsite-feedback-item-icon-container"><div class="devsite-feedback-item-icon-white devsite-feedback-item-icon-docs
+                        material-icons"></div></div></a><div class="devsite-feedback-item-name">
+          
+          This page
+        </div><div class="devsite-feedback-item-description"><a data-type="documentation" tabindex="0" class="gc-analytics-event"
+             data-category="Site-Wide Custom Events" data-label="Docs Feedback Text"
+             track-type="feedback" track-name="feedbackDocText" track-metadata-position="header">
+            
+            Documentation feedback
+          </a></div></div><div class="devsite-feedback-item"><a data-type="product" tabindex="0" class="gc-analytics-event"
+           data-category="Site-Wide Custom Events" data-label="Product Feedback Image"
+           track-type="feedback" track-name="feedbackProductIcon" track-metadata-position="header"
+         ><img src="https://www.gstatic.com/images/branding/product/1x/maps_64dp.png"
+                 class="devsite-feedback-item-icon"
+                 alt="Google Maps JavaScript API"></a><div class="devsite-feedback-item-name">
+        Google Maps JavaScript API
+        </div><div class="devsite-feedback-item-description"><a data-type="product" tabindex="0" class="gc-analytics-event"
+             data-category="Site-Wide Custom Events" data-label="Product Feedback Text"
+             track-type="feedback" track-name="feedbackProductText" track-metadata-position="header"
+           >
+            
+            Product feedback
+          </a></div></div><div class="devsite-feedback-support"><img src="https://developers.google.com/_static/d7147bb846/images/feedback/ic_help_24px.svg">
+        
+        
+        Need help? Visit our <a href="https://developers.google.com/maps/documentation/javascript/support" >support page</a>.
+      </div></div><div class="devsite-dialog-buttons"><button type="button" class="devsite-feedback-cancel button-white gc-analytics-event"
+              data-category="Site-Wide Custom Events" data-label="Cancel Feedback Button"
+              track-type="feedback" track-name="cancelFeedbackButton"
+              track-metadata-position="header">
+        
+        Cancel
+      </button></div></div><script>
+  $(document).ready(function() {
+    new devsite.feedback.Widget({
+        'product_id': '81777',
+        'bucket': '',
+        'context': 'Maps JS API v3',
+        'version': 'devsite-20180420-r00-rc00.default'
+      },
+      document.querySelectorAll('.devsite-feedback-button'),
+      'en',
+      document.querySelector('.devsite-site-mask'),
+      document.querySelector('.devsite-feedback-dialog'),
+      document.querySelector('.devsite-feedback-cancel'),
+      document.querySelectorAll('.devsite-feedback-item a:not([href])')
+    );
+  });
+  </script></div><script async defer src="//www.gstatic.com/feedback/api.js"></script><script src="https://developers.google.com/_static2/d7147bb846/jsi18n/"></script><script src="https://developers.google.com/_static/d7147bb846/js/script_foot_closure.js"></script><script src="https://developers.google.com/_static/d7147bb846/js/script_foot.js"></script><script>
+        (function($) {
+          
+          devsite.devsite.Init($, {'ENABLE_BLOCKED_VIDEO_PLACEHOLDER': 0, 'SITE_NAME': 'devsite', 'FULL_SITE_SEARCH_ENABLED': 1, 'ENABLE_CLOUDTRACK': 0, 'VTAGS_ENABLED': 0, 'HISTORY_ENABLED': 1, 'VERSION_HASH': 'd7147bb846', 'SCRIPTSAFE_DOMAIN': 'google-developers.appspot.com', 'ENABLE_BLOCKED_LINK_TOOLTIP': 0, 'ALLOWED_HOSTS': ['.android.com', '.anvato.com', '.apigee.com', '.appspot.com', '.dialogflow.com', '.gonglchuangl.net', '.google.cn', '.google.com', '.googleplex.com', '.nest.com', '.openthread.io', '.openweave.io', '.orbitera.com', '.tensorflow.org'], 'BLOCK_RSS_FEEDS': 0},
+                               '[]','en',
+                               true, '',
+                               {"f62218c009ec029abef196bba5aa34cf": true, "8de7a048f21618359bd37f5ce44be073": false, "098dafe57affddc137df300142652cfd": false, "8e03e230de0bd8a6fe173fdf172e8b3f": true, "cb025a64a50094835616312f4774a53d": true, "51470233c56fc1fde50f00b73c52b216": false, "d169d485cf24243a263783dbe42029b1": true, "039e5d84b87fd75807ffb37b7f1bbf2c": true, "700def1a83e356c06c0925afb05de4b0": false, "6749dcb526ce9bde6993550c7d928d24": true}, '/maps/documentation/javascript/',
+                               'https://developers.google.com/');
+        })(jQuery);
+
+        
+        devsite.localInit = function() {
+          
+        };
+
+      </script><script>
+      $('.devsite-utility-footer-language-select').each(function() {
+        $(this).change(function(){$('.devsite-utility-footer-language').submit();});
+      });
+      </script><script async defer src="//survey.g.doubleclick.net/async_survey?site=7e6fbbkvyahh4bsgtzwpq7uv3a"></script></div><span id="devsite-request-elapsed" data-request-elapsed="400.010108948"></span></body></html>

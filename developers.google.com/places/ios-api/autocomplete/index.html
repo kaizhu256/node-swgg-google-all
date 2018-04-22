@@ -1,0 +1,2704 @@
+
+
+
+
+
+
+<!DOCTYPE html><html lang="en"
+      class="chekov"><head><script>var a=window.devsite||{};window.devsite=a;a.readyCallbacks=[];window.devsite.readyCallbacks=a.readyCallbacks;a.ready=function(b){a.readyCallbacks.push(b)};window.devsite.ready=a.ready;
+</script><meta charset="utf-8"><meta name="xsrf_token" content="tDUhseF3xbZCd0JCD07OnWFyy6thGQdHVJ2RF11RX646MTUyNDQyODU3MDMxMTAwMA" /><link rel="canonical" href="https://developers.google.com/places/ios-api/autocomplete"><link rel="alternate" href="https://developers.google.com/places/ios-api/autocomplete?hl=ko" hreflang="ko"><link rel="alternate" href="https://developers.google.com/places/ios-api/autocomplete?hl=ja" hreflang="ja"><link rel="alternate" href="https://developers.google.com/places/ios-api/autocomplete?hl=es" hreflang="es"><link rel="alternate" href="https://developers.google.com/places/ios-api/autocomplete?hl=fr" hreflang="fr"><link rel="alternate" href="https://developers.google.com/places/ios-api/autocomplete?hl=id" hreflang="id"><link rel="alternate" href="https://developers.google.com/places/ios-api/autocomplete?hl=pt-br" hreflang="pt-br"><link rel="alternate" href="https://developers.google.com/places/ios-api/autocomplete?hl=zh-tw" hreflang="zh-Hant"><link rel="alternate" href="https://developers.google.com/places/ios-api/autocomplete?hl=ru" hreflang="ru"><link rel="alternate" href="https://developers.google.com/places/ios-api/autocomplete?hl=zh-cn" hreflang="zh-Hans"><link rel="alternate" href="https://developers.google.com/places/ios-api/autocomplete?hl=de" hreflang="de"><link rel="alternate" href="https://developers.google.com/places/ios-api/autocomplete" hreflang="en"><link rel="alternate" href="https://developers.google.cn/places/ios-api/autocomplete?hl=ko" hreflang="ko-cn"><link rel="alternate" href="https://developers.google.cn/places/ios-api/autocomplete?hl=ja" hreflang="ja-cn"><link rel="alternate" href="https://developers.google.cn/places/ios-api/autocomplete?hl=es" hreflang="es-cn"><link rel="alternate" href="https://developers.google.cn/places/ios-api/autocomplete?hl=fr" hreflang="fr-cn"><link rel="alternate" href="https://developers.google.cn/places/ios-api/autocomplete?hl=id" hreflang="id-cn"><link rel="alternate" href="https://developers.google.cn/places/ios-api/autocomplete?hl=pt-br" hreflang="pt-br-cn"><link rel="alternate" href="https://developers.google.cn/places/ios-api/autocomplete?hl=zh-tw" hreflang="zh-Hant-cn"><link rel="alternate" href="https://developers.google.cn/places/ios-api/autocomplete?hl=ru" hreflang="ru-cn"><link rel="alternate" href="https://developers.google.cn/places/ios-api/autocomplete?hl=zh-cn" hreflang="zh-Hans-cn"><link rel="alternate" href="https://developers.google.cn/places/ios-api/autocomplete?hl=de" hreflang="de-cn"><link rel="alternate" href="https://developers.google.cn/places/ios-api/autocomplete" hreflang="en-cn"><link rel="alternate" href="https://developers.google.com/places/ios-api/autocomplete" hreflang="x-default"><link rel="shortcut icon" href="https://developers.google.com/_static/d7147bb846/images/favicon.png"><link rel="apple-touch-icon" href="https://developers.google.com/_static/d7147bb846/images/touch-icon.png"><meta name="viewport" content="width=device-width, initial-scale=1"><link rel="stylesheet"
+      
+      href="//fonts.googleapis.com/css?family=Google+Sans:400|Roboto:400,400italic,500,500italic,700,700italic|Roboto+Mono:400,500,700|Material+Icons"
+      ><link rel="stylesheet"
+        href="https://developers.google.com/_static/d7147bb846/css/devsite-indigo.css"><link rel="search"
+        type="application/opensearchdescription+xml"
+        title="Google Developers"
+        href="https://developers.google.com/s/opensearch.xml"><script src="https://developers.google.com/_static/d7147bb846/js/jquery-bundle.js"></script><meta property="og:site_name" content="Google Developers"><meta property="og:type" content="website"><meta property="og:url" content="https://developers.google.com/places/ios-api/autocomplete"><meta property="og:locale" content="en"><script>
+    var ___gcfg = ___gcfg || {};
+    ___gcfg.lang = 'en';
+  </script><title>Place Autocomplete &nbsp;|&nbsp; Google Places API for iOS
+      &nbsp;|&nbsp; Google Developers</title><meta property="og:title" content="Place Autocomplete &nbsp;|&nbsp; Google Places API for iOS
+      &nbsp;|&nbsp; Google Developers"><meta property="og:image"
+          content="https://developers.google.com/_static/d7147bb846/images/share/devsite-indigo.png"><meta property="og:image:secure_url"
+          content="https://developers.google.com/_static/d7147bb846/images/share/devsite-indigo.png"><meta property="og:image:width" content="1200"><meta property="og:image:height" content="630"></head><body class="
+               devsite-doc-page
+               
+               
+               
+               
+               "
+        data-family="endorsed"
+        id="top_of_page"><div class="devsite-wrapper"><div class="devsite-top-section-wrapper
+            "><header class="devsite-top-section nocontent"><div class="devsite-top-logo-row-wrapper-wrapper"><div class="devsite-top-logo-row-wrapper"><div class="devsite-top-logo-row devsite-full-site-width"><button type="button" class="devsite-expand-section-nav devsite-header-icon-button
+                                       button-flat material-icons gc-analytics-event"
+                  data-category="Site-Wide Custom Events" data-label="Hamburger menu"></button><div class="devsite-product-name-wrapper"><a class="devsite-product-name-link gc-analytics-event"
+       href="https://developers.google.com/places/"
+       data-category="Site-Wide Custom Events"
+       data-label="Project logo (header)"><div class="devsite-product-logo material-icons">location_on</div></a><span class="devsite-product-name"><ul class="devsite-breadcrumb-list"><li class="devsite-breadcrumb-item"><a href="https://developers.google.com/places/" class="devsite-breadcrumb-link gc-analytics-event"
+       data-category="Site-Wide Custom Events" data-label="Upper Header"
+       data-value="1">
+    
+    
+      
+        Google Places API
+      
+    
+    
+    </a></li></ul></span></div><div class="devsite-header-upper-tabs"><nav class="devsite-doc-set-nav devsite-nav devsite-overflow-tabs-scroll-wrapper"><ul class="devsite-doc-set-nav-tab-list devsite-overflow-tabs-scroll"><li class="devsite-doc-set-nav-tab-container devsite-nav-tab
+               "><a href="https://developers.google.com/places/"
+         class=" devsite-nav-tab
+                devsite-doc-set-nav-tab devsite-doc-set-nav-tab-link gc-analytics-event"
+         
+       
+         data-category="home"
+       
+         data-label="navTopMenu"
+       
+         data-action="tabClick"
+       >
+        Home
+      </a></li><li class="devsite-doc-set-nav-tab-container devsite-nav-tab
+               devsite-dropdown-menu-container"><a href="https://developers.google.com/places/documentation/"
+         class="devsite-doc-set-nav-active devsite-nav-tab
+                devsite-doc-set-nav-tab devsite-doc-set-nav-tab-link gc-analytics-event"
+         aria-label="Documentation, selected"
+       
+         data-category="documentation"
+       
+         data-label="navTopMenu"
+       
+         data-action="tabClick"
+       >
+        Documentation
+      </a><span class="devsite-menu-toggle devsite-nav-tab material-icons"></span><div class="devsite-dropdown-menu-wrapper
+                  devsite-dropdown-menu-full"><div class="devsite-dropdown-menu"><div class="devsite-dropdown-menu-column"><ul class="devsite-nav-list devsite-dropdown-menu-section"><li class="devsite-nav-item devsite-nav-item-heading"><span class="devsite-nav-title devsite-nav-title-no-path">
+                        Android APIs
+                      </span></li><li class="devsite-nav-item"><a class="devsite-nav-title" href="https://developers.google.com/maps/documentation/android-api/">
+                        Google Maps Android API
+                      </a></li><li class="devsite-nav-item"><a class="devsite-nav-title" href="https://developers.google.com/places/android-api/">
+                        Google Places API for Android
+                      </a></li></ul><ul class="devsite-nav-list devsite-dropdown-menu-section"><li class="devsite-nav-item devsite-nav-item-heading"><span class="devsite-nav-title devsite-nav-title-no-path">
+                        iOS APIs
+                      </span></li><li class="devsite-nav-item"><a class="devsite-nav-title" href="https://developers.google.com/maps/documentation/ios-sdk/">
+                        Google Maps SDK for iOS
+                      </a></li><li class="devsite-nav-item"><a class="devsite-nav-title" href="https://developers.google.com/places/ios-api/">
+                        Google Places API for iOS
+                      </a></li></ul></div><div class="devsite-dropdown-menu-column"><ul class="devsite-nav-list devsite-dropdown-menu-section"><li class="devsite-nav-item devsite-nav-item-heading"><span class="devsite-nav-title devsite-nav-title-no-path">
+                        Web APIs
+                      </span></li><li class="devsite-nav-item"><a class="devsite-nav-title" href="https://developers.google.com/maps/documentation/embed/">
+                        Embed API
+                      </a></li><li class="devsite-nav-item"><a class="devsite-nav-title" href="https://developers.google.com/maps/documentation/javascript/">
+                        JavaScript API
+                      </a></li><li class="devsite-nav-item"><a class="devsite-nav-title" href="https://developers.google.com/maps/documentation/static-maps/">
+                        Static Maps API
+                      </a></li><li class="devsite-nav-item"><a class="devsite-nav-title" href="https://developers.google.com/maps/documentation/streetview/">
+                        Street View Image API
+                      </a></li><li class="devsite-nav-item"><a class="devsite-nav-title" href="https://developers.google.com/places/javascript/">
+                        Google Places API JavaScript Library
+                      </a></li></ul></div><div class="devsite-dropdown-menu-column"><ul class="devsite-nav-list devsite-dropdown-menu-section"><li class="devsite-nav-item devsite-nav-item-heading"><span class="devsite-nav-title devsite-nav-title-no-path">
+                        Web Service APIs
+                      </span></li><li class="devsite-nav-item"><a class="devsite-nav-title" href="https://developers.google.com/maps/documentation/directions/">
+                        Directions API
+                      </a></li><li class="devsite-nav-item"><a class="devsite-nav-title" href="https://developers.google.com/maps/documentation/distance-matrix/">
+                        Distance Matrix API
+                      </a></li><li class="devsite-nav-item"><a class="devsite-nav-title" href="https://developers.google.com/maps/documentation/elevation/">
+                        Elevation API
+                      </a></li><li class="devsite-nav-item"><a class="devsite-nav-title" href="https://developers.google.com/maps/documentation/geocoding/">
+                        Geocoding API
+                      </a></li><li class="devsite-nav-item"><a class="devsite-nav-title" href="https://developers.google.com/maps/documentation/geolocation/">
+                        Geolocation API
+                      </a></li><li class="devsite-nav-item"><a class="devsite-nav-title" href="https://developers.google.com/places/web-service/">
+                        Places API Web Service
+                      </a></li><li class="devsite-nav-item"><a class="devsite-nav-title" href="https://developers.google.com/maps/documentation/roads/">
+                        Roads API
+                      </a></li><li class="devsite-nav-item"><a class="devsite-nav-title" href="https://developers.google.com/maps/documentation/timezone/">
+                        Time Zone API
+                      </a></li></ul></div><div class="devsite-dropdown-menu-column"><ul class="devsite-nav-list devsite-dropdown-menu-section"><li class="devsite-nav-item devsite-nav-item-heading"><span class="devsite-nav-title devsite-nav-title-no-path">
+                        Google Maps APIs Premium Plan
+                      </span></li><li class="devsite-nav-item"><a class="devsite-nav-title" href="https://developers.google.com/maps/premium/">
+                        Documentation
+                      </a></li></ul></div></div></div></li><li class="devsite-doc-set-nav-tab-container devsite-nav-tab
+               "><a href="https://developers.google.com/maps/pricing-and-plans/"
+         class=" devsite-nav-tab
+                devsite-doc-set-nav-tab devsite-doc-set-nav-tab-link gc-analytics-event"
+         
+       
+         data-category="pricingAndPlans"
+       
+         data-label="navTopMenu"
+       
+         data-action="tabClick"
+       >
+        Pricing and Plans
+      </a></li></ul></nav></div><form class="devsite-search-form"
+                action="https://developers.google.com/s/results/"
+                method="GET"
+                id="top-search"
+                search-placeholder='Search'><div id="searchbox" class="devsite-searchbox"><input placeholder='Search'
+         
+         type="text"
+         class="devsite-search-field devsite-search-query"
+         name="q"
+         value=""
+         autocomplete="off"
+         
+         aria-label="Search box"><div class="devsite-search-image material-icons"></div></div><input type="hidden"
+       name="p"
+       id="search_project"
+       value="/places/ios-api/"
+       data-project-name="Google Places API for iOS"
+       data-project-path="/places/ios-api/"
+       data-query-match=""><input type="hidden" class="suggest-project" value="Google Places API for iOS" /><div class="suggest-project-metadata" data-home_url="/places/" data-path="/places/" data-name="Google Places API" ></div></form><a class="devsite-header-link devsite-top-button button gc-analytics-event"
+               href="https://developers.google.com/products/"
+               data-category="Site-Wide Custom Events"
+               data-label="Site header link"
+               track-type="navigateTo"
+               track-name="all products"
+               track-metadata-position="nav"><div class="devsite-header-link-label">All Products</div></a><button type="button" class="devsite-search-button devsite-header-icon-button button-flat
+                                       material-icons"></button><a href="https://www.google.com/accounts/ServiceLogin?passive=true&continue=https%3A%2F%2Fdevelopers.google.com%2Fplaces%2Fios-api%2Fautocomplete%3Frefresh%3D1&service=ahsid"
+   class="devsite-user-signin devsite-top-button button gc-analytics-event"
+   data-category="Site-Wide Custom Events" data-label="Sign in button">
+  
+  Sign in
+</a></div></div></div><div class="devsite-collapsible-section"><div class="devsite-header-background devsite-full-site-width"><div class="devsite-product-id-row devsite-full-site-width"><div class="devsite-product-description-row"><ul class="devsite-breadcrumb-list"><li class="devsite-breadcrumb-item"><a href="https://developers.google.com/places/ios-api/" class="devsite-breadcrumb-link gc-analytics-event"
+       data-category="Site-Wide Custom Events" data-label="Lower Header"
+       data-value="1">
+    
+    
+      Places API for iOS
+    
+    
+    </a></li></ul></div><div class="devsite-product-button-row
+            "><a
+    
+    
+      class="devsite-api-getstarted-widget gc-analytics-event devsite-dialog-button button button-text-blue medium"
+    
+    
+      
+      data-category="getKey"
+      
+      data-action="buttonClick"
+      
+      data-label="hero"
+      
+      data-api-id="placesios"
+      
+      data-henhouse-platforms-list="IOS"
+      
+      data-henhouse-link-docs="/places/ios-api/start"
+      
+      data-henhouse-link-support="/places/ios-api/releases"
+      
+    >
+    Get a Key
+  </a><a
+    
+      href="https://developers.google.com/maps/pricing-and-plans/"
+    
+    
+      class="button button-text-blue"
+    
+    
+      
+      data-category="viewPlans"
+      
+      data-action="buttonClick"
+      
+      data-label="hero"
+      
+    >
+    View Pricing and Plans
+  </a></div></div><div class="devsite-doc-set-nav-row devsite-full-site-width"><nav class="devsite-doc-set-nav devsite-nav devsite-overflow-tabs-scroll-wrapper"><ul class="devsite-doc-set-nav-tab-list devsite-overflow-tabs-scroll"><li class="devsite-doc-set-nav-tab-container devsite-nav-tab
+               "><a href="https://developers.google.com/places/ios-api/"
+         class=" devsite-nav-tab
+                devsite-doc-set-nav-tab devsite-doc-set-nav-tab-link gc-analytics-event"
+         
+       
+         data-category="Site-Wide Custom Events"
+       
+         data-label="Tab: Overview"
+       >
+        Overview
+      </a></li><li class="devsite-doc-set-nav-tab-container devsite-nav-tab
+               "><a href="https://developers.google.com/places/ios-api/intro"
+         class="devsite-doc-set-nav-active devsite-nav-tab
+                devsite-doc-set-nav-tab devsite-doc-set-nav-tab-link gc-analytics-event"
+         aria-label="Guides, selected"
+       
+         data-category="Site-Wide Custom Events"
+       
+         data-label="Tab: Guides"
+       >
+        Guides
+      </a></li><li class="devsite-doc-set-nav-tab-container devsite-nav-tab
+               "><a href="https://developers.google.com/places/ios-api/reference/index"
+         class=" devsite-nav-tab
+                devsite-doc-set-nav-tab devsite-doc-set-nav-tab-link gc-analytics-event"
+         
+       
+         data-category="Site-Wide Custom Events"
+       
+         data-label="Tab: Reference"
+       >
+        Reference
+      </a></li><li class="devsite-doc-set-nav-tab-container devsite-nav-tab
+               "><a href="https://developers.google.com/places/ios-api/code-samples"
+         class=" devsite-nav-tab
+                devsite-doc-set-nav-tab devsite-doc-set-nav-tab-link gc-analytics-event"
+         
+       
+         data-category="Site-Wide Custom Events"
+       
+         data-label="Tab: Samples"
+       >
+        Samples
+      </a></li><li class="devsite-doc-set-nav-tab-container devsite-nav-tab
+               "><a href="https://developers.google.com/places/ios-api/support"
+         class=" devsite-nav-tab
+                devsite-doc-set-nav-tab devsite-doc-set-nav-tab-link gc-analytics-event"
+         
+       
+         data-category="Site-Wide Custom Events"
+       
+         data-label="Tab: Support"
+       >
+        Support
+      </a></li><button type="button" id="devsite-feedback-project"
+          class="devsite-feedback-button devsite-top-button gc-analytics-event"
+          data-category="Site-Wide Custom Events" data-label="Send Feedback Button"
+          track-type="feedback" track-name="sendFeedbackLink" track-metadata-position="header">
+  
+  Send feedback
+  </button></ul></nav></div></div></div></header><link rel="stylesheet" href="/maps/styles/lhstyles/landing/css/landing.css"><!-- exit getkey modal --><div id="devsite-dialog-onload-getkey-enabled"
+  class="devsite-dialog devsite-enable-getkey-dialog"><div class="get-key-check"></div><div class="devsite-dialog-contents"><h3>You're all set!</h3><p>
+      To start developing, please head over to our
+      <a href="/places/ios-api/start">developer documentation</a>.
+    </p></div><div class="devsite-dialog-buttons"><button class="devsite-dialog-close button-white">Dismiss</button></div></div><!-- enter getkey modal --><div id="enable-getkey-modal-dialog"
+  class="devsite-dialog devsite-enable-getkey-dialog"><div class="devsite-dialog-contents"><h3>Activate the Google Places API for iOS</h3><p>To get you started we'll guide you through the Google Developers
+    Console to do a few things first:</p><ol><li>Create or choose a project</li><li>Activate the Google Places API for iOS</li><li>Create appropriate keys</li></ol></div><div class="devsite-dialog-buttons devsite-landing-row-item-buttons"><button class="devsite-dialog-close button-white"
+    data-category="getKeyModalCancel"
+    data-action="linkClick"
+    data-label="modal">Cancel</button><a class="button button-white gc-analytics-event"
+    data-category="getKeyModalContinue"
+    data-action="linkClick" data-label="modal"
+    href="https://console.developers.google.com/flows/enableapi?apiid=maps_ios_backend,placesios&reusekey=true"
+    target="_blank"
+    onclick="devsite.utils.showSiteMask().click()">Continue</a></div></div><script>
+    if (window.jQuery) {
+      $(document).ready(function() {
+        if (window.devsite && window.devsite.search) {
+          
+          window.devsite.search.init('en')
+        }
+      });
+    }
+  </script></div><div id="gc-wrapper"itemscope itemtype="http://schema.org/Article"><input class="google-analytics-id-json" type="hidden" value="{&quot;dimensions&quot;: {}, &quot;gaid&quot;: &quot;UA-42966870-1&quot;}"><input class="google-analytics-id-json" type="hidden" value="{&quot;dimensions&quot;: {&quot;dimension6&quot;: &quot;en&quot;, &quot;dimension4&quot;: &quot;Google Places API for iOS&quot;, &quot;dimension5&quot;: &quot;en&quot;, &quot;dimension3&quot;: false, &quot;dimension1&quot;: &quot;Signed out&quot;, &quot;dimension8&quot;: null}, &quot;gaid&quot;: &quot;UA-24532603-1&quot;}"><input class="google-tag-manager-id" type="hidden" value="GTM-W546ZN"><script>
+      var dataLayer = [{"freeTrialEligibleUser": "False", "userCountry": "HK", "language": {"requested": "en", "served": "en"}, "projectName": "Google Places API for iOS", "scriptsafe": null, "signedIn": "False", "internalUser": "False"}];
+    </script>
+
+      
+        <div class="devsite-site-mask"></div>
+        
+  
+
+
+<nav class="devsite-nav-responsive devsite-nav nocontent" tabindex="0">
+  
+  <div class="devsite-nav-responsive-tabs-panel">
+    
+      
+        
+
+
+
+<nav class="devsite-nav-responsive-tabs devsite-nav">
+  <ul class="devsite-nav-list">
+  
+    <li class="devsite-nav-item devsite-nav-item-heading">
+    
+      <a 
+           href="https://developers.google.com/places/"
+         
+         class="devsite-nav-responsive-tab devsite-nav-title gc-analytics-event
+                "
+         data-category="Site-Wide Custom Events" data-label="Responsive Tab: Home">
+        Home
+      </a>
+      
+      
+    
+    </li>
+  
+    <li class="devsite-nav-item devsite-nav-item-heading">
+    
+      <a 
+           href="https://developers.google.com/places/documentation/?nav=true"
+         
+         class="devsite-nav-responsive-tab devsite-nav-title gc-analytics-event
+                devsite-nav-active"
+         data-category="Site-Wide Custom Events" data-label="Responsive Tab: Documentation">
+        Documentation
+      </a>
+      
+      <span class="devsite-nav-index-forward devsite-nav-responsive-tab devsite-nav-title
+                   gc-analytics-event"
+            data-category="Site-Wide Custom Events" data-label="Responsive Tab: Index"
+            tabindex="0"
+            data-tab="Documentation">Index</span>
+      
+      
+        
+
+
+
+<nav class="devsite-nav-responsive-tabs devsite-nav">
+  <ul class="devsite-nav-list">
+  
+    <li class="devsite-nav-item devsite-nav-item-heading">
+    
+      <a 
+           href="https://developers.google.com/places/ios-api/"
+         
+         class="devsite-nav-responsive-tab devsite-nav-title gc-analytics-event
+                "
+         data-category="Site-Wide Custom Events" data-label="Responsive Tab: Overview">
+        Overview
+      </a>
+      
+      
+    
+    </li>
+  
+    <li class="devsite-nav-item devsite-nav-item-heading">
+    
+      <span class="devsite-nav-responsive-forward devsite-nav-responsive-tab devsite-nav-title
+                   devsite-nav-active gc-analytics-event"
+            data-category="Site-Wide Custom Events" data-label="Responsive Tab: Guides"
+            tabindex="0">
+        Guides
+      </span>
+    
+    </li>
+  
+    <li class="devsite-nav-item devsite-nav-item-heading">
+    
+      <a 
+           href="https://developers.google.com/places/ios-api/reference/index"
+         
+         class="devsite-nav-responsive-tab devsite-nav-title gc-analytics-event
+                "
+         data-category="Site-Wide Custom Events" data-label="Responsive Tab: Reference">
+        Reference
+      </a>
+      
+      
+    
+    </li>
+  
+    <li class="devsite-nav-item devsite-nav-item-heading">
+    
+      <a 
+           href="https://developers.google.com/places/ios-api/code-samples"
+         
+         class="devsite-nav-responsive-tab devsite-nav-title gc-analytics-event
+                "
+         data-category="Site-Wide Custom Events" data-label="Responsive Tab: Samples">
+        Samples
+      </a>
+      
+      
+    
+    </li>
+  
+    <li class="devsite-nav-item devsite-nav-item-heading">
+    
+      <a 
+           href="https://developers.google.com/places/ios-api/support?nav=true"
+         
+         class="devsite-nav-responsive-tab devsite-nav-title gc-analytics-event
+                "
+         data-category="Site-Wide Custom Events" data-label="Responsive Tab: Support">
+        Support
+      </a>
+      
+      
+    
+    </li>
+  
+  
+    <li class="devsite-nav-item devsite-nav-item-heading">
+      <a href="https://developers.google.com/products/"
+         class="devsite-nav-responsive-tab devsite-nav-title gc-analytics-event"
+         data-category="Site-Wide Custom Events"
+         data-label="Responsive Tab: all_products">
+        All Products
+      </a>
+    </li>
+  
+  </ul>
+</nav>
+
+
+      
+    
+    </li>
+  
+    <li class="devsite-nav-item devsite-nav-item-heading">
+    
+      <a 
+           href="https://developers.google.com/maps/pricing-and-plans/"
+         
+         class="devsite-nav-responsive-tab devsite-nav-title gc-analytics-event
+                "
+         data-category="Site-Wide Custom Events" data-label="Responsive Tab: Pricing and Plans">
+        Pricing and Plans
+      </a>
+      
+      
+    
+    </li>
+  
+  
+    <li class="devsite-nav-item devsite-nav-item-heading">
+      <a href="https://developers.google.com/products/"
+         class="devsite-nav-responsive-tab devsite-nav-title gc-analytics-event"
+         data-category="Site-Wide Custom Events"
+         data-label="Responsive Tab: all_products">
+        All Products
+      </a>
+    </li>
+  
+  </ul>
+</nav>
+
+
+      
+    
+  </div>
+  
+  
+  <div class="devsite-nav-responsive-sidebar-panel">
+    
+    <div class="devsite-nav-responsive-back" tabindex="0"></div>
+    
+    <nav class="devsite-nav-responsive-sidebar"></nav>
+  </div>
+  
+  
+    <div class="devsite-nav-responsive-index-panel">
+      <div class="devsite-nav-index-back" tabindex="0"></div>
+      <nav>
+      
+        
+      
+        
+        <ul class="devsite-nav-list" data-tab="Documentation">
+        
+          
+            
+            <li class="devsite-nav-item devsite-nav-item-heading">
+              <span class="devsite-nav-title devsite-nav-title-no-path">Android APIs</span>
+            </li>
+            
+            
+            <li class="devsite-nav-item">
+              <a class="devsite-nav-title" href="https://developers.google.com/maps/documentation/android-api/">
+                Google Maps Android API
+              </a>
+            </li>
+            
+            <li class="devsite-nav-item">
+              <a class="devsite-nav-title" href="https://developers.google.com/places/android-api/">
+                Google Places API for Android
+              </a>
+            </li>
+            
+          
+            
+            <li class="devsite-nav-item devsite-nav-item-heading">
+              <span class="devsite-nav-title devsite-nav-title-no-path">iOS APIs</span>
+            </li>
+            
+            
+            <li class="devsite-nav-item">
+              <a class="devsite-nav-title" href="https://developers.google.com/maps/documentation/ios-sdk/">
+                Google Maps SDK for iOS
+              </a>
+            </li>
+            
+            <li class="devsite-nav-item">
+              <a class="devsite-nav-title" href="https://developers.google.com/places/ios-api/">
+                Google Places API for iOS
+              </a>
+            </li>
+            
+          
+        
+          
+            
+            <li class="devsite-nav-item devsite-nav-item-heading">
+              <span class="devsite-nav-title devsite-nav-title-no-path">Web APIs</span>
+            </li>
+            
+            
+            <li class="devsite-nav-item">
+              <a class="devsite-nav-title" href="https://developers.google.com/maps/documentation/embed/">
+                Embed API
+              </a>
+            </li>
+            
+            <li class="devsite-nav-item">
+              <a class="devsite-nav-title" href="https://developers.google.com/maps/documentation/javascript/">
+                JavaScript API
+              </a>
+            </li>
+            
+            <li class="devsite-nav-item">
+              <a class="devsite-nav-title" href="https://developers.google.com/maps/documentation/static-maps/">
+                Static Maps API
+              </a>
+            </li>
+            
+            <li class="devsite-nav-item">
+              <a class="devsite-nav-title" href="https://developers.google.com/maps/documentation/streetview/">
+                Street View Image API
+              </a>
+            </li>
+            
+            <li class="devsite-nav-item">
+              <a class="devsite-nav-title" href="https://developers.google.com/places/javascript/">
+                Google Places API JavaScript Library
+              </a>
+            </li>
+            
+          
+        
+          
+            
+            <li class="devsite-nav-item devsite-nav-item-heading">
+              <span class="devsite-nav-title devsite-nav-title-no-path">Web Service APIs</span>
+            </li>
+            
+            
+            <li class="devsite-nav-item">
+              <a class="devsite-nav-title" href="https://developers.google.com/maps/documentation/directions/">
+                Directions API
+              </a>
+            </li>
+            
+            <li class="devsite-nav-item">
+              <a class="devsite-nav-title" href="https://developers.google.com/maps/documentation/distance-matrix/">
+                Distance Matrix API
+              </a>
+            </li>
+            
+            <li class="devsite-nav-item">
+              <a class="devsite-nav-title" href="https://developers.google.com/maps/documentation/elevation/">
+                Elevation API
+              </a>
+            </li>
+            
+            <li class="devsite-nav-item">
+              <a class="devsite-nav-title" href="https://developers.google.com/maps/documentation/geocoding/">
+                Geocoding API
+              </a>
+            </li>
+            
+            <li class="devsite-nav-item">
+              <a class="devsite-nav-title" href="https://developers.google.com/maps/documentation/geolocation/">
+                Geolocation API
+              </a>
+            </li>
+            
+            <li class="devsite-nav-item">
+              <a class="devsite-nav-title" href="https://developers.google.com/places/web-service/">
+                Places API Web Service
+              </a>
+            </li>
+            
+            <li class="devsite-nav-item">
+              <a class="devsite-nav-title" href="https://developers.google.com/maps/documentation/roads/">
+                Roads API
+              </a>
+            </li>
+            
+            <li class="devsite-nav-item">
+              <a class="devsite-nav-title" href="https://developers.google.com/maps/documentation/timezone/">
+                Time Zone API
+              </a>
+            </li>
+            
+          
+        
+          
+            
+            <li class="devsite-nav-item devsite-nav-item-heading">
+              <span class="devsite-nav-title devsite-nav-title-no-path">Google Maps APIs Premium Plan</span>
+            </li>
+            
+            
+            <li class="devsite-nav-item">
+              <a class="devsite-nav-title" href="https://developers.google.com/maps/premium/">
+                Documentation
+              </a>
+            </li>
+            
+          
+        
+        </ul>
+        
+      
+        
+      
+      </nav>
+    </div>
+  
+</nav>
+
+
+        <div class="devsite-main-content clearfix">
+
+        
+        
+
+        
+  
+  
+    
+    
+      
+  <nav class="devsite-section-nav devsite-nav nocontent">
+    <ul class="devsite-nav-list"><li class="devsite-nav-item"><a href="https://developers.google.com/places/ios-api/intro" class="devsite-nav-title">Overview</a></li><li class="devsite-nav-item"><a href="https://developers.google.com/places/ios-api/start" class="devsite-nav-title">Get Started</a></li><li class="devsite-nav-item devsite-nav-item-heading"><span class="devsite-nav-title devsite-nav-title-no-path">Dev Guides</span></li><li class="devsite-nav-item"><a href="https://developers.google.com/places/ios-api/placepicker" class="devsite-nav-title">Place Picker</a></li><li class="devsite-nav-item"><a href="https://developers.google.com/places/ios-api/current-place" class="devsite-nav-title">Current Place</a></li><li class="devsite-nav-item devsite-nav-active"><a href="https://developers.google.com/places/ios-api/autocomplete" class="devsite-nav-title">Place Autocomplete</a></li><li class="devsite-nav-item devsite-nav-deprecated devsite-nav-has-status"><a href="https://developers.google.com/places/ios-api/add-place" class="devsite-nav-title"><span class="devsite-nav-text">Place Add</span><span class="devsite-nav-icon-wrapper"><span class="devsite-nav-icon material-icons" title="Deprecated"></span></span></a></li><li class="devsite-nav-item"><a href="https://developers.google.com/places/ios-api/photos" class="devsite-nav-title">Place Photos</a></li><li class="devsite-nav-item"><a href="https://developers.google.com/places/ios-api/report-place" class="devsite-nav-title">Place Report</a></li><li class="devsite-nav-item"><a href="https://developers.google.com/places/ios-api/place-details" class="devsite-nav-title">Place IDs and Details</a></li><li class="devsite-nav-item devsite-nav-item-heading"><span class="devsite-nav-title devsite-nav-title-no-path">Overviews</span></li><li class="devsite-nav-item"><a href="https://developers.google.com/places/ios-api/place-id" class="devsite-nav-title">Place IDs</a></li><li class="devsite-nav-item"><a href="https://developers.google.com/places/ios-api/supported_types" class="devsite-nav-title">Place Types</a></li><li class="devsite-nav-item devsite-nav-item-heading"><span class="devsite-nav-title devsite-nav-title-no-path">Tutorials</span></li><li class="devsite-nav-item"><a href="https://developers.google.com/places/ios-api/address-form-tutorial" class="devsite-nav-title">Address Autocomplete</a></li><li class="devsite-nav-item"><a href="https://developers.google.com/places/ios-api/current-place-tutorial" class="devsite-nav-title">Select Current Place</a></li><li class="devsite-nav-item"><a href="https://developers.google.com/places/ios-api/my-places-tutorial" class="devsite-nav-title">My Places</a></li><li class="devsite-nav-item devsite-nav-item-heading"><span class="devsite-nav-title devsite-nav-title-no-path">Policies and Terms</span></li><li class="devsite-nav-item"><a href="https://developers.google.com/places/ios-api/attributions" class="devsite-nav-title">Displaying Attributions</a></li><li class="devsite-nav-item"><a href="https://developers.google.com/places/ios-api/usage" class="devsite-nav-title">Usage Limits</a></li><li class="devsite-nav-item"><a href="https://developers.google.com/maps/terms" class="devsite-nav-title">Terms of Service</a></li></ul>
+  </nav>
+
+    
+
+    
+  <nav class="devsite-page-nav devsite-nav"></nav>
+
+
+      <article class="devsite-article">
+        <article class="devsite-article-inner">
+  
+          
+  
+
+
+
+  
+  <nav class="devsite-breadcrumb-nav devsite-nav">
+    
+
+
+<ul class="devsite-breadcrumb-list">
+  
+  <li class="devsite-breadcrumb-item">
+    
+    
+    <a href="https://developers.google.com/products/" class="devsite-breadcrumb-link gc-analytics-event"
+       data-category="Site-Wide Custom Events" data-label="Breadcrumbs"
+       data-value="1">
+    
+    
+      Products
+    
+    
+    </a>
+    
+  </li>
+  
+  <li class="devsite-breadcrumb-item">
+    
+    
+    <div class="devsite-breadcrumb-guillemet material-icons"></div>
+    
+    
+    <a href="https://developers.google.com/places/" class="devsite-breadcrumb-link gc-analytics-event"
+       data-category="Site-Wide Custom Events" data-label="Breadcrumbs"
+       data-value="2">
+    
+    
+      Google Places API
+    
+    
+    </a>
+    
+  </li>
+  
+  <li class="devsite-breadcrumb-item">
+    
+    
+    <div class="devsite-breadcrumb-guillemet material-icons"></div>
+    
+    
+    <a href="https://developers.google.com/places/ios-api/" class="devsite-breadcrumb-link gc-analytics-event"
+       data-category="Site-Wide Custom Events" data-label="Breadcrumbs"
+       data-value="3">
+    
+    
+      Places API for iOS
+    
+    
+    </a>
+    
+  </li>
+  
+  <li class="devsite-breadcrumb-item">
+    
+    
+    <div class="devsite-breadcrumb-guillemet material-icons"></div>
+    
+    
+    <a href="https://developers.google.com/places/documentation/" class="devsite-breadcrumb-link gc-analytics-event"
+       data-category="Site-Wide Custom Events" data-label="Breadcrumbs"
+       data-value="4">
+    
+    
+      Documentation
+    
+    
+    </a>
+    
+  </li>
+  
+  <li class="devsite-breadcrumb-item">
+    
+    
+    <div class="devsite-breadcrumb-guillemet material-icons"></div>
+    
+    
+    <a href="https://developers.google.com/places/ios-api/intro" class="devsite-breadcrumb-link gc-analytics-event"
+       data-category="Site-Wide Custom Events" data-label="Breadcrumbs"
+       data-value="5">
+    
+    
+      Guides
+    
+    
+    </a>
+    
+  </li>
+  
+</ul>
+
+  </nav>
+  
+  
+  <h1 itemprop="name" class="devsite-page-title">
+    Place Autocomplete
+  </h1>
+  
+  
+  <nav class="devsite-page-nav-embedded devsite-nav"></nav>
+  
+  <div class="devsite-article-body clearfix
+            "
+       itemprop="articleBody">
+    
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<link href="https://developers.google.com/maps/documentation/local_extensions.css" rel="stylesheet" type="text/css">
+<link href="https://developers.google.com/appengine/css/local_extensions.css" rel="stylesheet" type="text/css">
+<link href="https://developers.google.com/places/styles/local_extensions.css" rel="stylesheet" type="text/css">
+</p>
+
+<p>The autocomplete service in the Google Places API for iOS returns place
+predictions in response to user search queries. As the user types, the
+autocomplete service returns suggestions for places such as businesses,
+addresses and points of interest.</p>
+<p>You can add autocomplete to your app in the following ways:</p>
+<ul>
+<li><a href="#add_an_autocomplete_ui_control">Add an autocomplete UI control</a> to save
+development time and ensure a consistent user experience.</li>
+<li><a href="#get_place_predictions_programmatically">Get place predictions programmatically</a> to create a customized user
+experience.</li>
+</ul>
+<h2 id="add_an_autocomplete_ui_control">Add an autocomplete UI control</h2>
+<p><img src="https://developers.google.com/places/images/autocomplete-ios.png" class="attempt-right" width="30%" height="30%"/></p>
+
+<p>The autocomplete UI control is a search dialog with built-in autocomplete
+functionality. As a user enters search terms, the control presents a
+list of predicted places to choose from. When the user makes a selection,
+a <a href="https://developers.google.com/places/ios-api/reference/interface_g_m_s_place"><code>GMSPlace</code></a>
+instance is returned, which your app can then use to get details about the
+selected place.</p>
+<p>You can add the autocomplete UI control to your app in the following ways:</p>
+<ul>
+<li><a href="#add_a_full-screen_control">Add a full-screen control</a></li>
+<li><a href="#add_a_results_controller">Add a results controller</a></li>
+<li><a href="#use_a_table_data_source">Use a table data source</a></li>
+</ul>
+<h3 id="add_a_full-screen_control">Add a full-screen control</h3>
+<p>Use the full-screen control when you want a modal context, where the
+autocomplete UI temporarily replaces the UI of your app until the
+user has made their selection. This functionality is provided by the
+<a href="https://developers.google.com/places/ios-api/reference/interface_g_m_s_autocomplete_view_controller"><code>GMSAutocompleteViewController</code></a>
+class. When the user selects a place, your app receives a callback.</p>
+<p>To add a full-screen control to your app:</p>
+<ol>
+<li>Create a UI element in your main app to launch the autocomplete UI control,
+for example a touch handler on a <code>UIButton</code>.</li>
+<li>Implement the <a href="https://developers.google.com/places/ios-api/reference/protocol_g_m_s_autocomplete_view_controller_delegate-p"><code>GMSAutocompleteViewControllerDelegate</code></a>
+protocol in the parent view controller.</li>
+<li>Create an instance of <a href="https://developers.google.com/places/ios-api/reference/interface_g_m_s_autocomplete_view_controller"><code>GMSAutocompleteViewController</code></a>
+and assign the parent view controller as the delegate property.</li>
+<li>Present the <a href="https://developers.google.com/places/ios-api/reference/interface_g_m_s_autocomplete_view_controller"><code>GMSAutocompleteViewController</code></a>
+using <code>[self presentViewController...]</code>.</li>
+<li>Handle the user's selection in the <code>didAutocompleteWithPlace</code>
+delegate method.</li>
+<li>Dismiss the controller in the <code>didAutocompleteWithPlace</code>,
+<code>didFailAutocompleteWithError</code>, and <code>wasCancelled</code> delegate methods.</li>
+</ol>
+<p>The following example demonstrates one possible way to launch
+<a href="https://developers.google.com/places/ios-api/reference/interface_g_m_s_autocomplete_view_controller"><code>GMSAutocompleteViewController</code></a>
+in response to the user tapping on a button.</p>
+<div class="ds-selector-tabs" data-ds-scope="code">
+  <section data-ds-value="Swift">
+    <h3>Swift</h3>
+    <pre class="prettyprint notranslate">
+import UIKit
+import GooglePlaces
+
+class ViewController: UIViewController {
+
+  // Present the Autocomplete view controller when the button is pressed.
+  @IBAction func autocompleteClicked(_ sender: UIButton) {
+    let autocompleteController = GMSAutocompleteViewController()
+    autocompleteController.delegate = self
+    present(autocompleteController, animated: true, completion: nil)
+  }
+}
+
+extension ViewController: GMSAutocompleteViewControllerDelegate {
+
+  // Handle the user&#39;s selection.
+  func viewController(_ viewController: GMSAutocompleteViewController, didAutocompleteWith place: GMSPlace) {
+    print(&quot;Place name: \(place.name)&quot;)
+    print(&quot;Place address: \(place.formattedAddress)&quot;)
+    print(&quot;Place attributions: \(place.attributions)&quot;)
+    dismiss(animated: true, completion: nil)
+  }
+
+  func viewController(_ viewController: GMSAutocompleteViewController, didFailAutocompleteWithError error: Error) {
+    // TODO: handle the error.
+    print(&quot;Error: &quot;, error.localizedDescription)
+  }
+
+  // User canceled the operation.
+  func wasCancelled(_ viewController: GMSAutocompleteViewController) {
+    dismiss(animated: true, completion: nil)
+  }
+
+  // Turn the network activity indicator on and off again.
+  func didRequestAutocompletePredictions(_ viewController: GMSAutocompleteViewController) {
+    UIApplication.shared.isNetworkActivityIndicatorVisible = true
+  }
+
+  func didUpdateAutocompletePredictions(_ viewController: GMSAutocompleteViewController) {
+    UIApplication.shared.isNetworkActivityIndicatorVisible = false
+  }
+
+}
+</pre>
+  </section>
+  <section data-ds-value="Objective-C">
+    <h3>Objective-C</h3>
+    <pre class="prettyprint notranslate">
+#import &quot;ViewController.h&quot;
+#import &lt;GooglePlaces/GooglePlaces.h&gt;
+
+@interface ViewController () &lt;GMSAutocompleteViewControllerDelegate&gt;
+
+@end
+
+@implementation ViewController
+
+...
+
+// Present the autocomplete view controller when the button is pressed.
+- (IBAction)onLaunchClicked:(id)sender {
+  GMSAutocompleteViewController *acController = [[GMSAutocompleteViewController alloc] init];
+  acController.delegate = self;
+  [self presentViewController:acController animated:YES completion:nil];
+}
+
+// Handle the user&#39;s selection.
+- (void)viewController:(GMSAutocompleteViewController *)viewController
+didAutocompleteWithPlace:(GMSPlace *)place {
+  [self dismissViewControllerAnimated:YES completion:nil];
+  // Do something with the selected place.
+  NSLog(@&quot;Place name %@&quot;, place.name);
+  NSLog(@&quot;Place address %@&quot;, place.formattedAddress);
+  NSLog(@&quot;Place attributions %@&quot;, place.attributions.string);
+}
+
+- (void)viewController:(GMSAutocompleteViewController *)viewController
+didFailAutocompleteWithError:(NSError *)error {
+  [self dismissViewControllerAnimated:YES completion:nil];
+  // TODO: handle the error.
+  NSLog(@&quot;Error: %@&quot;, [error description]);
+}
+
+// User canceled the operation.
+- (void)wasCancelled:(GMSAutocompleteViewController *)viewController {
+  [self dismissViewControllerAnimated:YES completion:nil];
+}
+
+// Turn the network activity indicator on and off again.
+- (void)didRequestAutocompletePredictions:(GMSAutocompleteViewController *)viewController {
+  [UIApplication sharedApplication].networkActivityIndicatorVisible = YES;
+}
+
+- (void)didUpdateAutocompletePredictions:(GMSAutocompleteViewController *)viewController {
+  [UIApplication sharedApplication].networkActivityIndicatorVisible = NO;
+}
+
+@end</pre>
+  </section>
+</div>
+
+<h3 id="add_a_results_controller">Add a results controller</h3>
+<p>Use a results controller when you want more control over the text input UI.
+The results controller dynamically toggles the visibility of the results list
+based on input UI focus.</p>
+<p>To add a results controller to your app:</p>
+<ol>
+<li>Create a <a href="https://developers.google.com/places/ios-api/reference/interface_g_m_s_autocomplete_results_view_controller"><code>GMSAutocompleteResultsViewController</code></a>.</li>
+<li>Implement the <a href="https://developers.google.com/places/ios-api/reference/protocol_g_m_s_autocomplete_results_view_controller_delegate-p"><code>GMSAutocompleteResultsViewControllerDelegate</code></a>
+protocol in the parent view controller and assign the parent view controller as
+the delegate property.</li>
+<li>Create a <code>UISearchController</code> object, passing in the
+<a href="https://developers.google.com/places/ios-api/reference/interface_g_m_s_autocomplete_results_view_controller"><code>GMSAutocompleteResultsViewController</code></a>
+as the results controller argument.</li>
+<li>Set the <a href="https://developers.google.com/places/ios-api/reference/interface_g_m_s_autocomplete_results_view_controller"><code>GMSAutocompleteResultsViewController</code></a>
+as the <code>searchResultsUpdater</code> property of the <code>UISearchController</code>.</li>
+<li>Add the <code>searchBar</code> for the <code>UISearchController</code> to your app's UI.</li>
+<li>Handle the user's selection in the <code>didAutocompleteWithPlace</code>
+delegate method.</li>
+</ol>
+<p>There are several ways to place the search bar of a <code>UISearchController</code> into
+your app's UI:</p>
+<ul>
+<li><a href="#add_a_search_bar_to_the_navigation_bar">Add a search bar to the navigation bar</a></li>
+<li><a href="#add_a_search_bar_to_the_top_of_a_view">Add a search bar to the top of a view</a></li>
+<li><a href="#add_a_search_bar_using_popover_results">Add a search bar using popover results</a></li>
+</ul>
+<h4 id="add_a_search_bar_to_the_navigation_bar">Add a search bar to the navigation bar</h4>
+<p>The following code example demonstrates adding a results controller, adding the
+<code>searchBar</code> to the navigation bar, and handling the user's selection:</p>
+<div class="ds-selector-tabs" data-ds-scope="code">
+  <section data-ds-value="Swift">
+    <h3>Swift</h3>
+    <pre class="prettyprint notranslate">
+class ViewController: UIViewController {
+
+  var resultsViewController: GMSAutocompleteResultsViewController?
+  var searchController: UISearchController?
+  var resultView: UITextView?
+
+  override func viewDidLoad() {
+    super.viewDidLoad()
+
+    resultsViewController = GMSAutocompleteResultsViewController()
+    resultsViewController?.delegate = self
+
+    searchController = UISearchController(searchResultsController: resultsViewController)
+    searchController?.searchResultsUpdater = resultsViewController
+
+    // Put the search bar in the navigation bar.
+    searchController?.searchBar.sizeToFit()
+    navigationItem.titleView = searchController?.searchBar
+
+    // When UISearchController presents the results view, present it in
+    // this view controller, not one further up the chain.
+    definesPresentationContext = true
+
+    // Prevent the navigation bar from being hidden when searching.
+    searchController?.hidesNavigationBarDuringPresentation = false
+  }
+}
+
+// Handle the user&#39;s selection.
+extension ViewController: GMSAutocompleteResultsViewControllerDelegate {
+  func resultsController(_ resultsController: GMSAutocompleteResultsViewController,
+                         didAutocompleteWith place: GMSPlace) {
+    searchController?.isActive = false
+    // Do something with the selected place.
+    print(&quot;Place name: \(place.name)&quot;)
+    print(&quot;Place address: \(place.formattedAddress)&quot;)
+    print(&quot;Place attributions: \(place.attributions)&quot;)
+  }
+
+  func resultsController(_ resultsController: GMSAutocompleteResultsViewController,
+                         didFailAutocompleteWithError error: Error){
+    // TODO: handle the error.
+    print(&quot;Error: &quot;, error.localizedDescription)
+  }
+
+  // Turn the network activity indicator on and off again.
+  func didRequestAutocompletePredictions(_ viewController: GMSAutocompleteViewController) {
+    UIApplication.shared.isNetworkActivityIndicatorVisible = true
+  }
+
+  func didUpdateAutocompletePredictions(_ viewController: GMSAutocompleteViewController) {
+    UIApplication.shared.isNetworkActivityIndicatorVisible = false
+  }
+}</pre>
+  </section>
+  <section data-ds-value="Objective-C">
+    <h3>Objective-C</h3>
+    <pre class="prettyprint notranslate">
+- (void)viewDidLoad {
+  _resultsViewController = [[GMSAutocompleteResultsViewController alloc] init];
+  _resultsViewController.delegate = self;
+
+  _searchController = [[UISearchController alloc]
+                       initWithSearchResultsController:_resultsViewController];
+  _searchController.searchResultsUpdater = _resultsViewController;
+
+  // Put the search bar in the navigation bar.
+  [_searchController.searchBar sizeToFit];
+  self.navigationItem.titleView = _searchController.searchBar;
+
+  // When UISearchController presents the results view, present it in
+  // this view controller, not one further up the chain.
+  self.definesPresentationContext = YES;
+
+  // Prevent the navigation bar from being hidden when searching.
+  _searchController.hidesNavigationBarDuringPresentation = NO;
+}
+
+// Handle the user&#39;s selection.
+- (void)resultsController:(GMSAutocompleteResultsViewController *)resultsController
+  didAutocompleteWithPlace:(GMSPlace *)place {
+    _searchController.active = NO;
+    // Do something with the selected place.
+    NSLog(@&quot;Place name %@&quot;, place.name);
+    NSLog(@&quot;Place address %@&quot;, place.formattedAddress);
+    NSLog(@&quot;Place attributions %@&quot;, place.attributions.string);
+}
+
+- (void)resultsController:(GMSAutocompleteResultsViewController *)resultsController
+didFailAutocompleteWithError:(NSError *)error {
+  [self dismissViewControllerAnimated:YES completion:nil];
+  // TODO: handle the error.
+  NSLog(@&quot;Error: %@&quot;, [error description]);
+}
+
+// Turn the network activity indicator on and off again.
+- (void)didRequestAutocompletePredictionsForResultsController:
+    (GMSAutocompleteResultsViewController *)resultsController {
+  [UIApplication sharedApplication].networkActivityIndicatorVisible = YES;
+}
+
+- (void)didUpdateAutocompletePredictionsForResultsController:
+    (GMSAutocompleteResultsViewController *)resultsController {
+  [UIApplication sharedApplication].networkActivityIndicatorVisible = NO;
+}</pre>
+  </section>
+</div>
+
+<aside class="note"><strong>Note:</strong><span> For the search bar to display properly, your app's view controller must
+be enclosed within a <a href="https://developer.apple.com/library/ios/documentation/UIKit/Reference/UINavigationController_Class/">UINavigationController</a>.</span></aside>
+<h4 id="add_a_search_bar_to_the_top_of_a_view">Add a search bar to the top of a view</h4>
+<p>The following code example shows adding the <code>searchBar</code> to the top of a view.</p>
+<div class="ds-selector-tabs" data-ds-scope="code">
+  <section data-ds-value="Swift">
+    <h3>Swift</h3>
+    <pre class="prettyprint notranslate">
+import UIKit
+import GooglePlaces
+
+class ViewController: UIViewController {
+
+  var resultsViewController: GMSAutocompleteResultsViewController?
+  var searchController: UISearchController?
+  var resultView: UITextView?
+
+  override func viewDidLoad() {
+    super.viewDidLoad()
+
+    resultsViewController = GMSAutocompleteResultsViewController()
+    resultsViewController?.delegate = self
+
+    searchController = UISearchController(searchResultsController: resultsViewController)
+    searchController?.searchResultsUpdater = resultsViewController
+
+    let subView = UIView(frame: CGRect(x: 0, y: 65.0, width: 350.0, height: 45.0))
+
+    subView.addSubview((searchController?.searchBar)!)
+    view.addSubview(subView)
+    searchController?.searchBar.sizeToFit()
+    searchController?.hidesNavigationBarDuringPresentation = false
+
+    // When UISearchController presents the results view, present it in
+    // this view controller, not one further up the chain.
+    definesPresentationContext = true
+  }
+}
+
+// Handle the user&#39;s selection.
+extension ViewController: GMSAutocompleteResultsViewControllerDelegate {
+  func resultsController(_ resultsController: GMSAutocompleteResultsViewController,
+                         didAutocompleteWith place: GMSPlace) {
+    searchController?.isActive = false
+    // Do something with the selected place.
+    print(&quot;Place name: \(place.name)&quot;)
+    print(&quot;Place address: \(place.formattedAddress)&quot;)
+    print(&quot;Place attributions: \(place.attributions)&quot;)
+  }
+
+  func resultsController(_ resultsController: GMSAutocompleteResultsViewController,
+                         didFailAutocompleteWithError error: Error){
+    // TODO: handle the error.
+    print(&quot;Error: &quot;, error.localizedDescription)
+  }
+
+  // Turn the network activity indicator on and off again.
+  func didRequestAutocompletePredictions(forResultsController resultsController: GMSAutocompleteResultsViewController) {
+    UIApplication.shared.isNetworkActivityIndicatorVisible = true
+  }
+
+  func didUpdateAutocompletePredictions(forResultsController resultsController: GMSAutocompleteResultsViewController) {
+    UIApplication.shared.isNetworkActivityIndicatorVisible = false
+  }
+}
+</pre>
+  </section>
+  <section data-ds-value="Objective-C">
+    <h3>Objective-C</h3>
+    <pre class="prettyprint notranslate">
+- (void)viewDidLoad {
+    [super viewDidLoad];
+
+    _resultsViewController = [[GMSAutocompleteResultsViewController alloc] init];
+    _resultsViewController.delegate = self;
+
+    _searchController = [[UISearchController alloc]
+                             initWithSearchResultsController:_resultsViewController];
+    _searchController.searchResultsUpdater = _resultsViewController;
+
+    UIView *subView = [[UIView alloc] initWithFrame:CGRectMake(0, 65.0, 250, 50)];
+
+    [subView addSubview:_searchController.searchBar];
+    [_searchController.searchBar sizeToFit];
+    [self.view addSubview:subView];
+
+    // When UISearchController presents the results view, present it in
+    // this view controller, not one further up the chain.
+    self.definesPresentationContext = YES;
+}
+
+// Handle the user&#39;s selection.
+- (void)resultsController:(GMSAutocompleteResultsViewController *)resultsController
+didAutocompleteWithPlace:(GMSPlace *)place {
+  [self dismissViewControllerAnimated:YES completion:nil];
+  // Do something with the selected place.
+  NSLog(@&quot;Place name %@&quot;, place.name);
+  NSLog(@&quot;Place address %@&quot;, place.formattedAddress);
+  NSLog(@&quot;Place attributions %@&quot;, place.attributions.string);
+}
+
+- (void)resultsController:(GMSAutocompleteResultsViewController *)resultsController
+didFailAutocompleteWithError:(NSError *)error {
+  [self dismissViewControllerAnimated:YES completion:nil];
+  // TODO: handle the error.
+  NSLog(@&quot;Error: %@&quot;, [error description]);
+}
+
+// Turn the network activity indicator on and off again.
+- (void)didRequestAutocompletePredictionsForResultsController:
+    (GMSAutocompleteResultsViewController *)resultsController {
+  [UIApplication sharedApplication].networkActivityIndicatorVisible = YES;
+}
+
+- (void)didUpdateAutocompletePredictionsForResultsController:
+    (GMSAutocompleteResultsViewController *)resultsController {
+  [UIApplication sharedApplication].networkActivityIndicatorVisible = NO;
+}</pre>
+  </section>
+</div>
+
+<p>By default, <a href="https://developer.apple.com/library/prerelease/tvos/documentation/UIKit/Reference/UISearchController/index.html"><code>UISearchController</code></a>
+hides the navigation bar when presenting (this can be disabled). In cases where
+the navigation bar is visible and opaque, <code>UISearchController</code> does not set
+the placement correctly.
+Use the following code as a workaround:</p>
+<div class="ds-selector-tabs" data-ds-scope="code">
+  <section data-ds-value="Swift">
+    <h3>Swift</h3>
+    <pre class="prettyprint notranslate">
+navigationController?.navigationBar.translucent = false
+searchController?.hidesNavigationBarDuringPresentation = false
+
+// This makes the view area include the nav bar even though it is opaque.
+// Adjust the view placement down.
+self.extendedLayoutIncludesOpaqueBars = true
+self.edgesForExtendedLayout = .top</pre>
+  </section>
+  <section data-ds-value="Objective-C">
+    <h3>Objective-C</h3>
+    <pre class="prettyprint notranslate">
+self.navigationController.navigationBar.translucent = NO;
+_searchController.hidesNavigationBarDuringPresentation = NO;
+
+// This makes the view area include the nav bar even though it is opaque.
+// Adjust the view placement down.
+self.extendedLayoutIncludesOpaqueBars = YES;
+self.edgesForExtendedLayout = UIRectEdgeTop;
+</pre>
+  </section>
+</div>
+
+<h4 id="add_a_search_bar_using_popover_results">Add a search bar using popover results</h4>
+<p>The following code example shows placing a search bar on the right side of the
+navigation bar, and displaying results in a popover.</p>
+<aside class="caution"><strong>Caution: </strong>
+Popovers will only appear on iPad, and on the iPhone 6+ in landscape mode. On
+all other devices this will fallback to a fullscreen view controller.
+</aside>
+
+<div class="ds-selector-tabs" data-ds-scope="code">
+  <section data-ds-value="Swift">
+    <h3>Swift</h3>
+    <pre class="prettyprint notranslate">
+import UIKit
+import GooglePlaces
+
+class ViewController: UIViewController {
+
+  var resultsViewController: GMSAutocompleteResultsViewController?
+  var searchController: UISearchController?
+  var resultView: UITextView?
+
+  override func viewDidLoad() {
+    super.viewDidLoad()
+
+    resultsViewController = GMSAutocompleteResultsViewController()
+    resultsViewController?.delegate = self
+
+    searchController = UISearchController(searchResultsController: resultsViewController)
+    searchController?.searchResultsUpdater = resultsViewController
+
+    // Add the search bar to the right of the nav bar,
+    // use a popover to display the results.
+    // Set an explicit size as we don&#39;t want to use the entire nav bar.
+    searchController?.searchBar.frame = (CGRect(x: 0, y: 0, width: 250.0, height: 44.0))
+    navigationItem.rightBarButtonItem = UIBarButtonItem(customView: (searchController?.searchBar)!)
+
+    // When UISearchController presents the results view, present it in
+    // this view controller, not one further up the chain.
+    definesPresentationContext = true
+
+    // Keep the navigation bar visible.
+    searchController?.hidesNavigationBarDuringPresentation = false
+    searchController?.modalPresentationStyle = .popover
+  }
+}
+// Handle the user&#39;s selection.
+extension ViewController: GMSAutocompleteResultsViewControllerDelegate {
+  func resultsController(_ resultsController: GMSAutocompleteResultsViewController,
+                         didAutocompleteWith place: GMSPlace) {
+    searchController?.isActive = false
+    // Do something with the selected place.
+    print(&quot;Place name: \(place.name)&quot;)
+    print(&quot;Place address: \(place.formattedAddress)&quot;)
+    print(&quot;Place attributions: \(place.attributions)&quot;)
+  }
+
+  func resultsController(_ resultsController: GMSAutocompleteResultsViewController,
+                         didFailAutocompleteWithError error: Error){
+    // TODO: handle the error.
+    print(&quot;Error: &quot;, error.localizedDescription)
+  }
+
+  // Turn the network activity indicator on and off again.
+  func didRequestAutocompletePredictions(forResultsController resultsController: GMSAutocompleteResultsViewController) {
+    UIApplication.shared.isNetworkActivityIndicatorVisible = true
+  }
+
+  func didUpdateAutocompletePredictions(forResultsController resultsController: GMSAutocompleteResultsViewController) {
+    UIApplication.shared.isNetworkActivityIndicatorVisible = false
+  }
+}
+</pre>
+  </section>
+  <section data-ds-value="Objective-C">
+    <h3>Objective-C</h3>
+    <pre class="prettyprint notranslate">
+- (void)viewDidLoad {
+  [super viewDidLoad];
+
+  _resultsViewController = [[GMSAutocompleteResultsViewController alloc] init];
+  _resultsViewController.delegate = self;
+
+  _searchController = [[UISearchController alloc]
+                           initWithSearchResultsController:_resultsViewController];
+  _searchController.searchResultsUpdater = _resultsViewController;
+
+  // Add the search bar to the right of the nav bar,
+  // use a popover to display the results.
+  // Set an explicit size as we don&#39;t want to use the entire nav bar.
+  _searchController.searchBar.frame = CGRectMake(0, 0, 250.0f, 44.0f);
+  self.navigationItem.rightBarButtonItem =
+  [[UIBarButtonItem alloc] initWithCustomView:_searchController.searchBar];
+
+  // When UISearchController presents the results view, present it in
+  // this view controller, not one further up the chain.
+  self.definesPresentationContext = YES;
+
+  // Keep the navigation bar visible.
+  _searchController.hidesNavigationBarDuringPresentation = NO;
+
+  _searchController.modalPresentationStyle = UIModalPresentationPopover;
+}
+
+// Handle the user&#39;s selection.
+- (void)resultsController:(GMSAutocompleteResultsViewController *)resultsController
+didAutocompleteWithPlace:(GMSPlace *)place {
+  [self dismissViewControllerAnimated:YES completion:nil];
+  NSLog(@&quot;Place name %@&quot;, place.name);
+  NSLog(@&quot;Place address %@&quot;, place.formattedAddress);
+  NSLog(@&quot;Place attributions %@&quot;, place.attributions.string);
+}
+
+- (void)resultsController:(GMSAutocompleteResultsViewController *)resultsController
+didFailAutocompleteWithError:(NSError *)error {
+  [self dismissViewControllerAnimated:YES completion:nil];
+  // TODO: handle the error.
+  NSLog(@&quot;Error: %@&quot;, [error description]);
+}
+
+// Turn the network activity indicator on and off again.
+- (void)didRequestAutocompletePredictionsForResultsController:
+    (GMSAutocompleteResultsViewController *)resultsController {
+  [UIApplication sharedApplication].networkActivityIndicatorVisible = YES;
+}
+
+- (void)didUpdateAutocompletePredictionsForResultsController:
+    (GMSAutocompleteResultsViewController *)resultsController {
+  [UIApplication sharedApplication].networkActivityIndicatorVisible = NO;
+}</pre>
+  </section>
+</div>
+
+<aside class="note"><strong>Note:</strong><span> For the search bar to display properly, your app's view controller must
+be enclosed within a <a href="https://developer.apple.com/library/ios/documentation/UIKit/Reference/UINavigationController_Class/">UINavigationController</a>.</span></aside>
+<h3 id="use_a_table_data_source">Use a table data source</h3>
+<p>If your app must support iOS 7, you can use the
+<a href="https://developers.google.com/places/ios-api/reference/interface_g_m_s_autocomplete_table_data_source">GMSAutocompleteTableDataSource</a>
+class to drive the table view of a <a href="https://developer.apple.com/library/prerelease/ios/documentation/UIKit/Reference/UISearchDisplayController_Class/">UISearchDisplayController</a>.</p>
+<ul>
+<li>The use of <a href="https://developer.apple.com/library/prerelease/ios/documentation/UIKit/Reference/UISearchDisplayController_Class/">UISearchDisplayController</a>
+is recommended only for iOS 7 support. We recommend using <a href="https://developer.apple.com/library/prerelease/tvos/documentation/UIKit/Reference/UISearchController/index.html">UISearchController</a>
+in all other cases.</li>
+<li>The <a href="#add_a_full-screen_control">full-screen control</a> is also supported in
+iOS 7.</li>
+</ul>
+<p>To use <a href="https://developers.google.com/places/ios-api/reference/interface_g_m_s_autocomplete_table_data_source">GMSAutocompleteTableDataSource</a>
+to display a search controller:</p>
+<ol>
+<li>Implement the <a href="https://developers.google.com/places/ios-api/reference/protocol_g_m_s_autocomplete_table_data_source_delegate-p"><code>GMSAutocompleteTableDataSourceDelegate</code></a>
+and <a href="https://developer.apple.com/library/prerelease/ios/documentation/UIKit/Reference/UISearchDisplayDelegate_Protocol/index.html"><code>UISearchDisplayDelegate</code></a>
+protocols in the parent view controller.</li>
+<li>Create a <a href="https://developers.google.com/places/ios-api/reference/interface_g_m_s_autocomplete_table_data_source"><code>GMSAutocompleteTableDataSource</code></a>
+instance and assign the parent view controller as the delegate property.</li>
+<li>Create an instance of <a href="https://developer.apple.com/library/prerelease/ios/documentation/UIKit/Reference/UISearchDisplayController_Class/"><code>UISearchDisplayController</code></a>.</li>
+<li>Add the <code>searchBar</code> for the <a href="https://developer.apple.com/library/prerelease/ios/documentation/UIKit/Reference/UISearchController/"><code>UISearchController</code></a>
+to your app's UI.</li>
+<li>Handle the user's selection in the <code>didAutocompleteWithPlace</code>
+delegate method.</li>
+<li>Dismiss the controller in the <code>didAutocompleteWithPlace</code>,
+<code>didFailAutocompleteWithError</code>, and <code>wasCancelled</code> delegate methods.</li>
+</ol>
+<p>The following code example demonstrates using the
+<a href="https://developers.google.com">GMSAutocompleteTableDataSource</a>
+class to drive the table view of a <a href="https://developers.google.com">UISearchDisplayController</a>.</p>
+<div class="ds-selector-tabs" data-ds-scope="code">
+  <section data-ds-value="Swift">
+    <h3>Swift</h3>
+    <pre class="prettyprint notranslate">
+import UIKit
+import GooglePlaces
+
+class ViewController: UIViewController, UISearchDisplayDelegate {
+
+  var searchBar: UISearchBar?
+  var tableDataSource: GMSAutocompleteTableDataSource?
+  var searchDisplayController: UISearchDisplayController?
+
+  override func viewDidLoad() {
+    super.viewDidLoad()
+
+    searchBar = UISearchBar(CGRect(x: 0, y: 0, width: 250.0, height: 44.0))
+
+    tableDataSource = GMSAutocompleteTableDataSource()
+    tableDataSource?.delegate = self
+
+    searchDisplayController = UISearchDisplayController(searchBar: searchBar!, contentsController: self)
+    searchDisplayController?.searchResultsDataSource = tableDataSource
+    searchDisplayController?.searchResultsDelegate = tableDataSource
+    searchDisplayController?.delegate = self
+
+    view.addSubview(searchBar!)
+  }
+
+  func didUpdateAutocompletePredictionsForTableDataSource(tableDataSource: GMSAutocompleteTableDataSource) {
+    // Turn the network activity indicator off.
+    UIApplication.sharedApplication().networkActivityIndicatorVisible = false
+    // Reload table data.
+    searchDisplayController?.searchResultsTableView.reloadData()
+  }
+
+  func didRequestAutocompletePredictionsForTableDataSource(tableDataSource: GMSAutocompleteTableDataSource) {
+    // Turn the network activity indicator on.
+    UIApplication.sharedApplication().networkActivityIndicatorVisible = true
+    // Reload table data.
+    searchDisplayController?.searchResultsTableView.reloadData()
+  }
+
+}
+
+extension ViewController: GMSAutocompleteTableDataSourceDelegate {
+  func tableDataSource(tableDataSource: GMSAutocompleteTableDataSource, didAutocompleteWithPlace place: GMSPlace) {
+    searchDisplayController?.active = false
+    // Do something with the selected place.
+    print(&quot;Place name: \(place.name)&quot;)
+    print(&quot;Place address: \(place.formattedAddress)&quot;)
+    print(&quot;Place attributions: \(place.attributions)&quot;)
+  }
+
+  func searchDisplayController(controller: UISearchDisplayController, shouldReloadTableForSearchString searchString: String?) -&gt; Bool {
+    tableDataSource?.sourceTextHasChanged(searchString)
+    return false
+  }
+
+  func tableDataSource(tableDataSource: GMSAutocompleteTableDataSource, didFailAutocompleteWithError error: NSError) {
+    // TODO: Handle the error.
+    print(&quot;Error: \(error.description)&quot;)
+  }
+
+  func tableDataSource(tableDataSource: GMSAutocompleteTableDataSource, didSelectPrediction prediction: GMSAutocompletePrediction) -&gt; Bool {
+    return true
+  }
+}
+</pre>
+  </section>
+  <section data-ds-value="Objective-C">
+    <h3>Objective-C</h3>
+    <pre class="prettyprint notranslate">
+- (void)viewDidLoad {
+  [super viewDidLoad];
+  // Do any additional setup after loading the view, typically from a nib.
+
+  _searchBar = [[UISearchBar alloc] initWithFrame:CGRectMake(0, 20, 250.0f, 44.0f)];
+
+  _tableDataSource = [[GMSAutocompleteTableDataSource alloc] init];
+  _tableDataSource.delegate = self;
+
+  _searchDisplayController = [[UISearchDisplayController alloc] initWithSearchBar:_searchBar
+                                                               contentsController:self];
+  _searchDisplayController.searchResultsDataSource = _tableDataSource;
+  _searchDisplayController.searchResultsDelegate = _tableDataSource;
+  _searchDisplayController.delegate = self;
+
+  [self.view addSubview:_searchBar];
+}
+
+- (BOOL)searchDisplayController:(UISearchDisplayController *)controller
+shouldReloadTableForSearchString:(NSString *)searchString
+{
+  [_tableDataSource sourceTextHasChanged:searchString];
+  return NO;
+}
+
+// Handle the user&#39;s selection.
+- (void)tableDataSource:(GMSAutocompleteTableDataSource *)tableDataSource
+  didAutocompleteWithPlace:(GMSPlace *)place {
+  [_searchDisplayController setActive:NO animated:YES];
+  // Do something with the selected place.
+  NSLog(@&quot;Place name %@&quot;, place.name);
+  NSLog(@&quot;Place address %@&quot;, place.formattedAddress);
+  NSLog(@&quot;Place attributions %@&quot;, place.attributions.string);
+}
+
+- (void)tableDataSource:(GMSAutocompleteTableDataSource *)tableDataSource
+  didFailAutocompleteWithError:(NSError *)error {
+  [_searchDisplayController setActive:NO animated:YES];
+  // TODO: handle the error.
+  NSLog(@&quot;Error: %@&quot;, [error description]);
+}
+
+- (void)didUpdateAutocompletePredictionsForTableDataSource:
+  (GMSAutocompleteTableDataSource *)tableDataSource {
+  // Turn the network activity indicator off.
+  [UIApplication sharedApplication].networkActivityIndicatorVisible = NO;
+  // Reload table data.
+  [_searchDisplayController.searchResultsTableView reloadData];
+}
+
+- (void)didRequestAutocompletePredictionsForTableDataSource:
+  (GMSAutocompleteTableDataSource *)tableDataSource {
+  // Turn the network activity indicator on.
+  [UIApplication sharedApplication].networkActivityIndicatorVisible = YES;
+  // Reload table data.
+  [_searchDisplayController.searchResultsTableView reloadData];
+}</pre>
+  </section>
+</div>
+
+<aside class="note"><strong>Note:</strong><span> The <code>UISearchDisplayController</code> API does not support the concept of
+asynchronous data updates, so it is necessary to force table updates by
+reloading table data in the <code>didUpdateAutocompletePredictions</code> and
+<code>didRequestAutocompletePredictions</code> methods of the
+<code>GMSAutoCompleteResultsDelegate</code> protocol.</span></aside>
+<h2 id="customize_text_and_background_colors">Customize text and background colors</h2>
+<p>You can set the colors of all text and backgrounds in the autocomplete UI
+control, to make the widget match the visual appearance of your app more
+closely. There are two ways to set the UI control colors:</p>
+<ul>
+<li>By using the native iOS <a href="https://developer.apple.com/library/ios/documentation/UIKit/Reference/UIAppearance_Protocol/index.html">UIAppearance protocol</a> to globally style UI controls where possible. These settings apply to many, but not all, of the UI control
+elements.</li>
+<li>By using the SDK methods on the widget classes to set properties which
+are not supported by the <a href="https://developer.apple.com/library/ios/documentation/UIKit/Reference/UIAppearance_Protocol/index.html">UIAppearance protocol</a>.</li>
+</ul>
+<p>Typically, your app will use some combination of the <a href="https://developer.apple.com/library/ios/documentation/UIKit/Reference/UIAppearance_Protocol/index.html">UIAppearance protocol</a>
+and the SDK methods. The following diagram shows which elements can be styled:</p>
+<p><img alt="Autocomplete UI control colors" src="https://developers.google.com/places/images/acw_colors.png" /></p>
+<p>The following table lists all of the UI elements, and indicates how each
+one should be styled (UIAppearance protocol or SDK method).</p>
+<table>
+  <thead>
+    <tr>
+      <th>UI Element</th>
+      <th>Method</th>
+      <th>How to style</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>Navigation Bar tint (background)</td>
+      <td>UIAppearance protocol</td>
+      <td>Call <code>setBarTintColor</code> on <code>UINavigationBar</code> proxy.</td>
+    </tr>
+    <tr>
+      <td>Navigation Bar tint color (search bar text caret and Cancel button)</td>
+      <td>UIAppearance protocol</td>
+      <td>Call <code>setTintColor</code> on <code>UINavigationBar</code> proxy.</td>
+    </tr>
+    <tr>
+      <td>Search Bar text color</td>
+      <td>UIAppearance protocol</td>
+      <td>Set <code>NSForegroundColorAttributeName</code> in <code>searchBarTextAttributes</code>.</td>
+    </tr>
+    <tr>
+      <td>Search bar tint color</td>
+      <td>N/A</td>
+      <td>The search bar is translucent, and will display as a shaded version
+      of the Navigation Bar.</td>
+    </tr>
+    <tr>
+      <td>Search bar placeholder text color (default search text)</td>
+      <td>UIAppearance protocol</td>
+      <td>Set <code>NSForegroundColorAttributeName</code> in <code>placeholderAttributes</code>.</td>
+    </tr>
+    <tr>
+      <td>Primary text (also applied to error and message text)</td>
+      <td>SDK method</td>
+      <td>Call <code>primaryTextColor</code>.</td>
+    </tr>
+    <tr>
+      <td>Primary text highlight</td>
+      <td>SDK method</td>
+      <td>Call <code>primaryTextHighlightColor</code>.</td>
+    </tr>
+    <tr>
+      <td>Secondary text</td>
+      <td>SDK method</td>
+      <td>Call <code>secondaryTextColor</code>.</td>
+    </tr>
+    <tr>
+      <td>Error and message text</td>
+      <td>SDK method</td>
+      <td>Call <code>primaryTextColor</code>.</td>
+    </tr>
+    <tr>
+      <td>Table cell background</td>
+      <td>SDK method</td>
+      <td>Call <code>tableCellBackgroundColor</code>.</td>
+    </tr>
+    <tr>
+      <td>Table cell separator color</td>
+      <td>SDK method</td>
+      <td>Call <code>tableCellSeparatorColor</code>.</td>
+    </tr>
+    <tr>
+      <td>"Try Again" button</td>
+      <td>SDK method</td>
+      <td>Call <code>tintColor</code>.</td>
+    </tr>
+    <tr>
+      <td>Activity indicator (progress spinner)</td>
+      <td>UIAppearance protocol</td>
+      <td>Call <code>setColor</code> on <code>UIActivityIndicatorView</code> proxy.</td>
+    </tr>
+    <tr>
+      <td>"Powered by Google" logo, Sad cloud image</td>
+      <td>N/A</td>
+      <td>White or gray version is automatically selected based on background contrast.</td>
+    </tr>
+    <tr>
+      <td>Magnifying glass and clear text icons in Search Bar text field</td>
+      <td>N/A</td>
+      <td>To style, replace the default images with images of the desired color.</td>
+    </tr>
+  </tbody>
+</table>
+
+<aside class="note"><strong>Note:</strong><span> These properties only affect the color settings of UI elements. Changing
+the size of UI elements, or the font used in table cells, is not supported.</span></aside>
+<h3 id="use_the_uiappearance_protocol">Use the UIAppearance protocol</h3>
+<p>You can use the <a href="https://developer.apple.com/library/ios/documentation/UIKit/Reference/UIAppearance_Protocol/index.html">UIAppearance protocol</a>
+to get the appearance proxy for a given UI element, which you can then use to
+set the color for the UI element. When a modification is made, all instances of
+a given UI element are affected. For example, the following example globally
+changes the text color of <code>UITextField</code> classes to green when they are
+contained in a <code>UISearchBar</code>:</p>
+<pre class="prettyprint notranslate">
+[[UITextField appearanceWhenContainedIn:[UISearchBar class], nil]
+    setDefaultTextAttributes:@{NSForegroundColorAttributeName:[UIColor greenColor]}];
+</pre>
+
+<p>For more information about defining color values, consult the
+<a href="https://developer.apple.com/library/ios/documentation/UIKit/Reference/UIColor_Class/">UIColor Class Reference</a>.</p>
+<p>The following code snippets show all of the proxy commands you need to use to
+style everything in the full-screen autocomplete UI control. Add this code
+to the <code>didFinishLaunchingWithOptions</code> method in Appdelegate.m:</p>
+<pre class="prettyprint notranslate">// Define some colors.
+UIColor *darkGray = [UIColor darkGrayColor];
+UIColor *lightGray = [UIColor lightGrayColor];
+
+// Navigation bar background.
+[[UINavigationBar appearance] setBarTintColor:darkGray];
+[[UINavigationBar appearance] setTintColor:lightGray];
+
+// Color of typed text in the search bar.
+NSDictionary *searchBarTextAttributes = @{
+                                          NSForegroundColorAttributeName: lightGray,
+                                          NSFontAttributeName : [UIFont systemFontOfSize:[UIFont systemFontSize]]
+                                          };
+[UITextField appearanceWhenContainedInInstancesOfClasses:@[[UISearchBar class]]]
+    .defaultTextAttributes = searchBarTextAttributes;
+
+// Color of the placeholder text in the search bar prior to text entry.
+NSDictionary *placeholderAttributes = @{
+                                        NSForegroundColorAttributeName: lightGray,
+                                        NSFontAttributeName : [UIFont systemFontOfSize:[UIFont systemFontSize]]
+                                        };
+
+// Color of the default search text.
+// NOTE: In a production scenario, &quot;Search&quot; would be a localized string.
+NSAttributedString *attributedPlaceholder =
+[[NSAttributedString alloc] initWithString:@&quot;Search&quot;
+                                attributes:placeholderAttributes];
+[UITextField appearanceWhenContainedInInstancesOfClasses:@[[UISearchBar class]]]
+    .attributedPlaceholder = attributedPlaceholder;
+
+// Color of the in-progress spinner.
+[[UIActivityIndicatorView appearance] setColor:lightGray];
+
+// To style the two image icons in the search bar (the magnifying glass
+// icon and the &#39;clear text&#39; icon), replace them with different images.
+[[UISearchBar appearance] setImage:[UIImage imageNamed:@&quot;custom_clear_x_high&quot;]
+                  forSearchBarIcon:UISearchBarIconClear
+                            state:UIControlStateHighlighted];
+[[UISearchBar appearance] setImage:[UIImage imageNamed:@&quot;custom_clear_x&quot;]
+                  forSearchBarIcon:UISearchBarIconClear
+                            state:UIControlStateNormal];
+[[UISearchBar appearance] setImage:[UIImage imageNamed:@&quot;custom_search&quot;]
+                    forSearchBarIcon:UISearchBarIconSearch
+                            state:UIControlStateNormal];
+
+// Color of selected table cells.
+UIView *selectedBackgroundView = [[UIView alloc] init];
+selectedBackgroundView.backgroundColor = [UIColor lightGrayColor];
+[UITableViewCell appearanceWhenContainedIn:[GMSAutocompleteViewController class], nil]
+    .selectedBackgroundView = selectedBackgroundView;
+</pre>
+
+<h3 id="set_ui_control_style_properties">Set UI control style properties</h3>
+<p>A subset of UI control elements have properties that are not affected by the
+UIAppearance protocol, and so must be set directly. The following code example
+shows defining foreground and background colors, and applying them to a UI
+control instance named <code>acController</code>. Add this code to the <code>onLaunchClicked</code>
+method in ViewController.m:</p>
+<pre class="prettyprint notranslate">
+UIColor *darkGray = [UIColor darkGrayColor];
+UIColor *lightGray = [UIColor lightGrayColor];
+
+acController.secondaryTextColor = [UIColor colorWithWhite:1.0f alpha:0.5f];
+acController.primaryTextColor = lightGray;
+acController.primaryTextHighlightColor = [UIColor grayColor];
+acController.tableCellBackgroundColor = darkGray;
+acController.tableCellSeparatorColor = lightGray;
+acController.tintColor = lightGray;
+</pre>
+
+<aside class="note"><strong>Note:</strong><span> For <code>GMSAutocompleteViewController</code> and <code>GMSAutocompleteResultsViewController</code>,
+you can use Interface Builder to set these values.</span></aside>
+<h2 id="get_place_predictions_programmatically">Get place predictions programmatically</h2>
+<p>You can create a custom search UI as an alternative to the UI provided by the
+autocomplete widget. To do this, your app must get place predictions
+programmatically. Your app can get a list of predicted place names and/or
+addresses in one of the following ways:</p>
+<ul>
+<li><a href="#call_gmsplacesclient">Call <code>GMSPlacesClient</code></a></li>
+<li><a href="#use_the_fetcher">Use the fetcher</a></li>
+</ul>
+<h3 id="call_gmsplacesclient">Call <code>GMSPlacesClient</code></h3>
+<p>To get a list of predicted place names and/or addresses, call the
+<a href="https://developers.google.com/places/ios-api/reference/interface_g_m_s_places_client"><code>GMSPlacesClient autocompleteQuery:bounds:filter:callback:</code></a>
+method with the following parameters:</p>
+<ul>
+<li>An <code>autocompleteQuery</code> string containing the text typed by the user.</li>
+<li>A <a href="https://developers.google.com/maps/documentation/ios-sdk/reference/interface_g_m_s_coordinate_bounds"><code>GMSCoordinateBounds</code></a>
+object biasing the results to a specific area specified by latitude and
+longitude bounds.</li>
+<li>
+<p>A <a href="https://developers.google.com/places/ios-api/reference/interface_g_m_s_autocomplete_filter.html"><code>GMSAutocompleteFilter</code></a>
+restricting the results to a specific type of place. To retrieve all types,
+supply a value of nil. The following place types are supported in the filter:</p>
+<ul>
+<li><code>kGMSPlacesAutocompleteTypeFilterNoFilter</code> &ndash; An empty filter; all
+results are returned.</li>
+<li><code>kGMSPlacesAutocompleteTypeFilterGeocode</code> &ndash; Returns only geocoding
+  results, rather than businesses. Use this request to disambiguate results
+  where the specified location may be indeterminate.</li>
+<li><code>kGMSPlacesAutocompleteTypeFilterAddress</code> &ndash; Returns only
+  autocomplete results with a precise address. Use this type when you know
+  the user is looking for a fully specified address.</li>
+<li><code>kGMSPlacesAutocompleteTypeFilterEstablishment</code> &ndash; Returns only
+  places that are businesses.</li>
+<li>
+<p><code>kGMSPlacesAutocompleteTypeFilterRegion</code> &ndash; Returns only places that
+match one of the following types:</p>
+<ul>
+<li><code>locality</code></li>
+<li><code>sublocality</code></li>
+<li><code>postal_code</code></li>
+<li><code>country</code></li>
+<li><code>administrative_area_level_1</code></li>
+<li><code>administrative_area_level_2</code></li>
+</ul>
+</li>
+<li>
+<p><code>kGMSPlacesAutocompleteTypeFilterCity</code> &ndash; Returns only results
+matching <code>locality</code> or <code>administrative_area_level_3</code>.</p>
+</li>
+</ul>
+</li>
+</ul>
+<p>For more information, see <a href="https://developers.google.com/places/ios-api/supported_types#table3">place types</a>.</p>
+<ul>
+<li>A callback method to handle the returned predictions.</li>
+</ul>
+<p>The code examples below show a simplified call to
+<code>autocompleteQuery:bounds:filter:callback:</code>.</p>
+<div class="ds-selector-tabs" data-ds-scope="code">
+  <section data-ds-value="Swift">
+    <h3>Swift</h3>
+    <pre class="prettyprint notranslate">
+func placeAutocomplete() {
+  let filter = GMSAutocompleteFilter()
+  filter.type = .establishment
+  placesClient.autocompleteQuery(&quot;Sydney Oper&quot;, bounds: nil, filter: filter, callback: {(results, error) -&gt; Void in
+    if let error = error {
+      print(&quot;Autocomplete error \(error)&quot;)
+      return
+    }
+    if let results = results {
+      for result in results {
+        print(&quot;Result \(result.attributedFullText) with placeID \(result.placeID)&quot;)
+      }
+    }
+  })
+}
+</pre>
+  </section>
+  <section data-ds-value="Objective-C">
+    <h3>Objective-C</h3>
+    <pre class="prettyprint notranslate">
+- (void)placeAutocomplete {
+
+GMSAutocompleteFilter *filter = [[GMSAutocompleteFilter alloc] init];
+filter.type = kGMSPlacesAutocompleteTypeFilterEstablishment;
+
+[_placesClient autocompleteQuery:@&quot;Sydney Oper&quot;
+                          bounds:nil
+                          filter:filter
+                        callback:^(NSArray *results, NSError *error) {
+                          if (error != nil) {
+                            NSLog(@&quot;Autocomplete error %@&quot;, [error localizedDescription]);
+                            return;
+                          }
+
+                          for (GMSAutocompletePrediction* result in results) {
+                            NSLog(@&quot;Result &#39;%@&#39; with placeID %@&quot;, result.attributedFullText.string, result.placeID);
+                          }
+                        }];
+}</pre>
+  </section>
+</div>
+
+<p>The API invokes the specified callback method, passing in an array of
+<a href="https://developers.google.com/places/ios-api/reference/interface_g_m_s_autocomplete_prediction"><code>GMSAutocompletePrediction</code></a>
+objects.</p>
+<p>Each <a href="https://developers.google.com/places/ios-api/reference/interface_g_m_s_autocomplete_prediction"><code>GMSAutocompletePrediction</code></a>
+object contains the following information:</p>
+<ul>
+<li><code>attributedFullText</code> &ndash; The full text of the prediction, in the form of
+an <code>NSAttributedString</code>. For example, 'Sydney Opera House, Sydney, New South
+Wales, Australia'. Every text range that matches the user input has an
+attribute, <code>kGMSAutocompleteMatchAttribute</code>. You can use this attribute to
+highlight the matching text in the user's query, for example, as shown below.</li>
+<li><code>placeID</code> &ndash; The place ID of the predicted place. A place ID is a
+textual identifier that uniquely identifies a place. For more information about
+place IDs, see the <a href="https://developers.google.com/places/ios-api/place-id">Place ID overview</a>.</li>
+</ul>
+<p>The following code example illustrates how to highlight in bold text the parts
+of the result that match text in the user's query, using <code>enumerateAttribute</code>:</p>
+<div class="ds-selector-tabs" data-ds-scope="code">
+  <section data-ds-value="Swift">
+    <h3>Swift</h3>
+    <pre class="prettyprint notranslate">
+let regularFont = UIFont.systemFont(ofSize: UIFont.labelFontSize)
+let boldFont = UIFont.boldSystemFont(ofSize: UIFont.labelFontSize)
+
+let bolded = prediction.attributedFullText.mutableCopy() as! NSMutableAttributedString
+bolded.enumerateAttribute(kGMSAutocompleteMatchAttribute, in: NSMakeRange(0, bolded.length), options: []) {
+  (value, range: NSRange, stop: UnsafeMutablePointer&lt;ObjCBool&gt;) -&gt; Void in
+    let font = (value == nil) ? regularFont : boldFont
+    bolded.addAttribute(NSFontAttributeName, value: font, range: range)
+}
+
+label.attributedText = bolded
+    </pre>
+  </section>
+  <section data-ds-value="Objective-C">
+    <h3>Objective-C</h3>
+    <pre class="prettyprint notranslate">
+UIFont *regularFont = [UIFont systemFontOfSize:[UIFont labelFontSize]];
+UIFont *boldFont = [UIFont boldSystemFontOfSize:[UIFont labelFontSize]];
+
+NSMutableAttributedString *bolded = [prediction.attributedFullText mutableCopy];
+[bolded enumerateAttribute:kGMSAutocompleteMatchAttribute
+                   inRange:NSMakeRange(0, bolded.length)
+                   options:0
+                usingBlock:^(id value, NSRange range, BOOL *stop) {
+                  UIFont *font = (value == nil) ? regularFont : boldFont;
+                  [bolded addAttribute:NSFontAttributeName value:font range:range];
+                }];
+
+label.attributedText = bolded;
+    </pre>
+  </section>
+</div>
+
+<h3 id="use_the_fetcher">Use the fetcher</h3>
+<p>If you want to build your own autocomplete control from scratch, you can use
+<a href="https://developers.google.com/places/ios-api/reference/"><code>GMSAutocompleteFetcher</code></a>,
+which wraps the <code>autocompleteQuery</code> method on <a href="https://developers.google.com/places/ios-api/reference/"><code>GMSPlacesClient</code></a>.
+The fetcher throttles requests, returning only results for the most recently
+entered search text. It provides no UI elements.</p>
+<p>To implement <a href="https://developers.google.com/places/ios-api/reference/"><code>GMSAutocompleteFetcher</code></a>,
+take the following steps:</p>
+<ol>
+<li>Implement the <a href="https://developers.google.com/places/ios-api/reference/"><code>GMSAutocompleteFetcherDelegate</code></a>
+protocol.</li>
+<li>Create a <a href="https://developers.google.com/places/ios-api/reference/"><code>GMSAutocompleteFetcher</code></a> object.</li>
+<li>Call <code>sourceTextHasChanged</code> on the fetcher as the user types.</li>
+<li>Handle predictions and errors using the <a href="https://developers.google.com/places/ios-api/reference/"><code>didAutcompleteWithPredictions</code></a>
+and <a href="https://developers.google.com/places/ios-api/reference/"><code>didFailAutocompleteWithError</code></a>
+protocol methods.</li>
+</ol>
+<p>The following code example demonstrates using the fetcher to take user input
+and display place matches in a text view. Functionality for selecting a place
+has been omitted. <code>FetcherSampleViewController</code> derives from <code>UIViewController</code>
+in FetcherSampleViewController.h.</p>
+<div class="ds-selector-tabs" data-ds-scope="code">
+  <section data-ds-value="Swift">
+    <h3>Swift</h3>
+    <pre class="prettyprint notranslate">
+import UIKit
+import GooglePlaces
+
+class ViewController: UIViewController {
+
+  var textField: UITextField?
+  var resultText: UITextView?
+  var fetcher: GMSAutocompleteFetcher?
+
+  override func viewDidLoad() {
+    super.viewDidLoad()
+
+    view.backgroundColor = .white
+    edgesForExtendedLayout = []
+
+    // Set bounds to inner-west Sydney Australia.
+    let neBoundsCorner = CLLocationCoordinate2D(latitude: -33.843366,
+                                                longitude: 151.134002)
+    let swBoundsCorner = CLLocationCoordinate2D(latitude: -33.875725,
+                                                longitude: 151.200349)
+    let bounds = GMSCoordinateBounds(coordinate: neBoundsCorner,
+                                     coordinate: swBoundsCorner)
+
+    // Set up the autocomplete filter.
+    let filter = GMSAutocompleteFilter()
+    filter.type = .establishment
+
+    // Create the fetcher.
+    fetcher = GMSAutocompleteFetcher(bounds: bounds, filter: filter)
+    fetcher?.delegate = self
+
+    textField = UITextField(frame: CGRect(x: 5.0, y: 10.0,
+                                          width: view.bounds.size.width - 5.0,
+                                          height: 44.0))
+    textField?.autoresizingMask = .flexibleWidth
+    textField?.addTarget(self, action: #selector(textFieldDidChange(textField:)),
+                         for: .editingChanged)
+
+    resultText = UITextView(frame: CGRect(x: 0, y: 45.0,
+                                          width: view.bounds.size.width,
+                                          height: view.bounds.size.height - 45.0))
+    resultText?.backgroundColor = UIColor(white: 0.95, alpha: 1.0)
+    resultText?.text = &quot;No Results&quot;
+    resultText?.isEditable = false
+
+    view.addSubview(textField!)
+    view.addSubview(resultText!)
+  }
+
+  func textFieldDidChange(textField: UITextField) {
+    fetcher?.sourceTextHasChanged(textField.text!)
+  }
+
+}
+
+extension ViewController: GMSAutocompleteFetcherDelegate {
+  func didAutocomplete(with predictions: [GMSAutocompletePrediction]) {
+    let resultsStr = NSMutableString()
+    for prediction in predictions {
+      resultsStr.appendFormat(&quot;%@\n&quot;, prediction.attributedPrimaryText)
+    }
+
+    resultText?.text = resultsStr as String
+  }
+
+  func didFailAutocompleteWithError(_ error: Error) {
+    resultText?.text = error.localizedDescription
+  }
+
+}
+</pre>
+  </section>
+  <section data-ds-value="Objective-C">
+    <h3>Objective-C</h3>
+    <pre class="prettyprint notranslate">
+#import &quot;FetcherSampleViewController.h&quot;
+#import &lt;GooglePlaces/GooglePlaces.h&gt;
+
+@interface FetcherSampleViewController () &lt;GMSAutocompleteFetcherDelegate&gt;
+
+@end
+
+@implementation FetcherSampleViewController {
+  UITextField *_textField;
+  UITextView *_resultText;
+  GMSAutocompleteFetcher* _fetcher;
+}
+
+- (void)viewDidLoad {
+  [super viewDidLoad];
+
+  self.view.backgroundColor = [UIColor whiteColor];
+  self.edgesForExtendedLayout = UIRectEdgeNone;
+
+  // Set bounds to inner-west Sydney Australia.
+  CLLocationCoordinate2D neBoundsCorner = CLLocationCoordinate2DMake(-33.843366, 151.134002);
+  CLLocationCoordinate2D swBoundsCorner = CLLocationCoordinate2DMake(-33.875725, 151.200349);
+  GMSCoordinateBounds *bounds = [[GMSCoordinateBounds alloc] initWithCoordinate:neBoundsCorner
+                                                                     coordinate:swBoundsCorner];
+
+  // Set up the autocomplete filter.
+  GMSAutocompleteFilter *filter = [[GMSAutocompleteFilter alloc] init];
+  filter.type = kGMSPlacesAutocompleteTypeFilterEstablishment;
+
+  // Create the fetcher.
+  _fetcher = [[GMSAutocompleteFetcher alloc] initWithBounds:bounds
+                                                     filter:filter];
+  _fetcher.delegate = self;
+
+  // Set up the UITextField and UITextView.
+  _textField = [[UITextField alloc] initWithFrame:CGRectMake(5.0f,
+                                                             0,
+                                                             self.view.bounds.size.width - 5.0f,
+                                                             44.0f)];
+  _textField.autoresizingMask = UIViewAutoresizingFlexibleWidth;
+  [_textField addTarget:self
+                 action:@selector(textFieldDidChange:)
+       forControlEvents:UIControlEventEditingChanged];
+  _resultText =[[UITextView alloc] initWithFrame:CGRectMake(0,
+                                                            45.0f,
+                                                            self.view.bounds.size.width,
+                                                            self.view.bounds.size.height - 45.0f)];
+  _resultText.backgroundColor = [UIColor colorWithWhite:0.95f alpha:1.0f];
+  _resultText.text = @&quot;No Results&quot;;
+  _resultText.editable = NO;
+  [self.view addSubview:_textField];
+  [self.view addSubview:_resultText];
+}
+
+- (void)textFieldDidChange:(UITextField *)textField {
+  NSLog(@&quot;%@&quot;, textField.text);
+  [_fetcher sourceTextHasChanged:textField.text];
+}
+
+#pragma mark - GMSAutocompleteFetcherDelegate
+- (void)didAutocompleteWithPredictions:(NSArray *)predictions {
+  NSMutableString *resultsStr = [NSMutableString string];
+  for (GMSAutocompletePrediction *prediction in predictions) {
+      [resultsStr appendFormat:@&quot;%@\n&quot;, [prediction.attributedPrimaryText string]];
+  }
+  _resultText.text = resultsStr;
+}
+
+- (void)didFailAutocompleteWithError:(NSError *)error {
+  _resultText.text = [NSString stringWithFormat:@&quot;%@&quot;, error.localizedDescription];
+}
+
+@end</pre>
+  </section>
+</div>
+
+<h2 id="set_the_gmscoordinatebounds_of_autocomplete">Set the <code>GMSCoordinateBounds</code> of autocomplete</h2>
+<p>You can supply a <a href="https://developers.google.com/maps/documentation/ios-
+sdk/reference/interface_g_m_s_coordinate_bounds"><code>GMSCoordinateBounds</code></a> to autocomplete to guide the
+supplied completions. For example, if you already have a Google Map in your
+view controller, you can use the bounds of the current viewport to bias
+autocomplete results.</p>
+<div class="ds-selector-tabs" data-ds-scope="code">
+  <section data-ds-value="Swift">
+    <h3>Swift</h3>
+    <pre class="prettyprint notranslate">
+func placeAutocomplete() {
+  let visibleRegion = mapView.projection.visibleRegion()
+  let bounds = GMSCoordinateBounds(coordinate: visibleRegion.farLeft, coordinate: visibleRegion.nearRight)
+
+  let filter = GMSAutocompleteFilter()
+  filter.type = .establishment
+  placesClient.autocompleteQuery(&quot;Sydney Oper&quot;, bounds: bounds, filter: filter, callback: {
+    (results, error) -&gt; Void in
+    guard error == nil else {
+      print(&quot;Autocomplete error \(error)&quot;)
+      return
+    }
+    if let results = results {
+      for result in results {
+        print(&quot;Result \(result.attributedFullText) with placeID \(result.placeID)&quot;)
+      }
+    }
+  })
+}
+</pre>
+  </section>
+  <section data-ds-value="Objective-C">
+    <h3>Objective-C</h3>
+    <pre class="prettyprint notranslate">
+- (void)placeAutocomplete {
+
+GMSVisibleRegion visibleRegion = self.mapView.projection.visibleRegion;
+GMSCoordinateBounds *bounds = [[GMSCoordinateBounds alloc] initWithCoordinate:visibleRegion.farLeft
+                                                                   coordinate:visibleRegion.nearRight];
+GMSAutocompleteFilter *filter = [[GMSAutocompleteFilter alloc] init];
+filter.type = kGMSPlacesAutocompleteTypeFilterEstablishment;
+
+[_placesClient autocompleteQuery:@&quot;Sydney Oper&quot;
+                          bounds:bounds
+                          filter:filter
+                        callback:^(NSArray *results, NSError *error) {
+                          if (error != nil) {
+                            NSLog(@&quot;Autocomplete error %@&quot;, [error localizedDescription]);
+                            return;
+                          }
+
+                          for (GMSAutocompletePrediction* result in results) {
+                            NSLog(@&quot;Result &#39;%@&#39; with placeID %@&quot;, result.attributedFullText.string, result.placeID);
+                          }
+                        }];
+}</pre>
+  </section>
+</div>
+
+<h2 id="usage_limits">Usage limits</h2>
+<ul>
+<li>Use of the <a href="https://developers.google.com/places/ios-api/reference/interface_g_m_s_places_client"><code>GMSPlacesClient autocompleteQuery:bounds:filter:callback:</code></a>
+method is subject to tiered query limits. See the documentation on
+<a href="https://developers.google.com/places/ios-api/usage">usage limits</a>.</li>
+</ul>
+<h2 id="display_attributions_in_your_app">Display attributions in your app</h2>
+<ul>
+<li>If your app uses the autocomplete service programmatically, your UI must
+either display a 'Powered by Google' attribution, or appear within a
+Google-branded map.</li>
+<li>If your app uses the autocomplete UI control no additional action is required
+(the required attribution is displayed by default).</li>
+<li>If you retrieve and display additional place information after
+<a href="https://developers.google.com/places/ios-api/place-details#get-place">getting a place by ID</a>,
+you must display third-party attributions too.</li>
+</ul>
+<p>For more details, see the documentation on
+<a href="https://developers.google.com/places/ios-api/attributions">attributions</a>.</p>
+<h2 id="controlling_the_network_activity_indicator">Controlling the network activity indicator</h2>
+<p>To control the network activity indicator in the applications status bar you
+must implement the appropriate optional delegate methods for the autocomplete
+class you are using and turn the network indicator on and off yourself.</p>
+<ul>
+<li>For <a href="https://developers.google.com/places/ios-api/reference/interface_g_m_s_autocomplete_view_controller"><code>GMSAutocompleteViewController</code></a> you must implement the delegate methods <code>didRequestAutocompletePredictions:</code> and <code>didUpdateAutocompletePredictions:</code>.</li>
+<li>For <a href="https://developers.google.com/places/ios-api/reference/interface_g_m_s_autocomplete_results_view_controller"><code>GMSAutocompleteResultsViewController</code></a> you must implement the delegate methods <code>didRequestAutocompletePredictionsForResultsController:</code> and <code>didUpdateAutocompletePredictionsForResultsController:</code>.</li>
+<li>For <a href="https://developers.google.com/places/ios-api/reference/interface_g_m_s_autocomplete_table_data_source"><code>GMSAutocompleteTableDataSource</code></a> you must implement the delegate methods <code>didRequestAutocompletePredictionsForTableDataSource:</code> and <code>didUpdateAutocompletePredictionsForTableDataSource:</code>.</li>
+</ul>
+<p>By implementing these methods and setting <code>[UIApplication sharedApplication].networkActivityIndicatorVisible</code>
+to <code>YES</code> and <code>NO</code> respectively the status bar will correctly match the
+autocomplete UI.</p>
+<h2 id="troubleshooting">Troubleshooting</h2>
+<p>Although a wide variety of errors can occur, the majority of the errors your
+app is likely to experience are usually caused by configuration errors (for
+example, the wrong API key was used, or the API key was configured
+incorrectly), or quota errors (your app has exceeded its quota). See
+<a href="https://developers.google.com/places/ios-api/usage">Usage Limits</a> for more information about quotas.</p>
+<p>Errors that occur in the use of the autocomplete controls are returned in the
+<code>didFailAutocompleteWithError()</code> method of the various delegate protocols. The
+<code>code</code> property of the supplied <code>NSError</code> object is set to one of the values of
+the <code>GMSPlacesErrorCode</code> enumeration.</p>
+
+  </div>
+  
+
+  
+        
+  
+
+
+
+
+
+
+
+        
+<div class="devsite-content-footer nocontent">
+  
+  
+    <p>Except as otherwise noted, the content of this page is licensed under the <a href="http://creativecommons.org/licenses/by/3.0/">Creative Commons Attribution 3.0 License</a>, and code samples are licensed under the <a href="http://www.apache.org/licenses/LICENSE-2.0">Apache 2.0 License</a>. For details, see our <a href="https://developers.google.com/terms/site-policies">Site Policies</a>. Java is a registered trademark of Oracle and/or its affiliates.</p>
+  
+
+  
+    
+    <p class="devsite-content-footer-date" itemprop="datePublished"
+       content="2018-01-02T19:13:31.293270">
+      
+      Last updated January 2, 2018.
+    </p>
+  
+
+</div>
+
+        </article>
+      </article>
+  
+
+        </div>
+      
+
+<footer class="devsite-footer-linkboxes nocontent
+               
+               devsite-footer-linkboxes-with-sites"><nav class="devsite-full-site-width"><ul class="devsite-footer-linkboxes-list"><li class="devsite-footer-linkbox "><h3 class="devsite-footer-linkbox-heading">Quickstart</h3><ul class="devsite-footer-linkbox-list"><li class="devsite-footer-linkbox-item"><a href="https://developers.google.com/places/ios-api/start" class="gc-analytics-event"
+               data-category="Site-Wide Custom Events"
+               data-label="Content Page Footer Linkbox">
+                Get Started
+            </a></li><li class="devsite-footer-linkbox-item"><a href="https://developers.google.com/places/ios-api/reference" class="gc-analytics-event"
+               data-category="Site-Wide Custom Events"
+               data-label="Content Page Footer Linkbox">
+                Reference
+            </a></li><li class="devsite-footer-linkbox-item"><a href="https://developers.google.com/places/ios-api/code-samples" class="gc-analytics-event"
+               data-category="Site-Wide Custom Events"
+               data-label="Content Page Footer Linkbox">
+                Code Samples
+            </a></li></ul></li><li class="devsite-footer-linkbox "><h3 class="devsite-footer-linkbox-heading">Location APIs</h3><ul class="devsite-footer-linkbox-list"><li class="devsite-footer-linkbox-item"><a href="https://developers.google.com/places/android-api/" class="gc-analytics-event"
+               data-category="Site-Wide Custom Events"
+               data-label="Content Page Footer Linkbox">
+                Places API for Android
+            </a></li><li class="devsite-footer-linkbox-item"><a href="https://developers.google.com/places/ios-api/" class="gc-analytics-event"
+               data-category="Site-Wide Custom Events"
+               data-label="Content Page Footer Linkbox">
+                Places API for iOS
+            </a></li><li class="devsite-footer-linkbox-item"><a href="https://developers.google.com/places/javascript/" class="gc-analytics-event"
+               data-category="Site-Wide Custom Events"
+               data-label="Content Page Footer Linkbox">
+                Places JavaScript Library
+            </a></li><li class="devsite-footer-linkbox-item"><a href="https://developers.google.com/places/web-service/" class="gc-analytics-event"
+               data-category="Site-Wide Custom Events"
+               data-label="Content Page Footer Linkbox">
+                Places API Web Service
+            </a></li><li class="devsite-footer-linkbox-item"><a href="https://developer.android.com/training/location/" class="gc-analytics-event"
+               data-category="Site-Wide Custom Events"
+               data-label="Content Page Footer Linkbox">
+                Android Location APIs
+            </a></li><li class="devsite-footer-linkbox-item"><a href="https://developers.google.com/maps/" class="gc-analytics-event"
+               data-category="Site-Wide Custom Events"
+               data-label="Content Page Footer Linkbox">
+                Maps APIs
+            </a></li></ul></li><li class="devsite-footer-linkbox "><h3 class="devsite-footer-linkbox-heading">Resources</h3><ul class="devsite-footer-linkbox-list"><li class="devsite-footer-linkbox-item"><a href="https://developers.google.com/places/support" class="gc-analytics-event"
+               data-category="Site-Wide Custom Events"
+               data-label="Content Page Footer Linkbox">
+                Community and Support
+            </a></li><li class="devsite-footer-linkbox-item"><a href="https://issuetracker.google.com/savedsearches/558482" class="gc-analytics-event"
+               data-category="Site-Wide Custom Events"
+               data-label="Content Page Footer Linkbox">
+                Issue Tracker
+            </a></li><li class="devsite-footer-linkbox-item"><a href="https://stackoverflow.com/questions/tagged/google-places-api" class="gc-analytics-event"
+               data-category="Site-Wide Custom Events"
+               data-label="Content Page Footer Linkbox">
+                Stack Overflow
+            </a></li><li class="devsite-footer-linkbox-item"><a href="https://developers.google.com/maps/terms" class="gc-analytics-event"
+               data-category="Site-Wide Custom Events"
+               data-label="Content Page Footer Linkbox">
+                Terms of Service
+            </a></li><li class="devsite-footer-linkbox-item"><a href="https://googlegeodevelopers.blogspot.com" class="gc-analytics-event"
+               data-category="Site-Wide Custom Events"
+               data-label="Content Page Footer Linkbox">
+                Blog
+            </a></li><li class="devsite-footer-linkbox-item"><a href="https://developers.google.com/maps/documentation/javascript/examples/places-placeid-finder" class="gc-analytics-event"
+               data-category="Site-Wide Custom Events"
+               data-label="Content Page Footer Linkbox">
+                Place ID Finder
+            </a></li></ul></li><li class="devsite-footer-linkbox devsite-footer-linkbox-sites"><a href="https://developers.google.com/"
+           class="gc-analytics-event devsite-footer-linkbox-logo-link"
+           data-category="Site-Wide Custom Events" data-label="Footer Google Developers Link"><img class="devsite-footer-linkbox-logo"
+               src="https://developers.google.com/_static/d7147bb846/images/redesign-14/lockup-color-knockout.png"
+               alt="Google Developers"></a><ul class="devsite-footer-linkbox-list"><li class="devsite-footer-linkbox-item"><a href="//developer.android.com/index.html" class="gc-analytics-event"
+               data-category="Site-Wide Custom Events"
+               data-label="Footer Android Link">
+                Android
+            </a></li><li class="devsite-footer-linkbox-item"><a href="//developer.chrome.com/home" class="gc-analytics-event"
+               data-category="Site-Wide Custom Events"
+               data-label="Footer Chrome Link">
+                Chrome
+            </a></li><li class="devsite-footer-linkbox-item"><a href="//firebase.google.com" class="gc-analytics-event"
+               data-category="Site-Wide Custom Events"
+               data-label="Footer Firebase Link">
+                Firebase
+            </a></li><li class="devsite-footer-linkbox-item"><a href="//cloud.google.com" class="gc-analytics-event"
+               data-category="Site-Wide Custom Events"
+               data-label="Footer Cloud Link">
+                Google Cloud Platform
+            </a></li><li class="devsite-footer-linkbox-item"><a href="//developers.google.com/products/" class="gc-analytics-event"
+               data-category="Site-Wide Custom Events"
+               data-label="Footer Products Link">
+                All Products
+            </a></li></ul></li></ul></nav></footer><footer class="devsite-utility-footer"><nav class="devsite-utility-footer-nav devsite-nav devsite-full-site-width"><div class="devsite-utility-footer-nav-left"><form class="devsite-utility-footer-language" action="/i18n/setlang/" method="post"><input type="hidden" name="xsrf_token" value="tDUhseF3xbZCd0JCD07OnWFyy6thGQdHVJ2RF11RX646MTUyNDQyODU3MDMxMTAwMA" /><input type="hidden" name="next" value="/places/ios-api/autocomplete"><select class="devsite-utility-footer-language-select kd-select" name="language"
+                track-type="languageSelector" track-name="click"><option value="id"
+                
+                track-type="languageSelector" track-name="changed"
+                track-metadata-original-language="en"
+                track-metadata-selected-language="id">
+            Bahasa Indonesia
+          </option><option value="de"
+                
+                track-type="languageSelector" track-name="changed"
+                track-metadata-original-language="en"
+                track-metadata-selected-language="de">
+            Deutsch
+          </option><option value="en"
+                 selected="selected" 
+                track-type="languageSelector" track-name="changed"
+                track-metadata-original-language="en"
+                track-metadata-selected-language="en">
+            English
+          </option><option value="es"
+                
+                track-type="languageSelector" track-name="changed"
+                track-metadata-original-language="en"
+                track-metadata-selected-language="es">
+            español
+          </option><option value="fr"
+                
+                track-type="languageSelector" track-name="changed"
+                track-metadata-original-language="en"
+                track-metadata-selected-language="fr">
+            français
+          </option><option value="pt-br"
+                
+                track-type="languageSelector" track-name="changed"
+                track-metadata-original-language="en"
+                track-metadata-selected-language="pt-br">
+            Português Brasileiro
+          </option><option value="ru"
+                
+                track-type="languageSelector" track-name="changed"
+                track-metadata-original-language="en"
+                track-metadata-selected-language="ru">
+            Русский
+          </option><option value="ja"
+                
+                track-type="languageSelector" track-name="changed"
+                track-metadata-original-language="en"
+                track-metadata-selected-language="ja">
+            日本語
+          </option><option value="zh-cn"
+                
+                track-type="languageSelector" track-name="changed"
+                track-metadata-original-language="en"
+                track-metadata-selected-language="zh-cn">
+            简体中文
+          </option><option value="zh-tw"
+                
+                track-type="languageSelector" track-name="changed"
+                track-metadata-original-language="en"
+                track-metadata-selected-language="zh-tw">
+            繁體中文
+          </option><option value="ko"
+                
+                track-type="languageSelector" track-name="changed"
+                track-metadata-original-language="en"
+                track-metadata-selected-language="ko">
+            한국어
+          </option></select></form><span class="devsite-utility-footer-links"><a class="devsite-utility-footer-link gc-analytics-event"
+           href="https://developers.google.com/terms/site-terms"
+           data-category="Site-Wide Custom Events"
+           data-label="Footer terms link"
+           data-footer-link-id="terms"
+           >Terms
+         </a><a class="devsite-utility-footer-link gc-analytics-event"
+           href="//www.google.com/policies/privacy/"
+           data-category="Site-Wide Custom Events"
+           data-label="Footer privacy link"
+           data-footer-link-id="privacy"
+           >Privacy
+         </a></span></div><div class="devsite-utility-footer-nav-right"><div class="devsite-utility-footer-newsletter-signup-text">
+        Sign up for the Google Developers newsletter
+      </div><a class="button button-primary devsite-utility-footer-newsletter-signup-button"
+         href="//services.google.com/fb/forms/googledevelopersnewsletter/?utm_medium=referral&amp;utm_source=google-products&amp;utm_team=googledevs&amp;utm_campaign=201611-newsletter-launch">
+        
+        Subscribe
+      </a></div></nav></footer><div class="devsite-feedback-dialog devsite-dialog"><div class="devsite-dialog-contents"><h3>Send feedback about...</h3><div class="devsite-feedback-item"><a data-type="documentation" class="gc-analytics-event"
+           data-category="Site-Wide Custom Events" data-label="Docs Feedback Image"
+           track-type="feedback" track-name="feedbackDocIcon" track-metadata-position="header"><div class="devsite-feedback-item-icon-container"><div class="devsite-feedback-item-icon-white devsite-feedback-item-icon-docs
+                        material-icons"></div></div></a><div class="devsite-feedback-item-name">
+          
+          This page
+        </div><div class="devsite-feedback-item-description"><a data-type="documentation" tabindex="0" class="gc-analytics-event"
+             data-category="Site-Wide Custom Events" data-label="Docs Feedback Text"
+             track-type="feedback" track-name="feedbackDocText" track-metadata-position="header">
+            
+            Documentation feedback
+          </a></div></div><div class="devsite-feedback-item"><a data-type="product" tabindex="0" class="gc-analytics-event"
+           data-category="Site-Wide Custom Events" data-label="Product Feedback Image"
+           track-type="feedback" track-name="feedbackProductIcon" track-metadata-position="header"
+         ><div class="devsite-feedback-item-icon material-icons">
+              location_on
+            </div></a><div class="devsite-feedback-item-name">
+        Google Places API for iOS
+        </div><div class="devsite-feedback-item-description"><a data-type="product" tabindex="0" class="gc-analytics-event"
+             data-category="Site-Wide Custom Events" data-label="Product Feedback Text"
+             track-type="feedback" track-name="feedbackProductText" track-metadata-position="header"
+           >
+            
+            Product feedback
+          </a></div></div></div><div class="devsite-dialog-buttons"><button type="button" class="devsite-feedback-cancel button-white gc-analytics-event"
+              data-category="Site-Wide Custom Events" data-label="Cancel Feedback Button"
+              track-type="feedback" track-name="cancelFeedbackButton"
+              track-metadata-position="header">
+        
+        Cancel
+      </button></div></div><script>
+  $(document).ready(function() {
+    new devsite.feedback.Widget({
+        'product_id': '81777',
+        'bucket': '',
+        'context': 'Places API Docs',
+        'version': 'devsite-20180420-r00-rc00.default'
+      },
+      document.querySelectorAll('.devsite-feedback-button'),
+      'en',
+      document.querySelector('.devsite-site-mask'),
+      document.querySelector('.devsite-feedback-dialog'),
+      document.querySelector('.devsite-feedback-cancel'),
+      document.querySelectorAll('.devsite-feedback-item a:not([href])')
+    );
+  });
+  </script></div><script async defer src="//www.gstatic.com/feedback/api.js"></script><script src="https://developers.google.com/_static2/d7147bb846/jsi18n/"></script><script src="https://developers.google.com/_static/d7147bb846/js/script_foot_closure.js"></script><script src="https://developers.google.com/_static/d7147bb846/js/script_foot.js"></script><script>
+        (function($) {
+          
+          devsite.devsite.Init($, {'ENABLE_BLOCKED_VIDEO_PLACEHOLDER': 0, 'SITE_NAME': 'devsite', 'FULL_SITE_SEARCH_ENABLED': 1, 'ENABLE_CLOUDTRACK': 0, 'VTAGS_ENABLED': 0, 'HISTORY_ENABLED': 1, 'VERSION_HASH': 'd7147bb846', 'SCRIPTSAFE_DOMAIN': 'google-developers.appspot.com', 'ENABLE_BLOCKED_LINK_TOOLTIP': 0, 'ALLOWED_HOSTS': ['.android.com', '.anvato.com', '.apigee.com', '.appspot.com', '.dialogflow.com', '.gonglchuangl.net', '.google.cn', '.google.com', '.googleplex.com', '.nest.com', '.openthread.io', '.openweave.io', '.orbitera.com', '.tensorflow.org'], 'BLOCK_RSS_FEEDS': 0},
+                               '[]','en',
+                               true, '',
+                               {"f62218c009ec029abef196bba5aa34cf": true, "8de7a048f21618359bd37f5ce44be073": false, "098dafe57affddc137df300142652cfd": false, "8e03e230de0bd8a6fe173fdf172e8b3f": true, "cb025a64a50094835616312f4774a53d": true, "51470233c56fc1fde50f00b73c52b216": false, "d169d485cf24243a263783dbe42029b1": true, "039e5d84b87fd75807ffb37b7f1bbf2c": true, "700def1a83e356c06c0925afb05de4b0": false, "6749dcb526ce9bde6993550c7d928d24": true}, '/places/ios-api/',
+                               'https://developers.google.com/');
+        })(jQuery);
+
+        
+        devsite.localInit = function() {
+          
+        };
+
+      </script><script>
+      $('.devsite-utility-footer-language-select').each(function() {
+        $(this).change(function(){$('.devsite-utility-footer-language').submit();});
+      });
+      </script><script async defer src="//survey.g.doubleclick.net/async_survey?site=a77fymgs2gce7iudli6fatxx2a"></script></div><span id="devsite-request-elapsed" data-request-elapsed="188.889980316"></span></body></html>
