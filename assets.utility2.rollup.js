@@ -17581,6 +17581,7 @@ local.assetsDict['/favicon.ico'] = '';
             options = local.objectSetDefault(options, {
                 depth: 0,
                 dict: {},
+                dir: 'tmp/ajaxCraw',
                 filterBlacklist: local.nop,
                 filterWhitelist: function (options) {
                     return options.url.replace((/^https?:\/\//), '').indexOf(options.urlParsed0.href
@@ -17595,10 +17596,10 @@ local.assetsDict['/favicon.ico'] = '';
                         onError(null, options);
                         return;
                     }
-                    options.file = (options.url.replace((/^https?:\/\//), '/tmp/ajaxCrawl/') +
+                    options.file = (options.url.replace((/^https?:\/\//), options.dir + '/') +
                         '/index.html').replace((/\/{2,}/g), '/');
                     local.fsWriteFileWithMkdirpSync(options.file, options.xhr.responseText);
-                    console.error(options.ii + '.  ajaxCrawl  -  ' +
+                    console.error(options.ii + '/' + options.list.length + '  ajaxCrawl  ' +
                         options.url + '  ->  ' + options.file);
                     onError(null, options);
                 },
@@ -17663,6 +17664,7 @@ local.assetsDict['/favicon.ico'] = '';
                         local.ajaxCrawl({
                             depth: options.depth - 1,
                             dict: options.dict,
+                            dir: options.dir,
                             filterBlacklist: options.filterBlacklist,
                             filterWhitelist: options.filterWhitelist,
                             list: options.list,

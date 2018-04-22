@@ -16,9 +16,7 @@ shNpmScriptApidocRawCreate () {(set -e
 shNpmScriptApidocRawFetch () {(set -e
 # this function will fetch the raw apidoc
     mkdir -p tmp/apidoc.raw && cd tmp/apidoc.raw
-    rm -f apidocRawFetch.log main.html
-    rm -fr cloud.google.com && mkdir -p cloud.google.com
-    rm -fr developers.google.com && mkdir -p developers.google.com
+    rm -fr apidocRawFetch.log cloud.google.com developers.google.com
     node -e '
 // <script>
 /*jslint
@@ -35,7 +33,11 @@ shNpmScriptApidocRawFetch () {(set -e
 var local;
 local = require("../../assets.utility2.rollup.js");
 local.ajaxCrawl({
-    depth: 1,
+    depth: 3,
+    dir: ".",
+    filterBlacklist: function (options) {
+        return (/\b(?:android|ios|javascript|sdk)\b/).test(options.url);
+    },
     filterWhitelist: function (options) {
         return (/^https?:\/\/(?:cloud.google.com|developers.google.com)/).test(options.url);
     },
