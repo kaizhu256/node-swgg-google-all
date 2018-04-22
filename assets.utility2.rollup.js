@@ -17585,11 +17585,12 @@ local.assetsDict['/favicon.ico'] = '';
                 filterWhitelist: function (options) {
                     return options.url.replace((/^https?:\/\//), '').indexOf(options.urlParsed0.href
                         .replace((/^https?:\/\//), '')
-                        .replace((/([^\/])$/), '$1/')) === 0;
+                        .replace((/([^\/])$/), '$1/')
+                        .replace((/\/{2,}/), '/')) === 0;
                 },
                 list: [],
                 onEach: function (options, onError) {
-                    if (options.xhr.responseText.replace((/\w/g), '').length <
+                    if (options.xhr.responseText.replace((/\w/g), '').length >
                             0.5 * options.xhr.responseText.length) {
                         onError(null, options);
                         return;
@@ -17597,8 +17598,8 @@ local.assetsDict['/favicon.ico'] = '';
                     options.file = (options.url.replace((/^https?:\/\//), '/tmp/ajaxCrawl') +
                         '/index.html').replace((/\/{2,}/g), '/');
                     local.fsWriteFileWithMkdirpSync(options.file, options.xhr.responseText);
-                    console.error(options.ii + '. fetched    ' + options.url + '\n    ->    ' +
-                        options.file);
+                    console.error(options.ii + '.  ajaxCrawl  -  ' +
+                        options.url + '  ->  ' + options.file);
                     onError(null, options);
                 },
                 rgx: (/href="(.*?)"/g)
@@ -17607,11 +17608,20 @@ local.assetsDict['/favicon.ico'] = '';
                 switch (options.modeNext) {
                 // onParallelList(options);
                 case 1:
+                    options.list.forEach(function (element) {
+                        options.dict[element.url.replace((/^https?:\/\//), '')] = true;
+                    });
                     local.onParallelList(options, function (options2, onParallel) {
                         onParallel.counter += 1;
-                        options2.modeNext = 2;
+                        options2.element.modeNext = 2;
                         // recurse
-                        local.ajaxCrawl(local.objectSetDefault(options2, options), onParallel);
+                        local.ajaxCrawl(
+                            local.objectSetDefault(
+                                local.objectSetDefault(options2.element, options),
+                                options2
+                            ),
+                            onParallel
+                        );
                     }, onError);
                     break;
                 // options.list.push(options);
@@ -17629,13 +17639,13 @@ local.assetsDict['/favicon.ico'] = '';
                     if (options.dict.hasOwnProperty(options.url.replace((/^https?:\/\//), '')) ||
                             options.filterBlacklist(options) ||
                             !options.filterWhitelist(options)) {
+                        options.modeNext = 2;
                         options.dict[options.url.replace((/^https?:\/\//), '')] = true;
                         options.list.push(options);
                     }
                     break;
                 // ajax(options);
                 case 3:
-                    options.dict[options.url.replace((/^https?:\/\//), '')] = true;
                     local.ajax(options, options.onNext);
                     break;
                 case 4:

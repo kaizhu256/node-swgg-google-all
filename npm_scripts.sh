@@ -34,50 +34,22 @@ shNpmScriptApidocRawFetch () {(set -e
 "use strict";
 var local;
 local = require("../../assets.utility2.rollup.js");
-local.dict = {};
-local.fetch = function (options, onError) {
-    var ii, file;
-    if (options.url.indexOf("https://") !== 0) {
-        options.url = options.url[0] === "/"
-            ? options.prefix.replace((/\.com.*?$/), ".com") + options.url
-            : options.prefix + "/" + options.url;
-        options.url = options.prefix.replace((/\.com.*?$/), ".com") + "/" + options.url;
-    }
-    options.url = options.url
-        .replace("https://", "")
-        .replace((/\/{2,}/g), "/")
-        .replace((/[?#].*?$/), "");
-    file = options.url.replace((/\/$/), "") + "/index.html";
-    if (!(/^cloud.google.com|^developers.google.com/).test(options.url) || local.dict[file]) {
-        onError();
-        return;
-    }
-    local.dict[file] = true;
-    ii = local.ii;
-    local.ii += 1;
-    options.url = "https://" + options.url;
-    local.ajax({ prefix: options.prefix, url: options.url }, function (error, xhr) {
-        local.fsWriteFileWithMkdirpSync(file, xhr.responseText);
-        console.error((ii + 1) + ". fetched " + options.url);
-        xhr.prefix = options.url;
-        onError(error, xhr);
-    });
-};
-local.ii = 0;
-local.onParallelList({
-    list: process.argv[1].split("\n").filter(function (element) {
-        return element;
-    })
-}, function (options2, onParallel) {
-    onParallel.counter += 1;
-    local.fetch({ url: options2.element }, function (error, xhr) {
-        //!! ((xhr && xhr.responseText) || "").replace((/href="(.*?)"/g), function (match0, match1) {
-            //!! match0 = match1;
-            //!! onParallel.counter += 1;
-            //!! local.fetch({ prefix: options2.element, url: match0 }, onParallel);
-        //!! });
-        //!! onParallel(error);
-    });
+local.ajaxCrawl({
+    depth: 1,
+    filterWhitelist: function (options) {
+        return options.url.replace((/^https?:\/\//), "").indexOf(options.urlParsed0.href
+            .replace((/^https?:\/\//), "")
+            .replace((/([^\/])$/), "$1/")
+            .replace((/\b(?:reference|rest)\b/), "")
+            .replace((/\/{2,}/), "/")) === 0;
+    },
+    list: process.argv[1].split("\n")
+        .filter(function (element) {
+            return element;
+        })
+        .map(function (element) {
+            return { url: element };
+        })
 }, local.onErrorDefault);
 // </script>
 ' '
