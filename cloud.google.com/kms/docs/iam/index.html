@@ -1,0 +1,6178 @@
+
+
+
+
+
+
+<!DOCTYPE html><html lang="en"
+      class="chekov"><head><script>var a=window.devsite||{};window.devsite=a;a.readyCallbacks=[];window.devsite.readyCallbacks=a.readyCallbacks;a.ready=function(b){a.readyCallbacks.push(b)};window.devsite.ready=a.ready;
+</script><meta charset="utf-8"><meta name="xsrf_token" content="CJOoaCZ6emI8xad0JBC5MIYo6h3Zg3czxtt1h2wbLNM6MTUyNDQ2MDQ5MDEzNzI5MA" /><link rel="canonical" href="https://cloud.google.com/kms/docs/iam"><link rel="alternate" href="https://cloud.google.com/kms/docs/iam?hl=ja" hreflang="ja"><link rel="alternate" href="https://cloud.google.com/kms/docs/iam?hl=pt-br" hreflang="pt-br"><link rel="alternate" href="https://cloud.google.com/kms/docs/iam?hl=de" hreflang="de"><link rel="alternate" href="https://cloud.google.com/kms/docs/iam" hreflang="en"><link rel="alternate" href="https://cloud.google.com/kms/docs/iam" hreflang="x-default"><link rel="shortcut icon" href="https://cloud.google.com/_static/d7147bb846/images/cloud/icons/favicons/onecloud/favicon.ico"><link rel="apple-touch-icon" href="https://cloud.google.com/_static/d7147bb846/images/cloud/icons/favicons/onecloud/apple-icon.png"><meta name="viewport" content="width=device-width, initial-scale=1"><link rel="stylesheet"
+      
+      href="//fonts.googleapis.com/css?family=Google+Sans:400|Roboto:400,400italic,500,500italic,700,700italic|Roboto+Mono:400,500,700|Material+Icons"
+      ><link rel="stylesheet"
+        href="https://cloud.google.com/_static/d7147bb846/css/devsite-cloud-white.css"><link rel="stylesheet" href="https://cloud.google.com/_static/d7147bb846/css/cloud/cloud-site.css"><link rel="search"
+        type="application/opensearchdescription+xml"
+        title="Google Cloud"
+        href="https://cloud.google.com/s/opensearch.xml"><script src="https://cloud.google.com/_static/d7147bb846/js/jquery-bundle.js"></script><meta property="og:site_name" content="Google Cloud"><meta property="og:type" content="website"><meta property="og:url" content="https://cloud.google.com/kms/docs/iam"><meta property="og:locale" content="en"><script>
+    var ___gcfg = ___gcfg || {};
+    ___gcfg.lang = 'en';
+  </script><title>Using IAM with Cloud KMS &nbsp;|&nbsp; Cloud KMS Documentation
+      &nbsp;|&nbsp; Google Cloud</title><meta property="og:title" content="Using IAM with Cloud KMS &nbsp;|&nbsp; Cloud KMS Documentation
+      &nbsp;|&nbsp; Google Cloud"></head><body class="
+               devsite-doc-page
+               
+               
+               
+               
+               devsite-header-no-lower-tabs"
+        data-family="endorsed"
+        id="top_of_page"><div class="devsite-wrapper"><div class="devsite-top-section-wrapper
+            "><header class="devsite-top-section nocontent"><div class="devsite-top-logo-row-wrapper-wrapper"><div class="devsite-top-logo-row-wrapper"><div class="devsite-top-logo-row devsite-full-site-width"><button type="button" class="devsite-expand-section-nav devsite-header-icon-button
+                                       button-flat material-icons gc-analytics-event"
+                  data-category="Site-Wide Custom Events" data-label="Hamburger menu"></button><div class="devsite-product-name-wrapper"><a href="https://cloud.google.com/" class="devsite-site-logo-link gc-analytics-event"
+   data-category="Site-Wide Custom Events" data-label="Site logo"><img src="https://cloud.google.com/_static/d7147bb846/images/cloud/cloud-logo.svg"
+       class="devsite-site-logo" alt="Google Cloud"><span class="devsite-site-name devsite-product-name">Google Cloud</span></a></div><div class="devsite-header-upper-tabs"><nav class="devsite-doc-set-nav devsite-nav devsite-overflow-tabs-scroll-wrapper"><ul class="devsite-doc-set-nav-tab-list devsite-overflow-tabs-scroll"><li class="devsite-doc-set-nav-tab-container devsite-nav-tab
+               "><a href="https://cloud.google.com/why-google/"
+         class=" devsite-nav-tab
+                devsite-doc-set-nav-tab devsite-doc-set-nav-tab-link gc-analytics-event"
+         
+       
+         data-category="Site-Wide Custom Events"
+       
+         data-label="Tab: Why Google"
+       
+         track-type="globalNav"
+       
+         track-name="whyGoogle"
+       >
+        Why Google
+      </a></li><li class="devsite-doc-set-nav-tab-container devsite-nav-tab
+               "><a href="https://cloud.google.com/products/"
+         class=" devsite-nav-tab
+                devsite-doc-set-nav-tab devsite-doc-set-nav-tab-link gc-analytics-event"
+         
+       
+         data-category="Site-Wide Custom Events"
+       
+         data-label="Tab: Products"
+       
+         track-type="globalNav"
+       
+         track-name="products"
+       >
+        Products
+      </a></li><li class="devsite-doc-set-nav-tab-container devsite-nav-tab
+               "><a href="https://cloud.google.com/solutions/"
+         class=" devsite-nav-tab
+                devsite-doc-set-nav-tab devsite-doc-set-nav-tab-link gc-analytics-event"
+         
+       
+         data-category="Site-Wide Custom Events"
+       
+         data-label="Tab: Solutions"
+       
+         track-type="globalNav"
+       
+         track-name="solutions"
+       >
+        Solutions
+      </a></li><li class="devsite-doc-set-nav-tab-container devsite-nav-tab
+               "><a href="https://cloud.google.com/launcher/"
+         class=" devsite-nav-tab
+                devsite-doc-set-nav-tab devsite-doc-set-nav-tab-link gc-analytics-event"
+         
+       
+         data-category="Site-Wide Custom Events"
+       
+         data-label="Tab: Launcher"
+       
+         track-type="globalNav"
+       
+         track-name="launcher"
+       >
+        Launcher
+      </a></li><li class="devsite-doc-set-nav-tab-container devsite-nav-tab
+               "><a href="https://cloud.google.com/pricing/"
+         class=" devsite-nav-tab
+                devsite-doc-set-nav-tab devsite-doc-set-nav-tab-link gc-analytics-event"
+         
+       
+         data-category="Site-Wide Custom Events"
+       
+         data-label="Tab: Pricing"
+       
+         track-type="globalNav"
+       
+         track-name="pricing"
+       >
+        Pricing
+      </a></li><li class="devsite-doc-set-nav-tab-container devsite-nav-tab
+               "><a href="https://cloud.google.com/customers/"
+         class=" devsite-nav-tab
+                devsite-doc-set-nav-tab devsite-doc-set-nav-tab-link gc-analytics-event"
+         
+       
+         data-category="Site-Wide Custom Events"
+       
+         data-label="Tab: Customers"
+       
+         track-type="globalNav"
+       
+         track-name="customers"
+       >
+        Customers
+      </a></li><li class="devsite-doc-set-nav-tab-container devsite-nav-tab
+               "><a href="https://cloud.google.com/docs/"
+         class="devsite-doc-set-nav-active devsite-nav-tab
+                devsite-doc-set-nav-tab devsite-doc-set-nav-tab-link gc-analytics-event"
+         aria-label="Documentation, selected"
+       
+         data-category="Site-Wide Custom Events"
+       
+         data-label="Tab: Documentation"
+       >
+        Documentation
+      </a></li><li class="devsite-doc-set-nav-tab-container devsite-nav-tab
+               "><a href="https://cloud.google.com/support/"
+         class=" devsite-nav-tab
+                devsite-doc-set-nav-tab devsite-doc-set-nav-tab-link gc-analytics-event"
+         
+       
+         data-category="Site-Wide Custom Events"
+       
+         data-label="Tab: Support"
+       
+         track-type="globalNav"
+       
+         track-name="support"
+       >
+        Support
+      </a></li><li class="devsite-doc-set-nav-tab-container devsite-nav-tab
+               "><a href="https://cloud.google.com/partners/"
+         class=" devsite-nav-tab
+                devsite-doc-set-nav-tab devsite-doc-set-nav-tab-link gc-analytics-event"
+         
+       
+         data-category="Site-Wide Custom Events"
+       
+         data-label="Tab: Partners"
+       
+         track-type="globalNav"
+       
+         track-name="partners"
+       >
+        Partners
+      </a></li></ul></nav></div><form class="devsite-search-form"
+                action="https://cloud.google.com/s/results/"
+                method="GET"
+                id="top-search"
+                search-placeholder='Search'><div id="searchbox" class="devsite-searchbox"><input placeholder='Search'
+         
+         type="text"
+         class="devsite-search-field devsite-search-query"
+         name="q"
+         value=""
+         autocomplete="off"
+         
+         aria-label="Search box"><div class="devsite-search-image material-icons"></div></div><input type="hidden"
+       name="p"
+       id="search_project"
+       value="/kms/docs/"
+       data-project-name="Cloud KMS Documentation"
+       data-project-path="/kms/docs/"
+       data-query-match=""><input type="hidden" class="suggest-project" value="Cloud KMS Documentation" /></form><a class="devsite-header-link devsite-top-button button gc-analytics-event"
+               href="//console.cloud.google.com/"
+               data-category="Site-Wide Custom Events"
+               data-label="Site header link"
+               track-type="navigateTo"
+               track-name="console"
+               track-metadata-position="nav"><div class="devsite-header-link-label">Console</div></a><button type="button" class="devsite-search-button devsite-header-icon-button button-flat
+                                       material-icons"></button><a href="https://www.google.com/accounts/ServiceLogin?passive=true&continue=https%3A%2F%2Fcloud.google.com%2Fkms%2Fdocs%2Fiam%3Frefresh%3D1&service=cloudconsole"
+   class="devsite-user-signin devsite-top-button button gc-analytics-event"
+   data-category="Site-Wide Custom Events" data-label="Sign in button">
+  
+  Sign in
+</a></div></div></div><div class="devsite-collapsible-section"><div class="devsite-header-background devsite-full-site-width"><div class="devsite-product-id-row devsite-full-site-width"><div class="devsite-product-description-row"><ul class="devsite-breadcrumb-list"><li class="devsite-breadcrumb-item">
+    
+    
+    
+      Documentation
+    
+    
+  </li></ul></div><div class="devsite-product-button-row
+            cloud-free-trial-eligible"><button type="button" id="devsite-feedback-project"
+          class="devsite-feedback-button devsite-top-button gc-analytics-event"
+          data-category="Site-Wide Custom Events" data-label="Send Feedback Button"
+          track-type="feedback" track-name="sendFeedbackLink" track-metadata-position="header">
+  
+  Send feedback
+  </button><a
+    
+      href="https://console.cloud.google.com/freetrial"
+    
+    
+      class="cloud-free-trial-button button-primary button"
+    
+    
+      
+      track-type="freeTrial"
+      
+      track-name="try"
+      
+      track-metadata-position="nav"
+      
+    >
+    Try It Free
+  </a><a
+    
+      href="https://cloud.google.com/contact/"
+    
+    
+      class="cloud-contact-sales-button button"
+    
+    
+      
+      track-type="sales"
+      
+      track-name="contact"
+      
+      track-metadata-position="nav"
+      
+    >
+    Contact Sales
+  </a></div></div></div></div></header><script>
+    if (window.jQuery) {
+      $(document).ready(function() {
+        if (window.devsite && window.devsite.search) {
+          
+          window.devsite.search.init('en')
+        }
+      });
+    }
+  </script></div><div id="gc-wrapper"itemscope itemtype="http://schema.org/Article"><input class="google-tag-manager-id" type="hidden" value="GTM-5CVQBG"><script>
+      var dataLayer = [{"freeTrialEligibleUser": "True", "userCountry": "HK", "language": {"requested": "en", "served": "en"}, "projectName": "Cloud KMS Documentation", "scriptsafe": null, "signedIn": "False", "internalUser": "False"}];
+    </script>
+
+      
+        <div class="devsite-site-mask"></div>
+        
+  
+
+
+<nav class="devsite-nav-responsive devsite-nav nocontent" tabindex="0">
+  
+  <div class="devsite-nav-responsive-tabs-panel">
+    
+      
+        
+
+
+
+<nav class="devsite-nav-responsive-tabs devsite-nav">
+  <ul class="devsite-nav-list">
+  
+    <li class="devsite-nav-item devsite-nav-item-heading">
+    
+      <a 
+           href="https://cloud.google.com/why-google/?nav=true"
+         
+         class="devsite-nav-responsive-tab devsite-nav-title gc-analytics-event
+                "
+         data-category="Site-Wide Custom Events" data-label="Responsive Tab: Why Google">
+        Why Google
+      </a>
+      
+      
+    
+    </li>
+  
+    <li class="devsite-nav-item devsite-nav-item-heading">
+    
+      <a 
+           href="https://cloud.google.com/products/?nav=true"
+         
+         class="devsite-nav-responsive-tab devsite-nav-title gc-analytics-event
+                "
+         data-category="Site-Wide Custom Events" data-label="Responsive Tab: Products">
+        Products
+      </a>
+      
+      
+    
+    </li>
+  
+    <li class="devsite-nav-item devsite-nav-item-heading">
+    
+      <a 
+           href="https://cloud.google.com/solutions/?nav=true"
+         
+         class="devsite-nav-responsive-tab devsite-nav-title gc-analytics-event
+                "
+         data-category="Site-Wide Custom Events" data-label="Responsive Tab: Solutions">
+        Solutions
+      </a>
+      
+      
+    
+    </li>
+  
+    <li class="devsite-nav-item devsite-nav-item-heading">
+    
+      <a 
+           href="https://cloud.google.com/launcher/?nav=true"
+         
+         class="devsite-nav-responsive-tab devsite-nav-title gc-analytics-event
+                "
+         data-category="Site-Wide Custom Events" data-label="Responsive Tab: Launcher">
+        Launcher
+      </a>
+      
+      
+    
+    </li>
+  
+    <li class="devsite-nav-item devsite-nav-item-heading">
+    
+      <a 
+           href="https://cloud.google.com/pricing/?nav=true"
+         
+         class="devsite-nav-responsive-tab devsite-nav-title gc-analytics-event
+                "
+         data-category="Site-Wide Custom Events" data-label="Responsive Tab: Pricing">
+        Pricing
+      </a>
+      
+      
+    
+    </li>
+  
+    <li class="devsite-nav-item devsite-nav-item-heading">
+    
+      <a 
+           href="https://cloud.google.com/customers/?nav=true"
+         
+         class="devsite-nav-responsive-tab devsite-nav-title gc-analytics-event
+                "
+         data-category="Site-Wide Custom Events" data-label="Responsive Tab: Customers">
+        Customers
+      </a>
+      
+      
+    
+    </li>
+  
+    <li class="devsite-nav-item devsite-nav-item-heading">
+    
+      <span class="devsite-nav-responsive-forward devsite-nav-responsive-tab devsite-nav-title
+                   devsite-nav-active gc-analytics-event"
+            data-category="Site-Wide Custom Events" data-label="Responsive Tab: Documentation"
+            tabindex="0">
+        Documentation
+      </span>
+    
+    </li>
+  
+    <li class="devsite-nav-item devsite-nav-item-heading">
+    
+      <a 
+           href="https://cloud.google.com/support/?nav=true"
+         
+         class="devsite-nav-responsive-tab devsite-nav-title gc-analytics-event
+                "
+         data-category="Site-Wide Custom Events" data-label="Responsive Tab: Support">
+        Support
+      </a>
+      
+      
+    
+    </li>
+  
+    <li class="devsite-nav-item devsite-nav-item-heading">
+    
+      <a 
+           href="https://cloud.google.com/partners/?nav=true"
+         
+         class="devsite-nav-responsive-tab devsite-nav-title gc-analytics-event
+                "
+         data-category="Site-Wide Custom Events" data-label="Responsive Tab: Partners">
+        Partners
+      </a>
+      
+      
+    
+    </li>
+  
+  
+    <li class="devsite-nav-item devsite-nav-item-heading">
+      <a href="//console.cloud.google.com/"
+         class="devsite-nav-responsive-tab devsite-nav-title gc-analytics-event"
+         data-category="Site-Wide Custom Events"
+         data-label="Responsive Tab: console">
+        Console
+      </a>
+    </li>
+  
+  </ul>
+</nav>
+
+
+      
+    
+  </div>
+  
+  
+  <div class="devsite-nav-responsive-sidebar-panel">
+    
+    <div class="devsite-nav-responsive-back" tabindex="0"></div>
+    
+    <nav class="devsite-nav-responsive-sidebar"></nav>
+  </div>
+  
+  
+    <div class="devsite-nav-responsive-index-panel">
+      <div class="devsite-nav-index-back" tabindex="0"></div>
+      <nav>
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+      </nav>
+    </div>
+  
+</nav>
+
+
+        <div class="devsite-main-content clearfix">
+
+        
+        
+
+        
+  
+  
+    
+    
+      
+  <nav class="devsite-section-nav devsite-nav nocontent">
+    <ul class="devsite-nav-list devsite-nav-expandable"><li class="devsite-nav-item devsite-nav-item-heading"><span class="devsite-nav-title devsite-nav-title-no-path" track-type="leftNav" track-name="expandNavSectionNoLink" track-metadata-position="0">Cloud KMS</span></li><li class="devsite-nav-item"><a href="https://cloud.google.com/kms/" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="0" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">Product Overview</a></li><li class="devsite-nav-item"><a href="https://cloud.google.com/kms/docs/" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="0" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">Documentation</a></li><li class="devsite-nav-item"><a href="https://cloud.google.com/kms/docs/quickstart" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="0" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">Quickstart</a></li><li class="devsite-nav-item devsite-nav-item-heading"><span class="devsite-nav-title devsite-nav-title-no-path" track-type="leftNav" track-name="expandNavSectionNoLink" track-metadata-position="0">How-to Guides</span></li><li class="devsite-nav-item"><a href="https://cloud.google.com/kms/docs/how-tos" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="0" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">All How-to Guides</a></li><li class="devsite-nav-item"><a href="https://cloud.google.com/kms/docs/accessing-the-api" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="0" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">Accessing the API</a></li><li class="devsite-nav-item"><a href="https://cloud.google.com/kms/docs/creating-keys" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="0" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">Creating keys</a></li><li class="devsite-nav-item"><a href="https://cloud.google.com/kms/docs/enable-disable" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="0" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">Enabling and disabling key versions</a></li><li class="devsite-nav-item"><a href="https://cloud.google.com/kms/docs/destroy-restore" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="0" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">Destroying and restoring key versions</a></li><li class="devsite-nav-item"><a href="https://cloud.google.com/kms/docs/labeling-keys" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="0" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">Labeling keys</a></li><li class="devsite-nav-item"><a href="https://cloud.google.com/kms/docs/rotating-keys" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="0" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">Rotating keys</a></li><li class="devsite-nav-item"><a href="https://cloud.google.com/kms/docs/encrypt-decrypt" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="0" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">Encrypting and decrypting</a></li><li class="devsite-nav-item"><a href="https://cloud.google.com/kms/docs/re-encrypt-data" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="0" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">Re-encrypting data</a></li><li class="devsite-nav-item"><a href="https://cloud.google.com/kms/docs/store-secrets" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="0" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">Storing secrets</a></li><li class="devsite-nav-item devsite-nav-active"><a href="https://cloud.google.com/kms/docs/iam" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="0" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">Using IAM</a></li><li class="devsite-nav-item"><a href="https://cloud.google.com/kms/docs/logging" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="0" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">Using Cloud Audit Logging</a></li><li class="devsite-nav-item"><a href="https://cloud.google.com/kms/docs/monitoring" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="0" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">Using Stackdriver Monitoring</a></li><li class="devsite-nav-item devsite-nav-item-heading"><span class="devsite-nav-title devsite-nav-title-no-path" track-type="leftNav" track-name="expandNavSectionNoLink" track-metadata-position="0">Concepts</span></li><li class="devsite-nav-item"><a href="https://cloud.google.com/kms/docs/concepts" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="0" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">All Concepts</a></li><li class="devsite-nav-item"><a href="https://cloud.google.com/kms/docs/object-hierarchy" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="0" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">Object hierarchy</a></li><li class="devsite-nav-item"><a href="https://cloud.google.com/kms/docs/key-states" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="0" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">Key states</a></li><li class="devsite-nav-item"><a href="https://cloud.google.com/kms/docs/key-rotation" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="0" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">Key rotation</a></li><li class="devsite-nav-item"><a href="https://cloud.google.com/kms/docs/separation-of-duties" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="0" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">Separation of duties</a></li><li class="devsite-nav-item"><a href="https://cloud.google.com/kms/docs/secret-management" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="0" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">Secret management</a></li><li class="devsite-nav-item"><a href="https://cloud.google.com/kms/docs/additional-authenticated-data" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="0" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">Additional authenticated data</a></li><li class="devsite-nav-item"><a href="https://cloud.google.com/kms/docs/envelope-encryption" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="0" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">Envelope encryption</a></li><li class="devsite-nav-item"><a href="https://cloud.google.com/kms/docs/locations" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="0" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">Locations</a></li><li class="devsite-nav-item devsite-nav-item-heading"><span class="devsite-nav-title devsite-nav-title-no-path" track-type="leftNav" track-name="expandNavSectionNoLink" track-metadata-position="0">APIs &amp; Reference</span></li><li class="devsite-nav-item"><a href="https://cloud.google.com/kms/docs/apis" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="0" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">All APIs &amp; References</a></li><li class="devsite-nav-item"><a href="https://cloud.google.com/kms/docs/reference/libraries" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="0" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">Client Libraries</a></li><li class="devsite-nav-item"><a href="https://cloud.google.com/kms/docs/reference/permissions-and-roles" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="0" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">Permissions and Roles</a></li><li class="devsite-nav-item devsite-nav-item-section-expandable"><span class="devsite-nav-title devsite-nav-title-no-path" track-type="leftNav" track-name="expandNavSectionNoLink"track-metadata-position="0" aria-label="REST Reference, click to expand/collapse" role="link">REST Reference</span><a class="devsite-nav-toggle devsite-nav-toggle-collapsed material-icons" track-type="leftNav" track-name="expandNavSectionArrow" track-metadata-position="0" aria-hidden="true"></a><ul class="devsite-nav-section devsite-nav-section-collapsed"><li class="devsite-nav-item"><a href="https://cloud.google.com/kms/docs/reference/rest/" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="1" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">Overview</a></li><li class="devsite-nav-item devsite-nav-item-section-expandable"><span class="devsite-nav-title devsite-nav-title-no-path" track-type="leftNav" track-name="expandNavSectionNoLink"track-metadata-position="1" aria-label="v1, click to expand/collapse" role="link">v1</span><a class="devsite-nav-toggle devsite-nav-toggle-collapsed material-icons" track-type="leftNav" track-name="expandNavSectionArrow" track-metadata-position="1" aria-hidden="true"></a><ul class="devsite-nav-section devsite-nav-section-collapsed"><li class="devsite-nav-item devsite-nav-item-heading"><span class="devsite-nav-title devsite-nav-title-no-path" track-type="leftNav" track-name="expandNavSectionNoLink" track-metadata-position="2">REST Resources</span></li><li class="devsite-nav-item devsite-nav-item-section-expandable"><span class="devsite-nav-title devsite-nav-title-no-path" track-type="leftNav" track-name="expandNavSectionNoLink"track-metadata-position="2" aria-label="projects.locations, click to expand/collapse" role="link">projects.locations</span><a class="devsite-nav-toggle devsite-nav-toggle-collapsed material-icons" track-type="leftNav" track-name="expandNavSectionArrow" track-metadata-position="2" aria-hidden="true"></a><ul class="devsite-nav-section devsite-nav-section-collapsed"><li class="devsite-nav-item"><a href="https://cloud.google.com/kms/docs/reference/rest/v1/projects.locations" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="3" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">Overview</a></li><li class="devsite-nav-item"><a href="https://cloud.google.com/kms/docs/reference/rest/v1/projects.locations/get" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="3" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">get</a></li><li class="devsite-nav-item"><a href="https://cloud.google.com/kms/docs/reference/rest/v1/projects.locations/list" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="3" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">list</a></li></ul></li><li class="devsite-nav-item devsite-nav-item-section-expandable"><span class="devsite-nav-title devsite-nav-title-no-path" track-type="leftNav" track-name="expandNavSectionNoLink"track-metadata-position="2" aria-label="projects.locations.keyRings, click to expand/collapse" role="link">projects.locations.keyRings</span><a class="devsite-nav-toggle devsite-nav-toggle-collapsed material-icons" track-type="leftNav" track-name="expandNavSectionArrow" track-metadata-position="2" aria-hidden="true"></a><ul class="devsite-nav-section devsite-nav-section-collapsed"><li class="devsite-nav-item"><a href="https://cloud.google.com/kms/docs/reference/rest/v1/projects.locations.keyRings" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="3" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">Overview</a></li><li class="devsite-nav-item"><a href="https://cloud.google.com/kms/docs/reference/rest/v1/projects.locations.keyRings/create" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="3" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">create</a></li><li class="devsite-nav-item"><a href="https://cloud.google.com/kms/docs/reference/rest/v1/projects.locations.keyRings/get" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="3" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">get</a></li><li class="devsite-nav-item"><a href="https://cloud.google.com/kms/docs/reference/rest/v1/projects.locations.keyRings/getIamPolicy" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="3" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">getIamPolicy</a></li><li class="devsite-nav-item"><a href="https://cloud.google.com/kms/docs/reference/rest/v1/projects.locations.keyRings/list" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="3" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">list</a></li><li class="devsite-nav-item"><a href="https://cloud.google.com/kms/docs/reference/rest/v1/projects.locations.keyRings/setIamPolicy" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="3" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">setIamPolicy</a></li><li class="devsite-nav-item"><a href="https://cloud.google.com/kms/docs/reference/rest/v1/projects.locations.keyRings/testIamPermissions" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="3" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">testIamPermissions</a></li></ul></li><li class="devsite-nav-item devsite-nav-item-section-expandable"><span class="devsite-nav-title devsite-nav-title-no-path" track-type="leftNav" track-name="expandNavSectionNoLink"track-metadata-position="2" aria-label="projects.locations.keyRings.cryptoKeys, click to expand/collapse" role="link">projects.locations.keyRings.cryptoKeys</span><a class="devsite-nav-toggle devsite-nav-toggle-collapsed material-icons" track-type="leftNav" track-name="expandNavSectionArrow" track-metadata-position="2" aria-hidden="true"></a><ul class="devsite-nav-section devsite-nav-section-collapsed"><li class="devsite-nav-item"><a href="https://cloud.google.com/kms/docs/reference/rest/v1/projects.locations.keyRings.cryptoKeys" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="3" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">Overview</a></li><li class="devsite-nav-item"><a href="https://cloud.google.com/kms/docs/reference/rest/v1/projects.locations.keyRings.cryptoKeys/create" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="3" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">create</a></li><li class="devsite-nav-item"><a href="https://cloud.google.com/kms/docs/reference/rest/v1/projects.locations.keyRings.cryptoKeys/decrypt" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="3" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">decrypt</a></li><li class="devsite-nav-item"><a href="https://cloud.google.com/kms/docs/reference/rest/v1/projects.locations.keyRings.cryptoKeys/encrypt" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="3" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">encrypt</a></li><li class="devsite-nav-item"><a href="https://cloud.google.com/kms/docs/reference/rest/v1/projects.locations.keyRings.cryptoKeys/get" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="3" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">get</a></li><li class="devsite-nav-item"><a href="https://cloud.google.com/kms/docs/reference/rest/v1/projects.locations.keyRings.cryptoKeys/getIamPolicy" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="3" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">getIamPolicy</a></li><li class="devsite-nav-item"><a href="https://cloud.google.com/kms/docs/reference/rest/v1/projects.locations.keyRings.cryptoKeys/list" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="3" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">list</a></li><li class="devsite-nav-item"><a href="https://cloud.google.com/kms/docs/reference/rest/v1/projects.locations.keyRings.cryptoKeys/patch" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="3" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">patch</a></li><li class="devsite-nav-item"><a href="https://cloud.google.com/kms/docs/reference/rest/v1/projects.locations.keyRings.cryptoKeys/setIamPolicy" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="3" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">setIamPolicy</a></li><li class="devsite-nav-item"><a href="https://cloud.google.com/kms/docs/reference/rest/v1/projects.locations.keyRings.cryptoKeys/testIamPermissions" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="3" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">testIamPermissions</a></li><li class="devsite-nav-item"><a href="https://cloud.google.com/kms/docs/reference/rest/v1/projects.locations.keyRings.cryptoKeys/updatePrimaryVersion" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="3" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">updatePrimaryVersion</a></li></ul></li><li class="devsite-nav-item devsite-nav-item-section-expandable"><span class="devsite-nav-title devsite-nav-title-no-path" track-type="leftNav" track-name="expandNavSectionNoLink"track-metadata-position="2" aria-label="projects.locations.keyRings.cryptoKeys.cryptoKeyVersions, click to expand/collapse" role="link">projects.locations.keyRings.cryptoKeys.cryptoKeyVersions</span><a class="devsite-nav-toggle devsite-nav-toggle-collapsed material-icons" track-type="leftNav" track-name="expandNavSectionArrow" track-metadata-position="2" aria-hidden="true"></a><ul class="devsite-nav-section devsite-nav-section-collapsed"><li class="devsite-nav-item"><a href="https://cloud.google.com/kms/docs/reference/rest/v1/projects.locations.keyRings.cryptoKeys.cryptoKeyVersions" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="3" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">Overview</a></li><li class="devsite-nav-item"><a href="https://cloud.google.com/kms/docs/reference/rest/v1/projects.locations.keyRings.cryptoKeys.cryptoKeyVersions/create" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="3" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">create</a></li><li class="devsite-nav-item"><a href="https://cloud.google.com/kms/docs/reference/rest/v1/projects.locations.keyRings.cryptoKeys.cryptoKeyVersions/destroy" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="3" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">destroy</a></li><li class="devsite-nav-item"><a href="https://cloud.google.com/kms/docs/reference/rest/v1/projects.locations.keyRings.cryptoKeys.cryptoKeyVersions/get" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="3" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">get</a></li><li class="devsite-nav-item"><a href="https://cloud.google.com/kms/docs/reference/rest/v1/projects.locations.keyRings.cryptoKeys.cryptoKeyVersions/list" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="3" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">list</a></li><li class="devsite-nav-item"><a href="https://cloud.google.com/kms/docs/reference/rest/v1/projects.locations.keyRings.cryptoKeys.cryptoKeyVersions/patch" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="3" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">patch</a></li><li class="devsite-nav-item"><a href="https://cloud.google.com/kms/docs/reference/rest/v1/projects.locations.keyRings.cryptoKeys.cryptoKeyVersions/restore" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="3" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">restore</a></li></ul></li><li class="devsite-nav-item devsite-nav-item-heading"><span class="devsite-nav-title devsite-nav-title-no-path" track-type="leftNav" track-name="expandNavSectionNoLink" track-metadata-position="2">Types</span></li><li class="devsite-nav-item"><a href="https://cloud.google.com/kms/docs/reference/rest/v1/Policy" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="2" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">Policy</a></li><li class="devsite-nav-item"><a href="https://cloud.google.com/kms/docs/reference/rest/v1/TestIamPermissionsResponse" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="2" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">TestIamPermissionsResponse</a></li></ul></li></ul></li><li class="devsite-nav-item devsite-nav-item-heading"><span class="devsite-nav-title devsite-nav-title-no-path" track-type="leftNav" track-name="expandNavSectionNoLink" track-metadata-position="0">Tutorials</span></li><li class="devsite-nav-item"><a href="https://cloud.google.com/kms/docs/tutorials" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="0" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">All Tutorials</a></li><li class="devsite-nav-item"><a href="https://codelabs.developers.google.com/codelabs/cloud-encrypt-with-kms/index.html" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="0" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">Encrypting data at rest</a></li><li class="devsite-nav-item"><a href="https://codelabs.developers.google.com/codelabs/cloud-bookshelf-java-cloud-kms/index.html" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="0" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">Encrypting a java application</a></li><li class="devsite-nav-item devsite-nav-item-heading"><span class="devsite-nav-title devsite-nav-title-no-path" track-type="leftNav" track-name="expandNavSectionNoLink" track-metadata-position="0">Resources</span></li><li class="devsite-nav-item"><a href="https://cloud.google.com/kms/docs/resources" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="0" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">All Resources</a></li><li class="devsite-nav-item"><a href="https://cloud.google.com/kms/docs/faq" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="0" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">Frequently Asked Questions</a></li><li class="devsite-nav-item"><a href="https://cloud.google.com/kms/pricing" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="0" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">Pricing</a></li><li class="devsite-nav-item"><a href="https://cloud.google.com/kms/quotas" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="0" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">Quotas</a></li><li class="devsite-nav-item"><a href="https://cloud.google.com/kms/docs/release-notes" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="0" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">Release notes</a></li><li class="devsite-nav-item"><a href="https://cloud.google.com/kms/docs/support" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="0" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">Support</a></li><li class="devsite-nav-item"><a href="https://cloud.google.com/kms/known-issues" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="0" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">Known Issues</a></li><li class="devsite-nav-item"><a href="https://cloud.google.com/kms/docs/restrictions" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="0" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">Restrictions</a></li><li class="devsite-nav-item"><a href="https://cloud.google.com/kms/sla" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="0" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">Service Level Agreement</a></li></ul>
+  </nav>
+
+    
+
+    
+  <nav class="devsite-page-nav devsite-nav"></nav>
+
+
+      <article class="devsite-article">
+        <article class="devsite-article-inner">
+  
+          
+  
+
+
+
+  
+  <nav class="devsite-breadcrumb-nav devsite-nav">
+    
+
+
+<ul class="devsite-breadcrumb-list">
+  
+  <li class="devsite-breadcrumb-item">
+    
+    
+    <a href="https://cloud.google.com/kms/" class="devsite-breadcrumb-link gc-analytics-event"
+       data-category="Site-Wide Custom Events" data-label="Breadcrumbs"
+       data-value="1">
+    
+    
+      Cloud KMS
+    
+    
+    </a>
+    
+  </li>
+  
+  <li class="devsite-breadcrumb-item">
+    
+    
+    <div class="devsite-breadcrumb-guillemet material-icons"></div>
+    
+    
+    <a href="https://cloud.google.com/kms/docs/" class="devsite-breadcrumb-link gc-analytics-event"
+       data-category="Site-Wide Custom Events" data-label="Breadcrumbs"
+       data-value="2">
+    
+    
+      Documentation
+    
+    
+    </a>
+    
+  </li>
+  
+  <li class="devsite-breadcrumb-item">
+    
+    
+    <div class="devsite-breadcrumb-guillemet material-icons"></div>
+    
+    
+    <a href="https://cloud.google.com/docs/" class="devsite-breadcrumb-link gc-analytics-event"
+       data-category="Site-Wide Custom Events" data-label="Breadcrumbs"
+       data-value="3">
+    
+    
+      Documentation
+    
+    
+    </a>
+    
+  </li>
+  
+</ul>
+
+  </nav>
+  
+  
+  <h1 itemprop="name" class="devsite-page-title">
+    Using IAM with Cloud KMS
+  </h1>
+  
+  
+  <nav class="devsite-page-nav-embedded devsite-nav"></nav>
+  
+  <div class="devsite-article-body clearfix
+            "
+       itemprop="articleBody">
+    
+
+<p>Key rings and keys are resources in Google Cloud Platform, and can have <a href="https://cloud.google.com/iam/docs/overview">IAM
+policies</a> set on them like any other resource. IAM policies
+cannot be set on individual key versions. Cloud KMS actions have a
+corresponding permission to determine who has access. See
+<a href="https://cloud.google.com/kms/docs/reference/permissions-and-roles">Permissions and Roles</a> for a complete list of
+actions and permissions.</p>
+<h2 id="modifying_iam_permissions">Modifying IAM permissions</h2>
+<p>Changing IAM permissions requires a user to have the permission to set IAM
+policy. As per the chart in
+<a href="https://cloud.google.com/kms/docs/reference/permissions-and-roles">Permissions and Roles</a>, currently that is only
+possible for users or service accounts with the <code>owner</code> or <code>cloudkms.admin</code>
+role.</p>
+
+
+
+
+<div id="kms-add-member-to-project-code-sample" class="ds-selector-tabs" data-ds-scope="code-sample">
+  
+
+
+
+
+
+
+
+  
+
+
+  
+    
+  
+
+
+<section>
+  
+  <h3 id="kms-add-member-to-project-cli" track-type="sampleTabNav" track-name="cli" track-metadata-position="kms-add-member-to-project">Command-line</h3>
+  
+  
+  
+  
+Add a user "USER_EMAIL" to the role "ROLE_NAME" for the project "PROJECT_NAME"</p>
+<pre class="notranslate prettyprint devsite-click-to-copy" suppresswarning="suppresswarning">
+gcloud projects add-iam-policy-binding PROJECT_NAME \
+    --member user:USER_EMAIL --role roles/ROLE_NAME
+</pre>
+
+
+</section>
+
+
+
+
+
+  
+
+
+
+
+
+
+
+  
+
+
+  
+    
+  
+
+
+<section>
+  
+  <h3 id="kms-add-member-to-project-cli-windows" track-type="sampleTabNav" track-name="cli-windows" track-metadata-position="kms-add-member-to-project">Windows cmd.exe</h3>
+  
+  
+  
+  
+Add a user "USER_EMAIL" to the role "ROLE_NAME" for the project "PROJECT_NAME"</p>
+<pre class="notranslate prettyprint devsite-click-to-copy" suppresswarning="suppresswarning">
+gcloud projects add-iam-policy-binding PROJECT_NAME ^
+    --member user:USER_EMAIL --role roles/ROLE_NAME
+</pre>
+
+
+</section>
+
+
+
+
+
+  
+
+
+
+
+
+
+
+  
+
+
+  
+    
+  
+
+
+<section>
+  
+  <h3 id="kms-add-member-to-project-cli-powershell" track-type="sampleTabNav" track-name="cli-powershell" track-metadata-position="kms-add-member-to-project">Powershell</h3>
+  
+  
+  
+  
+Add a user "USER_EMAIL" to the role "ROLE_NAME" for the project "PROJECT_NAME"</p>
+<pre class="notranslate prettyprint devsite-click-to-copy" suppresswarning="suppresswarning">
+gcloud projects add-iam-policy-binding PROJECT_NAME &#96;
+    --member user:USER_EMAIL --role roles/ROLE_NAME
+</pre>
+
+
+</section>
+
+
+
+
+
+</div></p>
+
+
+
+
+<div id="kms-remove-member-from-project-code-sample" class="ds-selector-tabs" data-ds-scope="code-sample">
+  
+
+
+
+
+
+
+
+  
+
+
+  
+    
+  
+
+
+<section>
+  
+  <h3 id="kms-remove-member-from-project-cli" track-type="sampleTabNav" track-name="cli" track-metadata-position="kms-remove-member-from-project">Command-line</h3>
+  
+  
+  
+  
+Remove a user "USER_EMAIL" to the role "ROLE_NAME" for the project "PROJECT_NAME"</p>
+<pre class="notranslate prettyprint devsite-click-to-copy" suppresswarning="suppresswarning">
+gcloud projects remove-iam-policy-binding PROJECT_NAME \
+    --member user:USER_EMAIL --role roles/ROLE_NAME
+</pre>
+
+
+</section>
+
+
+
+
+
+  
+
+
+
+
+
+
+
+  
+
+
+  
+    
+  
+
+
+<section>
+  
+  <h3 id="kms-remove-member-from-project-cli-windows" track-type="sampleTabNav" track-name="cli-windows" track-metadata-position="kms-remove-member-from-project">Windows cmd.exe</h3>
+  
+  
+  
+  
+Remove a user "USER_EMAIL" to the role "ROLE_NAME" for the project "PROJECT_NAME"</p>
+<pre class="notranslate prettyprint devsite-click-to-copy" suppresswarning="suppresswarning">
+gcloud projects remove-iam-policy-binding PROJECT_NAME ^
+    --member user:USER_EMAIL --role roles/ROLE_NAME
+</pre>
+
+
+</section>
+
+
+
+
+
+  
+
+
+
+
+
+
+
+  
+
+
+  
+    
+  
+
+
+<section>
+  
+  <h3 id="kms-remove-member-from-project-cli-powershell" track-type="sampleTabNav" track-name="cli-powershell" track-metadata-position="kms-remove-member-from-project">Powershell</h3>
+  
+  
+  
+  
+Remove a user "USER_EMAIL" to the role "ROLE_NAME" for the project "PROJECT_NAME"</p>
+<pre class="notranslate prettyprint devsite-click-to-copy" suppresswarning="suppresswarning">
+gcloud projects remove-iam-policy-binding PROJECT_NAME &#96;
+    --member user:USER_EMAIL --role roles/ROLE_NAME
+</pre>
+
+
+</section>
+
+
+
+
+
+</div></p>
+<p>Further instructions on using the <code>gcloud</code> command-line tool for IAM policies is
+available in our <a href="https://cloud.google.com/iam/docs/managing-policies#access_control_via_the_gcloud_tool">IAM documentation</a>.</p>
+<h2 id="hierarchy_and_inheritance">Hierarchy and inheritance</h2>
+<p>Policy bindings can be specified at the project level, as demonstrated above,
+but they can also be specified on key rings and keys. Members follow the
+format <code>user:USER_EMAIL</code> for users and <code>serviceAccount:SERVICE_ACCOUNT_EMAIL</code>
+for service accounts. Roles follow the format <code>roles/ROLE_NAME</code>. The following
+example adds a member to a key for a given role:</p>
+
+
+<div id="kms-add-member-to-cryptokey-policy-code-sample" class="ds-selector-tabs" data-ds-scope="code-sample">
+  
+
+
+
+
+
+
+
+  
+
+
+  
+    
+  
+
+
+<section>
+  
+  <h3 id="kms-add-member-to-cryptokey-policy-cli" track-type="sampleTabNav" track-name="cli" track-metadata-position="kms-add-member-to-cryptokey-policy">Command-line</h3>
+  
+  
+  
+  
+<pre class="notranslate prettyprint devsite-click-to-copy" suppresswarning="suppresswarning">
+gcloud kms keys add-iam-policy-binding CRYPTOKEY --location LOCATION --keyring KEYRING --member user:USER_EMAIL --role roles/ROLE_NAME
+</pre>
+
+</section>
+
+
+
+
+
+  
+
+
+
+
+
+
+
+  
+
+
+  
+    
+  
+
+
+  
+
+<section>
+  
+  <h3 id="kms-add-member-to-cryptokey-policy-csharp" track-type="sampleTabNav" track-name="csharp" track-metadata-position="kms-add-member-to-cryptokey-policy">C#</h3>
+  
+  
+    
+    <p>
+      For more on installing and creating a Cloud KMS client, refer to
+      <a href="https://cloud.google.com/kms/docs/reference/libraries" track-type="clientLibrariesReference"
+         track-name="csharp" track-metadata-position="kms-add-member-to-cryptokey-policy">Cloud KMS Client Libraries</a>.
+    </p>
+    
+  
+  
+  
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  
+  
+  
+
+
+<!-- Header -->
+
+<div class="github-docwidget-include" style="border: 1px solid #ddd; border-bottom: 0; padding: 4px; background-color: #4285f4; margin-bottom: -10px">
+  
+
+  
+  <div style="text-align: right; float: right;">
+    
+    
+      
+      <a class="button" target="_blank" href="https://github.com/GoogleCloudPlatform/dotnet-docs-samples/blob/2ec373efac86f3e589ff98ac8abf5d28b29b1578/kms/api/Program.cs"
+      track-type="github" track-name="gitHubViewButton"
+      track-metadata-link-destination="https://github.com/GoogleCloudPlatform/dotnet-docs-samples/blob/2ec373efac86f3e589ff98ac8abf5d28b29b1578/kms/api/Program.cs">View on GitHub</a>
+    
+    
+    
+    
+    
+    
+    
+    <a href="#" class="button google-feedback" data-p="1634365" data-b="solutions"
+       data-context="kms-add-member-to-cryptokey-policy" track-type="feedback" track-name="sampleFeedback"
+       track-metadata-lang="csharp" track-metadata-position="kms-add-member-to-cryptokey-policy">Feedback</a>
+    
+  </div>
+  
+
+  <div style="clear: both;"></div>
+
+</div>
+
+
+<!-- Code -->
+<div class="github-docwidget-gitinclude-code">
+
+  
+  
+
+<pre class="prettyprint " track-metadata-position="GoogleCloudPlatform/dotnet-docs-samples/kms/api/Program.cs/2ec373efac86f3e589ff98ac8abf5d28b29b1578/kms_add_member_to_cryptokey_policy">      public static object AddMemberToCryptoKeyPolicy(string projectId, string locationId,
+          string keyRingId, string cryptoKeyId, string role, string member)
+      {
+          var cloudKms = CreateAuthorizedClient();
+          // Generate the full path of the parent to use for updating the crypto key IAM policy.
+          var parent = $&quot;projects/{projectId}/locations/{locationId}/keyRings/{keyRingId}/cryptoKeys/{cryptoKeyId}&quot;;
+          SetIamPolicyRequest setIamPolicyRequest = new SetIamPolicyRequest();
+          var result = cloudKms.Projects.Locations.KeyRings.CryptoKeys.GetIamPolicy(parent).Execute();
+          if (result.Bindings != null)
+          {
+              // Policy already exists, so add a new Binding to it.
+              Binding bindingToAdd = new Binding();
+              bindingToAdd.Role = role;
+              string[] testMembers = { member };
+              bindingToAdd.Members = testMembers;
+              result.Bindings.Add(bindingToAdd);
+              setIamPolicyRequest.Policy = result;
+          }
+          else
+          {
+              // Policy does not yet exist, so create a new one.
+              Policy newPolicy = new Policy();
+              newPolicy.Bindings = new List&lt;Binding&gt;();
+              Binding bindingToAdd = new Binding();
+              bindingToAdd.Role = role;
+              string[] testMembers = { member };
+              bindingToAdd.Members = testMembers;
+              newPolicy.Bindings.Add(bindingToAdd);
+              setIamPolicyRequest.Policy = newPolicy;
+          }
+          var request = new ProjectsResource.LocationsResource.KeyRingsResource.CryptoKeysResource
+              .SetIamPolicyRequest(cloudKms, setIamPolicyRequest, parent);
+          var setIamPolicyResult = request.Execute();
+          var updateResult = cloudKms.Projects.Locations.KeyRings.CryptoKeys.GetIamPolicy(parent).Execute();
+          updateResult.Bindings.ToList().ForEach(response =&gt;
+          {
+              Console.WriteLine($&quot;Role: {response.Role}&quot;);
+              response.Members.ToList().ForEach(memberFound =&gt;
+              {
+                  Console.WriteLine($&quot;  Member: {memberFound}&quot;);
+              });
+          });
+          return 0;
+      }</pre>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+</section>
+
+
+
+
+
+  
+
+
+
+
+
+
+
+  
+
+
+  
+    
+  
+
+
+  
+
+<section>
+  
+  <h3 id="kms-add-member-to-cryptokey-policy-go" track-type="sampleTabNav" track-name="go" track-metadata-position="kms-add-member-to-cryptokey-policy">Go</h3>
+  
+  
+    
+    <p>
+      For more on installing and creating a Cloud KMS client, refer to
+      <a href="https://cloud.google.com/kms/docs/reference/libraries" track-type="clientLibrariesReference"
+         track-name="go" track-metadata-position="kms-add-member-to-cryptokey-policy">Cloud KMS Client Libraries</a>.
+    </p>
+    
+  
+  
+  
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  
+  
+
+
+<!-- Header -->
+
+<div class="github-docwidget-include" style="border: 1px solid #ddd; border-bottom: 0; padding: 4px; background-color: #4285f4; margin-bottom: -10px">
+  
+
+  
+  <div style="text-align: right; float: right;">
+    
+    
+      
+      <a class="button" target="_blank" href="https://github.com/GoogleCloudPlatform/golang-samples/blob/master/kms/snippets/snippet_test.go"
+      track-type="github" track-name="gitHubViewButton"
+      track-metadata-link-destination="https://github.com/GoogleCloudPlatform/golang-samples/blob/master/kms/snippets/snippet_test.go">View on GitHub</a>
+    
+    
+    
+    
+    
+    
+    
+    <a href="#" class="button google-feedback" data-p="1634365" data-b="solutions"
+       data-context="kms-add-member-to-cryptokey-policy" track-type="feedback" track-name="sampleFeedback"
+       track-metadata-lang="go" track-metadata-position="kms-add-member-to-cryptokey-policy">Feedback</a>
+    
+  </div>
+  
+
+  <div style="clear: both;"></div>
+
+</div>
+
+
+<!-- Code -->
+<div class="github-docwidget-gitinclude-code">
+
+  
+  
+
+<pre class="prettyprint lang-go" track-metadata-position="GoogleCloudPlatform/golang-samples/kms/snippets/snippet_test.go/master/((?:\n//[^\n]*)*?\nfunc[^\n]*? addMemberCryptoKeyPolicy\(.+?\n})">
+func addMemberCryptoKeyPolicy(project, keyRing, key, role, member string) error {
+	ctx := context.Background()
+	authedClient, err := google.DefaultClient(ctx, cloudkms.CloudPlatformScope)
+	if err != nil {
+		return err
+	}
+	client, err := cloudkms.New(authedClient)
+	if err != nil {
+		return err
+	}
+	location := &quot;global&quot;
+	parent := fmt.Sprintf(&quot;projects/%s/locations/%s/keyRings/%s/cryptoKeyVersions/%s&quot;,
+		project, location, keyRing, key)
+
+	policy, err := client.Projects.Locations.KeyRings.CryptoKeys.GetIamPolicy(parent).Do()
+	if err != nil {
+		return err
+	}
+	policy.Bindings = append(policy.Bindings, &amp;cloudkms.Binding{
+		Role:    role,
+		Members: []string{member},
+	})
+	if err != nil {
+		return err
+	}
+
+	_, err = client.Projects.Locations.KeyRings.CryptoKeys.SetIamPolicy(
+		parent, &amp;cloudkms.SetIamPolicyRequest{
+			Policy: policy,
+		}).Do()
+	if err != nil {
+		return err
+	}
+
+	return nil
+}</pre>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+</section>
+
+
+
+
+
+  
+
+
+
+
+
+
+
+  
+
+
+  
+    
+  
+
+
+  
+
+<section>
+  
+  <h3 id="kms-add-member-to-cryptokey-policy-java" track-type="sampleTabNav" track-name="java" track-metadata-position="kms-add-member-to-cryptokey-policy">Java</h3>
+  
+  
+    
+    <p>
+      For more on installing and creating a Cloud KMS client, refer to
+      <a href="https://cloud.google.com/kms/docs/reference/libraries" track-type="clientLibrariesReference"
+         track-name="java" track-metadata-position="kms-add-member-to-cryptokey-policy">Cloud KMS Client Libraries</a>.
+    </p>
+    
+  
+  
+  
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  
+  
+
+
+<!-- Header -->
+
+<div class="github-docwidget-include" style="border: 1px solid #ddd; border-bottom: 0; padding: 4px; background-color: #4285f4; margin-bottom: -10px">
+  
+
+  
+  <div style="text-align: right; float: right;">
+    
+    
+      
+      <a class="button" target="_blank" href="https://github.com/GoogleCloudPlatform/java-docs-samples/blob/master/kms/src/main/java/com/example/Snippets.java"
+      track-type="github" track-name="gitHubViewButton"
+      track-metadata-link-destination="https://github.com/GoogleCloudPlatform/java-docs-samples/blob/master/kms/src/main/java/com/example/Snippets.java">View on GitHub</a>
+    
+    
+    
+    
+    
+    
+    
+    <a href="#" class="button google-feedback" data-p="1634365" data-b="solutions"
+       data-context="kms-add-member-to-cryptokey-policy" track-type="feedback" track-name="sampleFeedback"
+       track-metadata-lang="java" track-metadata-position="kms-add-member-to-cryptokey-policy">Feedback</a>
+    
+  </div>
+  
+
+  <div style="clear: both;"></div>
+
+</div>
+
+
+<!-- Code -->
+<div class="github-docwidget-gitinclude-code">
+
+  
+  
+
+<pre class="prettyprint lang-java" track-metadata-position="GoogleCloudPlatform/java-docs-samples/kms/src/main/java/com/example/Snippets.java/master/kms_add_member_to_cryptokey_policy">
+/**
+ * Adds the given member to the given key, with the given role.
+ *
+ * @param projectId The id of the project.
+ * @param locationId The location id of the key.
+ * @param keyRingId The id of the keyring.
+ * @param cryptoKeyId The id of the crypto key.
+ * @param member The member to add. Must be in the proper format, eg:
+ *
+ * allUsers user:$userEmail serviceAccount:$serviceAccountEmail
+ *
+ * See https://g.co/cloud/kms/docs/reference/rest/v1/Policy#binding for more details.
+ * @param role Must be in one of the following formats: roles/[role]
+ * organizations/[organizationId]/roles/[role] projects/[projectId]/roles/[role]
+ *
+ * See https://g.co/cloud/iam/docs/understanding-roles for available values for [role].
+ */
+public static Policy addMemberToCryptoKeyPolicy(
+    String projectId, String locationId, String keyRingId, String cryptoKeyId, String member,
+    String role)
+    throws IOException {
+  // Create the Cloud KMS client.
+  CloudKMS kms = createAuthorizedClient();
+
+  // The resource name of the cryptoKey version
+  String cryptoKey = String.format(
+      &quot;projects/%s/locations/%s/keyRings/%s/cryptoKeys/%s&quot;,
+      projectId, locationId, keyRingId, cryptoKeyId);
+
+  // Get the current IAM policy
+  Policy iamPolicy = getCryptoKeyPolicy(projectId, locationId, keyRingId, cryptoKeyId);
+
+  // Add the new account to it.
+  Binding newBinding = new Binding()
+      .setRole(role)
+      .setMembers(Collections.singletonList(member));
+  List&lt;Binding&gt; bindings = iamPolicy.getBindings();
+  if (null == bindings) {
+    bindings = Collections.singletonList(newBinding);
+  } else {
+    bindings.add(newBinding);
+  }
+  iamPolicy.setBindings(bindings);
+
+  // Set the new IAM Policy.
+  Policy newIamPolicy = kms.projects().locations().keyRings()
+      .cryptoKeys()
+      .setIamPolicy(cryptoKey, new SetIamPolicyRequest().setPolicy(iamPolicy))
+      .execute();
+
+  System.out.println(&quot;Response: &quot; + newIamPolicy);
+  return newIamPolicy;
+}</pre>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+</section>
+
+
+
+
+
+  
+
+
+
+
+
+
+
+  
+
+
+  
+    
+  
+
+
+  
+
+<section>
+  
+  <h3 id="kms-add-member-to-cryptokey-policy-nodejs" track-type="sampleTabNav" track-name="nodejs" track-metadata-position="kms-add-member-to-cryptokey-policy">Node.js</h3>
+  
+  
+    
+    <p>
+      For more on installing and creating a Cloud KMS client, refer to
+      <a href="https://cloud.google.com/kms/docs/reference/libraries" track-type="clientLibrariesReference"
+         track-name="nodejs" track-metadata-position="kms-add-member-to-cryptokey-policy">Cloud KMS Client Libraries</a>.
+    </p>
+    
+  
+  
+  
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  
+  
+
+
+<!-- Header -->
+
+<div class="github-docwidget-include" style="border: 1px solid #ddd; border-bottom: 0; padding: 4px; background-color: #4285f4; margin-bottom: -10px">
+  
+
+  
+  <div style="text-align: right; float: right;">
+    
+    
+      
+      <a class="button" target="_blank" href="https://github.com/GoogleCloudPlatform/nodejs-docs-samples/blob/master/kms/keys.js"
+      track-type="github" track-name="gitHubViewButton"
+      track-metadata-link-destination="https://github.com/GoogleCloudPlatform/nodejs-docs-samples/blob/master/kms/keys.js">View on GitHub</a>
+    
+    
+    
+    
+    
+    
+    
+    <a href="#" class="button google-feedback" data-p="1634365" data-b="solutions"
+       data-context="kms-add-member-to-cryptokey-policy" track-type="feedback" track-name="sampleFeedback"
+       track-metadata-lang="nodejs" track-metadata-position="kms-add-member-to-cryptokey-policy">Feedback</a>
+    
+  </div>
+  
+
+  <div style="clear: both;"></div>
+
+</div>
+
+
+<!-- Code -->
+<div class="github-docwidget-gitinclude-code">
+
+  
+  
+
+<pre class="prettyprint lang-js" track-metadata-position="GoogleCloudPlatform/nodejs-docs-samples/kms/keys.js/master/kms_add_member_to_cryptokey_policy">// Your Google Cloud Platform project ID
+// const projectId = &#39;YOUR_PROJECT_ID&#39;;
+
+// The location of the crypto key&#39;s key ring, e.g. &quot;global&quot;
+// const locationId = &#39;global&#39;;
+
+// The name of the crypto key&#39;s key ring, e.g. &quot;my-key-ring&quot;
+// const keyRingId = &#39;my-key-ring&#39;;
+
+// The name of the crypto key, e.g. &quot;my-key&quot;
+// const cryptoKeyId = &#39;my-key&#39;;
+
+// The member to add to the crypto key, e.g. &quot;user:developer@company.com&quot;
+// const member = &#39;user:developer@company.com&#39;;
+
+// The role to give the member, e.g. &quot;roles/viewer&quot;
+// const role = &#39;roles/viewer&#39;;
+
+// Builds and authorizes a Cloud KMS client
+buildAndAuthorizeService((err, cloudkms) =&gt; {
+  if (err) {
+    console.log(err);
+    return;
+  }
+
+  let request = {
+    // This will be a path parameter in the request URL
+    resource_: `projects/${projectId}/locations/${locationId}/keyRings/${keyRingId}/cryptoKeys/${cryptoKeyId}`
+  };
+
+  // Gets the IAM policy of a crypto key
+  cloudkms.projects.locations.keyRings.cryptoKeys.getIamPolicy(request, (err, getResponse) =&gt; {
+    if (err) {
+      console.log(err);
+      return;
+    }
+
+    let policy = Object.assign({ bindings: [] }, getResponse.data);
+
+    const index = policy.bindings.findIndex((binding) =&gt; binding.role === role);
+
+    // Add the role/member combo to the policy
+    const binding = Object.assign({
+      role: role,
+      members: []
+    }, policy.bindings[index]);
+    if (index === -1) {
+      policy.bindings.push(binding);
+    }
+    if (!binding.members.includes(member)) {
+      binding.members.push(member);
+    }
+
+    request = {
+      // This will be a path parameter in the request URL
+      resource_: `projects/${projectId}/locations/${locationId}/keyRings/${keyRingId}/cryptoKeys/${cryptoKeyId}`,
+      // This will be the request body
+      resource: {
+        policy: policy
+      }
+    };
+
+    // Adds the member/role combo to the policy of the crypto key
+    cloudkms.projects.locations.keyRings.cryptoKeys.setIamPolicy(request, (err, setResponse) =&gt; {
+      if (err) {
+        console.log(err);
+        return;
+      }
+
+      policy = setResponse.data;
+      console.log(`${member}/${role} combo added to policy for crypto key ${cryptoKeyId}.`);
+      if (policy.bindings) {
+        policy.bindings.forEach((binding) =&gt; {
+          if (binding.members &amp;&amp; binding.members.length) {
+            console.log(`${binding.role}:`);
+            binding.members.forEach((member) =&gt; {
+              console.log(`  ${member}`);
+            });
+          }
+        });
+      } else {
+        console.log(`Policy for crypto key ${cryptoKeyId} is empty.`);
+      }
+    });
+  });
+});
+
+function buildAndAuthorizeService (callback) {
+  // Imports the Google APIs client library
+  const google = require(&#39;googleapis&#39;).google;
+
+  // Acquires credentials
+  google.auth.getApplicationDefault((err, authClient) =&gt; {
+    if (err) {
+      callback(err);
+      return;
+    }
+
+    if (authClient.createScopedRequired &amp;&amp; authClient.createScopedRequired()) {
+      authClient = authClient.createScoped([
+        &#39;https://www.googleapis.com/auth/cloud-platform&#39;
+      ]);
+    }
+
+    // Instantiates an authorized client
+    const cloudkms = google.cloudkms({
+      version: &#39;v1&#39;,
+      auth: authClient
+    });
+
+    callback(null, cloudkms);
+  });
+}</pre>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+</section>
+
+
+
+
+
+  
+
+
+
+
+
+
+
+  
+
+
+  
+    
+  
+
+
+  
+
+<section>
+  
+  <h3 id="kms-add-member-to-cryptokey-policy-php" track-type="sampleTabNav" track-name="php" track-metadata-position="kms-add-member-to-cryptokey-policy">PHP</h3>
+  
+  
+    
+    <p>
+      For more on installing and creating a Cloud KMS client, refer to
+      <a href="https://cloud.google.com/kms/docs/reference/libraries" track-type="clientLibrariesReference"
+         track-name="php" track-metadata-position="kms-add-member-to-cryptokey-policy">Cloud KMS Client Libraries</a>.
+    </p>
+    
+  
+  
+  
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  
+  
+
+
+<!-- Header -->
+
+<div class="github-docwidget-include" style="border: 1px solid #ddd; border-bottom: 0; padding: 4px; background-color: #4285f4; margin-bottom: -10px">
+  
+
+  
+  <div style="text-align: right; float: right;">
+    
+    
+      
+      <a class="button" target="_blank" href="https://github.com/GoogleCloudPlatform/php-docs-samples/blob/master/kms/src/functions.php"
+      track-type="github" track-name="gitHubViewButton"
+      track-metadata-link-destination="https://github.com/GoogleCloudPlatform/php-docs-samples/blob/master/kms/src/functions.php">View on GitHub</a>
+    
+    
+    
+    
+    
+    
+    
+    <a href="#" class="button google-feedback" data-p="1634365" data-b="solutions"
+       data-context="kms-add-member-to-cryptokey-policy" track-type="feedback" track-name="sampleFeedback"
+       track-metadata-lang="php" track-metadata-position="kms-add-member-to-cryptokey-policy">Feedback</a>
+    
+  </div>
+  
+
+  <div style="clear: both;"></div>
+
+</div>
+
+
+<!-- Code -->
+<div class="github-docwidget-gitinclude-code">
+
+  
+  
+
+<pre class="prettyprint lang-php" track-metadata-position="GoogleCloudPlatform/php-docs-samples/kms/src/functions.php/master/kms_add_member_to_cryptokey_policy">/**
+ * Add a member to a CryptoKey IAM policy.
+ *
+ * @param string $projectId
+ * @param string $keyRingId
+ * @param string $cryptoKeyId
+ * @param string $member Must be in the format &quot;user:$userEmail&quot; or
+ *        &quot;serviceAccount:$serviceAccountEmail&quot;
+ * @param string $role Must be in the format &quot;roles/$role&quot;,
+ *        &quot;organizations/$organizationId/roles/$role&quot;, or &quot;projects/$projectId/roles/$role&quot;
+ * @param string $locationId [optional]
+ * @return null
+ */
+function add_member_to_cryptokey_policy($projectId, $keyRingId, $cryptoKeyId, $member, $role, $locationId = &#39;global&#39;)
+{
+    // Instantiate the client, authenticate, and add scopes.
+    $client = new Google_Client();
+    $client-&gt;useApplicationDefaultCredentials();
+    $client-&gt;addScope(&#39;https://www.googleapis.com/auth/cloud-platform&#39;);
+
+    // Create the Cloud KMS client.
+    $kms = new Google_Service_CloudKMS($client);
+
+    // The resource name of the CryptoKey.
+    $parent = sprintf(&#39;projects/%s/locations/%s/keyRings/%s/cryptoKeys/%s&#39;,
+        $projectId,
+        $locationId,
+        $keyRingId,
+        $cryptoKeyId
+    );
+
+    // Get the current IAM policy and add the new account to it.
+    $policy = $kms-&gt;projects_locations_keyRings_cryptoKeys-&gt;getIamPolicy($parent);
+    $bindings = $policy-&gt;getBindings();
+    $bindings[] = new Google_Service_CloudKMS_Binding([
+        &#39;members&#39; =&gt; [$member],
+        &#39;role&#39; =&gt; $role,
+    ]);
+    $policy-&gt;setBindings($bindings);
+
+    // Set the new IAM Policy.
+    $request = new Google_Service_CloudKMS_SetIamPolicyRequest([&#39;policy&#39; =&gt; $policy]);
+    $kms-&gt;projects_locations_keyRings_cryptoKeys-&gt;setIamPolicy(
+        $parent,
+        $request
+    );
+
+    printf(&#39;Member %s added to policy for cryptoKey %s in keyRing %s&#39; . PHP_EOL, $member, $cryptoKeyId, $keyRingId);
+}</pre>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+</section>
+
+
+
+
+
+  
+
+
+
+
+
+
+
+  
+
+
+  
+    
+  
+
+
+  
+
+<section>
+  
+  <h3 id="kms-add-member-to-cryptokey-policy-python" track-type="sampleTabNav" track-name="python" track-metadata-position="kms-add-member-to-cryptokey-policy">Python</h3>
+  
+  
+    
+    <p>
+      For more on installing and creating a Cloud KMS client, refer to
+      <a href="https://cloud.google.com/kms/docs/reference/libraries" track-type="clientLibrariesReference"
+         track-name="python" track-metadata-position="kms-add-member-to-cryptokey-policy">Cloud KMS Client Libraries</a>.
+    </p>
+    
+  
+  
+  
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  
+  
+
+
+<!-- Header -->
+
+<div class="github-docwidget-include" style="border: 1px solid #ddd; border-bottom: 0; padding: 4px; background-color: #4285f4; margin-bottom: -10px">
+  
+
+  
+  <div style="text-align: right; float: right;">
+    
+    
+      
+      <a class="button" target="_blank" href="https://github.com/GoogleCloudPlatform/python-docs-samples/blob/master/kms/api-client/snippets.py"
+      track-type="github" track-name="gitHubViewButton"
+      track-metadata-link-destination="https://github.com/GoogleCloudPlatform/python-docs-samples/blob/master/kms/api-client/snippets.py">View on GitHub</a>
+    
+    
+    
+    
+    
+    
+    
+    <a href="#" class="button google-feedback" data-p="1634365" data-b="solutions"
+       data-context="kms-add-member-to-cryptokey-policy" track-type="feedback" track-name="sampleFeedback"
+       track-metadata-lang="python" track-metadata-position="kms-add-member-to-cryptokey-policy">Feedback</a>
+    
+  </div>
+  
+
+  <div style="clear: both;"></div>
+
+</div>
+
+
+<!-- Code -->
+<div class="github-docwidget-gitinclude-code">
+
+  
+  
+
+<pre class="prettyprint lang-py" track-metadata-position="GoogleCloudPlatform/python-docs-samples/kms/api-client/snippets.py/master/kms_add_member_to_cryptokey_policy">def add_member_to_crypto_key_policy(
+        project_id, location_id, key_ring_id, crypto_key_id, member, role):
+    &quot;&quot;&quot;Adds a member with a given role to the Identity and Access Management
+    (IAM) policy for a given CryptoKey associated with a KeyRing.&quot;&quot;&quot;
+
+    # Creates an API client for the KMS API.
+    kms_client = googleapiclient.discovery.build(&#39;cloudkms&#39;, &#39;v1&#39;)
+
+    # The resource name of the CryptoKey.
+    parent = &#39;projects/{}/locations/{}/keyRings/{}/cryptoKeys/{}&#39;.format(
+        project_id, location_id, key_ring_id, crypto_key_id)
+
+    # Get the current IAM policy and add the new member to it.
+    crypto_keys = kms_client.projects().locations().keyRings().cryptoKeys()
+    policy_request = crypto_keys.getIamPolicy(resource=parent)
+    policy_response = policy_request.execute()
+    bindings = []
+    if &#39;bindings&#39; in policy_response.keys():
+        bindings = policy_response[&#39;bindings&#39;]
+    members = []
+    members.append(member)
+    new_binding = dict()
+    new_binding[&#39;role&#39;] = role
+    new_binding[&#39;members&#39;] = members
+    bindings.append(new_binding)
+    policy_response[&#39;bindings&#39;] = bindings
+
+    # Set the new IAM Policy.
+    crypto_keys = kms_client.projects().locations().keyRings().cryptoKeys()
+    request = crypto_keys.setIamPolicy(
+        resource=parent, body={&#39;policy&#39;: policy_response})
+    request.execute()
+
+    print_msg = (
+        &#39;Member {} added with role {} to policy for CryptoKey {} in KeyRing {}&#39;
+        .format(member, role, crypto_key_id, key_ring_id))
+    print(print_msg)</pre>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+</section>
+
+
+
+
+
+  
+
+
+
+
+
+
+
+  
+
+
+  
+    
+  
+
+
+  
+
+<section>
+  
+  <h3 id="kms-add-member-to-cryptokey-policy-ruby" track-type="sampleTabNav" track-name="ruby" track-metadata-position="kms-add-member-to-cryptokey-policy">Ruby</h3>
+  
+  
+    
+    <p>
+      For more on installing and creating a Cloud KMS client, refer to
+      <a href="https://cloud.google.com/kms/docs/reference/libraries" track-type="clientLibrariesReference"
+         track-name="ruby" track-metadata-position="kms-add-member-to-cryptokey-policy">Cloud KMS Client Libraries</a>.
+    </p>
+    
+  
+  
+  
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  
+  
+
+
+<!-- Header -->
+
+<div class="github-docwidget-include" style="border: 1px solid #ddd; border-bottom: 0; padding: 4px; background-color: #4285f4; margin-bottom: -10px">
+  
+
+  
+  <div style="text-align: right; float: right;">
+    
+    
+      
+      <a class="button" target="_blank" href="https://github.com/GoogleCloudPlatform/ruby-docs-samples/blob/master/kms/kms.rb"
+      track-type="github" track-name="gitHubViewButton"
+      track-metadata-link-destination="https://github.com/GoogleCloudPlatform/ruby-docs-samples/blob/master/kms/kms.rb">View on GitHub</a>
+    
+    
+    
+    
+    
+    
+    
+    <a href="#" class="button google-feedback" data-p="1634365" data-b="solutions"
+       data-context="kms-add-member-to-cryptokey-policy" track-type="feedback" track-name="sampleFeedback"
+       track-metadata-lang="ruby" track-metadata-position="kms-add-member-to-cryptokey-policy">Feedback</a>
+    
+  </div>
+  
+
+  <div style="clear: both;"></div>
+
+</div>
+
+
+<!-- Code -->
+<div class="github-docwidget-gitinclude-code">
+
+  
+  
+
+<pre class="prettyprint lang-rb" track-metadata-position="GoogleCloudPlatform/ruby-docs-samples/kms/kms.rb/master/kms_add_member_to_cryptokey_policy"># project_id    = &quot;Your Google Cloud project ID&quot;
+# location_id   = &quot;The location of the key ring&quot;
+# key_ring_id   = &quot;The ID of the key ring&quot;
+# crypto_key_id = &quot;The ID of the crypto key&quot;
+# member        = &quot;Member to add to the crypto key policy&quot;
+# role          = &quot;Role assignment for new member&quot;
+
+require &quot;google/apis/cloudkms_v1&quot;
+
+# Initialize the client and authenticate with the specified scope
+Cloudkms = Google::Apis::CloudkmsV1
+kms_client = Cloudkms::CloudKMSService.new
+kms_client.authorization = Google::Auth.get_application_default(
+  &quot;https://www.googleapis.com/auth/cloud-platform&quot;
+)
+
+# The resource name of the crypto key
+resource = &quot;projects/#{project_id}/locations/#{location_id}/&quot; +
+           &quot;keyRings/#{key_ring_id}/cryptoKeys/#{crypto_key_id}&quot;
+
+# Get the current IAM policy
+policy = kms_client.get_project_location_key_ring_crypto_key_iam_policy resource
+
+# Add new member to current bindings
+policy.bindings ||= []
+policy.bindings &lt;&lt; Cloudkms::Binding.new(members: [member], role: role)
+
+# Update IAM policy
+policy_request = Cloudkms::SetIamPolicyRequest.new policy: policy
+kms_client.set_crypto_key_iam_policy resource, policy_request
+
+puts &quot;Member #{member} added to policy for &quot; +
+     &quot;crypto key #{crypto_key_id} in key ring #{key_ring_id}&quot;</pre>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+</section>
+
+
+
+
+
+</div></p>
+<p>To add a policy binding at the key ring level:</p>
+
+
+<div id="kms-add-member-to-keyring-policy-code-sample" class="ds-selector-tabs" data-ds-scope="code-sample">
+  
+
+
+
+
+
+
+
+  
+
+
+  
+    
+  
+
+
+<section>
+  
+  <h3 id="kms-add-member-to-keyring-policy-cli" track-type="sampleTabNav" track-name="cli" track-metadata-position="kms-add-member-to-keyring-policy">Command-line</h3>
+  
+  
+  
+  
+<pre class="notranslate prettyprint devsite-click-to-copy" suppresswarning="suppresswarning">
+gcloud kms keyrings add-iam-policy-binding KEYRING --location LOCATION --member user:USER_EMAIL --role roles/ROLE_NAME
+</pre>
+
+</section>
+
+
+
+
+
+  
+
+
+
+
+
+
+
+  
+
+
+  
+    
+  
+
+
+  
+
+<section>
+  
+  <h3 id="kms-add-member-to-keyring-policy-csharp" track-type="sampleTabNav" track-name="csharp" track-metadata-position="kms-add-member-to-keyring-policy">C#</h3>
+  
+  
+    
+    <p>
+      For more on installing and creating a Cloud KMS client, refer to
+      <a href="https://cloud.google.com/kms/docs/reference/libraries" track-type="clientLibrariesReference"
+         track-name="csharp" track-metadata-position="kms-add-member-to-keyring-policy">Cloud KMS Client Libraries</a>.
+    </p>
+    
+  
+  
+  
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  
+  
+  
+
+
+<!-- Header -->
+
+<div class="github-docwidget-include" style="border: 1px solid #ddd; border-bottom: 0; padding: 4px; background-color: #4285f4; margin-bottom: -10px">
+  
+
+  
+  <div style="text-align: right; float: right;">
+    
+    
+      
+      <a class="button" target="_blank" href="https://github.com/GoogleCloudPlatform/dotnet-docs-samples/blob/2ec373efac86f3e589ff98ac8abf5d28b29b1578/kms/api/Program.cs"
+      track-type="github" track-name="gitHubViewButton"
+      track-metadata-link-destination="https://github.com/GoogleCloudPlatform/dotnet-docs-samples/blob/2ec373efac86f3e589ff98ac8abf5d28b29b1578/kms/api/Program.cs">View on GitHub</a>
+    
+    
+    
+    
+    
+    
+    
+    <a href="#" class="button google-feedback" data-p="1634365" data-b="solutions"
+       data-context="kms-add-member-to-keyring-policy" track-type="feedback" track-name="sampleFeedback"
+       track-metadata-lang="csharp" track-metadata-position="kms-add-member-to-keyring-policy">Feedback</a>
+    
+  </div>
+  
+
+  <div style="clear: both;"></div>
+
+</div>
+
+
+<!-- Code -->
+<div class="github-docwidget-gitinclude-code">
+
+  
+  
+
+<pre class="prettyprint " track-metadata-position="GoogleCloudPlatform/dotnet-docs-samples/kms/api/Program.cs/2ec373efac86f3e589ff98ac8abf5d28b29b1578/kms_add_member_to_keyring_policy">      public static object AddMemberToKeyRingPolicy(string projectId, string locationId,
+          string keyRingId, string role, string member)
+      {
+          var cloudKms = CreateAuthorizedClient();
+          // Generate the full path of the parent to use for updating the key ring IAM policy.
+          var parent = $&quot;projects/{projectId}/locations/{locationId}/keyRings/{keyRingId}&quot;;
+          SetIamPolicyRequest setIamPolicyRequest = new SetIamPolicyRequest();
+          var result = cloudKms.Projects.Locations.KeyRings.GetIamPolicy(parent).Execute();
+          if (result.Bindings != null)
+          {
+              // Policy already exists, so add a new Binding to it.
+              Binding bindingToAdd = new Binding();
+              bindingToAdd.Role = role;
+              string[] testMembers = { member };
+              bindingToAdd.Members = testMembers;
+              result.Bindings.Add(bindingToAdd);
+              setIamPolicyRequest.Policy = result;
+          }
+          else
+          {
+              // Policy does not yet exist, so create a new one
+              Policy newPolicy = new Policy();
+              newPolicy.Bindings = new List&lt;Binding&gt;();
+              Binding bindingToAdd = new Binding();
+              bindingToAdd.Role = role;
+              string[] testMembers = { member };
+              bindingToAdd.Members = testMembers;
+              newPolicy.Bindings.Add(bindingToAdd);
+              setIamPolicyRequest.Policy = newPolicy;
+          }
+          var request = new ProjectsResource.LocationsResource.KeyRingsResource
+              .SetIamPolicyRequest(cloudKms, setIamPolicyRequest, parent);
+          var setIamPolicyResult = request.Execute();
+          var updateResult = cloudKms.Projects.Locations.KeyRings.GetIamPolicy(parent).Execute();
+          updateResult.Bindings.ToList().ForEach(response =&gt;
+          {
+              Console.WriteLine($&quot;Role: {response.Role}&quot;);
+              response.Members.ToList().ForEach(memberFound =&gt;
+              {
+                  Console.WriteLine($&quot;  Member: {memberFound}&quot;);
+              });
+          });
+          return 0;
+      }</pre>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+</section>
+
+
+
+
+
+  
+
+
+
+
+
+
+
+  
+
+
+  
+    
+  
+
+
+  
+
+<section>
+  
+  <h3 id="kms-add-member-to-keyring-policy-go" track-type="sampleTabNav" track-name="go" track-metadata-position="kms-add-member-to-keyring-policy">Go</h3>
+  
+  
+    
+    <p>
+      For more on installing and creating a Cloud KMS client, refer to
+      <a href="https://cloud.google.com/kms/docs/reference/libraries" track-type="clientLibrariesReference"
+         track-name="go" track-metadata-position="kms-add-member-to-keyring-policy">Cloud KMS Client Libraries</a>.
+    </p>
+    
+  
+  
+  
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  
+  
+
+
+<!-- Header -->
+
+<div class="github-docwidget-include" style="border: 1px solid #ddd; border-bottom: 0; padding: 4px; background-color: #4285f4; margin-bottom: -10px">
+  
+
+  
+  <div style="text-align: right; float: right;">
+    
+    
+      
+      <a class="button" target="_blank" href="https://github.com/GoogleCloudPlatform/golang-samples/blob/master/kms/snippets/snippet_test.go"
+      track-type="github" track-name="gitHubViewButton"
+      track-metadata-link-destination="https://github.com/GoogleCloudPlatform/golang-samples/blob/master/kms/snippets/snippet_test.go">View on GitHub</a>
+    
+    
+    
+    
+    
+    
+    
+    <a href="#" class="button google-feedback" data-p="1634365" data-b="solutions"
+       data-context="kms-add-member-to-keyring-policy" track-type="feedback" track-name="sampleFeedback"
+       track-metadata-lang="go" track-metadata-position="kms-add-member-to-keyring-policy">Feedback</a>
+    
+  </div>
+  
+
+  <div style="clear: both;"></div>
+
+</div>
+
+
+<!-- Code -->
+<div class="github-docwidget-gitinclude-code">
+
+  
+  
+
+<pre class="prettyprint lang-go" track-metadata-position="GoogleCloudPlatform/golang-samples/kms/snippets/snippet_test.go/master/((?:\n//[^\n]*)*?\nfunc[^\n]*? addMemberRingPolicy\(.+?\n})">
+func addMemberRingPolicy(project, keyRing, role, member string) error {
+	ctx := context.Background()
+	authedClient, err := google.DefaultClient(ctx, cloudkms.CloudPlatformScope)
+	if err != nil {
+		return err
+	}
+	client, err := cloudkms.New(authedClient)
+	if err != nil {
+		return err
+	}
+	location := &quot;global&quot;
+	parent := fmt.Sprintf(&quot;projects/%s/locations/%s/keyRings/%s&quot;,
+		project, location, keyRing)
+
+	policy, err := client.Projects.Locations.KeyRings.GetIamPolicy(parent).Do()
+	if err != nil {
+		return err
+	}
+	policy.Bindings = append(policy.Bindings, &amp;cloudkms.Binding{
+		Role:    role,
+		Members: []string{member},
+	})
+	if err != nil {
+		return err
+	}
+
+	_, err = client.Projects.Locations.KeyRings.SetIamPolicy(
+		parent, &amp;cloudkms.SetIamPolicyRequest{
+			Policy: policy,
+		}).Do()
+	if err != nil {
+		return err
+	}
+
+	return nil
+}</pre>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+</section>
+
+
+
+
+
+  
+
+
+
+
+
+
+
+  
+
+
+  
+    
+  
+
+
+  
+
+<section>
+  
+  <h3 id="kms-add-member-to-keyring-policy-java" track-type="sampleTabNav" track-name="java" track-metadata-position="kms-add-member-to-keyring-policy">Java</h3>
+  
+  
+    
+    <p>
+      For more on installing and creating a Cloud KMS client, refer to
+      <a href="https://cloud.google.com/kms/docs/reference/libraries" track-type="clientLibrariesReference"
+         track-name="java" track-metadata-position="kms-add-member-to-keyring-policy">Cloud KMS Client Libraries</a>.
+    </p>
+    
+  
+  
+  
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  
+  
+
+
+<!-- Header -->
+
+<div class="github-docwidget-include" style="border: 1px solid #ddd; border-bottom: 0; padding: 4px; background-color: #4285f4; margin-bottom: -10px">
+  
+
+  
+  <div style="text-align: right; float: right;">
+    
+    
+      
+      <a class="button" target="_blank" href="https://github.com/GoogleCloudPlatform/java-docs-samples/blob/master/kms/src/main/java/com/example/Snippets.java"
+      track-type="github" track-name="gitHubViewButton"
+      track-metadata-link-destination="https://github.com/GoogleCloudPlatform/java-docs-samples/blob/master/kms/src/main/java/com/example/Snippets.java">View on GitHub</a>
+    
+    
+    
+    
+    
+    
+    
+    <a href="#" class="button google-feedback" data-p="1634365" data-b="solutions"
+       data-context="kms-add-member-to-keyring-policy" track-type="feedback" track-name="sampleFeedback"
+       track-metadata-lang="java" track-metadata-position="kms-add-member-to-keyring-policy">Feedback</a>
+    
+  </div>
+  
+
+  <div style="clear: both;"></div>
+
+</div>
+
+
+<!-- Code -->
+<div class="github-docwidget-gitinclude-code">
+
+  
+  
+
+<pre class="prettyprint lang-java" track-metadata-position="GoogleCloudPlatform/java-docs-samples/kms/src/main/java/com/example/Snippets.java/master/kms_add_member_to_keyring_policy">
+/**
+ * Adds the given member to the given keyring, with the given role.
+ *
+ * @param projectId The id of the project.
+ * @param locationId The location id of the key.
+ * @param keyRingId The id of the keyring.
+ * @param member The member to add. Must be in the proper format, eg:
+ *
+ * allUsers user:$userEmail serviceAccount:$serviceAccountEmail
+ *
+ * See https://g.co/cloud/kms/docs/reference/rest/v1/Policy#binding for more details.
+ * @param role Must be in one of the following formats: roles/[role]
+ * organizations/[organizationId]/roles/[role] projects/[projectId]/roles/[role]
+ *
+ * See https://g.co/cloud/iam/docs/understanding-roles for available values for [role].
+ */
+public static Policy addMemberToKeyRingPolicy(
+    String projectId, String locationId, String keyRingId, String member, String role)
+    throws IOException {
+  // Create the Cloud KMS client.
+  CloudKMS kms = createAuthorizedClient();
+
+  // The resource name of the keyring version
+  String keyring = String.format(
+      &quot;projects/%s/locations/%s/keyRings/%s&quot;,
+      projectId, locationId, keyRingId);
+
+  // Get the current IAM policy
+  Policy iamPolicy = getKeyRingPolicy(projectId, locationId, keyRingId);
+
+  // Add the new account to it.
+  Binding newBinding = new Binding()
+      .setRole(role)
+      .setMembers(Collections.singletonList(member));
+  List&lt;Binding&gt; bindings = iamPolicy.getBindings();
+  if (null == bindings) {
+    bindings = Collections.singletonList(newBinding);
+  } else {
+    bindings.add(newBinding);
+  }
+  iamPolicy.setBindings(bindings);
+
+  // Set the new IAM Policy.
+  Policy newIamPolicy = kms.projects().locations()
+      .keyRings()
+      .setIamPolicy(keyring, new SetIamPolicyRequest().setPolicy(iamPolicy))
+      .execute();
+
+  System.out.println(&quot;Response: &quot; + newIamPolicy);
+  return newIamPolicy;
+}</pre>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+</section>
+
+
+
+
+
+  
+
+
+
+
+
+
+
+  
+
+
+  
+    
+  
+
+
+  
+
+<section>
+  
+  <h3 id="kms-add-member-to-keyring-policy-nodejs" track-type="sampleTabNav" track-name="nodejs" track-metadata-position="kms-add-member-to-keyring-policy">Node.js</h3>
+  
+  
+    
+    <p>
+      For more on installing and creating a Cloud KMS client, refer to
+      <a href="https://cloud.google.com/kms/docs/reference/libraries" track-type="clientLibrariesReference"
+         track-name="nodejs" track-metadata-position="kms-add-member-to-keyring-policy">Cloud KMS Client Libraries</a>.
+    </p>
+    
+  
+  
+  
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  
+  
+
+
+<!-- Header -->
+
+<div class="github-docwidget-include" style="border: 1px solid #ddd; border-bottom: 0; padding: 4px; background-color: #4285f4; margin-bottom: -10px">
+  
+
+  
+  <div style="text-align: right; float: right;">
+    
+    
+      
+      <a class="button" target="_blank" href="https://github.com/GoogleCloudPlatform/nodejs-docs-samples/blob/master/kms/keys.js"
+      track-type="github" track-name="gitHubViewButton"
+      track-metadata-link-destination="https://github.com/GoogleCloudPlatform/nodejs-docs-samples/blob/master/kms/keys.js">View on GitHub</a>
+    
+    
+    
+    
+    
+    
+    
+    <a href="#" class="button google-feedback" data-p="1634365" data-b="solutions"
+       data-context="kms-add-member-to-keyring-policy" track-type="feedback" track-name="sampleFeedback"
+       track-metadata-lang="nodejs" track-metadata-position="kms-add-member-to-keyring-policy">Feedback</a>
+    
+  </div>
+  
+
+  <div style="clear: both;"></div>
+
+</div>
+
+
+<!-- Code -->
+<div class="github-docwidget-gitinclude-code">
+
+  
+  
+
+<pre class="prettyprint lang-js" track-metadata-position="GoogleCloudPlatform/nodejs-docs-samples/kms/keys.js/master/kms_add_member_to_keyring_policy">// Your Google Cloud Platform project ID
+// const projectId = &#39;YOUR_PROJECT_ID&#39;;
+
+// The location of the key ring, e.g. &quot;global&quot;
+// const locationId = &#39;global&#39;;
+
+// The name of the key ring, e.g. &quot;my-key-ring&quot;
+// const keyRingId = &#39;my-key-ring&#39;;
+
+// The member to add to the key ring, e.g. &quot;user:developer@company.com&quot;
+// const member = &#39;user:developer@company.com&#39;;
+
+// The role to give the member, e.g. &quot;roles/viewer&quot;
+// const role = &#39;roles/viewer&#39;;
+
+// Builds and authorizes a Cloud KMS client
+buildAndAuthorizeService((err, cloudkms) =&gt; {
+  if (err) {
+    console.log(err);
+    return;
+  }
+
+  let request = {
+    // This will be a path parameter in the request URL
+    resource_: `projects/${projectId}/locations/${locationId}/keyRings/${keyRingId}`
+  };
+
+  // Gets the IAM policy of a key ring
+  cloudkms.projects.locations.keyRings.getIamPolicy(request, (err, policy) =&gt; {
+    if (err) {
+      console.log(err);
+      return;
+    }
+
+    policy = Object.assign({ bindings: [] }, policy.data);
+
+    const index = policy.bindings.findIndex((binding) =&gt; binding.role === role);
+
+    // Add the role/member combo to the policy
+    const binding = Object.assign({
+      role: role,
+      members: []
+    }, policy.bindings[index]);
+    if (index === -1) {
+      policy.bindings.push(binding);
+    }
+    if (!binding.members.includes(member)) {
+      binding.members.push(member);
+    }
+
+    request = {
+      // This will be a path parameter in the request URL
+      resource_: `projects/${projectId}/locations/${locationId}/keyRings/${keyRingId}`,
+      // This will be the request body
+      resource: {
+        policy: policy
+      }
+    };
+
+    // Adds the member/role combo to the policy of the key ring
+    cloudkms.projects.locations.keyRings.setIamPolicy(request, (err, policy) =&gt; {
+      if (err) {
+        console.log(err);
+        return;
+      }
+
+      console.log(`${member}/${role} combo added to policy for key ring ${keyRingId}.`);
+      if (policy.data.bindings) {
+        policy.data.bindings.forEach((binding) =&gt; {
+          if (binding.members &amp;&amp; binding.members.length) {
+            console.log(`${binding.role}:`);
+            binding.members.forEach((member) =&gt; {
+              console.log(`  ${member}`);
+            });
+          }
+        });
+      } else {
+        console.log(`Policy for key ring ${keyRingId} is empty.`);
+      }
+    });
+  });
+});
+
+function buildAndAuthorizeService (callback) {
+  // Imports the Google APIs client library
+  const google = require(&#39;googleapis&#39;).google;
+
+  // Acquires credentials
+  google.auth.getApplicationDefault((err, authClient) =&gt; {
+    if (err) {
+      callback(err);
+      return;
+    }
+
+    if (authClient.createScopedRequired &amp;&amp; authClient.createScopedRequired()) {
+      authClient = authClient.createScoped([
+        &#39;https://www.googleapis.com/auth/cloud-platform&#39;
+      ]);
+    }
+
+    // Instantiates an authorized client
+    const cloudkms = google.cloudkms({
+      version: &#39;v1&#39;,
+      auth: authClient
+    });
+
+    callback(null, cloudkms);
+  });
+}</pre>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+</section>
+
+
+
+
+
+  
+
+
+
+
+
+
+
+  
+
+
+  
+    
+  
+
+
+  
+
+<section>
+  
+  <h3 id="kms-add-member-to-keyring-policy-php" track-type="sampleTabNav" track-name="php" track-metadata-position="kms-add-member-to-keyring-policy">PHP</h3>
+  
+  
+    
+    <p>
+      For more on installing and creating a Cloud KMS client, refer to
+      <a href="https://cloud.google.com/kms/docs/reference/libraries" track-type="clientLibrariesReference"
+         track-name="php" track-metadata-position="kms-add-member-to-keyring-policy">Cloud KMS Client Libraries</a>.
+    </p>
+    
+  
+  
+  
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  
+  
+
+
+<!-- Header -->
+
+<div class="github-docwidget-include" style="border: 1px solid #ddd; border-bottom: 0; padding: 4px; background-color: #4285f4; margin-bottom: -10px">
+  
+
+  
+  <div style="text-align: right; float: right;">
+    
+    
+      
+      <a class="button" target="_blank" href="https://github.com/GoogleCloudPlatform/php-docs-samples/blob/master/kms/src/functions.php"
+      track-type="github" track-name="gitHubViewButton"
+      track-metadata-link-destination="https://github.com/GoogleCloudPlatform/php-docs-samples/blob/master/kms/src/functions.php">View on GitHub</a>
+    
+    
+    
+    
+    
+    
+    
+    <a href="#" class="button google-feedback" data-p="1634365" data-b="solutions"
+       data-context="kms-add-member-to-keyring-policy" track-type="feedback" track-name="sampleFeedback"
+       track-metadata-lang="php" track-metadata-position="kms-add-member-to-keyring-policy">Feedback</a>
+    
+  </div>
+  
+
+  <div style="clear: both;"></div>
+
+</div>
+
+
+<!-- Code -->
+<div class="github-docwidget-gitinclude-code">
+
+  
+  
+
+<pre class="prettyprint lang-php" track-metadata-position="GoogleCloudPlatform/php-docs-samples/kms/src/functions.php/master/kms_add_member_to_keyring_policy">/**
+ * Add a member to a KeyRing IAM policy.
+ *
+ * @param string $projectId
+ * @param string $keyRingId
+ * @param string $member Must be in the format &quot;user:$userEmail&quot; or
+ *        &quot;serviceAccount:$serviceAccountEmail&quot;
+ * @param string $role Must be in the format &quot;roles/$role&quot;,
+ *        &quot;organizations/$organizationId/roles/$role&quot;, or &quot;projects/$projectId/roles/$role&quot;
+ * @param string $locationId [optional]
+ * @return null
+ */
+function add_member_to_keyring_policy($projectId, $keyRingId, $member, $role, $locationId = &#39;global&#39;)
+{
+    // Instantiate the client, authenticate, and add scopes.
+    $client = new Google_Client();
+    $client-&gt;useApplicationDefaultCredentials();
+    $client-&gt;addScope(&#39;https://www.googleapis.com/auth/cloud-platform&#39;);
+
+    // Create the Cloud KMS client.
+    $kms = new Google_Service_CloudKMS($client);
+
+    // The resource name of the KeyRing.
+    $parent = sprintf(&#39;projects/%s/locations/%s/keyRings/%s&#39;,
+        $projectId,
+        $locationId,
+        $keyRingId
+    );
+
+    // Get the current IAM policy and add the new account to it.
+    $policy = $kms-&gt;projects_locations_keyRings-&gt;getIamPolicy($parent);
+    $bindings = $policy-&gt;getBindings();
+    $bindings[] = new Google_Service_CloudKMS_Binding([
+        &#39;members&#39; =&gt; [$member],
+        &#39;role&#39; =&gt; $role,
+    ]);
+    $policy-&gt;setBindings($bindings);
+
+    // Set the new IAM Policy.
+    $request = new Google_Service_CloudKMS_SetIamPolicyRequest([&#39;policy&#39; =&gt; $policy]);
+    $kms-&gt;projects_locations_keyRings-&gt;setIamPolicy(
+        $parent,
+        $request
+    );
+
+    printf(&#39;Member %s added to policy for keyRing %s&#39; . PHP_EOL, $member, $keyRingId);
+}</pre>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+</section>
+
+
+
+
+
+  
+
+
+
+
+
+
+
+  
+
+
+  
+    
+  
+
+
+  
+
+<section>
+  
+  <h3 id="kms-add-member-to-keyring-policy-ruby" track-type="sampleTabNav" track-name="ruby" track-metadata-position="kms-add-member-to-keyring-policy">Ruby</h3>
+  
+  
+    
+    <p>
+      For more on installing and creating a Cloud KMS client, refer to
+      <a href="https://cloud.google.com/kms/docs/reference/libraries" track-type="clientLibrariesReference"
+         track-name="ruby" track-metadata-position="kms-add-member-to-keyring-policy">Cloud KMS Client Libraries</a>.
+    </p>
+    
+  
+  
+  
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  
+  
+
+
+<!-- Header -->
+
+<div class="github-docwidget-include" style="border: 1px solid #ddd; border-bottom: 0; padding: 4px; background-color: #4285f4; margin-bottom: -10px">
+  
+
+  
+  <div style="text-align: right; float: right;">
+    
+    
+      
+      <a class="button" target="_blank" href="https://github.com/GoogleCloudPlatform/ruby-docs-samples/blob/master/kms/kms.rb"
+      track-type="github" track-name="gitHubViewButton"
+      track-metadata-link-destination="https://github.com/GoogleCloudPlatform/ruby-docs-samples/blob/master/kms/kms.rb">View on GitHub</a>
+    
+    
+    
+    
+    
+    
+    
+    <a href="#" class="button google-feedback" data-p="1634365" data-b="solutions"
+       data-context="kms-add-member-to-keyring-policy" track-type="feedback" track-name="sampleFeedback"
+       track-metadata-lang="ruby" track-metadata-position="kms-add-member-to-keyring-policy">Feedback</a>
+    
+  </div>
+  
+
+  <div style="clear: both;"></div>
+
+</div>
+
+
+<!-- Code -->
+<div class="github-docwidget-gitinclude-code">
+
+  
+  
+
+<pre class="prettyprint lang-rb" track-metadata-position="GoogleCloudPlatform/ruby-docs-samples/kms/kms.rb/master/kms_add_member_to_keyring_policy"># project_id  = &quot;Your Google Cloud project ID&quot;
+# location_id = &quot;The location of the key ring&quot;
+# key_ring_id = &quot;The ID of the key ring&quot;
+# member      = &quot;Member to add to the key ring policy&quot;
+# role        = &quot;Role assignment for new member&quot;
+
+require &quot;google/apis/cloudkms_v1&quot;
+
+# Initialize the client and authenticate with the specified scope
+Cloudkms = Google::Apis::CloudkmsV1
+kms_client = Cloudkms::CloudKMSService.new
+kms_client.authorization = Google::Auth.get_application_default(
+  &quot;https://www.googleapis.com/auth/cloud-platform&quot;
+)
+
+# The resource name of the key ring
+resource = &quot;projects/#{project_id}/locations/#{location_id}/&quot; +
+           &quot;keyRings/#{key_ring_id}&quot;
+
+# Get the current IAM policy
+policy = kms_client.get_project_location_key_ring_iam_policy resource
+
+# Add new member to current bindings
+policy.bindings ||= []
+policy.bindings &lt;&lt; Cloudkms::Binding.new(members: [member], role: role)
+
+# Update IAM policy
+policy_request = Cloudkms::SetIamPolicyRequest.new policy: policy
+kms_client.set_key_ring_iam_policy resource, policy_request
+
+puts &quot;Member #{member} added to policy for &quot; +
+     &quot;key ring #{key_ring_id}&quot;</pre>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+</section>
+
+
+
+
+
+</div></p>
+<p>Since keys belong to key rings, and key rings belong to Projects, a user
+with a specific role or permission at a higher level in that hierarchy inherits
+the same permissions on the child resources. That is, a user who has the role
+of <code>owner</code> on a Project is also an <code>owner</code> on all the key rings and keys
+in that project. Similarly, if a user is granted the <code>cloudkms.admin</code> role on a
+key ring, they have the associated permissions on the keys in that key ring.</p>
+<p>The inverse is not true - that is, a user with a permission on a key who
+is not also granted a permission on the parent key ring has no permissions on
+that key ring.</p>
+<aside class="note"><strong>Note:</strong><span> a user that only has permissions on key rings or keys, but not on the
+project itself, will not be able to manage key resources in the Cloud Console.
+To enable their use of the Cloud Console, depending on security requirements,
+one option might be to also grant that user a <code>viewer</code> role on the project.</span></aside>
+<p>If necessary, a member and role can be removed from a key ring or key
+policy:</p>
+
+
+<div id="kms-remove-member-from-cryptokey-policy-code-sample" class="ds-selector-tabs" data-ds-scope="code-sample">
+  
+
+
+
+
+
+
+
+  
+
+
+  
+    
+  
+
+
+<section>
+  
+  <h3 id="kms-remove-member-from-cryptokey-policy-cli" track-type="sampleTabNav" track-name="cli" track-metadata-position="kms-remove-member-from-cryptokey-policy">Command-line</h3>
+  
+  
+  
+  
+<pre class="notranslate prettyprint devsite-click-to-copy" suppresswarning="suppresswarning">
+gcloud kms keys remove-iam-policy-binding CRYPTOKEY --location LOCATION --keyring KEYRING --member user:USER_EMAIL --role roles/ROLE_NAME
+</pre>
+
+</section>
+
+
+
+
+
+  
+
+
+
+
+
+
+
+  
+
+
+  
+    
+  
+
+
+  
+
+<section>
+  
+  <h3 id="kms-remove-member-from-cryptokey-policy-csharp" track-type="sampleTabNav" track-name="csharp" track-metadata-position="kms-remove-member-from-cryptokey-policy">C#</h3>
+  
+  
+    
+    <p>
+      For more on installing and creating a Cloud KMS client, refer to
+      <a href="https://cloud.google.com/kms/docs/reference/libraries" track-type="clientLibrariesReference"
+         track-name="csharp" track-metadata-position="kms-remove-member-from-cryptokey-policy">Cloud KMS Client Libraries</a>.
+    </p>
+    
+  
+  
+  
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  
+  
+  
+
+
+<!-- Header -->
+
+<div class="github-docwidget-include" style="border: 1px solid #ddd; border-bottom: 0; padding: 4px; background-color: #4285f4; margin-bottom: -10px">
+  
+
+  
+  <div style="text-align: right; float: right;">
+    
+    
+      
+      <a class="button" target="_blank" href="https://github.com/GoogleCloudPlatform/dotnet-docs-samples/blob/2ec373efac86f3e589ff98ac8abf5d28b29b1578/kms/api/Program.cs"
+      track-type="github" track-name="gitHubViewButton"
+      track-metadata-link-destination="https://github.com/GoogleCloudPlatform/dotnet-docs-samples/blob/2ec373efac86f3e589ff98ac8abf5d28b29b1578/kms/api/Program.cs">View on GitHub</a>
+    
+    
+    
+    
+    
+    
+    
+    <a href="#" class="button google-feedback" data-p="1634365" data-b="solutions"
+       data-context="kms-remove-member-from-cryptokey-policy" track-type="feedback" track-name="sampleFeedback"
+       track-metadata-lang="csharp" track-metadata-position="kms-remove-member-from-cryptokey-policy">Feedback</a>
+    
+  </div>
+  
+
+  <div style="clear: both;"></div>
+
+</div>
+
+
+<!-- Code -->
+<div class="github-docwidget-gitinclude-code">
+
+  
+  
+
+<pre class="prettyprint " track-metadata-position="GoogleCloudPlatform/dotnet-docs-samples/kms/api/Program.cs/2ec373efac86f3e589ff98ac8abf5d28b29b1578/kms_remove_member_from_cryptokey_policy">      public static object RemoveMemberFromCryptoKeyPolicy(string projectId, string locationId,
+          string keyRingId, string cryptoKeyId, string role, string member)
+      {
+          var cloudKms = CreateAuthorizedClient();
+          // Generate the full path of the parent to use for updating the crypto key IAM policy.
+          var parent = $&quot;projects/{projectId}/locations/{locationId}/keyRings/{keyRingId}/cryptoKeys/{cryptoKeyId}&quot;;
+          var result = cloudKms.Projects.Locations.KeyRings.CryptoKeys.GetIamPolicy(parent).Execute();
+          if (result.Bindings != null)
+          {
+              result.Bindings.ToList().ForEach(response =&gt;
+              {
+                  if (response.Role == role)
+                  {
+                      // Remove the role/member combo from the crypto key IAM policy.
+                      response.Members = response.Members.Where(m =&gt; m != member).ToList();
+                  }
+              });
+              // Set the modified crypto key IAM policy to be the cryto key&#39;s current IAM policy.
+              SetIamPolicyRequest setIamPolicyRequest = new SetIamPolicyRequest();
+              setIamPolicyRequest.Policy = result;
+              var request = new ProjectsResource.LocationsResource.KeyRingsResource.CryptoKeysResource
+                  .SetIamPolicyRequest(cloudKms, setIamPolicyRequest, parent);
+              var setIamPolicyResult = request.Execute();
+              // Get and display the modified crypto key IAM policy.
+              var resultAfterUpdate = cloudKms.Projects.Locations.KeyRings.CryptoKeys.GetIamPolicy(parent).Execute();
+              if (resultAfterUpdate.Bindings != null)
+              {
+                  Console.WriteLine($&quot;Policy Bindings: {resultAfterUpdate.Bindings}&quot;);
+                  resultAfterUpdate.Bindings.ToList().ForEach(response =&gt;
+                  {
+                      Console.WriteLine($&quot;Role: {response.Role}&quot;);
+                      response.Members.ToList().ForEach(memberAfterUpdate =&gt;
+                      {
+                          Console.WriteLine($&quot;  Member: {memberAfterUpdate}&quot;);
+                      });
+                  });
+              }
+              else
+              {
+                  Console.WriteLine($&quot;Empty IAM policy found for CryptoKey: {parent}&quot;);
+              }
+          }
+          else
+          {
+              Console.WriteLine($&quot;Empty IAM policy found for CryptoKey: {parent}&quot;);
+          }
+          return 0;
+      }</pre>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+</section>
+
+
+
+
+
+  
+
+
+
+
+
+
+
+  
+
+
+  
+    
+  
+
+
+  
+
+<section>
+  
+  <h3 id="kms-remove-member-from-cryptokey-policy-go" track-type="sampleTabNav" track-name="go" track-metadata-position="kms-remove-member-from-cryptokey-policy">Go</h3>
+  
+  
+    
+    <p>
+      For more on installing and creating a Cloud KMS client, refer to
+      <a href="https://cloud.google.com/kms/docs/reference/libraries" track-type="clientLibrariesReference"
+         track-name="go" track-metadata-position="kms-remove-member-from-cryptokey-policy">Cloud KMS Client Libraries</a>.
+    </p>
+    
+  
+  
+  
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  
+  
+
+
+<!-- Header -->
+
+<div class="github-docwidget-include" style="border: 1px solid #ddd; border-bottom: 0; padding: 4px; background-color: #4285f4; margin-bottom: -10px">
+  
+
+  
+  <div style="text-align: right; float: right;">
+    
+    
+      
+      <a class="button" target="_blank" href="https://github.com/GoogleCloudPlatform/golang-samples/blob/master/kms/snippets/snippet_test.go"
+      track-type="github" track-name="gitHubViewButton"
+      track-metadata-link-destination="https://github.com/GoogleCloudPlatform/golang-samples/blob/master/kms/snippets/snippet_test.go">View on GitHub</a>
+    
+    
+    
+    
+    
+    
+    
+    <a href="#" class="button google-feedback" data-p="1634365" data-b="solutions"
+       data-context="kms-remove-member-from-cryptokey-policy" track-type="feedback" track-name="sampleFeedback"
+       track-metadata-lang="go" track-metadata-position="kms-remove-member-from-cryptokey-policy">Feedback</a>
+    
+  </div>
+  
+
+  <div style="clear: both;"></div>
+
+</div>
+
+
+<!-- Code -->
+<div class="github-docwidget-gitinclude-code">
+
+  
+  
+
+<pre class="prettyprint lang-go" track-metadata-position="GoogleCloudPlatform/golang-samples/kms/snippets/snippet_test.go/master/((?:\n//[^\n]*)*?\nfunc[^\n]*? getCryptoKeyPolicy\(.+?\n})">
+func getCryptoKeyPolicy(project, keyRing, key string) error {
+	ctx := context.Background()
+	authedClient, err := google.DefaultClient(ctx, cloudkms.CloudPlatformScope)
+	if err != nil {
+		return err
+	}
+	client, err := cloudkms.New(authedClient)
+	if err != nil {
+		return err
+	}
+	location := &quot;global&quot;
+	parent := fmt.Sprintf(&quot;projects/%s/locations/%s/keyRings/%s/cryptoKeyVersions/%s&quot;,
+		project, location, keyRing, key)
+
+	policy, err := client.Projects.Locations.KeyRings.CryptoKeys.GetIamPolicy(parent).Do()
+	if err != nil {
+		return err
+	}
+	for _, binding := range policy.Bindings {
+		log.Printf(&quot;Role: %s\n&quot;, binding.Role)
+		log.Printf(&quot;Members: %v\n&quot;, binding.Members)
+	}
+
+	return nil
+}</pre>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+</section>
+
+
+
+
+
+  
+
+
+
+
+
+
+
+  
+
+
+  
+    
+  
+
+
+  
+
+<section>
+  
+  <h3 id="kms-remove-member-from-cryptokey-policy-java" track-type="sampleTabNav" track-name="java" track-metadata-position="kms-remove-member-from-cryptokey-policy">Java</h3>
+  
+  
+    
+    <p>
+      For more on installing and creating a Cloud KMS client, refer to
+      <a href="https://cloud.google.com/kms/docs/reference/libraries" track-type="clientLibrariesReference"
+         track-name="java" track-metadata-position="kms-remove-member-from-cryptokey-policy">Cloud KMS Client Libraries</a>.
+    </p>
+    
+  
+  
+  
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  
+  
+
+
+<!-- Header -->
+
+<div class="github-docwidget-include" style="border: 1px solid #ddd; border-bottom: 0; padding: 4px; background-color: #4285f4; margin-bottom: -10px">
+  
+
+  
+  <div style="text-align: right; float: right;">
+    
+    
+      
+      <a class="button" target="_blank" href="https://github.com/GoogleCloudPlatform/java-docs-samples/blob/master/kms/src/main/java/com/example/Snippets.java"
+      track-type="github" track-name="gitHubViewButton"
+      track-metadata-link-destination="https://github.com/GoogleCloudPlatform/java-docs-samples/blob/master/kms/src/main/java/com/example/Snippets.java">View on GitHub</a>
+    
+    
+    
+    
+    
+    
+    
+    <a href="#" class="button google-feedback" data-p="1634365" data-b="solutions"
+       data-context="kms-remove-member-from-cryptokey-policy" track-type="feedback" track-name="sampleFeedback"
+       track-metadata-lang="java" track-metadata-position="kms-remove-member-from-cryptokey-policy">Feedback</a>
+    
+  </div>
+  
+
+  <div style="clear: both;"></div>
+
+</div>
+
+
+<!-- Code -->
+<div class="github-docwidget-gitinclude-code">
+
+  
+  
+
+<pre class="prettyprint lang-java" track-metadata-position="GoogleCloudPlatform/java-docs-samples/kms/src/main/java/com/example/Snippets.java/master/kms_remove_member_from_cryptokey_policy">
+/**
+ * Removes the given member from the given policy.
+ */
+public static Policy removeMemberFromCryptoKeyPolicy(
+    String projectId, String locationId, String keyRingId, String cryptoKeyId, String member,
+    String role)
+    throws IOException {
+  // Create the Cloud KMS client.
+  CloudKMS kms = createAuthorizedClient();
+
+  // The resource name of the cryptoKey
+  String cryptoKey = String.format(
+      &quot;projects/%s/locations/%s/keyRings/%s/cryptoKeys/%s&quot;,
+      projectId, locationId, keyRingId, cryptoKeyId);
+
+  // Get the current IAM policy and add the new account to it.
+  Policy iamPolicy = getCryptoKeyPolicy(projectId, locationId, keyRingId, cryptoKeyId);
+
+  if (null == iamPolicy.getBindings()) {
+    // Nothing to remove
+    return null;
+  }
+
+  // Filter out the given member
+  for (Binding b : iamPolicy.getBindings()) {
+    if (role.equals(b.getRole()) &amp;&amp; b.getMembers().contains(member)) {
+      b.getMembers().removeAll(Collections.singletonList(member));
+      break;
+    }
+  }
+
+  // Set the new IAM Policy.
+  Policy newIamPolicy = kms.projects().locations().keyRings()
+      .cryptoKeys()
+      .setIamPolicy(cryptoKey, new SetIamPolicyRequest().setPolicy(iamPolicy))
+      .execute();
+
+  System.out.println(&quot;Response: &quot; + newIamPolicy);
+  return newIamPolicy;
+}</pre>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+</section>
+
+
+
+
+
+  
+
+
+
+
+
+
+
+  
+
+
+  
+    
+  
+
+
+  
+
+<section>
+  
+  <h3 id="kms-remove-member-from-cryptokey-policy-nodejs" track-type="sampleTabNav" track-name="nodejs" track-metadata-position="kms-remove-member-from-cryptokey-policy">Node.js</h3>
+  
+  
+    
+    <p>
+      For more on installing and creating a Cloud KMS client, refer to
+      <a href="https://cloud.google.com/kms/docs/reference/libraries" track-type="clientLibrariesReference"
+         track-name="nodejs" track-metadata-position="kms-remove-member-from-cryptokey-policy">Cloud KMS Client Libraries</a>.
+    </p>
+    
+  
+  
+  
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  
+  
+
+
+<!-- Header -->
+
+<div class="github-docwidget-include" style="border: 1px solid #ddd; border-bottom: 0; padding: 4px; background-color: #4285f4; margin-bottom: -10px">
+  
+
+  
+  <div style="text-align: right; float: right;">
+    
+    
+      
+      <a class="button" target="_blank" href="https://github.com/GoogleCloudPlatform/nodejs-docs-samples/blob/master/kms/keys.js"
+      track-type="github" track-name="gitHubViewButton"
+      track-metadata-link-destination="https://github.com/GoogleCloudPlatform/nodejs-docs-samples/blob/master/kms/keys.js">View on GitHub</a>
+    
+    
+    
+    
+    
+    
+    
+    <a href="#" class="button google-feedback" data-p="1634365" data-b="solutions"
+       data-context="kms-remove-member-from-cryptokey-policy" track-type="feedback" track-name="sampleFeedback"
+       track-metadata-lang="nodejs" track-metadata-position="kms-remove-member-from-cryptokey-policy">Feedback</a>
+    
+  </div>
+  
+
+  <div style="clear: both;"></div>
+
+</div>
+
+
+<!-- Code -->
+<div class="github-docwidget-gitinclude-code">
+
+  
+  
+
+<pre class="prettyprint lang-js" track-metadata-position="GoogleCloudPlatform/nodejs-docs-samples/kms/keys.js/master/kms_remove_member_from_cryptokey_policy">// Your Google Cloud Platform project ID
+// const projectId = &#39;YOUR_PROJECT_ID&#39;;
+
+// The location of the crypto key&#39;s key ring, e.g. &quot;global&quot;
+// const locationId = &#39;global&#39;;
+
+// The name of the crypto key&#39;s key ring, e.g. &quot;my-key-ring&quot;
+// const keyRingId = &#39;my-key-ring&#39;;
+
+// The name of the crypto key, e.g. &quot;my-key&quot;
+// const cryptoKeyId = &#39;my-key&#39;;
+
+// The member to add to the crypto key, e.g. &quot;user:developer@company.com&quot;
+// const member = &#39;user:developer@company.com&#39;;
+
+// The role to give the member, e.g. &quot;roles/viewer&quot;
+// const role = &#39;roles/viewer&#39;;
+
+// Builds and authorizes a Cloud KMS client
+buildAndAuthorizeService((err, cloudkms) =&gt; {
+  if (err) {
+    console.log(err);
+    return;
+  }
+
+  let request = {
+    // This will be a path parameter in the request URL
+    resource_: `projects/${projectId}/locations/${locationId}/keyRings/${keyRingId}/cryptoKeys/${cryptoKeyId}`
+  };
+
+  // Gets the IAM policy of a crypto key
+  cloudkms.projects.locations.keyRings.cryptoKeys.getIamPolicy(request, (err, getResponse) =&gt; {
+    if (err) {
+      console.log(err);
+      return;
+    }
+
+    let policy = Object.assign({ bindings: [] }, getResponse.data);
+
+    let index = policy.bindings.findIndex((binding) =&gt; binding.role === role);
+
+    const binding = Object.assign({
+      role: role,
+      members: []
+    }, policy.bindings[index]);
+    if (index === -1) {
+      return;
+    }
+    if (!binding.members.includes(member)) {
+      return;
+    }
+
+    // Remove the role/member combo from the policy
+    binding.members.splice(binding.members.indexOf(member), 1);
+
+    request = {
+      // This will be a path parameter in the request URL
+      resource_: `projects/${projectId}/locations/${locationId}/keyRings/${keyRingId}/cryptoKeys/${cryptoKeyId}`,
+      // This will be the request body
+      resource: {
+        policy: policy
+      }
+    };
+
+    console.log(JSON.stringify(request, null, 2));
+
+    // Removes the member/role combo from the policy of the crypto key
+    cloudkms.projects.locations.keyRings.cryptoKeys.setIamPolicy(request, (err, setResponse) =&gt; {
+      if (err) {
+        console.log(err);
+        return;
+      }
+
+      console.log(`${member}/${role} combo removed from policy for crypto key ${cryptoKeyId}.`);
+      const policy = setResponse.data;
+      if (policy.bindings) {
+        policy.bindings.forEach((binding) =&gt; {
+          if (binding.members &amp;&amp; binding.members.length) {
+            console.log(`${binding.role}:`);
+            binding.members.forEach((member) =&gt; {
+              console.log(`  ${member}`);
+            });
+          }
+        });
+      } else {
+        console.log(`Policy for crypto key ${cryptoKeyId} is empty.`);
+      }
+    });
+  });
+});
+
+function buildAndAuthorizeService (callback) {
+  // Imports the Google APIs client library
+  const google = require(&#39;googleapis&#39;).google;
+
+  // Acquires credentials
+  google.auth.getApplicationDefault((err, authClient) =&gt; {
+    if (err) {
+      callback(err);
+      return;
+    }
+
+    if (authClient.createScopedRequired &amp;&amp; authClient.createScopedRequired()) {
+      authClient = authClient.createScoped([
+        &#39;https://www.googleapis.com/auth/cloud-platform&#39;
+      ]);
+    }
+
+    // Instantiates an authorized client
+    const cloudkms = google.cloudkms({
+      version: &#39;v1&#39;,
+      auth: authClient
+    });
+
+    callback(null, cloudkms);
+  });
+}</pre>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+</section>
+
+
+
+
+
+  
+
+
+
+
+
+
+
+  
+
+
+  
+    
+  
+
+
+  
+
+<section>
+  
+  <h3 id="kms-remove-member-from-cryptokey-policy-php" track-type="sampleTabNav" track-name="php" track-metadata-position="kms-remove-member-from-cryptokey-policy">PHP</h3>
+  
+  
+    
+    <p>
+      For more on installing and creating a Cloud KMS client, refer to
+      <a href="https://cloud.google.com/kms/docs/reference/libraries" track-type="clientLibrariesReference"
+         track-name="php" track-metadata-position="kms-remove-member-from-cryptokey-policy">Cloud KMS Client Libraries</a>.
+    </p>
+    
+  
+  
+  
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  
+  
+
+
+<!-- Header -->
+
+<div class="github-docwidget-include" style="border: 1px solid #ddd; border-bottom: 0; padding: 4px; background-color: #4285f4; margin-bottom: -10px">
+  
+
+  
+  <div style="text-align: right; float: right;">
+    
+    
+      
+      <a class="button" target="_blank" href="https://github.com/GoogleCloudPlatform/php-docs-samples/blob/master/kms/src/functions.php"
+      track-type="github" track-name="gitHubViewButton"
+      track-metadata-link-destination="https://github.com/GoogleCloudPlatform/php-docs-samples/blob/master/kms/src/functions.php">View on GitHub</a>
+    
+    
+    
+    
+    
+    
+    
+    <a href="#" class="button google-feedback" data-p="1634365" data-b="solutions"
+       data-context="kms-remove-member-from-cryptokey-policy" track-type="feedback" track-name="sampleFeedback"
+       track-metadata-lang="php" track-metadata-position="kms-remove-member-from-cryptokey-policy">Feedback</a>
+    
+  </div>
+  
+
+  <div style="clear: both;"></div>
+
+</div>
+
+
+<!-- Code -->
+<div class="github-docwidget-gitinclude-code">
+
+  
+  
+
+<pre class="prettyprint lang-php" track-metadata-position="GoogleCloudPlatform/php-docs-samples/kms/src/functions.php/master/kms_remove_member_from_cryptokey_policy">/**
+ * Remove a member from a CryptoKey IAM policy.
+ *
+ * @param string $projectId
+ * @param string $keyRingId
+ * @param string $cryptoKeyId
+ * @param string $member Must be in the format &quot;user:$userEmail&quot; or
+ *        &quot;serviceAccount:$serviceAccountEmail&quot;
+ * @param string $role Must be in the format &quot;roles/$role&quot;,
+ *        &quot;organizations/$organizationId/roles/$role&quot;, or &quot;projects/$projectId/roles/$role&quot;
+ * @param string $locationId [optional]
+ * @return null
+ */
+function remove_member_from_cryptokey_policy($projectId, $keyRingId, $cryptoKeyId, $member, $role, $locationId = &#39;global&#39;)
+{
+    // Instantiate the client, authenticate, and add scopes.
+    $client = new Google_Client();
+    $client-&gt;useApplicationDefaultCredentials();
+    $client-&gt;addScope(&#39;https://www.googleapis.com/auth/cloud-platform&#39;);
+
+    // Create the Cloud KMS client.
+    $kms = new Google_Service_CloudKMS($client);
+
+    // The resource name of the KeyRing associated with the CryptoKey.
+    $parent = sprintf(&#39;projects/%s/locations/%s/keyRings/%s/cryptoKeys/%s&#39;,
+        $projectId,
+        $locationId,
+        $keyRingId,
+        $cryptoKeyId
+    );
+
+    // Get the current IAM policy and remove the member from it.
+    $policy = $kms-&gt;projects_locations_keyRings_cryptoKeys-&gt;getIamPolicy($parent);
+    foreach ($policy-&gt;getBindings() as $binding) {
+        if ($binding-&gt;getRole() == $role) {
+            $members = $binding-&gt;getMembers();
+            if (false !== $i = array_search($member, $members)) {
+                unset($members[$i]);
+                $binding-&gt;setMembers($members);
+                break;
+            }
+        }
+    }
+
+    // Set the new IAM Policy.
+    $request = new Google_Service_CloudKMS_SetIamPolicyRequest([&#39;policy&#39; =&gt; $policy]);
+    $kms-&gt;projects_locations_keyRings_cryptoKeys-&gt;setIamPolicy(
+        $parent,
+        $request
+    );
+
+    printf(&#39;Member %s removed from policy for cryptoKey %s in keyRing %s&#39; . PHP_EOL,
+        $member,
+        $cryptoKeyId,
+        $keyRingId);
+}</pre>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+</section>
+
+
+
+
+
+  
+
+
+
+
+
+
+
+  
+
+
+  
+    
+  
+
+
+  
+
+<section>
+  
+  <h3 id="kms-remove-member-from-cryptokey-policy-ruby" track-type="sampleTabNav" track-name="ruby" track-metadata-position="kms-remove-member-from-cryptokey-policy">Ruby</h3>
+  
+  
+    
+    <p>
+      For more on installing and creating a Cloud KMS client, refer to
+      <a href="https://cloud.google.com/kms/docs/reference/libraries" track-type="clientLibrariesReference"
+         track-name="ruby" track-metadata-position="kms-remove-member-from-cryptokey-policy">Cloud KMS Client Libraries</a>.
+    </p>
+    
+  
+  
+  
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  
+  
+
+
+<!-- Header -->
+
+<div class="github-docwidget-include" style="border: 1px solid #ddd; border-bottom: 0; padding: 4px; background-color: #4285f4; margin-bottom: -10px">
+  
+
+  
+  <div style="text-align: right; float: right;">
+    
+    
+      
+      <a class="button" target="_blank" href="https://github.com/GoogleCloudPlatform/ruby-docs-samples/blob/master/kms/kms.rb"
+      track-type="github" track-name="gitHubViewButton"
+      track-metadata-link-destination="https://github.com/GoogleCloudPlatform/ruby-docs-samples/blob/master/kms/kms.rb">View on GitHub</a>
+    
+    
+    
+    
+    
+    
+    
+    <a href="#" class="button google-feedback" data-p="1634365" data-b="solutions"
+       data-context="kms-remove-member-from-cryptokey-policy" track-type="feedback" track-name="sampleFeedback"
+       track-metadata-lang="ruby" track-metadata-position="kms-remove-member-from-cryptokey-policy">Feedback</a>
+    
+  </div>
+  
+
+  <div style="clear: both;"></div>
+
+</div>
+
+
+<!-- Code -->
+<div class="github-docwidget-gitinclude-code">
+
+  
+  
+
+<pre class="prettyprint lang-rb" track-metadata-position="GoogleCloudPlatform/ruby-docs-samples/kms/kms.rb/master/kms_remove_member_from_cryptokey_policy"># project_id    = &quot;Your Google Cloud project ID&quot;
+# location_id   = &quot;The location of the key ring&quot;
+# key_ring_id   = &quot;The ID of the key ring&quot;
+# crypto_key_id = &quot;The ID of the crypto key&quot;
+# member        = &quot;Member to remove to the crypto key policy&quot;
+# role          = &quot;Role assignment for the member&quot;
+
+require &quot;google/apis/cloudkms_v1&quot;
+
+# Initialize the client and authenticate with the specified scope
+Cloudkms = Google::Apis::CloudkmsV1
+kms_client = Cloudkms::CloudKMSService.new
+kms_client.authorization = Google::Auth.get_application_default(
+  &quot;https://www.googleapis.com/auth/cloud-platform&quot;
+)
+
+# The resource name of the crypto key
+resource = &quot;projects/#{project_id}/locations/#{location_id}/&quot; +
+           &quot;keyRings/#{key_ring_id}/cryptoKeys/#{crypto_key_id}&quot;
+
+# Get the current IAM policy
+policy = kms_client.get_project_location_key_ring_crypto_key_iam_policy resource
+
+# Remove a member to current bindings
+if policy.bindings
+  policy.bindings.delete_if do |binding|
+    binding.role.include?(role) &amp;&amp; binding.members.include?(member)
+  end
+end
+
+# Update IAM policy
+policy_request = Cloudkms::SetIamPolicyRequest.new policy: policy
+kms_client.set_crypto_key_iam_policy resource, policy_request
+
+puts &quot;Member #{member} removed from policy for &quot; +
+     &quot;crypto key #{crypto_key_id} in key ring #{key_ring_id}&quot;</pre>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+</section>
+
+
+
+
+
+</div></p>
+<h2 id="granting_permissions_to_use_keys">Granting permissions to use keys</h2>
+<p>To allow a user or service account to use a key to encrypt or decrypt using a
+particular key,
+they must have the <code>cloudkms.cryptoKeyEncrypterDecrypter</code>,
+<code>cloudkms.cryptoKeyEncrypter</code>, <code>cloudkms.cryptoKeyDecrypter</code>, or <code>owner</code> role,
+as per the chart in <a href="https://cloud.google.com/kms/docs/reference/permissions-and-roles">Permissions and Roles</a>.</p>
+<p>With Cloud KMS, you'll likely mostly be using
+<a href="https://cloud.google.com/iam/docs/creating-managing-service-accounts">service accounts</a> to perform key
+operations such as encrypt and decrypt. Usually, the service account's email is
+derived from the service account name, in the format:</p>
+<pre class="prettyprint notranslate" translate="no"><code>SERVICE_ACCOUNT_NAME@PROJECT_NAME.iam.gserviceaccount.com
+</code></pre>
+
+
+
+
+<div id="kms-add-service-account-to-use-key-code-sample" class="ds-selector-tabs" data-ds-scope="code-sample">
+  
+
+
+
+
+
+
+
+  
+
+
+  
+    
+  
+
+
+<section>
+  
+  <h3 id="kms-add-service-account-to-use-key-cli" track-type="sampleTabNav" track-name="cli" track-metadata-position="kms-add-service-account-to-use-key">Command-line</h3>
+  
+  
+  
+  
+For example, if you are accessing Cloud KMS from a Google Compute Engine instance
+and created a service account
+<code>my-service-account@my-project.iam.gserviceaccount.com</code>, you can use the gcloud
+command-line tool to grant that service account permission to use the key
+<code>golden-egg</code> in the key ring <code>golden-goose</code>:
+<pre class="notranslate prettyprint devsite-click-to-copy" suppresswarning="suppresswarning">
+gcloud kms keys add-iam-policy-binding \
+    golden-egg --location global --keyring golden-goose \
+    --member serviceAccount:my-service-account@my-project.iam.gserviceaccount.com \
+    --role roles/cloudkms.cryptoKeyEncrypterDecrypter
+</pre>
+
+</section>
+
+
+
+
+
+  
+
+
+
+
+
+
+
+  
+
+
+  
+    
+  
+
+
+<section>
+  
+  <h3 id="kms-add-service-account-to-use-key-cli-windows" track-type="sampleTabNav" track-name="cli-windows" track-metadata-position="kms-add-service-account-to-use-key">Windows cmd.exe</h3>
+  
+  
+  
+  
+For example, if you are accessing Cloud KMS from a Google Compute Engine
+instance and created a service account
+<code>my-service-account@my-project.iam.gserviceaccount.com</code>, you can use the gcloud
+command-line tool to grant that service account permission to use the key
+<code>golden-egg</code> in the key ring <code>golden-goose</code>:
+<pre class="notranslate prettyprint devsite-click-to-copy" suppresswarning="suppresswarning">
+gcloud kms keys add-iam-policy-binding ^
+    golden-egg --location global --keyring golden-goose ^
+    --member serviceAccount:my-service-account@my-project.iam.gserviceaccount.com ^
+    --role roles/cloudkms.cryptoKeyEncrypterDecrypter
+</pre>
+
+</section>
+
+
+
+
+
+  
+
+
+
+
+
+
+
+  
+
+
+  
+    
+  
+
+
+<section>
+  
+  <h3 id="kms-add-service-account-to-use-key-cli-powershell" track-type="sampleTabNav" track-name="cli-powershell" track-metadata-position="kms-add-service-account-to-use-key">Powershell</h3>
+  
+  
+  
+  
+For example, if you are accessing Cloud KMS from a Google Compute Engine
+instance and created a service account
+<code>my-service-account@my-project.iam.gserviceaccount.com</code>, you can use the gcloud
+command-line tool to grant that service account permission to use the key
+<code>golden-egg</code> in the key ring <code>golden-goose</code>:
+<pre class="notranslate prettyprint devsite-click-to-copy" suppresswarning="suppresswarning">
+gcloud kms keys add-iam-policy-binding &#96;
+    golden-egg --location global --keyring golden-goose &#96;
+    --member serviceAccount:my-service-account@my-project.iam.gserviceaccount.com &#96;
+    --role roles/cloudkms.cryptoKeyEncrypterDecrypter
+</pre>
+
+</section>
+
+
+
+
+
+</div></p>
+<p>Users can be granted permissions to use a key. In this case, the
+member is <code>user:USER_EMAIL</code> instead of <code>serviceAccount:SERVICE_ACCOUNT_EMAIL</code>:</p>
+
+
+
+
+<div id="kms-add-user-to-use-key-code-sample" class="ds-selector-tabs" data-ds-scope="code-sample">
+  
+
+
+
+
+
+
+
+  
+
+
+  
+    
+  
+
+
+<section>
+  
+  <h3 id="kms-add-user-to-use-key-cli" track-type="sampleTabNav" track-name="cli" track-metadata-position="kms-add-user-to-use-key">Command-line</h3>
+  
+  
+  
+  
+<pre class="notranslate prettyprint devsite-click-to-copy" suppresswarning="suppresswarning">
+gcloud kms keys add-iam-policy-binding \
+    golden-egg --location global --keyring golden-goose \
+    --member user:sillygoose@gmail.com \
+    --role roles/cloudkms.cryptoKeyEncrypterDecrypter
+</pre>
+
+</section>
+
+
+
+
+
+  
+
+
+
+
+
+
+
+  
+
+
+  
+    
+  
+
+
+<section>
+  
+  <h3 id="kms-add-user-to-use-key-cli-windows" track-type="sampleTabNav" track-name="cli-windows" track-metadata-position="kms-add-user-to-use-key">Windows cmd.exe</h3>
+  
+  
+  
+  
+<pre class="notranslate prettyprint devsite-click-to-copy" suppresswarning="suppresswarning">
+gcloud kms keys add-iam-policy-binding ^
+    golden-egg --location global --keyring golden-goose ^
+    --member user:sillygoose@gmail.com ^
+    --role roles/cloudkms.cryptoKeyEncrypterDecrypter
+</pre>
+
+</section>
+
+
+
+
+
+  
+
+
+
+
+
+
+
+  
+
+
+  
+    
+  
+
+
+<section>
+  
+  <h3 id="kms-add-user-to-use-key-cli-powershell" track-type="sampleTabNav" track-name="cli-powershell" track-metadata-position="kms-add-user-to-use-key">Powershell</h3>
+  
+  
+  
+  
+<pre class="notranslate prettyprint devsite-click-to-copy" suppresswarning="suppresswarning">
+gcloud kms keys add-iam-policy-binding &#96;
+    golden-egg --location global --keyring golden-goose &#96;
+    --member user:sillygoose@gmail.com &#96;
+    --role roles/cloudkms.cryptoKeyEncrypterDecrypter
+</pre>
+
+</section>
+
+
+
+
+
+</div></p>
+<h2 id="granting_permissions_to_manage_keys">Granting permissions to manage keys</h2>
+<p>To allow a user or service account to create or update existing keys,
+they need at least the
+<code>editor</code> role, as per the chart above. The <code>cloudkms.admin</code> role also allows
+them to destroy keys and set IAM policies. The <code>owner</code> role can do all
+this, and further encrypt or decrypt using a key.</p>
+
+
+
+
+<div id="kms-add-user-to-manage-key-code-sample" class="ds-selector-tabs" data-ds-scope="code-sample">
+  
+
+
+
+
+
+
+
+  
+
+
+  
+    
+  
+
+
+<section>
+  
+  <h3 id="kms-add-user-to-manage-key-cli" track-type="sampleTabNav" track-name="cli" track-metadata-position="kms-add-user-to-manage-key">Command-line</h3>
+  
+  
+  
+  
+The following example gives a user <code>sillygoose@gmail.com</code> the <code>cloudkms.admin</code>
+role for the key <code>golden-egg</code> in the key ring <code>golden-goose</code>:
+<pre class="notranslate prettyprint devsite-click-to-copy" suppresswarning="suppresswarning">
+gcloud kms keys add-iam-policy-binding \
+    golden-egg --location global --keyring golden-goose \
+    --member user:sillygoose@gmail.com \
+    --role roles/cloudkms.admin
+</pre>
+
+</section>
+
+
+
+
+
+  
+
+
+
+
+
+
+
+  
+
+
+  
+    
+  
+
+
+<section>
+  
+  <h3 id="kms-add-user-to-manage-key-cli-windows" track-type="sampleTabNav" track-name="cli-windows" track-metadata-position="kms-add-user-to-manage-key">Windows cmd.exe</h3>
+  
+  
+  
+  
+The following example gives a user <code>sillygoose@gmail.com</code> the <code>cloudkms.admin</code>
+role for the key <code>golden-egg</code> in the key ring <code>golden-goose</code>:
+<pre class="notranslate prettyprint devsite-click-to-copy" suppresswarning="suppresswarning">
+gcloud kms keys add-iam-policy-binding ^
+    golden-egg --location global --keyring golden-goose ^
+    --member user:sillygoose@gmail.com ^
+    --role roles/cloudkms.admin
+</pre>
+
+</section>
+
+
+
+
+
+  
+
+
+
+
+
+
+
+  
+
+
+  
+    
+  
+
+
+<section>
+  
+  <h3 id="kms-add-user-to-manage-key-cli-powershell" track-type="sampleTabNav" track-name="cli-powershell" track-metadata-position="kms-add-user-to-manage-key">Powershell</h3>
+  
+  
+  
+  
+The following example gives a user <code>sillygoose@gmail.com</code> the <code>cloudkms.admin</code>
+role for the key <code>golden-egg</code> in the key ring <code>golden-goose</code>:
+<pre class="notranslate prettyprint devsite-click-to-copy" suppresswarning="suppresswarning">
+gcloud kms keys add-iam-policy-binding &#96;
+    golden-egg --location global --keyring golden-goose &#96;
+    --member user:sillygoose@gmail.com &#96;
+    --role roles/cloudkms.admin
+</pre>
+
+</section>
+
+
+
+
+
+</div></p>
+<h2 id="getting_existing_permissions">Getting existing permissions</h2>
+<p>A user with <code>viewer</code>,<code>editor</code>, <code>cloudkms.admin</code> or <code>owner</code> roles can view IAM
+policy on a key.</p>
+
+
+<div id="kms-get-keyring-policy-code-sample" class="ds-selector-tabs" data-ds-scope="code-sample">
+  
+
+
+
+
+
+
+
+  
+
+
+  
+    
+  
+
+
+<section>
+  
+  <h3 id="kms-get-keyring-policy-cli" track-type="sampleTabNav" track-name="cli" track-metadata-position="kms-get-keyring-policy">Command-line</h3>
+  
+  
+  
+  
+For example, to get the IAM policy for key <code>bird</code> in key ring <code>hand</code>:
+<pre class="notranslate prettyprint devsite-click-to-copy" suppresswarning="suppresswarning">
+gcloud kms keys get-iam-policy bird --location global --keyring hand
+</pre>
+
+</section>
+
+
+
+
+
+  
+
+
+
+
+
+
+
+  
+
+
+  
+    
+  
+
+
+  
+
+<section>
+  
+  <h3 id="kms-get-keyring-policy-csharp" track-type="sampleTabNav" track-name="csharp" track-metadata-position="kms-get-keyring-policy">C#</h3>
+  
+  
+    
+    <p>
+      For more on installing and creating a Cloud KMS client, refer to
+      <a href="https://cloud.google.com/kms/docs/reference/libraries" track-type="clientLibrariesReference"
+         track-name="csharp" track-metadata-position="kms-get-keyring-policy">Cloud KMS Client Libraries</a>.
+    </p>
+    
+  
+  
+  
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  
+  
+  
+
+
+<!-- Header -->
+
+<div class="github-docwidget-include" style="border: 1px solid #ddd; border-bottom: 0; padding: 4px; background-color: #4285f4; margin-bottom: -10px">
+  
+
+  
+  <div style="text-align: right; float: right;">
+    
+    
+      
+      <a class="button" target="_blank" href="https://github.com/GoogleCloudPlatform/dotnet-docs-samples/blob/2ec373efac86f3e589ff98ac8abf5d28b29b1578/kms/api/Program.cs"
+      track-type="github" track-name="gitHubViewButton"
+      track-metadata-link-destination="https://github.com/GoogleCloudPlatform/dotnet-docs-samples/blob/2ec373efac86f3e589ff98ac8abf5d28b29b1578/kms/api/Program.cs">View on GitHub</a>
+    
+    
+    
+    
+    
+    
+    
+    <a href="#" class="button google-feedback" data-p="1634365" data-b="solutions"
+       data-context="kms-get-keyring-policy" track-type="feedback" track-name="sampleFeedback"
+       track-metadata-lang="csharp" track-metadata-position="kms-get-keyring-policy">Feedback</a>
+    
+  </div>
+  
+
+  <div style="clear: both;"></div>
+
+</div>
+
+
+<!-- Code -->
+<div class="github-docwidget-gitinclude-code">
+
+  
+  
+
+<pre class="prettyprint " track-metadata-position="GoogleCloudPlatform/dotnet-docs-samples/kms/api/Program.cs/2ec373efac86f3e589ff98ac8abf5d28b29b1578/kms_get_keyring_policy">      public static object GetKeyRingIamPolicy(string projectId, string locationId, string keyRingId)
+      {
+          var cloudKms = CreateAuthorizedClient();
+          // Generate the full path of the parent to use for getting the key ring IAM policy.
+          var parent = $&quot;projects/{projectId}/locations/{locationId}/keyRings/{keyRingId}&quot;;
+          var result = cloudKms.Projects.Locations.KeyRings.GetIamPolicy(parent).Execute();
+          if (result.Bindings != null)
+          {
+              Console.WriteLine($&quot;Policy Bindings: {result.Bindings}&quot;);
+              result.Bindings.ToList().ForEach(response =&gt;
+              {
+                  Console.WriteLine($&quot;Role: {response.Role}&quot;);
+
+                  response.Members.ToList().ForEach(member =&gt;
+                  {
+                      Console.WriteLine($&quot;  Member: {member}&quot;);
+                  });
+              });
+          }
+          else
+          {
+              Console.WriteLine($&quot;Empty IAM policy found for KeyRing: {parent}&quot;);
+          }
+          return 0;
+      }</pre>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+</section>
+
+
+
+
+
+  
+
+
+
+
+
+
+
+  
+
+
+  
+    
+  
+
+
+  
+
+<section>
+  
+  <h3 id="kms-get-keyring-policy-go" track-type="sampleTabNav" track-name="go" track-metadata-position="kms-get-keyring-policy">Go</h3>
+  
+  
+    
+    <p>
+      For more on installing and creating a Cloud KMS client, refer to
+      <a href="https://cloud.google.com/kms/docs/reference/libraries" track-type="clientLibrariesReference"
+         track-name="go" track-metadata-position="kms-get-keyring-policy">Cloud KMS Client Libraries</a>.
+    </p>
+    
+  
+  
+  
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  
+  
+
+
+<!-- Header -->
+
+<div class="github-docwidget-include" style="border: 1px solid #ddd; border-bottom: 0; padding: 4px; background-color: #4285f4; margin-bottom: -10px">
+  
+
+  
+  <div style="text-align: right; float: right;">
+    
+    
+      
+      <a class="button" target="_blank" href="https://github.com/GoogleCloudPlatform/golang-samples/blob/master/kms/snippets/snippet_test.go"
+      track-type="github" track-name="gitHubViewButton"
+      track-metadata-link-destination="https://github.com/GoogleCloudPlatform/golang-samples/blob/master/kms/snippets/snippet_test.go">View on GitHub</a>
+    
+    
+    
+    
+    
+    
+    
+    <a href="#" class="button google-feedback" data-p="1634365" data-b="solutions"
+       data-context="kms-get-keyring-policy" track-type="feedback" track-name="sampleFeedback"
+       track-metadata-lang="go" track-metadata-position="kms-get-keyring-policy">Feedback</a>
+    
+  </div>
+  
+
+  <div style="clear: both;"></div>
+
+</div>
+
+
+<!-- Code -->
+<div class="github-docwidget-gitinclude-code">
+
+  
+  
+
+<pre class="prettyprint lang-go" track-metadata-position="GoogleCloudPlatform/golang-samples/kms/snippets/snippet_test.go/master/((?:\n//[^\n]*)*?\nfunc[^\n]*? getCryptoKeyPolicy\(.+?\n})">
+func getCryptoKeyPolicy(project, keyRing, key string) error {
+	ctx := context.Background()
+	authedClient, err := google.DefaultClient(ctx, cloudkms.CloudPlatformScope)
+	if err != nil {
+		return err
+	}
+	client, err := cloudkms.New(authedClient)
+	if err != nil {
+		return err
+	}
+	location := &quot;global&quot;
+	parent := fmt.Sprintf(&quot;projects/%s/locations/%s/keyRings/%s/cryptoKeyVersions/%s&quot;,
+		project, location, keyRing, key)
+
+	policy, err := client.Projects.Locations.KeyRings.CryptoKeys.GetIamPolicy(parent).Do()
+	if err != nil {
+		return err
+	}
+	for _, binding := range policy.Bindings {
+		log.Printf(&quot;Role: %s\n&quot;, binding.Role)
+		log.Printf(&quot;Members: %v\n&quot;, binding.Members)
+	}
+
+	return nil
+}</pre>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+</section>
+
+
+
+
+
+  
+
+
+
+
+
+
+
+  
+
+
+  
+    
+  
+
+
+  
+
+<section>
+  
+  <h3 id="kms-get-keyring-policy-java" track-type="sampleTabNav" track-name="java" track-metadata-position="kms-get-keyring-policy">Java</h3>
+  
+  
+    
+    <p>
+      For more on installing and creating a Cloud KMS client, refer to
+      <a href="https://cloud.google.com/kms/docs/reference/libraries" track-type="clientLibrariesReference"
+         track-name="java" track-metadata-position="kms-get-keyring-policy">Cloud KMS Client Libraries</a>.
+    </p>
+    
+  
+  
+  
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  
+  
+
+
+<!-- Header -->
+
+<div class="github-docwidget-include" style="border: 1px solid #ddd; border-bottom: 0; padding: 4px; background-color: #4285f4; margin-bottom: -10px">
+  
+
+  
+  <div style="text-align: right; float: right;">
+    
+    
+      
+      <a class="button" target="_blank" href="https://github.com/GoogleCloudPlatform/java-docs-samples/blob/master/kms/src/main/java/com/example/Snippets.java"
+      track-type="github" track-name="gitHubViewButton"
+      track-metadata-link-destination="https://github.com/GoogleCloudPlatform/java-docs-samples/blob/master/kms/src/main/java/com/example/Snippets.java">View on GitHub</a>
+    
+    
+    
+    
+    
+    
+    
+    <a href="#" class="button google-feedback" data-p="1634365" data-b="solutions"
+       data-context="kms-get-keyring-policy" track-type="feedback" track-name="sampleFeedback"
+       track-metadata-lang="java" track-metadata-position="kms-get-keyring-policy">Feedback</a>
+    
+  </div>
+  
+
+  <div style="clear: both;"></div>
+
+</div>
+
+
+<!-- Code -->
+<div class="github-docwidget-gitinclude-code">
+
+  
+  
+
+<pre class="prettyprint lang-java" track-metadata-position="GoogleCloudPlatform/java-docs-samples/kms/src/main/java/com/example/Snippets.java/master/kms_get_keyring_policy">
+/**
+ * Retrieves the IAM policy for the given crypto key.
+ */
+public static Policy getKeyRingPolicy(String projectId, String locationId, String keyRingId)
+    throws IOException {
+  // Create the Cloud KMS client.
+  CloudKMS kms = createAuthorizedClient();
+
+  // The resource name of the keyring
+  String keyring = String.format(
+      &quot;projects/%s/locations/%s/keyRings/%s&quot;,
+      projectId, locationId, keyRingId);
+
+  // Get the current IAM policy and add the new account to it.
+  Policy iamPolicy = kms.projects().locations().keyRings()
+      .getIamPolicy(keyring)
+      .execute();
+
+  System.out.println(iamPolicy.getBindings());
+  return iamPolicy;
+}</pre>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+</section>
+
+
+
+
+
+  
+
+
+
+
+
+
+
+  
+
+
+  
+    
+  
+
+
+  
+
+<section>
+  
+  <h3 id="kms-get-keyring-policy-nodejs" track-type="sampleTabNav" track-name="nodejs" track-metadata-position="kms-get-keyring-policy">Node.js</h3>
+  
+  
+    
+    <p>
+      For more on installing and creating a Cloud KMS client, refer to
+      <a href="https://cloud.google.com/kms/docs/reference/libraries" track-type="clientLibrariesReference"
+         track-name="nodejs" track-metadata-position="kms-get-keyring-policy">Cloud KMS Client Libraries</a>.
+    </p>
+    
+  
+  
+  
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  
+  
+
+
+<!-- Header -->
+
+<div class="github-docwidget-include" style="border: 1px solid #ddd; border-bottom: 0; padding: 4px; background-color: #4285f4; margin-bottom: -10px">
+  
+
+  
+  <div style="text-align: right; float: right;">
+    
+    
+      
+      <a class="button" target="_blank" href="https://github.com/GoogleCloudPlatform/nodejs-docs-samples/blob/master/kms/keys.js"
+      track-type="github" track-name="gitHubViewButton"
+      track-metadata-link-destination="https://github.com/GoogleCloudPlatform/nodejs-docs-samples/blob/master/kms/keys.js">View on GitHub</a>
+    
+    
+    
+    
+    
+    
+    
+    <a href="#" class="button google-feedback" data-p="1634365" data-b="solutions"
+       data-context="kms-get-keyring-policy" track-type="feedback" track-name="sampleFeedback"
+       track-metadata-lang="nodejs" track-metadata-position="kms-get-keyring-policy">Feedback</a>
+    
+  </div>
+  
+
+  <div style="clear: both;"></div>
+
+</div>
+
+
+<!-- Code -->
+<div class="github-docwidget-gitinclude-code">
+
+  
+  
+
+<pre class="prettyprint lang-js" track-metadata-position="GoogleCloudPlatform/nodejs-docs-samples/kms/keys.js/master/kms_get_keyring_policy">// Your Google Cloud Platform project ID
+// const projectId = &#39;YOUR_PROJECT_ID&#39;;
+
+// The location of the key ring, e.g. &quot;global&quot;
+// const locationId = &#39;global&#39;;
+
+// The name of the key ring, e.g. &quot;my-key-ring&quot;
+// const keyRingId = &#39;my-key-ring&#39;;
+
+// Builds and authorizes a Cloud KMS client
+buildAndAuthorizeService((err, cloudkms) =&gt; {
+  if (err) {
+    console.log(err);
+    return;
+  }
+
+  const request = {
+    // This will be a path parameter in the request URL
+    resource_: `projects/${projectId}/locations/${locationId}/keyRings/${keyRingId}`
+  };
+
+  // Gets the IAM policy of a key ring
+  cloudkms.projects.locations.keyRings.getIamPolicy(request, (err, policy) =&gt; {
+    if (err) {
+      console.log(err);
+      return;
+    }
+
+    if (policy.data.bindings) {
+      policy.data.bindings.forEach((binding) =&gt; {
+        if (binding.members &amp;&amp; binding.members.length) {
+          console.log(`${binding.role}:`);
+          binding.members.forEach((member) =&gt; {
+            console.log(`  ${member}`);
+          });
+        }
+      });
+    } else {
+      console.log(`Policy for key ring ${keyRingId} is empty.`);
+    }
+  });
+});
+
+function buildAndAuthorizeService (callback) {
+  // Imports the Google APIs client library
+  const google = require(&#39;googleapis&#39;).google;
+
+  // Acquires credentials
+  google.auth.getApplicationDefault((err, authClient) =&gt; {
+    if (err) {
+      callback(err);
+      return;
+    }
+
+    if (authClient.createScopedRequired &amp;&amp; authClient.createScopedRequired()) {
+      authClient = authClient.createScoped([
+        &#39;https://www.googleapis.com/auth/cloud-platform&#39;
+      ]);
+    }
+
+    // Instantiates an authorized client
+    const cloudkms = google.cloudkms({
+      version: &#39;v1&#39;,
+      auth: authClient
+    });
+
+    callback(null, cloudkms);
+  });
+}</pre>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+</section>
+
+
+
+
+
+  
+
+
+
+
+
+
+
+  
+
+
+  
+    
+  
+
+
+  
+
+<section>
+  
+  <h3 id="kms-get-keyring-policy-php" track-type="sampleTabNav" track-name="php" track-metadata-position="kms-get-keyring-policy">PHP</h3>
+  
+  
+    
+    <p>
+      For more on installing and creating a Cloud KMS client, refer to
+      <a href="https://cloud.google.com/kms/docs/reference/libraries" track-type="clientLibrariesReference"
+         track-name="php" track-metadata-position="kms-get-keyring-policy">Cloud KMS Client Libraries</a>.
+    </p>
+    
+  
+  
+  
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  
+  
+
+
+<!-- Header -->
+
+<div class="github-docwidget-include" style="border: 1px solid #ddd; border-bottom: 0; padding: 4px; background-color: #4285f4; margin-bottom: -10px">
+  
+
+  
+  <div style="text-align: right; float: right;">
+    
+    
+      
+      <a class="button" target="_blank" href="https://github.com/GoogleCloudPlatform/php-docs-samples/blob/master/kms/src/functions.php"
+      track-type="github" track-name="gitHubViewButton"
+      track-metadata-link-destination="https://github.com/GoogleCloudPlatform/php-docs-samples/blob/master/kms/src/functions.php">View on GitHub</a>
+    
+    
+    
+    
+    
+    
+    
+    <a href="#" class="button google-feedback" data-p="1634365" data-b="solutions"
+       data-context="kms-get-keyring-policy" track-type="feedback" track-name="sampleFeedback"
+       track-metadata-lang="php" track-metadata-position="kms-get-keyring-policy">Feedback</a>
+    
+  </div>
+  
+
+  <div style="clear: both;"></div>
+
+</div>
+
+
+<!-- Code -->
+<div class="github-docwidget-gitinclude-code">
+
+  
+  
+
+<pre class="prettyprint lang-php" track-metadata-position="GoogleCloudPlatform/php-docs-samples/kms/src/functions.php/master/kms_get_keyring_policy">/**
+ * Get the IAM policy for a KeyRing.
+ *
+ * @param string $projectId
+ * @param string $keyRingId
+ * @param string $locationId [optional]
+ * @return null
+ */
+function get_keyring_policy($projectId, $keyRingId, $locationId = &#39;global&#39;)
+{
+    // Instantiate the client, authenticate, and add scopes.
+    $client = new Google_Client();
+    $client-&gt;useApplicationDefaultCredentials();
+    $client-&gt;addScope(&#39;https://www.googleapis.com/auth/cloud-platform&#39;);
+
+    // Create the Cloud KMS client.
+    $kms = new Google_Service_CloudKMS($client);
+
+    // The resource name of the location associated with the key rings.
+    $parent = sprintf(&#39;projects/%s/locations/%s/keyRings/%s&#39;,
+        $projectId,
+        $locationId,
+        $keyRingId
+    );
+
+    // Get the current IAM policy and print it.
+    $policy = $kms-&gt;projects_locations_keyRings-&gt;getIamPolicy($parent);
+    foreach ($policy-&gt;getBindings() as $binding) {
+        printf(&quot;Role: %s\nMembers:\n%s\n&quot;,
+            $binding-&gt;getRole(),
+            implode(&quot;\n&quot;, $binding-&gt;getMembers())
+        );
+    }
+}</pre>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+</section>
+
+
+
+
+
+  
+
+
+
+
+
+
+
+  
+
+
+  
+    
+  
+
+
+  
+
+<section>
+  
+  <h3 id="kms-get-keyring-policy-python" track-type="sampleTabNav" track-name="python" track-metadata-position="kms-get-keyring-policy">Python</h3>
+  
+  
+    
+    <p>
+      For more on installing and creating a Cloud KMS client, refer to
+      <a href="https://cloud.google.com/kms/docs/reference/libraries" track-type="clientLibrariesReference"
+         track-name="python" track-metadata-position="kms-get-keyring-policy">Cloud KMS Client Libraries</a>.
+    </p>
+    
+  
+  
+  
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  
+  
+
+
+<!-- Header -->
+
+<div class="github-docwidget-include" style="border: 1px solid #ddd; border-bottom: 0; padding: 4px; background-color: #4285f4; margin-bottom: -10px">
+  
+
+  
+  <div style="text-align: right; float: right;">
+    
+    
+      
+      <a class="button" target="_blank" href="https://github.com/GoogleCloudPlatform/python-docs-samples/blob/master/kms/api-client/snippets.py"
+      track-type="github" track-name="gitHubViewButton"
+      track-metadata-link-destination="https://github.com/GoogleCloudPlatform/python-docs-samples/blob/master/kms/api-client/snippets.py">View on GitHub</a>
+    
+    
+    
+    
+    
+    
+    
+    <a href="#" class="button google-feedback" data-p="1634365" data-b="solutions"
+       data-context="kms-get-keyring-policy" track-type="feedback" track-name="sampleFeedback"
+       track-metadata-lang="python" track-metadata-position="kms-get-keyring-policy">Feedback</a>
+    
+  </div>
+  
+
+  <div style="clear: both;"></div>
+
+</div>
+
+
+<!-- Code -->
+<div class="github-docwidget-gitinclude-code">
+
+  
+  
+
+<pre class="prettyprint lang-py" track-metadata-position="GoogleCloudPlatform/python-docs-samples/kms/api-client/snippets.py/master/kms_get_keyring_policy">def get_key_ring_policy(project_id, location_id, key_ring_id):
+    &quot;&quot;&quot;Gets the Identity and Access Management (IAM) policy for a given KeyRing
+    and prints out roles and the members assigned to those roles.&quot;&quot;&quot;
+
+    # Creates an API client for the KMS API.
+    kms_client = googleapiclient.discovery.build(&#39;cloudkms&#39;, &#39;v1&#39;)
+
+    # The resource name of the KeyRing.
+    parent = &#39;projects/{}/locations/{}/keyRings/{}&#39;.format(
+        project_id, location_id, key_ring_id)
+
+    # Get the current IAM policy.
+    request = kms_client.projects().locations().keyRings().getIamPolicy(
+        resource=parent)
+    response = request.execute()
+
+    if &#39;bindings&#39; in response.keys():
+        print(&#39;Printing IAM policy for resource {}:&#39;.format(parent))
+        for binding in response[&#39;bindings&#39;]:
+            print(&#39;&#39;)
+            print(&#39;Role: {}&#39;.format(binding[&#39;role&#39;]))
+            print(&#39;Members:&#39;)
+            for member in binding[&#39;members&#39;]:
+                print(member)
+        print(&#39;&#39;)
+    else:
+        print(&#39;No roles found for resource {}.&#39;.format(parent))</pre>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+</section>
+
+
+
+
+
+  
+
+
+
+
+
+
+
+  
+
+
+  
+    
+  
+
+
+  
+
+<section>
+  
+  <h3 id="kms-get-keyring-policy-ruby" track-type="sampleTabNav" track-name="ruby" track-metadata-position="kms-get-keyring-policy">Ruby</h3>
+  
+  
+    
+    <p>
+      For more on installing and creating a Cloud KMS client, refer to
+      <a href="https://cloud.google.com/kms/docs/reference/libraries" track-type="clientLibrariesReference"
+         track-name="ruby" track-metadata-position="kms-get-keyring-policy">Cloud KMS Client Libraries</a>.
+    </p>
+    
+  
+  
+  
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  
+  
+
+
+<!-- Header -->
+
+<div class="github-docwidget-include" style="border: 1px solid #ddd; border-bottom: 0; padding: 4px; background-color: #4285f4; margin-bottom: -10px">
+  
+
+  
+  <div style="text-align: right; float: right;">
+    
+    
+      
+      <a class="button" target="_blank" href="https://github.com/GoogleCloudPlatform/ruby-docs-samples/blob/master/kms/kms.rb"
+      track-type="github" track-name="gitHubViewButton"
+      track-metadata-link-destination="https://github.com/GoogleCloudPlatform/ruby-docs-samples/blob/master/kms/kms.rb">View on GitHub</a>
+    
+    
+    
+    
+    
+    
+    
+    <a href="#" class="button google-feedback" data-p="1634365" data-b="solutions"
+       data-context="kms-get-keyring-policy" track-type="feedback" track-name="sampleFeedback"
+       track-metadata-lang="ruby" track-metadata-position="kms-get-keyring-policy">Feedback</a>
+    
+  </div>
+  
+
+  <div style="clear: both;"></div>
+
+</div>
+
+
+<!-- Code -->
+<div class="github-docwidget-gitinclude-code">
+
+  
+  
+
+<pre class="prettyprint lang-rb" track-metadata-position="GoogleCloudPlatform/ruby-docs-samples/kms/kms.rb/master/kms_get_keyring_policy"># project_id  = &quot;Your Google Cloud project ID&quot;
+# location_id = &quot;The location of the key ring&quot;
+# key_ring_id = &quot;The ID of the key ring&quot;
+
+require &quot;google/apis/cloudkms_v1&quot;
+
+# Initialize the client and authenticate with the specified scope
+Cloudkms = Google::Apis::CloudkmsV1
+kms_client = Cloudkms::CloudKMSService.new
+kms_client.authorization = Google::Auth.get_application_default(
+  &quot;https://www.googleapis.com/auth/cloud-platform&quot;
+)
+
+# The resource name of the key ring
+resource = &quot;projects/#{project_id}/locations/#{location_id}/&quot; +
+           &quot;keyRings/#{key_ring_id}&quot;
+
+# Get the current IAM policy
+policy = kms_client.get_project_location_key_ring_iam_policy resource
+
+# Print role and associated members
+if policy.bindings
+  policy.bindings.each do |binding|
+    puts &quot;Role: #{binding.role} Members: #{binding.members}&quot;
+  end
+else
+  puts &quot;No members&quot;
+end</pre>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+</section>
+
+
+
+
+
+</div></p>
+
+
+  </div>
+  
+    
+
+
+
+  
+
+  
+        
+  
+
+
+
+
+
+
+
+        
+<div class="devsite-content-footer nocontent">
+  
+  
+    <p>Except as otherwise noted, the content of this page is licensed under the <a href="http://creativecommons.org/licenses/by/3.0/">Creative Commons Attribution 3.0 License</a>, and code samples are licensed under the <a href="http://www.apache.org/licenses/LICENSE-2.0">Apache 2.0 License</a>. For details, see our <a href="https://developers.google.com/terms/site-policies">Site Policies</a>. Java is a registered trademark of Oracle and/or its affiliates.</p>
+  
+
+  
+    
+    <p class="devsite-content-footer-date" itemprop="datePublished"
+       content="2018-03-28T23:16:56.517340">
+      
+      Last updated March 28, 2018.
+    </p>
+  
+
+</div>
+
+        </article>
+      </article>
+  
+
+        </div>
+      
+
+<footer class="devsite-footer-linkboxes nocontent
+               devsite-footer-linkboxes-all-backup
+               devsite-footer-linkboxes-with-sites"><nav class="devsite-full-site-width"><ul class="devsite-footer-linkboxes-list"><li class="devsite-footer-linkbox devsite-footer-linkbox-backup"><h3 class="devsite-footer-linkbox-heading">Products</h3><ul class="devsite-footer-linkbox-list"><li class="devsite-footer-linkbox-item"><a href="https://cloud.google.com/products/compute/" class="gc-analytics-event"
+               data-category="Site-Wide Custom Events"
+               data-label="Footer Compute">
+                Compute
+            </a></li><li class="devsite-footer-linkbox-item"><a href="https://cloud.google.com/products/storage/" class="gc-analytics-event"
+               data-category="Site-Wide Custom Events"
+               data-label="Footer Storage">
+                Storage
+            </a></li><li class="devsite-footer-linkbox-item"><a href="https://cloud.google.com/products/networking/" class="gc-analytics-event"
+               data-category="Site-Wide Custom Events"
+               data-label="Footer Networking">
+                Networking
+            </a></li><li class="devsite-footer-linkbox-item"><a href="https://cloud.google.com/products/big-data/" class="gc-analytics-event"
+               data-category="Site-Wide Custom Events"
+               data-label="Footer Big Data">
+                Big Data
+            </a></li><li class="devsite-footer-linkbox-item"><a href="https://cloud.google.com/products/machine-learning/" class="gc-analytics-event"
+               data-category="Site-Wide Custom Events"
+               data-label="Footer Machine Learning">
+                Machine Learning
+            </a></li><li class="devsite-footer-linkbox-item"><a href="https://cloud.google.com/products/#management" class="gc-analytics-event"
+               data-category="Site-Wide Custom Events"
+               data-label="Footer Management Tools">
+                Management Tools
+            </a></li><li class="devsite-footer-linkbox-item"><a href="https://cloud.google.com/products/tools/" class="gc-analytics-event"
+               data-category="Site-Wide Custom Events"
+               data-label="Footer Developer Tools">
+                Developer Tools
+            </a></li><li class="devsite-footer-linkbox-item"><a href="https://cloud.google.com/products/#identity-security" class="gc-analytics-event"
+               data-category="Site-Wide Custom Events"
+               data-label="Footer Identity and Security">
+                Identity &amp; Security
+            </a></li><li class="devsite-footer-linkbox-item"><a href="//status.cloud.google.com" class="gc-analytics-event"
+               data-category="Site-Wide Custom Events"
+               data-label="Footer System Status">
+                System Status
+            </a></li></ul></li><li class="devsite-footer-linkbox devsite-footer-linkbox-backup"><h3 class="devsite-footer-linkbox-heading">Learn More</h3><ul class="devsite-footer-linkbox-list"><li class="devsite-footer-linkbox-item"><a href="https://cloud.google.com/why-google/" class="gc-analytics-event"
+               data-category="Site-Wide Custom Events"
+               data-label="Footer Why Google">
+                Why Google Cloud
+            </a></li><li class="devsite-footer-linkbox-item"><a href="https://cloud.google.com/pricing/" class="gc-analytics-event"
+               data-category="Site-Wide Custom Events"
+               data-label="Footer Pricing">
+                Pricing
+            </a></li><li class="devsite-footer-linkbox-item"><a href="https://cloud.google.com/docs/" class="gc-analytics-event"
+               data-category="Site-Wide Custom Events"
+               data-label="Footer Documentation">
+                Documentation
+            </a></li><li class="devsite-footer-linkbox-item"><a href="https://cloud.google.com/docs/tutorials/" class="gc-analytics-event"
+               data-category="Site-Wide Custom Events"
+               data-label="Footer Tutorials">
+                Tutorials
+            </a></li><li class="devsite-footer-linkbox-item"><a href="https://cloud.google.com/training/" class="gc-analytics-event"
+               data-category="Site-Wide Custom Events"
+               data-label="Footer Training">
+                Training
+            </a></li><li class="devsite-footer-linkbox-item"><a href="https://cloud.google.com/solutions/" class="gc-analytics-event"
+               data-category="Site-Wide Custom Events"
+               data-label="Footer Solutions">
+                Solutions
+            </a></li><li class="devsite-footer-linkbox-item"><a href="https://cloud.google.com/security/" class="gc-analytics-event"
+               data-category="Site-Wide Custom Events"
+               data-label="Footer Security &amp; Compliance">
+                Security &amp; Compliance
+            </a></li><li class="devsite-footer-linkbox-item"><a href="https://cloud.google.com/partners/" class="gc-analytics-event"
+               data-category="Site-Wide Custom Events"
+               data-label="Footer Partners">
+                Partners
+            </a></li><li class="devsite-footer-linkbox-item"><a href="https://cloud.google.com/customers/" class="gc-analytics-event"
+               data-category="Site-Wide Custom Events"
+               data-label="Footer Customers">
+                Customers
+            </a></li><li class="devsite-footer-linkbox-item"><a href="https://cloud.google.com/support/" class="gc-analytics-event"
+               data-category="Site-Wide Custom Events"
+               data-label="Footer Support">
+                Support
+            </a></li><li class="devsite-footer-linkbox-item"><a href="//careers.google.com/cloud/" class="gc-analytics-event"
+               data-category="Site-Wide Custom Events"
+               data-label="Footer Careers">
+                Careers
+            </a></li><li class="devsite-footer-linkbox-item"><a href="//www.google.com/cloud/press" class="gc-analytics-event"
+               data-category="Site-Wide Custom Events"
+               data-label="Footer Press">
+                Press
+            </a></li></ul></li><li class="devsite-footer-linkbox devsite-footer-linkbox-backup"><h3 class="devsite-footer-linkbox-heading">Engage</h3><ul class="devsite-footer-linkbox-list"><li class="devsite-footer-linkbox-item"><a href="https://cloud.google.com/free-trial/" class="gc-analytics-event"
+               data-category="Site-Wide Custom Events"
+               data-label="Footer Free Trial Sign Up">
+                Free Trial Sign Up
+            </a></li><li class="devsite-footer-linkbox-item"><a href="//cloudplatform.googleblog.com" class="gc-analytics-event"
+               data-category="Site-Wide Custom Events"
+               data-label="Footer Blog">
+                Blog
+            </a></li><li class="devsite-footer-linkbox-item"><a href="https://cloud.google.com/community/" class="gc-analytics-event"
+               data-category="Site-Wide Custom Events"
+               data-label="Footer Community">
+                Community
+            </a></li><li class="devsite-footer-linkbox-item"><a href="//plus.google.com/+googlecloudplatform" class="gc-analytics-event"
+               data-category="Site-Wide Custom Events"
+               data-label="Footer Google+">
+                Google+
+            </a></li><li class="devsite-footer-linkbox-item"><a href="//twitter.com/gcpcloud" class="gc-analytics-event"
+               data-category="Site-Wide Custom Events"
+               data-label="Footer Twitter">
+                Twitter
+            </a></li><li class="devsite-footer-linkbox-item"><a href="//www.linkedin.com/showcase/google-cloud" class="gc-analytics-event"
+               data-category="Site-Wide Custom Events"
+               data-label="Footer LinkedIn">
+                LinkedIn
+            </a></li><li class="devsite-footer-linkbox-item"><a href="//stackoverflow.com/questions/tagged/google-cloud-platform" class="gc-analytics-event"
+               data-category="Site-Wide Custom Events"
+               data-label="Footer Stack Overflow">
+                Stack Overflow
+            </a></li><li class="devsite-footer-linkbox-item"><a href="//www.youtube.com/googlecloudplatform" class="gc-analytics-event"
+               data-category="Site-Wide Custom Events"
+               data-label="Footer YouTube">
+                YouTube
+            </a></li><li class="devsite-footer-linkbox-item"><a href="//www.gcppodcast.com" class="gc-analytics-event"
+               data-category="Site-Wide Custom Events"
+               data-label="Footer Podcast">
+                Podcast
+            </a></li><li class="devsite-footer-linkbox-item"><a href="//cloud.google.com/newsletter/" class="gc-analytics-event"
+               data-category="Site-Wide Custom Events"
+               data-label="Footer Newsletter Signup">
+                Newsletter Signup
+            </a></li><li class="devsite-footer-linkbox-item"><a href="//cloud.google.com/usability" class="gc-analytics-event"
+               data-category="Site-Wide Custom Events"
+               data-label="Footer UX Research">
+                UX Research
+            </a></li></ul></li><li class="devsite-footer-linkbox devsite-footer-linkbox-sites"><a href="https://developers.google.com/"
+           class="gc-analytics-event devsite-footer-linkbox-logo-link"
+           data-category="Site-Wide Custom Events" data-label="Footer Google Developers Link"><img class="devsite-footer-linkbox-logo"
+               src="https://cloud.google.com/_static/d7147bb846/images/redesign-14/lockup-color-knockout.png"
+               alt="Google Developers"></a><ul class="devsite-footer-linkbox-list"><li class="devsite-footer-linkbox-item"><a href="//developer.android.com/index.html" class="gc-analytics-event"
+               data-category="Site-Wide Custom Events"
+               data-label="Footer Android Link">
+                Android
+            </a></li><li class="devsite-footer-linkbox-item"><a href="//developer.chrome.com/home" class="gc-analytics-event"
+               data-category="Site-Wide Custom Events"
+               data-label="Footer Chrome Link">
+                Chrome
+            </a></li><li class="devsite-footer-linkbox-item"><a href="//firebase.google.com" class="gc-analytics-event"
+               data-category="Site-Wide Custom Events"
+               data-label="Footer Firebase Link">
+                Firebase
+            </a></li><li class="devsite-footer-linkbox-item"><a href="//cloud.google.com" class="gc-analytics-event"
+               data-category="Site-Wide Custom Events"
+               data-label="Footer Cloud Link">
+                Google Cloud Platform
+            </a></li><li class="devsite-footer-linkbox-item"><a href="//developers.google.com/products/" class="gc-analytics-event"
+               data-category="Site-Wide Custom Events"
+               data-label="Footer Products Link">
+                All Products
+            </a></li></ul></li></ul></nav></footer><footer class="devsite-utility-footer"><nav class="devsite-utility-footer-nav devsite-nav devsite-full-site-width"><div class="devsite-utility-footer-nav-left"><form class="devsite-utility-footer-language" action="/i18n/setlang/" method="post"><input type="hidden" name="xsrf_token" value="CJOoaCZ6emI8xad0JBC5MIYo6h3Zg3czxtt1h2wbLNM6MTUyNDQ2MDQ5MDEzNzI5MA" /><input type="hidden" name="next" value="/kms/docs/iam"><select class="devsite-utility-footer-language-select kd-select" name="language"
+                track-type="languageSelector" track-name="click"><option value="de"
+                
+                track-type="languageSelector" track-name="changed"
+                track-metadata-original-language="en"
+                track-metadata-selected-language="de">
+            Deutsch
+          </option><option value="en"
+                 selected="selected" 
+                track-type="languageSelector" track-name="changed"
+                track-metadata-original-language="en"
+                track-metadata-selected-language="en">
+            English
+          </option><option value="es"
+                
+                track-type="languageSelector" track-name="changed"
+                track-metadata-original-language="en"
+                track-metadata-selected-language="es">
+            español
+          </option><option value="pt-br"
+                
+                track-type="languageSelector" track-name="changed"
+                track-metadata-original-language="en"
+                track-metadata-selected-language="pt-br">
+            Português Brasileiro
+          </option><option value="ja"
+                
+                track-type="languageSelector" track-name="changed"
+                track-metadata-original-language="en"
+                track-metadata-selected-language="ja">
+            日本語
+          </option><option value="zh-tw"
+                
+                track-type="languageSelector" track-name="changed"
+                track-metadata-original-language="en"
+                track-metadata-selected-language="zh-tw">
+            繁體中文
+          </option></select></form><span class="devsite-utility-footer-links"><a class="devsite-utility-footer-link gc-analytics-event"
+           href="https://cloud.google.com/terms/"
+           data-category="Site-Wide Custom Events"
+           data-label="Footer terms link"
+           data-footer-link-id="terms"
+           >Terms
+         </a><a class="devsite-utility-footer-link gc-analytics-event"
+           href="//www.google.com/policies/privacy/"
+           data-category="Site-Wide Custom Events"
+           data-label="Footer privacy link"
+           data-footer-link-id="privacy"
+           >Privacy
+         </a><a class="devsite-utility-footer-link gc-analytics-event"
+           href="//www.google.de/contact/impressum.html"
+           data-category="Site-Wide Custom Events"
+           data-label="Footer impressum link"
+           data-footer-link-id="impressum"
+           >Impressum
+         </a></span></div></nav></footer><div class="devsite-feedback-dialog devsite-dialog"><div class="devsite-dialog-contents"><h3>Send feedback about...</h3><div class="devsite-feedback-item"><a data-type="documentation" class="gc-analytics-event"
+           data-category="Site-Wide Custom Events" data-label="Docs Feedback Image"
+           track-type="feedback" track-name="feedbackDocIcon" track-metadata-position="header"><div class="devsite-feedback-item-icon-container"><div class="devsite-feedback-item-icon-white devsite-feedback-item-icon-docs
+                        material-icons"></div></div></a><div class="devsite-feedback-item-name">
+          
+          This page
+        </div><div class="devsite-feedback-item-description"><a data-type="documentation" tabindex="0" class="gc-analytics-event"
+             data-category="Site-Wide Custom Events" data-label="Docs Feedback Text"
+             track-type="feedback" track-name="feedbackDocText" track-metadata-position="header">
+            
+            Documentation feedback
+          </a></div></div><div class="devsite-feedback-item"><a data-type="product" tabindex="0" class="gc-analytics-event"
+           data-category="Site-Wide Custom Events" data-label="Product Feedback Image"
+           track-type="feedback" track-name="feedbackProductIcon" track-metadata-position="header"
+         ><img class="devsite-feedback-item-icon"
+               src="https://cloud.google.com/_static/d7147bb846/images/feedback/google_56px.svg"></a><div class="devsite-feedback-item-name">
+        Cloud KMS Documentation
+        </div><div class="devsite-feedback-item-description"><a data-type="product" tabindex="0" class="gc-analytics-event"
+             data-category="Site-Wide Custom Events" data-label="Product Feedback Text"
+             track-type="feedback" track-name="feedbackProductText" track-metadata-position="header"
+           >
+            
+            Product feedback
+          </a></div></div></div><div class="devsite-dialog-buttons"><button type="button" class="devsite-feedback-cancel button-white gc-analytics-event"
+              data-category="Site-Wide Custom Events" data-label="Cancel Feedback Button"
+              track-type="feedback" track-name="cancelFeedbackButton"
+              track-metadata-position="header">
+        
+        Cancel
+      </button></div></div><script>
+  $(document).ready(function() {
+    new devsite.feedback.Widget({
+        'product_id': '83405',
+        'bucket': '',
+        'context': '',
+        'version': 'devsite-20180420-r00-rc00.default'
+      },
+      document.querySelectorAll('.devsite-feedback-button'),
+      'en',
+      document.querySelector('.devsite-site-mask'),
+      document.querySelector('.devsite-feedback-dialog'),
+      document.querySelector('.devsite-feedback-cancel'),
+      document.querySelectorAll('.devsite-feedback-item a:not([href])')
+    );
+  });
+  </script></div><script async defer src="//www.gstatic.com/feedback/api.js"></script><script src="https://cloud.google.com/_static2/d7147bb846/jsi18n/"></script><script src="https://cloud.google.com/_static/d7147bb846/js/script_foot_closure.js"></script><script src="https://cloud.google.com/_static/d7147bb846/js/script_foot.js"></script><script>
+        (function($) {
+          
+          devsite.devsite.Init($, {'ENABLE_BLOCKED_VIDEO_PLACEHOLDER': 0, 'SITE_NAME': 'cloud', 'FULL_SITE_SEARCH_ENABLED': 1, 'ENABLE_CLOUDTRACK': 1, 'VTAGS_ENABLED': 1, 'HISTORY_ENABLED': 1, 'VERSION_HASH': 'd7147bb846', 'SCRIPTSAFE_DOMAIN': 'cloud-dot-google-developers.appspot.com', 'ENABLE_BLOCKED_LINK_TOOLTIP': 0, 'ALLOWED_HOSTS': ['.android.com', '.anvato.com', '.apigee.com', '.appspot.com', '.dialogflow.com', '.gonglchuangl.net', '.google.cn', '.google.com', '.googleplex.com', '.nest.com', '.openthread.io', '.openweave.io', '.orbitera.com', '.tensorflow.org'], 'BLOCK_RSS_FEEDS': 0},
+                               '[]','en',
+                               true, '',
+                               {"f62218c009ec029abef196bba5aa34cf": true, "8de7a048f21618359bd37f5ce44be073": false, "098dafe57affddc137df300142652cfd": false, "8e03e230de0bd8a6fe173fdf172e8b3f": true, "cb025a64a50094835616312f4774a53d": true, "51470233c56fc1fde50f00b73c52b216": false, "d169d485cf24243a263783dbe42029b1": true, "039e5d84b87fd75807ffb37b7f1bbf2c": true, "700def1a83e356c06c0925afb05de4b0": false, "6749dcb526ce9bde6993550c7d928d24": true}, '/kms/docs/',
+                               'https://cloud.google.com/');
+        })(jQuery);
+
+        
+        devsite.localInit = function() {
+          
+        };
+
+      </script><script>
+      $('.devsite-utility-footer-language-select').each(function() {
+        $(this).change(function(){$('.devsite-utility-footer-language').submit();});
+      });
+      </script><script async defer src="//survey.g.doubleclick.net/async_survey?site=5u3vqdlpcnxudk6xz3yb2kknf4"></script></div><span id="devsite-request-elapsed" data-request-elapsed="278.029918671"></span></body></html>

@@ -1,0 +1,3435 @@
+
+
+
+
+
+
+<!DOCTYPE html><html lang="en"
+      class="chekov"><head><script>var a=window.devsite||{};window.devsite=a;a.readyCallbacks=[];window.devsite.readyCallbacks=a.readyCallbacks;a.ready=function(b){a.readyCallbacks.push(b)};window.devsite.ready=a.ready;
+</script><meta charset="utf-8"><meta name="xsrf_token" content="NsFc7YwPwwSaM14B6bzSePUlxqF3QaFaG8DIjkiv4gM6MTUyNDQ2MDQ4OTcwMTI0MA" /><link rel="canonical" href="https://cloud.google.com/kms/docs/encrypt-decrypt"><link rel="alternate" href="https://cloud.google.com/kms/docs/encrypt-decrypt" hreflang="en"><link rel="alternate" href="https://cloud.google.com/kms/docs/encrypt-decrypt" hreflang="x-default"><link rel="shortcut icon" href="https://cloud.google.com/_static/d7147bb846/images/cloud/icons/favicons/onecloud/favicon.ico"><link rel="apple-touch-icon" href="https://cloud.google.com/_static/d7147bb846/images/cloud/icons/favicons/onecloud/apple-icon.png"><meta name="viewport" content="width=device-width, initial-scale=1"><link rel="stylesheet"
+      
+      href="//fonts.googleapis.com/css?family=Google+Sans:400|Roboto:400,400italic,500,500italic,700,700italic|Roboto+Mono:400,500,700|Material+Icons"
+      ><link rel="stylesheet"
+        href="https://cloud.google.com/_static/d7147bb846/css/devsite-cloud-white.css"><link rel="stylesheet" href="https://cloud.google.com/_static/d7147bb846/css/cloud/cloud-site.css"><link rel="search"
+        type="application/opensearchdescription+xml"
+        title="Google Cloud"
+        href="https://cloud.google.com/s/opensearch.xml"><script src="https://cloud.google.com/_static/d7147bb846/js/jquery-bundle.js"></script><meta property="og:site_name" content="Google Cloud"><meta property="og:type" content="website"><meta property="og:url" content="https://cloud.google.com/kms/docs/encrypt-decrypt"><meta property="og:locale" content="en"><script>
+    var ___gcfg = ___gcfg || {};
+    ___gcfg.lang = 'en';
+  </script><title>Encrypting and Decrypting Data &nbsp;|&nbsp; Cloud KMS Documentation
+      &nbsp;|&nbsp; Google Cloud</title><meta property="og:title" content="Encrypting and Decrypting Data &nbsp;|&nbsp; Cloud KMS Documentation
+      &nbsp;|&nbsp; Google Cloud"></head><body class="
+               devsite-doc-page
+               
+               
+               
+               
+               devsite-header-no-lower-tabs"
+        data-family="endorsed"
+        id="top_of_page"><div class="devsite-wrapper"><div class="devsite-top-section-wrapper
+            "><header class="devsite-top-section nocontent"><div class="devsite-top-logo-row-wrapper-wrapper"><div class="devsite-top-logo-row-wrapper"><div class="devsite-top-logo-row devsite-full-site-width"><button type="button" class="devsite-expand-section-nav devsite-header-icon-button
+                                       button-flat material-icons gc-analytics-event"
+                  data-category="Site-Wide Custom Events" data-label="Hamburger menu"></button><div class="devsite-product-name-wrapper"><a href="https://cloud.google.com/" class="devsite-site-logo-link gc-analytics-event"
+   data-category="Site-Wide Custom Events" data-label="Site logo"><img src="https://cloud.google.com/_static/d7147bb846/images/cloud/cloud-logo.svg"
+       class="devsite-site-logo" alt="Google Cloud"><span class="devsite-site-name devsite-product-name">Google Cloud</span></a></div><div class="devsite-header-upper-tabs"><nav class="devsite-doc-set-nav devsite-nav devsite-overflow-tabs-scroll-wrapper"><ul class="devsite-doc-set-nav-tab-list devsite-overflow-tabs-scroll"><li class="devsite-doc-set-nav-tab-container devsite-nav-tab
+               "><a href="https://cloud.google.com/why-google/"
+         class=" devsite-nav-tab
+                devsite-doc-set-nav-tab devsite-doc-set-nav-tab-link gc-analytics-event"
+         
+       
+         data-category="Site-Wide Custom Events"
+       
+         data-label="Tab: Why Google"
+       
+         track-type="globalNav"
+       
+         track-name="whyGoogle"
+       >
+        Why Google
+      </a></li><li class="devsite-doc-set-nav-tab-container devsite-nav-tab
+               "><a href="https://cloud.google.com/products/"
+         class=" devsite-nav-tab
+                devsite-doc-set-nav-tab devsite-doc-set-nav-tab-link gc-analytics-event"
+         
+       
+         data-category="Site-Wide Custom Events"
+       
+         data-label="Tab: Products"
+       
+         track-type="globalNav"
+       
+         track-name="products"
+       >
+        Products
+      </a></li><li class="devsite-doc-set-nav-tab-container devsite-nav-tab
+               "><a href="https://cloud.google.com/solutions/"
+         class=" devsite-nav-tab
+                devsite-doc-set-nav-tab devsite-doc-set-nav-tab-link gc-analytics-event"
+         
+       
+         data-category="Site-Wide Custom Events"
+       
+         data-label="Tab: Solutions"
+       
+         track-type="globalNav"
+       
+         track-name="solutions"
+       >
+        Solutions
+      </a></li><li class="devsite-doc-set-nav-tab-container devsite-nav-tab
+               "><a href="https://cloud.google.com/launcher/"
+         class=" devsite-nav-tab
+                devsite-doc-set-nav-tab devsite-doc-set-nav-tab-link gc-analytics-event"
+         
+       
+         data-category="Site-Wide Custom Events"
+       
+         data-label="Tab: Launcher"
+       
+         track-type="globalNav"
+       
+         track-name="launcher"
+       >
+        Launcher
+      </a></li><li class="devsite-doc-set-nav-tab-container devsite-nav-tab
+               "><a href="https://cloud.google.com/pricing/"
+         class=" devsite-nav-tab
+                devsite-doc-set-nav-tab devsite-doc-set-nav-tab-link gc-analytics-event"
+         
+       
+         data-category="Site-Wide Custom Events"
+       
+         data-label="Tab: Pricing"
+       
+         track-type="globalNav"
+       
+         track-name="pricing"
+       >
+        Pricing
+      </a></li><li class="devsite-doc-set-nav-tab-container devsite-nav-tab
+               "><a href="https://cloud.google.com/customers/"
+         class=" devsite-nav-tab
+                devsite-doc-set-nav-tab devsite-doc-set-nav-tab-link gc-analytics-event"
+         
+       
+         data-category="Site-Wide Custom Events"
+       
+         data-label="Tab: Customers"
+       
+         track-type="globalNav"
+       
+         track-name="customers"
+       >
+        Customers
+      </a></li><li class="devsite-doc-set-nav-tab-container devsite-nav-tab
+               "><a href="https://cloud.google.com/docs/"
+         class="devsite-doc-set-nav-active devsite-nav-tab
+                devsite-doc-set-nav-tab devsite-doc-set-nav-tab-link gc-analytics-event"
+         aria-label="Documentation, selected"
+       
+         data-category="Site-Wide Custom Events"
+       
+         data-label="Tab: Documentation"
+       >
+        Documentation
+      </a></li><li class="devsite-doc-set-nav-tab-container devsite-nav-tab
+               "><a href="https://cloud.google.com/support/"
+         class=" devsite-nav-tab
+                devsite-doc-set-nav-tab devsite-doc-set-nav-tab-link gc-analytics-event"
+         
+       
+         data-category="Site-Wide Custom Events"
+       
+         data-label="Tab: Support"
+       
+         track-type="globalNav"
+       
+         track-name="support"
+       >
+        Support
+      </a></li><li class="devsite-doc-set-nav-tab-container devsite-nav-tab
+               "><a href="https://cloud.google.com/partners/"
+         class=" devsite-nav-tab
+                devsite-doc-set-nav-tab devsite-doc-set-nav-tab-link gc-analytics-event"
+         
+       
+         data-category="Site-Wide Custom Events"
+       
+         data-label="Tab: Partners"
+       
+         track-type="globalNav"
+       
+         track-name="partners"
+       >
+        Partners
+      </a></li></ul></nav></div><form class="devsite-search-form"
+                action="https://cloud.google.com/s/results/"
+                method="GET"
+                id="top-search"
+                search-placeholder='Search'><div id="searchbox" class="devsite-searchbox"><input placeholder='Search'
+         
+         type="text"
+         class="devsite-search-field devsite-search-query"
+         name="q"
+         value=""
+         autocomplete="off"
+         
+         aria-label="Search box"><div class="devsite-search-image material-icons"></div></div><input type="hidden"
+       name="p"
+       id="search_project"
+       value="/kms/docs/"
+       data-project-name="Cloud KMS Documentation"
+       data-project-path="/kms/docs/"
+       data-query-match=""><input type="hidden" class="suggest-project" value="Cloud KMS Documentation" /></form><a class="devsite-header-link devsite-top-button button gc-analytics-event"
+               href="//console.cloud.google.com/"
+               data-category="Site-Wide Custom Events"
+               data-label="Site header link"
+               track-type="navigateTo"
+               track-name="console"
+               track-metadata-position="nav"><div class="devsite-header-link-label">Console</div></a><button type="button" class="devsite-search-button devsite-header-icon-button button-flat
+                                       material-icons"></button><a href="https://www.google.com/accounts/ServiceLogin?passive=true&continue=https%3A%2F%2Fcloud.google.com%2Fkms%2Fdocs%2Fencrypt-decrypt%3Frefresh%3D1&service=cloudconsole"
+   class="devsite-user-signin devsite-top-button button gc-analytics-event"
+   data-category="Site-Wide Custom Events" data-label="Sign in button">
+  
+  Sign in
+</a></div></div></div><div class="devsite-collapsible-section"><div class="devsite-header-background devsite-full-site-width"><div class="devsite-product-id-row devsite-full-site-width"><div class="devsite-product-description-row"><ul class="devsite-breadcrumb-list"><li class="devsite-breadcrumb-item">
+    
+    
+    
+      Documentation
+    
+    
+  </li></ul></div><div class="devsite-product-button-row
+            cloud-free-trial-eligible"><button type="button" id="devsite-feedback-project"
+          class="devsite-feedback-button devsite-top-button gc-analytics-event"
+          data-category="Site-Wide Custom Events" data-label="Send Feedback Button"
+          track-type="feedback" track-name="sendFeedbackLink" track-metadata-position="header">
+  
+  Send feedback
+  </button><a
+    
+      href="https://console.cloud.google.com/freetrial"
+    
+    
+      class="cloud-free-trial-button button-primary button"
+    
+    
+      
+      track-type="freeTrial"
+      
+      track-name="try"
+      
+      track-metadata-position="nav"
+      
+    >
+    Try It Free
+  </a><a
+    
+      href="https://cloud.google.com/contact/"
+    
+    
+      class="cloud-contact-sales-button button"
+    
+    
+      
+      track-type="sales"
+      
+      track-name="contact"
+      
+      track-metadata-position="nav"
+      
+    >
+    Contact Sales
+  </a></div></div></div></div></header><script>
+    if (window.jQuery) {
+      $(document).ready(function() {
+        if (window.devsite && window.devsite.search) {
+          
+          window.devsite.search.init('en')
+        }
+      });
+    }
+  </script></div><div id="gc-wrapper"itemscope itemtype="http://schema.org/Article"><input class="google-tag-manager-id" type="hidden" value="GTM-5CVQBG"><script>
+      var dataLayer = [{"freeTrialEligibleUser": "True", "userCountry": "HK", "language": {"requested": "en", "served": "en"}, "projectName": "Cloud KMS Documentation", "scriptsafe": null, "signedIn": "False", "internalUser": "False"}];
+    </script>
+
+      
+        <div class="devsite-site-mask"></div>
+        
+  
+
+
+<nav class="devsite-nav-responsive devsite-nav nocontent" tabindex="0">
+  
+  <div class="devsite-nav-responsive-tabs-panel">
+    
+      
+        
+
+
+
+<nav class="devsite-nav-responsive-tabs devsite-nav">
+  <ul class="devsite-nav-list">
+  
+    <li class="devsite-nav-item devsite-nav-item-heading">
+    
+      <a 
+           href="https://cloud.google.com/why-google/?nav=true"
+         
+         class="devsite-nav-responsive-tab devsite-nav-title gc-analytics-event
+                "
+         data-category="Site-Wide Custom Events" data-label="Responsive Tab: Why Google">
+        Why Google
+      </a>
+      
+      
+    
+    </li>
+  
+    <li class="devsite-nav-item devsite-nav-item-heading">
+    
+      <a 
+           href="https://cloud.google.com/products/?nav=true"
+         
+         class="devsite-nav-responsive-tab devsite-nav-title gc-analytics-event
+                "
+         data-category="Site-Wide Custom Events" data-label="Responsive Tab: Products">
+        Products
+      </a>
+      
+      
+    
+    </li>
+  
+    <li class="devsite-nav-item devsite-nav-item-heading">
+    
+      <a 
+           href="https://cloud.google.com/solutions/?nav=true"
+         
+         class="devsite-nav-responsive-tab devsite-nav-title gc-analytics-event
+                "
+         data-category="Site-Wide Custom Events" data-label="Responsive Tab: Solutions">
+        Solutions
+      </a>
+      
+      
+    
+    </li>
+  
+    <li class="devsite-nav-item devsite-nav-item-heading">
+    
+      <a 
+           href="https://cloud.google.com/launcher/?nav=true"
+         
+         class="devsite-nav-responsive-tab devsite-nav-title gc-analytics-event
+                "
+         data-category="Site-Wide Custom Events" data-label="Responsive Tab: Launcher">
+        Launcher
+      </a>
+      
+      
+    
+    </li>
+  
+    <li class="devsite-nav-item devsite-nav-item-heading">
+    
+      <a 
+           href="https://cloud.google.com/pricing/?nav=true"
+         
+         class="devsite-nav-responsive-tab devsite-nav-title gc-analytics-event
+                "
+         data-category="Site-Wide Custom Events" data-label="Responsive Tab: Pricing">
+        Pricing
+      </a>
+      
+      
+    
+    </li>
+  
+    <li class="devsite-nav-item devsite-nav-item-heading">
+    
+      <a 
+           href="https://cloud.google.com/customers/?nav=true"
+         
+         class="devsite-nav-responsive-tab devsite-nav-title gc-analytics-event
+                "
+         data-category="Site-Wide Custom Events" data-label="Responsive Tab: Customers">
+        Customers
+      </a>
+      
+      
+    
+    </li>
+  
+    <li class="devsite-nav-item devsite-nav-item-heading">
+    
+      <span class="devsite-nav-responsive-forward devsite-nav-responsive-tab devsite-nav-title
+                   devsite-nav-active gc-analytics-event"
+            data-category="Site-Wide Custom Events" data-label="Responsive Tab: Documentation"
+            tabindex="0">
+        Documentation
+      </span>
+    
+    </li>
+  
+    <li class="devsite-nav-item devsite-nav-item-heading">
+    
+      <a 
+           href="https://cloud.google.com/support/?nav=true"
+         
+         class="devsite-nav-responsive-tab devsite-nav-title gc-analytics-event
+                "
+         data-category="Site-Wide Custom Events" data-label="Responsive Tab: Support">
+        Support
+      </a>
+      
+      
+    
+    </li>
+  
+    <li class="devsite-nav-item devsite-nav-item-heading">
+    
+      <a 
+           href="https://cloud.google.com/partners/?nav=true"
+         
+         class="devsite-nav-responsive-tab devsite-nav-title gc-analytics-event
+                "
+         data-category="Site-Wide Custom Events" data-label="Responsive Tab: Partners">
+        Partners
+      </a>
+      
+      
+    
+    </li>
+  
+  
+    <li class="devsite-nav-item devsite-nav-item-heading">
+      <a href="//console.cloud.google.com/"
+         class="devsite-nav-responsive-tab devsite-nav-title gc-analytics-event"
+         data-category="Site-Wide Custom Events"
+         data-label="Responsive Tab: console">
+        Console
+      </a>
+    </li>
+  
+  </ul>
+</nav>
+
+
+      
+    
+  </div>
+  
+  
+  <div class="devsite-nav-responsive-sidebar-panel">
+    
+    <div class="devsite-nav-responsive-back" tabindex="0"></div>
+    
+    <nav class="devsite-nav-responsive-sidebar"></nav>
+  </div>
+  
+  
+    <div class="devsite-nav-responsive-index-panel">
+      <div class="devsite-nav-index-back" tabindex="0"></div>
+      <nav>
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+      </nav>
+    </div>
+  
+</nav>
+
+
+        <div class="devsite-main-content clearfix">
+
+        
+        
+
+        
+  
+  
+    
+    
+      
+  <nav class="devsite-section-nav devsite-nav nocontent">
+    <ul class="devsite-nav-list devsite-nav-expandable"><li class="devsite-nav-item devsite-nav-item-heading"><span class="devsite-nav-title devsite-nav-title-no-path" track-type="leftNav" track-name="expandNavSectionNoLink" track-metadata-position="0">Cloud KMS</span></li><li class="devsite-nav-item"><a href="https://cloud.google.com/kms/" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="0" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">Product Overview</a></li><li class="devsite-nav-item"><a href="https://cloud.google.com/kms/docs/" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="0" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">Documentation</a></li><li class="devsite-nav-item"><a href="https://cloud.google.com/kms/docs/quickstart" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="0" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">Quickstart</a></li><li class="devsite-nav-item devsite-nav-item-heading"><span class="devsite-nav-title devsite-nav-title-no-path" track-type="leftNav" track-name="expandNavSectionNoLink" track-metadata-position="0">How-to Guides</span></li><li class="devsite-nav-item"><a href="https://cloud.google.com/kms/docs/how-tos" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="0" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">All How-to Guides</a></li><li class="devsite-nav-item"><a href="https://cloud.google.com/kms/docs/accessing-the-api" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="0" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">Accessing the API</a></li><li class="devsite-nav-item"><a href="https://cloud.google.com/kms/docs/creating-keys" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="0" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">Creating keys</a></li><li class="devsite-nav-item"><a href="https://cloud.google.com/kms/docs/enable-disable" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="0" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">Enabling and disabling key versions</a></li><li class="devsite-nav-item"><a href="https://cloud.google.com/kms/docs/destroy-restore" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="0" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">Destroying and restoring key versions</a></li><li class="devsite-nav-item"><a href="https://cloud.google.com/kms/docs/labeling-keys" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="0" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">Labeling keys</a></li><li class="devsite-nav-item"><a href="https://cloud.google.com/kms/docs/rotating-keys" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="0" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">Rotating keys</a></li><li class="devsite-nav-item devsite-nav-active"><a href="https://cloud.google.com/kms/docs/encrypt-decrypt" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="0" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">Encrypting and decrypting</a></li><li class="devsite-nav-item"><a href="https://cloud.google.com/kms/docs/re-encrypt-data" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="0" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">Re-encrypting data</a></li><li class="devsite-nav-item"><a href="https://cloud.google.com/kms/docs/store-secrets" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="0" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">Storing secrets</a></li><li class="devsite-nav-item"><a href="https://cloud.google.com/kms/docs/iam" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="0" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">Using IAM</a></li><li class="devsite-nav-item"><a href="https://cloud.google.com/kms/docs/logging" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="0" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">Using Cloud Audit Logging</a></li><li class="devsite-nav-item"><a href="https://cloud.google.com/kms/docs/monitoring" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="0" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">Using Stackdriver Monitoring</a></li><li class="devsite-nav-item devsite-nav-item-heading"><span class="devsite-nav-title devsite-nav-title-no-path" track-type="leftNav" track-name="expandNavSectionNoLink" track-metadata-position="0">Concepts</span></li><li class="devsite-nav-item"><a href="https://cloud.google.com/kms/docs/concepts" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="0" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">All Concepts</a></li><li class="devsite-nav-item"><a href="https://cloud.google.com/kms/docs/object-hierarchy" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="0" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">Object hierarchy</a></li><li class="devsite-nav-item"><a href="https://cloud.google.com/kms/docs/key-states" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="0" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">Key states</a></li><li class="devsite-nav-item"><a href="https://cloud.google.com/kms/docs/key-rotation" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="0" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">Key rotation</a></li><li class="devsite-nav-item"><a href="https://cloud.google.com/kms/docs/separation-of-duties" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="0" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">Separation of duties</a></li><li class="devsite-nav-item"><a href="https://cloud.google.com/kms/docs/secret-management" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="0" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">Secret management</a></li><li class="devsite-nav-item"><a href="https://cloud.google.com/kms/docs/additional-authenticated-data" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="0" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">Additional authenticated data</a></li><li class="devsite-nav-item"><a href="https://cloud.google.com/kms/docs/envelope-encryption" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="0" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">Envelope encryption</a></li><li class="devsite-nav-item"><a href="https://cloud.google.com/kms/docs/locations" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="0" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">Locations</a></li><li class="devsite-nav-item devsite-nav-item-heading"><span class="devsite-nav-title devsite-nav-title-no-path" track-type="leftNav" track-name="expandNavSectionNoLink" track-metadata-position="0">APIs &amp; Reference</span></li><li class="devsite-nav-item"><a href="https://cloud.google.com/kms/docs/apis" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="0" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">All APIs &amp; References</a></li><li class="devsite-nav-item"><a href="https://cloud.google.com/kms/docs/reference/libraries" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="0" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">Client Libraries</a></li><li class="devsite-nav-item"><a href="https://cloud.google.com/kms/docs/reference/permissions-and-roles" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="0" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">Permissions and Roles</a></li><li class="devsite-nav-item devsite-nav-item-section-expandable"><span class="devsite-nav-title devsite-nav-title-no-path" track-type="leftNav" track-name="expandNavSectionNoLink"track-metadata-position="0" aria-label="REST Reference, click to expand/collapse" role="link">REST Reference</span><a class="devsite-nav-toggle devsite-nav-toggle-collapsed material-icons" track-type="leftNav" track-name="expandNavSectionArrow" track-metadata-position="0" aria-hidden="true"></a><ul class="devsite-nav-section devsite-nav-section-collapsed"><li class="devsite-nav-item"><a href="https://cloud.google.com/kms/docs/reference/rest/" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="1" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">Overview</a></li><li class="devsite-nav-item devsite-nav-item-section-expandable"><span class="devsite-nav-title devsite-nav-title-no-path" track-type="leftNav" track-name="expandNavSectionNoLink"track-metadata-position="1" aria-label="v1, click to expand/collapse" role="link">v1</span><a class="devsite-nav-toggle devsite-nav-toggle-collapsed material-icons" track-type="leftNav" track-name="expandNavSectionArrow" track-metadata-position="1" aria-hidden="true"></a><ul class="devsite-nav-section devsite-nav-section-collapsed"><li class="devsite-nav-item devsite-nav-item-heading"><span class="devsite-nav-title devsite-nav-title-no-path" track-type="leftNav" track-name="expandNavSectionNoLink" track-metadata-position="2">REST Resources</span></li><li class="devsite-nav-item devsite-nav-item-section-expandable"><span class="devsite-nav-title devsite-nav-title-no-path" track-type="leftNav" track-name="expandNavSectionNoLink"track-metadata-position="2" aria-label="projects.locations, click to expand/collapse" role="link">projects.locations</span><a class="devsite-nav-toggle devsite-nav-toggle-collapsed material-icons" track-type="leftNav" track-name="expandNavSectionArrow" track-metadata-position="2" aria-hidden="true"></a><ul class="devsite-nav-section devsite-nav-section-collapsed"><li class="devsite-nav-item"><a href="https://cloud.google.com/kms/docs/reference/rest/v1/projects.locations" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="3" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">Overview</a></li><li class="devsite-nav-item"><a href="https://cloud.google.com/kms/docs/reference/rest/v1/projects.locations/get" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="3" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">get</a></li><li class="devsite-nav-item"><a href="https://cloud.google.com/kms/docs/reference/rest/v1/projects.locations/list" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="3" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">list</a></li></ul></li><li class="devsite-nav-item devsite-nav-item-section-expandable"><span class="devsite-nav-title devsite-nav-title-no-path" track-type="leftNav" track-name="expandNavSectionNoLink"track-metadata-position="2" aria-label="projects.locations.keyRings, click to expand/collapse" role="link">projects.locations.keyRings</span><a class="devsite-nav-toggle devsite-nav-toggle-collapsed material-icons" track-type="leftNav" track-name="expandNavSectionArrow" track-metadata-position="2" aria-hidden="true"></a><ul class="devsite-nav-section devsite-nav-section-collapsed"><li class="devsite-nav-item"><a href="https://cloud.google.com/kms/docs/reference/rest/v1/projects.locations.keyRings" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="3" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">Overview</a></li><li class="devsite-nav-item"><a href="https://cloud.google.com/kms/docs/reference/rest/v1/projects.locations.keyRings/create" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="3" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">create</a></li><li class="devsite-nav-item"><a href="https://cloud.google.com/kms/docs/reference/rest/v1/projects.locations.keyRings/get" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="3" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">get</a></li><li class="devsite-nav-item"><a href="https://cloud.google.com/kms/docs/reference/rest/v1/projects.locations.keyRings/getIamPolicy" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="3" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">getIamPolicy</a></li><li class="devsite-nav-item"><a href="https://cloud.google.com/kms/docs/reference/rest/v1/projects.locations.keyRings/list" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="3" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">list</a></li><li class="devsite-nav-item"><a href="https://cloud.google.com/kms/docs/reference/rest/v1/projects.locations.keyRings/setIamPolicy" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="3" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">setIamPolicy</a></li><li class="devsite-nav-item"><a href="https://cloud.google.com/kms/docs/reference/rest/v1/projects.locations.keyRings/testIamPermissions" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="3" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">testIamPermissions</a></li></ul></li><li class="devsite-nav-item devsite-nav-item-section-expandable"><span class="devsite-nav-title devsite-nav-title-no-path" track-type="leftNav" track-name="expandNavSectionNoLink"track-metadata-position="2" aria-label="projects.locations.keyRings.cryptoKeys, click to expand/collapse" role="link">projects.locations.keyRings.cryptoKeys</span><a class="devsite-nav-toggle devsite-nav-toggle-collapsed material-icons" track-type="leftNav" track-name="expandNavSectionArrow" track-metadata-position="2" aria-hidden="true"></a><ul class="devsite-nav-section devsite-nav-section-collapsed"><li class="devsite-nav-item"><a href="https://cloud.google.com/kms/docs/reference/rest/v1/projects.locations.keyRings.cryptoKeys" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="3" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">Overview</a></li><li class="devsite-nav-item"><a href="https://cloud.google.com/kms/docs/reference/rest/v1/projects.locations.keyRings.cryptoKeys/create" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="3" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">create</a></li><li class="devsite-nav-item"><a href="https://cloud.google.com/kms/docs/reference/rest/v1/projects.locations.keyRings.cryptoKeys/decrypt" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="3" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">decrypt</a></li><li class="devsite-nav-item"><a href="https://cloud.google.com/kms/docs/reference/rest/v1/projects.locations.keyRings.cryptoKeys/encrypt" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="3" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">encrypt</a></li><li class="devsite-nav-item"><a href="https://cloud.google.com/kms/docs/reference/rest/v1/projects.locations.keyRings.cryptoKeys/get" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="3" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">get</a></li><li class="devsite-nav-item"><a href="https://cloud.google.com/kms/docs/reference/rest/v1/projects.locations.keyRings.cryptoKeys/getIamPolicy" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="3" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">getIamPolicy</a></li><li class="devsite-nav-item"><a href="https://cloud.google.com/kms/docs/reference/rest/v1/projects.locations.keyRings.cryptoKeys/list" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="3" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">list</a></li><li class="devsite-nav-item"><a href="https://cloud.google.com/kms/docs/reference/rest/v1/projects.locations.keyRings.cryptoKeys/patch" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="3" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">patch</a></li><li class="devsite-nav-item"><a href="https://cloud.google.com/kms/docs/reference/rest/v1/projects.locations.keyRings.cryptoKeys/setIamPolicy" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="3" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">setIamPolicy</a></li><li class="devsite-nav-item"><a href="https://cloud.google.com/kms/docs/reference/rest/v1/projects.locations.keyRings.cryptoKeys/testIamPermissions" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="3" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">testIamPermissions</a></li><li class="devsite-nav-item"><a href="https://cloud.google.com/kms/docs/reference/rest/v1/projects.locations.keyRings.cryptoKeys/updatePrimaryVersion" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="3" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">updatePrimaryVersion</a></li></ul></li><li class="devsite-nav-item devsite-nav-item-section-expandable"><span class="devsite-nav-title devsite-nav-title-no-path" track-type="leftNav" track-name="expandNavSectionNoLink"track-metadata-position="2" aria-label="projects.locations.keyRings.cryptoKeys.cryptoKeyVersions, click to expand/collapse" role="link">projects.locations.keyRings.cryptoKeys.cryptoKeyVersions</span><a class="devsite-nav-toggle devsite-nav-toggle-collapsed material-icons" track-type="leftNav" track-name="expandNavSectionArrow" track-metadata-position="2" aria-hidden="true"></a><ul class="devsite-nav-section devsite-nav-section-collapsed"><li class="devsite-nav-item"><a href="https://cloud.google.com/kms/docs/reference/rest/v1/projects.locations.keyRings.cryptoKeys.cryptoKeyVersions" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="3" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">Overview</a></li><li class="devsite-nav-item"><a href="https://cloud.google.com/kms/docs/reference/rest/v1/projects.locations.keyRings.cryptoKeys.cryptoKeyVersions/create" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="3" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">create</a></li><li class="devsite-nav-item"><a href="https://cloud.google.com/kms/docs/reference/rest/v1/projects.locations.keyRings.cryptoKeys.cryptoKeyVersions/destroy" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="3" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">destroy</a></li><li class="devsite-nav-item"><a href="https://cloud.google.com/kms/docs/reference/rest/v1/projects.locations.keyRings.cryptoKeys.cryptoKeyVersions/get" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="3" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">get</a></li><li class="devsite-nav-item"><a href="https://cloud.google.com/kms/docs/reference/rest/v1/projects.locations.keyRings.cryptoKeys.cryptoKeyVersions/list" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="3" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">list</a></li><li class="devsite-nav-item"><a href="https://cloud.google.com/kms/docs/reference/rest/v1/projects.locations.keyRings.cryptoKeys.cryptoKeyVersions/patch" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="3" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">patch</a></li><li class="devsite-nav-item"><a href="https://cloud.google.com/kms/docs/reference/rest/v1/projects.locations.keyRings.cryptoKeys.cryptoKeyVersions/restore" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="3" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">restore</a></li></ul></li><li class="devsite-nav-item devsite-nav-item-heading"><span class="devsite-nav-title devsite-nav-title-no-path" track-type="leftNav" track-name="expandNavSectionNoLink" track-metadata-position="2">Types</span></li><li class="devsite-nav-item"><a href="https://cloud.google.com/kms/docs/reference/rest/v1/Policy" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="2" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">Policy</a></li><li class="devsite-nav-item"><a href="https://cloud.google.com/kms/docs/reference/rest/v1/TestIamPermissionsResponse" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="2" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">TestIamPermissionsResponse</a></li></ul></li></ul></li><li class="devsite-nav-item devsite-nav-item-heading"><span class="devsite-nav-title devsite-nav-title-no-path" track-type="leftNav" track-name="expandNavSectionNoLink" track-metadata-position="0">Tutorials</span></li><li class="devsite-nav-item"><a href="https://cloud.google.com/kms/docs/tutorials" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="0" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">All Tutorials</a></li><li class="devsite-nav-item"><a href="https://codelabs.developers.google.com/codelabs/cloud-encrypt-with-kms/index.html" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="0" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">Encrypting data at rest</a></li><li class="devsite-nav-item"><a href="https://codelabs.developers.google.com/codelabs/cloud-bookshelf-java-cloud-kms/index.html" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="0" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">Encrypting a java application</a></li><li class="devsite-nav-item devsite-nav-item-heading"><span class="devsite-nav-title devsite-nav-title-no-path" track-type="leftNav" track-name="expandNavSectionNoLink" track-metadata-position="0">Resources</span></li><li class="devsite-nav-item"><a href="https://cloud.google.com/kms/docs/resources" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="0" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">All Resources</a></li><li class="devsite-nav-item"><a href="https://cloud.google.com/kms/docs/faq" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="0" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">Frequently Asked Questions</a></li><li class="devsite-nav-item"><a href="https://cloud.google.com/kms/pricing" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="0" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">Pricing</a></li><li class="devsite-nav-item"><a href="https://cloud.google.com/kms/quotas" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="0" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">Quotas</a></li><li class="devsite-nav-item"><a href="https://cloud.google.com/kms/docs/release-notes" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="0" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">Release notes</a></li><li class="devsite-nav-item"><a href="https://cloud.google.com/kms/docs/support" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="0" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">Support</a></li><li class="devsite-nav-item"><a href="https://cloud.google.com/kms/known-issues" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="0" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">Known Issues</a></li><li class="devsite-nav-item"><a href="https://cloud.google.com/kms/docs/restrictions" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="0" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">Restrictions</a></li><li class="devsite-nav-item"><a href="https://cloud.google.com/kms/sla" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="0" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">Service Level Agreement</a></li></ul>
+  </nav>
+
+    
+
+    
+  <nav class="devsite-page-nav devsite-nav"></nav>
+
+
+      <article class="devsite-article">
+        <article class="devsite-article-inner">
+  
+          
+  
+
+
+
+  
+  <nav class="devsite-breadcrumb-nav devsite-nav">
+    
+
+
+<ul class="devsite-breadcrumb-list">
+  
+  <li class="devsite-breadcrumb-item">
+    
+    
+    <a href="https://cloud.google.com/kms/" class="devsite-breadcrumb-link gc-analytics-event"
+       data-category="Site-Wide Custom Events" data-label="Breadcrumbs"
+       data-value="1">
+    
+    
+      Cloud KMS
+    
+    
+    </a>
+    
+  </li>
+  
+  <li class="devsite-breadcrumb-item">
+    
+    
+    <div class="devsite-breadcrumb-guillemet material-icons"></div>
+    
+    
+    <a href="https://cloud.google.com/kms/docs/" class="devsite-breadcrumb-link gc-analytics-event"
+       data-category="Site-Wide Custom Events" data-label="Breadcrumbs"
+       data-value="2">
+    
+    
+      Documentation
+    
+    
+    </a>
+    
+  </li>
+  
+  <li class="devsite-breadcrumb-item">
+    
+    
+    <div class="devsite-breadcrumb-guillemet material-icons"></div>
+    
+    
+    <a href="https://cloud.google.com/docs/" class="devsite-breadcrumb-link gc-analytics-event"
+       data-category="Site-Wide Custom Events" data-label="Breadcrumbs"
+       data-value="3">
+    
+    
+      Documentation
+    
+    
+    </a>
+    
+  </li>
+  
+</ul>
+
+  </nav>
+  
+  
+  <h1 itemprop="name" class="devsite-page-title">
+    Encrypting and Decrypting Data
+  </h1>
+  
+  
+  <nav class="devsite-page-nav-embedded devsite-nav"></nav>
+  
+  <div class="devsite-article-body clearfix
+            "
+       itemprop="articleBody">
+    
+
+<p>This topic show you how to do the following:</p>
+<ul>
+<li>Encrypt text or binary content (plaintext) by using a Cloud KMS key.</li>
+<li>Decrypt ciphertext that was encrypted with a Cloud KMS key.</li>
+</ul>
+<h2 id="setup">Setup</h2>
+<ul>
+<li>
+<p>Before you encrypt or decrypt data, you must create a key ring and a key
+    as described in <a href="https://cloud.google.com/kms/docs/creating-keys">Creating key rings and keys</a>.</p>
+<p><p class="note">For security reasons, the raw cryptographic key material
+represented by a Cloud KMS key can never be viewed or exported.
+It can only be used by an authorized user to encrypt or decrypt data when they
+invoke the Cloud KMS API.</p></p>
+</li>
+<li>
+<p>Ensure the user that is calling the encrypt and decrypt methods has the
+    <code>cloudkms.cryptoKeyVersions.useToEncrypt</code> and
+    <code>cloudkms.cryptoKeyVersions.useToDecrypt</code> permissions on the key used to
+    encrypt or decrypt.</p>
+<p>One way to permit a user to encrypt or decrypt using a key is to add the user
+to the <code>roles/cloudkms.cryptoKeyEncrypter</code>,
+<code>roles/cloudkms.cryptoKeyDecrypter</code>, or
+<code>roles/cloudkms.cryptoKeyEncrypterDecrypter</code> IAM roles for that key.
+For more information, see <a href="https://cloud.google.com/kms/docs/reference/permissions-and-roles">Permissions and Roles</a>.</p>
+</li>
+<li>
+<p>If you are going to use the client libraries for Cloud KMS, then
+    install the <a href="https://cloud.google.com/kms/docs/reference/libraries">client library</a> for
+    your preferred language.</p>
+</li>
+<li>
+<p>If you are going to use the <code>gcloud</code> command-line tool for
+    Cloud KMS, then install the <a href="https://cloud.google.com/sdk">Google Cloud SDK</a>.</p>
+</li>
+</ul>
+<h2 id="encrypt">Encrypt</h2>
+
+
+
+<div id="kms-howto-encrypt-code-sample" class="ds-selector-tabs" data-ds-scope="code-sample">
+  
+
+
+
+
+
+
+
+  
+
+
+  
+    
+  
+
+
+<section>
+  
+  <h3 id="kms-howto-encrypt-cli" track-type="sampleTabNav" track-name="cli" track-metadata-position="kms-howto-encrypt">Command-line</h3>
+  
+  
+  
+  
+<p>To encrypt data, provide the appropriate key information, specify the name of
+the plaintext file to encrypt, and specify the name of the file that will
+contain the encrypted content.</p>
+<pre class="notranslate devsite-click-to-copy" suppresswarning="suppresswarning">
+gcloud kms encrypt \
+    --location=global  \
+    --keyring=my-key-ring \
+    --key=my-key \
+    --plaintext-file=<var>YOUR_FILEPATH_AND_FILENAME_TO_ENCRYPT</var> \
+    --ciphertext-file=<var>YOUR_FILEPATH_AND_FILENAME</var>.enc
+</pre>
+
+<p>The plaintext file must not be larger than 64 KiB.</p>
+<p>The <code>encrypt</code> command supports an optional <code>--additional-authenticated-data-
+file</code> flag to specify a file that contains <a href="https://cloud.google.com/kms/docs/additional-authenticated-data">additional authenticated data</a>.
+The additional authenticated data file must not be larger than 64 KiB.</p>
+<aside class="warning"><strong>Warning:</strong><span> If you use additional authenticated data when you encrypt the file, you
+must specify the same additional authenticated data when you decrypt the
+ciphertext.</span></aside>
+<p>If <code>--plaintext-file</code> or <code>--additional-authenticated-data-file</code> is set to <code>-</code>,
+that file is read from <code>stdin</code>. Similarly, if <code>--ciphertext-file</code> is set to <code>-</code>,
+the ciphertext is written to <code>stdout</code>.</p>
+<p>The <code>encrypt</code> command supports an optional <code>--version</code> flag to indicate the
+version of the key to use for encryption. By default, the primary version is
+used.</p>
+<p>The following <code>encrypt</code> example shows how to specify a version key and
+additional authenticated data.</p>
+<pre class="notranslate devsite-click-to-copy" suppresswarning="suppresswarning">
+gcloud kms encrypt \
+    --location=global  \
+    --keyring=my-key-ring \
+    --key=my-key \
+    --version=my-key-version \
+    --additional-authenticated-data-file=<var>YOUR_ADDITIONAL_AUTHENTICATED_DATA_FILEPATH_AND_FILENAME</var> \
+    --plaintext-file=<var>YOUR_FILEPATH_AND_FILENAME_TO_ENCRYPT</var> \
+    --ciphertext-file=<var>YOUR_FILEPATH_AND_FILENAME</var>.enc
+</pre>
+
+
+</section>
+
+
+
+
+
+  
+
+
+
+
+
+
+
+  
+
+
+  
+    
+  
+
+
+<section>
+  
+  <h3 id="kms-howto-encrypt-protocol" track-type="sampleTabNav" track-name="protocol" track-metadata-position="kms-howto-encrypt">Protocol</h3>
+  
+  
+  
+  
+<p class="note">Content to be encrypted that is sent to Cloud KMS
+in JSON must be base64-encoded. For information on encoding
+and decoding using base64, see <a href="https://cloud.google.com/kms/base64-encoding" target="_blank">Base64 Encoding</a>.</p></p>
+<p>To encrypt data, make a <code>POST</code> request and provide the appropriate project
+and key information and specify the base64-encoded text to be encrypted in the
+<code>plaintext</code> field of the request body.
+Replace <code>YOUR_API_KEY</code> with a valid API key. For information on generating
+an API key, see <a href="https://cloud.google.com/kms/docs/accessing-the-api">Accessing the API</a>.</p>
+<pre class="notranslate devsite-click-to-copy" suppresswarning="suppresswarning">POST https://cloudkms.googleapis.com/v1/projects/<var>project_id</var>/locations/global/keyRings/<var>keyring_name</var>/cryptoKeys/<var>key_name</var>:encrypt&key=YOUR_API_KEY</pre>
+
+<pre class="notranslate prettyprint devsite-click-to-copy" suppresswarning="suppresswarning">
+{
+  "plaintext": "U3VwZXIgc2VjcmV0IHRleHQgdGhhdCBtdXN0IGJlIGVuY3J5cHRlZAo=",
+}
+</pre>
+
+<p>Here is an example using <code>curl</code>:</p>
+<pre class="notranslate devsite-click-to-copy" suppresswarning="suppresswarning">
+curl -s -X POST "https://cloudkms.googleapis.com/v1/projects/<var>YOUR_PROJECT_ID</var>/locations/global/keyRings/<var>YOUR_KEYRING_NAME</var>/cryptoKeys/<var>YOUR_KEY_NAME</var>:encrypt" \
+  -d "{\"plaintext\":\"<var>BASE64_ENCODED_INPUT</var>\"}" \
+  -H "Authorization:Bearer <var>YOUR_API_KEY</var>"\
+  -H "Content-Type:application/json"
+</pre>
+
+
+</section>
+
+
+
+
+
+  
+
+
+
+
+
+
+
+  
+
+
+  
+    
+  
+
+
+  
+
+<section>
+  
+  <h3 id="kms-howto-encrypt-csharp" track-type="sampleTabNav" track-name="csharp" track-metadata-position="kms-howto-encrypt">C#</h3>
+  
+  
+    
+    <p>
+      For more on installing and creating a Cloud KMS client, refer to
+      <a href="https://cloud.google.com/kms/docs/reference/libraries" track-type="clientLibrariesReference"
+         track-name="csharp" track-metadata-position="kms-howto-encrypt">Cloud KMS Client Libraries</a>.
+    </p>
+    
+  
+  
+  
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  
+  
+  
+
+
+<!-- Header -->
+
+<div class="github-docwidget-include" style="border: 1px solid #ddd; border-bottom: 0; padding: 4px; background-color: #4285f4; margin-bottom: -10px">
+  
+
+  
+  <div style="text-align: right; float: right;">
+    
+    
+      
+      <a class="button" target="_blank" href="https://github.com/GoogleCloudPlatform/dotnet-docs-samples/blob/2ec373efac86f3e589ff98ac8abf5d28b29b1578/kms/api/Program.cs"
+      track-type="github" track-name="gitHubViewButton"
+      track-metadata-link-destination="https://github.com/GoogleCloudPlatform/dotnet-docs-samples/blob/2ec373efac86f3e589ff98ac8abf5d28b29b1578/kms/api/Program.cs">View on GitHub</a>
+    
+    
+    
+    
+    
+    
+    
+    <a href="#" class="button google-feedback" data-p="1634365" data-b="solutions"
+       data-context="kms-howto-encrypt" track-type="feedback" track-name="sampleFeedback"
+       track-metadata-lang="csharp" track-metadata-position="kms-howto-encrypt">Feedback</a>
+    
+  </div>
+  
+
+  <div style="clear: both;"></div>
+
+</div>
+
+
+<!-- Code -->
+<div class="github-docwidget-gitinclude-code">
+
+  
+  
+
+<pre class="prettyprint " track-metadata-position="GoogleCloudPlatform/dotnet-docs-samples/kms/api/Program.cs/2ec373efac86f3e589ff98ac8abf5d28b29b1578/kms_encrypt">        public static object Encrypt(string projectId, string locationId, string keyRingId, string cryptoKeyId,
+string plaintextFile, string ciphertextFile)
+        {
+            var cloudKms = CreateAuthorizedClient();
+            // Generate the full path of the crypto key to use for encryption.
+            var cryptoKey = $&quot;projects/{projectId}/locations/{locationId}/keyRings/{keyRingId}/cryptoKeys/{cryptoKeyId}&quot;;
+            EncryptRequest encryptRequest = new EncryptRequest();
+            byte[] plaintext = File.ReadAllBytes(plaintextFile);
+            encryptRequest.Plaintext = Convert.ToBase64String(plaintext);
+            Console.WriteLine($&quot;dataToEncrypt.Plaintext: {encryptRequest.Plaintext}&quot;);
+            var result = cloudKms.Projects.Locations.KeyRings.CryptoKeys.Encrypt(name: cryptoKey, body: encryptRequest).Execute();
+            // Output encrypted data to a file.
+            File.WriteAllBytes(ciphertextFile, Convert.FromBase64String(result.Ciphertext));
+            Console.Write($&quot;Encrypted file created: {ciphertextFile}&quot;);
+            return 0;
+        }</pre>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+</section>
+
+
+
+
+
+  
+
+
+
+
+
+
+
+  
+
+
+  
+    
+  
+
+
+  
+
+<section>
+  
+  <h3 id="kms-howto-encrypt-go" track-type="sampleTabNav" track-name="go" track-metadata-position="kms-howto-encrypt">Go</h3>
+  
+  
+    
+    <p>
+      For more on installing and creating a Cloud KMS client, refer to
+      <a href="https://cloud.google.com/kms/docs/reference/libraries" track-type="clientLibrariesReference"
+         track-name="go" track-metadata-position="kms-howto-encrypt">Cloud KMS Client Libraries</a>.
+    </p>
+    
+  
+  
+  
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  
+  
+
+
+<!-- Header -->
+
+<div class="github-docwidget-include" style="border: 1px solid #ddd; border-bottom: 0; padding: 4px; background-color: #4285f4; margin-bottom: -10px">
+  
+
+  
+  <div style="text-align: right; float: right;">
+    
+    
+      
+      <a class="button" target="_blank" href="https://github.com/GoogleCloudPlatform/golang-samples/blob/master/kms/crypter/crypter.go"
+      track-type="github" track-name="gitHubViewButton"
+      track-metadata-link-destination="https://github.com/GoogleCloudPlatform/golang-samples/blob/master/kms/crypter/crypter.go">View on GitHub</a>
+    
+    
+    
+    
+    
+    
+    
+    <a href="#" class="button google-feedback" data-p="1634365" data-b="solutions"
+       data-context="kms-howto-encrypt" track-type="feedback" track-name="sampleFeedback"
+       track-metadata-lang="go" track-metadata-position="kms-howto-encrypt">Feedback</a>
+    
+  </div>
+  
+
+  <div style="clear: both;"></div>
+
+</div>
+
+
+<!-- Code -->
+<div class="github-docwidget-gitinclude-code">
+
+  
+  
+
+<pre class="prettyprint lang-go" track-metadata-position="GoogleCloudPlatform/golang-samples/kms/crypter/crypter.go/master/func encrypt">func encrypt(projectID, locationID, keyRingID, cryptoKeyID string, plaintext []byte) ([]byte, error) {
+	ctx := context.Background()
+	client, err := google.DefaultClient(ctx, cloudkms.CloudPlatformScope)
+	if err != nil {
+		return nil, err
+	}
+
+	cloudkmsService, err := cloudkms.New(client)
+	if err != nil {
+		return nil, err
+	}
+
+	parentName := fmt.Sprintf(&quot;projects/%s/locations/%s/keyRings/%s/cryptoKeys/%s&quot;,
+		projectID, locationID, keyRingID, cryptoKeyID)
+
+	req := &amp;cloudkms.EncryptRequest{
+		Plaintext: base64.StdEncoding.EncodeToString(plaintext),
+	}
+	resp, err := cloudkmsService.Projects.Locations.KeyRings.CryptoKeys.Encrypt(parentName, req).Do()
+	if err != nil {
+		return nil, err
+	}
+
+	return base64.StdEncoding.DecodeString(resp.Ciphertext)
+}</pre>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+</section>
+
+
+
+
+
+  
+
+
+
+
+
+
+
+  
+
+
+  
+    
+  
+
+
+  
+
+<section>
+  
+  <h3 id="kms-howto-encrypt-java" track-type="sampleTabNav" track-name="java" track-metadata-position="kms-howto-encrypt">Java</h3>
+  
+  
+    
+    <p>
+      For more on installing and creating a Cloud KMS client, refer to
+      <a href="https://cloud.google.com/kms/docs/reference/libraries" track-type="clientLibrariesReference"
+         track-name="java" track-metadata-position="kms-howto-encrypt">Cloud KMS Client Libraries</a>.
+    </p>
+    
+  
+  
+  
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  
+  
+
+
+<!-- Header -->
+
+<div class="github-docwidget-include" style="border: 1px solid #ddd; border-bottom: 0; padding: 4px; background-color: #4285f4; margin-bottom: -10px">
+  
+
+  
+  <div style="text-align: right; float: right;">
+    
+    
+      
+      <a class="button" target="_blank" href="https://github.com/GoogleCloudPlatform/java-docs-samples/blob/master/kms/src/main/java/com/example/CryptFile.java"
+      track-type="github" track-name="gitHubViewButton"
+      track-metadata-link-destination="https://github.com/GoogleCloudPlatform/java-docs-samples/blob/master/kms/src/main/java/com/example/CryptFile.java">View on GitHub</a>
+    
+    
+    
+    
+    
+    
+    
+    <a href="#" class="button google-feedback" data-p="1634365" data-b="solutions"
+       data-context="kms-howto-encrypt" track-type="feedback" track-name="sampleFeedback"
+       track-metadata-lang="java" track-metadata-position="kms-howto-encrypt">Feedback</a>
+    
+  </div>
+  
+
+  <div style="clear: both;"></div>
+
+</div>
+
+
+<!-- Code -->
+<div class="github-docwidget-gitinclude-code">
+
+  
+  
+
+<pre class="prettyprint lang-java" track-metadata-position="GoogleCloudPlatform/java-docs-samples/kms/src/main/java/com/example/CryptFile.java/master/kms_encrypt">
+/**
+ * Encrypts the given plaintext using the specified crypto key.
+ */
+public static byte[] encrypt(
+    String projectId, String locationId, String keyRingId, String cryptoKeyId, byte[] plaintext)
+    throws IOException {
+  // The resource name of the cryptoKey
+  String resourceName = String.format(
+      &quot;projects/%s/locations/%s/keyRings/%s/cryptoKeys/%s&quot;,
+      projectId, locationId, keyRingId, cryptoKeyId);
+
+  // Create the Cloud KMS client.
+  CloudKMS kms = createAuthorizedClient();
+
+  EncryptRequest request = new EncryptRequest().encodePlaintext(plaintext);
+  EncryptResponse response = kms.projects().locations().keyRings().cryptoKeys()
+      .encrypt(resourceName, request)
+      .execute();
+
+  return response.decodeCiphertext();
+}</pre>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+</section>
+
+
+
+
+
+  
+
+
+
+
+
+
+
+  
+
+
+  
+    
+  
+
+
+  
+
+<section>
+  
+  <h3 id="kms-howto-encrypt-nodejs" track-type="sampleTabNav" track-name="nodejs" track-metadata-position="kms-howto-encrypt">Node.js</h3>
+  
+  
+    
+    <p>
+      For more on installing and creating a Cloud KMS client, refer to
+      <a href="https://cloud.google.com/kms/docs/reference/libraries" track-type="clientLibrariesReference"
+         track-name="nodejs" track-metadata-position="kms-howto-encrypt">Cloud KMS Client Libraries</a>.
+    </p>
+    
+  
+  
+  
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  
+  
+
+
+<!-- Header -->
+
+<div class="github-docwidget-include" style="border: 1px solid #ddd; border-bottom: 0; padding: 4px; background-color: #4285f4; margin-bottom: -10px">
+  
+
+  
+  <div style="text-align: right; float: right;">
+    
+    
+      
+      <a class="button" target="_blank" href="https://github.com/GoogleCloudPlatform/nodejs-docs-samples/blob/master/kms/keys.js"
+      track-type="github" track-name="gitHubViewButton"
+      track-metadata-link-destination="https://github.com/GoogleCloudPlatform/nodejs-docs-samples/blob/master/kms/keys.js">View on GitHub</a>
+    
+    
+    
+    
+    
+    
+    
+    <a href="#" class="button google-feedback" data-p="1634365" data-b="solutions"
+       data-context="kms-howto-encrypt" track-type="feedback" track-name="sampleFeedback"
+       track-metadata-lang="nodejs" track-metadata-position="kms-howto-encrypt">Feedback</a>
+    
+  </div>
+  
+
+  <div style="clear: both;"></div>
+
+</div>
+
+
+<!-- Code -->
+<div class="github-docwidget-gitinclude-code">
+
+  
+  
+
+<pre class="prettyprint lang-js" track-metadata-position="GoogleCloudPlatform/nodejs-docs-samples/kms/keys.js/master/kms_encrypt">const fs = require(&#39;fs&#39;);
+
+// Your Google Cloud Platform project ID
+// const projectId = &#39;YOUR_PROJECT_ID&#39;;
+
+// The location of the crypto key&#39;s key ring, e.g. &quot;global&quot;
+// const locationId = &#39;global&#39;;
+
+// The name of the crypto key&#39;s key ring, e.g. &quot;my-key-ring&quot;
+// const keyRingId = &#39;my-key-ring&#39;;
+
+// The name of the crypto key, e.g. &quot;my-key&quot;
+// const cryptoKeyId = &#39;my-key&#39;;
+
+// The path to the file to encrypt, e.g. &quot;./path/to/plaintext.txt&quot;
+// const plaintextFileName = &#39;./path/to/plaintext.txt&#39;;
+
+// The path where the encrypted file should be written, e.g. &quot;./path/to/plaintext.txt.encrypted&quot;
+// const ciphertextFileName = &#39;./path/to/plaintext.txt.encrypted&#39;;
+
+// Builds and authorizes a Cloud KMS client
+buildAndAuthorizeService((err, cloudkms) =&gt; {
+  if (err) {
+    console.log(err);
+    return;
+  }
+
+  // Reads the file to be encrypted
+  fs.readFile(plaintextFileName, (err, contentsBuffer) =&gt; {
+    if (err) {
+      console.log(err);
+      return;
+    }
+
+    const request = {
+      // This will be a path parameter in the request URL
+      name: `projects/${projectId}/locations/${locationId}/keyRings/${keyRingId}/cryptoKeys/${cryptoKeyId}`,
+      // This will be the request body
+      resource: {
+        plaintext: contentsBuffer.toString(&#39;base64&#39;)
+      }
+    };
+
+    // Encrypts the file using the specified crypto key
+    cloudkms.projects.locations.keyRings.cryptoKeys.encrypt(request, (err, response) =&gt; {
+      if (err) {
+        console.log(err);
+        return;
+      }
+
+      // Writes the encrypted file to disk
+      const result = response.data;
+      fs.writeFile(ciphertextFileName, Buffer.from(result.ciphertext, &#39;base64&#39;), (err) =&gt; {
+        if (err) {
+          console.log(err);
+          return;
+        }
+
+        console.log(`Encrypted ${plaintextFileName} using ${result.name}.`);
+        console.log(`Result saved to ${ciphertextFileName}.`);
+      });
+    });
+  });
+});
+
+function buildAndAuthorizeService (callback) {
+  // Imports the Google APIs client library
+  const google = require(&#39;googleapis&#39;).google;
+
+  // Acquires credentials
+  google.auth.getApplicationDefault((err, authClient) =&gt; {
+    if (err) {
+      callback(err);
+      return;
+    }
+
+    if (authClient.createScopedRequired &amp;&amp; authClient.createScopedRequired()) {
+      authClient = authClient.createScoped([
+        &#39;https://www.googleapis.com/auth/cloud-platform&#39;
+      ]);
+    }
+
+    // Instantiates an authorized client
+    const cloudkms = google.cloudkms({
+      version: &#39;v1&#39;,
+      auth: authClient
+    });
+
+    callback(null, cloudkms);
+  });
+}</pre>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+</section>
+
+
+
+
+
+  
+
+
+
+
+
+
+
+  
+
+
+  
+    
+  
+
+
+  
+
+<section>
+  
+  <h3 id="kms-howto-encrypt-php" track-type="sampleTabNav" track-name="php" track-metadata-position="kms-howto-encrypt">PHP</h3>
+  
+  
+    
+    <p>
+      For more on installing and creating a Cloud KMS client, refer to
+      <a href="https://cloud.google.com/kms/docs/reference/libraries" track-type="clientLibrariesReference"
+         track-name="php" track-metadata-position="kms-howto-encrypt">Cloud KMS Client Libraries</a>.
+    </p>
+    
+  
+  
+  
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  
+  
+
+
+<!-- Header -->
+
+<div class="github-docwidget-include" style="border: 1px solid #ddd; border-bottom: 0; padding: 4px; background-color: #4285f4; margin-bottom: -10px">
+  
+
+  
+  <div style="text-align: right; float: right;">
+    
+    
+      
+      <a class="button" target="_blank" href="https://github.com/GoogleCloudPlatform/php-docs-samples/blob/master/kms/src/functions.php"
+      track-type="github" track-name="gitHubViewButton"
+      track-metadata-link-destination="https://github.com/GoogleCloudPlatform/php-docs-samples/blob/master/kms/src/functions.php">View on GitHub</a>
+    
+    
+    
+    
+    
+    
+    
+    <a href="#" class="button google-feedback" data-p="1634365" data-b="solutions"
+       data-context="kms-howto-encrypt" track-type="feedback" track-name="sampleFeedback"
+       track-metadata-lang="php" track-metadata-position="kms-howto-encrypt">Feedback</a>
+    
+  </div>
+  
+
+  <div style="clear: both;"></div>
+
+</div>
+
+
+<!-- Code -->
+<div class="github-docwidget-gitinclude-code">
+
+  
+  
+
+<pre class="prettyprint lang-php" track-metadata-position="GoogleCloudPlatform/php-docs-samples/kms/src/functions.php/master/kms_encrypt">/**
+ * Encrypt a text file.
+ *
+ * @param string $projectId
+ * @param string $keyRingId
+ * @param string $cryptoKeyId
+ * @param string $plaintextFileName The path to the file containing plaintext to encrypt.
+ * @param string $ciphertextFileName The path to write the ciphertext.
+ * @param string $locationId [optional]
+ * @return null
+ */
+function encrypt($projectId, $keyRingId, $cryptoKeyId, $plaintextFileName, $ciphertextFileName, $locationId = &#39;global&#39;)
+{
+    // Instantiate the client, authenticate, and add scopes.
+    $client = new Google_Client();
+    $client-&gt;useApplicationDefaultCredentials();
+    $client-&gt;addScope(&#39;https://www.googleapis.com/auth/cloud-platform&#39;);
+
+    // Create the Cloud KMS client.
+    $kms = new Google_Service_CloudKMS($client);
+
+    // The resource name of the cryptokey.
+    $name = sprintf(&#39;projects/%s/locations/%s/keyRings/%s/cryptoKeys/%s&#39;,
+        $projectId,
+        $locationId,
+        $keyRingId,
+        $cryptoKeyId
+    );
+
+    // Use the KMS API to encrypt the text.
+    $encoded = base64_encode(file_get_contents($plaintextFileName));
+    $request = new Google_Service_CloudKMS_EncryptRequest();
+    $request-&gt;setPlaintext($encoded);
+    $response = $kms-&gt;projects_locations_keyRings_cryptoKeys-&gt;encrypt(
+        $name,
+        $request
+    );
+
+    // Write the encrypted text to a file.
+    file_put_contents($ciphertextFileName, base64_decode($response[&#39;ciphertext&#39;]));
+    printf(&#39;Saved encrypted text to %s&#39; . PHP_EOL, $ciphertextFileName);
+}</pre>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+</section>
+
+
+
+
+
+  
+
+
+
+
+
+
+
+  
+
+
+  
+    
+  
+
+
+  
+
+<section>
+  
+  <h3 id="kms-howto-encrypt-python" track-type="sampleTabNav" track-name="python" track-metadata-position="kms-howto-encrypt">Python</h3>
+  
+  
+    
+    <p>
+      For more on installing and creating a Cloud KMS client, refer to
+      <a href="https://cloud.google.com/kms/docs/reference/libraries" track-type="clientLibrariesReference"
+         track-name="python" track-metadata-position="kms-howto-encrypt">Cloud KMS Client Libraries</a>.
+    </p>
+    
+  
+  
+  
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  
+  
+
+
+<!-- Header -->
+
+<div class="github-docwidget-include" style="border: 1px solid #ddd; border-bottom: 0; padding: 4px; background-color: #4285f4; margin-bottom: -10px">
+  
+
+  
+  <div style="text-align: right; float: right;">
+    
+    
+      
+      <a class="button" target="_blank" href="https://github.com/GoogleCloudPlatform/python-docs-samples/blob/master/kms/api-client/snippets.py"
+      track-type="github" track-name="gitHubViewButton"
+      track-metadata-link-destination="https://github.com/GoogleCloudPlatform/python-docs-samples/blob/master/kms/api-client/snippets.py">View on GitHub</a>
+    
+    
+    
+    
+    
+    
+    
+    <a href="#" class="button google-feedback" data-p="1634365" data-b="solutions"
+       data-context="kms-howto-encrypt" track-type="feedback" track-name="sampleFeedback"
+       track-metadata-lang="python" track-metadata-position="kms-howto-encrypt">Feedback</a>
+    
+  </div>
+  
+
+  <div style="clear: both;"></div>
+
+</div>
+
+
+<!-- Code -->
+<div class="github-docwidget-gitinclude-code">
+
+  
+  
+
+<pre class="prettyprint lang-py" track-metadata-position="GoogleCloudPlatform/python-docs-samples/kms/api-client/snippets.py/master/kms_encrypt">def encrypt(project_id, location_id, key_ring_id, crypto_key_id,
+            plaintext_file_name, ciphertext_file_name):
+    &quot;&quot;&quot;Encrypts data from plaintext_file_name using the provided CryptoKey and
+    saves it to ciphertext_file_name so it can only be recovered with a call to
+    decrypt.
+    &quot;&quot;&quot;
+
+    # Creates an API client for the KMS API.
+    kms_client = googleapiclient.discovery.build(&#39;cloudkms&#39;, &#39;v1&#39;)
+
+    # The resource name of the CryptoKey.
+    name = &#39;projects/{}/locations/{}/keyRings/{}/cryptoKeys/{}&#39;.format(
+        project_id, location_id, key_ring_id, crypto_key_id)
+
+    # Read data from the input file.
+    with io.open(plaintext_file_name, &#39;rb&#39;) as plaintext_file:
+        plaintext = plaintext_file.read()
+
+    # Use the KMS API to encrypt the data.
+    crypto_keys = kms_client.projects().locations().keyRings().cryptoKeys()
+    request = crypto_keys.encrypt(
+        name=name,
+        body={&#39;plaintext&#39;: base64.b64encode(plaintext).decode(&#39;ascii&#39;)})
+    response = request.execute()
+    ciphertext = base64.b64decode(response[&#39;ciphertext&#39;].encode(&#39;ascii&#39;))
+
+    # Write the encrypted data to a file.
+    with io.open(ciphertext_file_name, &#39;wb&#39;) as ciphertext_file:
+        ciphertext_file.write(ciphertext)
+
+    print(&#39;Saved ciphertext to {}.&#39;.format(ciphertext_file_name))</pre>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+</section>
+
+
+
+
+
+  
+
+
+
+
+
+
+
+  
+
+
+  
+    
+  
+
+
+  
+
+<section>
+  
+  <h3 id="kms-howto-encrypt-ruby" track-type="sampleTabNav" track-name="ruby" track-metadata-position="kms-howto-encrypt">Ruby</h3>
+  
+  
+    
+    <p>
+      For more on installing and creating a Cloud KMS client, refer to
+      <a href="https://cloud.google.com/kms/docs/reference/libraries" track-type="clientLibrariesReference"
+         track-name="ruby" track-metadata-position="kms-howto-encrypt">Cloud KMS Client Libraries</a>.
+    </p>
+    
+  
+  
+  
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  
+  
+
+
+<!-- Header -->
+
+<div class="github-docwidget-include" style="border: 1px solid #ddd; border-bottom: 0; padding: 4px; background-color: #4285f4; margin-bottom: -10px">
+  
+
+  
+  <div style="text-align: right; float: right;">
+    
+    
+      
+      <a class="button" target="_blank" href="https://github.com/GoogleCloudPlatform/ruby-docs-samples/blob/master/kms/kms.rb"
+      track-type="github" track-name="gitHubViewButton"
+      track-metadata-link-destination="https://github.com/GoogleCloudPlatform/ruby-docs-samples/blob/master/kms/kms.rb">View on GitHub</a>
+    
+    
+    
+    
+    
+    
+    
+    <a href="#" class="button google-feedback" data-p="1634365" data-b="solutions"
+       data-context="kms-howto-encrypt" track-type="feedback" track-name="sampleFeedback"
+       track-metadata-lang="ruby" track-metadata-position="kms-howto-encrypt">Feedback</a>
+    
+  </div>
+  
+
+  <div style="clear: both;"></div>
+
+</div>
+
+
+<!-- Code -->
+<div class="github-docwidget-gitinclude-code">
+
+  
+  
+
+<pre class="prettyprint lang-rb" track-metadata-position="GoogleCloudPlatform/ruby-docs-samples/kms/kms.rb/master/kms_encrypt"># project_id      = &quot;Your Google Cloud project ID&quot;
+# location_id     = &quot;The location of the key ring&quot;
+# key_ring_id     = &quot;The ID of the key ring&quot;
+# crypto_key_id   = &quot;The ID of the crypto key&quot;
+# plaintext_file  = &quot;File to encrypt&quot;
+# ciphertext_file = &quot;File to store encrypted input data&quot;
+
+require &quot;google/apis/cloudkms_v1&quot;
+
+# Initialize the client and authenticate with the specified scope
+Cloudkms = Google::Apis::CloudkmsV1
+kms_client = Cloudkms::CloudKMSService.new
+kms_client.authorization = Google::Auth.get_application_default(
+  &quot;https://www.googleapis.com/auth/cloud-platform&quot;
+)
+
+# The resource name of the crypto key
+resource = &quot;projects/#{project_id}/locations/#{location_id}/&quot; +
+           &quot;keyRings/#{key_ring_id}/cryptoKeys/#{crypto_key_id}&quot;
+
+# Read the secret data from the file
+plaintext = File.read plaintext_file
+
+request = Cloudkms::EncryptRequest.new plaintext: plaintext
+
+# Use the KMS API to encrypt the data
+response = kms_client.encrypt_crypto_key resource, request
+
+# Write the encrypted text to the output file
+File.write ciphertext_file, response.ciphertext
+
+puts &quot;Saved encrypted #{plaintext_file} as #{ciphertext_file}&quot;</pre>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+</section>
+
+
+
+
+
+</div></p>
+<h2 id="decrypt">Decrypt</h2>
+
+
+
+<div id="kms-howto-encrypt-code-sample" class="ds-selector-tabs" data-ds-scope="code-sample">
+  
+
+
+
+
+
+
+
+  
+
+
+  
+    
+  
+
+
+<section>
+  
+  <h3 id="kms-howto-encrypt-cli" track-type="sampleTabNav" track-name="cli" track-metadata-position="kms-howto-encrypt">Command-line</h3>
+  
+  
+  
+  
+<p>To decrypt data, provide the appropriate key information, specify the name of
+the encrypted file (ciphertext file) to decrypt, and specify the name of the
+file that will contain the decrypted content.</p>
+<pre class="notranslate devsite-click-to-copy" suppresswarning="suppresswarning">
+gcloud kms decrypt \
+    --location=global \
+    --keyring=my-key-ring \
+    --key=my-key \
+    --ciphertext-file=<var>YOUR_FILEPATH_AND_FILENAME_TO_DECRYPT</var> \
+    --plaintext-file=<var>YOUR_FILEPATH_AND_FILENAME_TO_DECRYPT</var>.dec
+</pre>
+
+<p>The <code>decrypt</code> command supports an optional <code>--additional-authenticated-data-
+file</code> flag to specify a file that contains <a href="https://cloud.google.com/kms/docs/additional-authenticated-data">additional authenticated data</a>.
+The additional authenticated data file must not be larger than 64 KiB.</p>
+<aside class="warning"><strong>Warning:</strong><span> If you used additional authenticated data when you encrypted the file,
+you must specify the same additional authenticated data when you decrypt the
+ciphertext.</span></aside>
+<p>If <code>--ciphertext-file</code> or <code>--additional-authenticated-data-file</code> is set to <code>-</code>,
+that file is read from <code>stdin</code>. Similarly, if <code>--plaintext-file</code> is set to <code>-</code>,
+the decrypted plaintext is written to <code>stdout</code>.</p>
+<p>The following <code>decrypt</code> example shows how to specify additional authenticated
+data.</p>
+<pre class="notranslate devsite-click-to-copy" suppresswarning="suppresswarning">
+gcloud kms decrypt \
+    --location=global \
+    --keyring=my-key-ring \
+    --key=my-key \
+    --additional-authenticated-data-file=<var>YOUR_ADDITIONAL_AUTHENTICATED_DATA_FILEPATH_AND_FILENAME</var> \
+    --ciphertext-file=<var>YOUR_FILEPATH_AND_FILENAME_TO_DECRYPT</var> \
+    --plaintext-file=<var>YOUR_FILEPATH_AND_FILENAME_TO_DECRYPT</var>.dec
+</pre>
+
+
+</section>
+
+
+
+
+
+  
+
+
+
+
+
+
+
+  
+
+
+  
+    
+  
+
+
+<section>
+  
+  <h3 id="kms-howto-encrypt-protocol" track-type="sampleTabNav" track-name="protocol" track-metadata-position="kms-howto-encrypt">Protocol</h3>
+  
+  
+  
+  
+<p class="note">Decrypted text that is returned in the JSON from
+Cloud KMS is base64-encoded. For information on encoding
+and decoding using base64, see <a href="https://cloud.google.com/kms/base64-encoding" target="_blank">Base64 Encoding</a>.</p></p>
+<p>To decrypt encrypted data, make a <code>POST</code> request and provide the appropriate project
+and key information and specify the encrypted (cipher) text to be decrypted in
+the <code>ciphertext</code> field of the request body. Replace <code>YOUR_API_KEY</code> with a
+valid API key. For information on generating
+an API key, see <a href="https://cloud.google.com/kms/docs/accessing-the-api">Accessing the API</a>.</p>
+<pre class="notranslate devsite-click-to-copy" suppresswarning="suppresswarning">
+POST https://cloudkms.googleapis.com/v1/projects/<var>project_id</var>/locations/global/keyRings/<var>keyring_name</var>/cryptoKeys/<var>key_name</var>:decrypt&key=YOUR_API_KEY</pre>
+
+<pre class="notranslate prettyprint devsite-click-to-copy" suppresswarning="suppresswarning">
+{
+  "ciphertext": "CiQAhMwwBo61cHas7dDgifrUFs5zNzBJ2uZtVFq4ZPEl6fUVT4kSmQ...",
+}
+</pre>
+
+<p>Here is an example using <code>curl</code>:</p>
+<pre class="notranslate devsite-click-to-copy" suppresswarning="suppresswarning">
+curl -s -X POST "https://cloudkms.googleapis.com/v1/projects/<var>YOUR_PROJECT_ID</var>/locations/global/keyRings/<var>YOUR_KEYRING_NAME</var>/cryptoKeys/<var>YOUR_KEY_NAME</var>:decrypt" \
+  -d "{\"ciphertext\":\"<var>ENCRYPTED_CONTENT</var>\"}" \
+  -H "Authorization:Bearer <var>YOUR_API_KEY</var>"\
+  -H "Content-Type:application/json"
+</pre>
+
+
+</section>
+
+
+
+
+
+  
+
+
+
+
+
+
+
+  
+
+
+  
+    
+  
+
+
+  
+
+<section>
+  
+  <h3 id="kms-howto-encrypt-csharp" track-type="sampleTabNav" track-name="csharp" track-metadata-position="kms-howto-encrypt">C#</h3>
+  
+  
+    
+    <p>
+      For more on installing and creating a Cloud KMS client, refer to
+      <a href="https://cloud.google.com/kms/docs/reference/libraries" track-type="clientLibrariesReference"
+         track-name="csharp" track-metadata-position="kms-howto-encrypt">Cloud KMS Client Libraries</a>.
+    </p>
+    
+  
+  
+  
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  
+  
+  
+
+
+<!-- Header -->
+
+<div class="github-docwidget-include" style="border: 1px solid #ddd; border-bottom: 0; padding: 4px; background-color: #4285f4; margin-bottom: -10px">
+  
+
+  
+  <div style="text-align: right; float: right;">
+    
+    
+      
+      <a class="button" target="_blank" href="https://github.com/GoogleCloudPlatform/dotnet-docs-samples/blob/2ec373efac86f3e589ff98ac8abf5d28b29b1578/kms/api/Program.cs"
+      track-type="github" track-name="gitHubViewButton"
+      track-metadata-link-destination="https://github.com/GoogleCloudPlatform/dotnet-docs-samples/blob/2ec373efac86f3e589ff98ac8abf5d28b29b1578/kms/api/Program.cs">View on GitHub</a>
+    
+    
+    
+    
+    
+    
+    
+    <a href="#" class="button google-feedback" data-p="1634365" data-b="solutions"
+       data-context="kms-howto-encrypt" track-type="feedback" track-name="sampleFeedback"
+       track-metadata-lang="csharp" track-metadata-position="kms-howto-encrypt">Feedback</a>
+    
+  </div>
+  
+
+  <div style="clear: both;"></div>
+
+</div>
+
+
+<!-- Code -->
+<div class="github-docwidget-gitinclude-code">
+
+  
+  
+
+<pre class="prettyprint " track-metadata-position="GoogleCloudPlatform/dotnet-docs-samples/kms/api/Program.cs/2ec373efac86f3e589ff98ac8abf5d28b29b1578/kms_decrypt">    public static object Decrypt(string projectId, string locationId, string keyRingId, string cryptoKeyId,
+string ciphertextFile, string plaintextFile)
+    {
+        var cloudKms = CreateAuthorizedClient();
+        // Generate the full path of the crypto key to use for encryption.
+        var cryptoKey = $&quot;projects/{projectId}/locations/{locationId}/keyRings/{keyRingId}/cryptoKeys/{cryptoKeyId}&quot;;
+        DecryptRequest decryptRequest = new DecryptRequest();
+        byte[] ciphertext = File.ReadAllBytes(ciphertextFile);
+        decryptRequest.Ciphertext = Convert.ToBase64String(ciphertext);
+        Console.WriteLine($&quot;dataToDecrypt.Ciphertext: {decryptRequest.Ciphertext}&quot;);
+        var result = cloudKms.Projects.Locations.KeyRings.CryptoKeys.Decrypt(name: cryptoKey, body: decryptRequest).Execute();
+        // Output decrypted data to a file.
+        File.WriteAllBytes(plaintextFile, Convert.FromBase64String(result.Plaintext));
+        Console.Write($&quot;Decrypted file created: {plaintextFile}&quot;);
+        return 0;
+    }</pre>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+</section>
+
+
+
+
+
+  
+
+
+
+
+
+
+
+  
+
+
+  
+    
+  
+
+
+  
+
+<section>
+  
+  <h3 id="kms-howto-encrypt-go" track-type="sampleTabNav" track-name="go" track-metadata-position="kms-howto-encrypt">Go</h3>
+  
+  
+    
+    <p>
+      For more on installing and creating a Cloud KMS client, refer to
+      <a href="https://cloud.google.com/kms/docs/reference/libraries" track-type="clientLibrariesReference"
+         track-name="go" track-metadata-position="kms-howto-encrypt">Cloud KMS Client Libraries</a>.
+    </p>
+    
+  
+  
+  
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  
+  
+
+
+<!-- Header -->
+
+<div class="github-docwidget-include" style="border: 1px solid #ddd; border-bottom: 0; padding: 4px; background-color: #4285f4; margin-bottom: -10px">
+  
+
+  
+  <div style="text-align: right; float: right;">
+    
+    
+      
+      <a class="button" target="_blank" href="https://github.com/GoogleCloudPlatform/golang-samples/blob/master/kms/crypter/crypter.go"
+      track-type="github" track-name="gitHubViewButton"
+      track-metadata-link-destination="https://github.com/GoogleCloudPlatform/golang-samples/blob/master/kms/crypter/crypter.go">View on GitHub</a>
+    
+    
+    
+    
+    
+    
+    
+    <a href="#" class="button google-feedback" data-p="1634365" data-b="solutions"
+       data-context="kms-howto-encrypt" track-type="feedback" track-name="sampleFeedback"
+       track-metadata-lang="go" track-metadata-position="kms-howto-encrypt">Feedback</a>
+    
+  </div>
+  
+
+  <div style="clear: both;"></div>
+
+</div>
+
+
+<!-- Code -->
+<div class="github-docwidget-gitinclude-code">
+
+  
+  
+
+<pre class="prettyprint lang-go" track-metadata-position="GoogleCloudPlatform/golang-samples/kms/crypter/crypter.go/master/func decrypt">func decrypt(projectID, locationID, keyRingID, cryptoKeyID string, ciphertext []byte) ([]byte, error) {
+	ctx := context.Background()
+	client, err := google.DefaultClient(ctx, cloudkms.CloudPlatformScope)
+	if err != nil {
+		return nil, err
+	}
+
+	cloudkmsService, err := cloudkms.New(client)
+	if err != nil {
+		return nil, err
+	}
+
+	parentName := fmt.Sprintf(&quot;projects/%s/locations/%s/keyRings/%s/cryptoKeys/%s&quot;,
+		projectID, locationID, keyRingID, cryptoKeyID)
+
+	req := &amp;cloudkms.DecryptRequest{
+		Ciphertext: base64.StdEncoding.EncodeToString(ciphertext),
+	}
+	resp, err := cloudkmsService.Projects.Locations.KeyRings.CryptoKeys.Decrypt(parentName, req).Do()
+	if err != nil {
+		return nil, err
+	}
+	return base64.StdEncoding.DecodeString(resp.Plaintext)
+}</pre>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+</section>
+
+
+
+
+
+  
+
+
+
+
+
+
+
+  
+
+
+  
+    
+  
+
+
+  
+
+<section>
+  
+  <h3 id="kms-howto-encrypt-java" track-type="sampleTabNav" track-name="java" track-metadata-position="kms-howto-encrypt">Java</h3>
+  
+  
+    
+    <p>
+      For more on installing and creating a Cloud KMS client, refer to
+      <a href="https://cloud.google.com/kms/docs/reference/libraries" track-type="clientLibrariesReference"
+         track-name="java" track-metadata-position="kms-howto-encrypt">Cloud KMS Client Libraries</a>.
+    </p>
+    
+  
+  
+  
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  
+  
+
+
+<!-- Header -->
+
+<div class="github-docwidget-include" style="border: 1px solid #ddd; border-bottom: 0; padding: 4px; background-color: #4285f4; margin-bottom: -10px">
+  
+
+  
+  <div style="text-align: right; float: right;">
+    
+    
+      
+      <a class="button" target="_blank" href="https://github.com/GoogleCloudPlatform/java-docs-samples/blob/master/kms/src/main/java/com/example/CryptFile.java"
+      track-type="github" track-name="gitHubViewButton"
+      track-metadata-link-destination="https://github.com/GoogleCloudPlatform/java-docs-samples/blob/master/kms/src/main/java/com/example/CryptFile.java">View on GitHub</a>
+    
+    
+    
+    
+    
+    
+    
+    <a href="#" class="button google-feedback" data-p="1634365" data-b="solutions"
+       data-context="kms-howto-encrypt" track-type="feedback" track-name="sampleFeedback"
+       track-metadata-lang="java" track-metadata-position="kms-howto-encrypt">Feedback</a>
+    
+  </div>
+  
+
+  <div style="clear: both;"></div>
+
+</div>
+
+
+<!-- Code -->
+<div class="github-docwidget-gitinclude-code">
+
+  
+  
+
+<pre class="prettyprint lang-java" track-metadata-position="GoogleCloudPlatform/java-docs-samples/kms/src/main/java/com/example/CryptFile.java/master/kms_decrypt">
+/**
+ * Decrypts the provided ciphertext with the specified crypto key.
+ */
+public static byte[] decrypt(String projectId, String locationId, String keyRingId,
+    String cryptoKeyId, byte[] ciphertext)
+    throws IOException {
+  // Create the Cloud KMS client.
+  CloudKMS kms = createAuthorizedClient();
+
+  // The resource name of the cryptoKey
+  String cryptoKeyName = String.format(
+      &quot;projects/%s/locations/%s/keyRings/%s/cryptoKeys/%s&quot;,
+      projectId, locationId, keyRingId, cryptoKeyId);
+
+  DecryptRequest request = new DecryptRequest().encodeCiphertext(ciphertext);
+  DecryptResponse response = kms.projects().locations().keyRings().cryptoKeys()
+      .decrypt(cryptoKeyName, request)
+      .execute();
+
+  return response.decodePlaintext();
+}</pre>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+</section>
+
+
+
+
+
+  
+
+
+
+
+
+
+
+  
+
+
+  
+    
+  
+
+
+  
+
+<section>
+  
+  <h3 id="kms-howto-encrypt-nodejs" track-type="sampleTabNav" track-name="nodejs" track-metadata-position="kms-howto-encrypt">Node.js</h3>
+  
+  
+    
+    <p>
+      For more on installing and creating a Cloud KMS client, refer to
+      <a href="https://cloud.google.com/kms/docs/reference/libraries" track-type="clientLibrariesReference"
+         track-name="nodejs" track-metadata-position="kms-howto-encrypt">Cloud KMS Client Libraries</a>.
+    </p>
+    
+  
+  
+  
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  
+  
+
+
+<!-- Header -->
+
+<div class="github-docwidget-include" style="border: 1px solid #ddd; border-bottom: 0; padding: 4px; background-color: #4285f4; margin-bottom: -10px">
+  
+
+  
+  <div style="text-align: right; float: right;">
+    
+    
+      
+      <a class="button" target="_blank" href="https://github.com/GoogleCloudPlatform/nodejs-docs-samples/blob/master/kms/keys.js"
+      track-type="github" track-name="gitHubViewButton"
+      track-metadata-link-destination="https://github.com/GoogleCloudPlatform/nodejs-docs-samples/blob/master/kms/keys.js">View on GitHub</a>
+    
+    
+    
+    
+    
+    
+    
+    <a href="#" class="button google-feedback" data-p="1634365" data-b="solutions"
+       data-context="kms-howto-encrypt" track-type="feedback" track-name="sampleFeedback"
+       track-metadata-lang="nodejs" track-metadata-position="kms-howto-encrypt">Feedback</a>
+    
+  </div>
+  
+
+  <div style="clear: both;"></div>
+
+</div>
+
+
+<!-- Code -->
+<div class="github-docwidget-gitinclude-code">
+
+  
+  
+
+<pre class="prettyprint lang-js" track-metadata-position="GoogleCloudPlatform/nodejs-docs-samples/kms/keys.js/master/kms_decrypt">const fs = require(&#39;fs&#39;);
+
+// Your Google Cloud Platform project ID
+// const projectId = &#39;YOUR_PROJECT_ID&#39;;
+
+// The location of the crypto key&#39;s key ring, e.g. &quot;global&quot;
+// const locationId = &#39;global&#39;;
+
+// The name of the crypto key&#39;s key ring, e.g. &quot;my-key-ring&quot;
+// const keyRingId = &#39;my-key-ring&#39;;
+
+// The name of the crypto key, e.g. &quot;my-key&quot;
+// const cryptoKeyId = &#39;my-key&#39;;
+
+// The path to the file to decrypt, e.g. &quot;./path/to/plaintext.txt.encrypted&quot;
+// const ciphertextFileName = &#39;./path/to/plaintext.txt.encrypted&#39;;
+
+// The path where the decrypted file should be written, e.g. &quot;./path/to/plaintext.txt.decrypted&quot;
+// const plaintextFileName = &#39;./path/to/plaintext.txt.decrypted&#39;;
+
+// Builds and authorizes a Cloud KMS client
+buildAndAuthorizeService((err, cloudkms) =&gt; {
+  if (err) {
+    console.log(err);
+    return;
+  }
+
+  // Reads the file to be decrypted
+  fs.readFile(ciphertextFileName, (err, contentsBuffer) =&gt; {
+    if (err) {
+      console.log(err);
+      return;
+    }
+
+    const request = {
+      // This will be a path parameter in the request URL
+      name: `projects/${projectId}/locations/${locationId}/keyRings/${keyRingId}/cryptoKeys/${cryptoKeyId}`,
+      // This will be the request body
+      resource: {
+        ciphertext: contentsBuffer.toString(&#39;base64&#39;)
+      }
+    };
+
+    // Dencrypts the file using the specified crypto key
+    cloudkms.projects.locations.keyRings.cryptoKeys.decrypt(request, (err, response) =&gt; {
+      if (err) {
+        console.log(err);
+        return;
+      }
+
+      // Writes the dencrypted file to disk
+      const result = response.data;
+      fs.writeFile(plaintextFileName, Buffer.from(result.plaintext, &#39;base64&#39;), (err) =&gt; {
+        if (err) {
+          console.log(err);
+          return;
+        }
+
+        console.log(`Decrypted ${ciphertextFileName}, result saved to ${plaintextFileName}.`);
+      });
+    });
+  });
+});
+
+function buildAndAuthorizeService (callback) {
+  // Imports the Google APIs client library
+  const google = require(&#39;googleapis&#39;).google;
+
+  // Acquires credentials
+  google.auth.getApplicationDefault((err, authClient) =&gt; {
+    if (err) {
+      callback(err);
+      return;
+    }
+
+    if (authClient.createScopedRequired &amp;&amp; authClient.createScopedRequired()) {
+      authClient = authClient.createScoped([
+        &#39;https://www.googleapis.com/auth/cloud-platform&#39;
+      ]);
+    }
+
+    // Instantiates an authorized client
+    const cloudkms = google.cloudkms({
+      version: &#39;v1&#39;,
+      auth: authClient
+    });
+
+    callback(null, cloudkms);
+  });
+}</pre>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+</section>
+
+
+
+
+
+  
+
+
+
+
+
+
+
+  
+
+
+  
+    
+  
+
+
+  
+
+<section>
+  
+  <h3 id="kms-howto-encrypt-php" track-type="sampleTabNav" track-name="php" track-metadata-position="kms-howto-encrypt">PHP</h3>
+  
+  
+    
+    <p>
+      For more on installing and creating a Cloud KMS client, refer to
+      <a href="https://cloud.google.com/kms/docs/reference/libraries" track-type="clientLibrariesReference"
+         track-name="php" track-metadata-position="kms-howto-encrypt">Cloud KMS Client Libraries</a>.
+    </p>
+    
+  
+  
+  
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  
+  
+
+
+<!-- Header -->
+
+<div class="github-docwidget-include" style="border: 1px solid #ddd; border-bottom: 0; padding: 4px; background-color: #4285f4; margin-bottom: -10px">
+  
+
+  
+  <div style="text-align: right; float: right;">
+    
+    
+      
+      <a class="button" target="_blank" href="https://github.com/GoogleCloudPlatform/php-docs-samples/blob/master/kms/src/functions.php"
+      track-type="github" track-name="gitHubViewButton"
+      track-metadata-link-destination="https://github.com/GoogleCloudPlatform/php-docs-samples/blob/master/kms/src/functions.php">View on GitHub</a>
+    
+    
+    
+    
+    
+    
+    
+    <a href="#" class="button google-feedback" data-p="1634365" data-b="solutions"
+       data-context="kms-howto-encrypt" track-type="feedback" track-name="sampleFeedback"
+       track-metadata-lang="php" track-metadata-position="kms-howto-encrypt">Feedback</a>
+    
+  </div>
+  
+
+  <div style="clear: both;"></div>
+
+</div>
+
+
+<!-- Code -->
+<div class="github-docwidget-gitinclude-code">
+
+  
+  
+
+<pre class="prettyprint lang-php" track-metadata-position="GoogleCloudPlatform/php-docs-samples/kms/src/functions.php/master/kms_decrypt">/**
+ * Decrypt a text file.
+ *
+ * @param string $projectId
+ * @param string $keyRingId
+ * @param string $cryptoKeyId
+ * @param string $ciphertextFileName The path to the ciphertext file to decrypt.
+ * @param string $plaintextFileName The path to write the decrypted plaintext file.
+ * @param string $locationId [optional]
+ * @return null
+ */
+function decrypt($projectId, $keyRingId, $cryptoKeyId, $ciphertextFileName, $plaintextFileName, $locationId = &#39;global&#39;)
+{
+    // Instantiate the client, authenticate, and add scopes.
+    $client = new Google_Client();
+    $client-&gt;useApplicationDefaultCredentials();
+    $client-&gt;addScope(&#39;https://www.googleapis.com/auth/cloud-platform&#39;);
+
+    // Create the Cloud KMS client.
+    $kms = new Google_Service_CloudKMS($client);
+
+    // The resource name of the cryptokey.
+    $name = sprintf(&#39;projects/%s/locations/%s/keyRings/%s/cryptoKeys/%s&#39;,
+        $projectId,
+        $locationId,
+        $keyRingId,
+        $cryptoKeyId
+    );
+
+    // Use the KMS API to decrypt the text.
+    $ciphertext = base64_encode(file_get_contents($ciphertextFileName));
+    $request = new Google_Service_CloudKMS_DecryptRequest();
+    $request-&gt;setCiphertext($ciphertext);
+    $response = $kms-&gt;projects_locations_keyRings_cryptoKeys-&gt;decrypt(
+        $name,
+        $request
+    );
+
+    // Write the decrypted text to a file.
+    file_put_contents($plaintextFileName, base64_decode($response[&#39;plaintext&#39;]));
+    printf(&#39;Saved decrypted text to %s&#39; . PHP_EOL, $plaintextFileName);
+}</pre>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+</section>
+
+
+
+
+
+  
+
+
+
+
+
+
+
+  
+
+
+  
+    
+  
+
+
+  
+
+<section>
+  
+  <h3 id="kms-howto-encrypt-python" track-type="sampleTabNav" track-name="python" track-metadata-position="kms-howto-encrypt">Python</h3>
+  
+  
+    
+    <p>
+      For more on installing and creating a Cloud KMS client, refer to
+      <a href="https://cloud.google.com/kms/docs/reference/libraries" track-type="clientLibrariesReference"
+         track-name="python" track-metadata-position="kms-howto-encrypt">Cloud KMS Client Libraries</a>.
+    </p>
+    
+  
+  
+  
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  
+  
+
+
+<!-- Header -->
+
+<div class="github-docwidget-include" style="border: 1px solid #ddd; border-bottom: 0; padding: 4px; background-color: #4285f4; margin-bottom: -10px">
+  
+
+  
+  <div style="text-align: right; float: right;">
+    
+    
+      
+      <a class="button" target="_blank" href="https://github.com/GoogleCloudPlatform/python-docs-samples/blob/master/kms/api-client/snippets.py"
+      track-type="github" track-name="gitHubViewButton"
+      track-metadata-link-destination="https://github.com/GoogleCloudPlatform/python-docs-samples/blob/master/kms/api-client/snippets.py">View on GitHub</a>
+    
+    
+    
+    
+    
+    
+    
+    <a href="#" class="button google-feedback" data-p="1634365" data-b="solutions"
+       data-context="kms-howto-encrypt" track-type="feedback" track-name="sampleFeedback"
+       track-metadata-lang="python" track-metadata-position="kms-howto-encrypt">Feedback</a>
+    
+  </div>
+  
+
+  <div style="clear: both;"></div>
+
+</div>
+
+
+<!-- Code -->
+<div class="github-docwidget-gitinclude-code">
+
+  
+  
+
+<pre class="prettyprint lang-py" track-metadata-position="GoogleCloudPlatform/python-docs-samples/kms/api-client/snippets.py/master/kms_decrypt">def decrypt(project_id, location_id, key_ring_id, crypto_key_id,
+            ciphertext_file_name, plaintext_file_name):
+    &quot;&quot;&quot;Decrypts data from ciphertext_file_name that was previously encrypted
+    using the provided CryptoKey and saves it to plaintext_file_name.&quot;&quot;&quot;
+
+    # Creates an API client for the KMS API.
+    kms_client = googleapiclient.discovery.build(&#39;cloudkms&#39;, &#39;v1&#39;)
+
+    # The resource name of the CryptoKey.
+    name = &#39;projects/{}/locations/{}/keyRings/{}/cryptoKeys/{}&#39;.format(
+        project_id, location_id, key_ring_id, crypto_key_id)
+
+    # Read encrypted data from the input file.
+    with io.open(ciphertext_file_name, &#39;rb&#39;) as ciphertext_file:
+        ciphertext = ciphertext_file.read()
+
+    # Use the KMS API to decrypt the data.
+    crypto_keys = kms_client.projects().locations().keyRings().cryptoKeys()
+    request = crypto_keys.decrypt(
+        name=name,
+        body={&#39;ciphertext&#39;: base64.b64encode(ciphertext).decode(&#39;ascii&#39;)})
+    response = request.execute()
+    plaintext = base64.b64decode(response[&#39;plaintext&#39;].encode(&#39;ascii&#39;))
+
+    # Write the decrypted data to a file.
+    with io.open(plaintext_file_name, &#39;wb&#39;) as plaintext_file:
+        plaintext_file.write(plaintext)
+
+    print(&#39;Saved plaintext to {}.&#39;.format(plaintext_file_name))</pre>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+</section>
+
+
+
+
+
+  
+
+
+
+
+
+
+
+  
+
+
+  
+    
+  
+
+
+  
+
+<section>
+  
+  <h3 id="kms-howto-encrypt-ruby" track-type="sampleTabNav" track-name="ruby" track-metadata-position="kms-howto-encrypt">Ruby</h3>
+  
+  
+    
+    <p>
+      For more on installing and creating a Cloud KMS client, refer to
+      <a href="https://cloud.google.com/kms/docs/reference/libraries" track-type="clientLibrariesReference"
+         track-name="ruby" track-metadata-position="kms-howto-encrypt">Cloud KMS Client Libraries</a>.
+    </p>
+    
+  
+  
+  
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  
+  
+
+
+<!-- Header -->
+
+<div class="github-docwidget-include" style="border: 1px solid #ddd; border-bottom: 0; padding: 4px; background-color: #4285f4; margin-bottom: -10px">
+  
+
+  
+  <div style="text-align: right; float: right;">
+    
+    
+      
+      <a class="button" target="_blank" href="https://github.com/GoogleCloudPlatform/ruby-docs-samples/blob/master/kms/kms.rb"
+      track-type="github" track-name="gitHubViewButton"
+      track-metadata-link-destination="https://github.com/GoogleCloudPlatform/ruby-docs-samples/blob/master/kms/kms.rb">View on GitHub</a>
+    
+    
+    
+    
+    
+    
+    
+    <a href="#" class="button google-feedback" data-p="1634365" data-b="solutions"
+       data-context="kms-howto-encrypt" track-type="feedback" track-name="sampleFeedback"
+       track-metadata-lang="ruby" track-metadata-position="kms-howto-encrypt">Feedback</a>
+    
+  </div>
+  
+
+  <div style="clear: both;"></div>
+
+</div>
+
+
+<!-- Code -->
+<div class="github-docwidget-gitinclude-code">
+
+  
+  
+
+<pre class="prettyprint lang-rb" track-metadata-position="GoogleCloudPlatform/ruby-docs-samples/kms/kms.rb/master/kms_decrypt"># project_id    = &quot;Your Google Cloud project ID&quot;
+# location_id   = &quot;The location of the key ring&quot;
+# key_ring_id   = &quot;The ID of the key ring&quot;
+# crypto_key_id = &quot;The ID of the crypto key&quot;
+# ciphertext_file = &quot;File to decrypt&quot;
+# plaintext_file  = &quot;File to store decrypted data&quot;
+
+require &quot;google/apis/cloudkms_v1&quot;
+
+# Initialize the client and authenticate with the specified scope
+Cloudkms = Google::Apis::CloudkmsV1
+kms_client = Cloudkms::CloudKMSService.new
+kms_client.authorization = Google::Auth.get_application_default(
+  &quot;https://www.googleapis.com/auth/cloud-platform&quot;
+)
+
+# The resource name of the crypto key
+resource = &quot;projects/#{project_id}/locations/#{location_id}/&quot; +
+           &quot;keyRings/#{key_ring_id}/cryptoKeys/#{crypto_key_id}&quot;
+
+# Read the encrypted data from the file
+ciphertext = File.read ciphertext_file
+
+request = Cloudkms::DecryptRequest.new ciphertext: ciphertext
+
+# Use the KMS API to decrypt the data
+response = kms_client.decrypt_crypto_key resource, request
+
+# Write the decrypted text to the output file
+File.write plaintext_file, response.plaintext
+
+puts &quot;Saved decrypted #{ciphertext_file} as #{plaintext_file}&quot;</pre>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+</section>
+
+
+
+
+
+</div></p>
+<h2 id="whats_next">What's next</h2>
+<ul>
+<li>Read more about <a href="https://cloud.google.com/kms/docs/secret-management">secret management</a>.</li>
+<li>Read more about <a href="https://cloud.google.com/kms/docs/data-encryption-keys">envelope encryption</a>.</li>
+<li>Try the <a class="external" href="https://codelabs.developers.google.com/codelabs/cloud-encrypt-with-kms/" target="_blank">Getting Started with Cloud KMS Codelab</a>.
+
+
+  </div>
+  
+    
+
+
+
+  
+
+  
+        
+  
+
+
+
+
+
+
+
+        
+<div class="devsite-content-footer nocontent">
+  
+  
+    <p>Except as otherwise noted, the content of this page is licensed under the <a href="http://creativecommons.org/licenses/by/3.0/">Creative Commons Attribution 3.0 License</a>, and code samples are licensed under the <a href="http://www.apache.org/licenses/LICENSE-2.0">Apache 2.0 License</a>. For details, see our <a href="https://developers.google.com/terms/site-policies">Site Policies</a>. Java is a registered trademark of Oracle and/or its affiliates.</p>
+  
+
+  
+    
+    <p class="devsite-content-footer-date" itemprop="datePublished"
+       content="2018-03-28T23:16:26.527800">
+      
+      Last updated March 28, 2018.
+    </p>
+  
+
+</div>
+
+        </article>
+      </article>
+  
+
+        </div>
+      
+
+<footer class="devsite-footer-linkboxes nocontent
+               devsite-footer-linkboxes-all-backup
+               devsite-footer-linkboxes-with-sites"><nav class="devsite-full-site-width"><ul class="devsite-footer-linkboxes-list"><li class="devsite-footer-linkbox devsite-footer-linkbox-backup"><h3 class="devsite-footer-linkbox-heading">Products</h3><ul class="devsite-footer-linkbox-list"><li class="devsite-footer-linkbox-item"><a href="https://cloud.google.com/products/compute/" class="gc-analytics-event"
+               data-category="Site-Wide Custom Events"
+               data-label="Footer Compute">
+                Compute
+            </a></li><li class="devsite-footer-linkbox-item"><a href="https://cloud.google.com/products/storage/" class="gc-analytics-event"
+               data-category="Site-Wide Custom Events"
+               data-label="Footer Storage">
+                Storage
+            </a></li><li class="devsite-footer-linkbox-item"><a href="https://cloud.google.com/products/networking/" class="gc-analytics-event"
+               data-category="Site-Wide Custom Events"
+               data-label="Footer Networking">
+                Networking
+            </a></li><li class="devsite-footer-linkbox-item"><a href="https://cloud.google.com/products/big-data/" class="gc-analytics-event"
+               data-category="Site-Wide Custom Events"
+               data-label="Footer Big Data">
+                Big Data
+            </a></li><li class="devsite-footer-linkbox-item"><a href="https://cloud.google.com/products/machine-learning/" class="gc-analytics-event"
+               data-category="Site-Wide Custom Events"
+               data-label="Footer Machine Learning">
+                Machine Learning
+            </a></li><li class="devsite-footer-linkbox-item"><a href="https://cloud.google.com/products/#management" class="gc-analytics-event"
+               data-category="Site-Wide Custom Events"
+               data-label="Footer Management Tools">
+                Management Tools
+            </a></li><li class="devsite-footer-linkbox-item"><a href="https://cloud.google.com/products/tools/" class="gc-analytics-event"
+               data-category="Site-Wide Custom Events"
+               data-label="Footer Developer Tools">
+                Developer Tools
+            </a></li><li class="devsite-footer-linkbox-item"><a href="https://cloud.google.com/products/#identity-security" class="gc-analytics-event"
+               data-category="Site-Wide Custom Events"
+               data-label="Footer Identity and Security">
+                Identity &amp; Security
+            </a></li><li class="devsite-footer-linkbox-item"><a href="//status.cloud.google.com" class="gc-analytics-event"
+               data-category="Site-Wide Custom Events"
+               data-label="Footer System Status">
+                System Status
+            </a></li></ul></li><li class="devsite-footer-linkbox devsite-footer-linkbox-backup"><h3 class="devsite-footer-linkbox-heading">Learn More</h3><ul class="devsite-footer-linkbox-list"><li class="devsite-footer-linkbox-item"><a href="https://cloud.google.com/why-google/" class="gc-analytics-event"
+               data-category="Site-Wide Custom Events"
+               data-label="Footer Why Google">
+                Why Google Cloud
+            </a></li><li class="devsite-footer-linkbox-item"><a href="https://cloud.google.com/pricing/" class="gc-analytics-event"
+               data-category="Site-Wide Custom Events"
+               data-label="Footer Pricing">
+                Pricing
+            </a></li><li class="devsite-footer-linkbox-item"><a href="https://cloud.google.com/docs/" class="gc-analytics-event"
+               data-category="Site-Wide Custom Events"
+               data-label="Footer Documentation">
+                Documentation
+            </a></li><li class="devsite-footer-linkbox-item"><a href="https://cloud.google.com/docs/tutorials/" class="gc-analytics-event"
+               data-category="Site-Wide Custom Events"
+               data-label="Footer Tutorials">
+                Tutorials
+            </a></li><li class="devsite-footer-linkbox-item"><a href="https://cloud.google.com/training/" class="gc-analytics-event"
+               data-category="Site-Wide Custom Events"
+               data-label="Footer Training">
+                Training
+            </a></li><li class="devsite-footer-linkbox-item"><a href="https://cloud.google.com/solutions/" class="gc-analytics-event"
+               data-category="Site-Wide Custom Events"
+               data-label="Footer Solutions">
+                Solutions
+            </a></li><li class="devsite-footer-linkbox-item"><a href="https://cloud.google.com/security/" class="gc-analytics-event"
+               data-category="Site-Wide Custom Events"
+               data-label="Footer Security &amp; Compliance">
+                Security &amp; Compliance
+            </a></li><li class="devsite-footer-linkbox-item"><a href="https://cloud.google.com/partners/" class="gc-analytics-event"
+               data-category="Site-Wide Custom Events"
+               data-label="Footer Partners">
+                Partners
+            </a></li><li class="devsite-footer-linkbox-item"><a href="https://cloud.google.com/customers/" class="gc-analytics-event"
+               data-category="Site-Wide Custom Events"
+               data-label="Footer Customers">
+                Customers
+            </a></li><li class="devsite-footer-linkbox-item"><a href="https://cloud.google.com/support/" class="gc-analytics-event"
+               data-category="Site-Wide Custom Events"
+               data-label="Footer Support">
+                Support
+            </a></li><li class="devsite-footer-linkbox-item"><a href="//careers.google.com/cloud/" class="gc-analytics-event"
+               data-category="Site-Wide Custom Events"
+               data-label="Footer Careers">
+                Careers
+            </a></li><li class="devsite-footer-linkbox-item"><a href="//www.google.com/cloud/press" class="gc-analytics-event"
+               data-category="Site-Wide Custom Events"
+               data-label="Footer Press">
+                Press
+            </a></li></ul></li><li class="devsite-footer-linkbox devsite-footer-linkbox-backup"><h3 class="devsite-footer-linkbox-heading">Engage</h3><ul class="devsite-footer-linkbox-list"><li class="devsite-footer-linkbox-item"><a href="https://cloud.google.com/free-trial/" class="gc-analytics-event"
+               data-category="Site-Wide Custom Events"
+               data-label="Footer Free Trial Sign Up">
+                Free Trial Sign Up
+            </a></li><li class="devsite-footer-linkbox-item"><a href="//cloudplatform.googleblog.com" class="gc-analytics-event"
+               data-category="Site-Wide Custom Events"
+               data-label="Footer Blog">
+                Blog
+            </a></li><li class="devsite-footer-linkbox-item"><a href="https://cloud.google.com/community/" class="gc-analytics-event"
+               data-category="Site-Wide Custom Events"
+               data-label="Footer Community">
+                Community
+            </a></li><li class="devsite-footer-linkbox-item"><a href="//plus.google.com/+googlecloudplatform" class="gc-analytics-event"
+               data-category="Site-Wide Custom Events"
+               data-label="Footer Google+">
+                Google+
+            </a></li><li class="devsite-footer-linkbox-item"><a href="//twitter.com/gcpcloud" class="gc-analytics-event"
+               data-category="Site-Wide Custom Events"
+               data-label="Footer Twitter">
+                Twitter
+            </a></li><li class="devsite-footer-linkbox-item"><a href="//www.linkedin.com/showcase/google-cloud" class="gc-analytics-event"
+               data-category="Site-Wide Custom Events"
+               data-label="Footer LinkedIn">
+                LinkedIn
+            </a></li><li class="devsite-footer-linkbox-item"><a href="//stackoverflow.com/questions/tagged/google-cloud-platform" class="gc-analytics-event"
+               data-category="Site-Wide Custom Events"
+               data-label="Footer Stack Overflow">
+                Stack Overflow
+            </a></li><li class="devsite-footer-linkbox-item"><a href="//www.youtube.com/googlecloudplatform" class="gc-analytics-event"
+               data-category="Site-Wide Custom Events"
+               data-label="Footer YouTube">
+                YouTube
+            </a></li><li class="devsite-footer-linkbox-item"><a href="//www.gcppodcast.com" class="gc-analytics-event"
+               data-category="Site-Wide Custom Events"
+               data-label="Footer Podcast">
+                Podcast
+            </a></li><li class="devsite-footer-linkbox-item"><a href="//cloud.google.com/newsletter/" class="gc-analytics-event"
+               data-category="Site-Wide Custom Events"
+               data-label="Footer Newsletter Signup">
+                Newsletter Signup
+            </a></li><li class="devsite-footer-linkbox-item"><a href="//cloud.google.com/usability" class="gc-analytics-event"
+               data-category="Site-Wide Custom Events"
+               data-label="Footer UX Research">
+                UX Research
+            </a></li></ul></li><li class="devsite-footer-linkbox devsite-footer-linkbox-sites"><a href="https://developers.google.com/"
+           class="gc-analytics-event devsite-footer-linkbox-logo-link"
+           data-category="Site-Wide Custom Events" data-label="Footer Google Developers Link"><img class="devsite-footer-linkbox-logo"
+               src="https://cloud.google.com/_static/d7147bb846/images/redesign-14/lockup-color-knockout.png"
+               alt="Google Developers"></a><ul class="devsite-footer-linkbox-list"><li class="devsite-footer-linkbox-item"><a href="//developer.android.com/index.html" class="gc-analytics-event"
+               data-category="Site-Wide Custom Events"
+               data-label="Footer Android Link">
+                Android
+            </a></li><li class="devsite-footer-linkbox-item"><a href="//developer.chrome.com/home" class="gc-analytics-event"
+               data-category="Site-Wide Custom Events"
+               data-label="Footer Chrome Link">
+                Chrome
+            </a></li><li class="devsite-footer-linkbox-item"><a href="//firebase.google.com" class="gc-analytics-event"
+               data-category="Site-Wide Custom Events"
+               data-label="Footer Firebase Link">
+                Firebase
+            </a></li><li class="devsite-footer-linkbox-item"><a href="//cloud.google.com" class="gc-analytics-event"
+               data-category="Site-Wide Custom Events"
+               data-label="Footer Cloud Link">
+                Google Cloud Platform
+            </a></li><li class="devsite-footer-linkbox-item"><a href="//developers.google.com/products/" class="gc-analytics-event"
+               data-category="Site-Wide Custom Events"
+               data-label="Footer Products Link">
+                All Products
+            </a></li></ul></li></ul></nav></footer><footer class="devsite-utility-footer"><nav class="devsite-utility-footer-nav devsite-nav devsite-full-site-width"><div class="devsite-utility-footer-nav-left"><form class="devsite-utility-footer-language" action="/i18n/setlang/" method="post"><input type="hidden" name="xsrf_token" value="NsFc7YwPwwSaM14B6bzSePUlxqF3QaFaG8DIjkiv4gM6MTUyNDQ2MDQ4OTcwMTI0MA" /><input type="hidden" name="next" value="/kms/docs/encrypt-decrypt"><select class="devsite-utility-footer-language-select kd-select" name="language"
+                track-type="languageSelector" track-name="click"><option value="en"
+                 selected="selected" 
+                track-type="languageSelector" track-name="changed"
+                track-metadata-original-language="en"
+                track-metadata-selected-language="en">
+            English
+          </option><option value="es"
+                
+                track-type="languageSelector" track-name="changed"
+                track-metadata-original-language="en"
+                track-metadata-selected-language="es">
+            español
+          </option><option value="pt-br"
+                
+                track-type="languageSelector" track-name="changed"
+                track-metadata-original-language="en"
+                track-metadata-selected-language="pt-br">
+            Português Brasileiro
+          </option><option value="ja"
+                
+                track-type="languageSelector" track-name="changed"
+                track-metadata-original-language="en"
+                track-metadata-selected-language="ja">
+            日本語
+          </option><option value="zh-tw"
+                
+                track-type="languageSelector" track-name="changed"
+                track-metadata-original-language="en"
+                track-metadata-selected-language="zh-tw">
+            繁體中文
+          </option></select></form><span class="devsite-utility-footer-links"><a class="devsite-utility-footer-link gc-analytics-event"
+           href="https://cloud.google.com/terms/"
+           data-category="Site-Wide Custom Events"
+           data-label="Footer terms link"
+           data-footer-link-id="terms"
+           >Terms
+         </a><a class="devsite-utility-footer-link gc-analytics-event"
+           href="//www.google.com/policies/privacy/"
+           data-category="Site-Wide Custom Events"
+           data-label="Footer privacy link"
+           data-footer-link-id="privacy"
+           >Privacy
+         </a><a class="devsite-utility-footer-link gc-analytics-event"
+           href="//www.google.de/contact/impressum.html"
+           data-category="Site-Wide Custom Events"
+           data-label="Footer impressum link"
+           data-footer-link-id="impressum"
+           >Impressum
+         </a></span></div></nav></footer><div class="devsite-feedback-dialog devsite-dialog"><div class="devsite-dialog-contents"><h3>Send feedback about...</h3><div class="devsite-feedback-item"><a data-type="documentation" class="gc-analytics-event"
+           data-category="Site-Wide Custom Events" data-label="Docs Feedback Image"
+           track-type="feedback" track-name="feedbackDocIcon" track-metadata-position="header"><div class="devsite-feedback-item-icon-container"><div class="devsite-feedback-item-icon-white devsite-feedback-item-icon-docs
+                        material-icons"></div></div></a><div class="devsite-feedback-item-name">
+          
+          This page
+        </div><div class="devsite-feedback-item-description"><a data-type="documentation" tabindex="0" class="gc-analytics-event"
+             data-category="Site-Wide Custom Events" data-label="Docs Feedback Text"
+             track-type="feedback" track-name="feedbackDocText" track-metadata-position="header">
+            
+            Documentation feedback
+          </a></div></div><div class="devsite-feedback-item"><a data-type="product" tabindex="0" class="gc-analytics-event"
+           data-category="Site-Wide Custom Events" data-label="Product Feedback Image"
+           track-type="feedback" track-name="feedbackProductIcon" track-metadata-position="header"
+         ><img class="devsite-feedback-item-icon"
+               src="https://cloud.google.com/_static/d7147bb846/images/feedback/google_56px.svg"></a><div class="devsite-feedback-item-name">
+        Cloud KMS Documentation
+        </div><div class="devsite-feedback-item-description"><a data-type="product" tabindex="0" class="gc-analytics-event"
+             data-category="Site-Wide Custom Events" data-label="Product Feedback Text"
+             track-type="feedback" track-name="feedbackProductText" track-metadata-position="header"
+           >
+            
+            Product feedback
+          </a></div></div></div><div class="devsite-dialog-buttons"><button type="button" class="devsite-feedback-cancel button-white gc-analytics-event"
+              data-category="Site-Wide Custom Events" data-label="Cancel Feedback Button"
+              track-type="feedback" track-name="cancelFeedbackButton"
+              track-metadata-position="header">
+        
+        Cancel
+      </button></div></div><script>
+  $(document).ready(function() {
+    new devsite.feedback.Widget({
+        'product_id': '83405',
+        'bucket': '',
+        'context': '',
+        'version': 'devsite-20180420-r00-rc00.default'
+      },
+      document.querySelectorAll('.devsite-feedback-button'),
+      'en',
+      document.querySelector('.devsite-site-mask'),
+      document.querySelector('.devsite-feedback-dialog'),
+      document.querySelector('.devsite-feedback-cancel'),
+      document.querySelectorAll('.devsite-feedback-item a:not([href])')
+    );
+  });
+  </script></div><script async defer src="//www.gstatic.com/feedback/api.js"></script><script src="https://cloud.google.com/_static2/d7147bb846/jsi18n/"></script><script src="https://cloud.google.com/_static/d7147bb846/js/script_foot_closure.js"></script><script src="https://cloud.google.com/_static/d7147bb846/js/script_foot.js"></script><script>
+        (function($) {
+          
+          devsite.devsite.Init($, {'ENABLE_BLOCKED_VIDEO_PLACEHOLDER': 0, 'SITE_NAME': 'cloud', 'FULL_SITE_SEARCH_ENABLED': 1, 'ENABLE_CLOUDTRACK': 1, 'VTAGS_ENABLED': 1, 'HISTORY_ENABLED': 1, 'VERSION_HASH': 'd7147bb846', 'SCRIPTSAFE_DOMAIN': 'cloud-dot-google-developers.appspot.com', 'ENABLE_BLOCKED_LINK_TOOLTIP': 0, 'ALLOWED_HOSTS': ['.android.com', '.anvato.com', '.apigee.com', '.appspot.com', '.dialogflow.com', '.gonglchuangl.net', '.google.cn', '.google.com', '.googleplex.com', '.nest.com', '.openthread.io', '.openweave.io', '.orbitera.com', '.tensorflow.org'], 'BLOCK_RSS_FEEDS': 0},
+                               '[]','en',
+                               true, '',
+                               {"f62218c009ec029abef196bba5aa34cf": true, "8de7a048f21618359bd37f5ce44be073": false, "098dafe57affddc137df300142652cfd": false, "8e03e230de0bd8a6fe173fdf172e8b3f": true, "cb025a64a50094835616312f4774a53d": true, "51470233c56fc1fde50f00b73c52b216": false, "d169d485cf24243a263783dbe42029b1": true, "039e5d84b87fd75807ffb37b7f1bbf2c": true, "700def1a83e356c06c0925afb05de4b0": false, "6749dcb526ce9bde6993550c7d928d24": true}, '/kms/docs/',
+                               'https://cloud.google.com/');
+        })(jQuery);
+
+        
+        devsite.localInit = function() {
+          
+        };
+
+      </script><script>
+      $('.devsite-utility-footer-language-select').each(function() {
+        $(this).change(function(){$('.devsite-utility-footer-language').submit();});
+      });
+      </script><script async defer src="//survey.g.doubleclick.net/async_survey?site=5u3vqdlpcnxudk6xz3yb2kknf4"></script></div><span id="devsite-request-elapsed" data-request-elapsed="373.379945755"></span></body></html>
