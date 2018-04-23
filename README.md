@@ -407,7 +407,7 @@ shBuildCiAfter () {(set -e
 )}
 
 shBuildCiBefore () {(set -e
-    shNpmTestPublished
+    #!! shNpmTestPublished
     shReadmeTest example.js
 )}
 
