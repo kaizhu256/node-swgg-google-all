@@ -17576,7 +17576,7 @@ local.assetsDict['/favicon.ico'] = '';
         /* istanbul ignore next */
         local.ajaxCrawl = function (options, onError) {
         /*
-         * this function will crawl options.url
+         * this function will recursively web-crawl options.urlList to options.depth
          */
             options = local.objectSetDefault(options, {
                 depth: 0,
@@ -17591,7 +17591,7 @@ local.assetsDict['/favicon.ico'] = '';
                 },
                 list: [],
                 onEach: function (options, onError) {
-                    if (options.xhr.responseText.replace((/\w/g), '').length >
+                    if (options.xhr.responseText.replace((/[\w\t <>]/g), '').length >
                             0.5 * options.xhr.responseText.length) {
                         console.error((options.ii + 1) + '/' + options.list.length +
                             ' ajaxCrawl - skip ' + options.url);
@@ -17600,10 +17600,11 @@ local.assetsDict['/favicon.ico'] = '';
                     }
                     local.fsWriteFileWithMkdirpSync(options.file, options.xhr.responseText);
                     console.error((options.ii + 1) + '/' + options.list.length +
-                        ' ajaxCrawl - saved ' + options.url + ' -> ' + options.file);
+                        ' ajaxCrawl - save ' + options.url + ' -> ' + options.file);
                     onError(null, options);
                 },
-                rgx: (/href="(.*?)"/g)
+                rgx: (/href="(.*?)"/g),
+                urlList: []
             });
             options.file = ((options.url || '').replace((/^https?:\/\//), options.dir + '/') +
                 '/index.html').replace((/\/{2,}/g), '/');
@@ -17611,13 +17612,15 @@ local.assetsDict['/favicon.ico'] = '';
                 switch (options.modeNext) {
                 // onParallelList(options);
                 case 1:
-                    options.list.forEach(function (element) {
-                        options.dict[element.url.replace((/^https?:\/\//), '')] = true;
+                    options.urlList.forEach(function (url) {
+                        options.dict[url.replace((/^https?:\/\//), '')] = true;
+                        // recurse - push
+                        local.ajaxCrawl(local.objectSetDefault({ modeNext: 1, url: url }, options));
                     });
                     local.onParallelList(options, function (options2, onParallel) {
                         onParallel.counter += 1;
                         options2.element.modeNext = 2;
-                        // recurse
+                        // recurse - ajax
                         local.ajaxCrawl(
                             local.objectSetDefault(
                                 local.objectSetDefault(options2.element, options),
@@ -17663,7 +17666,7 @@ local.assetsDict['/favicon.ico'] = '';
                     }
                     options.xhr.responseText.replace(options.rgx, function (match0, match1) {
                         match0 = match1;
-                        // recurse
+                        // recurse - push
                         local.ajaxCrawl({
                             depth: options.depth - 1,
                             dict: options.dict,

@@ -32,11 +32,15 @@ shNpmScriptApidocRawFetch () {(set -e
 "use strict";
 var local;
 local = require("../../assets.utility2.rollup.js");
-local.ajaxCrawl({
-    depth: 2,
-    dir: ".",
-    filterBlacklist: function (options) {
-        return new RegExp("\\b(?:" +
+process.argv[1].split("\n").forEach(function (url) {
+    if (!(url && url[0] !== "#")) {
+        return;
+    }
+    local.ajaxCrawl({
+        depth: 2,
+        dir: ".",
+        filterBlacklist: function (options) {
+            return new RegExp("\\b(?:" +
 /* jslint-ignore-begin */
 "\
 android|\
@@ -47,19 +51,14 @@ javascript|\
 python|\
 sdk" +
 /* jslint-ignore-end */
-            ")\\b").test(options.url);
-    },
-    filterWhitelist: function (options) {
-        return (/^https?:\/\/(?:cloud.google.com|developers.google.com)/).test(options.url);
-    },
-    list: process.argv[1].split("\n")
-        .filter(function (element) {
-            return element && element[0] !== "#";
-        })
-        .map(function (element) {
-            return { url: element };
-        })
-}, local.onErrorDefault);
+                ")\\b").test(options.url);
+        },
+        filterWhitelist: function (options) {
+            return (/^https?:\/\/(?:cloud.google.com|developers.google.com)/).test(options.url);
+        },
+        urlList: [url],
+    }, local.onErrorDefault);
+});
 // </script>
 ' '
 #!! https://cloud.google.com/bigquery/docs/reference/datatransfer/rest/
@@ -69,7 +68,7 @@ sdk" +
 #!! https://cloud.google.com/container-builder/docs/api/reference/rest/
 #!! https://cloud.google.com/dlp/docs/reference/rest/
 #!! https://cloud.google.com/kms/docs/reference/rest/
-#!! https://cloud.google.com/ml-engine/reference/rest/
+https://cloud.google.com/ml-engine/reference/rest/
 #!! https://cloud.google.com/natural-language/docs/reference/rest/
 #!! https://cloud.google.com/resource-manager/reference/rest/
 #!! https://cloud.google.com/speech-to-text/docs/reference/rest/
