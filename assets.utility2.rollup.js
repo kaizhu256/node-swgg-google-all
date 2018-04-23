@@ -17593,14 +17593,16 @@ local.assetsDict['/favicon.ico'] = '';
                 onEach: function (options, onError) {
                     if (options.xhr.responseText.replace((/\w/g), '').length >
                             0.5 * options.xhr.responseText.length) {
+                        console.error(options.ii + '/' + options.list.length +
+                            ' ajaxCrawl - skip ' + options.url);
                         onError(null, options);
                         return;
                     }
                     options.file = (options.url.replace((/^https?:\/\//), options.dir + '/') +
                         '/index.html').replace((/\/{2,}/g), '/');
                     local.fsWriteFileWithMkdirpSync(options.file, options.xhr.responseText);
-                    console.error(options.ii + '/' + options.list.length + '  ajaxCrawl  ' +
-                        options.url + '  ->  ' + options.file);
+                    console.error(options.ii + '/' + options.list.length +
+                        ' ajaxCrawl - saved ' + options.url + ' -> ' + options.file);
                     onError(null, options);
                 },
                 rgx: (/href="(.*?)"/g)
@@ -17636,10 +17638,13 @@ local.assetsDict['/favicon.ico'] = '';
                             '/' + options.url;
                     }
                     options.url = options.url.replace((/\/{2,}/g), '/').replace('/', '//');
+                    options.file = (options.url.replace((/^https?:\/\//), options.dir + '/') +
+                        '/index.html').replace((/\/{2,}/g), '/');
                     // optimization - hasOwnProperty
                     if (!options.dict.hasOwnProperty(options.url.replace((/^https?:\/\//), '')) &&
                             !options.filterBlacklist(options) &&
-                            options.filterWhitelist(options)) {
+                            options.filterWhitelist(options) &&
+                            !local.fs.existsSync(options.file)) {
                         options.modeNext = 2;
                         options.dict[options.url.replace((/^https?:\/\//), '')] = true;
                         options.list.push(options);

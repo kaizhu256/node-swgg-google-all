@@ -33,10 +33,21 @@ shNpmScriptApidocRawFetch () {(set -e
 var local;
 local = require("../../assets.utility2.rollup.js");
 local.ajaxCrawl({
-    depth: 3,
+    depth: 2,
     dir: ".",
     filterBlacklist: function (options) {
-        return (/\b(?:android|ios|javascript|sdk)\b/).test(options.url);
+        return new RegExp("\\b(?:" +
+/* jslint-ignore-begin */
+"\
+android|\
+c\\+\\+|\
+ios|\
+java|\
+javascript|\
+python|\
+sdk" +
+/* jslint-ignore-end */
+            ")\\b").test(options.url);
     },
     filterWhitelist: function (options) {
         return (/^https?:\/\/(?:cloud.google.com|developers.google.com)/).test(options.url);
