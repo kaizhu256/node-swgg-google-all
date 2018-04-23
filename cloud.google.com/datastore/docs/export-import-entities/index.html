@@ -1,0 +1,1392 @@
+
+
+
+
+
+
+<!DOCTYPE html><html lang="en"
+      class="chekov"><head><script>var a=window.devsite||{};window.devsite=a;a.readyCallbacks=[];window.devsite.readyCallbacks=a.readyCallbacks;a.ready=function(b){a.readyCallbacks.push(b)};window.devsite.ready=a.ready;
+</script><meta charset="utf-8"><meta name="xsrf_token" content="OhIk2ZKZhAhTyzrq3wfiTmdjS5pV82XluvT-lQbkXEs6MTUyNDQ2MDE5OTIzNjk4MA" /><link rel="canonical" href="https://cloud.google.com/datastore/docs/export-import-entities"><link rel="alternate" href="https://cloud.google.com/datastore/docs/export-import-entities?hl=pt-br" hreflang="pt-br"><link rel="alternate" href="https://cloud.google.com/datastore/docs/export-import-entities?hl=de" hreflang="de"><link rel="alternate" href="https://cloud.google.com/datastore/docs/export-import-entities?hl=ja" hreflang="ja"><link rel="alternate" href="https://cloud.google.com/datastore/docs/export-import-entities" hreflang="en"><link rel="alternate" href="https://cloud.google.com/datastore/docs/export-import-entities" hreflang="x-default"><link rel="shortcut icon" href="https://cloud.google.com/_static/d7147bb846/images/cloud/icons/favicons/onecloud/favicon.ico"><link rel="apple-touch-icon" href="https://cloud.google.com/_static/d7147bb846/images/cloud/icons/favicons/onecloud/apple-icon.png"><meta name="viewport" content="width=device-width, initial-scale=1"><link rel="stylesheet"
+      
+      href="//fonts.googleapis.com/css?family=Google+Sans:400|Roboto:400,400italic,500,500italic,700,700italic|Roboto+Mono:400,500,700|Material+Icons"
+      ><link rel="stylesheet"
+        href="https://cloud.google.com/_static/d7147bb846/css/devsite-cloud-white.css"><link rel="stylesheet" href="https://cloud.google.com/_static/d7147bb846/css/cloud/cloud-site.css"><link rel="search"
+        type="application/opensearchdescription+xml"
+        title="Google Cloud"
+        href="https://cloud.google.com/s/opensearch.xml"><script src="https://cloud.google.com/_static/d7147bb846/js/jquery-bundle.js"></script><meta property="og:site_name" content="Google Cloud"><meta property="og:type" content="website"><meta property="og:url" content="https://cloud.google.com/datastore/docs/export-import-entities"><meta property="og:locale" content="en"><script>
+    var ___gcfg = ___gcfg || {};
+    ___gcfg.lang = 'en';
+  </script><title>Exporting and Importing Entities &nbsp;|&nbsp; Cloud Datastore Documentation
+      &nbsp;|&nbsp; Google Cloud</title><meta property="og:title" content="Exporting and Importing Entities &nbsp;|&nbsp; Cloud Datastore Documentation
+      &nbsp;|&nbsp; Google Cloud"></head><body class="
+               devsite-doc-page
+               
+               
+               
+               
+               devsite-header-no-lower-tabs"
+        data-family="endorsed"
+        id="top_of_page"><div class="devsite-wrapper"><div class="devsite-top-section-wrapper
+            "><header class="devsite-top-section nocontent"><div class="devsite-top-logo-row-wrapper-wrapper"><div class="devsite-top-logo-row-wrapper"><div class="devsite-top-logo-row devsite-full-site-width"><button type="button" class="devsite-expand-section-nav devsite-header-icon-button
+                                       button-flat material-icons gc-analytics-event"
+                  data-category="Site-Wide Custom Events" data-label="Hamburger menu"></button><div class="devsite-product-name-wrapper"><a href="https://cloud.google.com/" class="devsite-site-logo-link gc-analytics-event"
+   data-category="Site-Wide Custom Events" data-label="Site logo"><img src="https://cloud.google.com/_static/d7147bb846/images/cloud/cloud-logo.svg"
+       class="devsite-site-logo" alt="Google Cloud"><span class="devsite-site-name devsite-product-name">Google Cloud</span></a></div><div class="devsite-header-upper-tabs"><nav class="devsite-doc-set-nav devsite-nav devsite-overflow-tabs-scroll-wrapper"><ul class="devsite-doc-set-nav-tab-list devsite-overflow-tabs-scroll"><li class="devsite-doc-set-nav-tab-container devsite-nav-tab
+               "><a href="https://cloud.google.com/why-google-cloud/"
+         class=" devsite-nav-tab
+                devsite-doc-set-nav-tab devsite-doc-set-nav-tab-link gc-analytics-event"
+         
+       
+         data-category="Site-Wide Custom Events"
+       
+         data-label="Tab: Why Google"
+       
+         track-type="globalNav"
+       
+         track-name="whyGoogle"
+       >
+        Why Google
+      </a></li><li class="devsite-doc-set-nav-tab-container devsite-nav-tab
+               "><a href="https://cloud.google.com/products/"
+         class=" devsite-nav-tab
+                devsite-doc-set-nav-tab devsite-doc-set-nav-tab-link gc-analytics-event"
+         
+       
+         data-category="Site-Wide Custom Events"
+       
+         data-label="Tab: Products"
+       
+         track-type="globalNav"
+       
+         track-name="products"
+       >
+        Products
+      </a></li><li class="devsite-doc-set-nav-tab-container devsite-nav-tab
+               "><a href="https://cloud.google.com/solutions/"
+         class=" devsite-nav-tab
+                devsite-doc-set-nav-tab devsite-doc-set-nav-tab-link gc-analytics-event"
+         
+       
+         data-category="Site-Wide Custom Events"
+       
+         data-label="Tab: Solutions"
+       
+         track-type="globalNav"
+       
+         track-name="solutions"
+       >
+        Solutions
+      </a></li><li class="devsite-doc-set-nav-tab-container devsite-nav-tab
+               "><a href="https://cloud.google.com/launcher/"
+         class=" devsite-nav-tab
+                devsite-doc-set-nav-tab devsite-doc-set-nav-tab-link gc-analytics-event"
+         
+       
+         data-category="Site-Wide Custom Events"
+       
+         data-label="Tab: Launcher"
+       
+         track-type="globalNav"
+       
+         track-name="launcher"
+       >
+        Launcher
+      </a></li><li class="devsite-doc-set-nav-tab-container devsite-nav-tab
+               "><a href="https://cloud.google.com/pricing/"
+         class=" devsite-nav-tab
+                devsite-doc-set-nav-tab devsite-doc-set-nav-tab-link gc-analytics-event"
+         
+       
+         data-category="Site-Wide Custom Events"
+       
+         data-label="Tab: Pricing"
+       
+         track-type="globalNav"
+       
+         track-name="pricing"
+       >
+        Pricing
+      </a></li><li class="devsite-doc-set-nav-tab-container devsite-nav-tab
+               "><a href="https://cloud.google.com/security/"
+         class=" devsite-nav-tab
+                devsite-doc-set-nav-tab devsite-doc-set-nav-tab-link gc-analytics-event"
+         
+       
+         data-category="Site-Wide Custom Events"
+       
+         data-label="Tab: Security"
+       
+         track-type="globalNav"
+       
+         track-name="security"
+       >
+        Security
+      </a></li><li class="devsite-doc-set-nav-tab-container devsite-nav-tab
+               "><a href="https://cloud.google.com/customers/"
+         class=" devsite-nav-tab
+                devsite-doc-set-nav-tab devsite-doc-set-nav-tab-link gc-analytics-event"
+         
+       
+         data-category="Site-Wide Custom Events"
+       
+         data-label="Tab: Customers"
+       
+         track-type="globalNav"
+       
+         track-name="customers"
+       >
+        Customers
+      </a></li><li class="devsite-doc-set-nav-tab-container devsite-nav-tab
+               "><a href="https://cloud.google.com/docs/"
+         class="devsite-doc-set-nav-active devsite-nav-tab
+                devsite-doc-set-nav-tab devsite-doc-set-nav-tab-link gc-analytics-event"
+         aria-label="Documentation, selected"
+       
+         data-category="Site-Wide Custom Events"
+       
+         data-label="Tab: Documentation"
+       >
+        Documentation
+      </a></li><li class="devsite-doc-set-nav-tab-container devsite-nav-tab
+               "><a href="https://cloud.google.com/support/"
+         class=" devsite-nav-tab
+                devsite-doc-set-nav-tab devsite-doc-set-nav-tab-link gc-analytics-event"
+         
+       
+         data-category="Site-Wide Custom Events"
+       
+         data-label="Tab: Support"
+       
+         track-type="globalNav"
+       
+         track-name="support"
+       >
+        Support
+      </a></li><li class="devsite-doc-set-nav-tab-container devsite-nav-tab
+               "><a href="https://cloud.google.com/partners/"
+         class=" devsite-nav-tab
+                devsite-doc-set-nav-tab devsite-doc-set-nav-tab-link gc-analytics-event"
+         
+       
+         data-category="Site-Wide Custom Events"
+       
+         data-label="Tab: Partners"
+       
+         track-type="globalNav"
+       
+         track-name="partners"
+       >
+        Partners
+      </a></li></ul></nav></div><form class="devsite-search-form"
+                action="https://cloud.google.com/s/results/"
+                method="GET"
+                id="top-search"
+                search-placeholder='Search'><div id="searchbox" class="devsite-searchbox"><input placeholder='Search'
+         
+         type="text"
+         class="devsite-search-field devsite-search-query"
+         name="q"
+         value=""
+         autocomplete="off"
+         
+         aria-label="Search box"><div class="devsite-search-image material-icons"></div></div><input type="hidden"
+       name="p"
+       id="search_project"
+       value="/datastore/docs/"
+       data-project-name="Cloud Datastore Documentation"
+       data-project-path="/datastore/docs/"
+       data-query-match=""><input type="hidden" class="suggest-project" value="Cloud Datastore Documentation" /></form><a class="devsite-header-link devsite-top-button button gc-analytics-event"
+               href="//console.cloud.google.com/"
+               data-category="Site-Wide Custom Events"
+               data-label="Site header link"
+               track-type="navigateTo"
+               track-name="console"
+               track-metadata-position="nav"><div class="devsite-header-link-label">Console</div></a><button type="button" class="devsite-search-button devsite-header-icon-button button-flat
+                                       material-icons"></button><a href="https://www.google.com/accounts/ServiceLogin?passive=true&continue=https%3A%2F%2Fcloud.google.com%2Fdatastore%2Fdocs%2Fexport-import-entities%3Frefresh%3D1&service=cloudconsole"
+   class="devsite-user-signin devsite-top-button button gc-analytics-event"
+   data-category="Site-Wide Custom Events" data-label="Sign in button">
+  
+  Sign in
+</a></div></div></div><div class="devsite-collapsible-section"><div class="devsite-header-background devsite-full-site-width"><div class="devsite-product-id-row devsite-full-site-width"><div class="devsite-product-description-row"><ul class="devsite-breadcrumb-list"><li class="devsite-breadcrumb-item">
+    
+    
+    
+      Documentation
+    
+    
+  </li></ul></div><div class="devsite-product-button-row
+            cloud-free-trial-eligible"><button type="button" id="devsite-feedback-project"
+          class="devsite-feedback-button devsite-top-button gc-analytics-event"
+          data-category="Site-Wide Custom Events" data-label="Send Feedback Button"
+          track-type="feedback" track-name="sendFeedbackLink" track-metadata-position="header">
+  
+  Send feedback
+  </button><a
+    
+      href="https://console.cloud.google.com/freetrial"
+    
+    
+      class="cloud-free-trial-button button-primary button"
+    
+    
+      
+      track-type="freeTrial"
+      
+      track-name="try"
+      
+      track-metadata-position="nav"
+      
+    >
+    Try It Free
+  </a><a
+    
+      href="https://cloud.google.com/contact/"
+    
+    
+      class="cloud-contact-sales-button button"
+    
+    
+      
+      track-type="sales"
+      
+      track-name="contact"
+      
+      track-metadata-position="nav"
+      
+    >
+    Contact Sales
+  </a></div></div></div></div></header><script>
+    if (window.jQuery) {
+      $(document).ready(function() {
+        if (window.devsite && window.devsite.search) {
+          
+          window.devsite.search.init('en')
+        }
+      });
+    }
+  </script></div><div id="gc-wrapper"itemscope itemtype="http://schema.org/Article"><input class="google-tag-manager-id" type="hidden" value="GTM-5CVQBG"><script>
+      var dataLayer = [{"freeTrialEligibleUser": "True", "userCountry": "HK", "language": {"requested": "en", "served": "en"}, "projectName": "Cloud Datastore Documentation", "scriptsafe": null, "signedIn": "False", "internalUser": "False"}];
+    </script>
+
+      
+        <div class="devsite-site-mask"></div>
+        
+  
+
+
+<nav class="devsite-nav-responsive devsite-nav nocontent" tabindex="0">
+  
+  <div class="devsite-nav-responsive-tabs-panel">
+    
+      
+        
+
+
+
+<nav class="devsite-nav-responsive-tabs devsite-nav">
+  <ul class="devsite-nav-list">
+  
+    <li class="devsite-nav-item devsite-nav-item-heading">
+    
+      <a 
+           href="https://cloud.google.com/why-google-cloud/?nav=true"
+         
+         class="devsite-nav-responsive-tab devsite-nav-title gc-analytics-event
+                "
+         data-category="Site-Wide Custom Events" data-label="Responsive Tab: Why Google">
+        Why Google
+      </a>
+      
+      
+    
+    </li>
+  
+    <li class="devsite-nav-item devsite-nav-item-heading">
+    
+      <a 
+           href="https://cloud.google.com/products/?nav=true"
+         
+         class="devsite-nav-responsive-tab devsite-nav-title gc-analytics-event
+                "
+         data-category="Site-Wide Custom Events" data-label="Responsive Tab: Products">
+        Products
+      </a>
+      
+      
+    
+    </li>
+  
+    <li class="devsite-nav-item devsite-nav-item-heading">
+    
+      <a 
+           href="https://cloud.google.com/solutions/?nav=true"
+         
+         class="devsite-nav-responsive-tab devsite-nav-title gc-analytics-event
+                "
+         data-category="Site-Wide Custom Events" data-label="Responsive Tab: Solutions">
+        Solutions
+      </a>
+      
+      
+    
+    </li>
+  
+    <li class="devsite-nav-item devsite-nav-item-heading">
+    
+      <a 
+           href="https://cloud.google.com/launcher/?nav=true"
+         
+         class="devsite-nav-responsive-tab devsite-nav-title gc-analytics-event
+                "
+         data-category="Site-Wide Custom Events" data-label="Responsive Tab: Launcher">
+        Launcher
+      </a>
+      
+      
+    
+    </li>
+  
+    <li class="devsite-nav-item devsite-nav-item-heading">
+    
+      <a 
+           href="https://cloud.google.com/pricing/?nav=true"
+         
+         class="devsite-nav-responsive-tab devsite-nav-title gc-analytics-event
+                "
+         data-category="Site-Wide Custom Events" data-label="Responsive Tab: Pricing">
+        Pricing
+      </a>
+      
+      
+    
+    </li>
+  
+    <li class="devsite-nav-item devsite-nav-item-heading">
+    
+      <a 
+           href="https://cloud.google.com/security/?nav=true"
+         
+         class="devsite-nav-responsive-tab devsite-nav-title gc-analytics-event
+                "
+         data-category="Site-Wide Custom Events" data-label="Responsive Tab: Security">
+        Security
+      </a>
+      
+      
+    
+    </li>
+  
+    <li class="devsite-nav-item devsite-nav-item-heading">
+    
+      <a 
+           href="https://cloud.google.com/customers/?nav=true"
+         
+         class="devsite-nav-responsive-tab devsite-nav-title gc-analytics-event
+                "
+         data-category="Site-Wide Custom Events" data-label="Responsive Tab: Customers">
+        Customers
+      </a>
+      
+      
+    
+    </li>
+  
+    <li class="devsite-nav-item devsite-nav-item-heading">
+    
+      <span class="devsite-nav-responsive-forward devsite-nav-responsive-tab devsite-nav-title
+                   devsite-nav-active gc-analytics-event"
+            data-category="Site-Wide Custom Events" data-label="Responsive Tab: Documentation"
+            tabindex="0">
+        Documentation
+      </span>
+    
+    </li>
+  
+    <li class="devsite-nav-item devsite-nav-item-heading">
+    
+      <a 
+           href="https://cloud.google.com/support/?nav=true"
+         
+         class="devsite-nav-responsive-tab devsite-nav-title gc-analytics-event
+                "
+         data-category="Site-Wide Custom Events" data-label="Responsive Tab: Support">
+        Support
+      </a>
+      
+      
+    
+    </li>
+  
+    <li class="devsite-nav-item devsite-nav-item-heading">
+    
+      <a 
+           href="https://cloud.google.com/partners/?nav=true"
+         
+         class="devsite-nav-responsive-tab devsite-nav-title gc-analytics-event
+                "
+         data-category="Site-Wide Custom Events" data-label="Responsive Tab: Partners">
+        Partners
+      </a>
+      
+      
+    
+    </li>
+  
+  
+    <li class="devsite-nav-item devsite-nav-item-heading">
+      <a href="//console.cloud.google.com/"
+         class="devsite-nav-responsive-tab devsite-nav-title gc-analytics-event"
+         data-category="Site-Wide Custom Events"
+         data-label="Responsive Tab: console">
+        Console
+      </a>
+    </li>
+  
+  </ul>
+</nav>
+
+
+      
+    
+  </div>
+  
+  
+  <div class="devsite-nav-responsive-sidebar-panel">
+    
+    <div class="devsite-nav-responsive-back" tabindex="0"></div>
+    
+    <nav class="devsite-nav-responsive-sidebar"></nav>
+  </div>
+  
+  
+    <div class="devsite-nav-responsive-index-panel">
+      <div class="devsite-nav-index-back" tabindex="0"></div>
+      <nav>
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+      </nav>
+    </div>
+  
+</nav>
+
+
+        <div class="devsite-main-content clearfix">
+
+        
+        
+
+        
+  
+  
+    
+    
+      
+  <nav class="devsite-section-nav devsite-nav nocontent">
+    <ul class="devsite-nav-list devsite-nav-expandable"><li class="devsite-nav-item devsite-nav-item-heading"><span class="devsite-nav-title devsite-nav-title-no-path" track-type="leftNav" track-name="expandNavSectionNoLink" track-metadata-position="0">Cloud Datastore API</span></li><li class="devsite-nav-item"><a href="https://cloud.google.com/datastore/" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="0" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">Product Overview</a></li><li class="devsite-nav-item"><a href="https://cloud.google.com/datastore/docs/" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="0" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">Documentation</a></li><li class="devsite-nav-item"><a href="https://cloud.google.com/datastore/docs/quickstart" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="0" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">Quickstart</a></li><li class="devsite-nav-item devsite-nav-item-heading"><span class="devsite-nav-title devsite-nav-title-no-path" track-type="leftNav" track-name="expandNavSectionNoLink" track-metadata-position="0">How-to Guides</span></li><li class="devsite-nav-item"><a href="https://cloud.google.com/datastore/docs/how-to" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="0" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">All How-to Guides</a></li><li class="devsite-nav-item"><a href="https://cloud.google.com/datastore/docs/activate" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="0" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">Sign Up</a></li><li class="devsite-nav-item"><a href="https://cloud.google.com/datastore/docs/concepts/entities" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="0" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">Entities, Properties, and Keys</a></li><li class="devsite-nav-item"><a href="https://cloud.google.com/datastore/docs/concepts/queries" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="0" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">Datastore Queries</a></li><li class="devsite-nav-item devsite-nav-item-section-expandable"><span class="devsite-nav-title devsite-nav-title-no-path" track-type="leftNav" track-name="expandNavSectionNoLink"track-metadata-position="0" aria-label="Datastore Indexes, click to expand/collapse" role="link">Datastore Indexes</span><a class="devsite-nav-toggle devsite-nav-toggle-collapsed material-icons" track-type="leftNav" track-name="expandNavSectionArrow" track-metadata-position="0" aria-hidden="true"></a><ul class="devsite-nav-section devsite-nav-section-collapsed"><li class="devsite-nav-item"><a href="https://cloud.google.com/datastore/docs/concepts/indexes" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="1" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">Overview</a></li><li class="devsite-nav-item"><a href="https://cloud.google.com/datastore/docs/tools/indexconfig" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="1" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">Index Configuration</a></li></ul></li><li class="devsite-nav-item"><a href="https://cloud.google.com/datastore/docs/concepts/transactions" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="0" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">Datastore Transactions</a></li><li class="devsite-nav-item"><a href="https://cloud.google.com/datastore/docs/concepts/structuring_for_strong_consistency" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="0" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">Structuring Data for Strong Consistency</a></li><li class="devsite-nav-item devsite-nav-item-section-expandable"><span class="devsite-nav-title devsite-nav-title-no-path" track-type="leftNav" track-name="expandNavSectionNoLink"track-metadata-position="0" aria-label="Administering Datastore, click to expand/collapse" role="link">Administering Datastore</span><a class="devsite-nav-toggle devsite-nav-toggle-collapsed material-icons" track-type="leftNav" track-name="expandNavSectionArrow" track-metadata-position="0" aria-hidden="true"></a><ul class="devsite-nav-section devsite-nav-section-collapsed"><li class="devsite-nav-item"><a href="https://cloud.google.com/datastore/docs/tools/administration" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="1" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">Administration, Statistics, and Quotas</a></li><li class="devsite-nav-item"><a href="https://cloud.google.com/datastore/docs/concepts/metadataqueries" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="1" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">Metadata</a></li><li class="devsite-nav-item"><a href="https://cloud.google.com/datastore/docs/concepts/stats" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="1" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">Datastore Statistics</a></li></ul></li><li class="devsite-nav-item"><a href="https://cloud.google.com/datastore/docs/concepts/errors" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="0" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">Errors and Error Handling</a></li><li class="devsite-nav-item"><a href="https://cloud.google.com/datastore/docs/tools/" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="0" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">Using the gcloud Tool</a></li><li class="devsite-nav-item"><a href="https://cloud.google.com/datastore/docs/tools/datastore-emulator" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="0" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">Cloud Datastore Emulator</a></li><li class="devsite-nav-item"><a href="https://cloud.google.com/datastore/docs/editing_entity_console" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="0" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">Editing an Entity in the Console</a></li><li class="devsite-nav-item devsite-nav-item-section-expandable"><span class="devsite-nav-title devsite-nav-title-no-path" track-type="leftNav" track-name="expandNavSectionNoLink"track-metadata-position="0" aria-label="Managing Datastore from the Console, click to expand/collapse" role="link">Managing Datastore from the Console</span><a class="devsite-nav-toggle devsite-nav-toggle-collapsed material-icons" track-type="leftNav" track-name="expandNavSectionArrow" track-metadata-position="0" aria-hidden="true"></a><ul class="devsite-nav-section devsite-nav-section-collapsed"><li class="devsite-nav-item"><a href="https://cloud.google.com/datastore/docs/console/managing-datastore" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="1" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">Overview</a></li><li class="devsite-nav-item"><a href="https://cloud.google.com/datastore/docs/console/datastore-statistics" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="1" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">Viewing Datastore Statistics</a></li><li class="devsite-nav-item devsite-nav-deprecated devsite-nav-has-status"><a href="https://cloud.google.com/datastore/docs/console/datastore-backing-up-restoring" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="1" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click"><span class="devsite-nav-text">Backing Up and Restoring</span><span class="devsite-nav-icon-wrapper"><span class="devsite-nav-icon material-icons" title="Deprecated"></span></span></a></li></ul></li><li class="devsite-nav-item devsite-nav-new devsite-nav-has-status devsite-nav-active"><a href="https://cloud.google.com/datastore/docs/export-import-entities" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="0" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click"><span class="devsite-nav-text">Exporting and Importing Entities</span><span class="devsite-nav-icon-wrapper"><span class="devsite-nav-icon material-icons" title="New!"></span></span></a></li><li class="devsite-nav-item devsite-nav-new devsite-nav-has-status"><a href="https://cloud.google.com/datastore/docs/schedule-export" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="0" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click"><span class="devsite-nav-text">Scheduling an Export</span><span class="devsite-nav-icon-wrapper"><span class="devsite-nav-icon material-icons" title="New!"></span></span></a></li><li class="devsite-nav-item devsite-nav-new devsite-nav-has-status"><a href="https://cloud.google.com/datastore/docs/bulk-delete" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="0" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click"><span class="devsite-nav-text">Deleting Entities in Bulk</span><span class="devsite-nav-icon-wrapper"><span class="devsite-nav-icon material-icons" title="New!"></span></span></a></li><li class="devsite-nav-item devsite-nav-item-section-expandable"><span class="devsite-nav-title devsite-nav-title-no-path" track-type="leftNav" track-name="expandNavSectionNoLink"track-metadata-position="0" aria-label="Articles, click to expand/collapse" role="link">Articles</span><a class="devsite-nav-toggle devsite-nav-toggle-collapsed material-icons" track-type="leftNav" track-name="expandNavSectionArrow" track-metadata-position="0" aria-hidden="true"></a><ul class="devsite-nav-section devsite-nav-section-collapsed"><li class="devsite-nav-item"><a href="https://cloud.google.com/datastore/docs/articles/balancing-strong-and-eventual-consistency-with-google-cloud-datastore" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="1" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">Balancing Strong and Eventual Consistency</a></li><li class="devsite-nav-item"><a href="https://cloud.google.com/datastore/docs/articles/fast-and-reliable-ranking-in-datastore/" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="1" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">Fast and Reliable Ranking</a></li></ul></li><li class="devsite-nav-item devsite-nav-item-heading"><span class="devsite-nav-title devsite-nav-title-no-path" track-type="leftNav" track-name="expandNavSectionNoLink" track-metadata-position="0">APIs &amp; Reference</span></li><li class="devsite-nav-item"><a href="https://cloud.google.com/datastore/docs/apis" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="0" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">All APIs &amp; References</a></li><li class="devsite-nav-item"><a href="https://cloud.google.com/datastore/docs/reference/libraries" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="0" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">Client Libraries</a></li><li class="devsite-nav-item devsite-nav-item-section-expandable"><span class="devsite-nav-title devsite-nav-title-no-path" track-type="leftNav" track-name="expandNavSectionNoLink"track-metadata-position="0" aria-label="Data API, click to expand/collapse" role="link">Data API</span><a class="devsite-nav-toggle devsite-nav-toggle-collapsed material-icons" track-type="leftNav" track-name="expandNavSectionArrow" track-metadata-position="0" aria-hidden="true"></a><ul class="devsite-nav-section devsite-nav-section-collapsed"><li class="devsite-nav-item devsite-nav-item-section-expandable"><span class="devsite-nav-title devsite-nav-title-no-path" track-type="leftNav" track-name="expandNavSectionNoLink"track-metadata-position="1" aria-label="REST Reference, click to expand/collapse" role="link">REST Reference</span><a class="devsite-nav-toggle devsite-nav-toggle-collapsed material-icons" track-type="leftNav" track-name="expandNavSectionArrow" track-metadata-position="1" aria-hidden="true"></a><ul class="devsite-nav-section devsite-nav-section-collapsed"><li class="devsite-nav-item"><a href="https://cloud.google.com/datastore/docs/reference/data/rest/" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="2" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">Overview</a></li><li class="devsite-nav-item devsite-nav-item-section-expandable"><span class="devsite-nav-title devsite-nav-title-no-path" track-type="leftNav" track-name="expandNavSectionNoLink"track-metadata-position="2" aria-label="v1, click to expand/collapse" role="link">v1</span><a class="devsite-nav-toggle devsite-nav-toggle-collapsed material-icons" track-type="leftNav" track-name="expandNavSectionArrow" track-metadata-position="2" aria-hidden="true"></a><ul class="devsite-nav-section devsite-nav-section-collapsed"><li class="devsite-nav-item devsite-nav-item-heading"><span class="devsite-nav-title devsite-nav-title-no-path" track-type="leftNav" track-name="expandNavSectionNoLink" track-metadata-position="3">REST Resources</span></li><li class="devsite-nav-item devsite-nav-item-section-expandable"><span class="devsite-nav-title devsite-nav-title-no-path" track-type="leftNav" track-name="expandNavSectionNoLink"track-metadata-position="3" aria-label="projects, click to expand/collapse" role="link">projects</span><a class="devsite-nav-toggle devsite-nav-toggle-collapsed material-icons" track-type="leftNav" track-name="expandNavSectionArrow" track-metadata-position="3" aria-hidden="true"></a><ul class="devsite-nav-section devsite-nav-section-collapsed"><li class="devsite-nav-item"><a href="https://cloud.google.com/datastore/docs/reference/data/rest/v1/projects" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="4" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">Overview</a></li><li class="devsite-nav-item"><a href="https://cloud.google.com/datastore/docs/reference/data/rest/v1/projects/allocateIds" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="4" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">allocateIds</a></li><li class="devsite-nav-item"><a href="https://cloud.google.com/datastore/docs/reference/data/rest/v1/projects/beginTransaction" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="4" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">beginTransaction</a></li><li class="devsite-nav-item"><a href="https://cloud.google.com/datastore/docs/reference/data/rest/v1/projects/commit" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="4" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">commit</a></li><li class="devsite-nav-item"><a href="https://cloud.google.com/datastore/docs/reference/data/rest/v1/projects/lookup" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="4" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">lookup</a></li><li class="devsite-nav-item"><a href="https://cloud.google.com/datastore/docs/reference/data/rest/v1/projects/reserveIds" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="4" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">reserveIds</a></li><li class="devsite-nav-item"><a href="https://cloud.google.com/datastore/docs/reference/data/rest/v1/projects/rollback" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="4" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">rollback</a></li><li class="devsite-nav-item"><a href="https://cloud.google.com/datastore/docs/reference/data/rest/v1/projects/runQuery" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="4" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">runQuery</a></li></ul></li><li class="devsite-nav-item devsite-nav-item-section-expandable"><span class="devsite-nav-title devsite-nav-title-no-path" track-type="leftNav" track-name="expandNavSectionNoLink"track-metadata-position="3" aria-label="projects.operations, click to expand/collapse" role="link">projects.operations</span><a class="devsite-nav-toggle devsite-nav-toggle-collapsed material-icons" track-type="leftNav" track-name="expandNavSectionArrow" track-metadata-position="3" aria-hidden="true"></a><ul class="devsite-nav-section devsite-nav-section-collapsed"><li class="devsite-nav-item"><a href="https://cloud.google.com/datastore/docs/reference/data/rest/v1/projects.operations" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="4" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">Overview</a></li><li class="devsite-nav-item"><a href="https://cloud.google.com/datastore/docs/reference/data/rest/v1/projects.operations/cancel" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="4" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">cancel</a></li><li class="devsite-nav-item"><a href="https://cloud.google.com/datastore/docs/reference/data/rest/v1/projects.operations/delete" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="4" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">delete</a></li><li class="devsite-nav-item"><a href="https://cloud.google.com/datastore/docs/reference/data/rest/v1/projects.operations/get" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="4" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">get</a></li><li class="devsite-nav-item"><a href="https://cloud.google.com/datastore/docs/reference/data/rest/v1/projects.operations/list" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="4" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">list</a></li></ul></li><li class="devsite-nav-item devsite-nav-item-heading"><span class="devsite-nav-title devsite-nav-title-no-path" track-type="leftNav" track-name="expandNavSectionNoLink" track-metadata-position="3">Types</span></li><li class="devsite-nav-item"><a href="https://cloud.google.com/datastore/docs/reference/data/rest/v1/Entity" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="3" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">Entity</a></li><li class="devsite-nav-item"><a href="https://cloud.google.com/datastore/docs/reference/data/rest/v1/EntityResult" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="3" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">EntityResult</a></li><li class="devsite-nav-item"><a href="https://cloud.google.com/datastore/docs/reference/data/rest/v1/Key" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="3" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">Key</a></li><li class="devsite-nav-item"><a href="https://cloud.google.com/datastore/docs/reference/data/rest/v1/PartitionId" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="3" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">PartitionId</a></li><li class="devsite-nav-item"><a href="https://cloud.google.com/datastore/docs/reference/data/rest/v1/ReadOptions" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="3" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">ReadOptions</a></li></ul></li><li class="devsite-nav-item devsite-nav-item-section-expandable"><span class="devsite-nav-title devsite-nav-title-no-path" track-type="leftNav" track-name="expandNavSectionNoLink"track-metadata-position="2" aria-label="Shared Types, click to expand/collapse" role="link">Shared Types</span><a class="devsite-nav-toggle devsite-nav-toggle-collapsed material-icons" track-type="leftNav" track-name="expandNavSectionArrow" track-metadata-position="2" aria-hidden="true"></a><ul class="devsite-nav-section devsite-nav-section-collapsed"><li class="devsite-nav-item devsite-nav-item-heading"><span class="devsite-nav-title devsite-nav-title-no-path" track-type="leftNav" track-name="expandNavSectionNoLink" track-metadata-position="3">Types</span></li><li class="devsite-nav-item"><a href="https://cloud.google.com/datastore/docs/reference/data/rest/Shared.Types/LatLng" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="3" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">LatLng</a></li></ul></li><li class="devsite-nav-item devsite-nav-item-section-expandable devsite-nav-deprecated devsite-nav-has-status"><span class="devsite-nav-title devsite-nav-title-no-path" track-type="leftNav" track-name="expandNavSectionNoLink"track-metadata-position="2" aria-label="v1beta3, click to expand/collapse" role="link"><span class="devsite-nav-text">v1beta3</span><span class="devsite-nav-icon-wrapper"><span class="devsite-nav-icon material-icons" title="Deprecated"></span></span></span><a class="devsite-nav-toggle devsite-nav-toggle-collapsed material-icons" track-type="leftNav" track-name="expandNavSectionArrow" track-metadata-position="2" aria-hidden="true"></a><ul class="devsite-nav-section devsite-nav-section-collapsed"><li class="devsite-nav-item devsite-nav-item-heading devsite-nav-deprecated"><span class="devsite-nav-title devsite-nav-title-no-path" track-type="leftNav" track-name="expandNavSectionNoLink" track-metadata-position="3">REST Resources</span></li><li class="devsite-nav-item devsite-nav-item-section-expandable devsite-nav-deprecated"><span class="devsite-nav-title devsite-nav-title-no-path" track-type="leftNav" track-name="expandNavSectionNoLink"track-metadata-position="3" aria-label="projects, click to expand/collapse" role="link">projects</span><a class="devsite-nav-toggle devsite-nav-toggle-collapsed material-icons" track-type="leftNav" track-name="expandNavSectionArrow" track-metadata-position="3" aria-hidden="true"></a><ul class="devsite-nav-section devsite-nav-section-collapsed"><li class="devsite-nav-item devsite-nav-deprecated"><a href="https://cloud.google.com/datastore/docs/reference/data/rest/v1beta3/projects" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="4" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">Overview</a></li><li class="devsite-nav-item devsite-nav-deprecated"><a href="https://cloud.google.com/datastore/docs/reference/data/rest/v1beta3/projects/allocateIds" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="4" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">allocateIds</a></li><li class="devsite-nav-item devsite-nav-deprecated"><a href="https://cloud.google.com/datastore/docs/reference/data/rest/v1beta3/projects/beginTransaction" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="4" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">beginTransaction</a></li><li class="devsite-nav-item devsite-nav-deprecated"><a href="https://cloud.google.com/datastore/docs/reference/data/rest/v1beta3/projects/commit" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="4" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">commit</a></li><li class="devsite-nav-item devsite-nav-deprecated"><a href="https://cloud.google.com/datastore/docs/reference/data/rest/v1beta3/projects/lookup" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="4" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">lookup</a></li><li class="devsite-nav-item devsite-nav-deprecated"><a href="https://cloud.google.com/datastore/docs/reference/data/rest/v1beta3/projects/reserveIds" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="4" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">reserveIds</a></li><li class="devsite-nav-item devsite-nav-deprecated"><a href="https://cloud.google.com/datastore/docs/reference/data/rest/v1beta3/projects/rollback" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="4" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">rollback</a></li><li class="devsite-nav-item devsite-nav-deprecated"><a href="https://cloud.google.com/datastore/docs/reference/data/rest/v1beta3/projects/runQuery" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="4" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">runQuery</a></li></ul></li><li class="devsite-nav-item devsite-nav-item-heading devsite-nav-deprecated"><span class="devsite-nav-title devsite-nav-title-no-path" track-type="leftNav" track-name="expandNavSectionNoLink" track-metadata-position="3">Types</span></li><li class="devsite-nav-item devsite-nav-deprecated"><a href="https://cloud.google.com/datastore/docs/reference/data/rest/v1beta3/Entity" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="3" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">Entity</a></li><li class="devsite-nav-item devsite-nav-deprecated"><a href="https://cloud.google.com/datastore/docs/reference/data/rest/v1beta3/EntityResult" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="3" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">EntityResult</a></li><li class="devsite-nav-item devsite-nav-deprecated"><a href="https://cloud.google.com/datastore/docs/reference/data/rest/v1beta3/Key" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="3" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">Key</a></li><li class="devsite-nav-item devsite-nav-deprecated"><a href="https://cloud.google.com/datastore/docs/reference/data/rest/v1beta3/PartitionId" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="3" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">PartitionId</a></li><li class="devsite-nav-item devsite-nav-deprecated"><a href="https://cloud.google.com/datastore/docs/reference/data/rest/v1beta3/ReadOptions" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="3" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">ReadOptions</a></li></ul></li></ul></li><li class="devsite-nav-item devsite-nav-item-section-expandable"><span class="devsite-nav-title devsite-nav-title-no-path" track-type="leftNav" track-name="expandNavSectionNoLink"track-metadata-position="1" aria-label="RPC Reference, click to expand/collapse" role="link">RPC Reference</span><a class="devsite-nav-toggle devsite-nav-toggle-collapsed material-icons" track-type="leftNav" track-name="expandNavSectionArrow" track-metadata-position="1" aria-hidden="true"></a><ul class="devsite-nav-section devsite-nav-section-collapsed"><li class="devsite-nav-item"><a href="https://cloud.google.com/datastore/docs/reference/data/rpc/" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="2" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">Overview</a></li><li class="devsite-nav-item"><a href="https://cloud.google.com/datastore/docs/reference/data/rpc/google.datastore.v1" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="2" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">google.datastore.v1</a></li><li class="devsite-nav-item"><a href="https://cloud.google.com/datastore/docs/reference/data/rpc/google.datastore.v1beta3" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="2" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">google.datastore.v1beta3</a></li><li class="devsite-nav-item"><a href="https://cloud.google.com/datastore/docs/reference/data/rpc/google.longrunning" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="2" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">google.longrunning</a></li><li class="devsite-nav-item"><a href="https://cloud.google.com/datastore/docs/reference/data/rpc/google.rpc" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="2" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">google.rpc</a></li><li class="devsite-nav-item"><a href="https://cloud.google.com/datastore/docs/reference/data/rpc/google.type" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="2" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">google.type</a></li></ul></li></ul></li><li class="devsite-nav-item devsite-nav-item-section-expandable"><span class="devsite-nav-title devsite-nav-title-no-path" track-type="leftNav" track-name="expandNavSectionNoLink"track-metadata-position="0" aria-label="Admin API, click to expand/collapse" role="link">Admin API</span><a class="devsite-nav-toggle devsite-nav-toggle-collapsed material-icons" track-type="leftNav" track-name="expandNavSectionArrow" track-metadata-position="0" aria-hidden="true"></a><ul class="devsite-nav-section devsite-nav-section-collapsed"><li class="devsite-nav-item devsite-nav-item-section-expandable"><span class="devsite-nav-title devsite-nav-title-no-path" track-type="leftNav" track-name="expandNavSectionNoLink"track-metadata-position="1" aria-label="REST Reference, click to expand/collapse" role="link">REST Reference</span><a class="devsite-nav-toggle devsite-nav-toggle-collapsed material-icons" track-type="leftNav" track-name="expandNavSectionArrow" track-metadata-position="1" aria-hidden="true"></a><ul class="devsite-nav-section devsite-nav-section-collapsed"><li class="devsite-nav-item"><a href="https://cloud.google.com/datastore/docs/reference/admin/rest/" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="2" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">Overview</a></li><li class="devsite-nav-item devsite-nav-item-section-expandable"><span class="devsite-nav-title devsite-nav-title-no-path" track-type="leftNav" track-name="expandNavSectionNoLink"track-metadata-position="2" aria-label="v1, click to expand/collapse" role="link">v1</span><a class="devsite-nav-toggle devsite-nav-toggle-collapsed material-icons" track-type="leftNav" track-name="expandNavSectionArrow" track-metadata-position="2" aria-hidden="true"></a><ul class="devsite-nav-section devsite-nav-section-collapsed"><li class="devsite-nav-item devsite-nav-item-heading"><span class="devsite-nav-title devsite-nav-title-no-path" track-type="leftNav" track-name="expandNavSectionNoLink" track-metadata-position="3">REST Resources</span></li><li class="devsite-nav-item devsite-nav-item-section-expandable"><span class="devsite-nav-title devsite-nav-title-no-path" track-type="leftNav" track-name="expandNavSectionNoLink"track-metadata-position="3" aria-label="projects, click to expand/collapse" role="link">projects</span><a class="devsite-nav-toggle devsite-nav-toggle-collapsed material-icons" track-type="leftNav" track-name="expandNavSectionArrow" track-metadata-position="3" aria-hidden="true"></a><ul class="devsite-nav-section devsite-nav-section-collapsed"><li class="devsite-nav-item"><a href="https://cloud.google.com/datastore/docs/reference/admin/rest/v1/projects" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="4" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">Overview</a></li><li class="devsite-nav-item"><a href="https://cloud.google.com/datastore/docs/reference/admin/rest/v1/projects/export" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="4" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">export</a></li><li class="devsite-nav-item"><a href="https://cloud.google.com/datastore/docs/reference/admin/rest/v1/projects/import" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="4" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">import</a></li></ul></li><li class="devsite-nav-item devsite-nav-item-section-expandable"><span class="devsite-nav-title devsite-nav-title-no-path" track-type="leftNav" track-name="expandNavSectionNoLink"track-metadata-position="3" aria-label="projects.operations, click to expand/collapse" role="link">projects.operations</span><a class="devsite-nav-toggle devsite-nav-toggle-collapsed material-icons" track-type="leftNav" track-name="expandNavSectionArrow" track-metadata-position="3" aria-hidden="true"></a><ul class="devsite-nav-section devsite-nav-section-collapsed"><li class="devsite-nav-item"><a href="https://cloud.google.com/datastore/docs/reference/admin/rest/v1/projects.operations" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="4" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">Overview</a></li><li class="devsite-nav-item"><a href="https://cloud.google.com/datastore/docs/reference/admin/rest/v1/projects.operations/cancel" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="4" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">cancel</a></li><li class="devsite-nav-item"><a href="https://cloud.google.com/datastore/docs/reference/admin/rest/v1/projects.operations/delete" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="4" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">delete</a></li><li class="devsite-nav-item"><a href="https://cloud.google.com/datastore/docs/reference/admin/rest/v1/projects.operations/get" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="4" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">get</a></li><li class="devsite-nav-item"><a href="https://cloud.google.com/datastore/docs/reference/admin/rest/v1/projects.operations/list" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="4" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">list</a></li></ul></li></ul></li><li class="devsite-nav-item devsite-nav-item-section-expandable devsite-nav-deprecated devsite-nav-has-status"><span class="devsite-nav-title devsite-nav-title-no-path" track-type="leftNav" track-name="expandNavSectionNoLink"track-metadata-position="2" aria-label="v1beta1, click to expand/collapse" role="link"><span class="devsite-nav-text">v1beta1</span><span class="devsite-nav-icon-wrapper"><span class="devsite-nav-icon material-icons" title="Deprecated"></span></span></span><a class="devsite-nav-toggle devsite-nav-toggle-collapsed material-icons" track-type="leftNav" track-name="expandNavSectionArrow" track-metadata-position="2" aria-hidden="true"></a><ul class="devsite-nav-section devsite-nav-section-collapsed"><li class="devsite-nav-item devsite-nav-item-heading devsite-nav-deprecated"><span class="devsite-nav-title devsite-nav-title-no-path" track-type="leftNav" track-name="expandNavSectionNoLink" track-metadata-position="3">REST Resources</span></li><li class="devsite-nav-item devsite-nav-item-section-expandable devsite-nav-deprecated"><span class="devsite-nav-title devsite-nav-title-no-path" track-type="leftNav" track-name="expandNavSectionNoLink"track-metadata-position="3" aria-label="projects, click to expand/collapse" role="link">projects</span><a class="devsite-nav-toggle devsite-nav-toggle-collapsed material-icons" track-type="leftNav" track-name="expandNavSectionArrow" track-metadata-position="3" aria-hidden="true"></a><ul class="devsite-nav-section devsite-nav-section-collapsed"><li class="devsite-nav-item devsite-nav-deprecated"><a href="https://cloud.google.com/datastore/docs/reference/admin/rest/v1beta1/projects" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="4" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">Overview</a></li><li class="devsite-nav-item devsite-nav-deprecated"><a href="https://cloud.google.com/datastore/docs/reference/admin/rest/v1beta1/projects/export" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="4" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">export</a></li><li class="devsite-nav-item devsite-nav-deprecated"><a href="https://cloud.google.com/datastore/docs/reference/admin/rest/v1beta1/projects/import" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="4" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">import</a></li></ul></li></ul></li><li class="devsite-nav-item devsite-nav-item-section-expandable"><span class="devsite-nav-title devsite-nav-title-no-path" track-type="leftNav" track-name="expandNavSectionNoLink"track-metadata-position="2" aria-label="Shared Types, click to expand/collapse" role="link">Shared Types</span><a class="devsite-nav-toggle devsite-nav-toggle-collapsed material-icons" track-type="leftNav" track-name="expandNavSectionArrow" track-metadata-position="2" aria-hidden="true"></a><ul class="devsite-nav-section devsite-nav-section-collapsed"><li class="devsite-nav-item devsite-nav-item-heading"><span class="devsite-nav-title devsite-nav-title-no-path" track-type="leftNav" track-name="expandNavSectionNoLink" track-metadata-position="3">Types</span></li><li class="devsite-nav-item"><a href="https://cloud.google.com/datastore/docs/reference/admin/rest/Shared.Types/CommonMetadata" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="3" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">CommonMetadata</a></li><li class="devsite-nav-item"><a href="https://cloud.google.com/datastore/docs/reference/admin/rest/Shared.Types/EntityFilter" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="3" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">EntityFilter</a></li><li class="devsite-nav-item"><a href="https://cloud.google.com/datastore/docs/reference/admin/rest/Shared.Types/ExportEntitiesMetadata" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="3" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">ExportEntitiesMetadata</a></li><li class="devsite-nav-item"><a href="https://cloud.google.com/datastore/docs/reference/admin/rest/Shared.Types/ExportEntitiesResponse" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="3" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">ExportEntitiesResponse</a></li><li class="devsite-nav-item"><a href="https://cloud.google.com/datastore/docs/reference/admin/rest/Shared.Types/ImportEntitiesMetadata" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="3" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">ImportEntitiesMetadata</a></li><li class="devsite-nav-item"><a href="https://cloud.google.com/datastore/docs/reference/admin/rest/Shared.Types/Operation" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="3" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">Operation</a></li><li class="devsite-nav-item"><a href="https://cloud.google.com/datastore/docs/reference/admin/rest/Shared.Types/OperationType" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="3" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">OperationType</a></li><li class="devsite-nav-item"><a href="https://cloud.google.com/datastore/docs/reference/admin/rest/Shared.Types/Progress" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="3" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">Progress</a></li><li class="devsite-nav-item"><a href="https://cloud.google.com/datastore/docs/reference/admin/rest/Shared.Types/State" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="3" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">State</a></li></ul></li></ul></li><li class="devsite-nav-item devsite-nav-item-section-expandable"><span class="devsite-nav-title devsite-nav-title-no-path" track-type="leftNav" track-name="expandNavSectionNoLink"track-metadata-position="1" aria-label="RPC Reference, click to expand/collapse" role="link">RPC Reference</span><a class="devsite-nav-toggle devsite-nav-toggle-collapsed material-icons" track-type="leftNav" track-name="expandNavSectionArrow" track-metadata-position="1" aria-hidden="true"></a><ul class="devsite-nav-section devsite-nav-section-collapsed"><li class="devsite-nav-item"><a href="https://cloud.google.com/datastore/docs/reference/admin/rpc/" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="2" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">Overview</a></li><li class="devsite-nav-item"><a href="https://cloud.google.com/datastore/docs/reference/admin/rpc/google.datastore.admin.v1" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="2" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">google.datastore.admin.v1</a></li><li class="devsite-nav-item"><a href="https://cloud.google.com/datastore/docs/reference/admin/rpc/google.datastore.admin.v1beta1" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="2" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">google.datastore.admin.v1beta1</a></li><li class="devsite-nav-item"><a href="https://cloud.google.com/datastore/docs/reference/admin/rpc/google.longrunning" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="2" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">google.longrunning</a></li><li class="devsite-nav-item"><a href="https://cloud.google.com/datastore/docs/reference/admin/rpc/google.rpc" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="2" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">google.rpc</a></li></ul></li></ul></li><li class="devsite-nav-item"><a href="https://cloud.google.com/datastore/docs/reference/gql_reference" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="0" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">GQL Reference</a></li><li class="devsite-nav-item devsite-nav-item-heading"><span class="devsite-nav-title devsite-nav-title-no-path" track-type="leftNav" track-name="expandNavSectionNoLink" track-metadata-position="0">Concepts</span></li><li class="devsite-nav-item"><a href="https://cloud.google.com/datastore/docs/concepts" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="0" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">All Concepts</a></li><li class="devsite-nav-item"><a href="https://cloud.google.com/datastore/docs/concepts/overview" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="0" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">What is Google Cloud Datastore?</a></li><li class="devsite-nav-item"><a href="https://cloud.google.com/datastore/docs/concepts/limits" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="0" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">Limits</a></li><li class="devsite-nav-item"><a href="https://cloud.google.com/datastore/docs/access/iam" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="0" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">Identity and Access Management (IAM)</a></li><li class="devsite-nav-item"><a href="https://cloud.google.com/datastore/docs/concepts/storage-size" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="0" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">Storage Size Calculations</a></li><li class="devsite-nav-item"><a href="https://cloud.google.com/datastore/docs/concepts/multitenancy" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="0" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">Multitenancy</a></li><li class="devsite-nav-item"><a href="https://cloud.google.com/datastore/docs/concepts/encryption-at-rest" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="0" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">Server-Side Encryption</a></li><li class="devsite-nav-item"><a href="https://cloud.google.com/datastore/docs/locations" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="0" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">Datastore Locations</a></li><li class="devsite-nav-item devsite-nav-item-heading"><span class="devsite-nav-title devsite-nav-title-no-path" track-type="leftNav" track-name="expandNavSectionNoLink" track-metadata-position="0">Tutorials</span></li><li class="devsite-nav-item"><a href="https://cloud.google.com/datastore/docs/datastore-api-tutorial" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="0" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">Using the Datastore API</a></li><li class="devsite-nav-item devsite-nav-item-heading"><span class="devsite-nav-title devsite-nav-title-no-path" track-type="leftNav" track-name="expandNavSectionNoLink" track-metadata-position="0">Resources</span></li><li class="devsite-nav-item"><a href="https://cloud.google.com/datastore/docs/resources" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="0" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">All Resources</a></li><li class="devsite-nav-item"><a href="https://cloud.google.com/datastore/pricing" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="0" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">Pricing &amp; Quota</a></li><li class="devsite-nav-item"><a href="https://cloud.google.com/datastore/docs/best-practices" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="0" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">Best Practices</a></li><li class="devsite-nav-item"><a href="https://cloud.google.com/datastore/release-notes" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="0" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">Release Notes</a></li><li class="devsite-nav-item devsite-nav-item-section-expandable"><span class="devsite-nav-title devsite-nav-title-no-path" track-type="leftNav" track-name="expandNavSectionNoLink"track-metadata-position="0" aria-label="Get Support, click to expand/collapse" role="link">Get Support</span><a class="devsite-nav-toggle devsite-nav-toggle-collapsed material-icons" track-type="leftNav" track-name="expandNavSectionArrow" track-metadata-position="0" aria-hidden="true"></a><ul class="devsite-nav-section devsite-nav-section-collapsed"><li class="devsite-nav-item"><a href="https://cloud.google.com/datastore/docs/community" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="1" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">Community</a></li><li class="devsite-nav-item"><a href="https://cloud.google.com/datastore/docs/support" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="1" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">Support</a></li></ul></li><li class="devsite-nav-item"><a href="https://cloud.google.com/datastore/sla" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="0" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">Service Level Agreement</a></li></ul>
+  </nav>
+
+    
+
+    
+  <nav class="devsite-page-nav devsite-nav"></nav>
+
+
+      <article class="devsite-article">
+        <article class="devsite-article-inner">
+  
+          
+  
+
+
+
+  
+  <nav class="devsite-breadcrumb-nav devsite-nav">
+    
+
+
+<ul class="devsite-breadcrumb-list">
+  
+  <li class="devsite-breadcrumb-item">
+    
+    
+    <a href="https://cloud.google.com/datastore/" class="devsite-breadcrumb-link gc-analytics-event"
+       data-category="Site-Wide Custom Events" data-label="Breadcrumbs"
+       data-value="1">
+    
+    
+      Cloud Datastore
+    
+    
+    </a>
+    
+  </li>
+  
+  <li class="devsite-breadcrumb-item">
+    
+    
+    <div class="devsite-breadcrumb-guillemet material-icons"></div>
+    
+    
+    <a href="https://cloud.google.com/datastore/docs/" class="devsite-breadcrumb-link gc-analytics-event"
+       data-category="Site-Wide Custom Events" data-label="Breadcrumbs"
+       data-value="2">
+    
+    
+      Documentation
+    
+    
+    </a>
+    
+  </li>
+  
+  <li class="devsite-breadcrumb-item">
+    
+    
+    <div class="devsite-breadcrumb-guillemet material-icons"></div>
+    
+    
+    <a href="https://cloud.google.com/docs/" class="devsite-breadcrumb-link gc-analytics-event"
+       data-category="Site-Wide Custom Events" data-label="Breadcrumbs"
+       data-value="3">
+    
+    
+      Documentation
+    
+    
+    </a>
+    
+  </li>
+  
+</ul>
+
+  </nav>
+  
+  
+  <h1 itemprop="name" class="devsite-page-title">
+    Exporting and Importing Entities
+  </h1>
+  
+  
+  <nav class="devsite-page-nav-embedded devsite-nav"></nav>
+  
+  <div class="devsite-article-body clearfix
+            "
+       itemprop="articleBody">
+    
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<p>This page describes how to export and import Google Cloud Datastore entities using
+the managed export and import service. The managed export and import service
+is available through the <code>gcloud</code> command-line tool and the
+Cloud Datastore Admin API (<a href="https://cloud.google.com/datastore/docs/reference/admin/rest/">REST</a>, <a href="https://cloud.google.com/datastore/docs/reference/admin/rpc/">RPC</a>).</p>
+<p>With the managed export and import service, you can recover from accidental
+deletion of data and export data for offline processing. You can
+export all entities or just specific kinds of entities. Likewise, you can
+import all data from an export or only specific kinds. As you use the managed
+export and import service, consider the following:</p>
+<ul>
+<li>
+<p>The export service uses <a href="https://cloud.google.com/datastore/docs/concepts/structuring_for_strong_consistency#consistency_levels">eventually consistent</a> reads. You
+  cannot assume an export happens at a single point in time. The export
+  might include entities written after the export begins and exclude entities
+  written before the export begins.</p>
+</li>
+<li>
+<p>An export does not contain any indexes. When you import data, the required
+  indexes are automatically rebuilt using your database's current index
+  definitions. <a href="https://cloud.google.com/datastore/docs/concepts/indexes#unindexed_properties">Per-entity property value index settings</a> are
+  exported and honored during import.</p>
+</li>
+<li>
+<p>Imports do not assign new IDs to entities. Imports use the IDs that existed at
+  the time of the export and overwrite any existing entity with the same ID.
+  During an import, the IDs are reserved during the time that the entities are
+  being imported. This feature prevents ID collisions with new entities if
+  writes are enabled while an import is running.</p>
+</li>
+<li>
+<p>If an entity in your database is not affected by an import, it will remain in
+  your database after the import.</p>
+</li>
+<li>
+<p>Data exported from one Cloud Datastore database can be imported into
+  another Cloud Datastore database.</p>
+</li>
+<li>
+<p>The managed export and import service limits the number of concurrent exports
+  and imports to 50 and allows a maximum of
+  20 export and import requests per minute for a project.</p>
+</li>
+</ul>
+<h2 id="before_you_begin">Before you begin</h2>
+<p>Before you can use the managed export and import service, you must complete the
+following tasks.</p>
+<ol>
+<li>
+<p>Ensure that billing is enabled for your Google Cloud Platform project. Only
+GCP projects with billing enabled can use the export and
+import functionality. For more on billing, see
+<a href="#billing">Billing and pricing for imports and exports</a>.</p>
+</li>
+<li>
+<p><a href="https://cloud.google.com/storage/docs/creating-buckets">Create a Cloud Storage bucket</a> for your project using the same location as
+your <a href="https://cloud.google.com/datastore/docs/locations#location-chosen">Cloud Datastore location</a>. All exports and imports rely on
+Cloud Storage and you must use the same location for your
+Cloud Storage bucket and Cloud Datastore.</p>
+</li>
+<li>
+<p>Assign an <a href="https://cloud.google.com/datastore/docs/access/iam">IAM role</a> to your user account that grants the
+<code>datastore.databases.export</code> permission, if you are exporting data, or the
+<code>datastore.databases.import</code> permission, if you are importing data. The
+<code>Cloud Datastore Import Export Admin</code> <a href="https://cloud.google.com/datastore/docs/access/iam#iam_roles">role</a>, for example, grants both
+permissions.</p>
+</li>
+<li>
+<p>Assign a <a href="https://cloud.google.com/storage/docs/access-control/iam-roles">Cloud Storage IAM role</a> to your user account that
+grants read or write permissions for your Cloud Storage bucket.</p>
+</li>
+</ol>
+<h3 id="set_up_your_environment">Set up your environment</h3>
+<p>Before you export or import data, you must set up environment variables for the
+<code>gcloud</code> tool and authenticate using your user account.</p>
+<ol>
+<li>
+<p>Set an environment variable for your GCP project ID.</p>
+<pre class="prettyprint notranslate" translate="no"><code>PROJECT_ID="YOUR_PROJECT_ID"
+</code></pre>
+</li>
+<li>
+<p>Use this variable to set your project as the active configuration for the
+<code>gcloud</code> tool.</p>
+<pre class="prettyprint notranslate" translate="no"><code>gcloud config set project ${PROJECT_ID}
+</code></pre>
+</li>
+<li>
+<p>Authenticate using the <code>gcloud</code> tool.</p>
+<pre class="prettyprint notranslate" translate="no"><code>gcloud auth login
+</code></pre>
+</li>
+<li>
+<p>Set an environment variable for your Cloud Storage bucket ID.</p>
+<pre class="prettyprint notranslate" translate="no"><code>BUCKET="YOUR_BUCKET_NAME[/NAMESPACE_PATH]"
+</code></pre>
+<p>where <code>YOUR_BUCKET_NAME</code> is the name of the Cloud Storage bucket and
+   <code>NAMESPACE_PATH</code> is an optional Cloud Storage namespace path (this is
+   not a Cloud Datastore namespace). For more information about
+   Cloud Storage namespace paths, see <a href="https://cloud.google.com/storage/docs/naming#object-considerations">Object name considerations</a>.</p>
+</li>
+</ol>
+<h2 id="starting_managed_export_and_import_operations">Starting managed export and import operations</h2>
+<p>This section describes how to start a managed export or import operation and
+how to <a href="#long-running-operation">check on its progress</a>.</p>
+<p>Before you export or import entities, we recommend you
+<a href="https://cloud.google.com/datastore/docs/console/managing-datastore#enabling_datastore_writes">disable Cloud Datastore writes</a>. After the export or import
+completes, <a href="https://cloud.google.com/datastore/docs/console/managing-datastore#enabling_datastore_writes">re-enable Cloud Datastore writes</a> for your application.</p>
+<h3 id="exporting_entities">Exporting entities</h3>
+<p>Use the command below to export all kinds in the default namespace. You can add
+the <a href="#async-flag"><code>--async</code></a> flag to prevent the <code>gcloud</code> tool from waiting for
+the operation to complete.</p>
+<div class="ds-selector-tabs" data-ds-scope="code-sample"><section><h3>gcloud</h3><p><pre class="notranslate devsite-click-to-copy" suppresswarning="suppresswarning">
+gcloud datastore export --namespaces="(default)" gs://${BUCKET}
+</pre></p></section><section><h3>Protocol</h3><p><pre class="notranslate devsite-click-to-copy" suppresswarning="suppresswarning">
+curl \
+-H "Authorization: Bearer $(gcloud auth print-access-token)" \
+-H "Content-Type: application/json" \
+https://datastore.googleapis.com/v1/projects/${PROJECT_ID}:export \
+-d '{
+  "outputUrlPrefix": "gs://'${BUCKET}'",
+  "entityFilter": {
+    "namespaceIds": [""],
+  },
+}'
+</pre></p></section></div><p>To export a specific subset of kinds and/or namespaces, provide an
+entity filter with values for kinds and namespace IDs.</p>
+<div class="ds-selector-tabs" data-ds-scope="code-sample"><section><h3>gcloud</h3><p><pre class="notranslate devsite-click-to-copy" suppresswarning="suppresswarning">
+gcloud datastore export --kinds="KIND1,KIND2" --namespaces="NAMESPACE1,NAMESPACE2" gs://${BUCKET}
+</pre></p></section><section><h3>Protocol</h3><p><pre class="notranslate devsite-click-to-copy" suppresswarning="suppresswarning">
+curl \
+-H "Authorization: Bearer $(gcloud auth print-access-token)" \
+-H "Content-Type: application/json" \
+https://datastore.googleapis.com/v1/projects/${PROJECT_ID}:export \
+-d '{
+  "outputUrlPrefix": "gs://'${BUCKET}'",
+  "entityFilter": {
+    "kinds": ["KIND1", "KIND2", …],
+    "namespaceIds": ["NAMESPACE1", "NAMESPACE2", …],
+  },
+}
+</pre></p></section></div><h3 id="importing_entities">Importing entities</h3>
+<p>Use the command below to import entities previously exported with the managed
+export and import service. You can add the <a href="#async-flag"><code>--async</code></a> flag to
+prevent the <code>gcloud</code> tool from waiting for the operation to complete.</p>
+<div class="ds-selector-tabs" data-ds-scope="code-sample"><section><h3>gcloud</h3><p><pre class="notranslate devsite-click-to-copy" suppresswarning="suppresswarning">
+gcloud datastore import gs://${BUCKET}/[PATH]/[FILE].overall_export_metadata
+</pre></p></section><section><h3>Protocol</h3><p><pre class="notranslate devsite-click-to-copy" suppresswarning="suppresswarning">
+curl \
+-H "Authorization: Bearer $(gcloud auth print-access-token)" \
+-H "Content-Type: application/json" \
+https://datastore.googleapis.com/v1/projects/${PROJECT_ID}:import \
+-d '{
+  "inputUrl": "gs://'${BUCKET}'/[PATH]/[FILE].overall_export_metadata",
+}'
+</pre></p></section></div><p>You can determine the value to use for the import location by using the
+Cloud Storage UI in the Google Cloud Platform Console to view the bucket, or by
+examining the <code>gcloud datastore export</code> output or <code>ExportEntitiesResponse</code>
+after your export is complete. Here's an example value of an import location:</p>
+<div class="ds-selector-tabs" data-ds-scope="code-sample"><section><h3>gcloud</h3><p><pre class="notranslate devsite-click-to-copy" suppresswarning="suppresswarning">
+gs://${BUCKET}/2017-05-25T23:54:39_76544/2017-05-25T23:54:39_76544.overall_export_metadata
+</pre></p></section><section><h3>protocol</h3><p><pre class="notranslate devsite-click-to-copy" suppresswarning="suppresswarning">
+"outputUrl": "gs://'${BUCKET}'/2017-05-25T23:54:39_76544/2017-05-25T23:54:39_76544.overall_export_metadata",
+</pre></p></section></div><h3 id="async-flag">Asynchronous exports or imports</h3>
+<p>Exports and imports can take a long time. When you perform an export or import,
+you can provide the <code>--async</code> flag to prevent the <code>gcloud</code> tool from waiting for
+the operation to complete.</p>
+<p>After you start an export or import operation, you can use the identifier
+returned by the <code>gcloud</code> tool to check the status of the operation. For example:</p>
+<pre class="notranslate devsite-click-to-copy" suppresswarning="suppresswarning">
+gcloud datastore operations describe ASAyMDAwOTEzBxp0bHVhZmVkBxJsYXJ0bmVjc3Utc2Jvai1uaW1kYRQKKhI
+</pre>
+
+<p>If you forget the <code>--async</code> flag, you can also use <code>Ctrl+c</code> to stop waiting on
+an operation. Typing <code>Ctrl+c</code> will not cancel the operation.</p>
+<h2 id="long-running-operation">Managing long-running operations</h2>
+<p><em>Long-running operations</em> are method calls that may take a substantial amount of
+time to complete. Cloud Datastore creates long-running operations when
+you export or import data.</p>
+<p>For example, when you start an export, the Cloud Datastore service
+creates a long-running operation to track the export status. Here's the output
+from the start of an export:</p>
+<pre class="notranslate" suppresswarning="suppresswarning">
+{
+  "name": "projects/[YOUR_PROJECT_ID]/operations/ASAyMDAwOTEzBxp0bHVhZmVkBxJsYXJ0bmVjc3Utc2Jvai1uaW1kYRQKKhI",
+  "metadata": {
+    "@type": "type.googleapis.com/google.datastore.admin.v1.ExportEntitiesMetadata",
+    "common": {
+      "startTime": "2017-05-25T23:54:39.583780Z",
+      "operationType": "EXPORT_ENTITIES"
+    },
+    "progressEntities": {},
+    "progressBytes": {},
+    "entityFilter": {
+      "namespaceIds": [
+        ""
+      ]
+    },
+    "outputUrlPrefix": "gs://[YOUR_BUCKET_NAME]"
+  }
+}
+</pre>
+
+<p>The value of the <code>name</code> field is the ID of a long-running operation.</p>
+<p>Cloud Datastore provides an <a href="https://cloud.google.com/datastore/docs/reference/admin/rest/latest/projects.operations">operations Admin API</a>
+to check on the status of long-running operations, as well as
+cancel, delete, or list long-running operations:</p>
+<table>
+<thead>
+<tr>
+<th>Method</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>projects.operations.cancel</td>
+<td>Cancel a long-running operation.</td>
+</tr>
+<tr>
+<td>projects.operations.delete</td>
+<td>Delete a long-running operation.<br/><br/><b>Note:</b> Deleting an operation does not cancel it.</td>
+</tr>
+<tr>
+<td>projects.operations.get</td>
+<td>Get the status of a long-running operation.</td>
+</tr>
+<tr>
+<td>projects.operations.list</td>
+<td>List long-running operations.</td>
+</tr>
+</tbody>
+</table>
+<h3 id="listing_long-running_operations">Listing long-running operations</h3>
+<p>To list long-running operations, run the following:</p>
+<div class="ds-selector-tabs" data-ds-scope="code-sample"><section><h3>gcloud</h3><p><pre class="notranslate devsite-click-to-copy" suppresswarning="suppresswarning">
+gcloud datastore operations list
+</pre></p></section><section><h3>Protocol</h3><p><pre class="notranslate devsite-click-to-copy" suppresswarning="suppresswarning">
+curl \
+-H "Authorization: Bearer $(gcloud auth print-access-token)" \
+https://datastore.googleapis.com/v1/projects/${PROJECT_ID}/operations
+</pre></p></section></div><p>This example output shows a recently completed export operation. Operations are
+accessible for a few days after completion:</p>
+<pre class="notranslate" suppresswarning="suppresswarning">
+{
+  "operations": [
+    {
+      "name": "projects/[YOUR_PROJECT_ID]/operations/ASAyMDAwOTEzBxp0bHVhZmVkBxJsYXJ0bmVjc3Utc2Jvai1uaW1kYRQKKhI",
+      "metadata": {
+        "@type": "type.googleapis.com/google.datastore.admin.v1.ExportEntitiesMetadata",
+        "common": {
+          "startTime": "2017-12-05T23:01:39.583780Z",
+          "endTime": "2017-12-05T23:54:58.474750Z",
+          "operationType": "EXPORT_ENTITIES"
+        },
+        "progressEntities": {
+          "workCompleted": "21933027",
+          "workEstimated": "21898182"
+        },
+        "progressBytes": {
+          "workCompleted": "12421451292",
+          "workEstimated": "9759724245"
+        },
+        "entityFilter": {
+          "namespaceIds": [
+            ""
+          ]
+        },
+        "outputUrlPrefix": "gs://[YOUR_BUCKET_NAME]"
+      },
+      "done": true,
+      "response": {
+        "@type": "type.googleapis.com/google.datastore.admin.v1.ExportEntitiesResponse",
+        "outputUrl": "gs://[YOUR_BUCKET_NAME]/2017-05-25T23:54:39_76544/2017-05-25T23:54:39_76544.overall_export_metadata"
+      }
+    }
+  ]
+}
+</pre>
+
+<p>Use the <code>input_url</code> value when you import the entities.</p>
+<h3 id="estimating_the_completion_time">Estimating the completion time</h3>
+<p>A request for the status of a long-running operation returns the metrics
+<code>workEstimated</code> and <code>workCompleted</code>. Each of these metrics is returned in both
+number of bytes and number of entities. <code>workEstimated</code> shows the estimated
+total number of bytes and entities an operation will process, based on
+<a href="https://cloud.google.com/datastore/docs/concepts/stats">Cloud Datastore Statistics</a>. <code>workCompleted</code> shows the number of
+bytes and entities processed so far. After the operation completes,
+<code>workCompleted</code> reflects the total number of bytes and entities that were
+actually processed, which might be larger than the value of <code>workEstimated</code>.</p>
+<p>Divide <code>workCompleted</code> by <code>workEstimated</code> for a rough progress estimate. The
+estimate might be inaccurate because it depends on delayed statistics
+collection.</p>
+<p>For example, here is the progress status of an export operation:</p>
+<pre class="notranslate" suppresswarning="suppresswarning">
+{
+  "operations": [
+    {
+      "name": "projects/[YOUR_PROJECT_ID]/operations/ASAyMDAwOTEzBxp0bHVhZmVkBxJsYXJ0bmVjc3Utc2Jvai1uaW1kYRQKKhI",
+      "metadata": {
+        "@type": "type.googleapis.com/google.datastore.admin.v1.ExportEntitiesMetadata",
+        ...
+        "progressEntities": {
+          "workCompleted": "1",
+          "workEstimated": "3"
+        },
+        "progressBytes": {
+          "workCompleted": "85",
+          "workEstimated": "257"
+        },
+        ...
+</pre>
+
+<h2 id="billing">Billing and pricing for managed exports and imports</h2>
+<p>You are required to enable billing for your Google Cloud Platform project before you use
+the managed export and import service. Export and import operations are charged
+for entity reads and writes at the rates listed in <a href="https://cloud.google.com/datastore/pricing">Cloud Datastore
+pricing</a>.</p>
+<p>The costs of export and import operations do not count towards the <a href="https://cloud.google.com/datastore/docs/activate#enabling_billing_and_setting_a_spending_limit">App Engine
+spending limit</a>. Also, if you have <a href="https://cloud.google.com/billing/docs/how-to/budgets">set a
+Google Cloud Platform budget</a>, the export or import operation will not
+trigger alerts until the operation is complete. Similarly, reads and writes
+performed during an export or import operation are applied to your <a href="https://cloud.google.com/datastore/pricing">daily
+quota</a> after the operation is complete.</p>
+<p>For information about billing, see <a href="https://cloud.google.com/support/billing/">Billing and Payments Support</a>.</p>
+<h2 id="permissions">Permissions</h2>
+<p>To start export and import operations, your user account's <a href="https://cloud.google.com/datastore/docs/access/iam">IAM
+roles</a> must grant the <code>datastore.databases.export</code> and
+<code>datastore.databases.import</code> <a href="https://cloud.google.com/datastore/docs/access/iam#permissions">permissions</a>. The <code>Cloud Datastore Import
+Export Admin</code> role, for example, grants both permissions. Likewise, If you are
+issuing REST requests from the command line using <code>curl</code>, you must assign an IAM
+role granting these permissions to your user account. For more on
+Cloud Datastore permissions, see <a href="https://cloud.google.com/datastore/docs/access/iam#permissions">Identity and Access Management
+(IAM)</a>.</p>
+<p>If you use the <a href="https://cloud.google.com/datastore/docs/schedule-export">example cron app</a>, its requests use the default service
+account of the GCP project. You must grant the service account
+the <code>Cloud Datastore Import Export Admin</code> role or another role that grants the
+<code>datastore.databases.export</code> permission.</p>
+<p>Additionally, for all export requests, both the account making the request <em>and
+the default service account for the GCP project</em>, must have an
+IAM role that grants the following permissions for your Cloud Storage
+bucket:</p>
+<table>
+<thead>
+<tr>
+<th>Permission name</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>storage.buckets.get</code></td>
+<td>Read bucket metadata, excluding IAM policies.</td>
+</tr>
+<tr>
+<td><code>storage.objects.create</code></td>
+<td>Add new objects to a bucket.</td>
+</tr>
+<tr>
+<td><code>storage.objects.list</code></td>
+<td>List objects in a bucket. Also read object metadata, excluding ACLs, when listing.</td>
+</tr>
+</tbody>
+</table>
+<p>For a list of Cloud Storage roles, see <a href="https://cloud.google.com/storage/docs/access-control/iam-roles">Cloud Storage IAM
+Roles</a>. The <code>Storage Admin</code> role, for example, includes all the
+necessary Cloud Storage permissions for an export and can be <a href="https://cloud.google.com/storage/docs/access-control/using-iam-permissions">applied to an
+entire project or a specific bucket</a>.</p>
+<p>For import requests, both the account making the request <em>and
+the default service account for the GCP project</em>, must have an
+IAM role that grants the following permissions for your Cloud Storage
+bucket:</p>
+<table>
+<thead>
+<tr>
+<th>Permission name</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>storage.objects.get</code></td>
+<td>Read object data and metadata, excluding ACLs.</td>
+</tr>
+<tr>
+<td><code>storage.objects.list</code></td>
+<td>List objects in a bucket. Also read object metadata, excluding ACLs, when listing.</td>
+</tr>
+</tbody>
+</table>
+<p>The <code>Storage Object Viewer</code> role grants all the required permissions for import.</p>
+<h2 id="admin-console-comparison">Differences from Cloud Datastore Admin backups</h2>
+<p>If you previously used the Cloud Datastore Admin console for backups, you
+should note the following differences:</p>
+<ul>
+<li>
+<p>There is no GUI for the managed export and import service.</p>
+</li>
+<li>
+<p>Exports created by a managed export do not appear in the
+Cloud Datastore Admin console. Managed exports and imports are a new
+service that does not share data with App Engine's backup and restore
+functionality, which is administered through the GCP Console.</p>
+</li>
+<li>
+<p>The managed export and import service does not support the same metadata as
+the Cloud Datastore Admin backup and does not store progress status in
+your database. For information on checking the progress of
+export and import operations, see
+<a href="#long-running-operation">Managing long-running operations</a></p>
+</li>
+<li>
+<p>You cannot view service logs of managed export and import operations.</p>
+</li>
+<li>
+<p>The managed import service is backwards compatible with Cloud Datastore
+Admin backup files. You can import a Cloud Datastore Admin backup file
+using the managed import service, but you cannot import the output of a managed
+export using the Cloud Datastore Admin console.</p>
+</li>
+</ul>
+<h2 id="import-into-bigquery">Importing into BigQuery</h2>
+<p>To import data from a managed export into BigQuery, see <a href="https://cloud.google.com/bigquery/docs/loading-data-cloud-datastore#cloud_datastore_export_service">Loading Data
+From Cloud Datastore Backups</a>.</p>
+<h3 id="limitations">Limitations</h3>
+<ul>
+<li>Data exported without specifying an entity filter cannot be loaded into
+BigQuery. If you want to import data into BigQuery, your
+export request must include one or more kind names in the entity filter.</li>
+</ul>
+
+
+  </div>
+  
+    
+
+
+
+  
+
+  
+        
+  
+
+
+
+
+
+
+
+        
+<div class="devsite-content-footer nocontent">
+  
+  
+    <p>Except as otherwise noted, the content of this page is licensed under the <a href="http://creativecommons.org/licenses/by/3.0/">Creative Commons Attribution 3.0 License</a>, and code samples are licensed under the <a href="http://www.apache.org/licenses/LICENSE-2.0">Apache 2.0 License</a>. For details, see our <a href="https://developers.google.com/terms/site-policies">Site Policies</a>. Java is a registered trademark of Oracle and/or its affiliates.</p>
+  
+
+  
+    
+    <p class="devsite-content-footer-date" itemprop="datePublished"
+       content="2018-04-05T19:32:48.825210">
+      
+      Last updated April 5, 2018.
+    </p>
+  
+
+</div>
+
+        </article>
+      </article>
+  
+
+        </div>
+      
+
+<footer class="devsite-footer-linkboxes nocontent
+               devsite-footer-linkboxes-all-backup
+               devsite-footer-linkboxes-with-sites"><nav class="devsite-full-site-width"><ul class="devsite-footer-linkboxes-list"><li class="devsite-footer-linkbox devsite-footer-linkbox-backup"><h3 class="devsite-footer-linkbox-heading">Products</h3><ul class="devsite-footer-linkbox-list"><li class="devsite-footer-linkbox-item"><a href="https://cloud.google.com/products/compute/" class="gc-analytics-event"
+               data-category="Site-Wide Custom Events"
+               data-label="Footer Compute">
+                Compute
+            </a></li><li class="devsite-footer-linkbox-item"><a href="https://cloud.google.com/products/storage/" class="gc-analytics-event"
+               data-category="Site-Wide Custom Events"
+               data-label="Footer Storage">
+                Storage
+            </a></li><li class="devsite-footer-linkbox-item"><a href="https://cloud.google.com/products/networking/" class="gc-analytics-event"
+               data-category="Site-Wide Custom Events"
+               data-label="Footer Networking">
+                Networking
+            </a></li><li class="devsite-footer-linkbox-item"><a href="https://cloud.google.com/products/big-data/" class="gc-analytics-event"
+               data-category="Site-Wide Custom Events"
+               data-label="Footer Big Data">
+                Big Data
+            </a></li><li class="devsite-footer-linkbox-item"><a href="https://cloud.google.com/products/machine-learning/" class="gc-analytics-event"
+               data-category="Site-Wide Custom Events"
+               data-label="Footer Machine Learning">
+                Machine Learning
+            </a></li><li class="devsite-footer-linkbox-item"><a href="https://cloud.google.com/products/#management" class="gc-analytics-event"
+               data-category="Site-Wide Custom Events"
+               data-label="Footer Management Tools">
+                Management Tools
+            </a></li><li class="devsite-footer-linkbox-item"><a href="https://cloud.google.com/products/tools/" class="gc-analytics-event"
+               data-category="Site-Wide Custom Events"
+               data-label="Footer Developer Tools">
+                Developer Tools
+            </a></li><li class="devsite-footer-linkbox-item"><a href="https://cloud.google.com/products/#identity-security" class="gc-analytics-event"
+               data-category="Site-Wide Custom Events"
+               data-label="Footer Identity and Security">
+                Identity &amp; Security
+            </a></li><li class="devsite-footer-linkbox-item"><a href="//status.cloud.google.com" class="gc-analytics-event"
+               data-category="Site-Wide Custom Events"
+               data-label="Footer System Status">
+                System Status
+            </a></li></ul></li><li class="devsite-footer-linkbox devsite-footer-linkbox-backup"><h3 class="devsite-footer-linkbox-heading">Learn More</h3><ul class="devsite-footer-linkbox-list"><li class="devsite-footer-linkbox-item"><a href="https://cloud.google.com/why-google/" class="gc-analytics-event"
+               data-category="Site-Wide Custom Events"
+               data-label="Footer Why Google">
+                Why Google Cloud
+            </a></li><li class="devsite-footer-linkbox-item"><a href="https://cloud.google.com/pricing/" class="gc-analytics-event"
+               data-category="Site-Wide Custom Events"
+               data-label="Footer Pricing">
+                Pricing
+            </a></li><li class="devsite-footer-linkbox-item"><a href="https://cloud.google.com/docs/" class="gc-analytics-event"
+               data-category="Site-Wide Custom Events"
+               data-label="Footer Documentation">
+                Documentation
+            </a></li><li class="devsite-footer-linkbox-item"><a href="https://cloud.google.com/docs/tutorials/" class="gc-analytics-event"
+               data-category="Site-Wide Custom Events"
+               data-label="Footer Tutorials">
+                Tutorials
+            </a></li><li class="devsite-footer-linkbox-item"><a href="https://cloud.google.com/training/" class="gc-analytics-event"
+               data-category="Site-Wide Custom Events"
+               data-label="Footer Training">
+                Training
+            </a></li><li class="devsite-footer-linkbox-item"><a href="https://cloud.google.com/solutions/" class="gc-analytics-event"
+               data-category="Site-Wide Custom Events"
+               data-label="Footer Solutions">
+                Solutions
+            </a></li><li class="devsite-footer-linkbox-item"><a href="https://cloud.google.com/security/" class="gc-analytics-event"
+               data-category="Site-Wide Custom Events"
+               data-label="Footer Security &amp; Compliance">
+                Security &amp; Compliance
+            </a></li><li class="devsite-footer-linkbox-item"><a href="https://cloud.google.com/partners/" class="gc-analytics-event"
+               data-category="Site-Wide Custom Events"
+               data-label="Footer Partners">
+                Partners
+            </a></li><li class="devsite-footer-linkbox-item"><a href="https://cloud.google.com/customers/" class="gc-analytics-event"
+               data-category="Site-Wide Custom Events"
+               data-label="Footer Customers">
+                Customers
+            </a></li><li class="devsite-footer-linkbox-item"><a href="https://cloud.google.com/support/" class="gc-analytics-event"
+               data-category="Site-Wide Custom Events"
+               data-label="Footer Support">
+                Support
+            </a></li><li class="devsite-footer-linkbox-item"><a href="//careers.google.com/cloud/" class="gc-analytics-event"
+               data-category="Site-Wide Custom Events"
+               data-label="Footer Careers">
+                Careers
+            </a></li><li class="devsite-footer-linkbox-item"><a href="//www.google.com/cloud/press" class="gc-analytics-event"
+               data-category="Site-Wide Custom Events"
+               data-label="Footer Press">
+                Press
+            </a></li></ul></li><li class="devsite-footer-linkbox devsite-footer-linkbox-backup"><h3 class="devsite-footer-linkbox-heading">Engage</h3><ul class="devsite-footer-linkbox-list"><li class="devsite-footer-linkbox-item"><a href="https://cloud.google.com/free-trial/" class="gc-analytics-event"
+               data-category="Site-Wide Custom Events"
+               data-label="Footer Free Trial Sign Up">
+                Free Trial Sign Up
+            </a></li><li class="devsite-footer-linkbox-item"><a href="//cloudplatform.googleblog.com" class="gc-analytics-event"
+               data-category="Site-Wide Custom Events"
+               data-label="Footer Blog">
+                Blog
+            </a></li><li class="devsite-footer-linkbox-item"><a href="https://cloud.google.com/community/" class="gc-analytics-event"
+               data-category="Site-Wide Custom Events"
+               data-label="Footer Community">
+                Community
+            </a></li><li class="devsite-footer-linkbox-item"><a href="//plus.google.com/+googlecloudplatform" class="gc-analytics-event"
+               data-category="Site-Wide Custom Events"
+               data-label="Footer Google+">
+                Google+
+            </a></li><li class="devsite-footer-linkbox-item"><a href="//twitter.com/gcpcloud" class="gc-analytics-event"
+               data-category="Site-Wide Custom Events"
+               data-label="Footer Twitter">
+                Twitter
+            </a></li><li class="devsite-footer-linkbox-item"><a href="//www.linkedin.com/showcase/google-cloud" class="gc-analytics-event"
+               data-category="Site-Wide Custom Events"
+               data-label="Footer LinkedIn">
+                LinkedIn
+            </a></li><li class="devsite-footer-linkbox-item"><a href="//stackoverflow.com/questions/tagged/google-cloud-platform" class="gc-analytics-event"
+               data-category="Site-Wide Custom Events"
+               data-label="Footer Stack Overflow">
+                Stack Overflow
+            </a></li><li class="devsite-footer-linkbox-item"><a href="//www.youtube.com/googlecloudplatform" class="gc-analytics-event"
+               data-category="Site-Wide Custom Events"
+               data-label="Footer YouTube">
+                YouTube
+            </a></li><li class="devsite-footer-linkbox-item"><a href="//www.gcppodcast.com" class="gc-analytics-event"
+               data-category="Site-Wide Custom Events"
+               data-label="Footer Podcast">
+                Podcast
+            </a></li><li class="devsite-footer-linkbox-item"><a href="//cloud.google.com/newsletter/" class="gc-analytics-event"
+               data-category="Site-Wide Custom Events"
+               data-label="Footer Newsletter Signup">
+                Newsletter Signup
+            </a></li><li class="devsite-footer-linkbox-item"><a href="//cloud.google.com/usability" class="gc-analytics-event"
+               data-category="Site-Wide Custom Events"
+               data-label="Footer UX Research">
+                UX Research
+            </a></li></ul></li><li class="devsite-footer-linkbox devsite-footer-linkbox-sites"><a href="https://developers.google.com/"
+           class="gc-analytics-event devsite-footer-linkbox-logo-link"
+           data-category="Site-Wide Custom Events" data-label="Footer Google Developers Link"><img class="devsite-footer-linkbox-logo"
+               src="https://cloud.google.com/_static/d7147bb846/images/redesign-14/lockup-color-knockout.png"
+               alt="Google Developers"></a><ul class="devsite-footer-linkbox-list"><li class="devsite-footer-linkbox-item"><a href="//developer.android.com/index.html" class="gc-analytics-event"
+               data-category="Site-Wide Custom Events"
+               data-label="Footer Android Link">
+                Android
+            </a></li><li class="devsite-footer-linkbox-item"><a href="//developer.chrome.com/home" class="gc-analytics-event"
+               data-category="Site-Wide Custom Events"
+               data-label="Footer Chrome Link">
+                Chrome
+            </a></li><li class="devsite-footer-linkbox-item"><a href="//firebase.google.com" class="gc-analytics-event"
+               data-category="Site-Wide Custom Events"
+               data-label="Footer Firebase Link">
+                Firebase
+            </a></li><li class="devsite-footer-linkbox-item"><a href="//cloud.google.com" class="gc-analytics-event"
+               data-category="Site-Wide Custom Events"
+               data-label="Footer Cloud Link">
+                Google Cloud Platform
+            </a></li><li class="devsite-footer-linkbox-item"><a href="//developers.google.com/products/" class="gc-analytics-event"
+               data-category="Site-Wide Custom Events"
+               data-label="Footer Products Link">
+                All Products
+            </a></li></ul></li></ul></nav></footer><footer class="devsite-utility-footer"><nav class="devsite-utility-footer-nav devsite-nav devsite-full-site-width"><div class="devsite-utility-footer-nav-left"><form class="devsite-utility-footer-language" action="/i18n/setlang/" method="post"><input type="hidden" name="xsrf_token" value="OhIk2ZKZhAhTyzrq3wfiTmdjS5pV82XluvT-lQbkXEs6MTUyNDQ2MDE5OTIzNjk4MA" /><input type="hidden" name="next" value="/datastore/docs/export-import-entities"><select class="devsite-utility-footer-language-select kd-select" name="language"
+                track-type="languageSelector" track-name="click"><option value="de"
+                
+                track-type="languageSelector" track-name="changed"
+                track-metadata-original-language="en"
+                track-metadata-selected-language="de">
+            Deutsch
+          </option><option value="en"
+                 selected="selected" 
+                track-type="languageSelector" track-name="changed"
+                track-metadata-original-language="en"
+                track-metadata-selected-language="en">
+            English
+          </option><option value="es"
+                
+                track-type="languageSelector" track-name="changed"
+                track-metadata-original-language="en"
+                track-metadata-selected-language="es">
+            español
+          </option><option value="pt-br"
+                
+                track-type="languageSelector" track-name="changed"
+                track-metadata-original-language="en"
+                track-metadata-selected-language="pt-br">
+            Português Brasileiro
+          </option><option value="ja"
+                
+                track-type="languageSelector" track-name="changed"
+                track-metadata-original-language="en"
+                track-metadata-selected-language="ja">
+            日本語
+          </option><option value="zh-tw"
+                
+                track-type="languageSelector" track-name="changed"
+                track-metadata-original-language="en"
+                track-metadata-selected-language="zh-tw">
+            繁體中文
+          </option></select></form><span class="devsite-utility-footer-links"><a class="devsite-utility-footer-link gc-analytics-event"
+           href="https://cloud.google.com/terms/"
+           data-category="Site-Wide Custom Events"
+           data-label="Footer terms link"
+           data-footer-link-id="terms"
+           >Terms
+         </a><a class="devsite-utility-footer-link gc-analytics-event"
+           href="//www.google.com/policies/privacy/"
+           data-category="Site-Wide Custom Events"
+           data-label="Footer privacy link"
+           data-footer-link-id="privacy"
+           >Privacy
+         </a><a class="devsite-utility-footer-link gc-analytics-event"
+           href="//www.google.de/contact/impressum.html"
+           data-category="Site-Wide Custom Events"
+           data-label="Footer impressum link"
+           data-footer-link-id="impressum"
+           >Impressum
+         </a></span></div></nav></footer><div class="devsite-feedback-dialog devsite-dialog"><div class="devsite-dialog-contents"><h3>Send feedback about...</h3><div class="devsite-feedback-item"><a data-type="documentation" class="gc-analytics-event"
+           data-category="Site-Wide Custom Events" data-label="Docs Feedback Image"
+           track-type="feedback" track-name="feedbackDocIcon" track-metadata-position="header"><div class="devsite-feedback-item-icon-container"><div class="devsite-feedback-item-icon-white devsite-feedback-item-icon-docs
+                        material-icons"></div></div></a><div class="devsite-feedback-item-name">
+          
+          This page
+        </div><div class="devsite-feedback-item-description"><a data-type="documentation" tabindex="0" class="gc-analytics-event"
+             data-category="Site-Wide Custom Events" data-label="Docs Feedback Text"
+             track-type="feedback" track-name="feedbackDocText" track-metadata-position="header">
+            
+            Documentation feedback
+          </a></div></div><div class="devsite-feedback-item"><a data-type="product" tabindex="0" class="gc-analytics-event"
+           data-category="Site-Wide Custom Events" data-label="Product Feedback Image"
+           track-type="feedback" track-name="feedbackProductIcon" track-metadata-position="header"
+         ><img class="devsite-feedback-item-icon"
+               src="https://cloud.google.com/_static/d7147bb846/images/feedback/google_56px.svg"></a><div class="devsite-feedback-item-name">
+        Cloud Datastore Documentation
+        </div><div class="devsite-feedback-item-description"><a data-type="product" tabindex="0" class="gc-analytics-event"
+             data-category="Site-Wide Custom Events" data-label="Product Feedback Text"
+             track-type="feedback" track-name="feedbackProductText" track-metadata-position="header"
+           >
+            
+            Product feedback
+          </a></div></div></div><div class="devsite-dialog-buttons"><button type="button" class="devsite-feedback-cancel button-white gc-analytics-event"
+              data-category="Site-Wide Custom Events" data-label="Cancel Feedback Button"
+              track-type="feedback" track-name="cancelFeedbackButton"
+              track-metadata-position="header">
+        
+        Cancel
+      </button></div></div><script>
+  $(document).ready(function() {
+    new devsite.feedback.Widget({
+        'product_id': '88949',
+        'bucket': 'documentation',
+        'context': '',
+        'version': 'devsite-20180420-r00-rc00.default'
+      },
+      document.querySelectorAll('.devsite-feedback-button'),
+      'en',
+      document.querySelector('.devsite-site-mask'),
+      document.querySelector('.devsite-feedback-dialog'),
+      document.querySelector('.devsite-feedback-cancel'),
+      document.querySelectorAll('.devsite-feedback-item a:not([href])')
+    );
+  });
+  </script></div><script async defer src="//www.gstatic.com/feedback/api.js"></script><script src="https://cloud.google.com/_static2/d7147bb846/jsi18n/"></script><script src="https://cloud.google.com/_static/d7147bb846/js/script_foot_closure.js"></script><script src="https://cloud.google.com/_static/d7147bb846/js/script_foot.js"></script><script>
+        (function($) {
+          
+          devsite.devsite.Init($, {'ENABLE_BLOCKED_VIDEO_PLACEHOLDER': 0, 'SITE_NAME': 'cloud', 'FULL_SITE_SEARCH_ENABLED': 1, 'ENABLE_CLOUDTRACK': 1, 'VTAGS_ENABLED': 1, 'HISTORY_ENABLED': 1, 'VERSION_HASH': 'd7147bb846', 'SCRIPTSAFE_DOMAIN': 'cloud-dot-google-developers.appspot.com', 'ENABLE_BLOCKED_LINK_TOOLTIP': 0, 'ALLOWED_HOSTS': ['.android.com', '.anvato.com', '.apigee.com', '.appspot.com', '.dialogflow.com', '.gonglchuangl.net', '.google.cn', '.google.com', '.googleplex.com', '.nest.com', '.openthread.io', '.openweave.io', '.orbitera.com', '.tensorflow.org'], 'BLOCK_RSS_FEEDS': 0},
+                               '[]','en',
+                               true, '',
+                               {"f62218c009ec029abef196bba5aa34cf": true, "8de7a048f21618359bd37f5ce44be073": false, "098dafe57affddc137df300142652cfd": false, "8e03e230de0bd8a6fe173fdf172e8b3f": true, "cb025a64a50094835616312f4774a53d": true, "51470233c56fc1fde50f00b73c52b216": false, "d169d485cf24243a263783dbe42029b1": true, "039e5d84b87fd75807ffb37b7f1bbf2c": true, "700def1a83e356c06c0925afb05de4b0": false, "6749dcb526ce9bde6993550c7d928d24": true}, '/datastore/docs/',
+                               'https://cloud.google.com/');
+        })(jQuery);
+
+        
+        devsite.localInit = function() {
+          
+        };
+
+      </script><script>
+      $('.devsite-utility-footer-language-select').each(function() {
+        $(this).change(function(){$('.devsite-utility-footer-language').submit();});
+      });
+      </script></div><span id="devsite-request-elapsed" data-request-elapsed="356.960058212"></span></body></html>

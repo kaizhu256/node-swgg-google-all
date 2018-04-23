@@ -1,0 +1,1291 @@
+
+
+
+
+
+
+<!DOCTYPE html><html lang="en"
+      class="chekov"><head><script>var a=window.devsite||{};window.devsite=a;a.readyCallbacks=[];window.devsite.readyCallbacks=a.readyCallbacks;a.ready=function(b){a.readyCallbacks.push(b)};window.devsite.ready=a.ready;
+</script><meta charset="utf-8"><meta name="xsrf_token" content="CDWcecNm5U73E78kI7IiMjwk3IjmsZfd3YNRyw--cx46MTUyNDQ2MDE3ODYxNDAyMA" /><link rel="canonical" href="https://cloud.google.com/solutions/time-series/bigquery-financial-forex"><link rel="alternate" href="https://cloud.google.com/solutions/time-series/bigquery-financial-forex" hreflang="en"><link rel="alternate" href="https://cloud.google.com/solutions/time-series/bigquery-financial-forex?hl=de" hreflang="de"><link rel="alternate" href="https://cloud.google.com/solutions/time-series/bigquery-financial-forex?hl=ja" hreflang="ja"><link rel="alternate" href="https://cloud.google.com/solutions/time-series/bigquery-financial-forex?hl=pt-br" hreflang="pt-br"><link rel="alternate" href="https://cloud.google.com/solutions/time-series/bigquery-financial-forex" hreflang="x-default"><link rel="shortcut icon" href="https://cloud.google.com/_static/d7147bb846/images/cloud/icons/favicons/onecloud/favicon.ico"><link rel="apple-touch-icon" href="https://cloud.google.com/_static/d7147bb846/images/cloud/icons/favicons/onecloud/apple-icon.png"><meta name="viewport" content="width=device-width, initial-scale=1"><link rel="stylesheet"
+      
+      href="//fonts.googleapis.com/css?family=Google+Sans:400|Roboto:400,400italic,500,500italic,700,700italic|Roboto+Mono:400,500,700|Material+Icons"
+      ><link rel="stylesheet"
+        href="https://cloud.google.com/_static/d7147bb846/css/devsite-cloud-white.css"><link rel="stylesheet" href="https://cloud.google.com/_static/d7147bb846/css/cloud/cloud-site.css"><link rel="search"
+        type="application/opensearchdescription+xml"
+        title="Google Cloud"
+        href="https://cloud.google.com/s/opensearch.xml"><script src="https://cloud.google.com/_static/d7147bb846/js/jquery-bundle.js"></script><meta property="og:site_name" content="Google Cloud"><meta property="og:type" content="website"><meta property="og:url" content="https://cloud.google.com/solutions/time-series/bigquery-financial-forex"><meta property="og:locale" content="en"><script>
+    var ___gcfg = ___gcfg || {};
+    ___gcfg.lang = 'en';
+  </script><title>Analyzing Financial Time Series using BigQuery &nbsp;|&nbsp; Solutions
+      &nbsp;|&nbsp; Google Cloud</title><meta property="og:title" content="Analyzing Financial Time Series using BigQuery &nbsp;|&nbsp; Solutions
+      &nbsp;|&nbsp; Google Cloud"><link href="https://cloud.google.com/assets/css/tutorial.css" type="text/css" rel="stylesheet"><style>
+    
+      h1.page-title { line-height: 50px; padding-left: 60px; position: relative;}
+      h1.page-title:before {
+        width: 55px;
+        height: 55px;
+        content: '';
+        position: absolute;
+        background: url('/assets/img/compute-icon-54x48.png') no-repeat top left transparent;
+        left: 0px;
+      }
+    
+    </style></head><body class="
+               devsite-doc-page
+               
+               
+               
+               
+               devsite-header-no-lower-tabs"
+        data-family="endorsed"
+        id="top_of_page"><div class="devsite-wrapper"><div class="devsite-top-section-wrapper
+            "><header class="devsite-top-section nocontent"><div class="devsite-top-logo-row-wrapper-wrapper"><div class="devsite-top-logo-row-wrapper"><div class="devsite-top-logo-row devsite-full-site-width"><button type="button" class="devsite-expand-section-nav devsite-header-icon-button
+                                       button-flat material-icons gc-analytics-event"
+                  data-category="Site-Wide Custom Events" data-label="Hamburger menu"></button><div class="devsite-product-name-wrapper"><a href="https://cloud.google.com/" class="devsite-site-logo-link gc-analytics-event"
+   data-category="Site-Wide Custom Events" data-label="Site logo"><img src="https://cloud.google.com/_static/d7147bb846/images/cloud/cloud-logo.svg"
+       class="devsite-site-logo" alt="Google Cloud"><span class="devsite-site-name devsite-product-name">Google Cloud</span></a></div><div class="devsite-header-upper-tabs"><nav class="devsite-doc-set-nav devsite-nav devsite-overflow-tabs-scroll-wrapper"><ul class="devsite-doc-set-nav-tab-list devsite-overflow-tabs-scroll"><li class="devsite-doc-set-nav-tab-container devsite-nav-tab
+               "><a href="https://cloud.google.com/why-google-cloud/"
+         class=" devsite-nav-tab
+                devsite-doc-set-nav-tab devsite-doc-set-nav-tab-link gc-analytics-event"
+         
+       
+         data-category="Site-Wide Custom Events"
+       
+         data-label="Tab: Why Google"
+       
+         track-type="globalNav"
+       
+         track-name="whyGoogle"
+       >
+        Why Google
+      </a></li><li class="devsite-doc-set-nav-tab-container devsite-nav-tab
+               "><a href="https://cloud.google.com/products/"
+         class=" devsite-nav-tab
+                devsite-doc-set-nav-tab devsite-doc-set-nav-tab-link gc-analytics-event"
+         
+       
+         data-category="Site-Wide Custom Events"
+       
+         data-label="Tab: Products"
+       
+         track-type="globalNav"
+       
+         track-name="products"
+       >
+        Products
+      </a></li><li class="devsite-doc-set-nav-tab-container devsite-nav-tab
+               "><a href="https://cloud.google.com/solutions/"
+         class="devsite-doc-set-nav-active devsite-nav-tab
+                devsite-doc-set-nav-tab devsite-doc-set-nav-tab-link gc-analytics-event"
+         aria-label="Solutions, selected"
+       
+         data-category="Site-Wide Custom Events"
+       
+         data-label="Tab: Solutions"
+       >
+        Solutions
+      </a></li><li class="devsite-doc-set-nav-tab-container devsite-nav-tab
+               "><a href="https://cloud.google.com/launcher/"
+         class=" devsite-nav-tab
+                devsite-doc-set-nav-tab devsite-doc-set-nav-tab-link gc-analytics-event"
+         
+       
+         data-category="Site-Wide Custom Events"
+       
+         data-label="Tab: Launcher"
+       
+         track-type="globalNav"
+       
+         track-name="launcher"
+       >
+        Launcher
+      </a></li><li class="devsite-doc-set-nav-tab-container devsite-nav-tab
+               "><a href="https://cloud.google.com/pricing/"
+         class=" devsite-nav-tab
+                devsite-doc-set-nav-tab devsite-doc-set-nav-tab-link gc-analytics-event"
+         
+       
+         data-category="Site-Wide Custom Events"
+       
+         data-label="Tab: Pricing"
+       
+         track-type="globalNav"
+       
+         track-name="pricing"
+       >
+        Pricing
+      </a></li><li class="devsite-doc-set-nav-tab-container devsite-nav-tab
+               "><a href="https://cloud.google.com/security/"
+         class=" devsite-nav-tab
+                devsite-doc-set-nav-tab devsite-doc-set-nav-tab-link gc-analytics-event"
+         
+       
+         data-category="Site-Wide Custom Events"
+       
+         data-label="Tab: Security"
+       
+         track-type="globalNav"
+       
+         track-name="security"
+       >
+        Security
+      </a></li><li class="devsite-doc-set-nav-tab-container devsite-nav-tab
+               "><a href="https://cloud.google.com/customers/"
+         class=" devsite-nav-tab
+                devsite-doc-set-nav-tab devsite-doc-set-nav-tab-link gc-analytics-event"
+         
+       
+         data-category="Site-Wide Custom Events"
+       
+         data-label="Tab: Customers"
+       
+         track-type="globalNav"
+       
+         track-name="customers"
+       >
+        Customers
+      </a></li><li class="devsite-doc-set-nav-tab-container devsite-nav-tab
+               "><a href="https://cloud.google.com/docs/"
+         class=" devsite-nav-tab
+                devsite-doc-set-nav-tab devsite-doc-set-nav-tab-link gc-analytics-event"
+         
+       
+         data-category="Site-Wide Custom Events"
+       
+         data-label="Tab: Documentation"
+       
+         track-type="globalNav"
+       
+         track-name="documentation"
+       >
+        Documentation
+      </a></li><li class="devsite-doc-set-nav-tab-container devsite-nav-tab
+               "><a href="https://cloud.google.com/support/"
+         class=" devsite-nav-tab
+                devsite-doc-set-nav-tab devsite-doc-set-nav-tab-link gc-analytics-event"
+         
+       
+         data-category="Site-Wide Custom Events"
+       
+         data-label="Tab: Support"
+       
+         track-type="globalNav"
+       
+         track-name="support"
+       >
+        Support
+      </a></li><li class="devsite-doc-set-nav-tab-container devsite-nav-tab
+               "><a href="https://cloud.google.com/partners/"
+         class=" devsite-nav-tab
+                devsite-doc-set-nav-tab devsite-doc-set-nav-tab-link gc-analytics-event"
+         
+       
+         data-category="Site-Wide Custom Events"
+       
+         data-label="Tab: Partners"
+       
+         track-type="globalNav"
+       
+         track-name="partners"
+       >
+        Partners
+      </a></li></ul></nav></div><form class="devsite-search-form"
+                action="https://cloud.google.com/s/results/"
+                method="GET"
+                id="top-search"
+                search-placeholder='Search'><div id="searchbox" class="devsite-searchbox"><input placeholder='Search'
+         
+         type="text"
+         class="devsite-search-field devsite-search-query"
+         name="q"
+         value=""
+         autocomplete="off"
+         
+         aria-label="Search box"><div class="devsite-search-image material-icons"></div></div><input type="hidden"
+       name="p"
+       id="search_project"
+       value="/solutions/"
+       data-project-name="Solutions"
+       data-project-path="/solutions/"
+       data-query-match=""><input type="hidden" class="suggest-project" value="Solutions" /></form><a class="devsite-header-link devsite-top-button button gc-analytics-event"
+               href="//console.cloud.google.com/"
+               data-category="Site-Wide Custom Events"
+               data-label="Site header link"
+               track-type="navigateTo"
+               track-name="console"
+               track-metadata-position="nav"><div class="devsite-header-link-label">Console</div></a><button type="button" class="devsite-search-button devsite-header-icon-button button-flat
+                                       material-icons"></button><a href="https://www.google.com/accounts/ServiceLogin?passive=true&continue=https%3A%2F%2Fcloud.google.com%2Fsolutions%2Ftime-series%2Fbigquery-financial-forex%3Frefresh%3D1&service=cloudconsole"
+   class="devsite-user-signin devsite-top-button button gc-analytics-event"
+   data-category="Site-Wide Custom Events" data-label="Sign in button">
+  
+  Sign in
+</a></div></div></div><div class="devsite-collapsible-section"><div class="devsite-header-background devsite-full-site-width"><div class="devsite-product-id-row devsite-full-site-width"><div class="devsite-product-description-row"><ul class="devsite-breadcrumb-list"><li class="devsite-breadcrumb-item">
+    
+    
+    
+      Solutions
+    
+    
+  </li></ul></div><div class="devsite-product-button-row
+            cloud-free-trial-eligible"><button type="button" id="devsite-feedback-project"
+          class="devsite-feedback-button devsite-top-button gc-analytics-event"
+          data-category="Site-Wide Custom Events" data-label="Send Feedback Button"
+          track-type="feedback" track-name="sendFeedbackLink" track-metadata-position="header">
+  
+  Send feedback
+  </button><a
+    
+      href="https://console.cloud.google.com/freetrial"
+    
+    
+      class="cloud-free-trial-button button-primary button"
+    
+    
+      
+      track-type="freeTrial"
+      
+      track-name="try"
+      
+      track-metadata-position="nav"
+      
+    >
+    Try It Free
+  </a><a
+    
+      href="https://cloud.google.com/contact/"
+    
+    
+      class="cloud-contact-sales-button button"
+    
+    
+      
+      track-type="sales"
+      
+      track-name="contact"
+      
+      track-metadata-position="nav"
+      
+    >
+    Contact Sales
+  </a></div></div></div></div></header><script>
+    if (window.jQuery) {
+      $(document).ready(function() {
+        if (window.devsite && window.devsite.search) {
+          
+          window.devsite.search.init('en')
+        }
+      });
+    }
+  </script></div><div id="gc-wrapper"itemscope itemtype="http://schema.org/Article"><input class="google-tag-manager-id" type="hidden" value="GTM-5CVQBG"><script>
+      var dataLayer = [{"freeTrialEligibleUser": "True", "userCountry": "HK", "language": {"requested": "en", "served": "en"}, "projectName": "Solutions", "scriptsafe": null, "signedIn": "False", "internalUser": "False"}];
+    </script>
+
+      
+        <div class="devsite-site-mask"></div>
+        
+  
+
+
+<nav class="devsite-nav-responsive devsite-nav nocontent" tabindex="0">
+  
+  <div class="devsite-nav-responsive-tabs-panel">
+    
+      
+        
+
+
+
+<nav class="devsite-nav-responsive-tabs devsite-nav">
+  <ul class="devsite-nav-list">
+  
+    <li class="devsite-nav-item devsite-nav-item-heading">
+    
+      <a 
+           href="https://cloud.google.com/why-google-cloud/?nav=true"
+         
+         class="devsite-nav-responsive-tab devsite-nav-title gc-analytics-event
+                "
+         data-category="Site-Wide Custom Events" data-label="Responsive Tab: Why Google">
+        Why Google
+      </a>
+      
+      
+    
+    </li>
+  
+    <li class="devsite-nav-item devsite-nav-item-heading">
+    
+      <a 
+           href="https://cloud.google.com/products/?nav=true"
+         
+         class="devsite-nav-responsive-tab devsite-nav-title gc-analytics-event
+                "
+         data-category="Site-Wide Custom Events" data-label="Responsive Tab: Products">
+        Products
+      </a>
+      
+      
+    
+    </li>
+  
+    <li class="devsite-nav-item devsite-nav-item-heading">
+    
+      <span class="devsite-nav-responsive-forward devsite-nav-responsive-tab devsite-nav-title
+                   devsite-nav-active gc-analytics-event"
+            data-category="Site-Wide Custom Events" data-label="Responsive Tab: Solutions"
+            tabindex="0">
+        Solutions
+      </span>
+    
+    </li>
+  
+    <li class="devsite-nav-item devsite-nav-item-heading">
+    
+      <a 
+           href="https://cloud.google.com/launcher/?nav=true"
+         
+         class="devsite-nav-responsive-tab devsite-nav-title gc-analytics-event
+                "
+         data-category="Site-Wide Custom Events" data-label="Responsive Tab: Launcher">
+        Launcher
+      </a>
+      
+      
+    
+    </li>
+  
+    <li class="devsite-nav-item devsite-nav-item-heading">
+    
+      <a 
+           href="https://cloud.google.com/pricing/?nav=true"
+         
+         class="devsite-nav-responsive-tab devsite-nav-title gc-analytics-event
+                "
+         data-category="Site-Wide Custom Events" data-label="Responsive Tab: Pricing">
+        Pricing
+      </a>
+      
+      
+    
+    </li>
+  
+    <li class="devsite-nav-item devsite-nav-item-heading">
+    
+      <a 
+           href="https://cloud.google.com/security/?nav=true"
+         
+         class="devsite-nav-responsive-tab devsite-nav-title gc-analytics-event
+                "
+         data-category="Site-Wide Custom Events" data-label="Responsive Tab: Security">
+        Security
+      </a>
+      
+      
+    
+    </li>
+  
+    <li class="devsite-nav-item devsite-nav-item-heading">
+    
+      <a 
+           href="https://cloud.google.com/customers/?nav=true"
+         
+         class="devsite-nav-responsive-tab devsite-nav-title gc-analytics-event
+                "
+         data-category="Site-Wide Custom Events" data-label="Responsive Tab: Customers">
+        Customers
+      </a>
+      
+      
+    
+    </li>
+  
+    <li class="devsite-nav-item devsite-nav-item-heading">
+    
+      <a 
+           href="https://cloud.google.com/docs/?nav=true"
+         
+         class="devsite-nav-responsive-tab devsite-nav-title gc-analytics-event
+                "
+         data-category="Site-Wide Custom Events" data-label="Responsive Tab: Documentation">
+        Documentation
+      </a>
+      
+      
+    
+    </li>
+  
+    <li class="devsite-nav-item devsite-nav-item-heading">
+    
+      <a 
+           href="https://cloud.google.com/support/?nav=true"
+         
+         class="devsite-nav-responsive-tab devsite-nav-title gc-analytics-event
+                "
+         data-category="Site-Wide Custom Events" data-label="Responsive Tab: Support">
+        Support
+      </a>
+      
+      
+    
+    </li>
+  
+    <li class="devsite-nav-item devsite-nav-item-heading">
+    
+      <a 
+           href="https://cloud.google.com/partners/?nav=true"
+         
+         class="devsite-nav-responsive-tab devsite-nav-title gc-analytics-event
+                "
+         data-category="Site-Wide Custom Events" data-label="Responsive Tab: Partners">
+        Partners
+      </a>
+      
+      
+    
+    </li>
+  
+  
+    <li class="devsite-nav-item devsite-nav-item-heading">
+      <a href="//console.cloud.google.com/"
+         class="devsite-nav-responsive-tab devsite-nav-title gc-analytics-event"
+         data-category="Site-Wide Custom Events"
+         data-label="Responsive Tab: console">
+        Console
+      </a>
+    </li>
+  
+  </ul>
+</nav>
+
+
+      
+    
+  </div>
+  
+  
+  <div class="devsite-nav-responsive-sidebar-panel">
+    
+    <div class="devsite-nav-responsive-back" tabindex="0"></div>
+    
+    <nav class="devsite-nav-responsive-sidebar"></nav>
+  </div>
+  
+  
+    <div class="devsite-nav-responsive-index-panel">
+      <div class="devsite-nav-index-back" tabindex="0"></div>
+      <nav>
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+      </nav>
+    </div>
+  
+</nav>
+
+
+        <div class="devsite-main-content clearfix">
+
+        
+        
+
+        
+  
+  
+    
+    
+      
+  <nav class="devsite-section-nav devsite-nav nocontent">
+    <ul class="devsite-nav-list devsite-nav-expandable"><li class="devsite-nav-item devsite-nav-item-heading"><span class="devsite-nav-title devsite-nav-title-no-path" track-type="leftNav" track-name="expandNavSectionNoLink" track-metadata-position="0">Solutions</span></li><li class="devsite-nav-item"><a href="https://cloud.google.com/solutions" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="0" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">Overview</a></li><li class="devsite-nav-item devsite-nav-item-section-expandable"><span class="devsite-nav-title devsite-nav-title-no-path" track-type="leftNav" track-name="expandNavSectionNoLink"track-metadata-position="0" aria-label="Media, click to expand/collapse" role="link">Media</span><a class="devsite-nav-toggle devsite-nav-toggle-collapsed material-icons" track-type="leftNav" track-name="expandNavSectionArrow" track-metadata-position="0" aria-hidden="true"></a><ul class="devsite-nav-section devsite-nav-section-collapsed"><li class="devsite-nav-item"><a href="https://cloud.google.com/solutions/media/" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="1" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">Overview</a></li><li class="devsite-nav-item"><a href="https://cloud.google.com/docs/tutorials#media" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="1" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">Articles</a></li></ul></li><li class="devsite-nav-item devsite-nav-item-section-expandable"><span class="devsite-nav-title devsite-nav-title-no-path" track-type="leftNav" track-name="expandNavSectionNoLink"track-metadata-position="0" aria-label="Gaming, click to expand/collapse" role="link">Gaming</span><a class="devsite-nav-toggle devsite-nav-toggle-collapsed material-icons" track-type="leftNav" track-name="expandNavSectionArrow" track-metadata-position="0" aria-hidden="true"></a><ul class="devsite-nav-section devsite-nav-section-collapsed"><li class="devsite-nav-item"><a href="https://cloud.google.com/solutions/gaming" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="1" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">Overview</a></li><li class="devsite-nav-item"><a href="https://cloud.google.com/docs/tutorials#gaming" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="1" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">Articles</a></li></ul></li><li class="devsite-nav-item devsite-nav-item-section-expandable"><span class="devsite-nav-title devsite-nav-title-no-path" track-type="leftNav" track-name="expandNavSectionNoLink"track-metadata-position="0" aria-label="Financial Services, click to expand/collapse" role="link">Financial Services</span><a class="devsite-nav-toggle devsite-nav-toggle-expanded material-icons" track-type="leftNav" track-name="expandNavSectionArrow" track-metadata-position="0"></a><ul class="devsite-nav-section devsite-nav-section-expanded"><li class="devsite-nav-item"><a href="https://cloud.google.com/solutions/financial-services" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="1" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">Overview</a></li><li class="devsite-nav-item devsite-nav-active"><a href="https://cloud.google.com/docs/tutorials#financial_services" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="1" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">Articles</a></li></ul></li><li class="devsite-nav-item devsite-nav-item-section-expandable"><span class="devsite-nav-title devsite-nav-title-no-path" track-type="leftNav" track-name="expandNavSectionNoLink"track-metadata-position="0" aria-label="Internet of Things, click to expand/collapse" role="link">Internet of Things</span><a class="devsite-nav-toggle devsite-nav-toggle-collapsed material-icons" track-type="leftNav" track-name="expandNavSectionArrow" track-metadata-position="0" aria-hidden="true"></a><ul class="devsite-nav-section devsite-nav-section-collapsed"><li class="devsite-nav-item"><a href="https://cloud.google.com/solutions/iot" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="1" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">Overview</a></li><li class="devsite-nav-item"><a href="https://cloud.google.com/docs/tutorials#internet_of_things" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="1" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">Articles</a></li></ul></li><li class="devsite-nav-item devsite-nav-item-section-expandable"><span class="devsite-nav-title devsite-nav-title-no-path" track-type="leftNav" track-name="expandNavSectionNoLink"track-metadata-position="0" aria-label="Backup &amp; Archive, click to expand/collapse" role="link">Backup &amp; Archive</span><a class="devsite-nav-toggle devsite-nav-toggle-collapsed material-icons" track-type="leftNav" track-name="expandNavSectionArrow" track-metadata-position="0" aria-hidden="true"></a><ul class="devsite-nav-section devsite-nav-section-collapsed"><li class="devsite-nav-item"><a href="https://cloud.google.com/solutions/" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="1" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">Overview</a></li><li class="devsite-nav-item"><a href="https://cloud.google.com/docs/tutorials#backup%20archive" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="1" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">Articles</a></li></ul></li><li class="devsite-nav-item devsite-nav-item-section-expandable"><span class="devsite-nav-title devsite-nav-title-no-path" track-type="leftNav" track-name="expandNavSectionNoLink"track-metadata-position="0" aria-label="Digital Marketing, click to expand/collapse" role="link">Digital Marketing</span><a class="devsite-nav-toggle devsite-nav-toggle-collapsed material-icons" track-type="leftNav" track-name="expandNavSectionArrow" track-metadata-position="0" aria-hidden="true"></a><ul class="devsite-nav-section devsite-nav-section-collapsed"><li class="devsite-nav-item"><a href="https://cloud.google.com/solutions/" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="1" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">Overview</a></li><li class="devsite-nav-item"><a href="https://cloud.google.com/docs/tutorials#marketing" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="1" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">Articles</a></li></ul></li><li class="devsite-nav-item devsite-nav-item-section-expandable"><span class="devsite-nav-title devsite-nav-title-no-path" track-type="leftNav" track-name="expandNavSectionNoLink"track-metadata-position="0" aria-label="Retail &amp; Commerce, click to expand/collapse" role="link">Retail &amp; Commerce</span><a class="devsite-nav-toggle devsite-nav-toggle-collapsed material-icons" track-type="leftNav" track-name="expandNavSectionArrow" track-metadata-position="0" aria-hidden="true"></a><ul class="devsite-nav-section devsite-nav-section-collapsed"><li class="devsite-nav-item"><a href="https://cloud.google.com/solutions/commerce" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="1" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">Overview</a></li><li class="devsite-nav-item"><a href="https://cloud.google.com/docs/tutorials#retail_and_commerce" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="1" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">Articles</a></li></ul></li><li class="devsite-nav-item devsite-nav-item-section-expandable"><span class="devsite-nav-title devsite-nav-title-no-path" track-type="leftNav" track-name="expandNavSectionNoLink"track-metadata-position="0" aria-label="Websites &amp; Web Apps, click to expand/collapse" role="link">Websites &amp; Web Apps</span><a class="devsite-nav-toggle devsite-nav-toggle-collapsed material-icons" track-type="leftNav" track-name="expandNavSectionArrow" track-metadata-position="0" aria-hidden="true"></a><ul class="devsite-nav-section devsite-nav-section-collapsed"><li class="devsite-nav-item"><a href="https://cloud.google.com/solutions/websites" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="1" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">Overview</a></li><li class="devsite-nav-item"><a href="https://cloud.google.com/docs/tutorials#computing" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="1" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">Articles</a></li></ul></li><li class="devsite-nav-item devsite-nav-item-section-expandable"><span class="devsite-nav-title devsite-nav-title-no-path" track-type="leftNav" track-name="expandNavSectionNoLink"track-metadata-position="0" aria-label="Big Data &amp; Machine Learning, click to expand/collapse" role="link">Big Data &amp; Machine Learning</span><a class="devsite-nav-toggle devsite-nav-toggle-collapsed material-icons" track-type="leftNav" track-name="expandNavSectionArrow" track-metadata-position="0" aria-hidden="true"></a><ul class="devsite-nav-section devsite-nav-section-collapsed"><li class="devsite-nav-item"><a href="https://cloud.google.com/solutions/big-data" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="1" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">Overview</a></li><li class="devsite-nav-item"><a href="https://cloud.google.com/docs/tutorials#big_data%20machine_learning" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="1" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">Articles</a></li></ul></li><li class="devsite-nav-item devsite-nav-item-section-expandable"><span class="devsite-nav-title devsite-nav-title-no-path" track-type="leftNav" track-name="expandNavSectionNoLink"track-metadata-position="0" aria-label="Development &amp; Test, click to expand/collapse" role="link">Development &amp; Test</span><a class="devsite-nav-toggle devsite-nav-toggle-collapsed material-icons" track-type="leftNav" track-name="expandNavSectionArrow" track-metadata-position="0" aria-hidden="true"></a><ul class="devsite-nav-section devsite-nav-section-collapsed"><li class="devsite-nav-item"><a href="https://cloud.google.com/solutions/devtest" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="1" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">Overview</a></li><li class="devsite-nav-item"><a href="https://cloud.google.com/docs/tutorials#development_and_test" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="1" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">Articles</a></li></ul></li><li class="devsite-nav-item devsite-nav-item-section-expandable"><span class="devsite-nav-title devsite-nav-title-no-path" track-type="leftNav" track-name="expandNavSectionNoLink"track-metadata-position="0" aria-label="Mobile Applications, click to expand/collapse" role="link">Mobile Applications</span><a class="devsite-nav-toggle devsite-nav-toggle-collapsed material-icons" track-type="leftNav" track-name="expandNavSectionArrow" track-metadata-position="0" aria-hidden="true"></a><ul class="devsite-nav-section devsite-nav-section-collapsed"><li class="devsite-nav-item"><a href="https://cloud.google.com/solutions/mobile" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="1" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">Overview</a></li><li class="devsite-nav-item"><a href="https://cloud.google.com/docs/tutorials#mobile" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="1" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">Articles</a></li></ul></li><li class="devsite-nav-item devsite-nav-item-section-expandable"><span class="devsite-nav-title devsite-nav-title-no-path" track-type="leftNav" track-name="expandNavSectionNoLink"track-metadata-position="0" aria-label="Life Sciences, click to expand/collapse" role="link">Life Sciences</span><a class="devsite-nav-toggle devsite-nav-toggle-collapsed material-icons" track-type="leftNav" track-name="expandNavSectionArrow" track-metadata-position="0" aria-hidden="true"></a><ul class="devsite-nav-section devsite-nav-section-collapsed"><li class="devsite-nav-item"><a href="https://cloud.google.com/solutions/" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="1" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">Overview</a></li><li class="devsite-nav-item"><a href="https://cloud.google.com/docs/tutorials#lifesciences" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="1" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">Articles</a></li></ul></li><li class="devsite-nav-item devsite-nav-item-section-expandable"><span class="devsite-nav-title devsite-nav-title-no-path" track-type="leftNav" track-name="expandNavSectionNoLink"track-metadata-position="0" aria-label="Hybrid, click to expand/collapse" role="link">Hybrid</span><a class="devsite-nav-toggle devsite-nav-toggle-collapsed material-icons" track-type="leftNav" track-name="expandNavSectionArrow" track-metadata-position="0" aria-hidden="true"></a><ul class="devsite-nav-section devsite-nav-section-collapsed"><li class="devsite-nav-item"><a href="https://cloud.google.com/solutions/" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="1" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">Overview</a></li><li class="devsite-nav-item"><a href="https://cloud.google.com/docs/tutorials#hybridcloud" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="1" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">Articles</a></li></ul></li><li class="devsite-nav-item devsite-nav-item-section-expandable"><span class="devsite-nav-title devsite-nav-title-no-path" track-type="leftNav" track-name="expandNavSectionNoLink"track-metadata-position="0" aria-label="Security, click to expand/collapse" role="link">Security</span><a class="devsite-nav-toggle devsite-nav-toggle-collapsed material-icons" track-type="leftNav" track-name="expandNavSectionArrow" track-metadata-position="0" aria-hidden="true"></a><ul class="devsite-nav-section devsite-nav-section-collapsed"><li class="devsite-nav-item"><a href="https://cloud.google.com/security/" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="1" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">Overview</a></li><li class="devsite-nav-item"><a href="https://cloud.google.com/docs/tutorials#security" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="1" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">Articles</a></li></ul></li><li class="devsite-nav-item"><a href="https://cloud.google.com/docs/tutorials#architecture" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="0" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">Architecture Diagrams</a></li><li class="devsite-nav-item"><a href="https://cloud.google.com/docs/tutorials#partner" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="0" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">Partner Solutions</a></li></ul>
+  </nav>
+
+    
+
+    
+  <nav class="devsite-page-nav devsite-nav"></nav>
+
+
+      <article class="devsite-article">
+        <article class="devsite-article-inner">
+  
+          
+  
+
+
+
+  
+  <nav class="devsite-breadcrumb-nav devsite-nav">
+    
+
+
+<ul class="devsite-breadcrumb-list">
+  
+  <li class="devsite-breadcrumb-item">
+    
+    
+    <a href="https://cloud.google.com/solutions/" class="devsite-breadcrumb-link gc-analytics-event"
+       data-category="Site-Wide Custom Events" data-label="Breadcrumbs"
+       data-value="1">
+    
+    
+      Solutions
+    
+    
+    </a>
+    
+  </li>
+  
+  <li class="devsite-breadcrumb-item">
+    
+    
+    <div class="devsite-breadcrumb-guillemet material-icons"></div>
+    
+    
+    <a href="https://cloud.google.com/solutions/" class="devsite-breadcrumb-link gc-analytics-event"
+       data-category="Site-Wide Custom Events" data-label="Breadcrumbs"
+       data-value="2">
+    
+    
+      Solutions
+    
+    
+    </a>
+    
+  </li>
+  
+</ul>
+
+  </nav>
+  
+  
+  <h1 itemprop="name" class="devsite-page-title">
+    Analyzing Financial Time Series using BigQuery
+  </h1>
+  
+  
+  <nav class="devsite-page-nav-embedded devsite-nav"></nav>
+  
+  <div class="devsite-article-body clearfix
+            "
+       itemprop="articleBody">
+    
+    <div class="tutorial tutorial-lesson">
+    
+
+    <section id="overview">
+      
+<p>If you're a quantitative analyst, you use a variety of tools and techniques to
+mine big data, such as market transaction histories, for information that
+can provide insight into market trends. Because quotes, trades, and other events
+happen at predictable intervals, such data represents a <em>financial time series</em>
+that you can analyze by using established techniques, including frequency
+analysis and moving averages.</p>
+<p>But dealing with massive datasets can be challenging. Traditional tools might
+not scale as the dataset continually grows. Storage requirements can grow as
+fast as the dataset, so downloading data to your computer's hard drive is no
+longer a workable approach. And it can take a long time to retrieve the right
+subsets of data from a traditional database query.</p>
+<p>Google BigQuery solves these issues and others by enabling you to run SQL-like
+queries against append-only tables and then returning results very quickly by
+using the processing power of Google's infrastructure. You can use BigQuery on
+the web, on the command line, and through APIs, including REST APIs. When
+combined with other components of Google Cloud Platform, and even third-party
+tools, BigQuery enables you to build the data-analysis solutions you need now,
+while being confident that you can scale your solutions in the future.</p>
+<p>Security is always important when working with financial data. Google Cloud
+Platform helps to keep your data
+<a href="https://support.google.com/googleforwork/answer/6057301?rd=1" target="_blank">safe, secure, and private</a>
+in several ways. For example, all data is encrypted during transmission and
+when at rest, and the Cloud Platform is
+<a href="https://services.google.com/fh/files/blogs/btd-sec-op-2014-grey.pdf" target="_blank">ISO 27001</a>,
+<a href="https://services.google.com/fh/files/blogs/btd-sec-op-2014-grey.pdf" target="_blank">SOC3</a>,
+FINRA, and PCI compliant.</p>
+
+    </section>
+
+    
+    <section id="objectives">
+      <h2>Objectives</h2>
+      
+<ul>
+<li>Load a dataset into BigQuery.</li>
+<li>Use the BigQuery web UI to perform various financial time series queries.</li>
+<li>Visualize the results of the queries.</li>
+</ul>
+
+    </section>
+    
+
+    
+
+    
+    <section id="prerequisites">
+      <h2>Prerequisites</h2>
+      
+<ul>
+<li>Enable the
+<a href="https://console.cloud.google.com/flows/enableapi?apiid=bigquery" target="_blank">BigQuery API</a>
+for a Google Cloud Platform Console project.</li>
+<li>Enable billing.</li>
+<li>Install the <a href="https://cloud.google.com/sdk/docs/" target="_blank">Google Cloud SDK</a> on your client
+ operating system.</li>
+</ul>
+<aside class="special"><strong>Important:</strong><span> This tutorial uses billable components of Google Cloud Platform.
+To estimate the cost of running this tutorial:
+<ul>
+<li>Loading data and browsing through table data are
+  <a href="https://cloud.google.com/bigquery/pricing#free" target="_blank">free operations</a>.
+</li>
+<li>There is a
+  <a href="https://cloud.google.com/bigquery/pricing#storage" target="_blank">charge for storing data
+  in BigQuery</a>. Storing the amount of data required by this solution will
+  work out to pennies per month but you should still remember to delete the
+  project after you've finished with the solution.
+</li>
+<li>On-demand pricing includes <a href="https://cloud.google.com/bigquery/pricing#on_demand_pricing"
+ target="_blank">some free data processing each month</a>. You aren't charged
+ for errors or cached queries.</li>
+<li>Running all the queries in this tutorial processes <b>less than 300MB of
+ data</b>, in total.</li>
+<li>For the latest, complete details about BigQuery costs, see the
+ <a href="https://cloud.google.com/bigquery/pricing" target="_blank">BigQuery Pricing page</a>.
+</li>
+</ul>
+Use the <a href="https://cloud.google.com/products/calculator/#id=411d8ca1-210f-4f2c-babd-34c6af2b5538" target="_blank">Google Cloud Platform Pricing Calculator</a> to generate a cost estimate based
+on your projected usage. New Cloud Platform users may be eligible for a
+<a href="https://cloud.google.com/free-trial" target="_blank">free trial</a>.</span></aside>
+
+    </section>
+    
+
+    <div id="completed">
+    
+  <div class="tutorial-completed"></div>
+
+    </div>
+
+
+
+    <div id="tutorial-content">
+    
+  <section class="tutorial-content">
+    
+<h2 id="load_the_sample_data">Load the sample data</h2>
+<p>This tutorial uses foreign exchange (FX) spot-market data, which represents
+quotes of international currency exchange rates over time. These values record
+the prices offered by brokers for the kinds of currency trades that happen such
+as when people travel, when large financial institutions move funds between
+countries or regions, or when speculators seek to make a profit by trading
+currencies. The data uses the following format:</p>
+<pre class="prettyprint notranslate" translate="no"><code>&lt;venue&gt;,
+&lt;from-currency&gt;/&lt;to-currency&gt;,
+&lt;timestamp&gt;,
+&lt;bid-price&gt;,
+&lt;ask-price&gt;
+</code></pre>
+<p>All quotes in the sample dataset are for exchanges between the British pound
+sterling (GBP) and the U.S. dollar (USD).  Timestamps are always expressed in
+Greenwich Mean Time (GMT) and the last three digits are always zero, which makes
+the resolution of the time series one millisecond. The <em>bid</em> price represents
+what the buyers offered to pay for the currency, while the <em>ask</em> price
+represents the price sellers offered per unit.</p>
+<p>To load the sample data, follow these steps.</p>
+<ol>
+<li>
+<p>Set the current project. In a terminal window, enter the following command:</p>
+<pre class="prettyprint notranslate" translate="no"><code>gcloud config set project &lt;your_project_id&gt;
+</code></pre>
+</li>
+<li>
+<p>Create a new dataset in BigQuery.</p>
+<pre class="prettyprint notranslate" translate="no"><code>bq mk timeseries
+</code></pre>
+</li>
+<li>
+<p>Load the data from two CSV files. The first file contains the data for
+January, 2014, and the second file contains the data for February. It can take
+some time to load these datasets.</p>
+<pre class="prettyprint notranslate" translate="no"><code>bq load timeseries.gbpusd_0114 gs://solutions-public-assets/time-series-master/GBPUSD_2014_01.csv venue:STRING,currencies:STRING,time:TIMESTAMP,bid:FLOAT,ask:FLOAT
+
+bq load timeseries.gbpusd_0214 gs://solutions-public-assets/time-series-master/GBPUSD_2014_02.csv venue:STRING,currencies:STRING,time:TIMESTAMP,bid:FLOAT,ask:FLOAT
+</code></pre>
+</li>
+<li>
+<p>Open the <a href="https://bigquery.cloud.google.com/" target="_blank">BigQuery web UI</a>.</p>
+</li>
+<li>View the table schema. Under your project name, expand the <strong>timeseries</strong>
+ dataset and then click <strong>gbpusd_0114</strong>.</li>
+</ol>
+<p>The following figure shows the table schema for the gbpusd_0114 table. The
+schema for the gbpusd_0214 table is identical.</p>
+<p><img alt="Table details" src="https://cloud.google.com/solutions/time-series/images/bigquery-fx-timeseries-table-details.png" /></p>
+<h2 id="query_for_january_quotes">Query for January quotes</h2>
+<p>Start with some simple queries that you can use to see what the FX data looks
+like.</p>
+<ol>
+<li>
+<p>In the BigQuery web UI, click <strong>Compose Query</strong>.</p>
+</li>
+<li>
+<p>In the <strong>New Query</strong> text box, enter the following query.</p>
+<pre class="prettyprint notranslate" translate="no"><code>SELECT
+ venue,
+ currencies,
+ time,
+ bid,
+ ask
+FROM
+ timeseries.gbpusd_0114
+ORDER BY
+ time ASC
+LIMIT   1000;
+</code></pre>
+</li>
+<li>
+<p>Click <strong>Run Query</strong>.</p>
+<p>The query limits the number of results to the first 1000 rows to avoid
+ returning a huge set of data in the browser and to reduce costs.
+ Take a moment to browse the data by using the controls that the tool
+ provides, such as the <strong>Next</strong> and <strong>Prev</strong> links. Notice that the format
+ for the data in the <strong>time</strong> column doesn't show the full resolution of the
+ underlying data, down to milliseconds:</p>
+<pre class="prettyprint notranslate" translate="no"><code>2014-01-01 00:10:10 UTC
+</code></pre>
+</li>
+<li>
+<p>Modify the query to use a built-in function to reformat the time information.
+In the <strong>New Query</strong> text box, change the first part of the SELECT statement as
+follows.</p>
+<pre class="prettyprint notranslate" translate="no"><code>SELECT FORMAT_UTC_USEC(time) AS time,
+</code></pre>
+<p><code>FORMAT_UTC_USEC</code> is a built-in function that reformats the time data as
+ Coordinated Universal Time (UTC). BigQuery provides
+ <a href="https://cloud.google.com/bigquery/query-reference" target="_blank">many built-in functions</a>
+ that you can use to make it easier to query large data sets.</p>
+</li>
+<li>
+<p>Click <strong>Run Query</strong> to see the results. The data format is now in UTC showing
+the full resolution of the timestamp.</p>
+<pre class="prettyprint notranslate" translate="no"><code>2014-01-01 00:00:05.763000
+</code></pre>
+</li>
+</ol>
+<h2 id="view_the_bids_within_a_time_frame">View the bids within a time frame</h2>
+<p>Next, modify the query to restrict the results to a particular period of time.
+This will produce a more manageable set of results that can be downloaded
+quickly as a CSV file.</p>
+<p>In the <strong>New Query</strong> text box, enter and run the following query. This query
+restricts the results to a 30-minute time frame on January 1st.</p>
+<pre class="prettyprint notranslate" translate="no"><code>SELECT
+  TIME(time) AS time,
+  bid
+FROM
+  timeseries.gbpusd_0114
+WHERE
+  time BETWEEN TIMESTAMP("2014-01-01 00:00:00.000")
+  AND TIMESTAMP("2014-01-01 00:29:59.999")
+ORDER BY
+  time ASC;
+</code></pre>
+<p>Notice that this query uses the <code>TIME</code> function to show an abbreviated time
+format. Because you know that that the results are from a particular day, you
+don't need to see the full timestamp, and this format will look better in the
+chart you create in the next step.</p>
+<p>You can visualize this data by downloading the results as a CSV file and viewing
+a chart in Google Sheets. Follow these steps:</p>
+<ol>
+<li>Click <strong>Download as CSV</strong>.</li>
+<li>Open <a href="https://docs.google.com/spreadsheets" target="_blank">Google Sheets</a>
+and create a new spreadsheet.</li>
+<li>Click <strong>File &gt; Import</strong>. Import your results file by uploading the file from
+your computer.</li>
+<li>In the <strong>Import file</strong> dialog box, select <strong>Replace current sheet</strong> and then
+click <strong>Import</strong>.</li>
+<li>Press CTRL+A to select all the data in the spreadsheet.</li>
+<li>Click <strong>Insert &gt; Chart</strong> to create a new chart from the data.</li>
+<li>On the <strong>Charts</strong> tab, select a line chart and then click <strong>Insert</strong>.</li>
+</ol>
+<p>The following figure shows the data as a line chart.</p>
+<p><img alt="Line chart showing bids" src="https://cloud.google.com/solutions/time-series/images/bigquery-fx-timeseries-bids.png" /></p>
+<p>Now you can easily see that the dollar trended lower against the pound for most
+of the first 20 minutes of the day, and then recovered a bit for the next five
+minutes.</p>
+<h2 id="combine_tables">Combine tables</h2>
+<p>The data you loaded into BigQuery was split between two CSV files and now is
+in two tables. You can easily combine the data by embedding a table query, as
+shown in the following example. In this case, the SQL statement combines all the
+tables that have IDs containing "gbpusd", which is true for both of the tables
+you created. The query simply returns the first and last timestamps in the data
+set.</p>
+<pre class="prettyprint notranslate" translate="no"><code>SELECT
+  MIN(time) AS time1,
+  MAX(time)AS time2
+FROM
+  (TABLE_QUERY(timeseries,
+      'table_id CONTAINS "gbpusd"'));
+</code></pre>
+<p>You can also combine specific tables, by name. For example, the following query
+retrieves the ask prices around midnight GMT between January 31 and February 1.
+Note that when you list columns separated by commas in a the <code>SELECT</code> clause,
+BigQuery SQL performs a <code>UNION</code>, not the traditional <code>JOIN</code> operation that you might
+expect if you've used SQL before.</p>
+<pre class="prettyprint notranslate" translate="no"><code>SELECT
+  STRFTIME_UTC_USEC(time,"%m-%d-%Y %r") AS time,
+  ask
+FROM
+  timeseries.gbpusd_0114,
+  timeseries.gbpusd_0214
+WHERE
+  time BETWEEN TIMESTAMP("2014-01-31 23:30:00.000")
+  AND TIMESTAMP("2014-02-01 00:29:59.999")
+ORDER BY
+  time ASC;
+</code></pre>
+<p>This query uses the <code>STRFTIME_UTC_USEC</code> function to format the timestamp for two reasons.
+First, the timestamp needs to be in a format that can be sorted across the two
+days. A format such as <code>HOUR</code> would not work because the sorted result would
+not take the change in day into account. Second, the label for the chart should
+be in an appropriate format. While you could, for example, label the chart with
+the full UTC time including microseconds, the addition timing information isn't
+particularly useful as a chart label.</p>
+<p>The following chart shows a graph of the results.</p>
+<p><img alt="Line chart across files" src="https://cloud.google.com/solutions/time-series/images/bigquery-fx-timeseries-across-files.png" /></p>
+<p>Now you can see exactly what happened to the ask price across the boundary
+between the two tables.</p>
+<h2 id="analyze_the_frequency_of_data">Analyze the frequency of data</h2>
+<p>In financial markets, sometimes the rate of change in quotes can yield
+interesting information. You can run queries to get information about the number
+of FX quotes, called <em>ticks</em>, in a given time period. It's important to note
+that a tick is not a consistent unit of time, like the ticking of a clock. One
+tick is a single quote that often represents a change in price.</p>
+<p>The following query returns the number of ticks per hour on January 16, 2014.</p>
+<pre class="prettyprint notranslate" translate="no"><code>SELECT
+  HOUR(time) AS hour,
+  COUNT(time) AS num_ticks
+FROM
+  timeseries.gbpusd_0114
+WHERE
+  time BETWEEN TIMESTAMP("2014-01-16 00:00:00.000")
+  AND TIMESTAMP("2014-01-16 23:59:59.999")
+GROUP BY
+  hour
+ORDER BY
+  hour ASC;
+</code></pre>
+<p>The following bar chart shows the results.</p>
+<p><img alt="Bar chart with frequency" src="https://cloud.google.com/solutions/time-series/images/bigquery-fx-timeseries-frequency.png" /></p>
+<p>You can see in the chart that the greatest amount of activity happened between
+noon and 4pm GMT on that day.</p>
+<p>Next, run the following query to see the average number of ticks for each hour
+of the day over the entire month of January 2014. The query computes the average
+by dividing the total number of ticks by the number of trading days in the month
+and then grouping by the hour.</p>
+<pre class="prettyprint notranslate" translate="no"><code>SELECT
+  HOUR(time) AS hour,
+  COUNT(time)/COUNT(DISTINCT DAY(time)) AS avg_ticks
+FROM
+  timeseries.gbpusd_0114
+GROUP BY
+  hour
+ORDER BY
+  hour ASC;
+</code></pre>
+<p>The following chart shows the distribution of the averages. You can see that the
+distribution is similar to the result you got for January 16, so that day was a
+fairly average day for that month when it comes to quote activity.</p>
+<p><img alt="Bar chart showing average frequency" src="https://cloud.google.com/solutions/time-series/images/bigquery-fx-timeseries-frequency-avg.png" /></p>
+<h2 id="compute_a_moving_average">Compute a moving average</h2>
+<p>One fundamental technique for financial time-series analysis is the simple
+moving average (SMA). You can use BigQuery to compute an SMA of the FX data. The
+following query retrieves a time series for the 60-second SMA for bid prices in
+a three-hour period during the morning of January 16th.</p>
+<pre class="prettyprint notranslate" translate="no"><code>SELECT
+  TIME(S1.time) AS bid_time,
+  AVG(S2.bid) AS avg_bid
+FROM
+  timeseries.gbpusd_0114 AS S1
+JOIN EACH
+  timeseries.gbpusd_0114 AS S2
+ON
+  S1.time = S2.time
+WHERE
+  TIMESTAMP_TO_SEC(S2.time)
+  BETWEEN (TIMESTAMP_TO_SEC(S1.time) - 60)
+  AND TIMESTAMP_TO_SEC(S1.time)
+  AND
+  S1.time
+  BETWEEN TIMESTAMP("2014-01-16 09:00:00.000")
+  AND TIMESTAMP("2014-01-16 11:59:59.999")
+GROUP BY
+  bid_time
+ORDER BY
+  bid_time ASC;
+</code></pre>
+<p>This query uses the built-in <code>AVG</code> function to compute the averages. It creates
+the window for the moving average by first performing a self join on the table's
+timestamps and then using the <code>WHERE</code> clause to limit the result of the join to a
+60-second time range. In the <code>JOIN</code> clause, the query uses the <code>EACH</code> modifier,
+which gives BigQuery a hint that the join references two large tables. The query
+execution engine uses this hint to perform optimizations. Finally, the
+<code>GROUP BY</code> clause aggregates the moving averages and the <code>ORDER BY</code> clause sorts
+the results.</p>
+<p>The following chart shows the line graph of the data.</p>
+<p><img alt="Line chart showing moving average" src="https://cloud.google.com/solutions/time-series/images/bigquery-fx-timeseries-sma.png" /></p>
+<h2 id="delete_the_test_data">Delete the test data</h2>
+<p>When you're done working with the test data, you should delete the dataset.
+Follow these steps:</p>
+<ol>
+<li>In the BigQuery web UI, to the right of the <strong>timeseries</strong> dataset name,
+click the down-arrow button.</li>
+<li>Click <strong>Delete dataset</strong>.</li>
+<li>When you're prompted to confirm the delete operation, click <strong>OK</strong>.</li>
+</ol>
+<p>To learn more about BigQuery, read the
+<a href="https://cloud.google.com/bigquery/what-is-bigquery">BigQuery documentation</a>.</p>
+<h2 id="next_steps">Next steps</h2>
+<p>
+
+Try out other Google Cloud Platform features for yourself. Have a look at our
+<a href="https://cloud.google.com/docs/tutorials"  track-type="tutorial" track-name="textLink" track-metadata-position="nextSteps">tutorials</a>.
+
+</p>
+
+  </section>
+
+    </div>
+  </div>
+  
+  </div>
+  
+    
+
+
+
+  
+
+  
+        
+  
+
+
+
+
+
+
+
+        
+<div class="devsite-content-footer nocontent">
+  
+  
+    <p>Except as otherwise noted, the content of this page is licensed under the <a href="http://creativecommons.org/licenses/by/3.0/">Creative Commons Attribution 3.0 License</a>, and code samples are licensed under the <a href="http://www.apache.org/licenses/LICENSE-2.0">Apache 2.0 License</a>. For details, see our <a href="https://developers.google.com/terms/site-policies">Site Policies</a>. Java is a registered trademark of Oracle and/or its affiliates.</p>
+  
+
+  
+    
+    <p class="devsite-content-footer-date" itemprop="datePublished"
+       content="2017-06-01T20:31:31.186000">
+      
+      Last updated June 1, 2017.
+    </p>
+  
+
+</div>
+
+        </article>
+      </article>
+  
+
+        </div>
+      
+
+<footer class="devsite-footer-linkboxes nocontent
+               devsite-footer-linkboxes-all-backup
+               devsite-footer-linkboxes-with-sites"><nav class="devsite-full-site-width"><ul class="devsite-footer-linkboxes-list"><li class="devsite-footer-linkbox devsite-footer-linkbox-backup"><h3 class="devsite-footer-linkbox-heading">Products</h3><ul class="devsite-footer-linkbox-list"><li class="devsite-footer-linkbox-item"><a href="https://cloud.google.com/products/compute/" class="gc-analytics-event"
+               data-category="Site-Wide Custom Events"
+               data-label="Footer Compute">
+                Compute
+            </a></li><li class="devsite-footer-linkbox-item"><a href="https://cloud.google.com/products/storage/" class="gc-analytics-event"
+               data-category="Site-Wide Custom Events"
+               data-label="Footer Storage">
+                Storage
+            </a></li><li class="devsite-footer-linkbox-item"><a href="https://cloud.google.com/products/networking/" class="gc-analytics-event"
+               data-category="Site-Wide Custom Events"
+               data-label="Footer Networking">
+                Networking
+            </a></li><li class="devsite-footer-linkbox-item"><a href="https://cloud.google.com/products/big-data/" class="gc-analytics-event"
+               data-category="Site-Wide Custom Events"
+               data-label="Footer Big Data">
+                Big Data
+            </a></li><li class="devsite-footer-linkbox-item"><a href="https://cloud.google.com/products/machine-learning/" class="gc-analytics-event"
+               data-category="Site-Wide Custom Events"
+               data-label="Footer Machine Learning">
+                Machine Learning
+            </a></li><li class="devsite-footer-linkbox-item"><a href="https://cloud.google.com/products/#management" class="gc-analytics-event"
+               data-category="Site-Wide Custom Events"
+               data-label="Footer Management Tools">
+                Management Tools
+            </a></li><li class="devsite-footer-linkbox-item"><a href="https://cloud.google.com/products/tools/" class="gc-analytics-event"
+               data-category="Site-Wide Custom Events"
+               data-label="Footer Developer Tools">
+                Developer Tools
+            </a></li><li class="devsite-footer-linkbox-item"><a href="https://cloud.google.com/products/#identity-security" class="gc-analytics-event"
+               data-category="Site-Wide Custom Events"
+               data-label="Footer Identity and Security">
+                Identity &amp; Security
+            </a></li><li class="devsite-footer-linkbox-item"><a href="//status.cloud.google.com" class="gc-analytics-event"
+               data-category="Site-Wide Custom Events"
+               data-label="Footer System Status">
+                System Status
+            </a></li></ul></li><li class="devsite-footer-linkbox devsite-footer-linkbox-backup"><h3 class="devsite-footer-linkbox-heading">Learn More</h3><ul class="devsite-footer-linkbox-list"><li class="devsite-footer-linkbox-item"><a href="https://cloud.google.com/why-google/" class="gc-analytics-event"
+               data-category="Site-Wide Custom Events"
+               data-label="Footer Why Google">
+                Why Google Cloud
+            </a></li><li class="devsite-footer-linkbox-item"><a href="https://cloud.google.com/pricing/" class="gc-analytics-event"
+               data-category="Site-Wide Custom Events"
+               data-label="Footer Pricing">
+                Pricing
+            </a></li><li class="devsite-footer-linkbox-item"><a href="https://cloud.google.com/docs/" class="gc-analytics-event"
+               data-category="Site-Wide Custom Events"
+               data-label="Footer Documentation">
+                Documentation
+            </a></li><li class="devsite-footer-linkbox-item"><a href="https://cloud.google.com/docs/tutorials/" class="gc-analytics-event"
+               data-category="Site-Wide Custom Events"
+               data-label="Footer Tutorials">
+                Tutorials
+            </a></li><li class="devsite-footer-linkbox-item"><a href="https://cloud.google.com/training/" class="gc-analytics-event"
+               data-category="Site-Wide Custom Events"
+               data-label="Footer Training">
+                Training
+            </a></li><li class="devsite-footer-linkbox-item"><a href="https://cloud.google.com/solutions/" class="gc-analytics-event"
+               data-category="Site-Wide Custom Events"
+               data-label="Footer Solutions">
+                Solutions
+            </a></li><li class="devsite-footer-linkbox-item"><a href="https://cloud.google.com/security/" class="gc-analytics-event"
+               data-category="Site-Wide Custom Events"
+               data-label="Footer Security &amp; Compliance">
+                Security &amp; Compliance
+            </a></li><li class="devsite-footer-linkbox-item"><a href="https://cloud.google.com/partners/" class="gc-analytics-event"
+               data-category="Site-Wide Custom Events"
+               data-label="Footer Partners">
+                Partners
+            </a></li><li class="devsite-footer-linkbox-item"><a href="https://cloud.google.com/customers/" class="gc-analytics-event"
+               data-category="Site-Wide Custom Events"
+               data-label="Footer Customers">
+                Customers
+            </a></li><li class="devsite-footer-linkbox-item"><a href="https://cloud.google.com/support/" class="gc-analytics-event"
+               data-category="Site-Wide Custom Events"
+               data-label="Footer Support">
+                Support
+            </a></li><li class="devsite-footer-linkbox-item"><a href="//careers.google.com/cloud/" class="gc-analytics-event"
+               data-category="Site-Wide Custom Events"
+               data-label="Footer Careers">
+                Careers
+            </a></li><li class="devsite-footer-linkbox-item"><a href="//www.google.com/cloud/press" class="gc-analytics-event"
+               data-category="Site-Wide Custom Events"
+               data-label="Footer Press">
+                Press
+            </a></li></ul></li><li class="devsite-footer-linkbox devsite-footer-linkbox-backup"><h3 class="devsite-footer-linkbox-heading">Engage</h3><ul class="devsite-footer-linkbox-list"><li class="devsite-footer-linkbox-item"><a href="https://cloud.google.com/free-trial/" class="gc-analytics-event"
+               data-category="Site-Wide Custom Events"
+               data-label="Footer Free Trial Sign Up">
+                Free Trial Sign Up
+            </a></li><li class="devsite-footer-linkbox-item"><a href="//cloudplatform.googleblog.com" class="gc-analytics-event"
+               data-category="Site-Wide Custom Events"
+               data-label="Footer Blog">
+                Blog
+            </a></li><li class="devsite-footer-linkbox-item"><a href="https://cloud.google.com/community/" class="gc-analytics-event"
+               data-category="Site-Wide Custom Events"
+               data-label="Footer Community">
+                Community
+            </a></li><li class="devsite-footer-linkbox-item"><a href="//plus.google.com/+googlecloudplatform" class="gc-analytics-event"
+               data-category="Site-Wide Custom Events"
+               data-label="Footer Google+">
+                Google+
+            </a></li><li class="devsite-footer-linkbox-item"><a href="//twitter.com/gcpcloud" class="gc-analytics-event"
+               data-category="Site-Wide Custom Events"
+               data-label="Footer Twitter">
+                Twitter
+            </a></li><li class="devsite-footer-linkbox-item"><a href="//www.linkedin.com/showcase/google-cloud" class="gc-analytics-event"
+               data-category="Site-Wide Custom Events"
+               data-label="Footer LinkedIn">
+                LinkedIn
+            </a></li><li class="devsite-footer-linkbox-item"><a href="//stackoverflow.com/questions/tagged/google-cloud-platform" class="gc-analytics-event"
+               data-category="Site-Wide Custom Events"
+               data-label="Footer Stack Overflow">
+                Stack Overflow
+            </a></li><li class="devsite-footer-linkbox-item"><a href="//www.youtube.com/googlecloudplatform" class="gc-analytics-event"
+               data-category="Site-Wide Custom Events"
+               data-label="Footer YouTube">
+                YouTube
+            </a></li><li class="devsite-footer-linkbox-item"><a href="//www.gcppodcast.com" class="gc-analytics-event"
+               data-category="Site-Wide Custom Events"
+               data-label="Footer Podcast">
+                Podcast
+            </a></li><li class="devsite-footer-linkbox-item"><a href="//cloud.google.com/newsletter/" class="gc-analytics-event"
+               data-category="Site-Wide Custom Events"
+               data-label="Footer Newsletter Signup">
+                Newsletter Signup
+            </a></li><li class="devsite-footer-linkbox-item"><a href="//cloud.google.com/usability" class="gc-analytics-event"
+               data-category="Site-Wide Custom Events"
+               data-label="Footer UX Research">
+                UX Research
+            </a></li></ul></li><li class="devsite-footer-linkbox devsite-footer-linkbox-sites"><a href="https://developers.google.com/"
+           class="gc-analytics-event devsite-footer-linkbox-logo-link"
+           data-category="Site-Wide Custom Events" data-label="Footer Google Developers Link"><img class="devsite-footer-linkbox-logo"
+               src="https://cloud.google.com/_static/d7147bb846/images/redesign-14/lockup-color-knockout.png"
+               alt="Google Developers"></a><ul class="devsite-footer-linkbox-list"><li class="devsite-footer-linkbox-item"><a href="//developer.android.com/index.html" class="gc-analytics-event"
+               data-category="Site-Wide Custom Events"
+               data-label="Footer Android Link">
+                Android
+            </a></li><li class="devsite-footer-linkbox-item"><a href="//developer.chrome.com/home" class="gc-analytics-event"
+               data-category="Site-Wide Custom Events"
+               data-label="Footer Chrome Link">
+                Chrome
+            </a></li><li class="devsite-footer-linkbox-item"><a href="//firebase.google.com" class="gc-analytics-event"
+               data-category="Site-Wide Custom Events"
+               data-label="Footer Firebase Link">
+                Firebase
+            </a></li><li class="devsite-footer-linkbox-item"><a href="//cloud.google.com" class="gc-analytics-event"
+               data-category="Site-Wide Custom Events"
+               data-label="Footer Cloud Link">
+                Google Cloud Platform
+            </a></li><li class="devsite-footer-linkbox-item"><a href="//developers.google.com/products/" class="gc-analytics-event"
+               data-category="Site-Wide Custom Events"
+               data-label="Footer Products Link">
+                All Products
+            </a></li></ul></li></ul></nav></footer><footer class="devsite-utility-footer"><nav class="devsite-utility-footer-nav devsite-nav devsite-full-site-width"><div class="devsite-utility-footer-nav-left"><form class="devsite-utility-footer-language" action="/i18n/setlang/" method="post"><input type="hidden" name="xsrf_token" value="CDWcecNm5U73E78kI7IiMjwk3IjmsZfd3YNRyw--cx46MTUyNDQ2MDE3ODYxNDAyMA" /><input type="hidden" name="next" value="/solutions/time-series/bigquery-financial-forex"><select class="devsite-utility-footer-language-select kd-select" name="language"
+                track-type="languageSelector" track-name="click"><option value="de"
+                
+                track-type="languageSelector" track-name="changed"
+                track-metadata-original-language="en"
+                track-metadata-selected-language="de">
+            Deutsch
+          </option><option value="en"
+                 selected="selected" 
+                track-type="languageSelector" track-name="changed"
+                track-metadata-original-language="en"
+                track-metadata-selected-language="en">
+            English
+          </option><option value="es"
+                
+                track-type="languageSelector" track-name="changed"
+                track-metadata-original-language="en"
+                track-metadata-selected-language="es">
+            español
+          </option><option value="pt-br"
+                
+                track-type="languageSelector" track-name="changed"
+                track-metadata-original-language="en"
+                track-metadata-selected-language="pt-br">
+            Português Brasileiro
+          </option><option value="ja"
+                
+                track-type="languageSelector" track-name="changed"
+                track-metadata-original-language="en"
+                track-metadata-selected-language="ja">
+            日本語
+          </option><option value="zh-tw"
+                
+                track-type="languageSelector" track-name="changed"
+                track-metadata-original-language="en"
+                track-metadata-selected-language="zh-tw">
+            繁體中文
+          </option></select></form><span class="devsite-utility-footer-links"><a class="devsite-utility-footer-link gc-analytics-event"
+           href="https://cloud.google.com/terms/"
+           data-category="Site-Wide Custom Events"
+           data-label="Footer terms link"
+           data-footer-link-id="terms"
+           >Terms
+         </a><a class="devsite-utility-footer-link gc-analytics-event"
+           href="//www.google.com/policies/privacy/"
+           data-category="Site-Wide Custom Events"
+           data-label="Footer privacy link"
+           data-footer-link-id="privacy"
+           >Privacy
+         </a><a class="devsite-utility-footer-link gc-analytics-event"
+           href="//www.google.de/contact/impressum.html"
+           data-category="Site-Wide Custom Events"
+           data-label="Footer impressum link"
+           data-footer-link-id="impressum"
+           >Impressum
+         </a></span></div></nav></footer><div class="devsite-feedback-dialog devsite-dialog"><div class="devsite-dialog-contents"><h3>Send feedback about...</h3><div class="devsite-feedback-item"><a data-type="documentation" class="gc-analytics-event"
+           data-category="Site-Wide Custom Events" data-label="Docs Feedback Image"
+           track-type="feedback" track-name="feedbackDocIcon" track-metadata-position="header"><div class="devsite-feedback-item-icon-container"><div class="devsite-feedback-item-icon-white devsite-feedback-item-icon-docs
+                        material-icons"></div></div></a><div class="devsite-feedback-item-name">
+          
+          This page
+        </div><div class="devsite-feedback-item-description"><a data-type="documentation" tabindex="0" class="gc-analytics-event"
+             data-category="Site-Wide Custom Events" data-label="Docs Feedback Text"
+             track-type="feedback" track-name="feedbackDocText" track-metadata-position="header">
+            
+            Documentation feedback
+          </a></div></div><div class="devsite-feedback-item"><a data-type="product" tabindex="0" class="gc-analytics-event"
+           data-category="Site-Wide Custom Events" data-label="Product Feedback Image"
+           track-type="feedback" track-name="feedbackProductIcon" track-metadata-position="header"
+         ><img class="devsite-feedback-item-icon"
+               src="https://cloud.google.com/_static/d7147bb846/images/feedback/google_56px.svg"></a><div class="devsite-feedback-item-name">
+        Solutions
+        </div><div class="devsite-feedback-item-description"><a data-type="product" tabindex="0" class="gc-analytics-event"
+             data-category="Site-Wide Custom Events" data-label="Product Feedback Text"
+             track-type="feedback" track-name="feedbackProductText" track-metadata-position="header"
+           >
+            
+            Product feedback
+          </a></div></div></div><div class="devsite-dialog-buttons"><button type="button" class="devsite-feedback-cancel button-white gc-analytics-event"
+              data-category="Site-Wide Custom Events" data-label="Cancel Feedback Button"
+              track-type="feedback" track-name="cancelFeedbackButton"
+              track-metadata-position="header">
+        
+        Cancel
+      </button></div></div><script>
+  $(document).ready(function() {
+    new devsite.feedback.Widget({
+        'product_id': '410597',
+        'bucket': 'landingpages',
+        'context': '',
+        'version': 'devsite-20180420-r00-rc00.default'
+      },
+      document.querySelectorAll('.devsite-feedback-button'),
+      'en',
+      document.querySelector('.devsite-site-mask'),
+      document.querySelector('.devsite-feedback-dialog'),
+      document.querySelector('.devsite-feedback-cancel'),
+      document.querySelectorAll('.devsite-feedback-item a:not([href])')
+    );
+  });
+  </script></div><script async defer src="//www.gstatic.com/feedback/api.js"></script><script src="https://cloud.google.com/_static2/d7147bb846/jsi18n/"></script><script src="https://cloud.google.com/_static/d7147bb846/js/script_foot_closure.js"></script><script src="https://cloud.google.com/_static/d7147bb846/js/script_foot.js"></script><script>
+        (function($) {
+          
+          devsite.devsite.Init($, {'ENABLE_BLOCKED_VIDEO_PLACEHOLDER': 0, 'SITE_NAME': 'cloud', 'FULL_SITE_SEARCH_ENABLED': 1, 'ENABLE_CLOUDTRACK': 1, 'VTAGS_ENABLED': 1, 'HISTORY_ENABLED': 1, 'VERSION_HASH': 'd7147bb846', 'SCRIPTSAFE_DOMAIN': 'cloud-dot-google-developers.appspot.com', 'ENABLE_BLOCKED_LINK_TOOLTIP': 0, 'ALLOWED_HOSTS': ['.android.com', '.anvato.com', '.apigee.com', '.appspot.com', '.dialogflow.com', '.gonglchuangl.net', '.google.cn', '.google.com', '.googleplex.com', '.nest.com', '.openthread.io', '.openweave.io', '.orbitera.com', '.tensorflow.org'], 'BLOCK_RSS_FEEDS': 0},
+                               '[]','en',
+                               true, '',
+                               {"f62218c009ec029abef196bba5aa34cf": true, "8de7a048f21618359bd37f5ce44be073": false, "098dafe57affddc137df300142652cfd": false, "8e03e230de0bd8a6fe173fdf172e8b3f": true, "cb025a64a50094835616312f4774a53d": true, "51470233c56fc1fde50f00b73c52b216": false, "d169d485cf24243a263783dbe42029b1": true, "039e5d84b87fd75807ffb37b7f1bbf2c": true, "700def1a83e356c06c0925afb05de4b0": false, "6749dcb526ce9bde6993550c7d928d24": true}, '/solutions/',
+                               'https://cloud.google.com/');
+        })(jQuery);
+
+        
+        devsite.localInit = function() {
+          
+        };
+
+      </script><script>
+      $('.devsite-utility-footer-language-select').each(function() {
+        $(this).change(function(){$('.devsite-utility-footer-language').submit();});
+      });
+      </script></div><span id="devsite-request-elapsed" data-request-elapsed="251.430034637"></span></body></html>

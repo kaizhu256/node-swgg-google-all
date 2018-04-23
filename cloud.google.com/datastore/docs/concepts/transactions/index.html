@@ -1,0 +1,6788 @@
+
+
+
+
+
+
+<!DOCTYPE html><html lang="en"
+      class="chekov"><head><script>var a=window.devsite||{};window.devsite=a;a.readyCallbacks=[];window.devsite.readyCallbacks=a.readyCallbacks;a.ready=function(b){a.readyCallbacks.push(b)};window.devsite.ready=a.ready;
+</script><meta charset="utf-8"><meta name="xsrf_token" content="Dl_gJxUT9sQiXJNakNsFQWe1J1vUTrT3eWy5kd_uLTw6MTUyNDQ2MDE5OTk3MDIxMA" /><link rel="canonical" href="https://cloud.google.com/datastore/docs/concepts/transactions"><link rel="alternate" href="https://cloud.google.com/datastore/docs/concepts/transactions?hl=ja" hreflang="ja"><link rel="alternate" href="https://cloud.google.com/datastore/docs/concepts/transactions?hl=pt-br" hreflang="pt-br"><link rel="alternate" href="https://cloud.google.com/datastore/docs/concepts/transactions?hl=de" hreflang="de"><link rel="alternate" href="https://cloud.google.com/datastore/docs/concepts/transactions" hreflang="en"><link rel="alternate" href="https://cloud.google.com/datastore/docs/concepts/transactions" hreflang="x-default"><link rel="shortcut icon" href="https://cloud.google.com/_static/d7147bb846/images/cloud/icons/favicons/onecloud/favicon.ico"><link rel="apple-touch-icon" href="https://cloud.google.com/_static/d7147bb846/images/cloud/icons/favicons/onecloud/apple-icon.png"><meta name="viewport" content="width=device-width, initial-scale=1"><link rel="stylesheet"
+      
+      href="//fonts.googleapis.com/css?family=Google+Sans:400|Roboto:400,400italic,500,500italic,700,700italic|Roboto+Mono:400,500,700|Material+Icons"
+      ><link rel="stylesheet"
+        href="https://cloud.google.com/_static/d7147bb846/css/devsite-cloud-white.css"><link rel="stylesheet" href="https://cloud.google.com/_static/d7147bb846/css/cloud/cloud-site.css"><link rel="search"
+        type="application/opensearchdescription+xml"
+        title="Google Cloud"
+        href="https://cloud.google.com/s/opensearch.xml"><script src="https://cloud.google.com/_static/d7147bb846/js/jquery-bundle.js"></script><meta property="og:site_name" content="Google Cloud"><meta property="og:type" content="website"><meta property="og:url" content="https://cloud.google.com/datastore/docs/concepts/transactions"><meta property="og:locale" content="en"><script>
+    var ___gcfg = ___gcfg || {};
+    ___gcfg.lang = 'en';
+  </script><title>Transactions &nbsp;|&nbsp; Cloud Datastore Documentation
+      &nbsp;|&nbsp; Google Cloud</title><meta property="og:title" content="Transactions &nbsp;|&nbsp; Cloud Datastore Documentation
+      &nbsp;|&nbsp; Google Cloud"></head><body class="
+               devsite-doc-page
+               
+               
+               
+               
+               devsite-header-no-lower-tabs"
+        data-family="endorsed"
+        id="top_of_page"><div class="devsite-wrapper"><div class="devsite-top-section-wrapper
+            "><header class="devsite-top-section nocontent"><div class="devsite-top-logo-row-wrapper-wrapper"><div class="devsite-top-logo-row-wrapper"><div class="devsite-top-logo-row devsite-full-site-width"><button type="button" class="devsite-expand-section-nav devsite-header-icon-button
+                                       button-flat material-icons gc-analytics-event"
+                  data-category="Site-Wide Custom Events" data-label="Hamburger menu"></button><div class="devsite-product-name-wrapper"><a href="https://cloud.google.com/" class="devsite-site-logo-link gc-analytics-event"
+   data-category="Site-Wide Custom Events" data-label="Site logo"><img src="https://cloud.google.com/_static/d7147bb846/images/cloud/cloud-logo.svg"
+       class="devsite-site-logo" alt="Google Cloud"><span class="devsite-site-name devsite-product-name">Google Cloud</span></a></div><div class="devsite-header-upper-tabs"><nav class="devsite-doc-set-nav devsite-nav devsite-overflow-tabs-scroll-wrapper"><ul class="devsite-doc-set-nav-tab-list devsite-overflow-tabs-scroll"><li class="devsite-doc-set-nav-tab-container devsite-nav-tab
+               "><a href="https://cloud.google.com/why-google-cloud/"
+         class=" devsite-nav-tab
+                devsite-doc-set-nav-tab devsite-doc-set-nav-tab-link gc-analytics-event"
+         
+       
+         data-category="Site-Wide Custom Events"
+       
+         data-label="Tab: Why Google"
+       
+         track-type="globalNav"
+       
+         track-name="whyGoogle"
+       >
+        Why Google
+      </a></li><li class="devsite-doc-set-nav-tab-container devsite-nav-tab
+               "><a href="https://cloud.google.com/products/"
+         class=" devsite-nav-tab
+                devsite-doc-set-nav-tab devsite-doc-set-nav-tab-link gc-analytics-event"
+         
+       
+         data-category="Site-Wide Custom Events"
+       
+         data-label="Tab: Products"
+       
+         track-type="globalNav"
+       
+         track-name="products"
+       >
+        Products
+      </a></li><li class="devsite-doc-set-nav-tab-container devsite-nav-tab
+               "><a href="https://cloud.google.com/solutions/"
+         class=" devsite-nav-tab
+                devsite-doc-set-nav-tab devsite-doc-set-nav-tab-link gc-analytics-event"
+         
+       
+         data-category="Site-Wide Custom Events"
+       
+         data-label="Tab: Solutions"
+       
+         track-type="globalNav"
+       
+         track-name="solutions"
+       >
+        Solutions
+      </a></li><li class="devsite-doc-set-nav-tab-container devsite-nav-tab
+               "><a href="https://cloud.google.com/launcher/"
+         class=" devsite-nav-tab
+                devsite-doc-set-nav-tab devsite-doc-set-nav-tab-link gc-analytics-event"
+         
+       
+         data-category="Site-Wide Custom Events"
+       
+         data-label="Tab: Launcher"
+       
+         track-type="globalNav"
+       
+         track-name="launcher"
+       >
+        Launcher
+      </a></li><li class="devsite-doc-set-nav-tab-container devsite-nav-tab
+               "><a href="https://cloud.google.com/pricing/"
+         class=" devsite-nav-tab
+                devsite-doc-set-nav-tab devsite-doc-set-nav-tab-link gc-analytics-event"
+         
+       
+         data-category="Site-Wide Custom Events"
+       
+         data-label="Tab: Pricing"
+       
+         track-type="globalNav"
+       
+         track-name="pricing"
+       >
+        Pricing
+      </a></li><li class="devsite-doc-set-nav-tab-container devsite-nav-tab
+               "><a href="https://cloud.google.com/security/"
+         class=" devsite-nav-tab
+                devsite-doc-set-nav-tab devsite-doc-set-nav-tab-link gc-analytics-event"
+         
+       
+         data-category="Site-Wide Custom Events"
+       
+         data-label="Tab: Security"
+       
+         track-type="globalNav"
+       
+         track-name="security"
+       >
+        Security
+      </a></li><li class="devsite-doc-set-nav-tab-container devsite-nav-tab
+               "><a href="https://cloud.google.com/customers/"
+         class=" devsite-nav-tab
+                devsite-doc-set-nav-tab devsite-doc-set-nav-tab-link gc-analytics-event"
+         
+       
+         data-category="Site-Wide Custom Events"
+       
+         data-label="Tab: Customers"
+       
+         track-type="globalNav"
+       
+         track-name="customers"
+       >
+        Customers
+      </a></li><li class="devsite-doc-set-nav-tab-container devsite-nav-tab
+               "><a href="https://cloud.google.com/docs/"
+         class="devsite-doc-set-nav-active devsite-nav-tab
+                devsite-doc-set-nav-tab devsite-doc-set-nav-tab-link gc-analytics-event"
+         aria-label="Documentation, selected"
+       
+         data-category="Site-Wide Custom Events"
+       
+         data-label="Tab: Documentation"
+       >
+        Documentation
+      </a></li><li class="devsite-doc-set-nav-tab-container devsite-nav-tab
+               "><a href="https://cloud.google.com/support/"
+         class=" devsite-nav-tab
+                devsite-doc-set-nav-tab devsite-doc-set-nav-tab-link gc-analytics-event"
+         
+       
+         data-category="Site-Wide Custom Events"
+       
+         data-label="Tab: Support"
+       
+         track-type="globalNav"
+       
+         track-name="support"
+       >
+        Support
+      </a></li><li class="devsite-doc-set-nav-tab-container devsite-nav-tab
+               "><a href="https://cloud.google.com/partners/"
+         class=" devsite-nav-tab
+                devsite-doc-set-nav-tab devsite-doc-set-nav-tab-link gc-analytics-event"
+         
+       
+         data-category="Site-Wide Custom Events"
+       
+         data-label="Tab: Partners"
+       
+         track-type="globalNav"
+       
+         track-name="partners"
+       >
+        Partners
+      </a></li></ul></nav></div><form class="devsite-search-form"
+                action="https://cloud.google.com/s/results/"
+                method="GET"
+                id="top-search"
+                search-placeholder='Search'><div id="searchbox" class="devsite-searchbox"><input placeholder='Search'
+         
+         type="text"
+         class="devsite-search-field devsite-search-query"
+         name="q"
+         value=""
+         autocomplete="off"
+         
+         aria-label="Search box"><div class="devsite-search-image material-icons"></div></div><input type="hidden"
+       name="p"
+       id="search_project"
+       value="/datastore/docs/"
+       data-project-name="Cloud Datastore Documentation"
+       data-project-path="/datastore/docs/"
+       data-query-match=""><input type="hidden" class="suggest-project" value="Cloud Datastore Documentation" /></form><a class="devsite-header-link devsite-top-button button gc-analytics-event"
+               href="//console.cloud.google.com/"
+               data-category="Site-Wide Custom Events"
+               data-label="Site header link"
+               track-type="navigateTo"
+               track-name="console"
+               track-metadata-position="nav"><div class="devsite-header-link-label">Console</div></a><button type="button" class="devsite-search-button devsite-header-icon-button button-flat
+                                       material-icons"></button><a href="https://www.google.com/accounts/ServiceLogin?passive=true&continue=https%3A%2F%2Fcloud.google.com%2Fdatastore%2Fdocs%2Fconcepts%2Ftransactions%3Frefresh%3D1&service=cloudconsole"
+   class="devsite-user-signin devsite-top-button button gc-analytics-event"
+   data-category="Site-Wide Custom Events" data-label="Sign in button">
+  
+  Sign in
+</a></div></div></div><div class="devsite-collapsible-section"><div class="devsite-header-background devsite-full-site-width"><div class="devsite-product-id-row devsite-full-site-width"><div class="devsite-product-description-row"><ul class="devsite-breadcrumb-list"><li class="devsite-breadcrumb-item">
+    
+    
+    
+      Documentation
+    
+    
+  </li></ul></div><div class="devsite-product-button-row
+            cloud-free-trial-eligible"><button type="button" id="devsite-feedback-project"
+          class="devsite-feedback-button devsite-top-button gc-analytics-event"
+          data-category="Site-Wide Custom Events" data-label="Send Feedback Button"
+          track-type="feedback" track-name="sendFeedbackLink" track-metadata-position="header">
+  
+  Send feedback
+  </button><a
+    
+      href="https://console.cloud.google.com/freetrial"
+    
+    
+      class="cloud-free-trial-button button-primary button"
+    
+    
+      
+      track-type="freeTrial"
+      
+      track-name="try"
+      
+      track-metadata-position="nav"
+      
+    >
+    Try It Free
+  </a><a
+    
+      href="https://cloud.google.com/contact/"
+    
+    
+      class="cloud-contact-sales-button button"
+    
+    
+      
+      track-type="sales"
+      
+      track-name="contact"
+      
+      track-metadata-position="nav"
+      
+    >
+    Contact Sales
+  </a></div></div></div></div></header><script>
+    if (window.jQuery) {
+      $(document).ready(function() {
+        if (window.devsite && window.devsite.search) {
+          
+          window.devsite.search.init('en')
+        }
+      });
+    }
+  </script></div><div id="gc-wrapper"itemscope itemtype="http://schema.org/Article"><input class="google-tag-manager-id" type="hidden" value="GTM-5CVQBG"><script>
+      var dataLayer = [{"freeTrialEligibleUser": "True", "userCountry": "HK", "language": {"requested": "en", "served": "en"}, "projectName": "Cloud Datastore Documentation", "scriptsafe": null, "signedIn": "False", "internalUser": "False"}];
+    </script>
+
+      
+        <div class="devsite-site-mask"></div>
+        
+  
+
+
+<nav class="devsite-nav-responsive devsite-nav nocontent" tabindex="0">
+  
+  <div class="devsite-nav-responsive-tabs-panel">
+    
+      
+        
+
+
+
+<nav class="devsite-nav-responsive-tabs devsite-nav">
+  <ul class="devsite-nav-list">
+  
+    <li class="devsite-nav-item devsite-nav-item-heading">
+    
+      <a 
+           href="https://cloud.google.com/why-google-cloud/?nav=true"
+         
+         class="devsite-nav-responsive-tab devsite-nav-title gc-analytics-event
+                "
+         data-category="Site-Wide Custom Events" data-label="Responsive Tab: Why Google">
+        Why Google
+      </a>
+      
+      
+    
+    </li>
+  
+    <li class="devsite-nav-item devsite-nav-item-heading">
+    
+      <a 
+           href="https://cloud.google.com/products/?nav=true"
+         
+         class="devsite-nav-responsive-tab devsite-nav-title gc-analytics-event
+                "
+         data-category="Site-Wide Custom Events" data-label="Responsive Tab: Products">
+        Products
+      </a>
+      
+      
+    
+    </li>
+  
+    <li class="devsite-nav-item devsite-nav-item-heading">
+    
+      <a 
+           href="https://cloud.google.com/solutions/?nav=true"
+         
+         class="devsite-nav-responsive-tab devsite-nav-title gc-analytics-event
+                "
+         data-category="Site-Wide Custom Events" data-label="Responsive Tab: Solutions">
+        Solutions
+      </a>
+      
+      
+    
+    </li>
+  
+    <li class="devsite-nav-item devsite-nav-item-heading">
+    
+      <a 
+           href="https://cloud.google.com/launcher/?nav=true"
+         
+         class="devsite-nav-responsive-tab devsite-nav-title gc-analytics-event
+                "
+         data-category="Site-Wide Custom Events" data-label="Responsive Tab: Launcher">
+        Launcher
+      </a>
+      
+      
+    
+    </li>
+  
+    <li class="devsite-nav-item devsite-nav-item-heading">
+    
+      <a 
+           href="https://cloud.google.com/pricing/?nav=true"
+         
+         class="devsite-nav-responsive-tab devsite-nav-title gc-analytics-event
+                "
+         data-category="Site-Wide Custom Events" data-label="Responsive Tab: Pricing">
+        Pricing
+      </a>
+      
+      
+    
+    </li>
+  
+    <li class="devsite-nav-item devsite-nav-item-heading">
+    
+      <a 
+           href="https://cloud.google.com/security/?nav=true"
+         
+         class="devsite-nav-responsive-tab devsite-nav-title gc-analytics-event
+                "
+         data-category="Site-Wide Custom Events" data-label="Responsive Tab: Security">
+        Security
+      </a>
+      
+      
+    
+    </li>
+  
+    <li class="devsite-nav-item devsite-nav-item-heading">
+    
+      <a 
+           href="https://cloud.google.com/customers/?nav=true"
+         
+         class="devsite-nav-responsive-tab devsite-nav-title gc-analytics-event
+                "
+         data-category="Site-Wide Custom Events" data-label="Responsive Tab: Customers">
+        Customers
+      </a>
+      
+      
+    
+    </li>
+  
+    <li class="devsite-nav-item devsite-nav-item-heading">
+    
+      <span class="devsite-nav-responsive-forward devsite-nav-responsive-tab devsite-nav-title
+                   devsite-nav-active gc-analytics-event"
+            data-category="Site-Wide Custom Events" data-label="Responsive Tab: Documentation"
+            tabindex="0">
+        Documentation
+      </span>
+    
+    </li>
+  
+    <li class="devsite-nav-item devsite-nav-item-heading">
+    
+      <a 
+           href="https://cloud.google.com/support/?nav=true"
+         
+         class="devsite-nav-responsive-tab devsite-nav-title gc-analytics-event
+                "
+         data-category="Site-Wide Custom Events" data-label="Responsive Tab: Support">
+        Support
+      </a>
+      
+      
+    
+    </li>
+  
+    <li class="devsite-nav-item devsite-nav-item-heading">
+    
+      <a 
+           href="https://cloud.google.com/partners/?nav=true"
+         
+         class="devsite-nav-responsive-tab devsite-nav-title gc-analytics-event
+                "
+         data-category="Site-Wide Custom Events" data-label="Responsive Tab: Partners">
+        Partners
+      </a>
+      
+      
+    
+    </li>
+  
+  
+    <li class="devsite-nav-item devsite-nav-item-heading">
+      <a href="//console.cloud.google.com/"
+         class="devsite-nav-responsive-tab devsite-nav-title gc-analytics-event"
+         data-category="Site-Wide Custom Events"
+         data-label="Responsive Tab: console">
+        Console
+      </a>
+    </li>
+  
+  </ul>
+</nav>
+
+
+      
+    
+  </div>
+  
+  
+  <div class="devsite-nav-responsive-sidebar-panel">
+    
+    <div class="devsite-nav-responsive-back" tabindex="0"></div>
+    
+    <nav class="devsite-nav-responsive-sidebar"></nav>
+  </div>
+  
+  
+    <div class="devsite-nav-responsive-index-panel">
+      <div class="devsite-nav-index-back" tabindex="0"></div>
+      <nav>
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+      </nav>
+    </div>
+  
+</nav>
+
+
+        <div class="devsite-main-content clearfix">
+
+        
+        
+
+        
+  
+  
+    
+    
+      
+  <nav class="devsite-section-nav devsite-nav nocontent">
+    <ul class="devsite-nav-list devsite-nav-expandable"><li class="devsite-nav-item devsite-nav-item-heading"><span class="devsite-nav-title devsite-nav-title-no-path" track-type="leftNav" track-name="expandNavSectionNoLink" track-metadata-position="0">Cloud Datastore API</span></li><li class="devsite-nav-item"><a href="https://cloud.google.com/datastore/" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="0" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">Product Overview</a></li><li class="devsite-nav-item"><a href="https://cloud.google.com/datastore/docs/" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="0" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">Documentation</a></li><li class="devsite-nav-item"><a href="https://cloud.google.com/datastore/docs/quickstart" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="0" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">Quickstart</a></li><li class="devsite-nav-item devsite-nav-item-heading"><span class="devsite-nav-title devsite-nav-title-no-path" track-type="leftNav" track-name="expandNavSectionNoLink" track-metadata-position="0">How-to Guides</span></li><li class="devsite-nav-item"><a href="https://cloud.google.com/datastore/docs/how-to" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="0" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">All How-to Guides</a></li><li class="devsite-nav-item"><a href="https://cloud.google.com/datastore/docs/activate" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="0" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">Sign Up</a></li><li class="devsite-nav-item"><a href="https://cloud.google.com/datastore/docs/concepts/entities" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="0" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">Entities, Properties, and Keys</a></li><li class="devsite-nav-item"><a href="https://cloud.google.com/datastore/docs/concepts/queries" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="0" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">Datastore Queries</a></li><li class="devsite-nav-item devsite-nav-item-section-expandable"><span class="devsite-nav-title devsite-nav-title-no-path" track-type="leftNav" track-name="expandNavSectionNoLink"track-metadata-position="0" aria-label="Datastore Indexes, click to expand/collapse" role="link">Datastore Indexes</span><a class="devsite-nav-toggle devsite-nav-toggle-collapsed material-icons" track-type="leftNav" track-name="expandNavSectionArrow" track-metadata-position="0" aria-hidden="true"></a><ul class="devsite-nav-section devsite-nav-section-collapsed"><li class="devsite-nav-item"><a href="https://cloud.google.com/datastore/docs/concepts/indexes" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="1" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">Overview</a></li><li class="devsite-nav-item"><a href="https://cloud.google.com/datastore/docs/tools/indexconfig" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="1" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">Index Configuration</a></li></ul></li><li class="devsite-nav-item devsite-nav-active"><a href="https://cloud.google.com/datastore/docs/concepts/transactions" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="0" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">Datastore Transactions</a></li><li class="devsite-nav-item"><a href="https://cloud.google.com/datastore/docs/concepts/structuring_for_strong_consistency" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="0" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">Structuring Data for Strong Consistency</a></li><li class="devsite-nav-item devsite-nav-item-section-expandable"><span class="devsite-nav-title devsite-nav-title-no-path" track-type="leftNav" track-name="expandNavSectionNoLink"track-metadata-position="0" aria-label="Administering Datastore, click to expand/collapse" role="link">Administering Datastore</span><a class="devsite-nav-toggle devsite-nav-toggle-collapsed material-icons" track-type="leftNav" track-name="expandNavSectionArrow" track-metadata-position="0" aria-hidden="true"></a><ul class="devsite-nav-section devsite-nav-section-collapsed"><li class="devsite-nav-item"><a href="https://cloud.google.com/datastore/docs/tools/administration" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="1" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">Administration, Statistics, and Quotas</a></li><li class="devsite-nav-item"><a href="https://cloud.google.com/datastore/docs/concepts/metadataqueries" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="1" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">Metadata</a></li><li class="devsite-nav-item"><a href="https://cloud.google.com/datastore/docs/concepts/stats" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="1" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">Datastore Statistics</a></li></ul></li><li class="devsite-nav-item"><a href="https://cloud.google.com/datastore/docs/concepts/errors" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="0" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">Errors and Error Handling</a></li><li class="devsite-nav-item"><a href="https://cloud.google.com/datastore/docs/tools/" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="0" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">Using the gcloud Tool</a></li><li class="devsite-nav-item"><a href="https://cloud.google.com/datastore/docs/tools/datastore-emulator" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="0" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">Cloud Datastore Emulator</a></li><li class="devsite-nav-item"><a href="https://cloud.google.com/datastore/docs/editing_entity_console" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="0" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">Editing an Entity in the Console</a></li><li class="devsite-nav-item devsite-nav-item-section-expandable"><span class="devsite-nav-title devsite-nav-title-no-path" track-type="leftNav" track-name="expandNavSectionNoLink"track-metadata-position="0" aria-label="Managing Datastore from the Console, click to expand/collapse" role="link">Managing Datastore from the Console</span><a class="devsite-nav-toggle devsite-nav-toggle-collapsed material-icons" track-type="leftNav" track-name="expandNavSectionArrow" track-metadata-position="0" aria-hidden="true"></a><ul class="devsite-nav-section devsite-nav-section-collapsed"><li class="devsite-nav-item"><a href="https://cloud.google.com/datastore/docs/console/managing-datastore" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="1" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">Overview</a></li><li class="devsite-nav-item"><a href="https://cloud.google.com/datastore/docs/console/datastore-statistics" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="1" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">Viewing Datastore Statistics</a></li><li class="devsite-nav-item devsite-nav-deprecated devsite-nav-has-status"><a href="https://cloud.google.com/datastore/docs/console/datastore-backing-up-restoring" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="1" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click"><span class="devsite-nav-text">Backing Up and Restoring</span><span class="devsite-nav-icon-wrapper"><span class="devsite-nav-icon material-icons" title="Deprecated"></span></span></a></li></ul></li><li class="devsite-nav-item devsite-nav-new devsite-nav-has-status"><a href="https://cloud.google.com/datastore/docs/export-import-entities" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="0" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click"><span class="devsite-nav-text">Exporting and Importing Entities</span><span class="devsite-nav-icon-wrapper"><span class="devsite-nav-icon material-icons" title="New!"></span></span></a></li><li class="devsite-nav-item devsite-nav-new devsite-nav-has-status"><a href="https://cloud.google.com/datastore/docs/schedule-export" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="0" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click"><span class="devsite-nav-text">Scheduling an Export</span><span class="devsite-nav-icon-wrapper"><span class="devsite-nav-icon material-icons" title="New!"></span></span></a></li><li class="devsite-nav-item devsite-nav-new devsite-nav-has-status"><a href="https://cloud.google.com/datastore/docs/bulk-delete" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="0" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click"><span class="devsite-nav-text">Deleting Entities in Bulk</span><span class="devsite-nav-icon-wrapper"><span class="devsite-nav-icon material-icons" title="New!"></span></span></a></li><li class="devsite-nav-item devsite-nav-item-section-expandable"><span class="devsite-nav-title devsite-nav-title-no-path" track-type="leftNav" track-name="expandNavSectionNoLink"track-metadata-position="0" aria-label="Articles, click to expand/collapse" role="link">Articles</span><a class="devsite-nav-toggle devsite-nav-toggle-collapsed material-icons" track-type="leftNav" track-name="expandNavSectionArrow" track-metadata-position="0" aria-hidden="true"></a><ul class="devsite-nav-section devsite-nav-section-collapsed"><li class="devsite-nav-item"><a href="https://cloud.google.com/datastore/docs/articles/balancing-strong-and-eventual-consistency-with-google-cloud-datastore" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="1" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">Balancing Strong and Eventual Consistency</a></li><li class="devsite-nav-item"><a href="https://cloud.google.com/datastore/docs/articles/fast-and-reliable-ranking-in-datastore/" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="1" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">Fast and Reliable Ranking</a></li></ul></li><li class="devsite-nav-item devsite-nav-item-heading"><span class="devsite-nav-title devsite-nav-title-no-path" track-type="leftNav" track-name="expandNavSectionNoLink" track-metadata-position="0">APIs &amp; Reference</span></li><li class="devsite-nav-item"><a href="https://cloud.google.com/datastore/docs/apis" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="0" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">All APIs &amp; References</a></li><li class="devsite-nav-item"><a href="https://cloud.google.com/datastore/docs/reference/libraries" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="0" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">Client Libraries</a></li><li class="devsite-nav-item devsite-nav-item-section-expandable"><span class="devsite-nav-title devsite-nav-title-no-path" track-type="leftNav" track-name="expandNavSectionNoLink"track-metadata-position="0" aria-label="Data API, click to expand/collapse" role="link">Data API</span><a class="devsite-nav-toggle devsite-nav-toggle-collapsed material-icons" track-type="leftNav" track-name="expandNavSectionArrow" track-metadata-position="0" aria-hidden="true"></a><ul class="devsite-nav-section devsite-nav-section-collapsed"><li class="devsite-nav-item devsite-nav-item-section-expandable"><span class="devsite-nav-title devsite-nav-title-no-path" track-type="leftNav" track-name="expandNavSectionNoLink"track-metadata-position="1" aria-label="REST Reference, click to expand/collapse" role="link">REST Reference</span><a class="devsite-nav-toggle devsite-nav-toggle-collapsed material-icons" track-type="leftNav" track-name="expandNavSectionArrow" track-metadata-position="1" aria-hidden="true"></a><ul class="devsite-nav-section devsite-nav-section-collapsed"><li class="devsite-nav-item"><a href="https://cloud.google.com/datastore/docs/reference/data/rest/" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="2" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">Overview</a></li><li class="devsite-nav-item devsite-nav-item-section-expandable"><span class="devsite-nav-title devsite-nav-title-no-path" track-type="leftNav" track-name="expandNavSectionNoLink"track-metadata-position="2" aria-label="v1, click to expand/collapse" role="link">v1</span><a class="devsite-nav-toggle devsite-nav-toggle-collapsed material-icons" track-type="leftNav" track-name="expandNavSectionArrow" track-metadata-position="2" aria-hidden="true"></a><ul class="devsite-nav-section devsite-nav-section-collapsed"><li class="devsite-nav-item devsite-nav-item-heading"><span class="devsite-nav-title devsite-nav-title-no-path" track-type="leftNav" track-name="expandNavSectionNoLink" track-metadata-position="3">REST Resources</span></li><li class="devsite-nav-item devsite-nav-item-section-expandable"><span class="devsite-nav-title devsite-nav-title-no-path" track-type="leftNav" track-name="expandNavSectionNoLink"track-metadata-position="3" aria-label="projects, click to expand/collapse" role="link">projects</span><a class="devsite-nav-toggle devsite-nav-toggle-collapsed material-icons" track-type="leftNav" track-name="expandNavSectionArrow" track-metadata-position="3" aria-hidden="true"></a><ul class="devsite-nav-section devsite-nav-section-collapsed"><li class="devsite-nav-item"><a href="https://cloud.google.com/datastore/docs/reference/data/rest/v1/projects" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="4" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">Overview</a></li><li class="devsite-nav-item"><a href="https://cloud.google.com/datastore/docs/reference/data/rest/v1/projects/allocateIds" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="4" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">allocateIds</a></li><li class="devsite-nav-item"><a href="https://cloud.google.com/datastore/docs/reference/data/rest/v1/projects/beginTransaction" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="4" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">beginTransaction</a></li><li class="devsite-nav-item"><a href="https://cloud.google.com/datastore/docs/reference/data/rest/v1/projects/commit" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="4" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">commit</a></li><li class="devsite-nav-item"><a href="https://cloud.google.com/datastore/docs/reference/data/rest/v1/projects/lookup" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="4" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">lookup</a></li><li class="devsite-nav-item"><a href="https://cloud.google.com/datastore/docs/reference/data/rest/v1/projects/reserveIds" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="4" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">reserveIds</a></li><li class="devsite-nav-item"><a href="https://cloud.google.com/datastore/docs/reference/data/rest/v1/projects/rollback" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="4" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">rollback</a></li><li class="devsite-nav-item"><a href="https://cloud.google.com/datastore/docs/reference/data/rest/v1/projects/runQuery" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="4" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">runQuery</a></li></ul></li><li class="devsite-nav-item devsite-nav-item-section-expandable"><span class="devsite-nav-title devsite-nav-title-no-path" track-type="leftNav" track-name="expandNavSectionNoLink"track-metadata-position="3" aria-label="projects.operations, click to expand/collapse" role="link">projects.operations</span><a class="devsite-nav-toggle devsite-nav-toggle-collapsed material-icons" track-type="leftNav" track-name="expandNavSectionArrow" track-metadata-position="3" aria-hidden="true"></a><ul class="devsite-nav-section devsite-nav-section-collapsed"><li class="devsite-nav-item"><a href="https://cloud.google.com/datastore/docs/reference/data/rest/v1/projects.operations" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="4" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">Overview</a></li><li class="devsite-nav-item"><a href="https://cloud.google.com/datastore/docs/reference/data/rest/v1/projects.operations/cancel" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="4" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">cancel</a></li><li class="devsite-nav-item"><a href="https://cloud.google.com/datastore/docs/reference/data/rest/v1/projects.operations/delete" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="4" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">delete</a></li><li class="devsite-nav-item"><a href="https://cloud.google.com/datastore/docs/reference/data/rest/v1/projects.operations/get" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="4" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">get</a></li><li class="devsite-nav-item"><a href="https://cloud.google.com/datastore/docs/reference/data/rest/v1/projects.operations/list" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="4" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">list</a></li></ul></li><li class="devsite-nav-item devsite-nav-item-heading"><span class="devsite-nav-title devsite-nav-title-no-path" track-type="leftNav" track-name="expandNavSectionNoLink" track-metadata-position="3">Types</span></li><li class="devsite-nav-item"><a href="https://cloud.google.com/datastore/docs/reference/data/rest/v1/Entity" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="3" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">Entity</a></li><li class="devsite-nav-item"><a href="https://cloud.google.com/datastore/docs/reference/data/rest/v1/EntityResult" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="3" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">EntityResult</a></li><li class="devsite-nav-item"><a href="https://cloud.google.com/datastore/docs/reference/data/rest/v1/Key" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="3" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">Key</a></li><li class="devsite-nav-item"><a href="https://cloud.google.com/datastore/docs/reference/data/rest/v1/PartitionId" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="3" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">PartitionId</a></li><li class="devsite-nav-item"><a href="https://cloud.google.com/datastore/docs/reference/data/rest/v1/ReadOptions" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="3" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">ReadOptions</a></li></ul></li><li class="devsite-nav-item devsite-nav-item-section-expandable"><span class="devsite-nav-title devsite-nav-title-no-path" track-type="leftNav" track-name="expandNavSectionNoLink"track-metadata-position="2" aria-label="Shared Types, click to expand/collapse" role="link">Shared Types</span><a class="devsite-nav-toggle devsite-nav-toggle-collapsed material-icons" track-type="leftNav" track-name="expandNavSectionArrow" track-metadata-position="2" aria-hidden="true"></a><ul class="devsite-nav-section devsite-nav-section-collapsed"><li class="devsite-nav-item devsite-nav-item-heading"><span class="devsite-nav-title devsite-nav-title-no-path" track-type="leftNav" track-name="expandNavSectionNoLink" track-metadata-position="3">Types</span></li><li class="devsite-nav-item"><a href="https://cloud.google.com/datastore/docs/reference/data/rest/Shared.Types/LatLng" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="3" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">LatLng</a></li></ul></li><li class="devsite-nav-item devsite-nav-item-section-expandable devsite-nav-deprecated devsite-nav-has-status"><span class="devsite-nav-title devsite-nav-title-no-path" track-type="leftNav" track-name="expandNavSectionNoLink"track-metadata-position="2" aria-label="v1beta3, click to expand/collapse" role="link"><span class="devsite-nav-text">v1beta3</span><span class="devsite-nav-icon-wrapper"><span class="devsite-nav-icon material-icons" title="Deprecated"></span></span></span><a class="devsite-nav-toggle devsite-nav-toggle-collapsed material-icons" track-type="leftNav" track-name="expandNavSectionArrow" track-metadata-position="2" aria-hidden="true"></a><ul class="devsite-nav-section devsite-nav-section-collapsed"><li class="devsite-nav-item devsite-nav-item-heading devsite-nav-deprecated"><span class="devsite-nav-title devsite-nav-title-no-path" track-type="leftNav" track-name="expandNavSectionNoLink" track-metadata-position="3">REST Resources</span></li><li class="devsite-nav-item devsite-nav-item-section-expandable devsite-nav-deprecated"><span class="devsite-nav-title devsite-nav-title-no-path" track-type="leftNav" track-name="expandNavSectionNoLink"track-metadata-position="3" aria-label="projects, click to expand/collapse" role="link">projects</span><a class="devsite-nav-toggle devsite-nav-toggle-collapsed material-icons" track-type="leftNav" track-name="expandNavSectionArrow" track-metadata-position="3" aria-hidden="true"></a><ul class="devsite-nav-section devsite-nav-section-collapsed"><li class="devsite-nav-item devsite-nav-deprecated"><a href="https://cloud.google.com/datastore/docs/reference/data/rest/v1beta3/projects" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="4" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">Overview</a></li><li class="devsite-nav-item devsite-nav-deprecated"><a href="https://cloud.google.com/datastore/docs/reference/data/rest/v1beta3/projects/allocateIds" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="4" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">allocateIds</a></li><li class="devsite-nav-item devsite-nav-deprecated"><a href="https://cloud.google.com/datastore/docs/reference/data/rest/v1beta3/projects/beginTransaction" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="4" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">beginTransaction</a></li><li class="devsite-nav-item devsite-nav-deprecated"><a href="https://cloud.google.com/datastore/docs/reference/data/rest/v1beta3/projects/commit" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="4" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">commit</a></li><li class="devsite-nav-item devsite-nav-deprecated"><a href="https://cloud.google.com/datastore/docs/reference/data/rest/v1beta3/projects/lookup" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="4" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">lookup</a></li><li class="devsite-nav-item devsite-nav-deprecated"><a href="https://cloud.google.com/datastore/docs/reference/data/rest/v1beta3/projects/reserveIds" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="4" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">reserveIds</a></li><li class="devsite-nav-item devsite-nav-deprecated"><a href="https://cloud.google.com/datastore/docs/reference/data/rest/v1beta3/projects/rollback" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="4" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">rollback</a></li><li class="devsite-nav-item devsite-nav-deprecated"><a href="https://cloud.google.com/datastore/docs/reference/data/rest/v1beta3/projects/runQuery" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="4" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">runQuery</a></li></ul></li><li class="devsite-nav-item devsite-nav-item-heading devsite-nav-deprecated"><span class="devsite-nav-title devsite-nav-title-no-path" track-type="leftNav" track-name="expandNavSectionNoLink" track-metadata-position="3">Types</span></li><li class="devsite-nav-item devsite-nav-deprecated"><a href="https://cloud.google.com/datastore/docs/reference/data/rest/v1beta3/Entity" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="3" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">Entity</a></li><li class="devsite-nav-item devsite-nav-deprecated"><a href="https://cloud.google.com/datastore/docs/reference/data/rest/v1beta3/EntityResult" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="3" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">EntityResult</a></li><li class="devsite-nav-item devsite-nav-deprecated"><a href="https://cloud.google.com/datastore/docs/reference/data/rest/v1beta3/Key" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="3" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">Key</a></li><li class="devsite-nav-item devsite-nav-deprecated"><a href="https://cloud.google.com/datastore/docs/reference/data/rest/v1beta3/PartitionId" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="3" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">PartitionId</a></li><li class="devsite-nav-item devsite-nav-deprecated"><a href="https://cloud.google.com/datastore/docs/reference/data/rest/v1beta3/ReadOptions" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="3" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">ReadOptions</a></li></ul></li></ul></li><li class="devsite-nav-item devsite-nav-item-section-expandable"><span class="devsite-nav-title devsite-nav-title-no-path" track-type="leftNav" track-name="expandNavSectionNoLink"track-metadata-position="1" aria-label="RPC Reference, click to expand/collapse" role="link">RPC Reference</span><a class="devsite-nav-toggle devsite-nav-toggle-collapsed material-icons" track-type="leftNav" track-name="expandNavSectionArrow" track-metadata-position="1" aria-hidden="true"></a><ul class="devsite-nav-section devsite-nav-section-collapsed"><li class="devsite-nav-item"><a href="https://cloud.google.com/datastore/docs/reference/data/rpc/" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="2" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">Overview</a></li><li class="devsite-nav-item"><a href="https://cloud.google.com/datastore/docs/reference/data/rpc/google.datastore.v1" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="2" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">google.datastore.v1</a></li><li class="devsite-nav-item"><a href="https://cloud.google.com/datastore/docs/reference/data/rpc/google.datastore.v1beta3" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="2" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">google.datastore.v1beta3</a></li><li class="devsite-nav-item"><a href="https://cloud.google.com/datastore/docs/reference/data/rpc/google.longrunning" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="2" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">google.longrunning</a></li><li class="devsite-nav-item"><a href="https://cloud.google.com/datastore/docs/reference/data/rpc/google.rpc" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="2" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">google.rpc</a></li><li class="devsite-nav-item"><a href="https://cloud.google.com/datastore/docs/reference/data/rpc/google.type" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="2" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">google.type</a></li></ul></li></ul></li><li class="devsite-nav-item devsite-nav-item-section-expandable"><span class="devsite-nav-title devsite-nav-title-no-path" track-type="leftNav" track-name="expandNavSectionNoLink"track-metadata-position="0" aria-label="Admin API, click to expand/collapse" role="link">Admin API</span><a class="devsite-nav-toggle devsite-nav-toggle-collapsed material-icons" track-type="leftNav" track-name="expandNavSectionArrow" track-metadata-position="0" aria-hidden="true"></a><ul class="devsite-nav-section devsite-nav-section-collapsed"><li class="devsite-nav-item devsite-nav-item-section-expandable"><span class="devsite-nav-title devsite-nav-title-no-path" track-type="leftNav" track-name="expandNavSectionNoLink"track-metadata-position="1" aria-label="REST Reference, click to expand/collapse" role="link">REST Reference</span><a class="devsite-nav-toggle devsite-nav-toggle-collapsed material-icons" track-type="leftNav" track-name="expandNavSectionArrow" track-metadata-position="1" aria-hidden="true"></a><ul class="devsite-nav-section devsite-nav-section-collapsed"><li class="devsite-nav-item"><a href="https://cloud.google.com/datastore/docs/reference/admin/rest/" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="2" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">Overview</a></li><li class="devsite-nav-item devsite-nav-item-section-expandable"><span class="devsite-nav-title devsite-nav-title-no-path" track-type="leftNav" track-name="expandNavSectionNoLink"track-metadata-position="2" aria-label="v1, click to expand/collapse" role="link">v1</span><a class="devsite-nav-toggle devsite-nav-toggle-collapsed material-icons" track-type="leftNav" track-name="expandNavSectionArrow" track-metadata-position="2" aria-hidden="true"></a><ul class="devsite-nav-section devsite-nav-section-collapsed"><li class="devsite-nav-item devsite-nav-item-heading"><span class="devsite-nav-title devsite-nav-title-no-path" track-type="leftNav" track-name="expandNavSectionNoLink" track-metadata-position="3">REST Resources</span></li><li class="devsite-nav-item devsite-nav-item-section-expandable"><span class="devsite-nav-title devsite-nav-title-no-path" track-type="leftNav" track-name="expandNavSectionNoLink"track-metadata-position="3" aria-label="projects, click to expand/collapse" role="link">projects</span><a class="devsite-nav-toggle devsite-nav-toggle-collapsed material-icons" track-type="leftNav" track-name="expandNavSectionArrow" track-metadata-position="3" aria-hidden="true"></a><ul class="devsite-nav-section devsite-nav-section-collapsed"><li class="devsite-nav-item"><a href="https://cloud.google.com/datastore/docs/reference/admin/rest/v1/projects" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="4" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">Overview</a></li><li class="devsite-nav-item"><a href="https://cloud.google.com/datastore/docs/reference/admin/rest/v1/projects/export" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="4" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">export</a></li><li class="devsite-nav-item"><a href="https://cloud.google.com/datastore/docs/reference/admin/rest/v1/projects/import" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="4" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">import</a></li></ul></li><li class="devsite-nav-item devsite-nav-item-section-expandable"><span class="devsite-nav-title devsite-nav-title-no-path" track-type="leftNav" track-name="expandNavSectionNoLink"track-metadata-position="3" aria-label="projects.operations, click to expand/collapse" role="link">projects.operations</span><a class="devsite-nav-toggle devsite-nav-toggle-collapsed material-icons" track-type="leftNav" track-name="expandNavSectionArrow" track-metadata-position="3" aria-hidden="true"></a><ul class="devsite-nav-section devsite-nav-section-collapsed"><li class="devsite-nav-item"><a href="https://cloud.google.com/datastore/docs/reference/admin/rest/v1/projects.operations" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="4" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">Overview</a></li><li class="devsite-nav-item"><a href="https://cloud.google.com/datastore/docs/reference/admin/rest/v1/projects.operations/cancel" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="4" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">cancel</a></li><li class="devsite-nav-item"><a href="https://cloud.google.com/datastore/docs/reference/admin/rest/v1/projects.operations/delete" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="4" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">delete</a></li><li class="devsite-nav-item"><a href="https://cloud.google.com/datastore/docs/reference/admin/rest/v1/projects.operations/get" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="4" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">get</a></li><li class="devsite-nav-item"><a href="https://cloud.google.com/datastore/docs/reference/admin/rest/v1/projects.operations/list" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="4" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">list</a></li></ul></li></ul></li><li class="devsite-nav-item devsite-nav-item-section-expandable devsite-nav-deprecated devsite-nav-has-status"><span class="devsite-nav-title devsite-nav-title-no-path" track-type="leftNav" track-name="expandNavSectionNoLink"track-metadata-position="2" aria-label="v1beta1, click to expand/collapse" role="link"><span class="devsite-nav-text">v1beta1</span><span class="devsite-nav-icon-wrapper"><span class="devsite-nav-icon material-icons" title="Deprecated"></span></span></span><a class="devsite-nav-toggle devsite-nav-toggle-collapsed material-icons" track-type="leftNav" track-name="expandNavSectionArrow" track-metadata-position="2" aria-hidden="true"></a><ul class="devsite-nav-section devsite-nav-section-collapsed"><li class="devsite-nav-item devsite-nav-item-heading devsite-nav-deprecated"><span class="devsite-nav-title devsite-nav-title-no-path" track-type="leftNav" track-name="expandNavSectionNoLink" track-metadata-position="3">REST Resources</span></li><li class="devsite-nav-item devsite-nav-item-section-expandable devsite-nav-deprecated"><span class="devsite-nav-title devsite-nav-title-no-path" track-type="leftNav" track-name="expandNavSectionNoLink"track-metadata-position="3" aria-label="projects, click to expand/collapse" role="link">projects</span><a class="devsite-nav-toggle devsite-nav-toggle-collapsed material-icons" track-type="leftNav" track-name="expandNavSectionArrow" track-metadata-position="3" aria-hidden="true"></a><ul class="devsite-nav-section devsite-nav-section-collapsed"><li class="devsite-nav-item devsite-nav-deprecated"><a href="https://cloud.google.com/datastore/docs/reference/admin/rest/v1beta1/projects" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="4" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">Overview</a></li><li class="devsite-nav-item devsite-nav-deprecated"><a href="https://cloud.google.com/datastore/docs/reference/admin/rest/v1beta1/projects/export" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="4" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">export</a></li><li class="devsite-nav-item devsite-nav-deprecated"><a href="https://cloud.google.com/datastore/docs/reference/admin/rest/v1beta1/projects/import" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="4" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">import</a></li></ul></li></ul></li><li class="devsite-nav-item devsite-nav-item-section-expandable"><span class="devsite-nav-title devsite-nav-title-no-path" track-type="leftNav" track-name="expandNavSectionNoLink"track-metadata-position="2" aria-label="Shared Types, click to expand/collapse" role="link">Shared Types</span><a class="devsite-nav-toggle devsite-nav-toggle-collapsed material-icons" track-type="leftNav" track-name="expandNavSectionArrow" track-metadata-position="2" aria-hidden="true"></a><ul class="devsite-nav-section devsite-nav-section-collapsed"><li class="devsite-nav-item devsite-nav-item-heading"><span class="devsite-nav-title devsite-nav-title-no-path" track-type="leftNav" track-name="expandNavSectionNoLink" track-metadata-position="3">Types</span></li><li class="devsite-nav-item"><a href="https://cloud.google.com/datastore/docs/reference/admin/rest/Shared.Types/CommonMetadata" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="3" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">CommonMetadata</a></li><li class="devsite-nav-item"><a href="https://cloud.google.com/datastore/docs/reference/admin/rest/Shared.Types/EntityFilter" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="3" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">EntityFilter</a></li><li class="devsite-nav-item"><a href="https://cloud.google.com/datastore/docs/reference/admin/rest/Shared.Types/ExportEntitiesMetadata" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="3" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">ExportEntitiesMetadata</a></li><li class="devsite-nav-item"><a href="https://cloud.google.com/datastore/docs/reference/admin/rest/Shared.Types/ExportEntitiesResponse" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="3" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">ExportEntitiesResponse</a></li><li class="devsite-nav-item"><a href="https://cloud.google.com/datastore/docs/reference/admin/rest/Shared.Types/ImportEntitiesMetadata" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="3" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">ImportEntitiesMetadata</a></li><li class="devsite-nav-item"><a href="https://cloud.google.com/datastore/docs/reference/admin/rest/Shared.Types/Operation" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="3" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">Operation</a></li><li class="devsite-nav-item"><a href="https://cloud.google.com/datastore/docs/reference/admin/rest/Shared.Types/OperationType" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="3" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">OperationType</a></li><li class="devsite-nav-item"><a href="https://cloud.google.com/datastore/docs/reference/admin/rest/Shared.Types/Progress" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="3" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">Progress</a></li><li class="devsite-nav-item"><a href="https://cloud.google.com/datastore/docs/reference/admin/rest/Shared.Types/State" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="3" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">State</a></li></ul></li></ul></li><li class="devsite-nav-item devsite-nav-item-section-expandable"><span class="devsite-nav-title devsite-nav-title-no-path" track-type="leftNav" track-name="expandNavSectionNoLink"track-metadata-position="1" aria-label="RPC Reference, click to expand/collapse" role="link">RPC Reference</span><a class="devsite-nav-toggle devsite-nav-toggle-collapsed material-icons" track-type="leftNav" track-name="expandNavSectionArrow" track-metadata-position="1" aria-hidden="true"></a><ul class="devsite-nav-section devsite-nav-section-collapsed"><li class="devsite-nav-item"><a href="https://cloud.google.com/datastore/docs/reference/admin/rpc/" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="2" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">Overview</a></li><li class="devsite-nav-item"><a href="https://cloud.google.com/datastore/docs/reference/admin/rpc/google.datastore.admin.v1" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="2" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">google.datastore.admin.v1</a></li><li class="devsite-nav-item"><a href="https://cloud.google.com/datastore/docs/reference/admin/rpc/google.datastore.admin.v1beta1" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="2" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">google.datastore.admin.v1beta1</a></li><li class="devsite-nav-item"><a href="https://cloud.google.com/datastore/docs/reference/admin/rpc/google.longrunning" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="2" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">google.longrunning</a></li><li class="devsite-nav-item"><a href="https://cloud.google.com/datastore/docs/reference/admin/rpc/google.rpc" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="2" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">google.rpc</a></li></ul></li></ul></li><li class="devsite-nav-item"><a href="https://cloud.google.com/datastore/docs/reference/gql_reference" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="0" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">GQL Reference</a></li><li class="devsite-nav-item devsite-nav-item-heading"><span class="devsite-nav-title devsite-nav-title-no-path" track-type="leftNav" track-name="expandNavSectionNoLink" track-metadata-position="0">Concepts</span></li><li class="devsite-nav-item"><a href="https://cloud.google.com/datastore/docs/concepts" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="0" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">All Concepts</a></li><li class="devsite-nav-item"><a href="https://cloud.google.com/datastore/docs/concepts/overview" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="0" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">What is Google Cloud Datastore?</a></li><li class="devsite-nav-item"><a href="https://cloud.google.com/datastore/docs/concepts/limits" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="0" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">Limits</a></li><li class="devsite-nav-item"><a href="https://cloud.google.com/datastore/docs/access/iam" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="0" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">Identity and Access Management (IAM)</a></li><li class="devsite-nav-item"><a href="https://cloud.google.com/datastore/docs/concepts/storage-size" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="0" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">Storage Size Calculations</a></li><li class="devsite-nav-item"><a href="https://cloud.google.com/datastore/docs/concepts/multitenancy" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="0" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">Multitenancy</a></li><li class="devsite-nav-item"><a href="https://cloud.google.com/datastore/docs/concepts/encryption-at-rest" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="0" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">Server-Side Encryption</a></li><li class="devsite-nav-item"><a href="https://cloud.google.com/datastore/docs/locations" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="0" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">Datastore Locations</a></li><li class="devsite-nav-item devsite-nav-item-heading"><span class="devsite-nav-title devsite-nav-title-no-path" track-type="leftNav" track-name="expandNavSectionNoLink" track-metadata-position="0">Tutorials</span></li><li class="devsite-nav-item"><a href="https://cloud.google.com/datastore/docs/datastore-api-tutorial" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="0" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">Using the Datastore API</a></li><li class="devsite-nav-item devsite-nav-item-heading"><span class="devsite-nav-title devsite-nav-title-no-path" track-type="leftNav" track-name="expandNavSectionNoLink" track-metadata-position="0">Resources</span></li><li class="devsite-nav-item"><a href="https://cloud.google.com/datastore/docs/resources" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="0" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">All Resources</a></li><li class="devsite-nav-item"><a href="https://cloud.google.com/datastore/pricing" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="0" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">Pricing &amp; Quota</a></li><li class="devsite-nav-item"><a href="https://cloud.google.com/datastore/docs/best-practices" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="0" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">Best Practices</a></li><li class="devsite-nav-item"><a href="https://cloud.google.com/datastore/release-notes" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="0" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">Release Notes</a></li><li class="devsite-nav-item devsite-nav-item-section-expandable"><span class="devsite-nav-title devsite-nav-title-no-path" track-type="leftNav" track-name="expandNavSectionNoLink"track-metadata-position="0" aria-label="Get Support, click to expand/collapse" role="link">Get Support</span><a class="devsite-nav-toggle devsite-nav-toggle-collapsed material-icons" track-type="leftNav" track-name="expandNavSectionArrow" track-metadata-position="0" aria-hidden="true"></a><ul class="devsite-nav-section devsite-nav-section-collapsed"><li class="devsite-nav-item"><a href="https://cloud.google.com/datastore/docs/community" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="1" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">Community</a></li><li class="devsite-nav-item"><a href="https://cloud.google.com/datastore/docs/support" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="1" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">Support</a></li></ul></li><li class="devsite-nav-item"><a href="https://cloud.google.com/datastore/sla" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="0" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">Service Level Agreement</a></li></ul>
+  </nav>
+
+    
+
+    
+  <nav class="devsite-page-nav devsite-nav"></nav>
+
+
+      <article class="devsite-article">
+        <article class="devsite-article-inner">
+  
+          
+  
+
+
+
+  
+  <nav class="devsite-breadcrumb-nav devsite-nav">
+    
+
+
+<ul class="devsite-breadcrumb-list">
+  
+  <li class="devsite-breadcrumb-item">
+    
+    
+    <a href="https://cloud.google.com/datastore/" class="devsite-breadcrumb-link gc-analytics-event"
+       data-category="Site-Wide Custom Events" data-label="Breadcrumbs"
+       data-value="1">
+    
+    
+      Cloud Datastore
+    
+    
+    </a>
+    
+  </li>
+  
+  <li class="devsite-breadcrumb-item">
+    
+    
+    <div class="devsite-breadcrumb-guillemet material-icons"></div>
+    
+    
+    <a href="https://cloud.google.com/datastore/docs/" class="devsite-breadcrumb-link gc-analytics-event"
+       data-category="Site-Wide Custom Events" data-label="Breadcrumbs"
+       data-value="2">
+    
+    
+      Documentation
+    
+    
+    </a>
+    
+  </li>
+  
+  <li class="devsite-breadcrumb-item">
+    
+    
+    <div class="devsite-breadcrumb-guillemet material-icons"></div>
+    
+    
+    <a href="https://cloud.google.com/docs/" class="devsite-breadcrumb-link gc-analytics-event"
+       data-category="Site-Wide Custom Events" data-label="Breadcrumbs"
+       data-value="3">
+    
+    
+      Documentation
+    
+    
+    </a>
+    
+  </li>
+  
+</ul>
+
+  </nav>
+  
+  
+  <h1 itemprop="name" class="devsite-page-title">
+    Transactions
+  </h1>
+  
+  
+  <nav class="devsite-page-nav-embedded devsite-nav"></nav>
+  
+  <div class="devsite-article-body clearfix
+            "
+       itemprop="articleBody">
+    
+<p><link rel="stylesheet" href="https://cloud.google.com/datastore/css/local_extensions.css"></link>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ 
+
+
+
+    
+     
+
+ 
+ 
+ 
+ 
+ 
+
+ 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<p>A <em>transaction</em> is a set of Google Cloud Datastore operations on one or more entities in up to 25 entity groups. Each transaction is guaranteed to be atomic, which means that transactions are never partially applied. Either all of the operations in the transaction are applied, or none of them are applied.</p>
+<h2 id="using_transactions">Using transactions</h2>
+<p>Transactions have a maximum duration of 60 seconds with a 10 second idle expiration time after 30 seconds.</p>
+<p>An operation may fail when:</p>
+<ul>
+<li>Too many concurrent modifications are attempted on the same <a href="https://cloud.google.com/datastore/docs/concepts/entities#entity_groups">entity group</a>.</li>
+<li>The transaction exceeds a resource limit.</li>
+<li>Cloud Datastore encounters an internal error.</li>
+</ul>
+<p>In all these cases, the Cloud Datastore API returns an error.</p>
+<aside class="note"><strong>Note:</strong><span> If your application receives an exception when committing a transaction, it does not always mean that the transaction failed. You can receive errors in cases where transactions have been committed and eventually will be applied successfully. Whenever possible, make your Cloud Datastore transactions idempotent so that if you repeat a transaction, the end result will be the same.</span></aside>
+<p>Transactions are an optional feature of Cloud Datastore; you're not required to use transactions to perform Cloud Datastore operations.</p>
+<p>An application can execute a set of statements and Cloud Datastore operations in a single transaction, such that if any statement or operation raises an exception, none of the Cloud Datastore operations in the set are applied. The application defines the actions to perform in the transaction.</p>
+<p>The following snippet shows how to perform a transaction using the Cloud Datastore API. It transfers money from one account to another.</p>
+
+
+
+
+
+
+  
+    
+      
+        
+      
+    
+      
+        
+      
+    
+      
+        
+      
+    
+      
+        
+      
+    
+      
+        
+      
+    
+      
+        
+      
+    
+      
+        
+      
+    
+      
+        
+      
+    
+      
+        
+      
+    
+      
+        
+      
+    
+      
+        
+      
+    
+      
+        
+      
+    
+      
+        
+      
+    
+      
+        
+      
+    
+      
+        
+      
+    
+      
+        
+      
+    
+      
+        
+      
+    
+      
+        
+      
+    
+      
+        
+      
+    
+      
+        
+      
+    
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+<div id="datastore-transactional-update-code-sample" class="ds-selector-tabs" data-ds-scope="code-sample">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+  
+
+
+  
+    
+  
+
+
+<section>
+  
+  <h3 id="datastore-transactional-update-csharp" track-type="sampleTabNav" track-name="csharp" track-metadata-position="datastore-transactional-update">C#</h3>
+  
+  
+    
+    <p>
+      For more on installing and creating a Cloud Datastore client, refer to
+      <a href="https://cloud.google.com/datastore/docs/reference/libraries" track-type="clientLibrariesReference"
+         track-name="csharp" track-metadata-position="datastore-transactional-update">Cloud Datastore Client Libraries</a>.
+    </p>
+    
+  
+  
+
+  
+    
+      
+        
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  
+  
+  
+
+
+<!-- Header -->
+
+<div class="github-docwidget-include" style="border: 1px solid #ddd; border-bottom: 0; padding: 4px; background-color: #4285f4; margin-bottom: -10px">
+  
+
+  
+  <div style="text-align: right; float: right;">
+    
+    
+      
+      <a class="button" target="_blank" href="https://github.com/GoogleCloudPlatform/dotnet-docs-samples/blob/master/datastore/api/TaskListTest/DatastoreTest.cs"
+      track-type="github" track-name="gitHubViewButton"
+      track-metadata-link-destination="https://github.com/GoogleCloudPlatform/dotnet-docs-samples/blob/master/datastore/api/TaskListTest/DatastoreTest.cs">View on GitHub</a>
+    
+    
+    
+    
+    
+    
+    
+    <a href="#" class="button google-feedback" data-p="1634365" data-b="storage"
+       data-context="datastore-transactional-update" track-type="feedback" track-name="sampleFeedback"
+       track-metadata-lang="c#" track-metadata-position="datastore-transactional-update">Feedback</a>
+    
+  </div>
+  
+
+  <div style="clear: both;"></div>
+
+</div>
+
+
+<!-- Code -->
+<div class="github-docwidget-gitinclude-code">
+
+  
+  
+
+<pre class="prettyprint " track-metadata-position="GoogleCloudPlatform/dotnet-docs-samples/datastore/api/TaskListTest/DatastoreTest.cs/master/transactional_update">private void TransferFunds(Key fromKey, Key toKey, long amount)
+{
+    using (var transaction = _db.BeginTransaction())
+    {
+        var entities = transaction.Lookup(fromKey, toKey);
+        entities[0][&quot;balance&quot;].IntegerValue -= amount;
+        entities[1][&quot;balance&quot;].IntegerValue += amount;
+        transaction.Update(entities);
+        transaction.Commit();
+    }
+}</pre>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+      
+    
+  
+
+</section>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+  
+
+
+  
+    
+  
+
+
+<section>
+  
+  <h3 id="datastore-transactional-update-go" track-type="sampleTabNav" track-name="go" track-metadata-position="datastore-transactional-update">Go</h3>
+  
+  
+    
+    <p>
+      For more on installing and creating a Cloud Datastore client, refer to
+      <a href="https://cloud.google.com/datastore/docs/reference/libraries" track-type="clientLibrariesReference"
+         track-name="go" track-metadata-position="datastore-transactional-update">Cloud Datastore Client Libraries</a>.
+    </p>
+    
+  
+  
+
+  
+    
+      
+        
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  
+  
+
+
+<!-- Header -->
+
+<div class="github-docwidget-include" style="border: 1px solid #ddd; border-bottom: 0; padding: 4px; background-color: #4285f4; margin-bottom: -10px">
+  
+
+  
+  <div style="text-align: right; float: right;">
+    
+    
+      
+      <a class="button" target="_blank" href="https://github.com/GoogleCloudPlatform/golang-samples/blob/master/datastore/snippets/snippet_test.go"
+      track-type="github" track-name="gitHubViewButton"
+      track-metadata-link-destination="https://github.com/GoogleCloudPlatform/golang-samples/blob/master/datastore/snippets/snippet_test.go">View on GitHub</a>
+    
+    
+    
+    
+    
+    
+    
+    <a href="#" class="button google-feedback" data-p="1634365" data-b="storage"
+       data-context="datastore-transactional-update" track-type="feedback" track-name="sampleFeedback"
+       track-metadata-lang="golang" track-metadata-position="datastore-transactional-update">Feedback</a>
+    
+  </div>
+  
+
+  <div style="clear: both;"></div>
+
+</div>
+
+
+<!-- Code -->
+<div class="github-docwidget-gitinclude-code">
+
+  
+  
+
+<pre class="prettyprint lang-go" track-metadata-position="GoogleCloudPlatform/golang-samples/datastore/snippets/snippet_test.go/master/transactional_update">type BankAccount struct {
+	Balance int
+}
+
+const amount = 50
+keys := []*datastore.Key{to, from}
+tx, err := client.NewTransaction(ctx)
+if err != nil {
+	log.Fatalf(&quot;client.NewTransaction: %v&quot;, err)
+}
+accs := make([]BankAccount, 2)
+if err := tx.GetMulti(keys, accs); err != nil {
+	tx.Rollback()
+	log.Fatalf(&quot;tx.GetMulti: %v&quot;, err)
+}
+accs[0].Balance += amount
+accs[1].Balance -= amount
+if _, err := tx.PutMulti(keys, accs); err != nil {
+	tx.Rollback()
+	log.Fatalf(&quot;tx.PutMulti: %v&quot;, err)
+}
+if _, err = tx.Commit(); err != nil {
+	log.Fatalf(&quot;tx.Commit: %v&quot;, err)
+}</pre>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+      
+    
+  
+
+</section>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+  
+    
+  
+
+
+<section>
+  
+  <h3 id="datastore-transactional-update-java" track-type="sampleTabNav" track-name="java" track-metadata-position="datastore-transactional-update">Java</h3>
+  
+  
+    
+    <p>
+      For more on installing and creating a Cloud Datastore client, refer to
+      <a href="https://cloud.google.com/datastore/docs/reference/libraries" track-type="clientLibrariesReference"
+         track-name="java" track-metadata-position="datastore-transactional-update">Cloud Datastore Client Libraries</a>.
+    </p>
+    
+  
+  
+
+  
+    
+      
+        
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  
+  
+
+
+<!-- Header -->
+
+<div class="github-docwidget-include" style="border: 1px solid #ddd; border-bottom: 0; padding: 4px; background-color: #4285f4; margin-bottom: -10px">
+  
+
+  
+  <div style="text-align: right; float: right;">
+    
+    
+      
+      <a class="button" target="_blank" href="https://github.com/GoogleCloudPlatform/java-docs-samples/blob/master/datastore/src/test/java/com/google/datastore/snippets/ConceptsTest.java"
+      track-type="github" track-name="gitHubViewButton"
+      track-metadata-link-destination="https://github.com/GoogleCloudPlatform/java-docs-samples/blob/master/datastore/src/test/java/com/google/datastore/snippets/ConceptsTest.java">View on GitHub</a>
+    
+    
+    
+    
+    
+    
+    
+    <a href="#" class="button google-feedback" data-p="1634365" data-b="storage"
+       data-context="datastore-transactional-update" track-type="feedback" track-name="sampleFeedback"
+       track-metadata-lang="java" track-metadata-position="datastore-transactional-update">Feedback</a>
+    
+  </div>
+  
+
+  <div style="clear: both;"></div>
+
+</div>
+
+
+<!-- Code -->
+<div class="github-docwidget-gitinclude-code">
+
+  
+  
+
+<pre class="prettyprint lang-java" track-metadata-position="GoogleCloudPlatform/java-docs-samples/datastore/src/test/java/com/google/datastore/snippets/ConceptsTest.java/master/transactional_update">void transferFunds(Key fromKey, Key toKey, long amount) {
+  Transaction txn = datastore.newTransaction();
+  try {
+    List&lt;Entity&gt; entities = txn.fetch(fromKey, toKey);
+    Entity from = entities.get(0);
+    Entity updatedFrom =
+        Entity.newBuilder(from).set(&quot;balance&quot;, from.getLong(&quot;balance&quot;) - amount).build();
+    Entity to = entities.get(1);
+    Entity updatedTo = Entity.newBuilder(to).set(&quot;balance&quot;, to.getLong(&quot;balance&quot;) + amount)
+        .build();
+    txn.put(updatedFrom, updatedTo);
+    txn.commit();
+  } finally {
+    if (txn.isActive()) {
+      txn.rollback();
+    }
+  }
+}</pre>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+      
+    
+  
+
+</section>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+  
+
+
+  
+    
+  
+
+
+<section>
+  
+  <h3 id="datastore-transactional-update-nodejs" track-type="sampleTabNav" track-name="nodejs" track-metadata-position="datastore-transactional-update">Node.js</h3>
+  
+  
+    
+    <p>
+      For more on installing and creating a Cloud Datastore client, refer to
+      <a href="https://cloud.google.com/datastore/docs/reference/libraries" track-type="clientLibrariesReference"
+         track-name="nodejs" track-metadata-position="datastore-transactional-update">Cloud Datastore Client Libraries</a>.
+    </p>
+    
+  
+  
+
+  
+    
+      
+        
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  
+  
+
+
+<!-- Header -->
+
+<div class="github-docwidget-include" style="border: 1px solid #ddd; border-bottom: 0; padding: 4px; background-color: #4285f4; margin-bottom: -10px">
+  
+
+  
+  <div style="text-align: right; float: right;">
+    
+    
+      
+      <a class="button" target="_blank" href="https://github.com/googleapis/nodejs-datastore/blob/master/samples/concepts.js"
+      track-type="github" track-name="gitHubViewButton"
+      track-metadata-link-destination="https://github.com/googleapis/nodejs-datastore/blob/master/samples/concepts.js">View on GitHub</a>
+    
+    
+    
+    
+    
+    
+    
+    <a href="#" class="button google-feedback" data-p="1634365" data-b="storage"
+       data-context="datastore-transactional-update" track-type="feedback" track-name="sampleFeedback"
+       track-metadata-lang="js" track-metadata-position="datastore-transactional-update">Feedback</a>
+    
+  </div>
+  
+
+  <div style="clear: both;"></div>
+
+</div>
+
+
+<!-- Code -->
+<div class="github-docwidget-gitinclude-code">
+
+  
+  
+
+<pre class="prettyprint lang-js" track-metadata-position="googleapis/nodejs-datastore/samples/concepts.js/master/transactional_update">function transferFunds(fromKey, toKey, amount) {
+  const transaction = datastore.transaction();
+
+  return transaction
+    .run()
+    .then(() =&gt; Promise.all([transaction.get(fromKey), transaction.get(toKey)]))
+    .then(results =&gt; {
+      const accounts = results.map(result =&gt; result[0]);
+
+      accounts[0].balance -= amount;
+      accounts[1].balance += amount;
+
+      transaction.save([
+        {
+          key: fromKey,
+          data: accounts[0],
+        },
+        {
+          key: toKey,
+          data: accounts[1],
+        },
+      ]);
+
+      return transaction.commit();
+    })
+    .catch(() =&gt; transaction.rollback());
+}</pre>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+      
+    
+  
+
+</section>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+  
+    
+  
+
+
+<section>
+  
+  <h3 id="datastore-transactional-update-php" track-type="sampleTabNav" track-name="php" track-metadata-position="datastore-transactional-update">PHP</h3>
+  
+  
+    
+    <p>
+      For more on installing and creating a Cloud Datastore client, refer to
+      <a href="https://cloud.google.com/datastore/docs/reference/libraries" track-type="clientLibrariesReference"
+         track-name="php" track-metadata-position="datastore-transactional-update">Cloud Datastore Client Libraries</a>.
+    </p>
+    
+  
+  
+
+  
+    
+      
+        
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  
+  
+
+
+<!-- Header -->
+
+<div class="github-docwidget-include" style="border: 1px solid #ddd; border-bottom: 0; padding: 4px; background-color: #4285f4; margin-bottom: -10px">
+  
+
+  
+  <div style="text-align: right; float: right;">
+    
+    
+      
+      <a class="button" target="_blank" href="https://github.com/GoogleCloudPlatform/php-docs-samples/blob/master/datastore/api/src/functions/concepts.php"
+      track-type="github" track-name="gitHubViewButton"
+      track-metadata-link-destination="https://github.com/GoogleCloudPlatform/php-docs-samples/blob/master/datastore/api/src/functions/concepts.php">View on GitHub</a>
+    
+    
+    
+    
+    
+    
+    
+    <a href="#" class="button google-feedback" data-p="1634365" data-b="storage"
+       data-context="datastore-transactional-update" track-type="feedback" track-name="sampleFeedback"
+       track-metadata-lang="php" track-metadata-position="datastore-transactional-update">Feedback</a>
+    
+  </div>
+  
+
+  <div style="clear: both;"></div>
+
+</div>
+
+
+<!-- Code -->
+<div class="github-docwidget-gitinclude-code">
+
+  
+  
+
+<pre class="prettyprint lang-php" track-metadata-position="GoogleCloudPlatform/php-docs-samples/datastore/api/src/functions/concepts.php/master/transactional_update">/**
+ * Update two entities in a transaction.
+ *
+ * @param DatastoreClient $datastore
+ * @param Key $fromKey
+ * @param Key $toKey
+ * @param $amount
+ */
+function transfer_funds(
+    DatastoreClient $datastore,
+    Key $fromKey,
+    Key $toKey,
+    $amount
+) {
+    $transaction = $datastore-&gt;transaction();
+    // The option &#39;sort&#39; is important here, otherwise the order of the result
+    // might be different from the order of the keys.
+    $result = $transaction-&gt;lookupBatch([$fromKey, $toKey], [&#39;sort&#39; =&gt; true]);
+    if (count($result[&#39;found&#39;]) != 2) {
+        $transaction-&gt;rollback();
+    }
+    $fromAccount = $result[&#39;found&#39;][0];
+    $toAccount = $result[&#39;found&#39;][1];
+    $fromAccount[&#39;balance&#39;] -= $amount;
+    $toAccount[&#39;balance&#39;] += $amount;
+    $transaction-&gt;updateBatch([$fromAccount, $toAccount]);
+    $transaction-&gt;commit();
+}</pre>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+      
+    
+  
+
+</section>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+  
+
+
+  
+    
+  
+
+
+<section>
+  
+  <h3 id="datastore-transactional-update-python" track-type="sampleTabNav" track-name="python" track-metadata-position="datastore-transactional-update">Python</h3>
+  
+  
+    
+    <p>
+      For more on installing and creating a Cloud Datastore client, refer to
+      <a href="https://cloud.google.com/datastore/docs/reference/libraries" track-type="clientLibrariesReference"
+         track-name="python" track-metadata-position="datastore-transactional-update">Cloud Datastore Client Libraries</a>.
+    </p>
+    
+  
+  
+
+  
+    
+      
+        
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  
+  
+
+
+<!-- Header -->
+
+<div class="github-docwidget-include" style="border: 1px solid #ddd; border-bottom: 0; padding: 4px; background-color: #4285f4; margin-bottom: -10px">
+  
+
+  
+  <div style="text-align: right; float: right;">
+    
+    
+      
+      <a class="button" target="_blank" href="https://github.com/GoogleCloudPlatform/python-docs-samples/blob/master/datastore/cloud-client/snippets.py"
+      track-type="github" track-name="gitHubViewButton"
+      track-metadata-link-destination="https://github.com/GoogleCloudPlatform/python-docs-samples/blob/master/datastore/cloud-client/snippets.py">View on GitHub</a>
+    
+    
+    
+    
+    
+    
+    
+    <a href="#" class="button google-feedback" data-p="1634365" data-b="storage"
+       data-context="datastore-transactional-update" track-type="feedback" track-name="sampleFeedback"
+       track-metadata-lang="py" track-metadata-position="datastore-transactional-update">Feedback</a>
+    
+  </div>
+  
+
+  <div style="clear: both;"></div>
+
+</div>
+
+
+<!-- Code -->
+<div class="github-docwidget-gitinclude-code">
+
+  
+  
+
+<pre class="prettyprint lang-py" track-metadata-position="GoogleCloudPlatform/python-docs-samples/datastore/cloud-client/snippets.py/master/transactional_update">def transfer_funds(client, from_key, to_key, amount):
+    with client.transaction():
+        from_account = client.get(from_key)
+        to_account = client.get(to_key)
+
+        from_account[&#39;balance&#39;] -= amount
+        to_account[&#39;balance&#39;] += amount
+
+        client.put_multi([from_account, to_account])</pre>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+      
+    
+  
+
+</section>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+  
+    
+  
+
+
+<section>
+  
+  <h3 id="datastore-transactional-update-ruby" track-type="sampleTabNav" track-name="ruby" track-metadata-position="datastore-transactional-update">Ruby</h3>
+  
+  
+    
+    <p>
+      For more on installing and creating a Cloud Datastore client, refer to
+      <a href="https://cloud.google.com/datastore/docs/reference/libraries" track-type="clientLibrariesReference"
+         track-name="ruby" track-metadata-position="datastore-transactional-update">Cloud Datastore Client Libraries</a>.
+    </p>
+    
+  
+  
+
+  
+    
+      
+        
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  
+  
+
+
+<!-- Header -->
+
+<div class="github-docwidget-include" style="border: 1px solid #ddd; border-bottom: 0; padding: 4px; background-color: #4285f4; margin-bottom: -10px">
+  
+
+  
+  <div style="text-align: right; float: right;">
+    
+    
+      
+      <a class="button" target="_blank" href="https://github.com/GoogleCloudPlatform/ruby-docs-samples/blob/master/datastore/sample.rb"
+      track-type="github" track-name="gitHubViewButton"
+      track-metadata-link-destination="https://github.com/GoogleCloudPlatform/ruby-docs-samples/blob/master/datastore/sample.rb">View on GitHub</a>
+    
+    
+    
+    
+    
+    
+    
+    <a href="#" class="button google-feedback" data-p="1634365" data-b="storage"
+       data-context="datastore-transactional-update" track-type="feedback" track-name="sampleFeedback"
+       track-metadata-lang="ruby" track-metadata-position="datastore-transactional-update">Feedback</a>
+    
+  </div>
+  
+
+  <div style="clear: both;"></div>
+
+</div>
+
+
+<!-- Code -->
+<div class="github-docwidget-gitinclude-code">
+
+  
+  
+
+<pre class="prettyprint lang-rb" track-metadata-position="GoogleCloudPlatform/ruby-docs-samples/datastore/sample.rb/master/transactional_update">def transfer_funds from_key, to_key, amount
+  datastore.transaction do |tx|
+    from = tx.find from_key
+    from[&quot;balance&quot;] -= amount
+    to = tx.find to_key
+    to[&quot;balance&quot;] += amount
+    tx.save from, to
+  end
+end</pre>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+      
+    
+  
+
+</section>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</div>
+
+
+
+
+
+
+<p>Note that in order to keep our examples more succinct we sometimes omit the <code>rollback</code> if the transaction fails.  In production code it is important to ensure that every transaction is either explicitly committed or rolled back.</p>
+<h2 id="what_can_be_done_in_a_transaction">What can be done in a transaction</h2>
+<p>All Cloud Datastore operations in a transaction can operate on a maximum of twenty-five entity groups. This includes querying for entities by ancestor, retrieving entities by key, updating entities, and deleting entities.</p>
+<p>When two or more transactions simultaneously attempt to modify entities in one or more common entity groups, only the first transaction to commit its changes can succeed; all the others will fail on commit. Because of this design, using entity groups limits the number of concurrent writes you can do on any entity in the groups. When a transaction starts, Cloud Datastore uses <a href="http://en.wikipedia.org/wiki/Optimistic_concurrency_control">optimistic concurrency control</a> by checking the last update time for the entity groups used in the transaction. Upon commiting a transaction for the entity groups, Cloud Datastore again checks the last update time for the entity groups used in the transaction. If it has changed since our initial check, an error is returned. For an explanation of entity groups, see <a href="https://cloud.google.com/datastore/docs/concepts/entities#ancestor_paths">Ancestor paths</a>.</p>
+<h2 id="isolation_and_consistency">Isolation and consistency</h2>
+<p>Outside of transactions, Cloud Datastore's isolation level is closest to read committed. Inside of transactions, serializable isolation is enforced.
+This means that another transaction cannot concurrently modify the data that is <strong>read or modified</strong> by this transaction.
+Read the <a href="http://en.wikipedia.org/wiki/Serializability">serializable isolation</a> wiki and
+the <a href="https://cloud.google.com/appengine/articles/transaction_isolation">Transaction Isolation</a> article for more information
+on isolation levels.</p>
+<p>In a transaction, all reads reflect the current, consistent state of Cloud Datastore
+at the time the transaction started. Queries and lookups inside a
+transaction are guaranteed to see a single, consistent snapshot of Cloud Datastore as of the beginning of the transaction.
+Entities and index rows in the transaction's entity groups are fully updated so that queries return the complete, correct set of
+result entities, without the false positives or false negatives described in <a href="https://cloud.google.com/appengine/articles/transaction_isolation">Transaction Isolation</a>
+that can occur in queries outside of transactions.</p>
+<p>This consistent snapshot view also extends to reads after writes inside transactions.
+Unlike with most databases, queries and gets inside a Cloud Datastore transaction do <em>not</em> see the
+results of previous writes inside that transaction. Specifically, if an entity is modified or deleted
+within a transaction, a query or lookup returns the <em>original</em> version of the entity as of the beginning of the transaction,
+or nothing if the entity did not exist then.</p>
+<h2 id="uses_for_transactions">Uses for transactions</h2>
+<p>One use of transactions is updating an entity with a new property value relative to its current value. The <code>transferFunds</code> example above does
+that for two entities, by withdrawing money from one account and transferring it
+to another. The Cloud Datastore API does not automatically retry
+transactions, but you can add your own logic to retry them, for instance to
+handle conflicts when another request updates the same entity at the same time.</p>
+
+
+
+
+
+
+  
+    
+      
+        
+      
+    
+      
+        
+      
+    
+      
+        
+      
+    
+      
+        
+      
+    
+      
+        
+      
+    
+      
+        
+      
+    
+      
+        
+      
+    
+      
+        
+      
+    
+      
+        
+      
+    
+      
+        
+      
+    
+      
+        
+      
+    
+      
+        
+      
+    
+      
+        
+      
+    
+      
+        
+      
+    
+      
+        
+      
+    
+      
+        
+      
+    
+      
+        
+      
+    
+      
+        
+      
+    
+      
+        
+      
+    
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+<div id="datastore-transactional-retry-code-sample" class="ds-selector-tabs" data-ds-scope="code-sample">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+  
+
+
+  
+    
+  
+
+
+<section>
+  
+  <h3 id="datastore-transactional-retry-csharp" track-type="sampleTabNav" track-name="csharp" track-metadata-position="datastore-transactional-retry">C#</h3>
+  
+  
+    
+    <p>
+      For more on installing and creating a Cloud Datastore client, refer to
+      <a href="https://cloud.google.com/datastore/docs/reference/libraries" track-type="clientLibrariesReference"
+         track-name="csharp" track-metadata-position="datastore-transactional-retry">Cloud Datastore Client Libraries</a>.
+    </p>
+    
+  
+  
+
+  
+    
+      
+        
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  
+  
+  
+
+
+<!-- Header -->
+
+<div class="github-docwidget-include" style="border: 1px solid #ddd; border-bottom: 0; padding: 4px; background-color: #4285f4; margin-bottom: -10px">
+  
+
+  
+  <div style="text-align: right; float: right;">
+    
+    
+      
+      <a class="button" target="_blank" href="https://github.com/GoogleCloudPlatform/dotnet-docs-samples/blob/master/datastore/api/TaskListTest/DatastoreTest.cs"
+      track-type="github" track-name="gitHubViewButton"
+      track-metadata-link-destination="https://github.com/GoogleCloudPlatform/dotnet-docs-samples/blob/master/datastore/api/TaskListTest/DatastoreTest.cs">View on GitHub</a>
+    
+    
+    
+    
+    
+    
+    
+    <a href="#" class="button google-feedback" data-p="1634365" data-b="storage"
+       data-context="datastore-transactional-retry" track-type="feedback" track-name="sampleFeedback"
+       track-metadata-lang="c#" track-metadata-position="datastore-transactional-retry">Feedback</a>
+    
+  </div>
+  
+
+  <div style="clear: both;"></div>
+
+</div>
+
+
+<!-- Code -->
+<div class="github-docwidget-gitinclude-code">
+
+  
+  
+
+<pre class="prettyprint " track-metadata-position="GoogleCloudPlatform/dotnet-docs-samples/datastore/api/TaskListTest/DatastoreTest.cs/master/transactional_retry">        /// &lt;summary&gt;
+        /// Retry the action when a Grpc.Core.RpcException is thrown.
+        /// &lt;/summary&gt;
+        private T RetryRpc&lt;T&gt;(Func&lt;T&gt; action)
+        {
+            List&lt;Grpc.Core.RpcException&gt; exceptions = null;
+            var delayMs = _retryDelayMs;
+            for (int tryCount = 0; tryCount &lt; _retryCount; ++tryCount)
+            {
+                try
+                {
+                    return action();
+                }
+                catch (Grpc.Core.RpcException e)
+                {
+                    if (exceptions == null)
+                        exceptions = new List&lt;Grpc.Core.RpcException&gt;();
+                    exceptions.Add(e);
+                }
+                System.Threading.Thread.Sleep(delayMs);
+                delayMs *= 2;  // Exponential back-off.
+            }
+            throw new AggregateException(exceptions);
+        }
+
+        private void RetryRpc(Action action)
+        {
+            RetryRpc(() =&gt; { action(); return 0; });
+        }
+
+        [Fact]
+        public void TestTransactionalRetry()
+        {
+            int tryCount = 0;
+            var keys = UpsertBalances();
+            RetryRpc(() =&gt;
+            {
+                using (var transaction = _db.BeginTransaction())
+                {
+                    TransferFunds(keys[0], keys[1], 10, transaction);
+                    // Insert a conflicting transaction on the first try.
+                    if (tryCount++ == 0)
+                        TransferFunds(keys[1], keys[0], 5);
+                    transaction.Commit();
+                }
+            });
+            Assert.Equal(2, tryCount);
+        }</pre>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+      
+    
+  
+
+</section>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+  
+
+
+  
+    
+  
+
+
+<section>
+  
+  <h3 id="datastore-transactional-retry-go" track-type="sampleTabNav" track-name="go" track-metadata-position="datastore-transactional-retry">Go</h3>
+  
+  
+    
+    <p>
+      For more on installing and creating a Cloud Datastore client, refer to
+      <a href="https://cloud.google.com/datastore/docs/reference/libraries" track-type="clientLibrariesReference"
+         track-name="go" track-metadata-position="datastore-transactional-retry">Cloud Datastore Client Libraries</a>.
+    </p>
+    
+  
+  
+
+  
+    
+      
+        
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  
+  
+
+
+<!-- Header -->
+
+<div class="github-docwidget-include" style="border: 1px solid #ddd; border-bottom: 0; padding: 4px; background-color: #4285f4; margin-bottom: -10px">
+  
+
+  
+  <div style="text-align: right; float: right;">
+    
+    
+      
+      <a class="button" target="_blank" href="https://github.com/GoogleCloudPlatform/golang-samples/blob/master/datastore/snippets/snippet_test.go"
+      track-type="github" track-name="gitHubViewButton"
+      track-metadata-link-destination="https://github.com/GoogleCloudPlatform/golang-samples/blob/master/datastore/snippets/snippet_test.go">View on GitHub</a>
+    
+    
+    
+    
+    
+    
+    
+    <a href="#" class="button google-feedback" data-p="1634365" data-b="storage"
+       data-context="datastore-transactional-retry" track-type="feedback" track-name="sampleFeedback"
+       track-metadata-lang="golang" track-metadata-position="datastore-transactional-retry">Feedback</a>
+    
+  </div>
+  
+
+  <div style="clear: both;"></div>
+
+</div>
+
+
+<!-- Code -->
+<div class="github-docwidget-gitinclude-code">
+
+  
+  
+
+<pre class="prettyprint lang-go" track-metadata-position="GoogleCloudPlatform/golang-samples/datastore/snippets/snippet_test.go/master/transactional_retry">type BankAccount struct {
+	Balance int
+}
+
+const amount = 50
+_, err := client.RunInTransaction(ctx, func(tx *datastore.Transaction) error {
+	keys := []*datastore.Key{to, from}
+	accs := make([]BankAccount, 2)
+	if err := tx.GetMulti(keys, accs); err != nil {
+		return err
+	}
+	accs[0].Balance += amount
+	accs[1].Balance -= amount
+	_, err := tx.PutMulti(keys, accs)
+	return err
+})</pre>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+      
+    
+  
+
+</section>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+  
+    
+  
+
+
+<section>
+  
+  <h3 id="datastore-transactional-retry-java" track-type="sampleTabNav" track-name="java" track-metadata-position="datastore-transactional-retry">Java</h3>
+  
+  
+    
+    <p>
+      For more on installing and creating a Cloud Datastore client, refer to
+      <a href="https://cloud.google.com/datastore/docs/reference/libraries" track-type="clientLibrariesReference"
+         track-name="java" track-metadata-position="datastore-transactional-retry">Cloud Datastore Client Libraries</a>.
+    </p>
+    
+  
+  
+
+  
+    
+      
+        
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  
+  
+
+
+<!-- Header -->
+
+<div class="github-docwidget-include" style="border: 1px solid #ddd; border-bottom: 0; padding: 4px; background-color: #4285f4; margin-bottom: -10px">
+  
+
+  
+  <div style="text-align: right; float: right;">
+    
+    
+      
+      <a class="button" target="_blank" href="https://github.com/GoogleCloudPlatform/java-docs-samples/blob/master/datastore/src/test/java/com/google/datastore/snippets/ConceptsTest.java"
+      track-type="github" track-name="gitHubViewButton"
+      track-metadata-link-destination="https://github.com/GoogleCloudPlatform/java-docs-samples/blob/master/datastore/src/test/java/com/google/datastore/snippets/ConceptsTest.java">View on GitHub</a>
+    
+    
+    
+    
+    
+    
+    
+    <a href="#" class="button google-feedback" data-p="1634365" data-b="storage"
+       data-context="datastore-transactional-retry" track-type="feedback" track-name="sampleFeedback"
+       track-metadata-lang="java" track-metadata-position="datastore-transactional-retry">Feedback</a>
+    
+  </div>
+  
+
+  <div style="clear: both;"></div>
+
+</div>
+
+
+<!-- Code -->
+<div class="github-docwidget-gitinclude-code">
+
+  
+  
+
+<pre class="prettyprint lang-java" track-metadata-position="GoogleCloudPlatform/java-docs-samples/datastore/src/test/java/com/google/datastore/snippets/ConceptsTest.java/master/transactional_retry">int retries = 5;
+while (true) {
+  try {
+    transferFunds(fromKey, toKey, 10);
+    break;
+  } catch (DatastoreException e) {
+    if (retries == 0) {
+      throw e;
+    }
+    --retries;
+  }
+}
+// Retry handling can also be configured and automatically applied using google-cloud-java.</pre>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+      
+    
+  
+
+</section>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+  
+
+
+  
+    
+  
+
+
+<section>
+  
+  <h3 id="datastore-transactional-retry-nodejs" track-type="sampleTabNav" track-name="nodejs" track-metadata-position="datastore-transactional-retry">Node.js</h3>
+  
+  
+    
+    <p>
+      For more on installing and creating a Cloud Datastore client, refer to
+      <a href="https://cloud.google.com/datastore/docs/reference/libraries" track-type="clientLibrariesReference"
+         track-name="nodejs" track-metadata-position="datastore-transactional-retry">Cloud Datastore Client Libraries</a>.
+    </p>
+    
+  
+  
+
+  
+    
+      
+        
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  
+  
+
+
+<!-- Header -->
+
+<div class="github-docwidget-include" style="border: 1px solid #ddd; border-bottom: 0; padding: 4px; background-color: #4285f4; margin-bottom: -10px">
+  
+
+  
+  <div style="text-align: right; float: right;">
+    
+    
+      
+      <a class="button" target="_blank" href="https://github.com/googleapis/nodejs-datastore/blob/master/samples/concepts.js"
+      track-type="github" track-name="gitHubViewButton"
+      track-metadata-link-destination="https://github.com/googleapis/nodejs-datastore/blob/master/samples/concepts.js">View on GitHub</a>
+    
+    
+    
+    
+    
+    
+    
+    <a href="#" class="button google-feedback" data-p="1634365" data-b="storage"
+       data-context="datastore-transactional-retry" track-type="feedback" track-name="sampleFeedback"
+       track-metadata-lang="js" track-metadata-position="datastore-transactional-retry">Feedback</a>
+    
+  </div>
+  
+
+  <div style="clear: both;"></div>
+
+</div>
+
+
+<!-- Code -->
+<div class="github-docwidget-gitinclude-code">
+
+  
+  
+
+<pre class="prettyprint lang-js" track-metadata-position="googleapis/nodejs-datastore/samples/concepts.js/master/transactional_retry">function transferFundsWithRetry() {
+  const maxTries = 5;
+  let currentAttempt = 1;
+  let delay = 100;
+
+  function tryRequest() {
+    return transferFunds(fromKey, toKey, 10).catch(err =&gt; {
+      if (currentAttempt &lt;= maxTries) {
+        // Use exponential backoff
+        return new Promise((resolve, reject) =&gt; {
+          setTimeout(() =&gt; {
+            currentAttempt++;
+            delay *= 2;
+            tryRequest().then(resolve, reject);
+          }, delay);
+        });
+      }
+      return Promise.reject(err);
+    });
+  }
+
+  return tryRequest(1, 5);
+}</pre>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+      
+    
+  
+
+</section>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+  
+    
+  
+
+
+<section>
+  
+  <h3 id="datastore-transactional-retry-php" track-type="sampleTabNav" track-name="php" track-metadata-position="datastore-transactional-retry">PHP</h3>
+  
+  
+    
+    <p>
+      For more on installing and creating a Cloud Datastore client, refer to
+      <a href="https://cloud.google.com/datastore/docs/reference/libraries" track-type="clientLibrariesReference"
+         track-name="php" track-metadata-position="datastore-transactional-retry">Cloud Datastore Client Libraries</a>.
+    </p>
+    
+  
+  
+
+  
+    
+      
+        
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  
+  
+
+
+<!-- Header -->
+
+<div class="github-docwidget-include" style="border: 1px solid #ddd; border-bottom: 0; padding: 4px; background-color: #4285f4; margin-bottom: -10px">
+  
+
+  
+  <div style="text-align: right; float: right;">
+    
+    
+      
+      <a class="button" target="_blank" href="https://github.com/GoogleCloudPlatform/php-docs-samples/blob/master/datastore/api/src/functions/concepts.php"
+      track-type="github" track-name="gitHubViewButton"
+      track-metadata-link-destination="https://github.com/GoogleCloudPlatform/php-docs-samples/blob/master/datastore/api/src/functions/concepts.php">View on GitHub</a>
+    
+    
+    
+    
+    
+    
+    
+    <a href="#" class="button google-feedback" data-p="1634365" data-b="storage"
+       data-context="datastore-transactional-retry" track-type="feedback" track-name="sampleFeedback"
+       track-metadata-lang="php" track-metadata-position="datastore-transactional-retry">Feedback</a>
+    
+  </div>
+  
+
+  <div style="clear: both;"></div>
+
+</div>
+
+
+<!-- Code -->
+<div class="github-docwidget-gitinclude-code">
+
+  
+  
+
+<pre class="prettyprint lang-php" track-metadata-position="GoogleCloudPlatform/php-docs-samples/datastore/api/src/functions/concepts.php/master/transactional_retry">$retries = 5;
+for ($i = 0; $i &lt; $retries; $i++) {
+    try {
+        transfer_funds($datastore, $fromKey, $toKey, 10);
+    } catch (Google\Cloud\Exception\ConflictException $e) {
+        // if $i &gt;= $retries, the failure is final
+        continue;
+    }
+    // Succeeded!
+    break;
+}</pre>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+      
+    
+  
+
+</section>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+  
+
+
+  
+    
+  
+
+
+<section>
+  
+  <h3 id="datastore-transactional-retry-python" track-type="sampleTabNav" track-name="python" track-metadata-position="datastore-transactional-retry">Python</h3>
+  
+  
+    
+    <p>
+      For more on installing and creating a Cloud Datastore client, refer to
+      <a href="https://cloud.google.com/datastore/docs/reference/libraries" track-type="clientLibrariesReference"
+         track-name="python" track-metadata-position="datastore-transactional-retry">Cloud Datastore Client Libraries</a>.
+    </p>
+    
+  
+  
+
+  
+    
+      
+        
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  
+  
+
+
+<!-- Header -->
+
+<div class="github-docwidget-include" style="border: 1px solid #ddd; border-bottom: 0; padding: 4px; background-color: #4285f4; margin-bottom: -10px">
+  
+
+  
+  <div style="text-align: right; float: right;">
+    
+    
+      
+      <a class="button" target="_blank" href="https://github.com/GoogleCloudPlatform/python-docs-samples/blob/master/datastore/cloud-client/snippets.py"
+      track-type="github" track-name="gitHubViewButton"
+      track-metadata-link-destination="https://github.com/GoogleCloudPlatform/python-docs-samples/blob/master/datastore/cloud-client/snippets.py">View on GitHub</a>
+    
+    
+    
+    
+    
+    
+    
+    <a href="#" class="button google-feedback" data-p="1634365" data-b="storage"
+       data-context="datastore-transactional-retry" track-type="feedback" track-name="sampleFeedback"
+       track-metadata-lang="py" track-metadata-position="datastore-transactional-retry">Feedback</a>
+    
+  </div>
+  
+
+  <div style="clear: both;"></div>
+
+</div>
+
+
+<!-- Code -->
+<div class="github-docwidget-gitinclude-code">
+
+  
+  
+
+<pre class="prettyprint lang-py" track-metadata-position="GoogleCloudPlatform/python-docs-samples/datastore/cloud-client/snippets.py/master/transactional_retry">for _ in range(5):
+    try:
+        transfer_funds(client, account1.key, account2.key, 50)
+        break
+    except google.cloud.exceptions.Conflict:
+        continue
+else:
+    print(&#39;Transaction failed.&#39;)</pre>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+      
+    
+  
+
+</section>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+  
+    
+  
+
+
+<section>
+  
+  <h3 id="datastore-transactional-retry-ruby" track-type="sampleTabNav" track-name="ruby" track-metadata-position="datastore-transactional-retry">Ruby</h3>
+  
+  
+    
+    <p>
+      For more on installing and creating a Cloud Datastore client, refer to
+      <a href="https://cloud.google.com/datastore/docs/reference/libraries" track-type="clientLibrariesReference"
+         track-name="ruby" track-metadata-position="datastore-transactional-retry">Cloud Datastore Client Libraries</a>.
+    </p>
+    
+  
+  
+
+  
+    
+      
+        
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  
+  
+
+
+<!-- Header -->
+
+<div class="github-docwidget-include" style="border: 1px solid #ddd; border-bottom: 0; padding: 4px; background-color: #4285f4; margin-bottom: -10px">
+  
+
+  
+  <div style="text-align: right; float: right;">
+    
+    
+      
+      <a class="button" target="_blank" href="https://github.com/GoogleCloudPlatform/ruby-docs-samples/blob/master/datastore/sample.rb"
+      track-type="github" track-name="gitHubViewButton"
+      track-metadata-link-destination="https://github.com/GoogleCloudPlatform/ruby-docs-samples/blob/master/datastore/sample.rb">View on GitHub</a>
+    
+    
+    
+    
+    
+    
+    
+    <a href="#" class="button google-feedback" data-p="1634365" data-b="storage"
+       data-context="datastore-transactional-retry" track-type="feedback" track-name="sampleFeedback"
+       track-metadata-lang="ruby" track-metadata-position="datastore-transactional-retry">Feedback</a>
+    
+  </div>
+  
+
+  <div style="clear: both;"></div>
+
+</div>
+
+
+<!-- Code -->
+<div class="github-docwidget-gitinclude-code">
+
+  
+  
+
+<pre class="prettyprint lang-rb" track-metadata-position="GoogleCloudPlatform/ruby-docs-samples/datastore/sample.rb/master/transactional_retry">(1..5).each do |i|
+  begin
+    return transfer_funds from_key, to_key, amount
+  rescue Google::Cloud::Error =&gt; e
+    raise e if i == 5
+  end
+end</pre>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+      
+    
+  
+
+</section>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</div>
+
+
+
+
+
+
+<p>This requires a transaction because the value of <code>balance</code> in an entity may be updated by another user after this code fetches the object, but before it saves the modified object. Without a transaction, the user's request uses the value of <code>balance</code> prior to the other user's update, and the save overwrites the new value. With a
+transaction, the application is told about the other user's update.</p>
+<p>Another common use for transactions is to fetch an entity with a named key, or create it if it doesn't yet exist (this example builds on the TaskList example from <a href="https://cloud.google.com/datastore/docs/concepts/entities#creating_an_entity">creating an entity</a>):</p>
+
+
+
+
+
+
+  
+    
+      
+        
+      
+    
+      
+        
+      
+    
+      
+        
+      
+    
+      
+        
+      
+    
+      
+        
+      
+    
+      
+        
+      
+    
+      
+        
+      
+    
+      
+        
+      
+    
+      
+        
+      
+    
+      
+        
+      
+    
+      
+        
+      
+    
+      
+        
+      
+    
+      
+        
+      
+    
+      
+        
+      
+    
+      
+        
+      
+    
+      
+        
+      
+    
+      
+        
+      
+    
+      
+        
+      
+    
+      
+        
+      
+    
+      
+        
+      
+    
+      
+        
+      
+    
+      
+        
+      
+    
+      
+        
+      
+    
+      
+        
+      
+    
+      
+        
+      
+    
+      
+        
+      
+    
+      
+        
+      
+    
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+<div id="datastore-transactional-get-or-create-code-sample" class="ds-selector-tabs" data-ds-scope="code-sample">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+  
+
+
+  
+    
+  
+
+
+<section>
+  
+  <h3 id="datastore-transactional-get-or-create-csharp" track-type="sampleTabNav" track-name="csharp" track-metadata-position="datastore-transactional-get-or-create">C#</h3>
+  
+  
+    
+    <p>
+      For more on installing and creating a Cloud Datastore client, refer to
+      <a href="https://cloud.google.com/datastore/docs/reference/libraries" track-type="clientLibrariesReference"
+         track-name="csharp" track-metadata-position="datastore-transactional-get-or-create">Cloud Datastore Client Libraries</a>.
+    </p>
+    
+  
+  
+
+  
+    
+      
+        
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  
+  
+  
+
+
+<!-- Header -->
+
+<div class="github-docwidget-include" style="border: 1px solid #ddd; border-bottom: 0; padding: 4px; background-color: #4285f4; margin-bottom: -10px">
+  
+
+  
+  <div style="text-align: right; float: right;">
+    
+    
+      
+      <a class="button" target="_blank" href="https://github.com/GoogleCloudPlatform/dotnet-docs-samples/blob/master/datastore/api/TaskListTest/DatastoreTest.cs"
+      track-type="github" track-name="gitHubViewButton"
+      track-metadata-link-destination="https://github.com/GoogleCloudPlatform/dotnet-docs-samples/blob/master/datastore/api/TaskListTest/DatastoreTest.cs">View on GitHub</a>
+    
+    
+    
+    
+    
+    
+    
+    <a href="#" class="button google-feedback" data-p="1634365" data-b="storage"
+       data-context="datastore-transactional-get-or-create" track-type="feedback" track-name="sampleFeedback"
+       track-metadata-lang="c#" track-metadata-position="datastore-transactional-get-or-create">Feedback</a>
+    
+  </div>
+  
+
+  <div style="clear: both;"></div>
+
+</div>
+
+
+<!-- Code -->
+<div class="github-docwidget-gitinclude-code">
+
+  
+  
+
+<pre class="prettyprint " track-metadata-position="GoogleCloudPlatform/dotnet-docs-samples/datastore/api/TaskListTest/DatastoreTest.cs/master/transactional_get_or_create">Entity task;
+using (var transaction = _db.BeginTransaction())
+{
+    task = transaction.Lookup(_sampleTask.Key);
+    if (task == null)
+    {
+        transaction.Insert(_sampleTask);
+        transaction.Commit();
+    }
+}</pre>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+      
+    
+  
+
+</section>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+  
+
+
+  
+    
+  
+
+
+<section>
+  
+  <h3 id="datastore-transactional-get-or-create-go" track-type="sampleTabNav" track-name="go" track-metadata-position="datastore-transactional-get-or-create">Go</h3>
+  
+  
+    
+    <p>
+      For more on installing and creating a Cloud Datastore client, refer to
+      <a href="https://cloud.google.com/datastore/docs/reference/libraries" track-type="clientLibrariesReference"
+         track-name="go" track-metadata-position="datastore-transactional-get-or-create">Cloud Datastore Client Libraries</a>.
+    </p>
+    
+  
+  
+
+  
+    
+      
+        
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  
+  
+
+
+<!-- Header -->
+
+<div class="github-docwidget-include" style="border: 1px solid #ddd; border-bottom: 0; padding: 4px; background-color: #4285f4; margin-bottom: -10px">
+  
+
+  
+  <div style="text-align: right; float: right;">
+    
+    
+      
+      <a class="button" target="_blank" href="https://github.com/GoogleCloudPlatform/golang-samples/blob/master/datastore/snippets/snippet_test.go"
+      track-type="github" track-name="gitHubViewButton"
+      track-metadata-link-destination="https://github.com/GoogleCloudPlatform/golang-samples/blob/master/datastore/snippets/snippet_test.go">View on GitHub</a>
+    
+    
+    
+    
+    
+    
+    
+    <a href="#" class="button google-feedback" data-p="1634365" data-b="storage"
+       data-context="datastore-transactional-get-or-create" track-type="feedback" track-name="sampleFeedback"
+       track-metadata-lang="golang" track-metadata-position="datastore-transactional-get-or-create">Feedback</a>
+    
+  </div>
+  
+
+  <div style="clear: both;"></div>
+
+</div>
+
+
+<!-- Code -->
+<div class="github-docwidget-gitinclude-code">
+
+  
+  
+
+<pre class="prettyprint lang-go" track-metadata-position="GoogleCloudPlatform/golang-samples/datastore/snippets/snippet_test.go/master/transactional_get_or_create">_, err := client.RunInTransaction(ctx, func(tx *datastore.Transaction) error {
+	var task Task
+	if err := tx.Get(key, &amp;task); err != datastore.ErrNoSuchEntity {
+		return err
+	}
+	_, err := tx.Put(key, &amp;Task{
+		Category:    &quot;Personal&quot;,
+		Done:        false,
+		Priority:    4,
+		Description: &quot;Learn Cloud Datastore&quot;,
+	})
+	return err
+})</pre>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+      
+    
+  
+
+</section>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+  
+    
+  
+
+
+<section>
+  
+  <h3 id="datastore-transactional-get-or-create-java" track-type="sampleTabNav" track-name="java" track-metadata-position="datastore-transactional-get-or-create">Java</h3>
+  
+  
+    
+    <p>
+      For more on installing and creating a Cloud Datastore client, refer to
+      <a href="https://cloud.google.com/datastore/docs/reference/libraries" track-type="clientLibrariesReference"
+         track-name="java" track-metadata-position="datastore-transactional-get-or-create">Cloud Datastore Client Libraries</a>.
+    </p>
+    
+  
+  
+
+  
+    
+      
+        
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  
+  
+
+
+<!-- Header -->
+
+<div class="github-docwidget-include" style="border: 1px solid #ddd; border-bottom: 0; padding: 4px; background-color: #4285f4; margin-bottom: -10px">
+  
+
+  
+  <div style="text-align: right; float: right;">
+    
+    
+      
+      <a class="button" target="_blank" href="https://github.com/GoogleCloudPlatform/java-docs-samples/blob/master/datastore/src/test/java/com/google/datastore/snippets/ConceptsTest.java"
+      track-type="github" track-name="gitHubViewButton"
+      track-metadata-link-destination="https://github.com/GoogleCloudPlatform/java-docs-samples/blob/master/datastore/src/test/java/com/google/datastore/snippets/ConceptsTest.java">View on GitHub</a>
+    
+    
+    
+    
+    
+    
+    
+    <a href="#" class="button google-feedback" data-p="1634365" data-b="storage"
+       data-context="datastore-transactional-get-or-create" track-type="feedback" track-name="sampleFeedback"
+       track-metadata-lang="java" track-metadata-position="datastore-transactional-get-or-create">Feedback</a>
+    
+  </div>
+  
+
+  <div style="clear: both;"></div>
+
+</div>
+
+
+<!-- Code -->
+<div class="github-docwidget-gitinclude-code">
+
+  
+  
+
+<pre class="prettyprint lang-java" track-metadata-position="GoogleCloudPlatform/java-docs-samples/datastore/src/test/java/com/google/datastore/snippets/ConceptsTest.java/master/transactional_get_or_create">Entity task;
+Transaction txn = datastore.newTransaction();
+try {
+  task = txn.get(taskKey);
+  if (task == null) {
+    task = Entity.newBuilder(taskKey).build();
+    txn.put(task);
+    txn.commit();
+  }
+} finally {
+  if (txn.isActive()) {
+    txn.rollback();
+  }
+}</pre>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+      
+    
+  
+
+</section>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+  
+
+
+  
+    
+  
+
+
+<section>
+  
+  <h3 id="datastore-transactional-get-or-create-nodejs" track-type="sampleTabNav" track-name="nodejs" track-metadata-position="datastore-transactional-get-or-create">Node.js</h3>
+  
+  
+    
+    <p>
+      For more on installing and creating a Cloud Datastore client, refer to
+      <a href="https://cloud.google.com/datastore/docs/reference/libraries" track-type="clientLibrariesReference"
+         track-name="nodejs" track-metadata-position="datastore-transactional-get-or-create">Cloud Datastore Client Libraries</a>.
+    </p>
+    
+  
+  
+
+  
+    
+      
+        
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  
+  
+
+
+<!-- Header -->
+
+<div class="github-docwidget-include" style="border: 1px solid #ddd; border-bottom: 0; padding: 4px; background-color: #4285f4; margin-bottom: -10px">
+  
+
+  
+  <div style="text-align: right; float: right;">
+    
+    
+      
+      <a class="button" target="_blank" href="https://github.com/googleapis/nodejs-datastore/blob/master/samples/concepts.js"
+      track-type="github" track-name="gitHubViewButton"
+      track-metadata-link-destination="https://github.com/googleapis/nodejs-datastore/blob/master/samples/concepts.js">View on GitHub</a>
+    
+    
+    
+    
+    
+    
+    
+    <a href="#" class="button google-feedback" data-p="1634365" data-b="storage"
+       data-context="datastore-transactional-get-or-create" track-type="feedback" track-name="sampleFeedback"
+       track-metadata-lang="js" track-metadata-position="datastore-transactional-get-or-create">Feedback</a>
+    
+  </div>
+  
+
+  <div style="clear: both;"></div>
+
+</div>
+
+
+<!-- Code -->
+<div class="github-docwidget-gitinclude-code">
+
+  
+  
+
+<pre class="prettyprint lang-js" track-metadata-position="googleapis/nodejs-datastore/samples/concepts.js/master/transactional_get_or_create">function getOrCreate(taskKey, taskData) {
+  const taskEntity = {
+    key: taskKey,
+    data: taskData,
+  };
+
+  const transaction = datastore.transaction();
+
+  return transaction
+    .run()
+    .then(() =&gt; transaction.get(taskKey))
+    .then(results =&gt; {
+      const task = results[0];
+      if (task) {
+        // The task entity already exists.
+        return transaction.rollback();
+      } else {
+        // Create the task entity.
+        transaction.save(taskEntity);
+        return transaction.commit();
+      }
+    })
+    .then(() =&gt; taskEntity)
+    .catch(() =&gt; transaction.rollback());
+}</pre>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+      
+    
+  
+
+</section>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+  
+    
+  
+
+
+<section>
+  
+  <h3 id="datastore-transactional-get-or-create-php" track-type="sampleTabNav" track-name="php" track-metadata-position="datastore-transactional-get-or-create">PHP</h3>
+  
+  
+    
+    <p>
+      For more on installing and creating a Cloud Datastore client, refer to
+      <a href="https://cloud.google.com/datastore/docs/reference/libraries" track-type="clientLibrariesReference"
+         track-name="php" track-metadata-position="datastore-transactional-get-or-create">Cloud Datastore Client Libraries</a>.
+    </p>
+    
+  
+  
+
+  
+    
+      
+        
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  
+  
+
+
+<!-- Header -->
+
+<div class="github-docwidget-include" style="border: 1px solid #ddd; border-bottom: 0; padding: 4px; background-color: #4285f4; margin-bottom: -10px">
+  
+
+  
+  <div style="text-align: right; float: right;">
+    
+    
+      
+      <a class="button" target="_blank" href="https://github.com/GoogleCloudPlatform/php-docs-samples/blob/master/datastore/api/src/functions/concepts.php"
+      track-type="github" track-name="gitHubViewButton"
+      track-metadata-link-destination="https://github.com/GoogleCloudPlatform/php-docs-samples/blob/master/datastore/api/src/functions/concepts.php">View on GitHub</a>
+    
+    
+    
+    
+    
+    
+    
+    <a href="#" class="button google-feedback" data-p="1634365" data-b="storage"
+       data-context="datastore-transactional-get-or-create" track-type="feedback" track-name="sampleFeedback"
+       track-metadata-lang="php" track-metadata-position="datastore-transactional-get-or-create">Feedback</a>
+    
+  </div>
+  
+
+  <div style="clear: both;"></div>
+
+</div>
+
+
+<!-- Code -->
+<div class="github-docwidget-gitinclude-code">
+
+  
+  
+
+<pre class="prettyprint lang-php" track-metadata-position="GoogleCloudPlatform/php-docs-samples/datastore/api/src/functions/concepts.php/master/transactional_get_or_create">$transaction = $datastore-&gt;transaction();
+$existed = $transaction-&gt;lookup($task-&gt;key());
+if ($existed === null) {
+    $transaction-&gt;insert($task);
+    $transaction-&gt;commit();
+}</pre>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+      
+    
+  
+
+</section>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+  
+
+
+  
+    
+  
+
+
+<section>
+  
+  <h3 id="datastore-transactional-get-or-create-python" track-type="sampleTabNav" track-name="python" track-metadata-position="datastore-transactional-get-or-create">Python</h3>
+  
+  
+    
+    <p>
+      For more on installing and creating a Cloud Datastore client, refer to
+      <a href="https://cloud.google.com/datastore/docs/reference/libraries" track-type="clientLibrariesReference"
+         track-name="python" track-metadata-position="datastore-transactional-get-or-create">Cloud Datastore Client Libraries</a>.
+    </p>
+    
+  
+  
+
+  
+    
+      
+        
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  
+  
+
+
+<!-- Header -->
+
+<div class="github-docwidget-include" style="border: 1px solid #ddd; border-bottom: 0; padding: 4px; background-color: #4285f4; margin-bottom: -10px">
+  
+
+  
+  <div style="text-align: right; float: right;">
+    
+    
+      
+      <a class="button" target="_blank" href="https://github.com/GoogleCloudPlatform/python-docs-samples/blob/master/datastore/cloud-client/snippets.py"
+      track-type="github" track-name="gitHubViewButton"
+      track-metadata-link-destination="https://github.com/GoogleCloudPlatform/python-docs-samples/blob/master/datastore/cloud-client/snippets.py">View on GitHub</a>
+    
+    
+    
+    
+    
+    
+    
+    <a href="#" class="button google-feedback" data-p="1634365" data-b="storage"
+       data-context="datastore-transactional-get-or-create" track-type="feedback" track-name="sampleFeedback"
+       track-metadata-lang="py" track-metadata-position="datastore-transactional-get-or-create">Feedback</a>
+    
+  </div>
+  
+
+  <div style="clear: both;"></div>
+
+</div>
+
+
+<!-- Code -->
+<div class="github-docwidget-gitinclude-code">
+
+  
+  
+
+<pre class="prettyprint lang-py" track-metadata-position="GoogleCloudPlatform/python-docs-samples/datastore/cloud-client/snippets.py/master/transactional_get_or_create">with client.transaction():
+    key = client.key(&#39;Task&#39;, datetime.datetime.utcnow().isoformat())
+
+    task = client.get(key)
+
+    if not task:
+        task = datastore.Entity(key)
+        task.update({
+            &#39;description&#39;: &#39;Example task&#39;
+        })
+        client.put(task)
+
+    return task</pre>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+      
+    
+  
+
+</section>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+  
+    
+  
+
+
+<section>
+  
+  <h3 id="datastore-transactional-get-or-create-ruby" track-type="sampleTabNav" track-name="ruby" track-metadata-position="datastore-transactional-get-or-create">Ruby</h3>
+  
+  
+    
+    <p>
+      For more on installing and creating a Cloud Datastore client, refer to
+      <a href="https://cloud.google.com/datastore/docs/reference/libraries" track-type="clientLibrariesReference"
+         track-name="ruby" track-metadata-position="datastore-transactional-get-or-create">Cloud Datastore Client Libraries</a>.
+    </p>
+    
+  
+  
+
+  
+    
+      
+        
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  
+  
+
+
+<!-- Header -->
+
+<div class="github-docwidget-include" style="border: 1px solid #ddd; border-bottom: 0; padding: 4px; background-color: #4285f4; margin-bottom: -10px">
+  
+
+  
+  <div style="text-align: right; float: right;">
+    
+    
+      
+      <a class="button" target="_blank" href="https://github.com/GoogleCloudPlatform/ruby-docs-samples/blob/master/datastore/sample.rb"
+      track-type="github" track-name="gitHubViewButton"
+      track-metadata-link-destination="https://github.com/GoogleCloudPlatform/ruby-docs-samples/blob/master/datastore/sample.rb">View on GitHub</a>
+    
+    
+    
+    
+    
+    
+    
+    <a href="#" class="button google-feedback" data-p="1634365" data-b="storage"
+       data-context="datastore-transactional-get-or-create" track-type="feedback" track-name="sampleFeedback"
+       track-metadata-lang="ruby" track-metadata-position="datastore-transactional-get-or-create">Feedback</a>
+    
+  </div>
+  
+
+  <div style="clear: both;"></div>
+
+</div>
+
+
+<!-- Code -->
+<div class="github-docwidget-gitinclude-code">
+
+  
+  
+
+<pre class="prettyprint lang-rb" track-metadata-position="GoogleCloudPlatform/ruby-docs-samples/datastore/sample.rb/master/transactional_get_or_create">task = nil
+datastore.transaction do |tx|
+  task = tx.find task_key
+  if task.nil?
+    task = datastore.entity task_key do |t|
+      t[&quot;category&quot;] = &quot;Personal&quot;
+      t[&quot;done&quot;] = false
+      t[&quot;priority&quot;] = 4
+      t[&quot;description&quot;] = &quot;Learn Cloud Datastore&quot;
+    end
+    tx.save task
+  end
+end</pre>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+      
+    
+  
+
+</section>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</div>
+
+
+
+
+
+
+<p>As before, a transaction is necessary to handle the case where another user is attempting to create or update an entity with the same string ID. Without a transaction, if the entity does not exist and two users attempt to create it, the second overwrites the first without knowing that it happened.</p>
+<p>When a transaction fails, you can have your app retry the transaction until it succeeds, or you can let your users deal with the error by propagating it to your app's user interface level. You do not have to create a retry loop around every transaction.</p>
+<aside class="note"><strong>Note:</strong><span> A transaction should happen as quickly as possible to reduce the likelihood that the entities used by the transaction will change, causing the transaction to fail. As much as possible, prepare data outside of the transaction, then execute the transaction to perform Cloud Datastore operations that depend on a consistent state. The application should prepare keys for objects used outside the transaction, then fetch the entities inside the transaction.</span></aside>
+<p>Finally, you can use a transaction to read a consistent snapshot of Cloud Datastore. This can be useful when multiple reads are needed to render a page or export data that must be consistent. These kinds of transactions are often called <em>read-only</em> transactions, since they perform no writes. Read-only
+single-group transactions never fail due to concurrent modifications, so you don't have to implement retries upon failure. However, multi-entity-group transactions can fail due to concurrent modifications, so these should have retries.</p>
+
+
+
+
+
+
+  
+    
+      
+        
+      
+    
+      
+        
+      
+    
+      
+        
+      
+    
+      
+        
+      
+    
+      
+        
+      
+    
+      
+        
+      
+    
+      
+        
+      
+    
+      
+        
+      
+    
+      
+        
+      
+    
+      
+        
+      
+    
+      
+        
+      
+    
+      
+        
+      
+    
+      
+        
+      
+    
+      
+        
+      
+    
+      
+        
+      
+    
+      
+        
+      
+    
+      
+        
+      
+    
+      
+        
+      
+    
+      
+        
+      
+    
+      
+        
+      
+    
+      
+        
+      
+    
+      
+        
+      
+    
+      
+        
+      
+    
+      
+        
+      
+    
+      
+        
+      
+    
+      
+        
+      
+    
+      
+        
+      
+    
+      
+        
+      
+    
+      
+        
+      
+    
+      
+        
+      
+    
+      
+        
+      
+    
+      
+        
+      
+    
+      
+        
+      
+    
+      
+        
+      
+    
+      
+        
+      
+    
+      
+        
+      
+    
+      
+        
+      
+    
+      
+        
+      
+    
+      
+        
+      
+    
+      
+        
+      
+    
+      
+        
+      
+    
+      
+        
+      
+    
+      
+        
+      
+    
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+<div id="datastore-transactional-single-entity-group-read-only-code-sample" class="ds-selector-tabs" data-ds-scope="code-sample">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+  
+
+
+  
+    
+  
+
+
+<section>
+  
+  <h3 id="datastore-transactional-single-entity-group-read-only-csharp" track-type="sampleTabNav" track-name="csharp" track-metadata-position="datastore-transactional-single-entity-group-read-only">C#</h3>
+  
+  
+    
+    <p>
+      For more on installing and creating a Cloud Datastore client, refer to
+      <a href="https://cloud.google.com/datastore/docs/reference/libraries" track-type="clientLibrariesReference"
+         track-name="csharp" track-metadata-position="datastore-transactional-single-entity-group-read-only">Cloud Datastore Client Libraries</a>.
+    </p>
+    
+  
+  
+
+  
+    
+      
+        
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  
+  
+  
+
+
+<!-- Header -->
+
+<div class="github-docwidget-include" style="border: 1px solid #ddd; border-bottom: 0; padding: 4px; background-color: #4285f4; margin-bottom: -10px">
+  
+
+  
+  <div style="text-align: right; float: right;">
+    
+    
+      
+      <a class="button" target="_blank" href="https://github.com/GoogleCloudPlatform/dotnet-docs-samples/blob/master/datastore/api/TaskListTest/DatastoreTest.cs"
+      track-type="github" track-name="gitHubViewButton"
+      track-metadata-link-destination="https://github.com/GoogleCloudPlatform/dotnet-docs-samples/blob/master/datastore/api/TaskListTest/DatastoreTest.cs">View on GitHub</a>
+    
+    
+    
+    
+    
+    
+    
+    <a href="#" class="button google-feedback" data-p="1634365" data-b="storage"
+       data-context="datastore-transactional-single-entity-group-read-only" track-type="feedback" track-name="sampleFeedback"
+       track-metadata-lang="c#" track-metadata-position="datastore-transactional-single-entity-group-read-only">Feedback</a>
+    
+  </div>
+  
+
+  <div style="clear: both;"></div>
+
+</div>
+
+
+<!-- Code -->
+<div class="github-docwidget-gitinclude-code">
+
+  
+  
+
+<pre class="prettyprint " track-metadata-position="GoogleCloudPlatform/dotnet-docs-samples/datastore/api/TaskListTest/DatastoreTest.cs/master/transactional_single_entity_group_read_only">Entity taskList;
+IReadOnlyList&lt;Entity&gt; tasks;
+using (var transaction = _db.BeginTransaction())
+{
+    taskList = transaction.Lookup(taskListKey);
+    var query = new Query(&quot;Task&quot;)
+    {
+        Filter = Filter.HasAncestor(taskListKey)
+    };
+    tasks = transaction.RunQuery(query).Entities;
+    transaction.Commit();
+}</pre>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+      
+    
+  
+
+</section>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+  
+
+
+  
+    
+  
+
+
+<section>
+  
+  <h3 id="datastore-transactional-single-entity-group-read-only-go" track-type="sampleTabNav" track-name="go" track-metadata-position="datastore-transactional-single-entity-group-read-only">Go</h3>
+  
+  
+    
+    <p>
+      For more on installing and creating a Cloud Datastore client, refer to
+      <a href="https://cloud.google.com/datastore/docs/reference/libraries" track-type="clientLibrariesReference"
+         track-name="go" track-metadata-position="datastore-transactional-single-entity-group-read-only">Cloud Datastore Client Libraries</a>.
+    </p>
+    
+  
+  
+
+  
+    
+      
+        
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  
+  
+
+
+<!-- Header -->
+
+<div class="github-docwidget-include" style="border: 1px solid #ddd; border-bottom: 0; padding: 4px; background-color: #4285f4; margin-bottom: -10px">
+  
+
+  
+  <div style="text-align: right; float: right;">
+    
+    
+      
+      <a class="button" target="_blank" href="https://github.com/GoogleCloudPlatform/golang-samples/blob/master/datastore/snippets/snippet_test.go"
+      track-type="github" track-name="gitHubViewButton"
+      track-metadata-link-destination="https://github.com/GoogleCloudPlatform/golang-samples/blob/master/datastore/snippets/snippet_test.go">View on GitHub</a>
+    
+    
+    
+    
+    
+    
+    
+    <a href="#" class="button google-feedback" data-p="1634365" data-b="storage"
+       data-context="datastore-transactional-single-entity-group-read-only" track-type="feedback" track-name="sampleFeedback"
+       track-metadata-lang="golang" track-metadata-position="datastore-transactional-single-entity-group-read-only">Feedback</a>
+    
+  </div>
+  
+
+  <div style="clear: both;"></div>
+
+</div>
+
+
+<!-- Code -->
+<div class="github-docwidget-gitinclude-code">
+
+  
+  
+
+<pre class="prettyprint lang-go" track-metadata-position="GoogleCloudPlatform/golang-samples/datastore/snippets/snippet_test.go/master/transactional_single_entity_group_read_only">tx, err := client.NewTransaction(ctx)
+if err != nil {
+	log.Fatalf(&quot;client.NewTransaction: %v&quot;, err)
+}
+defer tx.Rollback() // Transaction only used for read.
+
+ancestor := datastore.NameKey(&quot;TaskList&quot;, &quot;default&quot;, nil)
+query := datastore.NewQuery(&quot;Task&quot;).Ancestor(ancestor).Transaction(tx)
+var tasks []Task
+_, err = client.GetAll(ctx, query, &amp;tasks)</pre>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+      
+    
+  
+
+</section>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+  
+    
+  
+
+
+<section>
+  
+  <h3 id="datastore-transactional-single-entity-group-read-only-java" track-type="sampleTabNav" track-name="java" track-metadata-position="datastore-transactional-single-entity-group-read-only">Java</h3>
+  
+  
+    
+    <p>
+      For more on installing and creating a Cloud Datastore client, refer to
+      <a href="https://cloud.google.com/datastore/docs/reference/libraries" track-type="clientLibrariesReference"
+         track-name="java" track-metadata-position="datastore-transactional-single-entity-group-read-only">Cloud Datastore Client Libraries</a>.
+    </p>
+    
+  
+  
+
+  
+    
+      
+        
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  
+  
+
+
+<!-- Header -->
+
+<div class="github-docwidget-include" style="border: 1px solid #ddd; border-bottom: 0; padding: 4px; background-color: #4285f4; margin-bottom: -10px">
+  
+
+  
+  <div style="text-align: right; float: right;">
+    
+    
+      
+      <a class="button" target="_blank" href="https://github.com/GoogleCloudPlatform/java-docs-samples/blob/master/datastore/src/test/java/com/google/datastore/snippets/ConceptsTest.java"
+      track-type="github" track-name="gitHubViewButton"
+      track-metadata-link-destination="https://github.com/GoogleCloudPlatform/java-docs-samples/blob/master/datastore/src/test/java/com/google/datastore/snippets/ConceptsTest.java">View on GitHub</a>
+    
+    
+    
+    
+    
+    
+    
+    <a href="#" class="button google-feedback" data-p="1634365" data-b="storage"
+       data-context="datastore-transactional-single-entity-group-read-only" track-type="feedback" track-name="sampleFeedback"
+       track-metadata-lang="java" track-metadata-position="datastore-transactional-single-entity-group-read-only">Feedback</a>
+    
+  </div>
+  
+
+  <div style="clear: both;"></div>
+
+</div>
+
+
+<!-- Code -->
+<div class="github-docwidget-gitinclude-code">
+
+  
+  
+
+<pre class="prettyprint lang-java" track-metadata-position="GoogleCloudPlatform/java-docs-samples/datastore/src/test/java/com/google/datastore/snippets/ConceptsTest.java/master/transactional_single_entity_group_read_only">Entity taskList;
+QueryResults&lt;Entity&gt; tasks;
+Transaction txn = datastore.newTransaction();
+try {
+  taskList = txn.get(taskListKey);
+  Query&lt;Entity&gt; query = Query.newEntityQueryBuilder()
+      .setKind(&quot;Task&quot;)
+      .setFilter(PropertyFilter.hasAncestor(taskListKey))
+      .build();
+  tasks = txn.run(query);
+  txn.commit();
+} finally {
+  if (txn.isActive()) {
+    txn.rollback();
+  }
+}</pre>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+      
+    
+  
+
+</section>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+  
+
+
+  
+    
+  
+
+
+<section>
+  
+  <h3 id="datastore-transactional-single-entity-group-read-only-nodejs" track-type="sampleTabNav" track-name="nodejs" track-metadata-position="datastore-transactional-single-entity-group-read-only">Node.js</h3>
+  
+  
+    
+    <p>
+      For more on installing and creating a Cloud Datastore client, refer to
+      <a href="https://cloud.google.com/datastore/docs/reference/libraries" track-type="clientLibrariesReference"
+         track-name="nodejs" track-metadata-position="datastore-transactional-single-entity-group-read-only">Cloud Datastore Client Libraries</a>.
+    </p>
+    
+  
+  
+
+  
+    
+      
+        
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  
+  
+
+
+<!-- Header -->
+
+<div class="github-docwidget-include" style="border: 1px solid #ddd; border-bottom: 0; padding: 4px; background-color: #4285f4; margin-bottom: -10px">
+  
+
+  
+  <div style="text-align: right; float: right;">
+    
+    
+      
+      <a class="button" target="_blank" href="https://github.com/googleapis/nodejs-datastore/blob/master/samples/concepts.js"
+      track-type="github" track-name="gitHubViewButton"
+      track-metadata-link-destination="https://github.com/googleapis/nodejs-datastore/blob/master/samples/concepts.js">View on GitHub</a>
+    
+    
+    
+    
+    
+    
+    
+    <a href="#" class="button google-feedback" data-p="1634365" data-b="storage"
+       data-context="datastore-transactional-single-entity-group-read-only" track-type="feedback" track-name="sampleFeedback"
+       track-metadata-lang="js" track-metadata-position="datastore-transactional-single-entity-group-read-only">Feedback</a>
+    
+  </div>
+  
+
+  <div style="clear: both;"></div>
+
+</div>
+
+
+<!-- Code -->
+<div class="github-docwidget-gitinclude-code">
+
+  
+  
+
+<pre class="prettyprint lang-js" track-metadata-position="googleapis/nodejs-datastore/samples/concepts.js/master/transactional_single_entity_group_read_only">function getTaskListEntities() {
+  let taskList, taskListEntities;
+
+  const transaction = datastore.transaction();
+  const taskListKey = datastore.key([&#39;TaskList&#39;, &#39;default&#39;]);
+
+  return transaction
+    .run()
+    .then(() =&gt; datastore.get(taskListKey))
+    .then(results =&gt; {
+      taskList = results[0];
+      const query = datastore.createQuery(&#39;Task&#39;).hasAncestor(taskListKey);
+      return datastore.runQuery(query);
+    })
+    .then(results =&gt; {
+      taskListEntities = results[0];
+      return transaction.commit();
+    })
+    .then(() =&gt; [taskList, taskListEntities])
+    .catch(() =&gt; transaction.rollback());
+}</pre>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+      
+    
+  
+
+</section>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+  
+    
+  
+
+
+<section>
+  
+  <h3 id="datastore-transactional-single-entity-group-read-only-php" track-type="sampleTabNav" track-name="php" track-metadata-position="datastore-transactional-single-entity-group-read-only">PHP</h3>
+  
+  
+    
+    <p>
+      For more on installing and creating a Cloud Datastore client, refer to
+      <a href="https://cloud.google.com/datastore/docs/reference/libraries" track-type="clientLibrariesReference"
+         track-name="php" track-metadata-position="datastore-transactional-single-entity-group-read-only">Cloud Datastore Client Libraries</a>.
+    </p>
+    
+  
+  
+
+  
+    
+      
+        
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  
+  
+
+
+<!-- Header -->
+
+<div class="github-docwidget-include" style="border: 1px solid #ddd; border-bottom: 0; padding: 4px; background-color: #4285f4; margin-bottom: -10px">
+  
+
+  
+  <div style="text-align: right; float: right;">
+    
+    
+      
+      <a class="button" target="_blank" href="https://github.com/GoogleCloudPlatform/php-docs-samples/blob/master/datastore/api/src/functions/concepts.php"
+      track-type="github" track-name="gitHubViewButton"
+      track-metadata-link-destination="https://github.com/GoogleCloudPlatform/php-docs-samples/blob/master/datastore/api/src/functions/concepts.php">View on GitHub</a>
+    
+    
+    
+    
+    
+    
+    
+    <a href="#" class="button google-feedback" data-p="1634365" data-b="storage"
+       data-context="datastore-transactional-single-entity-group-read-only" track-type="feedback" track-name="sampleFeedback"
+       track-metadata-lang="php" track-metadata-position="datastore-transactional-single-entity-group-read-only">Feedback</a>
+    
+  </div>
+  
+
+  <div style="clear: both;"></div>
+
+</div>
+
+
+<!-- Code -->
+<div class="github-docwidget-gitinclude-code">
+
+  
+  
+
+<pre class="prettyprint lang-php" track-metadata-position="GoogleCloudPlatform/php-docs-samples/datastore/api/src/functions/concepts.php/master/transactional_single_entity_group_read_only">$transaction = $datastore-&gt;transaction();
+$taskListKey = $datastore-&gt;key(&#39;TaskList&#39;, &#39;default&#39;);
+$query = $datastore-&gt;query()
+    -&gt;kind(&#39;Task&#39;)
+    -&gt;hasAncestor($taskListKey);
+$result = $transaction-&gt;runQuery($query);
+$taskListEntities = [];
+/* @var Entity $task */
+foreach ($result as $task) {
+    $taskListEntities[] = $task;
+}
+$transaction-&gt;commit();</pre>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+      
+    
+  
+
+</section>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+  
+
+
+  
+    
+  
+
+
+<section>
+  
+  <h3 id="datastore-transactional-single-entity-group-read-only-python" track-type="sampleTabNav" track-name="python" track-metadata-position="datastore-transactional-single-entity-group-read-only">Python</h3>
+  
+  
+    
+    <p>
+      For more on installing and creating a Cloud Datastore client, refer to
+      <a href="https://cloud.google.com/datastore/docs/reference/libraries" track-type="clientLibrariesReference"
+         track-name="python" track-metadata-position="datastore-transactional-single-entity-group-read-only">Cloud Datastore Client Libraries</a>.
+    </p>
+    
+  
+  
+
+  
+    
+      
+        
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  
+  
+
+
+<!-- Header -->
+
+<div class="github-docwidget-include" style="border: 1px solid #ddd; border-bottom: 0; padding: 4px; background-color: #4285f4; margin-bottom: -10px">
+  
+
+  
+  <div style="text-align: right; float: right;">
+    
+    
+      
+      <a class="button" target="_blank" href="https://github.com/GoogleCloudPlatform/python-docs-samples/blob/master/datastore/cloud-client/snippets.py"
+      track-type="github" track-name="gitHubViewButton"
+      track-metadata-link-destination="https://github.com/GoogleCloudPlatform/python-docs-samples/blob/master/datastore/cloud-client/snippets.py">View on GitHub</a>
+    
+    
+    
+    
+    
+    
+    
+    <a href="#" class="button google-feedback" data-p="1634365" data-b="storage"
+       data-context="datastore-transactional-single-entity-group-read-only" track-type="feedback" track-name="sampleFeedback"
+       track-metadata-lang="py" track-metadata-position="datastore-transactional-single-entity-group-read-only">Feedback</a>
+    
+  </div>
+  
+
+  <div style="clear: both;"></div>
+
+</div>
+
+
+<!-- Code -->
+<div class="github-docwidget-gitinclude-code">
+
+  
+  
+
+<pre class="prettyprint lang-py" track-metadata-position="GoogleCloudPlatform/python-docs-samples/datastore/cloud-client/snippets.py/master/transactional_single_entity_group_read_only">with client.transaction():
+    task_list_key = client.key(&#39;TaskList&#39;, &#39;default&#39;)
+
+    task_list = client.get(task_list_key)
+
+    query = client.query(kind=&#39;Task&#39;, ancestor=task_list_key)
+    tasks_in_list = list(query.fetch())
+
+    return task_list, tasks_in_list</pre>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+      
+    
+  
+
+</section>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+  
+    
+  
+
+
+<section>
+  
+  <h3 id="datastore-transactional-single-entity-group-read-only-ruby" track-type="sampleTabNav" track-name="ruby" track-metadata-position="datastore-transactional-single-entity-group-read-only">Ruby</h3>
+  
+  
+    
+    <p>
+      For more on installing and creating a Cloud Datastore client, refer to
+      <a href="https://cloud.google.com/datastore/docs/reference/libraries" track-type="clientLibrariesReference"
+         track-name="ruby" track-metadata-position="datastore-transactional-single-entity-group-read-only">Cloud Datastore Client Libraries</a>.
+    </p>
+    
+  
+  
+
+  
+    
+      
+        
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  
+  
+
+
+<!-- Header -->
+
+<div class="github-docwidget-include" style="border: 1px solid #ddd; border-bottom: 0; padding: 4px; background-color: #4285f4; margin-bottom: -10px">
+  
+
+  
+  <div style="text-align: right; float: right;">
+    
+    
+      
+      <a class="button" target="_blank" href="https://github.com/GoogleCloudPlatform/ruby-docs-samples/blob/master/datastore/sample.rb"
+      track-type="github" track-name="gitHubViewButton"
+      track-metadata-link-destination="https://github.com/GoogleCloudPlatform/ruby-docs-samples/blob/master/datastore/sample.rb">View on GitHub</a>
+    
+    
+    
+    
+    
+    
+    
+    <a href="#" class="button google-feedback" data-p="1634365" data-b="storage"
+       data-context="datastore-transactional-single-entity-group-read-only" track-type="feedback" track-name="sampleFeedback"
+       track-metadata-lang="ruby" track-metadata-position="datastore-transactional-single-entity-group-read-only">Feedback</a>
+    
+  </div>
+  
+
+  <div style="clear: both;"></div>
+
+</div>
+
+
+<!-- Code -->
+<div class="github-docwidget-gitinclude-code">
+
+  
+  
+
+<pre class="prettyprint lang-rb" track-metadata-position="GoogleCloudPlatform/ruby-docs-samples/datastore/sample.rb/master/transactional_single_entity_group_read_only">task_list_key = datastore.key &quot;TaskList&quot;, &quot;default&quot;
+datastore.transaction do |tx|
+  task_list = tx.find task_list_key
+  query = tx.query(&quot;Task&quot;).ancestor(task_list)
+  tasks_in_list = tx.run query
+end</pre>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+      
+    
+  
+
+</section>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</div>
+
+
+
+
+
+
+<h2 id="transactions_and_entity_groups">Transactions and entity groups</h2>
+<p>An entity group is a set of entities connected through ancestry to a common root element. The organization of data into entity groups can limit what transactions can be performed:</p>
+<ul>
+<li>All the data accessed by a transaction must be contained in at most 25 entity groups.</li>
+<li>If you want to use queries within a transaction, your data must be organized into entity groups in such a way that you can specify ancestor filters that will match the right data.</li>
+<li>There is a write throughput limit of about one transaction per second within a single entity group. This limitation exists because Cloud Datastore performs masterless, synchronous replication of each entity group over a wide geographic area to provide high reliability and fault tolerance.</li>
+</ul>
+<p>In many applications, it is acceptable to use eventual consistency (i.e. a non-ancestor query spanning multiple entity groups, which may at times return slightly stale data) when obtaining a broad view of unrelated data, and then to use strong consistency (an ancestor query, or a <code>lookup</code> of a single entity) when viewing or editing a single set of highly related data. In such applications, it is usually a good approach to use a separate entity group for each set of highly related data.
+For more information, see <a href="https://cloud.google.com/datastore/docs/concepts/structuring_for_strong_consistency">Data Consistency</a>.</p>
+<aside class="note"><strong>Note:</strong><span> Avoid storing sensitive information in the entity group key. Entity group keys may be retained after the entity group is deleted in order to provide fast and reliable service across Cloud Datastore.</span></aside>
+<h2 id="whats_next">What's next</h2>
+<ul>
+<li>Learn about <a href="https://cloud.google.com/datastore/docs/concepts/queries">Cloud Datastore Queries</a>.</li>
+<li>Learn more about <a href="https://cloud.google.com/datastore/docs/concepts/structuring_for_strong_consistency">Data Consistency</a> in Cloud Datastore.</li>
+</ul>
+
+  </div>
+  
+    
+
+
+
+  
+
+  
+        
+  
+
+
+
+
+
+
+
+        
+<div class="devsite-content-footer nocontent">
+  
+  
+    <p>Except as otherwise noted, the content of this page is licensed under the <a href="http://creativecommons.org/licenses/by/3.0/">Creative Commons Attribution 3.0 License</a>, and code samples are licensed under the <a href="http://www.apache.org/licenses/LICENSE-2.0">Apache 2.0 License</a>. For details, see our <a href="https://developers.google.com/terms/site-policies">Site Policies</a>. Java is a registered trademark of Oracle and/or its affiliates.</p>
+  
+
+  
+    
+    <p class="devsite-content-footer-date" itemprop="datePublished"
+       content="2018-02-28T18:27:27.009790">
+      
+      Last updated February 28, 2018.
+    </p>
+  
+
+</div>
+
+        </article>
+      </article>
+  
+
+        </div>
+      
+
+<footer class="devsite-footer-linkboxes nocontent
+               devsite-footer-linkboxes-all-backup
+               devsite-footer-linkboxes-with-sites"><nav class="devsite-full-site-width"><ul class="devsite-footer-linkboxes-list"><li class="devsite-footer-linkbox devsite-footer-linkbox-backup"><h3 class="devsite-footer-linkbox-heading">Products</h3><ul class="devsite-footer-linkbox-list"><li class="devsite-footer-linkbox-item"><a href="https://cloud.google.com/products/compute/" class="gc-analytics-event"
+               data-category="Site-Wide Custom Events"
+               data-label="Footer Compute">
+                Compute
+            </a></li><li class="devsite-footer-linkbox-item"><a href="https://cloud.google.com/products/storage/" class="gc-analytics-event"
+               data-category="Site-Wide Custom Events"
+               data-label="Footer Storage">
+                Storage
+            </a></li><li class="devsite-footer-linkbox-item"><a href="https://cloud.google.com/products/networking/" class="gc-analytics-event"
+               data-category="Site-Wide Custom Events"
+               data-label="Footer Networking">
+                Networking
+            </a></li><li class="devsite-footer-linkbox-item"><a href="https://cloud.google.com/products/big-data/" class="gc-analytics-event"
+               data-category="Site-Wide Custom Events"
+               data-label="Footer Big Data">
+                Big Data
+            </a></li><li class="devsite-footer-linkbox-item"><a href="https://cloud.google.com/products/machine-learning/" class="gc-analytics-event"
+               data-category="Site-Wide Custom Events"
+               data-label="Footer Machine Learning">
+                Machine Learning
+            </a></li><li class="devsite-footer-linkbox-item"><a href="https://cloud.google.com/products/#management" class="gc-analytics-event"
+               data-category="Site-Wide Custom Events"
+               data-label="Footer Management Tools">
+                Management Tools
+            </a></li><li class="devsite-footer-linkbox-item"><a href="https://cloud.google.com/products/tools/" class="gc-analytics-event"
+               data-category="Site-Wide Custom Events"
+               data-label="Footer Developer Tools">
+                Developer Tools
+            </a></li><li class="devsite-footer-linkbox-item"><a href="https://cloud.google.com/products/#identity-security" class="gc-analytics-event"
+               data-category="Site-Wide Custom Events"
+               data-label="Footer Identity and Security">
+                Identity &amp; Security
+            </a></li><li class="devsite-footer-linkbox-item"><a href="//status.cloud.google.com" class="gc-analytics-event"
+               data-category="Site-Wide Custom Events"
+               data-label="Footer System Status">
+                System Status
+            </a></li></ul></li><li class="devsite-footer-linkbox devsite-footer-linkbox-backup"><h3 class="devsite-footer-linkbox-heading">Learn More</h3><ul class="devsite-footer-linkbox-list"><li class="devsite-footer-linkbox-item"><a href="https://cloud.google.com/why-google/" class="gc-analytics-event"
+               data-category="Site-Wide Custom Events"
+               data-label="Footer Why Google">
+                Why Google Cloud
+            </a></li><li class="devsite-footer-linkbox-item"><a href="https://cloud.google.com/pricing/" class="gc-analytics-event"
+               data-category="Site-Wide Custom Events"
+               data-label="Footer Pricing">
+                Pricing
+            </a></li><li class="devsite-footer-linkbox-item"><a href="https://cloud.google.com/docs/" class="gc-analytics-event"
+               data-category="Site-Wide Custom Events"
+               data-label="Footer Documentation">
+                Documentation
+            </a></li><li class="devsite-footer-linkbox-item"><a href="https://cloud.google.com/docs/tutorials/" class="gc-analytics-event"
+               data-category="Site-Wide Custom Events"
+               data-label="Footer Tutorials">
+                Tutorials
+            </a></li><li class="devsite-footer-linkbox-item"><a href="https://cloud.google.com/training/" class="gc-analytics-event"
+               data-category="Site-Wide Custom Events"
+               data-label="Footer Training">
+                Training
+            </a></li><li class="devsite-footer-linkbox-item"><a href="https://cloud.google.com/solutions/" class="gc-analytics-event"
+               data-category="Site-Wide Custom Events"
+               data-label="Footer Solutions">
+                Solutions
+            </a></li><li class="devsite-footer-linkbox-item"><a href="https://cloud.google.com/security/" class="gc-analytics-event"
+               data-category="Site-Wide Custom Events"
+               data-label="Footer Security &amp; Compliance">
+                Security &amp; Compliance
+            </a></li><li class="devsite-footer-linkbox-item"><a href="https://cloud.google.com/partners/" class="gc-analytics-event"
+               data-category="Site-Wide Custom Events"
+               data-label="Footer Partners">
+                Partners
+            </a></li><li class="devsite-footer-linkbox-item"><a href="https://cloud.google.com/customers/" class="gc-analytics-event"
+               data-category="Site-Wide Custom Events"
+               data-label="Footer Customers">
+                Customers
+            </a></li><li class="devsite-footer-linkbox-item"><a href="https://cloud.google.com/support/" class="gc-analytics-event"
+               data-category="Site-Wide Custom Events"
+               data-label="Footer Support">
+                Support
+            </a></li><li class="devsite-footer-linkbox-item"><a href="//careers.google.com/cloud/" class="gc-analytics-event"
+               data-category="Site-Wide Custom Events"
+               data-label="Footer Careers">
+                Careers
+            </a></li><li class="devsite-footer-linkbox-item"><a href="//www.google.com/cloud/press" class="gc-analytics-event"
+               data-category="Site-Wide Custom Events"
+               data-label="Footer Press">
+                Press
+            </a></li></ul></li><li class="devsite-footer-linkbox devsite-footer-linkbox-backup"><h3 class="devsite-footer-linkbox-heading">Engage</h3><ul class="devsite-footer-linkbox-list"><li class="devsite-footer-linkbox-item"><a href="https://cloud.google.com/free-trial/" class="gc-analytics-event"
+               data-category="Site-Wide Custom Events"
+               data-label="Footer Free Trial Sign Up">
+                Free Trial Sign Up
+            </a></li><li class="devsite-footer-linkbox-item"><a href="//cloudplatform.googleblog.com" class="gc-analytics-event"
+               data-category="Site-Wide Custom Events"
+               data-label="Footer Blog">
+                Blog
+            </a></li><li class="devsite-footer-linkbox-item"><a href="https://cloud.google.com/community/" class="gc-analytics-event"
+               data-category="Site-Wide Custom Events"
+               data-label="Footer Community">
+                Community
+            </a></li><li class="devsite-footer-linkbox-item"><a href="//plus.google.com/+googlecloudplatform" class="gc-analytics-event"
+               data-category="Site-Wide Custom Events"
+               data-label="Footer Google+">
+                Google+
+            </a></li><li class="devsite-footer-linkbox-item"><a href="//twitter.com/gcpcloud" class="gc-analytics-event"
+               data-category="Site-Wide Custom Events"
+               data-label="Footer Twitter">
+                Twitter
+            </a></li><li class="devsite-footer-linkbox-item"><a href="//www.linkedin.com/showcase/google-cloud" class="gc-analytics-event"
+               data-category="Site-Wide Custom Events"
+               data-label="Footer LinkedIn">
+                LinkedIn
+            </a></li><li class="devsite-footer-linkbox-item"><a href="//stackoverflow.com/questions/tagged/google-cloud-platform" class="gc-analytics-event"
+               data-category="Site-Wide Custom Events"
+               data-label="Footer Stack Overflow">
+                Stack Overflow
+            </a></li><li class="devsite-footer-linkbox-item"><a href="//www.youtube.com/googlecloudplatform" class="gc-analytics-event"
+               data-category="Site-Wide Custom Events"
+               data-label="Footer YouTube">
+                YouTube
+            </a></li><li class="devsite-footer-linkbox-item"><a href="//www.gcppodcast.com" class="gc-analytics-event"
+               data-category="Site-Wide Custom Events"
+               data-label="Footer Podcast">
+                Podcast
+            </a></li><li class="devsite-footer-linkbox-item"><a href="//cloud.google.com/newsletter/" class="gc-analytics-event"
+               data-category="Site-Wide Custom Events"
+               data-label="Footer Newsletter Signup">
+                Newsletter Signup
+            </a></li><li class="devsite-footer-linkbox-item"><a href="//cloud.google.com/usability" class="gc-analytics-event"
+               data-category="Site-Wide Custom Events"
+               data-label="Footer UX Research">
+                UX Research
+            </a></li></ul></li><li class="devsite-footer-linkbox devsite-footer-linkbox-sites"><a href="https://developers.google.com/"
+           class="gc-analytics-event devsite-footer-linkbox-logo-link"
+           data-category="Site-Wide Custom Events" data-label="Footer Google Developers Link"><img class="devsite-footer-linkbox-logo"
+               src="https://cloud.google.com/_static/d7147bb846/images/redesign-14/lockup-color-knockout.png"
+               alt="Google Developers"></a><ul class="devsite-footer-linkbox-list"><li class="devsite-footer-linkbox-item"><a href="//developer.android.com/index.html" class="gc-analytics-event"
+               data-category="Site-Wide Custom Events"
+               data-label="Footer Android Link">
+                Android
+            </a></li><li class="devsite-footer-linkbox-item"><a href="//developer.chrome.com/home" class="gc-analytics-event"
+               data-category="Site-Wide Custom Events"
+               data-label="Footer Chrome Link">
+                Chrome
+            </a></li><li class="devsite-footer-linkbox-item"><a href="//firebase.google.com" class="gc-analytics-event"
+               data-category="Site-Wide Custom Events"
+               data-label="Footer Firebase Link">
+                Firebase
+            </a></li><li class="devsite-footer-linkbox-item"><a href="//cloud.google.com" class="gc-analytics-event"
+               data-category="Site-Wide Custom Events"
+               data-label="Footer Cloud Link">
+                Google Cloud Platform
+            </a></li><li class="devsite-footer-linkbox-item"><a href="//developers.google.com/products/" class="gc-analytics-event"
+               data-category="Site-Wide Custom Events"
+               data-label="Footer Products Link">
+                All Products
+            </a></li></ul></li></ul></nav></footer><footer class="devsite-utility-footer"><nav class="devsite-utility-footer-nav devsite-nav devsite-full-site-width"><div class="devsite-utility-footer-nav-left"><form class="devsite-utility-footer-language" action="/i18n/setlang/" method="post"><input type="hidden" name="xsrf_token" value="Dl_gJxUT9sQiXJNakNsFQWe1J1vUTrT3eWy5kd_uLTw6MTUyNDQ2MDE5OTk3MDIxMA" /><input type="hidden" name="next" value="/datastore/docs/concepts/transactions"><select class="devsite-utility-footer-language-select kd-select" name="language"
+                track-type="languageSelector" track-name="click"><option value="de"
+                
+                track-type="languageSelector" track-name="changed"
+                track-metadata-original-language="en"
+                track-metadata-selected-language="de">
+            Deutsch
+          </option><option value="en"
+                 selected="selected" 
+                track-type="languageSelector" track-name="changed"
+                track-metadata-original-language="en"
+                track-metadata-selected-language="en">
+            English
+          </option><option value="es"
+                
+                track-type="languageSelector" track-name="changed"
+                track-metadata-original-language="en"
+                track-metadata-selected-language="es">
+            español
+          </option><option value="pt-br"
+                
+                track-type="languageSelector" track-name="changed"
+                track-metadata-original-language="en"
+                track-metadata-selected-language="pt-br">
+            Português Brasileiro
+          </option><option value="ja"
+                
+                track-type="languageSelector" track-name="changed"
+                track-metadata-original-language="en"
+                track-metadata-selected-language="ja">
+            日本語
+          </option><option value="zh-tw"
+                
+                track-type="languageSelector" track-name="changed"
+                track-metadata-original-language="en"
+                track-metadata-selected-language="zh-tw">
+            繁體中文
+          </option></select></form><span class="devsite-utility-footer-links"><a class="devsite-utility-footer-link gc-analytics-event"
+           href="https://cloud.google.com/terms/"
+           data-category="Site-Wide Custom Events"
+           data-label="Footer terms link"
+           data-footer-link-id="terms"
+           >Terms
+         </a><a class="devsite-utility-footer-link gc-analytics-event"
+           href="//www.google.com/policies/privacy/"
+           data-category="Site-Wide Custom Events"
+           data-label="Footer privacy link"
+           data-footer-link-id="privacy"
+           >Privacy
+         </a><a class="devsite-utility-footer-link gc-analytics-event"
+           href="//www.google.de/contact/impressum.html"
+           data-category="Site-Wide Custom Events"
+           data-label="Footer impressum link"
+           data-footer-link-id="impressum"
+           >Impressum
+         </a></span></div></nav></footer><div class="devsite-feedback-dialog devsite-dialog"><div class="devsite-dialog-contents"><h3>Send feedback about...</h3><div class="devsite-feedback-item"><a data-type="documentation" class="gc-analytics-event"
+           data-category="Site-Wide Custom Events" data-label="Docs Feedback Image"
+           track-type="feedback" track-name="feedbackDocIcon" track-metadata-position="header"><div class="devsite-feedback-item-icon-container"><div class="devsite-feedback-item-icon-white devsite-feedback-item-icon-docs
+                        material-icons"></div></div></a><div class="devsite-feedback-item-name">
+          
+          This page
+        </div><div class="devsite-feedback-item-description"><a data-type="documentation" tabindex="0" class="gc-analytics-event"
+             data-category="Site-Wide Custom Events" data-label="Docs Feedback Text"
+             track-type="feedback" track-name="feedbackDocText" track-metadata-position="header">
+            
+            Documentation feedback
+          </a></div></div><div class="devsite-feedback-item"><a data-type="product" tabindex="0" class="gc-analytics-event"
+           data-category="Site-Wide Custom Events" data-label="Product Feedback Image"
+           track-type="feedback" track-name="feedbackProductIcon" track-metadata-position="header"
+         ><img class="devsite-feedback-item-icon"
+               src="https://cloud.google.com/_static/d7147bb846/images/feedback/google_56px.svg"></a><div class="devsite-feedback-item-name">
+        Cloud Datastore Documentation
+        </div><div class="devsite-feedback-item-description"><a data-type="product" tabindex="0" class="gc-analytics-event"
+             data-category="Site-Wide Custom Events" data-label="Product Feedback Text"
+             track-type="feedback" track-name="feedbackProductText" track-metadata-position="header"
+           >
+            
+            Product feedback
+          </a></div></div></div><div class="devsite-dialog-buttons"><button type="button" class="devsite-feedback-cancel button-white gc-analytics-event"
+              data-category="Site-Wide Custom Events" data-label="Cancel Feedback Button"
+              track-type="feedback" track-name="cancelFeedbackButton"
+              track-metadata-position="header">
+        
+        Cancel
+      </button></div></div><script>
+  $(document).ready(function() {
+    new devsite.feedback.Widget({
+        'product_id': '88949',
+        'bucket': 'documentation',
+        'context': '',
+        'version': 'devsite-20180420-r00-rc00.default'
+      },
+      document.querySelectorAll('.devsite-feedback-button'),
+      'en',
+      document.querySelector('.devsite-site-mask'),
+      document.querySelector('.devsite-feedback-dialog'),
+      document.querySelector('.devsite-feedback-cancel'),
+      document.querySelectorAll('.devsite-feedback-item a:not([href])')
+    );
+  });
+  </script></div><script async defer src="//www.gstatic.com/feedback/api.js"></script><script src="https://cloud.google.com/_static2/d7147bb846/jsi18n/"></script><script src="https://cloud.google.com/_static/d7147bb846/js/script_foot_closure.js"></script><script src="https://cloud.google.com/_static/d7147bb846/js/script_foot.js"></script><script>
+        (function($) {
+          
+          devsite.devsite.Init($, {'ENABLE_BLOCKED_VIDEO_PLACEHOLDER': 0, 'SITE_NAME': 'cloud', 'FULL_SITE_SEARCH_ENABLED': 1, 'ENABLE_CLOUDTRACK': 1, 'VTAGS_ENABLED': 1, 'HISTORY_ENABLED': 1, 'VERSION_HASH': 'd7147bb846', 'SCRIPTSAFE_DOMAIN': 'cloud-dot-google-developers.appspot.com', 'ENABLE_BLOCKED_LINK_TOOLTIP': 0, 'ALLOWED_HOSTS': ['.android.com', '.anvato.com', '.apigee.com', '.appspot.com', '.dialogflow.com', '.gonglchuangl.net', '.google.cn', '.google.com', '.googleplex.com', '.nest.com', '.openthread.io', '.openweave.io', '.orbitera.com', '.tensorflow.org'], 'BLOCK_RSS_FEEDS': 0},
+                               '[]','en',
+                               true, '',
+                               {"f62218c009ec029abef196bba5aa34cf": true, "8de7a048f21618359bd37f5ce44be073": false, "098dafe57affddc137df300142652cfd": false, "8e03e230de0bd8a6fe173fdf172e8b3f": true, "cb025a64a50094835616312f4774a53d": true, "51470233c56fc1fde50f00b73c52b216": false, "d169d485cf24243a263783dbe42029b1": true, "039e5d84b87fd75807ffb37b7f1bbf2c": true, "700def1a83e356c06c0925afb05de4b0": false, "6749dcb526ce9bde6993550c7d928d24": true}, '/datastore/docs/',
+                               'https://cloud.google.com/');
+        })(jQuery);
+
+        
+        devsite.localInit = function() {
+          
+        };
+
+      </script><script>
+      $('.devsite-utility-footer-language-select').each(function() {
+        $(this).change(function(){$('.devsite-utility-footer-language').submit();});
+      });
+      </script></div><span id="devsite-request-elapsed" data-request-elapsed="417.290210724"></span></body></html>

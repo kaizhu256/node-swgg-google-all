@@ -1,0 +1,2957 @@
+
+
+
+
+
+
+<!DOCTYPE html><html lang="en"
+      class="chekov"><head><script>var a=window.devsite||{};window.devsite=a;a.readyCallbacks=[];window.devsite.readyCallbacks=a.readyCallbacks;a.ready=function(b){a.readyCallbacks.push(b)};window.devsite.ready=a.ready;
+</script><meta charset="utf-8"><meta name="xsrf_token" content="yh_lHb7WZWfBRU3CEoCNp6CqDYkYS0kSSOSJqLc4UjE6MTUyNDQ2MDE5NTc3NzYxMA" /><link rel="canonical" href="https://cloud.google.com/iam/docs/understanding-roles"><link rel="alternate" href="https://cloud.google.com/iam/docs/understanding-roles?hl=es" hreflang="es"><link rel="alternate" href="https://cloud.google.com/iam/docs/understanding-roles?hl=ja" hreflang="ja"><link rel="alternate" href="https://cloud.google.com/iam/docs/understanding-roles?hl=pt-br" hreflang="pt-br"><link rel="alternate" href="https://cloud.google.com/iam/docs/understanding-roles?hl=de" hreflang="de"><link rel="alternate" href="https://cloud.google.com/iam/docs/understanding-roles" hreflang="en"><link rel="alternate" href="https://cloud.google.com/iam/docs/understanding-roles" hreflang="x-default"><link rel="shortcut icon" href="https://cloud.google.com/_static/d7147bb846/images/cloud/icons/favicons/onecloud/favicon.ico"><link rel="apple-touch-icon" href="https://cloud.google.com/_static/d7147bb846/images/cloud/icons/favicons/onecloud/apple-icon.png"><meta name="viewport" content="width=device-width, initial-scale=1"><link rel="stylesheet"
+      
+      href="//fonts.googleapis.com/css?family=Google+Sans:400|Roboto:400,400italic,500,500italic,700,700italic|Roboto+Mono:400,500,700|Material+Icons"
+      ><link rel="stylesheet"
+        href="https://cloud.google.com/_static/d7147bb846/css/devsite-cloud-white.css"><link rel="stylesheet" href="https://cloud.google.com/_static/d7147bb846/css/cloud/cloud-site.css"><link rel="search"
+        type="application/opensearchdescription+xml"
+        title="Google Cloud"
+        href="https://cloud.google.com/s/opensearch.xml"><script src="https://cloud.google.com/_static/d7147bb846/js/jquery-bundle.js"></script><meta property="og:site_name" content="Google Cloud"><meta property="og:type" content="website"><meta property="og:url" content="https://cloud.google.com/iam/docs/understanding-roles"><meta property="og:locale" content="en"><script>
+    var ___gcfg = ___gcfg || {};
+    ___gcfg.lang = 'en';
+  </script><title>Understanding Roles &nbsp;|&nbsp; Cloud Identity and Access Management Documentation
+      &nbsp;|&nbsp; Google Cloud</title><meta property="og:title" content="Understanding Roles &nbsp;|&nbsp; Cloud Identity and Access Management Documentation
+      &nbsp;|&nbsp; Google Cloud"><script src="https://cloud.google.com/_static/d7147bb846/js/managed/listjs.js"></script></head><body class="
+               devsite-doc-page
+               
+               
+               
+               
+               devsite-header-no-lower-tabs"
+        data-family="endorsed"
+        id="top_of_page"><div class="devsite-wrapper"><div class="devsite-top-section-wrapper
+            "><header class="devsite-top-section nocontent"><div class="devsite-top-logo-row-wrapper-wrapper"><div class="devsite-top-logo-row-wrapper"><div class="devsite-top-logo-row devsite-full-site-width"><button type="button" class="devsite-expand-section-nav devsite-header-icon-button
+                                       button-flat material-icons gc-analytics-event"
+                  data-category="Site-Wide Custom Events" data-label="Hamburger menu"></button><div class="devsite-product-name-wrapper"><a href="https://cloud.google.com/" class="devsite-site-logo-link gc-analytics-event"
+   data-category="Site-Wide Custom Events" data-label="Site logo"><img src="https://cloud.google.com/_static/d7147bb846/images/cloud/cloud-logo.svg"
+       class="devsite-site-logo" alt="Google Cloud"><span class="devsite-site-name devsite-product-name">Google Cloud</span></a></div><div class="devsite-header-upper-tabs"><nav class="devsite-doc-set-nav devsite-nav devsite-overflow-tabs-scroll-wrapper"><ul class="devsite-doc-set-nav-tab-list devsite-overflow-tabs-scroll"><li class="devsite-doc-set-nav-tab-container devsite-nav-tab
+               "><a href="https://cloud.google.com/why-google/"
+         class=" devsite-nav-tab
+                devsite-doc-set-nav-tab devsite-doc-set-nav-tab-link gc-analytics-event"
+         
+       
+         data-category="Site-Wide Custom Events"
+       
+         data-label="Tab: Why Google"
+       
+         track-type="globalNav"
+       
+         track-name="whyGoogle"
+       >
+        Why Google
+      </a></li><li class="devsite-doc-set-nav-tab-container devsite-nav-tab
+               "><a href="https://cloud.google.com/products/"
+         class=" devsite-nav-tab
+                devsite-doc-set-nav-tab devsite-doc-set-nav-tab-link gc-analytics-event"
+         
+       
+         data-category="Site-Wide Custom Events"
+       
+         data-label="Tab: Products"
+       
+         track-type="globalNav"
+       
+         track-name="products"
+       >
+        Products
+      </a></li><li class="devsite-doc-set-nav-tab-container devsite-nav-tab
+               "><a href="https://cloud.google.com/solutions/"
+         class=" devsite-nav-tab
+                devsite-doc-set-nav-tab devsite-doc-set-nav-tab-link gc-analytics-event"
+         
+       
+         data-category="Site-Wide Custom Events"
+       
+         data-label="Tab: Solutions"
+       
+         track-type="globalNav"
+       
+         track-name="solutions"
+       >
+        Solutions
+      </a></li><li class="devsite-doc-set-nav-tab-container devsite-nav-tab
+               "><a href="https://cloud.google.com/launcher/"
+         class=" devsite-nav-tab
+                devsite-doc-set-nav-tab devsite-doc-set-nav-tab-link gc-analytics-event"
+         
+       
+         data-category="Site-Wide Custom Events"
+       
+         data-label="Tab: Launcher"
+       
+         track-type="globalNav"
+       
+         track-name="launcher"
+       >
+        Launcher
+      </a></li><li class="devsite-doc-set-nav-tab-container devsite-nav-tab
+               "><a href="https://cloud.google.com/pricing/"
+         class=" devsite-nav-tab
+                devsite-doc-set-nav-tab devsite-doc-set-nav-tab-link gc-analytics-event"
+         
+       
+         data-category="Site-Wide Custom Events"
+       
+         data-label="Tab: Pricing"
+       
+         track-type="globalNav"
+       
+         track-name="pricing"
+       >
+        Pricing
+      </a></li><li class="devsite-doc-set-nav-tab-container devsite-nav-tab
+               "><a href="https://cloud.google.com/customers/"
+         class=" devsite-nav-tab
+                devsite-doc-set-nav-tab devsite-doc-set-nav-tab-link gc-analytics-event"
+         
+       
+         data-category="Site-Wide Custom Events"
+       
+         data-label="Tab: Customers"
+       
+         track-type="globalNav"
+       
+         track-name="customers"
+       >
+        Customers
+      </a></li><li class="devsite-doc-set-nav-tab-container devsite-nav-tab
+               "><a href="https://cloud.google.com/docs/"
+         class="devsite-doc-set-nav-active devsite-nav-tab
+                devsite-doc-set-nav-tab devsite-doc-set-nav-tab-link gc-analytics-event"
+         aria-label="Documentation, selected"
+       
+         data-category="Site-Wide Custom Events"
+       
+         data-label="Tab: Documentation"
+       >
+        Documentation
+      </a></li><li class="devsite-doc-set-nav-tab-container devsite-nav-tab
+               "><a href="https://cloud.google.com/support/"
+         class=" devsite-nav-tab
+                devsite-doc-set-nav-tab devsite-doc-set-nav-tab-link gc-analytics-event"
+         
+       
+         data-category="Site-Wide Custom Events"
+       
+         data-label="Tab: Support"
+       
+         track-type="globalNav"
+       
+         track-name="support"
+       >
+        Support
+      </a></li><li class="devsite-doc-set-nav-tab-container devsite-nav-tab
+               "><a href="https://cloud.google.com/partners/"
+         class=" devsite-nav-tab
+                devsite-doc-set-nav-tab devsite-doc-set-nav-tab-link gc-analytics-event"
+         
+       
+         data-category="Site-Wide Custom Events"
+       
+         data-label="Tab: Partners"
+       
+         track-type="globalNav"
+       
+         track-name="partners"
+       >
+        Partners
+      </a></li></ul></nav></div><form class="devsite-search-form"
+                action="https://cloud.google.com/s/results/"
+                method="GET"
+                id="top-search"
+                search-placeholder='Search'><div id="searchbox" class="devsite-searchbox"><input placeholder='Search'
+         
+         type="text"
+         class="devsite-search-field devsite-search-query"
+         name="q"
+         value=""
+         autocomplete="off"
+         
+         aria-label="Search box"><div class="devsite-search-image material-icons"></div></div><input type="hidden"
+       name="p"
+       id="search_project"
+       value="/iam/docs/"
+       data-project-name="Cloud Identity and Access Management Documentation"
+       data-project-path="/iam/docs/"
+       data-query-match=""><input type="hidden" class="suggest-project" value="Cloud Identity and Access Management Documentation" /></form><a class="devsite-header-link devsite-top-button button gc-analytics-event"
+               href="//console.cloud.google.com/"
+               data-category="Site-Wide Custom Events"
+               data-label="Site header link"
+               track-type="navigateTo"
+               track-name="console"
+               track-metadata-position="nav"><div class="devsite-header-link-label">Console</div></a><button type="button" class="devsite-search-button devsite-header-icon-button button-flat
+                                       material-icons"></button><a href="https://www.google.com/accounts/ServiceLogin?passive=true&continue=https%3A%2F%2Fcloud.google.com%2Fiam%2Fdocs%2Funderstanding-roles%3Frefresh%3D1&service=cloudconsole"
+   class="devsite-user-signin devsite-top-button button gc-analytics-event"
+   data-category="Site-Wide Custom Events" data-label="Sign in button">
+  
+  Sign in
+</a></div></div></div><div class="devsite-collapsible-section"><div class="devsite-header-background devsite-full-site-width"><div class="devsite-product-id-row devsite-full-site-width"><div class="devsite-product-description-row"><ul class="devsite-breadcrumb-list"><li class="devsite-breadcrumb-item">
+    
+    
+    
+      Documentation
+    
+    
+  </li></ul></div><div class="devsite-product-button-row
+            cloud-free-trial-eligible"><button type="button" id="devsite-feedback-project"
+          class="devsite-feedback-button devsite-top-button gc-analytics-event"
+          data-category="Site-Wide Custom Events" data-label="Send Feedback Button"
+          track-type="feedback" track-name="sendFeedbackLink" track-metadata-position="header">
+  
+  Send feedback
+  </button><a
+    
+      href="https://console.cloud.google.com/freetrial"
+    
+    
+      class="cloud-free-trial-button button-primary button"
+    
+    
+      
+      track-type="freeTrial"
+      
+      track-name="try"
+      
+      track-metadata-position="nav"
+      
+    >
+    Try It Free
+  </a><a
+    
+      href="https://cloud.google.com/contact/"
+    
+    
+      class="cloud-contact-sales-button button"
+    
+    
+      
+      track-type="sales"
+      
+      track-name="contact"
+      
+      track-metadata-position="nav"
+      
+    >
+    Contact Sales
+  </a></div></div></div></div></header><script>
+    if (window.jQuery) {
+      $(document).ready(function() {
+        if (window.devsite && window.devsite.search) {
+          
+          window.devsite.search.init('en')
+        }
+      });
+    }
+  </script></div><div id="gc-wrapper"itemscope itemtype="http://schema.org/Article"><input class="google-tag-manager-id" type="hidden" value="GTM-5CVQBG"><script>
+      var dataLayer = [{"freeTrialEligibleUser": "True", "userCountry": "HK", "language": {"requested": "en", "served": "en"}, "projectName": "Cloud Identity and Access Management Documentation", "scriptsafe": null, "signedIn": "False", "internalUser": "False"}];
+    </script>
+
+      
+        <div class="devsite-site-mask"></div>
+        
+  
+
+
+<nav class="devsite-nav-responsive devsite-nav nocontent" tabindex="0">
+  
+  <div class="devsite-nav-responsive-tabs-panel">
+    
+      
+        
+
+
+
+<nav class="devsite-nav-responsive-tabs devsite-nav">
+  <ul class="devsite-nav-list">
+  
+    <li class="devsite-nav-item devsite-nav-item-heading">
+    
+      <a 
+           href="https://cloud.google.com/why-google/?nav=true"
+         
+         class="devsite-nav-responsive-tab devsite-nav-title gc-analytics-event
+                "
+         data-category="Site-Wide Custom Events" data-label="Responsive Tab: Why Google">
+        Why Google
+      </a>
+      
+      
+    
+    </li>
+  
+    <li class="devsite-nav-item devsite-nav-item-heading">
+    
+      <a 
+           href="https://cloud.google.com/products/?nav=true"
+         
+         class="devsite-nav-responsive-tab devsite-nav-title gc-analytics-event
+                "
+         data-category="Site-Wide Custom Events" data-label="Responsive Tab: Products">
+        Products
+      </a>
+      
+      
+    
+    </li>
+  
+    <li class="devsite-nav-item devsite-nav-item-heading">
+    
+      <a 
+           href="https://cloud.google.com/solutions/?nav=true"
+         
+         class="devsite-nav-responsive-tab devsite-nav-title gc-analytics-event
+                "
+         data-category="Site-Wide Custom Events" data-label="Responsive Tab: Solutions">
+        Solutions
+      </a>
+      
+      
+    
+    </li>
+  
+    <li class="devsite-nav-item devsite-nav-item-heading">
+    
+      <a 
+           href="https://cloud.google.com/launcher/?nav=true"
+         
+         class="devsite-nav-responsive-tab devsite-nav-title gc-analytics-event
+                "
+         data-category="Site-Wide Custom Events" data-label="Responsive Tab: Launcher">
+        Launcher
+      </a>
+      
+      
+    
+    </li>
+  
+    <li class="devsite-nav-item devsite-nav-item-heading">
+    
+      <a 
+           href="https://cloud.google.com/pricing/?nav=true"
+         
+         class="devsite-nav-responsive-tab devsite-nav-title gc-analytics-event
+                "
+         data-category="Site-Wide Custom Events" data-label="Responsive Tab: Pricing">
+        Pricing
+      </a>
+      
+      
+    
+    </li>
+  
+    <li class="devsite-nav-item devsite-nav-item-heading">
+    
+      <a 
+           href="https://cloud.google.com/customers/?nav=true"
+         
+         class="devsite-nav-responsive-tab devsite-nav-title gc-analytics-event
+                "
+         data-category="Site-Wide Custom Events" data-label="Responsive Tab: Customers">
+        Customers
+      </a>
+      
+      
+    
+    </li>
+  
+    <li class="devsite-nav-item devsite-nav-item-heading">
+    
+      <span class="devsite-nav-responsive-forward devsite-nav-responsive-tab devsite-nav-title
+                   devsite-nav-active gc-analytics-event"
+            data-category="Site-Wide Custom Events" data-label="Responsive Tab: Documentation"
+            tabindex="0">
+        Documentation
+      </span>
+    
+    </li>
+  
+    <li class="devsite-nav-item devsite-nav-item-heading">
+    
+      <a 
+           href="https://cloud.google.com/support/?nav=true"
+         
+         class="devsite-nav-responsive-tab devsite-nav-title gc-analytics-event
+                "
+         data-category="Site-Wide Custom Events" data-label="Responsive Tab: Support">
+        Support
+      </a>
+      
+      
+    
+    </li>
+  
+    <li class="devsite-nav-item devsite-nav-item-heading">
+    
+      <a 
+           href="https://cloud.google.com/partners/?nav=true"
+         
+         class="devsite-nav-responsive-tab devsite-nav-title gc-analytics-event
+                "
+         data-category="Site-Wide Custom Events" data-label="Responsive Tab: Partners">
+        Partners
+      </a>
+      
+      
+    
+    </li>
+  
+  
+    <li class="devsite-nav-item devsite-nav-item-heading">
+      <a href="//console.cloud.google.com/"
+         class="devsite-nav-responsive-tab devsite-nav-title gc-analytics-event"
+         data-category="Site-Wide Custom Events"
+         data-label="Responsive Tab: console">
+        Console
+      </a>
+    </li>
+  
+  </ul>
+</nav>
+
+
+      
+    
+  </div>
+  
+  
+  <div class="devsite-nav-responsive-sidebar-panel">
+    
+    <div class="devsite-nav-responsive-back" tabindex="0"></div>
+    
+    <nav class="devsite-nav-responsive-sidebar"></nav>
+  </div>
+  
+  
+    <div class="devsite-nav-responsive-index-panel">
+      <div class="devsite-nav-index-back" tabindex="0"></div>
+      <nav>
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+      </nav>
+    </div>
+  
+</nav>
+
+
+        <div class="devsite-main-content clearfix">
+
+        
+        
+
+        
+  
+  
+    
+    
+      
+  <nav class="devsite-section-nav devsite-nav nocontent">
+    <ul class="devsite-nav-list devsite-nav-expandable"><li class="devsite-nav-item devsite-nav-item-heading"><span class="devsite-nav-title devsite-nav-title-no-path" track-type="leftNav" track-name="expandNavSectionNoLink" track-metadata-position="0">Cloud IAM</span></li><li class="devsite-nav-item"><a href="https://cloud.google.com/iam/" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="0" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">Product Overview</a></li><li class="devsite-nav-item"><a href="https://cloud.google.com/iam/docs/" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="0" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">Documentation</a></li><li class="devsite-nav-item"><a href="https://cloud.google.com/iam/docs/quickstart" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="0" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">Quickstart</a></li><li class="devsite-nav-item devsite-nav-item-heading"><span class="devsite-nav-title devsite-nav-title-no-path" track-type="leftNav" track-name="expandNavSectionNoLink" track-metadata-position="0">How-to Guides</span></li><li class="devsite-nav-item"><a href="https://cloud.google.com/iam/docs/how-to" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="0" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">All How-to Guides</a></li><li class="devsite-nav-item devsite-nav-item-section-expandable"><span class="devsite-nav-title devsite-nav-title-no-path" track-type="leftNav" track-name="expandNavSectionNoLink"track-metadata-position="0" aria-label="Managing Roles and Permissions, click to expand/collapse" role="link">Managing Roles and Permissions</span><a class="devsite-nav-toggle devsite-nav-toggle-collapsed material-icons" track-type="leftNav" track-name="expandNavSectionArrow" track-metadata-position="0" aria-hidden="true"></a><ul class="devsite-nav-section devsite-nav-section-collapsed"><li class="devsite-nav-item"><a href="https://cloud.google.com/iam/docs/granting-changing-revoking-access" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="1" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">Granting, Changing, &amp; Revoking Access</a></li><li class="devsite-nav-item"><a href="https://cloud.google.com/iam/docs/testing-permissions" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="1" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">Testing Permissions</a></li><li class="devsite-nav-item"><a href="https://cloud.google.com/iam/docs/viewing-grantable-roles" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="1" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">Viewing Grantable Roles</a></li><li class="devsite-nav-item"><a href="https://cloud.google.com/iam/docs/creating-custom-roles" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="1" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">Creating and Managing Custom Roles</a></li><li class="devsite-nav-item"><a href="https://cloud.google.com/iam/docs/roles-audit-logging" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="1" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">Configuring Roles for Audit Logging</a></li><li class="devsite-nav-item"><a href="https://cloud.google.com/iam/docs/maintain-custom-roles-deployment-manager" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="1" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">Maintaining Custom Roles with Deployment Manager</a></li><li class="devsite-nav-item"><a href="https://cloud.google.com/iam/docs/migrating-to-cloud-identity" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="1" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">Migrating to Cloud Identity</a></li></ul></li><li class="devsite-nav-item devsite-nav-item-section-expandable"><span class="devsite-nav-title devsite-nav-title-no-path" track-type="leftNav" track-name="expandNavSectionNoLink"track-metadata-position="0" aria-label="Using Service Accounts, click to expand/collapse" role="link">Using Service Accounts</span><a class="devsite-nav-toggle devsite-nav-toggle-collapsed material-icons" track-type="leftNav" track-name="expandNavSectionArrow" track-metadata-position="0" aria-hidden="true"></a><ul class="devsite-nav-section devsite-nav-section-collapsed"><li class="devsite-nav-item"><a href="https://cloud.google.com/iam/docs/creating-managing-service-accounts" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="1" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">Creating and Managing Service Accounts</a></li><li class="devsite-nav-item"><a href="https://cloud.google.com/iam/docs/creating-managing-service-account-keys" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="1" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">Creating and Managing Service Account Keys</a></li><li class="devsite-nav-item"><a href="https://cloud.google.com/iam/docs/granting-roles-to-service-accounts" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="1" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">Granting Roles to Service Accounts</a></li></ul></li><li class="devsite-nav-item devsite-nav-item-heading"><span class="devsite-nav-title devsite-nav-title-no-path" track-type="leftNav" track-name="expandNavSectionNoLink" track-metadata-position="0">APIs &amp; Reference</span></li><li class="devsite-nav-item devsite-nav-item-section-expandable"><span class="devsite-nav-title devsite-nav-title-no-path" track-type="leftNav" track-name="expandNavSectionNoLink"track-metadata-position="0" aria-label="IAM API, click to expand/collapse" role="link">IAM API</span><a class="devsite-nav-toggle devsite-nav-toggle-collapsed material-icons" track-type="leftNav" track-name="expandNavSectionArrow" track-metadata-position="0" aria-hidden="true"></a><ul class="devsite-nav-section devsite-nav-section-collapsed"><li class="devsite-nav-item"><a href="https://cloud.google.com/iam/reference/rest/" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="1" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">Overview</a></li><li class="devsite-nav-item devsite-nav-item-section-expandable"><span class="devsite-nav-title devsite-nav-title-no-path" track-type="leftNav" track-name="expandNavSectionNoLink"track-metadata-position="1" aria-label="v1, click to expand/collapse" role="link">v1</span><a class="devsite-nav-toggle devsite-nav-toggle-collapsed material-icons" track-type="leftNav" track-name="expandNavSectionArrow" track-metadata-position="1" aria-hidden="true"></a><ul class="devsite-nav-section devsite-nav-section-collapsed"><li class="devsite-nav-item devsite-nav-item-heading"><span class="devsite-nav-title devsite-nav-title-no-path" track-type="leftNav" track-name="expandNavSectionNoLink" track-metadata-position="2">REST Resources</span></li><li class="devsite-nav-item devsite-nav-item-section-expandable"><span class="devsite-nav-title devsite-nav-title-no-path" track-type="leftNav" track-name="expandNavSectionNoLink"track-metadata-position="2" aria-label="iamPolicies, click to expand/collapse" role="link">iamPolicies</span><a class="devsite-nav-toggle devsite-nav-toggle-collapsed material-icons" track-type="leftNav" track-name="expandNavSectionArrow" track-metadata-position="2" aria-hidden="true"></a><ul class="devsite-nav-section devsite-nav-section-collapsed"><li class="devsite-nav-item"><a href="https://cloud.google.com/iam/reference/rest/v1/iamPolicies" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="3" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">Overview</a></li><li class="devsite-nav-item"><a href="https://cloud.google.com/iam/reference/rest/v1/iamPolicies/queryAuditableServices" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="3" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">queryAuditableServices</a></li></ul></li><li class="devsite-nav-item devsite-nav-item-section-expandable"><span class="devsite-nav-title devsite-nav-title-no-path" track-type="leftNav" track-name="expandNavSectionNoLink"track-metadata-position="2" aria-label="organizations.roles, click to expand/collapse" role="link">organizations.roles</span><a class="devsite-nav-toggle devsite-nav-toggle-collapsed material-icons" track-type="leftNav" track-name="expandNavSectionArrow" track-metadata-position="2" aria-hidden="true"></a><ul class="devsite-nav-section devsite-nav-section-collapsed"><li class="devsite-nav-item"><a href="https://cloud.google.com/iam/reference/rest/v1/organizations.roles" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="3" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">Overview</a></li><li class="devsite-nav-item"><a href="https://cloud.google.com/iam/reference/rest/v1/organizations.roles/create" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="3" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">create</a></li><li class="devsite-nav-item"><a href="https://cloud.google.com/iam/reference/rest/v1/organizations.roles/delete" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="3" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">delete</a></li><li class="devsite-nav-item"><a href="https://cloud.google.com/iam/reference/rest/v1/organizations.roles/get" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="3" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">get</a></li><li class="devsite-nav-item"><a href="https://cloud.google.com/iam/reference/rest/v1/organizations.roles/list" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="3" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">list</a></li><li class="devsite-nav-item"><a href="https://cloud.google.com/iam/reference/rest/v1/organizations.roles/patch" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="3" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">patch</a></li><li class="devsite-nav-item"><a href="https://cloud.google.com/iam/reference/rest/v1/organizations.roles/undelete" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="3" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">undelete</a></li></ul></li><li class="devsite-nav-item devsite-nav-item-section-expandable"><span class="devsite-nav-title devsite-nav-title-no-path" track-type="leftNav" track-name="expandNavSectionNoLink"track-metadata-position="2" aria-label="permissions, click to expand/collapse" role="link">permissions</span><a class="devsite-nav-toggle devsite-nav-toggle-collapsed material-icons" track-type="leftNav" track-name="expandNavSectionArrow" track-metadata-position="2" aria-hidden="true"></a><ul class="devsite-nav-section devsite-nav-section-collapsed"><li class="devsite-nav-item"><a href="https://cloud.google.com/iam/reference/rest/v1/permissions" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="3" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">Overview</a></li><li class="devsite-nav-item"><a href="https://cloud.google.com/iam/reference/rest/v1/permissions/queryTestablePermissions" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="3" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">queryTestablePermissions</a></li></ul></li><li class="devsite-nav-item devsite-nav-item-section-expandable"><span class="devsite-nav-title devsite-nav-title-no-path" track-type="leftNav" track-name="expandNavSectionNoLink"track-metadata-position="2" aria-label="projects.roles, click to expand/collapse" role="link">projects.roles</span><a class="devsite-nav-toggle devsite-nav-toggle-collapsed material-icons" track-type="leftNav" track-name="expandNavSectionArrow" track-metadata-position="2" aria-hidden="true"></a><ul class="devsite-nav-section devsite-nav-section-collapsed"><li class="devsite-nav-item"><a href="https://cloud.google.com/iam/reference/rest/v1/projects.roles" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="3" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">Overview</a></li><li class="devsite-nav-item"><a href="https://cloud.google.com/iam/reference/rest/v1/projects.roles/create" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="3" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">create</a></li><li class="devsite-nav-item"><a href="https://cloud.google.com/iam/reference/rest/v1/projects.roles/delete" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="3" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">delete</a></li><li class="devsite-nav-item"><a href="https://cloud.google.com/iam/reference/rest/v1/projects.roles/get" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="3" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">get</a></li><li class="devsite-nav-item"><a href="https://cloud.google.com/iam/reference/rest/v1/projects.roles/list" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="3" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">list</a></li><li class="devsite-nav-item"><a href="https://cloud.google.com/iam/reference/rest/v1/projects.roles/patch" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="3" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">patch</a></li><li class="devsite-nav-item"><a href="https://cloud.google.com/iam/reference/rest/v1/projects.roles/undelete" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="3" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">undelete</a></li></ul></li><li class="devsite-nav-item devsite-nav-item-section-expandable"><span class="devsite-nav-title devsite-nav-title-no-path" track-type="leftNav" track-name="expandNavSectionNoLink"track-metadata-position="2" aria-label="projects.serviceAccounts, click to expand/collapse" role="link">projects.serviceAccounts</span><a class="devsite-nav-toggle devsite-nav-toggle-collapsed material-icons" track-type="leftNav" track-name="expandNavSectionArrow" track-metadata-position="2" aria-hidden="true"></a><ul class="devsite-nav-section devsite-nav-section-collapsed"><li class="devsite-nav-item"><a href="https://cloud.google.com/iam/reference/rest/v1/projects.serviceAccounts" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="3" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">Overview</a></li><li class="devsite-nav-item"><a href="https://cloud.google.com/iam/reference/rest/v1/projects.serviceAccounts/create" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="3" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">create</a></li><li class="devsite-nav-item"><a href="https://cloud.google.com/iam/reference/rest/v1/projects.serviceAccounts/delete" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="3" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">delete</a></li><li class="devsite-nav-item"><a href="https://cloud.google.com/iam/reference/rest/v1/projects.serviceAccounts/get" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="3" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">get</a></li><li class="devsite-nav-item"><a href="https://cloud.google.com/iam/reference/rest/v1/projects.serviceAccounts/getIamPolicy" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="3" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">getIamPolicy</a></li><li class="devsite-nav-item"><a href="https://cloud.google.com/iam/reference/rest/v1/projects.serviceAccounts/list" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="3" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">list</a></li><li class="devsite-nav-item"><a href="https://cloud.google.com/iam/reference/rest/v1/projects.serviceAccounts/setIamPolicy" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="3" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">setIamPolicy</a></li><li class="devsite-nav-item"><a href="https://cloud.google.com/iam/reference/rest/v1/projects.serviceAccounts/signBlob" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="3" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">signBlob</a></li><li class="devsite-nav-item"><a href="https://cloud.google.com/iam/reference/rest/v1/projects.serviceAccounts/signJwt" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="3" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">signJwt</a></li><li class="devsite-nav-item"><a href="https://cloud.google.com/iam/reference/rest/v1/projects.serviceAccounts/testIamPermissions" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="3" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">testIamPermissions</a></li><li class="devsite-nav-item"><a href="https://cloud.google.com/iam/reference/rest/v1/projects.serviceAccounts/update" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="3" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">update</a></li></ul></li><li class="devsite-nav-item devsite-nav-item-section-expandable"><span class="devsite-nav-title devsite-nav-title-no-path" track-type="leftNav" track-name="expandNavSectionNoLink"track-metadata-position="2" aria-label="projects.serviceAccounts.keys, click to expand/collapse" role="link">projects.serviceAccounts.keys</span><a class="devsite-nav-toggle devsite-nav-toggle-collapsed material-icons" track-type="leftNav" track-name="expandNavSectionArrow" track-metadata-position="2" aria-hidden="true"></a><ul class="devsite-nav-section devsite-nav-section-collapsed"><li class="devsite-nav-item"><a href="https://cloud.google.com/iam/reference/rest/v1/projects.serviceAccounts.keys" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="3" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">Overview</a></li><li class="devsite-nav-item"><a href="https://cloud.google.com/iam/reference/rest/v1/projects.serviceAccounts.keys/create" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="3" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">create</a></li><li class="devsite-nav-item"><a href="https://cloud.google.com/iam/reference/rest/v1/projects.serviceAccounts.keys/delete" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="3" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">delete</a></li><li class="devsite-nav-item"><a href="https://cloud.google.com/iam/reference/rest/v1/projects.serviceAccounts.keys/get" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="3" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">get</a></li><li class="devsite-nav-item"><a href="https://cloud.google.com/iam/reference/rest/v1/projects.serviceAccounts.keys/list" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="3" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">list</a></li></ul></li><li class="devsite-nav-item devsite-nav-item-section-expandable"><span class="devsite-nav-title devsite-nav-title-no-path" track-type="leftNav" track-name="expandNavSectionNoLink"track-metadata-position="2" aria-label="roles, click to expand/collapse" role="link">roles</span><a class="devsite-nav-toggle devsite-nav-toggle-collapsed material-icons" track-type="leftNav" track-name="expandNavSectionArrow" track-metadata-position="2" aria-hidden="true"></a><ul class="devsite-nav-section devsite-nav-section-collapsed"><li class="devsite-nav-item"><a href="https://cloud.google.com/iam/reference/rest/v1/roles" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="3" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">Overview</a></li><li class="devsite-nav-item"><a href="https://cloud.google.com/iam/reference/rest/v1/roles/get" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="3" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">get</a></li><li class="devsite-nav-item"><a href="https://cloud.google.com/iam/reference/rest/v1/roles/list" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="3" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">list</a></li><li class="devsite-nav-item"><a href="https://cloud.google.com/iam/reference/rest/v1/roles/queryGrantableRoles" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="3" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">queryGrantableRoles</a></li></ul></li><li class="devsite-nav-item devsite-nav-item-heading"><span class="devsite-nav-title devsite-nav-title-no-path" track-type="leftNav" track-name="expandNavSectionNoLink" track-metadata-position="2">Types</span></li><li class="devsite-nav-item"><a href="https://cloud.google.com/iam/reference/rest/v1/Action" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="2" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">Action</a></li><li class="devsite-nav-item"><a href="https://cloud.google.com/iam/reference/rest/v1/AuditData" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="2" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">AuditData</a></li><li class="devsite-nav-item"><a href="https://cloud.google.com/iam/reference/rest/v1/BindingDelta" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="2" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">BindingDelta</a></li><li class="devsite-nav-item"><a href="https://cloud.google.com/iam/reference/rest/v1/ListRolesResponse" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="2" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">ListRolesResponse</a></li><li class="devsite-nav-item"><a href="https://cloud.google.com/iam/reference/rest/v1/Policy" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="2" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">Policy</a></li><li class="devsite-nav-item"><a href="https://cloud.google.com/iam/reference/rest/v1/PolicyDelta" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="2" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">PolicyDelta</a></li><li class="devsite-nav-item"><a href="https://cloud.google.com/iam/reference/rest/v1/RoleView" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="2" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">RoleView</a></li></ul></li></ul></li><li class="devsite-nav-item"><a href="https://cloud.google.com/iam/docs/custom-roles-permissions-support" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="0" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">Support Level for Permissions in Custom Roles</a></li><li class="devsite-nav-item devsite-nav-item-heading"><span class="devsite-nav-title devsite-nav-title-no-path" track-type="leftNav" track-name="expandNavSectionNoLink" track-metadata-position="0">Concepts</span></li><li class="devsite-nav-item"><a href="https://cloud.google.com/iam/docs/concepts" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="0" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">All Concepts</a></li><li class="devsite-nav-item"><a href="https://cloud.google.com/iam/docs/overview" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="0" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">Overview</a></li><li class="devsite-nav-item devsite-nav-active"><a href="https://cloud.google.com/iam/docs/understanding-roles" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="0" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">Understanding Roles</a></li><li class="devsite-nav-item"><a href="https://cloud.google.com/iam/docs/understanding-custom-roles" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="0" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">Understanding Custom Roles</a></li><li class="devsite-nav-item"><a href="https://cloud.google.com/iam/docs/service-accounts" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="0" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">Service Accounts</a></li><li class="devsite-nav-item devsite-nav-item-section-expandable"><span class="devsite-nav-title devsite-nav-title-no-path" track-type="leftNav" track-name="expandNavSectionNoLink"track-metadata-position="0" aria-label="Best Practices, click to expand/collapse" role="link">Best Practices</span><a class="devsite-nav-toggle devsite-nav-toggle-collapsed material-icons" track-type="leftNav" track-name="expandNavSectionArrow" track-metadata-position="0" aria-hidden="true"></a><ul class="devsite-nav-section devsite-nav-section-collapsed"><li class="devsite-nav-item"><a href="https://cloud.google.com/iam/docs/resource-hierarchy-access-control" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="1" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">Using Resource Hierarchy for Access Control</a></li><li class="devsite-nav-item"><a href="https://cloud.google.com/iam/docs/understanding-service-accounts" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="1" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">Understanding Service Accounts</a></li><li class="devsite-nav-item"><a href="https://cloud.google.com/iam/docs/using-iam-securely" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="1" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">Using IAM Securely</a></li><li class="devsite-nav-item"><a href="https://cloud.google.com/iam/docs/job-functions/billing" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="1" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">IAM roles for Billing-related Job Functions</a></li><li class="devsite-nav-item"><a href="https://cloud.google.com/iam/docs/job-functions/networking" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="1" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">IAM roles for Networking-related Job Functions</a></li></ul></li><li class="devsite-nav-item devsite-nav-item-heading"><span class="devsite-nav-title devsite-nav-title-no-path" track-type="leftNav" track-name="expandNavSectionNoLink" track-metadata-position="0">Resources</span></li><li class="devsite-nav-item"><a href="https://cloud.google.com/iam/docs/support" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="0" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">Support &amp; Troubleshooting</a></li><li class="devsite-nav-item devsite-nav-item-section-expandable"><span class="devsite-nav-title devsite-nav-title-no-path" track-type="leftNav" track-name="expandNavSectionNoLink"track-metadata-position="0" aria-label="Release Notes, click to expand/collapse" role="link">Release Notes</span><a class="devsite-nav-toggle devsite-nav-toggle-collapsed material-icons" track-type="leftNav" track-name="expandNavSectionArrow" track-metadata-position="0" aria-hidden="true"></a><ul class="devsite-nav-section devsite-nav-section-collapsed"><li class="devsite-nav-item"><a href="https://cloud.google.com/iam/docs/release-notes" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="1" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">Overview</a></li><li class="devsite-nav-item"><a href="https://cloud.google.com/iam/docs/permissions-change-log" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="1" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">IAM Permissions Change Log</a></li></ul></li><li class="devsite-nav-item"><a href="https://cloud.google.com/iam/pricing" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="0" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">Pricing</a></li></ul>
+  </nav>
+
+    
+
+    
+  <nav class="devsite-page-nav devsite-nav"></nav>
+
+
+      <article class="devsite-article">
+        <article class="devsite-article-inner">
+  
+          
+  
+
+
+
+  
+  <nav class="devsite-breadcrumb-nav devsite-nav">
+    
+
+
+<ul class="devsite-breadcrumb-list">
+  
+  <li class="devsite-breadcrumb-item">
+    
+    
+    <a href="https://cloud.google.com/iam/" class="devsite-breadcrumb-link gc-analytics-event"
+       data-category="Site-Wide Custom Events" data-label="Breadcrumbs"
+       data-value="1">
+    
+    
+      Cloud Identity and Access Management
+    
+    
+    </a>
+    
+  </li>
+  
+  <li class="devsite-breadcrumb-item">
+    
+    
+    <div class="devsite-breadcrumb-guillemet material-icons"></div>
+    
+    
+    <a href="https://cloud.google.com/iam/docs/" class="devsite-breadcrumb-link gc-analytics-event"
+       data-category="Site-Wide Custom Events" data-label="Breadcrumbs"
+       data-value="2">
+    
+    
+      Documentation
+    
+    
+    </a>
+    
+  </li>
+  
+  <li class="devsite-breadcrumb-item">
+    
+    
+    <div class="devsite-breadcrumb-guillemet material-icons"></div>
+    
+    
+    <a href="https://cloud.google.com/docs/" class="devsite-breadcrumb-link gc-analytics-event"
+       data-category="Site-Wide Custom Events" data-label="Breadcrumbs"
+       data-value="3">
+    
+    
+      Documentation
+    
+    
+    </a>
+    
+  </li>
+  
+</ul>
+
+  </nav>
+  
+  
+  <h1 itemprop="name" class="devsite-page-title">
+    Understanding Roles
+  </h1>
+  
+  
+  <nav class="devsite-page-nav-embedded devsite-nav"></nav>
+  
+  <div class="devsite-article-body clearfix
+            "
+       itemprop="articleBody">
+    
+  
+<p>When an identity calls a Google Cloud Platform API, Google Cloud Identity and Access Management requires that the
+identity has the appropriate permissions to use the resource. You can grant
+permissions by granting <strong>roles</strong> to a user, a group, or a service account.</p>
+<p>This page describes the Cloud IAM roles that you can grant to
+identities to access Cloud Platform resources.</p>
+<h2 id="prerequisite_for_this_guide">Prerequisite for this guide</h2>
+<ul>
+<li>Understand the <a href="https://cloud.google.com/iam/docs/overview">basic concepts</a> of Cloud IAM</li>
+</ul>
+<h2 id="role_types">Role types</h2>
+<p>There are three types of roles in Cloud IAM:</p>
+<ul>
+<li><strong>Primitive roles</strong>, which include the Owner, Editor, and Viewer roles that
+existed prior to the introduction of Cloud IAM</li>
+<li><strong>Predefined roles</strong>, which provide granular access for a specific service and
+are managed by GCP</li>
+<li><strong>Custom roles</strong>, which provide granular access according to a user-specified
+list of permissions</li>
+</ul>
+<p>The following section describes each role type and provides examples of how to
+use them.</p>
+<h2 id="primitive_roles">Primitive roles</h2>
+<p>There are three roles that existed prior to the introduction of
+Cloud IAM: Owner, Editor, and Viewer. These roles are concentric;
+that is, the Owner role includes the permissions in the Editor role, and the
+Editor role includes the permissions in the Viewer role.</p>
+<p>The following table summarizes the permissions that the primitive roles
+include across all services in Cloud Platform:</p>
+<h3 id="primitive_role_definitions">Primitive role definitions</h3>
+<p><table>
+<thead>
+  <tr>
+    <th style="width:20%;">Role Name</th>
+    <th>Role Title</th>
+    <th>Permissions</th>
+  </tr>
+</thead>
+<tbody>
+  <tr>
+    <td><code>roles/viewer</code></td>
+    <td>Viewer</td>
+    <td>Permissions for read-only actions that preserve state.</td>
+  </tr>
+  <tr>
+    <td><code>roles/editor</code></td>
+    <td>Editor</td>
+    <td>
+      All viewer permissions <b>and</b> permissions for actions that modify
+      state.
+    </td>
+  </tr>
+  <tr>
+    <td><code>roles/owner</code></td>
+    <td>Owner</td>
+    <td>
+      All editor permissions <b>and</b> permissions for the following actions:
+      <ul>
+        <li>
+          Manage roles and permissions for a project and all resources within
+          the project.
+        </li>
+        <li>Set up billing for a project.</li>
+      </ul>
+      <div class="note"><b>Note:</b>
+      <ul>
+        <li>
+          Granting the owner role at a resource-level, such as a
+          Cloud Pub/Sub topic, doesn't grant the owner role on the
+          parent project.
+        </li>
+        <li>
+          The owner role doesn't contain any permission for the Organization
+          resource. Therefore, granting the owner role at the organization-level
+          doesn't allow you to update the organization's metadata. However, it
+          allows you to modify projects under that organization. 
+        </li>
+      </ul>
+      </div>
+    </td>
+  </tr>
+</tbody>
+</table></p>
+<p>You can apply primitive roles at the project or service resource levels by using
+<a href="https://cloud.google.com/iam/docs/managing-policies#access_control_via_console">GCP Console</a>, the
+<a href="https://cloud.google.com/iam/docs/managing-policies#access_control_via_api">API</a> and the
+<a href="https://cloud.google.com/iam/docs/managing-policies#access_control_via_the_gcloud_tool"><code>gcloud</code> command-line tool</a>.</p>
+<h3 id="invitation_flow">Invitation flow</h3>
+<p>You cannot grant the owner role to a member for a project using the
+Cloud IAM API or the <code>gcloud</code> command-line tool. You can only add
+owners to a project using the GCP Console. An invitation will be sent
+to the member via email and the member must accept the invitation to be made an
+owner of the project.</p>
+<p>Note that invitation emails aren't sent in the following cases:</p>
+<ul>
+<li>when you're granting a role other than the owner.</li>
+<li>when an organization member adds another member of their organization as an
+  owner of a project within that organization.</li>
+</ul>
+<h2 id="predefined_roles">Predefined roles</h2>
+<aside class="special">
+  <p><strong>Beta</strong></p>
+  Any Beta Cloud IAM roles described in this section might be
+  changed in backward-incompatible ways and are not recommended for production
+  use. They are not subject to any SLA or deprecation policy.
+</aside>
+
+<p>In addition to the primitive roles, Cloud IAM provides additional
+predefined roles that give granular access to specific Google Cloud Platform
+resources and prevent unwanted access to other resources.</p>
+<p>The following table lists these roles, their description, and the lowest-level
+resource type where the roles can be set. A particular role can be granted to
+this resource type, or in most cases any type above it in the
+<a href="https://cloud.google.com/resource-manager/docs/cloud-platform-resource-hierarchy">GCP hierarchy</a>.
+You can grant multiple roles to the same user. For example, the same user can
+have Network Admin and Log Viewer roles on a project and also have a Publisher
+role for a Pub/Sub topic within that project. For a list of the permissions
+contained in a role, see
+<a href="https://cloud.google.com/iam/docs/creating-custom-roles#getting_the_role_metadata">Getting the role metadata</a>.</p>
+<h3 id="project_roles">Project roles</h3>
+<p><table>
+<thead>
+  <tr>
+    <th style="width:15%;">Role Name</th>
+    <th>Role Title</th>
+    <th>Description</th>
+    <th style="width:15%;">Lowest Resource Type</th>
+  </tr>
+</thead>
+<tbody>
+<tr>
+  <td>
+    <code>roles/<br />browser</code><sup><font color="red">Beta</font></sup>
+  </td>
+  <td>Browser</td>
+  <td>
+    Read access to browse the hierarchy for a project, including the folder,
+    organization, and Cloud IAM policy. This role doesn't include
+    permission to view resources in the project.
+  </td>
+  <td>
+    Project
+  </td>
+</tr>
+<tr>
+  <td><code>roles/<br />iam.serviceAccountActor</code></td>
+  <td>Service Account Actor</td>
+  <td>
+    <p>
+      This role has been deprecated. If you need to run operations as the
+      service account, use the Service Account User role. To effectively provide
+      the same permissions as Service Account Actor, you should also grant
+      Service Account Token Creator.
+    </p>
+  </td>
+  <td>
+    Service Account
+  </td>
+</tr>
+</tbody>
+</table></p>
+<h3 id="app_engine_roles">App Engine Roles</h3>
+<p><table>
+<thead>
+<tr>
+  <th style="width:15%;">Role Name</th>
+  <th>Role Title</th>
+  <th>Description</th>
+  <th style="width:15%;">Lowest Resource Type</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+  <td><code>roles/<br />appengine.appAdmin</code></td>
+  <td>App Engine Admin</td>
+  <td>
+    Read/Write/Modify access to all application configuration and settings.
+  </td>
+  <td>
+    Project
+  </td>
+</tr>
+<tr>
+  <td><code>roles/<br />appengine.serviceAdmin</code></td>
+  <td>App Engine Service Admin</td>
+  <td>
+    Read-only access to all application configuration and settings.
+    <br />
+    Write access to module-level and version-level settings. Cannot deploy a
+    new version.
+  </td>
+  <td>
+    Project
+  </td>
+</tr>
+<tr>
+  <td><code>roles/<br />appengine.deployer</code></td>
+  <td>App Engine Deployer</td>
+  <td>
+    Read-only access to all application configuration and settings.
+    <br />
+    Write access only to create a new version; cannot modify existing versions
+    other than deleting versions that are not receiving traffic.
+  </td>
+  <td>
+    Project
+  </td>
+</tr>
+<tr>
+  <td><code>roles/<br />appengine.appViewer</code></td>
+  <td>App Engine Viewer</td>
+  <td>Read-only access to all application configuration and settings.</td>
+  <td>
+    Project
+  </td>
+</tr>
+<tr>
+  <td><code>roles/<br />appengine.codeViewer</code></td>
+  <td>App Engine Code Viewer</td>
+  <td>
+    Read-only access to all application configuration, settings, and deployed
+    source code.
+  </td>
+  <td>
+    Project
+  </td>
+</tr>
+</tbody>
+</table></p>
+<h3 id="bigquery_roles">BigQuery Roles</h3>
+<table>
+<thead>
+<tr>
+  <th style="width:15%;">Role Name</th>
+  <th>Role Title</th>
+  <th>Description</th>
+  <th style="width:15%;">Lowest Resource Type</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+  <td><code>roles/<br />bigquery.user</code></td>
+  <td>BigQuery User</td>
+  <td>
+    Provides permissions to run jobs, including queries, within the project. The
+    user role can enumerate their own jobs, cancel their own jobs, and enumerate
+    datasets within a project. Additionally, allows the creation of new datasets
+    within the project; the creator is granted the
+    <code>bigquery.dataOwner</code> role for these new datasets.
+  </td>
+  <td>
+    Project
+    </td>
+</tr>
+<tr>
+  <td><code>roles/<br />bigquery.jobUser</code></td>
+  <td>BigQuery Job User</td>
+  <td>
+    Provides permissions to run jobs, including queries, within the project. The
+    jobUser role can enumerate their own jobs and cancel their own jobs.
+  </td>
+  <td>
+    Project
+    </td>
+</tr>
+<tr>
+  <td><code>roles/<br />bigquery.dataViewer</code></td>
+  <td>BigQuery Data Viewer</td>
+  <td>
+    <p>When applied to a dataset, dataViewer provides permissions to:</p>
+    <ul>
+      <li>Read the dataset's metadata and to list tables in the dataset.</li>
+      <li>Read data and metadata from the dataset's tables.</li>
+    </ul>
+    <p>
+      When applied at the project or organization level, this role can also
+      enumerate all datasets in the project. Additional roles, however, are
+      necessary to allow the running of jobs.
+    </p>
+  </td>
+  <td>
+    Dataset
+  </td>
+</tr>
+<tr>
+  <td><code>roles/<br />bigquery.dataEditor</code></td>
+  <td>BigQuery Data Editor</td>
+  <td>
+    <p>When applied to a dataset, dataEditor provides permissions to:</p>
+    <ul>
+      <li>Read the dataset's metadata and to list tables in the dataset.</li>
+      <li>Create, update, get, and delete the dataset's tables.</li>
+    </ul>
+    <p>
+      When applied at the project or organization level, this role can also
+      create new datasets.
+    </p>
+  </td>
+  <td>
+    Dataset
+  </td>
+</tr>
+<tr>
+  <td><code>roles/<br />bigquery.dataOwner</code></td>
+  <td>BigQuery Data Owner</td>
+  <td>
+    <p>When applied to a dataset, dataOwner provides permissions to:</p>
+    <ul>
+      <li>Read, update, and delete the dataset.</li>
+      <li>Create, update, get, and delete the dataset's tables.</li>
+    </ul>
+    <p>
+      When applied at the project or organization level, this role can also
+      create new datasets.
+    </p>
+  </td>
+  <td>
+    Dataset
+  </td>
+</tr>
+<tr>
+  <td><code>roles/<br />bigquery.admin</code></td>
+  <td>BigQuery Admin</td>
+  <td>
+    Provides permissions to manage all resources within the project. Can manage
+    all data within the project, and can cancel jobs from other users running
+    within the project.
+  </td>
+  <td>
+    Project
+  </td>
+</tr>
+</tbody>
+</table>
+
+<h3 id="cloud_bigtable_roles">Cloud Bigtable Roles</h3>
+<p><table>
+<thead>
+<tr>
+  <th style="width:15%;">Role Name</th>
+  <th>Role Title</th>
+  <th>Description</th>
+  <th style="width:15%;">Lowest Resource Type</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+  <td><code>roles/<br />bigtable.admin</code></td>
+  <td>Cloud Bigtable Administrator</td>
+  <td>
+    Administers all instances within a project, including the data stored within
+    tables. Can create new instances. Intended for project administrators.
+  </td>
+  <td>
+    Instance
+  </td>
+</tr>
+<tr>
+  <td><code>roles/<br />bigtable.user</code></td>
+  <td>Cloud Bigtable User</td>
+  <td>
+    Provides read-write access to the data stored within tables. Intended for
+    application developers or service accounts.
+  </td>
+  <td>
+    Instance
+  </td>
+</tr>
+<tr>
+  <td><code>roles/<br />bigtable.reader</code></td>
+  <td>Cloud Bigtable Reader</td>
+  <td>
+    Provides read-only access to the data stored within tables. Intended for
+    data scientists, dashboard generators, and other data-analysis scenarios.
+  </td>
+  <td>
+    Instance
+  </td>
+</tr>
+</tbody>
+</table></p>
+<h3 id="cloud_billing_roles">Cloud Billing Roles</h3>
+<p><table>
+<thead>
+<tr>
+  <th style="width:15%;">Role Name</th>
+  <th>Role Title</th>
+  <th>Description</th>
+  <th style="width:15%;">Lowest Resource Type</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+  <td><code>roles/<br />billing.admin</code></td>
+  <td>Billing Account Administrator</td>
+  <td>Provides access to see and manage all aspects of billing accounts.</td>
+  <td>
+    Billing Account
+  </td>
+</tr>
+<tr>
+  <td><code>roles/<br />billing.projectManager</code></td>
+  <td>Project Billing Manager</td>
+  <td>
+    Provides access to assign a project's billing account or disable its
+    billing.
+  </td>
+  <td>
+    Project
+  </td>
+</tr>
+<tr>
+  <td><code>roles/<br />billing.user</code></td>
+  <td>Billing Account User</td>
+  <td>Provides access to associate projects with billing accounts.</td>
+  <td>
+    Billing Account
+  </td>
+</tr>
+<tr>
+  <td><code>roles/<br />billing.creator</code></td>
+  <td>Billing Account Creator</td>
+  <td>Provides access to create billing accounts.</td>
+  <td>
+    Project
+  </td>
+</tr>
+<tr>
+  <td><code>roles/<br />billing.viewer</code></td>
+  <td>Billing Account Viewer</td>
+  <td>View billing account cost information and transactions.</td>
+  <td>
+    Organization
+    <br />
+    Billing Account
+  </td>
+</tr>
+</tbody>
+</table></p>
+<h3 id="cloud_dataflow_roles">Cloud Dataflow Roles</h3>
+<p><table>
+<thead>
+<tr>
+  <th style="width:15%;">Role Name</th>
+  <th>Role Title</th>
+  <th>Description</th>
+  <th style="width:15%;">Lowest Resource Type</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+  <td><code>roles/<br />dataflow.viewer</code></td>
+  <td>Cloud Dataflow Viewer</td>
+  <td>
+    Provides read-only access to all Cloud Dataflow-related
+    resources.
+  </td>
+  <td>
+    Project
+  </td>
+</tr>
+<tr>
+  <td><code>roles/<br />dataflow.developer</code></td>
+  <td>Cloud Dataflow Developer</td>
+  <td>
+    Provides the permissions necessary to execute and manipulate
+    Cloud Dataflow jobs.
+  </td>
+  <td>
+    Project
+  </td>
+</tr>
+<tr>
+  <td><code>roles/<br />dataflow.worker</code></td>
+  <td>Cloud Dataflow Worker</td>
+  <td>
+    Provides the permissions necessary for a Compute Engine service
+    account to execute work units for a Cloud Dataflow pipeline.
+  </td>
+  <td>
+    Project
+  </td>
+</tr>
+</tbody>
+</table></p>
+<h3 id="cloud_dataproc_roles">Cloud Dataproc Roles</h3>
+<table>
+<thead>
+<tr>
+  <th style="width:15%;">Role Name</th>
+  <th>Role Title</th>
+  <th>Description</th>
+  <th style="width:15%;">Lowest Resource Type</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+  <td>
+    <code>roles/<br />dataproc.editor</code>
+    <sup><font color="red">Beta</font></sup>
+  </td>
+  <td>Cloud Dataproc Editor</td>
+  <td>
+    Provides the permissions necessary for viewing the resources required to
+    manage Cloud Dataproc, including machine types, networks, projects
+    and zones.
+  </td>
+  <td>
+    Project
+  </td>
+</tr>
+<tr>
+  <td>
+    <code>roles/<br />dataproc.viewer</code>
+    <sup><font color="red">Beta</font></sup>
+  </td>
+  <td>Cloud Dataproc Viewer</td>
+  <td>Provides read-only access to Cloud Dataproc resources.</td>
+  <td>
+    Project
+  </td>
+</tr>
+</tbody>
+</table>
+
+<h3 id="cloud_datastore_roles">Cloud Datastore Roles</h3>
+<table>
+<thead>
+<tr>
+  <th style="width:15%;">Role Name</th>
+  <th>Role Title</th>
+  <th>Description</th>
+  <th style="width:15%;">Lowest Resource Type</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+  <td><code>roles/<br/>datastore.importExportAdmin</code></td>
+  <td>Cloud Datastore Import Export Admin</td>
+  <td>Provides full access to manage imports and exports.</td>
+  <td>
+    Project
+  </td>
+</tr>
+<tr>
+  <td><code>roles/<br />datastore.indexAdmin</code></td>
+  <td>Cloud Datastore Index Admin</td>
+  <td>Provides full access to manage index definitions.</td>
+  <td>
+    Project
+  </td>
+</tr>
+<tr>
+  <td><code>roles/<br />datastore.owner</code></td>
+  <td>Cloud Datastore Owner</td>
+  <td>Provides full access to Cloud Datastore resources.</td>
+  <td>
+    Project
+  </td>
+</tr>
+<tr>
+  <td><code>roles/<br />datastore.user</code></td>
+  <td>Cloud Datastore User</td>
+  <td>
+    Provides read/write access to data in a Cloud Datastore database.
+  </td>
+  <td>
+    Project
+  </td>
+</tr>
+<tr>
+  <td><code>roles/<br />datastore.viewer</code></td>
+  <td>Cloud Datastore Viewer</td>
+  <td>Provides read access to Cloud Datastore resources.</td>
+  <td>
+    Project
+  </td>
+</tr>
+</tbody>
+</table>
+
+<h3 id="dialogflow_roles">Dialogflow Roles</h3>
+<table>
+<thead>
+<tr>
+  <th style="width:15%;">Role Name</th>
+  <th>Role Title</th>
+  <th>Description</th>
+  <th style="width:15%;">Lowest Resource Type</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+  <td><code>roles/<br />dialogflow.admin</code></td>
+  <td>Dialogflow API Admin</td>
+  <td>Full access to all Dialogflow (console and API) and GCP resources.</td>
+  <td>Project</td>
+</tr>
+<tr>
+  <td><code>roles/<br />dialogflow.client</code></td>
+  <td>Dialogflow API Client</td>
+  <td>Edit access to all Dialogflow (console and API) and GCP resources.</td>
+  <td>Project</td>
+</tr>
+<tr>
+  <td><code>roles/<br />dialogflow.reader</code></td>
+  <td>Dialogflow API Reader</td>
+  <td>Read access to all Dialogflow (console and API) and GCP resources. Cannot detect intent.</td>
+  <td>Project</td>
+</tr>
+</tbody>
+</table>
+
+<h3 id="cloud_dns_roles">Cloud DNS Roles</h3>
+<table>
+<thead>
+<tr>
+  <th style="width:15%;">Role Name</th>
+  <th>Role Title</th>
+  <th>Description</th>
+  <th style="width:15%;">Lowest Resource Type</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+  <td><code>roles/<br />dns.admin</code></td>
+  <td>DNS Admin</td>
+  <td>Provides read-write access to all Cloud DNS resources.</td>
+  <td>Project</td>
+</tr>
+<tr>
+  <td><code>roles/<br />dns.reader</code></td>
+  <td>DNS Reader</td>
+  <td>Provides read-only access to all Cloud DNS resources.</td>
+  <td>Project</td>
+</tr>
+</tbody>
+</table>
+
+<h3 id="cloud_kms_roles">Cloud KMS Roles</h3>
+<table>
+<thead>
+<tr>
+  <th style="width:15%;">Role Name</th>
+  <th>Role Title</th>
+  <th>Description</th>
+  <th style="width:15%;">Lowest Resource Type</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+  <td><code>roles/<br />cloudkms.admin</code></td>
+  <td>Cloud KMS Admin</td>
+  <td>
+    Provides full access to Cloud KMS resources, except encrypt and
+    decrypt operations.
+  </td>
+  <td>
+    CryptoKey
+  </td>
+</tr>
+<tr>
+  <td><code>roles/<br />cloudkms.cryptoKeyEncrypterDecrypter</code></td>
+  <td>Cloud KMS Encrypter/Decrypter</td>
+  <td>
+    Provides ability to use Cloud KMS resources for encrypt and decrypt
+    operations only.
+  </td>
+  <td>
+    CryptoKey
+  </td>
+</tr>
+<tr>
+  <td><code>roles/<br />cloudkms.cryptoKeyEncrypter</code></td>
+  <td>Cloud KMS Encrypter</td>
+  <td>
+    Provides ability to use Cloud KMS resources for encrypt operations
+    only.
+  </td>
+  <td>
+    CryptoKey
+  </td>
+</tr>
+<tr>
+  <td><code>roles/<br />cloudkms.cryptoKeyDecrypter</code></td>
+  <td>Cloud KMS Decrypter</td>
+  <td>
+    Provides ability to use Cloud KMS resources for decrypt operations
+    only.
+  </td>
+  <td>
+    CryptoKey
+  </td>
+</tr>
+</tbody>
+</table>
+
+<h3 id="cloud_ml_engine_roles">Cloud ML Engine Roles</h3>
+<table>
+<thead>
+<tr>
+  <th style="width:15%;">Role Name</th>
+  <th>Role Title</th>
+  <th>Description</th>
+  <th style="width:15%;">Lowest Resource Type</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+  <td><code>roles/<br />ml.admin</code></td>
+  <td>ML Engine Admin</td>
+  <td>
+    Provides full access to Cloud ML Engine resources, and its jobs,
+    operations, models, and versions.
+  </td>
+  <td>
+    Project
+  </td>
+</tr>
+<tr>
+  <td><code>roles/<br />ml.developer</code></td>
+  <td>ML Engine Developer</td>
+  <td>
+    Provides ability to use Cloud ML Engine resources for creating models,
+    versions, jobs for training and prediction, and sending online prediction
+    requests.
+  </td>
+  <td>Project</td>
+</tr>
+<tr>
+  <td><code>roles/<br />ml.viewer</code></td>
+  <td>ML Engine Viewer</td>
+  <td>Provides read-only access to Cloud ML Engine resources.</td>
+  <td>Project</td>
+</tr>
+<tr>
+  <td><code>roles/<br />ml.modelOwner</code></td>
+  <td>ML Engine Model Owner</td>
+  <td>
+    Provides full access to the model and its versions. This role is
+    automatically granted to the user who creates the model.
+  </td>
+  <td>Model</td>
+</tr>
+<tr>
+  <td><code>roles/<br />ml.modelUser</code></td>
+  <td>ML Engine Model User</td>
+  <td>
+    Provides permissions to read the model and its versions, and use them for
+    prediction.
+  </td>
+  <td>Model</td>
+</tr>
+<tr>
+  <td><code>roles/<br />ml.jobOwner</code></td>
+  <td>ML Engine Job Owner</td>
+  <td>
+    Provides full access to all permissions for a particular job resource. This
+    role is automatically granted to the user who creates the job.
+  </td>
+  <td>Job</td>
+</tr>
+<tr>
+  <td><code>roles/<br />ml.operationOwner</code></td>
+  <td>ML Engine Operation Owner</td>
+  <td>
+    Provides full access to all permissions for a particular operation resource.
+  </td>
+  <td>Operation</td>
+</tr>
+</tbody>
+</table>
+
+<h3 id="cloud_pub_sub_roles">Cloud Pub/Sub Roles</h3>
+<p><table>
+<thead>
+<tr>
+  <th style="width:15%;">Role Name</th>
+  <th>Role Title</th>
+  <th>Description</th>
+  <th style="width:15%;">Lowest Resource Type</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+  <td><code>roles/<br />pubsub.publisher</code></td>
+  <td>Pub/Sub Publisher</td>
+  <td>Provides access to publish messages to a topic.</td>
+  <td>
+    Topic
+  </td>
+</tr>
+<tr>
+  <td><code>roles/<br />pubsub.subscriber</code></td>
+  <td>Pub/Sub Subscriber</td>
+  <td>
+    Provides access to consume messages from a subscription and to attach
+    subscriptions to a topic.
+  </td>
+  <td>
+    Topic
+  </td>
+</tr>
+<tr>
+  <td><code>roles/<br />pubsub.viewer</code></td>
+  <td>Pub/Sub Viewer</td>
+  <td>Provides access to view topics and subscriptions.</td>
+  <td>
+    Topic
+  </td>
+</tr>
+<tr>
+  <td><code>roles/<br />pubsub.editor</code></td>
+  <td>Pub/Sub Editor</td>
+  <td>
+    Provides access to modify topics and subscriptions, and access to publish
+    and consume messages.
+  </td>
+  <td>
+    Topic
+  </td>
+</tr>
+<tr>
+  <td><code>roles/<br />pubsub.admin</code></td>
+  <td>Pub/Sub Admin</td>
+  <td>Provides full access to topics and subscriptions.</td>
+  <td>
+    Topic
+  </td>
+</tr>
+</tbody>
+</table></p>
+<h3 id="cloud_spanner_roles">Cloud Spanner Roles</h3>
+<table>
+<thead>
+<tr>
+  <th style="width:15%;">Role Name</th>
+  <th>Role Title</th>
+  <th>Description</th>
+  <th style="width:15%;">Lowest Resource Type</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+  <td><code>roles/<br />spanner.admin</code></td>
+  <td>Cloud Spanner Admin</td>
+  <td>
+    Permission to grant and revoke permissions to other principals, allocate and
+    delete chargeable resources, issue get/list/modify operations on resources,
+    read from and write to databases, and fetch project metadata.
+  </td>
+  <td>Project</td>
+</tr>
+<tr>
+  <td><code>roles/<br />spanner.databaseAdmin</code></td>
+  <td>Cloud Spanner Database Admin</td>
+  <td>
+    Permission to get/list all Cloud Spanner resources in a project,
+    create/list/drop databases, grant/revoke access to project databases, and
+    read from and write to all Cloud Spanner databases in the project.
+  </td>
+  <td>Project</td>
+</tr>
+<tr>
+  <td><code>roles/<br />spanner.databaseReader</code></td>
+  <td>Cloud Spanner Database Reader</td>
+  <td>
+    Permission to read from the Cloud Spanner database, execute SQL
+    queries on the database, and view the schema.
+  </td>
+  <td>Database</td>
+</tr>
+<tr>
+  <td><code>roles/<br />spanner.databaseUser</code></td>
+  <td>Cloud Spanner Database User</td>
+  <td>
+    Permission to read from and write to the Cloud Spanner database,
+    execute SQL queries on the database, and view and update the schema.
+  </td>
+  <td>Database</td>
+</tr>
+<tr>
+  <td><code>roles/<br />spanner.viewer</code></td>
+  <td>Cloud Spanner Viewer</td>
+  <td>
+    Permission to view all Cloud Spanner instances and databases, but
+    not modify or read from them.
+  </td>
+  <td>Project</td>
+</tr>
+</tbody>
+</table>
+
+<h3 id="cloud_sql_roles">Cloud SQL Roles</h3>
+<table>
+<thead>
+<tr>
+  <th style="width:15%;">Role Name</th>
+  <th>Role Title</th>
+  <th>Description</th>
+  <th style="width:15%;">Lowest Resource Type</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+  <td><code>roles/<br />cloudsql.admin</code></td>
+  <td>Cloud SQL Admin</td>
+  <td>Provides full control of Cloud SQL resources.</td>
+  <td>
+    Project
+  </td>
+</tr>
+<tr>
+  <td><code>roles/<br />cloudsql.editor</code></td>
+  <td>Cloud SQL Editor</td>
+  <td>
+    Provides full control of existing Cloud SQL instances excluding
+    modifying users, SSL certificates or deleting resources.
+  </td>
+  <td>
+    Project
+  </td>
+</tr>
+<tr>
+  <td><code>roles/<br />cloudsql.viewer</code></td>
+  <td>Cloud SQL Viewer</td>
+  <td>Provides read-only access to Cloud SQL resources.</td>
+  <td>
+    Project
+  </td>
+</tr>
+<tr>
+  <td><code>roles/<br />cloudsql.client</code></td>
+  <td>Cloud SQL Client</td>
+  <td>Provides connectivity access to Cloud SQL instances.</td>
+  <td>
+    Project
+  </td>
+</tr>
+</tbody>
+</table>
+
+<h3 id="cloud_storage_roles">Cloud Storage Roles</h3>
+<table>
+<thead>
+<tr>
+  <th style="width:15%;">Role Name</th>
+  <th>Role Title</th>
+  <th>Description</th>
+  <th style="width:15%;">Lowest Resource Type</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+  <td><code>roles/<br />storage.objectCreator</code></td>
+  <td>Storage Object Creator</td>
+  <td>
+    Allows users to create objects. Does not give permission to delete or
+    overwrite objects.
+  </td>
+  <td>
+    Bucket
+  </td>
+</tr>
+<tr>
+  <td><code>roles/<br />storage.objectViewer</code></td>
+  <td>Storage Object Viewer</td>
+  <td>Grants access to view objects and their metadata, excluding ACLs.</td>
+  <td>
+    Bucket
+  </td>
+</tr>
+<tr>
+  <td><code>roles/<br />storage.objectAdmin</code></td>
+  <td>Storage Object Admin</td>
+  <td>Grants full control of objects.</td>
+  <td>
+    Bucket
+  </td>
+</tr>
+<tr>
+  <td><code>roles/<br />storage.admin</code></td>
+  <td>Storage Admin</td>
+  <td>Grants full control of objects and buckets.</td>
+  <td>
+    Bucket
+  </td>
+</tr>
+<tr>
+  <td><code>roles/<br />storage.legacyObjectReader</code></td>
+  <td>Legacy Object Reader</td>
+  <td>Can view objects and their metadata, excluding ACLs.</td>
+  <td>Bucket</td>
+</tr>
+<tr>
+  <td><code>roles/<br />storage.legacyObjectOwner</code></td>
+  <td>Legacy Object Owner</td>
+  <td>
+    Has the <code>storage.legacyObjectReader</code> role.
+    <p>
+      Can also view and edit the metadata of objects in the bucket, including
+      ACLs, which are returned as Cloud IAM policies.
+    </p>
+  </td>
+  <td>Bucket</td>
+</tr>
+<tr>
+  <td><code>roles/<br />storage.legacyBucketReader</code></td>
+  <td>Legacy Bucket Reader</td>
+  <td>
+    Can list a bucket's contents and read bucket metadata,
+    excluding Cloud IAM policies. Can also read object metadata,
+    excluding Cloud IAM policies, when listing objects.
+    <p>
+      Use of this role is also reflected in the bucket's ACLs. For more
+      information, see
+      <a href="https://cloud.google.com/storage/docs/access-control/iam#acls">Cloud IAM relation to ACLs</a>.
+    </p>
+  </td>
+  <td>Bucket</td>
+</tr>
+<tr>
+  <td><code>roles/<br />storage.legacyBucketWriter</code></td>
+  <td>Legacy Bucket Writer</td>
+  <td>
+    Has the <code>storage.legacyBucketReader</code> role.
+    <p>Can also create, overwrite, and delete objects in a bucket.</p>
+    <p>
+      Use of this role is also reflected in the bucket's ACLs. For more
+      information, see
+      <a href="https://cloud.google.com/storage/docs/access-control/iam#acls">Cloud IAM relation to ACLs</a>.
+    </p>
+  </td>
+  <td>Bucket</td>
+</tr>
+<tr>
+  <td><code>roles/<br />storage.legacyBucketOwner</code></td>
+  <td>Legacy Bucket Owner</td>
+  <td>
+    Has the <code>storage.legacyBucketWriter</code> role.
+    <p>
+      Can also read bucket Cloud IAM policies and edit bucket metadata,
+      including Cloud IAM policies.
+    </p>
+    <p>
+      Use of this role is also reflected in the bucket's ACLs. For more
+      information, see
+      <a href="https://cloud.google.com/storage/docs/access-control/iam#acls">Cloud IAM relation to ACLs</a>.
+    </p>
+  </td>
+  <td>Bucket</td>
+</tr>
+</tbody>
+</table>
+
+<h3 id="compute_engine_roles">Compute Engine Roles</h3>
+<table>
+<thead>
+<tr>
+  <th style="width:15%;">Role Name</th>
+  <th>Role Title</th>
+  <th>Description</th>
+  <th style="width:15%;">Lowest Resource Type</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+  <td>
+    <code>roles/<br />compute.instanceAdmin</code>
+    <sup><font color="red">Beta</font></sup>
+  </td>
+  <td>Compute Instance Admin</td>
+  <td>
+    <p>
+      Permissions to create, modify, and delete virtual machine instances.
+      This includes permissions to create, modify, and delete disks.
+    </p>
+    <p>
+      If the user will be managing virtual machine instances that are configured
+      to run as a service account, you must also grant the
+      <code>roles/iam.serviceAccountActor</code> role.
+    </p>
+    <p>
+      For example, if your company has someone who manages groups of virtual
+      machine instances but does not manage network or security settings and
+      does not manage instances that run as service accounts, grant this role.
+    </p>
+  </td>
+  <td>
+    Project
+  </td>
+</tr>
+<tr>
+  <td>
+    <code>roles/<br />compute.networkUser</code>
+  </td>
+  <td>Compute Network User</td>
+  <td>
+    <p>Provides access to a shared VPC network</p>
+    <p>
+      Once granted, service owners can use VPC networks and subnets that belong
+      to the host project. For example, a network user can create a VM instance
+      that belongs to a host project network but they cannot delete or create
+      new networks in the host project.
+    </p>
+  </td>
+  <td>
+    Project
+  </td>
+</tr>
+<tr>
+  <td>
+    <code>roles/<br />compute.networkViewer</code>
+  </td>
+  <td>Compute Network Viewer</td>
+  <td>
+    <p>Read-only access to all networking resources</p>
+    <p>
+      For example, if you have software that inspects your network
+      configuration, you could grant that software’s service account the
+      <code>networkViewer</code> role.
+    </p>
+  </td>
+  <td>
+    Project
+  </td>
+</tr>
+<tr>
+  <td><code>roles/<br />compute.networkAdmin</code></td>
+  <td>Compute Network Admin</td>
+  <td>
+    <p>
+      Permissions to create, modify, and delete networking resources,
+      except for firewall rules and SSL certificates. The network admin role
+      allows read-only access to firewall rules, SSL certificates, and instances
+      (to view their ephemeral IP addresses). The network admin role does not
+      allow a user to create, start, stop, or delete instances.
+    </p>
+    <p>
+      For example, if your company has a security team that manages firewalls
+      and SSL certificates and a networking team that manages the rest of the
+      networking resources, then grant the networking team’s group the
+      <code>networkAdmin</code> role.
+    </p>
+  </td>
+  <td>
+    Project
+  </td>
+</tr>
+<tr>
+  <td><code>roles/<br />compute.securityAdmin</code></td>
+  <td>Compute Security Admin</td>
+  <td>
+    <p>
+      Permissions to create, modify, and delete firewall rules and SSL
+      certificates.
+    </p>
+    <p>
+      For example, if your company has a security team that manages firewalls
+      and SSL certificates and a networking team that manages the rest of the
+      networking resources, then grant the security team’s group the
+      <code>securityAdmin</code> role.
+    </p>
+  </td>
+  <td>
+    Project
+  </td>
+</tr>
+<tr>
+  <td><code>roles/<br />compute.imageUser</code></td>
+  <td>Compute Image User</td>
+  <td>
+  <p>
+    Permission to list and read images without having other permissions to
+    resources in the project. Granting the <code>compute.imageUser</code> role
+    gives users the ability to list all images in the project and create
+    resources, such as instances and persistent disks, based on images in the
+    project.
+  </p>
+  </td>
+  <td>
+    Project
+  </td>
+</tr>
+<tr>
+  <td>
+    <code>roles/<br />compute.storageAdmin</code>
+    <sup><font color="red">Beta</font></sup>
+  </td>
+  <td>Compute Storage Admin</td>
+  <td>
+    <p>
+      Permissions to create, modify, and delete disks, images, and snapshots.
+    </p>
+    <p>
+      For example, if your company has someone who manages images and you don't
+      want them to have the editor role on the project, then grant their account
+      the <code>storageAdmin</code> role.
+    </p>
+  </td>
+  <td>
+    Project
+  </td>
+</tr>
+<tr>
+  <td><code>roles/<br />compute.xpnAdmin</code></td>
+  <td>Shared VPC Admin</td>
+  <td>
+    <p>
+      Permissions to administer shared VPC host projects, specifically enabling
+      the host projects and associating shared VPC service projects to the host
+      project's network.
+    </p>
+    <p>
+      This role can only be granted on the organization by an organization
+      admin.
+    </p>
+  </td>
+  <td>Organization</td>
+</tr>
+<tr>
+  <td>
+    <code>roles/<br />compute.admin</code>
+    <sup><font color="red">Beta</font></sup>
+  </td>
+  <td>Compute Admin</td>
+  <td>
+    <p>Full control of all Compute Engine resources.</p>
+    <p>
+      If the user will be managing virtual machine instances that are configured
+      to run as a service account, you must also grant the
+      <code>roles/iam.serviceAccountActor</code> role.
+    </p>
+  </td>
+  <td>
+    Project</td>
+</tr>
+<tr>
+  <td>
+    <code>roles/<br />compute.viewer</code>
+    <sup><font color="red">Beta</font></sup>
+  </td>
+  <td>Compute Viewer</td>
+  <td>
+    <p>
+      Read-only access to get and list Compute Engine resources, without
+      being able to read the data stored on them.
+    </p>
+    <p>
+      For example, an account with this role could inventory all of the disks in
+      a project, but it could not read any of the data on those disks.
+    </p>
+  </td>
+  <td>
+    Project
+  </td>
+</tr>
+</tbody>
+</table>
+
+<h3 id="container_builder_role">Container Builder Roles</h3>
+<table>
+<thead>
+<tr>
+  <th style="width:15%;">Role Name</th>
+  <th>Role Title</th>
+  <th>Description</th>
+  <th style="width:15%;">Lowest Resource Type</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+  <td><code>roles/<br />cloudbuild.builds.editor</code></td>
+  <td>Container Builder Editor</td>
+  <td>Provides access to create and cancel builds.</td>
+  <td>
+    Project
+  </td>
+</tr>
+<tr>
+  <td><code>roles/<br />cloudbuild.builds.viewer</code></td>
+  <td>Container Builder Viewer</td>
+  <td>Provides access to view builds.</td>
+  <td>
+    Project
+  </td>
+</tr>
+</tbody>
+</table>
+
+<h3 id="kubernetes_engine_roles">Kubernetes Engine Roles</h3>
+<table>
+<thead>
+<tr>
+  <th style="width:15%;">Role Name</th>
+  <th>Role Title</th>
+  <th>Description</th>
+  <th style="width:15%;">Lowest Resource Type</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+  <td><code>roles/<br />container.admin</code></td>
+  <td>Kubernetes Engine Admin</td>
+  <td>
+    Provides access to full management of Container Clusters and their
+    Kubernetes API objects.
+  </td>
+  <td>
+    Project
+  </td>
+</tr>
+<tr>
+  <td><code>roles/<br />container.clusterAdmin</code></td>
+  <td>Kubernetes Engine Cluster Admin</td>
+  <td>Provides access to management of Container Clusters.</td>
+  <td>
+    Project
+  </td>
+</tr>
+<tr>
+  <td><code>roles/<br />container.developer</code></td>
+  <td>Kubernetes Engine Developer</td>
+  <td>
+    Provides full access to Kubernetes API objects inside Container Clusters.
+  </td>
+  <td>
+    Project
+  </td>
+</tr>
+<tr>
+  <td><code>roles/<br />container.viewer</code></td>
+  <td>Kubernetes Engine Viewer</td>
+  <td>Provides read-only access to Kubernetes Engine resources.</td>
+  <td>
+    Project
+  </td>
+</tr>
+</tbody></table>
+
+<h3 id="deployment_manager_roles">Deployment Manager Roles</h3>
+<table>
+<thead>
+<tr>
+  <th style="width:15%;">Role Name</th>
+  <th>Role Title</th>
+  <th>Description</th>
+  <th style="width:15%;">Lowest Resource Type</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+  <td><code>roles/<br />deploymentmanager.viewer</code></td>
+  <td>Deployment Manager Viewer</td>
+  <td>
+    Provides read-only access to all Deployment Manager-related
+    resources.
+  </td>
+  <td>
+    Project
+  </td>
+</tr>
+<tr>
+  <td><code>roles/<br />deploymentmanager.editor</code></td>
+  <td>Deployment Manager Editor</td>
+  <td>Provides the permissions necessary to create and manage deployments.</td>
+  <td>
+    Project
+  </td>
+</tr>
+<tr>
+  <td><code>roles/<br />deploymentmanager.typeViewer</code></td>
+  <td>Deployment Manager Type Viewer</td>
+  <td>Provides read-only access to all Type Registry resources.</td>
+  <td>Project</td>
+</tr>
+<tr>
+  <td><code>roles/<br />deploymentmanager.typeEditor</code></td>
+  <td>Deployment Manager Type Editor</td>
+  <td>Provides read and write access to all Type Registry resources.</td>
+  <td>Project</td>
+</tr>
+</tbody>
+</table>
+
+<h3 id="cloud_iam_roles">Cloud IAM Roles</h3>
+<table>
+<thead>
+<tr>
+  <th style="width:15%;">Role Name</th>
+  <th>Role Title</th>
+  <th>Description</th>
+  <th style="width:15%;">Lowest Resource Type</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+  <td><code>roles/<br />iam.organizationRoleAdmin</code></td>
+  <td>Organization Role Administrator</td>
+  <td>
+    Provides access to administer all custom roles in the organization and the
+    projects below it.
+  </td>
+  <td>
+    Project
+  </td>
+</tr>
+<tr>
+  <td><code>roles/<br />iam.roleAdmin</code></td>
+  <td>Role Administrator</td>
+  <td>
+    Provides access to all custom roles in the project.
+  </td>
+  <td>
+    Project
+  </td>
+</tr>
+<tr>
+  <td><code>roles/<br />iam.organizationRoleViewer</code></td>
+  <td>Organization Role Viewer</td>
+  <td>
+    Provides read access to all custom roles in the organization and the
+    projects below it.
+  </td>
+  <td>
+    Project
+  </td>
+</tr>
+<tr>
+  <td><code>roles/<br />iam.roleViewer</code></td>
+  <td>Role Viewer</td>
+  <td>
+    Provides read access to all custom roles in the project.
+  </td>
+  <td>
+    Project
+  </td>
+</tr>
+<tr>
+  <td><code>roles/<br />iam.securityReviewer</code></td>
+  <td>Security Reviewer</td>
+  <td>
+    Provides permissions to list all resources and Cloud IAM policies
+    on them.
+  </td>
+  <td>
+    Project
+  </td>
+</tr>
+
+</tbody></table>
+
+<h3 id="cloud_iap_roles">Cloud IAP Roles</h3>
+<table>
+<thead>
+<tr>
+  <th style="width:15%;">Role Name</th>
+  <th>Role Title</th>
+  <th>Description</th>
+  <th style="width:15%;">Lowest Resource Type</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+  <td><code>roles/<br />iap.httpsResourceAccessor</code></td>
+  <td>IAP-Secured Web App User</td>
+  <td>
+    Provides permission to access HTTPS resources which use Cloud Identity-Aware Proxy.
+  </td>
+  <td>
+    Project
+  </td>
+</tr>
+</tbody></table>
+
+<h3 id="crm_roles">Resource Manager Roles</h3>
+<table>
+<thead>
+<tr>
+  <th style="width:15%;">Role Name</th>
+  <th>Role Title</th>
+  <th>Description</th>
+  <th style="width:15%;">Lowest Resource Type</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+  <td><code>roles/<br />orgpolicy.policyAdmin</code></td>
+  <td>Organization Policy Administrator</td>
+  <td>
+    Provides access to define what restrictions an organization wants to place
+    on the configuration of cloud resources by setting Organization Policies.
+  </td>
+  <td>Organization</td>
+</tr>
+<tr>
+  <td><code>roles/<br />resourcemanager.folderAdmin</code></td>
+  <td>Folder Admin</td>
+  <td>Provides all available permissions for working with folders.</td>
+  <td>Folder</td>
+</tr>
+<tr>
+  <td><code>roles/<br />resourcemanager.folderCreator</code></td>
+  <td>Folder Creator</td>
+  <td>
+    Provides permissions needed to browse the hierarchy and create folders.
+  </td>
+  <td>Folder</td>
+</tr>
+<tr>
+  <td><code>roles/<br />resourcemanager.folderEditor</code></td>
+  <td>Folder Editor</td>
+  <td>
+    Provides permission to modify folders as well as to view a folder's
+    Cloud IAM
+    policy.
+  </td>
+  <td>
+    Folder
+  </td>
+</tr>
+<tr>
+  <td><code>roles/<br />resourcemanager.folderIamAdmin</code></td>
+  <td>Folder IAM Admin</td>
+  <td>
+    Provides permissions to administer Cloud IAM policies on folders.
+  </td>
+  <td>Folder</td>
+</tr>
+<tr>
+  <td><code>roles/<br />resourcemanager.folderMover</code></td>
+  <td>Folder Mover</td>
+  <td>
+    Provides permission to move projects and folders into and out of a parent
+    Organization or folder.
+  </td>
+  <td>
+    Folder
+  </td>
+</tr>
+<tr>
+  <td><code>roles/<br />resourcemanager.folderViewer</code></td>
+  <td>Folder Viewer</td>
+  <td>
+    Provides permission to get a folder and list the folders and projects below
+    a resource.
+  </td>
+  <td>
+    Folder
+  </td>
+</tr>
+<tr>
+  <td><code>roles/<br />resourcemanager.organizationViewer</code></td>
+  <td>Organization Viewer</td>
+  <td>Provides access to view an organization.</td>
+  <td>Organization</td>
+</tr>
+<tr>
+  <td><code>roles/<br />resourcemanager.projectCreator</code></td>
+  <td>Project Creator</td>
+  <td>
+    Provides access to create new projects. Once a user creates a project,
+    they're automatically granted the owner role for that project.
+  </td>
+  <td>Folder</td>
+</tr>
+<tr>
+  <td><code>roles/<br />resourcemanager.projectDeleter</code></td>
+  <td>Project Deleter</td>
+  <td>Provides access to delete GCP projects.</td>
+  <td>Organization</td>
+</tr>
+<tr>
+  <td><code>roles/<br />resourcemanager.projectIamAdmin</code></td>
+  <td>Project IAM Admin</td>
+  <td>
+    Provides permissions to administer Cloud IAM policies on projects.
+  </td>
+  <td>Project</td>
+</tr>
+<tr>
+  <td><code>roles/<br />resourcemanager.lienModifier</code></td>
+  <td>Project Lien Modifier</td>
+  <td>Provides access to modify Liens on projects.</td>
+  <td>Project</td>
+</tr>
+</tbody>
+</table>
+
+<h3 id="service_account_roles">Service Account Roles</h3>
+<table>
+<thead>
+<tr>
+  <th style="width:15%;">Role Name</th>
+  <th>Role Title</th>
+  <th>Description</th>
+  <th style="width:15%;">Lowest Resource Type</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+  <td><code>roles/<br />iam.serviceAccountAdmin</code></td>
+  <td>Service Account Admin</td>
+  <td>Create and manage service accounts.</td>
+  <td>
+    Service Account
+  </td>
+</tr>
+<tr>
+  <td><code>roles/<br />iam.serviceAccountKeyAdmin</code></td>
+  <td>Service Account Key Admin</td>
+  <td>Create and manage (and rotate) service account keys.</td>
+  <td>
+    Service Account
+  </td>
+</tr>
+<tr>
+  <td><code>roles/<br />iam.serviceAccountTokenCreator</code></td>
+  <td>Service Account Token Creator</td>
+  <td>
+    Impersonate service accounts (create OAuth2 access tokens, sign blobs or
+    JWTs, etc).
+  </td>
+  <td>
+    Service Account
+  </td>
+</tr>
+<tr>
+  <td><code>roles/<br />iam.serviceAccountUser</code></td>
+  <td>Service Account User</td>
+  <td>
+    Run operations as the service account.
+  </td>
+  <td>
+    Service Account
+  </td>
+</tr>
+</tbody>
+</table>
+
+<h3 id="service_management_roles">Service Management Roles</h3>
+<table>
+<thead>
+<tr>
+  <th style="width:15%;">Role Name</th>
+  <th>Role Title</th>
+  <th>Description</th>
+  <th style="width:15%;">Lowest Resource Type</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+  <td><code>roles/<br />servicemanagement.serviceController</code></td>
+  <td>Service Controller</td>
+  <td>Runtime control of checking and reporting usage of a service.</td>
+  <td>
+    Project
+  </td>
+</tr>
+<tr>
+  <td><code>roles/<br />servicemanagement.quotaAdmin</code></td>
+  <td>Quota Administrator</td>
+  <td>Provides access to administer service quotas.</td>
+  <td>
+    Project
+  </td>
+</tr>
+<tr>
+  <td><code>roles/<br />servicemanagement.quotaViewer</code></td>
+  <td>Quota Viewer</td>
+  <td>Provides access to view service quotas.</td>
+  <td>
+    Project
+  </td>
+</tr>
+</tbody>
+</table>
+
+<h3 id="source_repository_roles">Source Repository Roles</h3>
+<table>
+<thead>
+<tr>
+  <th style="width:15%;">Role Name</th>
+  <th>Role Title</th>
+  <th>Description</th>
+  <th style="width:15%;">Lowest Resource Type</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+  <td><code>roles/<br />source.admin</code></td>
+  <td>Source Repository Administrator</td>
+  <td>Provides permissions to create, update, delete, list, clone, fetch, and
+    browse repositories. Also provides permissions to read and change IAM
+    policies.</td>
+  <td>
+    Project
+  </td>
+</tr>
+<tr>
+  <td><code>roles/<br />source.reader</code></td>
+  <td>Source Repository Reader</td>
+  <td>Provides permissions to list, clone, fetch, and browse repositories.</td>
+  <td>
+    Project
+  </td>
+</tr>
+<tr>
+  <td><code>roles/<br />source.writer</code></td>
+  <td>Source Repository Writer</td>
+  <td>Provides permissions to list, clone, fetch, browse, and update
+    repositories.</td>
+  <td>
+    Project
+  </td>
+</tr>
+</tbody></table>
+
+<h3 id="stackdriver_debugger_roles">Stackdriver Debugger Roles</h3>
+<table>
+<thead>
+<tr>
+  <th style="width:15%;">Role Name</th>
+  <th>Role Title</th>
+  <th>Description</th>
+  <th style="width:15%;">Lowest Resource Type</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+  <td><code>roles/<br />clouddebugger.agent</code></td>
+  <td>Debugger Agent</td>
+  <td>
+    Provides permissions to register the debug target, read active breakpoints,
+    and report breakpoint results.
+  </td>
+  <td>
+    Service Account
+  </td>
+</tr>
+<tr>
+<td><code>roles/<br />clouddebugger.user</code></td>
+<td>Debugger User</td>
+<td>Provides permissions to create, view, list, and delete breakpoints
+  (snapshots & logpoints) as well as list debug targets (debuggees).
+</td>
+<td>
+Project
+</td>
+</tr>
+</tbody>
+</table>
+
+<h3 id="stackdriver_error_reporting_roles">Stackdriver Error Reporting Roles</h3>
+<table>
+<thead>
+<tr>
+  <th style="width:15%;">Role Name</th>
+  <th>Role Title</th>
+  <th>Description</th>
+  <th style="width:15%;">Lowest Resource Type</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+  <td><code>roles/<br />errorreporting.viewer</code></td>
+  <td>Error Reporting Viewer</td>
+  <td>Provides read-only access to Error Reporting data.</td>
+  <td>
+    Project
+  </td>
+</tr>
+<tr>
+  <td><code>roles/<br />errorreporting.user</code></td>
+  <td>Error Reporting User</td>
+  <td>Provides the permissions to read and write Error Reporting data, except
+      for sending new error events.</td>
+  <td>
+    Project
+  </td>
+</tr>
+<tr>
+  <td><code>roles/<br />errorreporting.writer</code></td>
+  <td>Error Reporting Writer</td>
+  <td>
+    Provides the permissions to send error events to Error Reporting.
+  </td>
+  <td>
+  Service Account
+  </td>
+</tr>
+<tr>
+  <td><code>roles/<br />errorreporting.admin</code></td>
+  <td>Error Reporting Admin</td>
+  <td>
+    Provides full access to Error Reporting data.
+  </td>
+  <td>
+    Project
+  </td>
+</tr>
+</tbody>
+</table>
+
+<h3 id="stackdriver_logging_roles">Stackdriver Logging Roles</h3>
+<table>
+<thead>
+<tr>
+  <th style="width:15%;">Role Name</th>
+  <th>Role Title</th>
+  <th>Description</th>
+  <th style="width:15%;">Lowest Resource Type</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+  <td><code>roles/<br />logging.viewer</code></td>
+  <td>Logs Viewer</td>
+  <td>Provides access to view logs.</td>
+  <td>
+    Project
+  </td>
+</tr>
+<tr>
+  <td><code>roles/<br />logging.logWriter</code></td>
+  <td>Logs Writer</td>
+  <td>Provides the permissions to write log entries.</td>
+  <td>
+    Project
+  </td>
+</tr>
+<tr>
+  <td><code>roles/<br />logging.privateLogViewer</code></td>
+  <td>Private Logs Viewer</td>
+  <td>
+    Provides permissions of the Logs Viewer role and in addition, provides
+    read-only access to log entries in private logs.
+  </td>
+  <td>
+  Project
+  </td>
+</tr>
+<tr>
+  <td><code>roles/<br />logging.configWriter</code></td>
+  <td>Logs Configuration Writer</td>
+  <td>
+    Provides permissions to read and write the configurations of logs-based
+  metrics and sinks for exporting logs.
+  </td>
+  <td>
+    Project
+  </td>
+</tr>
+<tr>
+  <td><code>roles/<br />logging.admin</code></td>
+  <td>Logging Admin</td>
+  <td>
+    Provides all permissions necessary to use all features of Stackdriver
+    Logging.
+  </td>
+  <td>
+    Project
+  </td>
+</tr>
+</tbody>
+</table>
+
+<h3 id="stackdriver_monitoring_roles">Stackdriver Monitoring Roles</h3>
+<table>
+<thead>
+<tr>
+  <th style="width:15%;">Role Name</th>
+  <th>Role Title</th>
+  <th>Description</th>
+  <th style="width:15%;">Lowest Resource Type</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+  <td><code>roles/<br />monitoring.viewer</code></td>
+  <td>Monitoring Viewer</td>
+  <td>
+    Provides read-only access to get and list information about all monitoring
+    data and configurations.
+  </td>
+  <td>Project</td>
+</tr>
+<tr>
+  <td><code>roles/<br />monitoring.metricWriter</code></td>
+  <td>Monitoring Metric Writer</td>
+  <td>
+    Provides write-only access to metrics. This provides exactly the permissions
+    needed by the Stackdriver agent and other systems that send metrics.
+  </td>
+  <td>Project</td>
+</tr>
+<tr>
+  <td><code>roles/<br />monitoring.editor</code></td>
+  <td>Monitoring Editor</td>
+  <td>
+    Provides full access to information about all monitoring data and
+    configurations.
+  </td>
+  <td>Project</td>
+</tr>
+<tr>
+  <td><code>roles/<br />monitoring.admin</code></td>
+  <td>Monitoring Admin</td>
+  <td>Provides the same access as <code>roles/monitoring.editor</code>.</td>
+  <td>Project</td>
+</tr>
+</tbody>
+</table>
+
+<h3 id="stackdriver_trace_roles">Stackdriver Trace Roles</h3>
+<table>
+<thead>
+<tr>
+  <th style="width:15%;">Role Name</th>
+  <th>Role Title</th>
+  <th>Description</th>
+  <th style="width:15%;">Lowest Resource Type</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+  <td><code>roles/<br />cloudtrace.agent</code></td>
+  <td>Cloud Trace Agent</td>
+  <td>
+    For service accounts. Provides ability to write traces by sending the data
+    to Stackdriver Trace.
+  </td>
+  <td>Project</td>
+</tr>
+<tr>
+  <td><code>roles/<br />cloudtrace.user</code></td>
+  <td>Cloud Trace User</td>
+  <td>
+    Provides full access to the Trace console and read access to traces.
+  </td>
+  <td>Project</td>
+</tr>
+<tr>
+  <td><code>roles/<br />cloudtrace.admin</code></td>
+  <td>Cloud Trace Admin</td>
+  <td>
+   Provides full access to the Trace console and read-write access to traces.
+  </td>
+  <td>Project</td>
+</tr>
+</tbody>
+</table>
+
+<h2 id="custom_roles">Custom roles</h2>
+<p>In addition to the predefined roles, Cloud IAM also provides the
+ability to create customized Cloud IAM roles. You can create a
+custom Cloud IAM role with one or more permissions and then grant that
+custom role to users who are part of your organization. See <a href="https://cloud.google.com/iam/docs/understanding-custom-roles">Understanding
+Custom Roles</a> and <a href="https://cloud.google.com/iam/docs/creating-custom-roles">Creating and Managing Custom
+Roles</a> for more information.</p>
+<h2 id="product_specific_documentation">Product-specific Cloud IAM documentation</h2>
+<p>Product-specific Cloud IAM documentation explains more about the
+predefined roles offered by each product. Read the following pages to learn more
+about the predefined roles.</p>
+<table>
+<thead>
+<tr>
+<th>Documentation</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="https://cloud.google.com/appengine/docs/java/console/access-control">Cloud IAM for App Engine</a></td>
+<td>Explains Cloud IAM roles for App Engine</td>
+</tr>
+<tr>
+<td><a href="https://cloud.google.com/bigquery/docs/access-control">Cloud IAM for BigQuery</a></td>
+<td>Explains Cloud IAM roles for BigQuery</td>
+</tr>
+<tr>
+<td><a href="https://cloud.google.com/bigtable/docs/access-control">Cloud IAM for Cloud Bigtable</a></td>
+<td>Explains Cloud IAM roles for Cloud Bigtable</td>
+</tr>
+<tr>
+<td><a href="https://cloud.google.com/billing/v1/how-tos/access-control">Cloud IAM for Cloud Billing API</a></td>
+<td>Explains Cloud IAM roles and permissions for Cloud Billing API</td>
+</tr>
+<tr>
+<td><a href="https://cloud.google.com/dataflow/access-control">Cloud IAM for Cloud Dataflow</a></td>
+<td>Explains Cloud IAM roles for Cloud Dataflow</td>
+</tr>
+<tr>
+<td><a href="https://cloud.google.com/dataproc/docs/concepts/iam">Cloud IAM for Cloud Dataproc</a></td>
+<td>Explains Cloud IAM roles and permissions for Cloud Dataproc</td>
+</tr>
+<tr>
+<td><a href="https://cloud.google.com/datastore/docs/access/iam">Cloud IAM for Cloud Datastore</a></td>
+<td>Explains Cloud IAM roles and permissions for Cloud Datastore</td>
+</tr>
+<tr>
+<td><a href="https://cloud.google.com/dns/access-control">Cloud IAM for Cloud DNS</a></td>
+<td>Explains Cloud IAM roles and permissions for Cloud DNS</td>
+</tr>
+<tr>
+<td><a href="https://cloud.google.com/kms/docs/reference/permissions-and-roles">Cloud IAM for Cloud KMS</a></td>
+<td>Explains Cloud IAM roles and permissions for Cloud KMS</td>
+</tr>
+<tr>
+<td><a href="https://cloud.google.com/ml-engine/docs/access-control">Cloud IAM for Cloud ML Engine</a></td>
+<td>Explains Cloud IAM roles and permissions for Cloud ML Engine</td>
+</tr>
+<tr>
+<td><a href="https://cloud.google.com/pubsub/access_control">Cloud IAM for Cloud Pub/Sub</a></td>
+<td>Explains Cloud IAM roles for Cloud Pub/Sub</td>
+</tr>
+<tr>
+<td><a href="https://cloud.google.com/spanner/docs/iam">Cloud IAM for Cloud Spanner</a></td>
+<td>Explains Cloud IAM roles and permissions for Cloud Spanner</td>
+</tr>
+<tr>
+<td><a href="https://cloud.google.com/sql/docs/project-access-control">Cloud IAM for Cloud SQL</a></td>
+<td>Explains Cloud IAM roles for Cloud SQL</td>
+</tr>
+<tr>
+<td><a href="https://cloud.google.com/storage/docs/iam">Cloud IAM for Cloud Storage</a></td>
+<td>Explains Cloud IAM roles for Cloud Storage</td>
+</tr>
+<tr>
+<td><a href="https://cloud.google.com/compute/docs/access/iam">Cloud IAM for Compute Engine</a></td>
+<td>Explains Cloud IAM roles for Compute Engine</td>
+</tr>
+<tr>
+<td><a href="https://cloud.google.com/kubernetes-engine/docs/how-to/iam-integration">Cloud IAM for Kubernetes Engine</a></td>
+<td>Explains Cloud IAM roles and permissions for Kubernetes Engine</td>
+</tr>
+<tr>
+<td><a href="https://cloud.google.com/deployment-manager/access-control">Cloud IAM for Deployment Manager</a></td>
+<td>Explains Cloud IAM roles and permissions for Deployment Manager</td>
+</tr>
+<tr>
+<td><a href="https://cloud.google.com/resource-manager/docs/access-control-org">Cloud IAM for Organizations</a></td>
+<td>Explains Cloud IAM roles for Organization.</td>
+</tr>
+<tr>
+<td><a href="https://cloud.google.com/resource-manager/docs/access-control-proj">Cloud IAM for Projects</a></td>
+<td>Explains Cloud IAM roles for projects.</td>
+</tr>
+<tr>
+<td><a href="https://cloud.google.com/service-management/access-control">Cloud IAM for Service Management</a></td>
+<td>Explains Cloud IAM roles and permissions for Service Management</td>
+</tr>
+<tr>
+<td><a href="https://cloud.google.com/debugger/docs/iam">Cloud IAM for Stackdriver Debugger</a></td>
+<td>Explains Cloud IAM roles for Debugger</td>
+</tr>
+<tr>
+<td><a href="https://cloud.google.com/logging/docs/access-control">Cloud IAM for Stackdriver Logging</a></td>
+<td>Explains Cloud IAM roles for Logging</td>
+</tr>
+<tr>
+<td><a href="https://cloud.google.com/monitoring/access-control">Cloud IAM for Stackdriver Monitoring</a></td>
+<td>Explains Cloud IAM roles for Monitoring</td>
+</tr>
+<tr>
+<td><a href="https://cloud.google.com/trace/docs/iam">Cloud IAM for Stackdriver Trace</a></td>
+<td>Explains Cloud IAM roles and permissions for Trace</td>
+</tr>
+</tbody>
+</table>
+<h2 id="whats_next">What's next</h2>
+<ul>
+<li>Learn how to <a href="https://cloud.google.com/iam/docs/managing-policies">grant Cloud IAM roles</a>
+  to users.</li>
+<li>Learn about <a href="https://cloud.google.com/iam/docs/understanding-custom-roles">Custom Roles</a></li>
+</ul>
+
+  
+  </div>
+  
+    
+
+
+
+  
+
+  
+        
+  
+
+
+
+
+
+
+
+        
+<div class="devsite-content-footer nocontent">
+  
+  
+    <p>Except as otherwise noted, the content of this page is licensed under the <a href="http://creativecommons.org/licenses/by/3.0/">Creative Commons Attribution 3.0 License</a>, and code samples are licensed under the <a href="http://www.apache.org/licenses/LICENSE-2.0">Apache 2.0 License</a>. For details, see our <a href="https://developers.google.com/terms/site-policies">Site Policies</a>. Java is a registered trademark of Oracle and/or its affiliates.</p>
+  
+
+  
+    
+    <p class="devsite-content-footer-date" itemprop="datePublished"
+       content="2018-04-19T16:16:31.144200">
+      
+      Last updated April 19, 2018.
+    </p>
+  
+
+</div>
+
+        </article>
+      </article>
+  
+
+        </div>
+      
+
+<footer class="devsite-footer-linkboxes nocontent
+               devsite-footer-linkboxes-all-backup
+               devsite-footer-linkboxes-with-sites"><nav class="devsite-full-site-width"><ul class="devsite-footer-linkboxes-list"><li class="devsite-footer-linkbox devsite-footer-linkbox-backup"><h3 class="devsite-footer-linkbox-heading">Products</h3><ul class="devsite-footer-linkbox-list"><li class="devsite-footer-linkbox-item"><a href="https://cloud.google.com/products/compute/" class="gc-analytics-event"
+               data-category="Site-Wide Custom Events"
+               data-label="Footer Compute">
+                Compute
+            </a></li><li class="devsite-footer-linkbox-item"><a href="https://cloud.google.com/products/storage/" class="gc-analytics-event"
+               data-category="Site-Wide Custom Events"
+               data-label="Footer Storage">
+                Storage
+            </a></li><li class="devsite-footer-linkbox-item"><a href="https://cloud.google.com/products/networking/" class="gc-analytics-event"
+               data-category="Site-Wide Custom Events"
+               data-label="Footer Networking">
+                Networking
+            </a></li><li class="devsite-footer-linkbox-item"><a href="https://cloud.google.com/products/big-data/" class="gc-analytics-event"
+               data-category="Site-Wide Custom Events"
+               data-label="Footer Big Data">
+                Big Data
+            </a></li><li class="devsite-footer-linkbox-item"><a href="https://cloud.google.com/products/machine-learning/" class="gc-analytics-event"
+               data-category="Site-Wide Custom Events"
+               data-label="Footer Machine Learning">
+                Machine Learning
+            </a></li><li class="devsite-footer-linkbox-item"><a href="https://cloud.google.com/products/#management" class="gc-analytics-event"
+               data-category="Site-Wide Custom Events"
+               data-label="Footer Management Tools">
+                Management Tools
+            </a></li><li class="devsite-footer-linkbox-item"><a href="https://cloud.google.com/products/tools/" class="gc-analytics-event"
+               data-category="Site-Wide Custom Events"
+               data-label="Footer Developer Tools">
+                Developer Tools
+            </a></li><li class="devsite-footer-linkbox-item"><a href="https://cloud.google.com/products/#identity-security" class="gc-analytics-event"
+               data-category="Site-Wide Custom Events"
+               data-label="Footer Identity and Security">
+                Identity &amp; Security
+            </a></li><li class="devsite-footer-linkbox-item"><a href="//status.cloud.google.com" class="gc-analytics-event"
+               data-category="Site-Wide Custom Events"
+               data-label="Footer System Status">
+                System Status
+            </a></li></ul></li><li class="devsite-footer-linkbox devsite-footer-linkbox-backup"><h3 class="devsite-footer-linkbox-heading">Learn More</h3><ul class="devsite-footer-linkbox-list"><li class="devsite-footer-linkbox-item"><a href="https://cloud.google.com/why-google/" class="gc-analytics-event"
+               data-category="Site-Wide Custom Events"
+               data-label="Footer Why Google">
+                Why Google Cloud
+            </a></li><li class="devsite-footer-linkbox-item"><a href="https://cloud.google.com/pricing/" class="gc-analytics-event"
+               data-category="Site-Wide Custom Events"
+               data-label="Footer Pricing">
+                Pricing
+            </a></li><li class="devsite-footer-linkbox-item"><a href="https://cloud.google.com/docs/" class="gc-analytics-event"
+               data-category="Site-Wide Custom Events"
+               data-label="Footer Documentation">
+                Documentation
+            </a></li><li class="devsite-footer-linkbox-item"><a href="https://cloud.google.com/docs/tutorials/" class="gc-analytics-event"
+               data-category="Site-Wide Custom Events"
+               data-label="Footer Tutorials">
+                Tutorials
+            </a></li><li class="devsite-footer-linkbox-item"><a href="https://cloud.google.com/training/" class="gc-analytics-event"
+               data-category="Site-Wide Custom Events"
+               data-label="Footer Training">
+                Training
+            </a></li><li class="devsite-footer-linkbox-item"><a href="https://cloud.google.com/solutions/" class="gc-analytics-event"
+               data-category="Site-Wide Custom Events"
+               data-label="Footer Solutions">
+                Solutions
+            </a></li><li class="devsite-footer-linkbox-item"><a href="https://cloud.google.com/security/" class="gc-analytics-event"
+               data-category="Site-Wide Custom Events"
+               data-label="Footer Security &amp; Compliance">
+                Security &amp; Compliance
+            </a></li><li class="devsite-footer-linkbox-item"><a href="https://cloud.google.com/partners/" class="gc-analytics-event"
+               data-category="Site-Wide Custom Events"
+               data-label="Footer Partners">
+                Partners
+            </a></li><li class="devsite-footer-linkbox-item"><a href="https://cloud.google.com/customers/" class="gc-analytics-event"
+               data-category="Site-Wide Custom Events"
+               data-label="Footer Customers">
+                Customers
+            </a></li><li class="devsite-footer-linkbox-item"><a href="https://cloud.google.com/support/" class="gc-analytics-event"
+               data-category="Site-Wide Custom Events"
+               data-label="Footer Support">
+                Support
+            </a></li><li class="devsite-footer-linkbox-item"><a href="//careers.google.com/cloud/" class="gc-analytics-event"
+               data-category="Site-Wide Custom Events"
+               data-label="Footer Careers">
+                Careers
+            </a></li><li class="devsite-footer-linkbox-item"><a href="//www.google.com/cloud/press" class="gc-analytics-event"
+               data-category="Site-Wide Custom Events"
+               data-label="Footer Press">
+                Press
+            </a></li></ul></li><li class="devsite-footer-linkbox devsite-footer-linkbox-backup"><h3 class="devsite-footer-linkbox-heading">Engage</h3><ul class="devsite-footer-linkbox-list"><li class="devsite-footer-linkbox-item"><a href="https://cloud.google.com/free-trial/" class="gc-analytics-event"
+               data-category="Site-Wide Custom Events"
+               data-label="Footer Free Trial Sign Up">
+                Free Trial Sign Up
+            </a></li><li class="devsite-footer-linkbox-item"><a href="//cloudplatform.googleblog.com" class="gc-analytics-event"
+               data-category="Site-Wide Custom Events"
+               data-label="Footer Blog">
+                Blog
+            </a></li><li class="devsite-footer-linkbox-item"><a href="https://cloud.google.com/community/" class="gc-analytics-event"
+               data-category="Site-Wide Custom Events"
+               data-label="Footer Community">
+                Community
+            </a></li><li class="devsite-footer-linkbox-item"><a href="//plus.google.com/+googlecloudplatform" class="gc-analytics-event"
+               data-category="Site-Wide Custom Events"
+               data-label="Footer Google+">
+                Google+
+            </a></li><li class="devsite-footer-linkbox-item"><a href="//twitter.com/gcpcloud" class="gc-analytics-event"
+               data-category="Site-Wide Custom Events"
+               data-label="Footer Twitter">
+                Twitter
+            </a></li><li class="devsite-footer-linkbox-item"><a href="//www.linkedin.com/showcase/google-cloud" class="gc-analytics-event"
+               data-category="Site-Wide Custom Events"
+               data-label="Footer LinkedIn">
+                LinkedIn
+            </a></li><li class="devsite-footer-linkbox-item"><a href="//stackoverflow.com/questions/tagged/google-cloud-platform" class="gc-analytics-event"
+               data-category="Site-Wide Custom Events"
+               data-label="Footer Stack Overflow">
+                Stack Overflow
+            </a></li><li class="devsite-footer-linkbox-item"><a href="//www.youtube.com/googlecloudplatform" class="gc-analytics-event"
+               data-category="Site-Wide Custom Events"
+               data-label="Footer YouTube">
+                YouTube
+            </a></li><li class="devsite-footer-linkbox-item"><a href="//www.gcppodcast.com" class="gc-analytics-event"
+               data-category="Site-Wide Custom Events"
+               data-label="Footer Podcast">
+                Podcast
+            </a></li><li class="devsite-footer-linkbox-item"><a href="//cloud.google.com/newsletter/" class="gc-analytics-event"
+               data-category="Site-Wide Custom Events"
+               data-label="Footer Newsletter Signup">
+                Newsletter Signup
+            </a></li><li class="devsite-footer-linkbox-item"><a href="//cloud.google.com/usability" class="gc-analytics-event"
+               data-category="Site-Wide Custom Events"
+               data-label="Footer UX Research">
+                UX Research
+            </a></li></ul></li><li class="devsite-footer-linkbox devsite-footer-linkbox-sites"><a href="https://developers.google.com/"
+           class="gc-analytics-event devsite-footer-linkbox-logo-link"
+           data-category="Site-Wide Custom Events" data-label="Footer Google Developers Link"><img class="devsite-footer-linkbox-logo"
+               src="https://cloud.google.com/_static/d7147bb846/images/redesign-14/lockup-color-knockout.png"
+               alt="Google Developers"></a><ul class="devsite-footer-linkbox-list"><li class="devsite-footer-linkbox-item"><a href="//developer.android.com/index.html" class="gc-analytics-event"
+               data-category="Site-Wide Custom Events"
+               data-label="Footer Android Link">
+                Android
+            </a></li><li class="devsite-footer-linkbox-item"><a href="//developer.chrome.com/home" class="gc-analytics-event"
+               data-category="Site-Wide Custom Events"
+               data-label="Footer Chrome Link">
+                Chrome
+            </a></li><li class="devsite-footer-linkbox-item"><a href="//firebase.google.com" class="gc-analytics-event"
+               data-category="Site-Wide Custom Events"
+               data-label="Footer Firebase Link">
+                Firebase
+            </a></li><li class="devsite-footer-linkbox-item"><a href="//cloud.google.com" class="gc-analytics-event"
+               data-category="Site-Wide Custom Events"
+               data-label="Footer Cloud Link">
+                Google Cloud Platform
+            </a></li><li class="devsite-footer-linkbox-item"><a href="//developers.google.com/products/" class="gc-analytics-event"
+               data-category="Site-Wide Custom Events"
+               data-label="Footer Products Link">
+                All Products
+            </a></li></ul></li></ul></nav></footer><footer class="devsite-utility-footer"><nav class="devsite-utility-footer-nav devsite-nav devsite-full-site-width"><div class="devsite-utility-footer-nav-left"><form class="devsite-utility-footer-language" action="/i18n/setlang/" method="post"><input type="hidden" name="xsrf_token" value="yh_lHb7WZWfBRU3CEoCNp6CqDYkYS0kSSOSJqLc4UjE6MTUyNDQ2MDE5NTc3NzYxMA" /><input type="hidden" name="next" value="/iam/docs/understanding-roles"><select class="devsite-utility-footer-language-select kd-select" name="language"
+                track-type="languageSelector" track-name="click"><option value="de"
+                
+                track-type="languageSelector" track-name="changed"
+                track-metadata-original-language="en"
+                track-metadata-selected-language="de">
+            Deutsch
+          </option><option value="en"
+                 selected="selected" 
+                track-type="languageSelector" track-name="changed"
+                track-metadata-original-language="en"
+                track-metadata-selected-language="en">
+            English
+          </option><option value="es"
+                
+                track-type="languageSelector" track-name="changed"
+                track-metadata-original-language="en"
+                track-metadata-selected-language="es">
+            español
+          </option><option value="pt-br"
+                
+                track-type="languageSelector" track-name="changed"
+                track-metadata-original-language="en"
+                track-metadata-selected-language="pt-br">
+            Português Brasileiro
+          </option><option value="ja"
+                
+                track-type="languageSelector" track-name="changed"
+                track-metadata-original-language="en"
+                track-metadata-selected-language="ja">
+            日本語
+          </option><option value="zh-tw"
+                
+                track-type="languageSelector" track-name="changed"
+                track-metadata-original-language="en"
+                track-metadata-selected-language="zh-tw">
+            繁體中文
+          </option></select></form><span class="devsite-utility-footer-links"><a class="devsite-utility-footer-link gc-analytics-event"
+           href="https://cloud.google.com/terms/"
+           data-category="Site-Wide Custom Events"
+           data-label="Footer terms link"
+           data-footer-link-id="terms"
+           >Terms
+         </a><a class="devsite-utility-footer-link gc-analytics-event"
+           href="//www.google.com/policies/privacy/"
+           data-category="Site-Wide Custom Events"
+           data-label="Footer privacy link"
+           data-footer-link-id="privacy"
+           >Privacy
+         </a><a class="devsite-utility-footer-link gc-analytics-event"
+           href="//www.google.de/contact/impressum.html"
+           data-category="Site-Wide Custom Events"
+           data-label="Footer impressum link"
+           data-footer-link-id="impressum"
+           >Impressum
+         </a></span></div></nav></footer><div class="devsite-feedback-dialog devsite-dialog"><div class="devsite-dialog-contents"><h3>Send feedback about...</h3><div class="devsite-feedback-item"><a data-type="documentation" class="gc-analytics-event"
+           data-category="Site-Wide Custom Events" data-label="Docs Feedback Image"
+           track-type="feedback" track-name="feedbackDocIcon" track-metadata-position="header"><div class="devsite-feedback-item-icon-container"><div class="devsite-feedback-item-icon-white devsite-feedback-item-icon-docs
+                        material-icons"></div></div></a><div class="devsite-feedback-item-name">
+          
+          This page
+        </div><div class="devsite-feedback-item-description"><a data-type="documentation" tabindex="0" class="gc-analytics-event"
+             data-category="Site-Wide Custom Events" data-label="Docs Feedback Text"
+             track-type="feedback" track-name="feedbackDocText" track-metadata-position="header">
+            
+            Documentation feedback
+          </a></div></div><div class="devsite-feedback-item"><a data-type="product" tabindex="0" class="gc-analytics-event"
+           data-category="Site-Wide Custom Events" data-label="Product Feedback Image"
+           track-type="feedback" track-name="feedbackProductIcon" track-metadata-position="header"
+         ><img class="devsite-feedback-item-icon"
+               src="https://cloud.google.com/_static/d7147bb846/images/feedback/google_56px.svg"></a><div class="devsite-feedback-item-name">
+        Cloud Identity and Access Management Documentation
+        </div><div class="devsite-feedback-item-description"><a data-type="product" tabindex="0" class="gc-analytics-event"
+             data-category="Site-Wide Custom Events" data-label="Product Feedback Text"
+             track-type="feedback" track-name="feedbackProductText" track-metadata-position="header"
+           >
+            
+            Product feedback
+          </a></div></div></div><div class="devsite-dialog-buttons"><button type="button" class="devsite-feedback-cancel button-white gc-analytics-event"
+              data-category="Site-Wide Custom Events" data-label="Cancel Feedback Button"
+              track-type="feedback" track-name="cancelFeedbackButton"
+              track-metadata-position="header">
+        
+        Cancel
+      </button></div></div><script>
+  $(document).ready(function() {
+    new devsite.feedback.Widget({
+        'product_id': '717553',
+        'bucket': 'documentation',
+        'context': '',
+        'version': 'devsite-20180420-r00-rc00.default'
+      },
+      document.querySelectorAll('.devsite-feedback-button'),
+      'en',
+      document.querySelector('.devsite-site-mask'),
+      document.querySelector('.devsite-feedback-dialog'),
+      document.querySelector('.devsite-feedback-cancel'),
+      document.querySelectorAll('.devsite-feedback-item a:not([href])')
+    );
+  });
+  </script></div><script async defer src="//www.gstatic.com/feedback/api.js"></script><script src="https://cloud.google.com/_static2/d7147bb846/jsi18n/"></script><script src="https://cloud.google.com/_static/d7147bb846/js/script_foot_closure.js"></script><script src="https://cloud.google.com/_static/d7147bb846/js/script_foot.js"></script><script>
+        (function($) {
+          
+          devsite.devsite.Init($, {'ENABLE_BLOCKED_VIDEO_PLACEHOLDER': 0, 'SITE_NAME': 'cloud', 'FULL_SITE_SEARCH_ENABLED': 1, 'ENABLE_CLOUDTRACK': 1, 'VTAGS_ENABLED': 1, 'HISTORY_ENABLED': 1, 'VERSION_HASH': 'd7147bb846', 'SCRIPTSAFE_DOMAIN': 'cloud-dot-google-developers.appspot.com', 'ENABLE_BLOCKED_LINK_TOOLTIP': 0, 'ALLOWED_HOSTS': ['.android.com', '.anvato.com', '.apigee.com', '.appspot.com', '.dialogflow.com', '.gonglchuangl.net', '.google.cn', '.google.com', '.googleplex.com', '.nest.com', '.openthread.io', '.openweave.io', '.orbitera.com', '.tensorflow.org'], 'BLOCK_RSS_FEEDS': 0},
+                               '[]','en',
+                               true, '',
+                               {"f62218c009ec029abef196bba5aa34cf": true, "8de7a048f21618359bd37f5ce44be073": false, "098dafe57affddc137df300142652cfd": false, "8e03e230de0bd8a6fe173fdf172e8b3f": true, "cb025a64a50094835616312f4774a53d": true, "51470233c56fc1fde50f00b73c52b216": false, "d169d485cf24243a263783dbe42029b1": true, "039e5d84b87fd75807ffb37b7f1bbf2c": true, "700def1a83e356c06c0925afb05de4b0": false, "6749dcb526ce9bde6993550c7d928d24": true}, '/iam/docs/',
+                               'https://cloud.google.com/');
+        })(jQuery);
+
+        
+        devsite.localInit = function() {
+          
+        };
+
+      </script><script>
+      $('.devsite-utility-footer-language-select').each(function() {
+        $(this).change(function(){$('.devsite-utility-footer-language').submit();});
+      });
+      </script></div><span id="devsite-request-elapsed" data-request-elapsed="222.539901733"></span></body></html>

@@ -1,0 +1,2998 @@
+
+
+
+
+
+
+<!DOCTYPE html><html lang="en"
+      class="chekov"><head><script>var a=window.devsite||{};window.devsite=a;a.readyCallbacks=[];window.devsite.readyCallbacks=a.readyCallbacks;a.ready=function(b){a.readyCallbacks.push(b)};window.devsite.ready=a.ready;
+</script><meta charset="utf-8"><meta name="xsrf_token" content="X9uDLSgy1LB85OQ5KwlGzmA9dr5Laieqhehhuys5cpM6MTUyNDQ2MDExMzc1MDE0MA" /><link rel="canonical" href="https://developers.google.com/identity/protocols/OAuth2WebServer"><link rel="alternate" href="https://developers.google.com/identity/protocols/OAuth2WebServer" hreflang="en"><link rel="alternate" href="https://developers.google.cn/identity/protocols/OAuth2WebServer" hreflang="en-cn"><link rel="alternate" href="https://developers.google.com/identity/protocols/OAuth2WebServer" hreflang="x-default"><link rel="shortcut icon" href="https://developers.google.com/_static/d7147bb846/images/favicon.png"><link rel="apple-touch-icon" href="https://developers.google.com/_static/d7147bb846/images/touch-icon.png"><meta name="viewport" content="width=device-width, initial-scale=1"><link rel="stylesheet"
+      
+      href="//fonts.googleapis.com/css?family=Google+Sans:400|Roboto:400,400italic,500,500italic,700,700italic|Roboto+Mono:400,500,700|Material+Icons"
+      ><link rel="stylesheet"
+        href="https://developers.google.com/_static/d7147bb846/css/devsite-teal.css"><link rel="search"
+        type="application/opensearchdescription+xml"
+        title="Google Developers"
+        href="https://developers.google.com/s/opensearch.xml"><script src="https://developers.google.com/_static/d7147bb846/js/jquery-bundle.js"></script><meta property="og:site_name" content="Google Developers"><meta property="og:type" content="website"><meta property="og:url" content="https://developers.google.com/identity/protocols/OAuth2WebServer"><meta property="og:locale" content="en"><script>
+    var ___gcfg = ___gcfg || {};
+    ___gcfg.lang = 'en';
+  </script><title>Using OAuth 2.0 for Web Server Applications &nbsp;|&nbsp; Google Identity Platform
+      &nbsp;|&nbsp; Google Developers</title><meta property="og:title" content="Using OAuth 2.0 for Web Server Applications &nbsp;|&nbsp; Google Identity Platform
+      &nbsp;|&nbsp; Google Developers"><meta property="og:image"
+          content="https://developers.google.com/_static/d7147bb846/images/share/devsite-teal.png"><meta property="og:image:secure_url"
+          content="https://developers.google.com/_static/d7147bb846/images/share/devsite-teal.png"><meta property="og:image:width" content="1200"><meta property="og:image:height" content="630"><style>
+    .code-var-color {
+      color: #ec407a;
+      font-weight: bold;
+    }
+  </style></head><body class="
+               devsite-doc-page
+               
+               
+               
+               devsite-header-no-upper-tabs
+               "
+        data-family="endorsed"
+        id="top_of_page"><div class="devsite-wrapper"><div class="devsite-top-section-wrapper
+            "><header class="devsite-top-section nocontent"><div class="devsite-top-logo-row-wrapper-wrapper"><div class="devsite-top-logo-row-wrapper"><div class="devsite-top-logo-row devsite-full-site-width"><button type="button" class="devsite-expand-section-nav devsite-header-icon-button
+                                       button-flat material-icons gc-analytics-event"
+                  data-category="Site-Wide Custom Events" data-label="Hamburger menu"></button><div class="devsite-product-name-wrapper"><span class="devsite-product-name"><ul class="devsite-breadcrumb-list"><li class="devsite-breadcrumb-item"><a href="https://developers.google.com/identity/" class="devsite-breadcrumb-link gc-analytics-event"
+       data-category="Site-Wide Custom Events" data-label="Upper Header"
+       data-value="1">
+    
+    
+      
+        Google Identity Platform
+      
+    
+    
+    </a></li></ul></span></div><div class="devsite-header-upper-tabs"></div><form class="devsite-search-form"
+                action="https://developers.google.com/s/results/"
+                method="GET"
+                id="top-search"
+                search-placeholder='Search'><div id="searchbox" class="devsite-searchbox"><input placeholder='Search'
+         
+         type="text"
+         class="devsite-search-field devsite-search-query"
+         name="q"
+         value=""
+         autocomplete="off"
+         
+         aria-label="Search box"><div class="devsite-search-image material-icons"></div></div><input type="hidden"
+       name="p"
+       id="search_project"
+       value="/identity/"
+       data-project-name="Google Identity Platform"
+       data-project-path="/identity/"
+       data-query-match=""><input type="hidden" class="suggest-project" value="Google Identity Platform" /><div class="suggest-project-metadata" data-home_url="/identity/" data-path="/identity/" data-name="Google Identity Platform" ></div></form><a class="devsite-header-link devsite-top-button button gc-analytics-event"
+               href="https://developers.google.com/products/"
+               data-category="Site-Wide Custom Events"
+               data-label="Site header link"
+               track-type="navigateTo"
+               track-name="all products"
+               track-metadata-position="nav"><div class="devsite-header-link-label">All Products</div></a><button type="button" class="devsite-search-button devsite-header-icon-button button-flat
+                                       material-icons"></button><a href="https://www.google.com/accounts/ServiceLogin?passive=true&continue=https%3A%2F%2Fdevelopers.google.com%2Fidentity%2Fprotocols%2FOAuth2WebServer%3Frefresh%3D1&service=ahsid"
+   class="devsite-user-signin devsite-top-button button gc-analytics-event"
+   data-category="Site-Wide Custom Events" data-label="Sign in button">
+  
+  Sign in
+</a></div></div></div><div class="devsite-collapsible-section"><div class="devsite-header-background devsite-full-site-width"><div class="devsite-doc-set-nav-row devsite-full-site-width"><nav class="devsite-doc-set-nav devsite-nav devsite-overflow-tabs-scroll-wrapper"><ul class="devsite-doc-set-nav-tab-list devsite-overflow-tabs-scroll"><li class="devsite-doc-set-nav-tab-container devsite-nav-tab
+               "><a href="https://developers.google.com/identity/"
+         class=" devsite-nav-tab
+                devsite-doc-set-nav-tab devsite-doc-set-nav-tab-link gc-analytics-event"
+         
+       
+         data-category="Site-Wide Custom Events"
+       
+         data-label="Tab: Home"
+       >
+        Home
+      </a></li><li class="devsite-doc-set-nav-tab-container devsite-nav-tab
+               "><a href="https://developers.google.com/identity/choose-auth"
+         class="devsite-doc-set-nav-active devsite-nav-tab
+                devsite-doc-set-nav-tab devsite-doc-set-nav-tab-link gc-analytics-event"
+         aria-label="Guides, selected"
+       
+         data-category="Site-Wide Custom Events"
+       
+         data-label="Tab: Guides"
+       >
+        Guides
+      </a></li></ul></nav></div></div></div></header><script>
+    if (window.jQuery) {
+      $(document).ready(function() {
+        if (window.devsite && window.devsite.search) {
+          
+          window.devsite.search.init('en')
+        }
+      });
+    }
+  </script></div><div id="gc-wrapper"itemscope itemtype="http://schema.org/Article"><input class="google-analytics-id-json" type="hidden" value="{&quot;dimensions&quot;: {&quot;dimension6&quot;: &quot;en&quot;, &quot;dimension4&quot;: &quot;Google Identity Platform&quot;, &quot;dimension5&quot;: &quot;en&quot;, &quot;dimension3&quot;: false, &quot;dimension1&quot;: &quot;Signed out&quot;, &quot;dimension8&quot;: null}, &quot;gaid&quot;: &quot;UA-24532603-1&quot;}"><input class="google-analytics-id-json" type="hidden" value="{&quot;dimensions&quot;: {}, &quot;gaid&quot;: &quot;UA-65985075-1&quot;}"><script>
+      var dataLayer = [{"freeTrialEligibleUser": "False", "userCountry": "HK", "language": {"requested": "en", "served": "en"}, "projectName": "Google Identity Platform", "scriptsafe": null, "signedIn": "False", "internalUser": "False"}];
+    </script>
+
+      
+        <div class="devsite-site-mask"></div>
+        
+  
+
+
+<nav class="devsite-nav-responsive devsite-nav nocontent" tabindex="0">
+  
+  <div class="devsite-nav-responsive-tabs-panel">
+    
+      
+
+
+
+<nav class="devsite-nav-responsive-tabs devsite-nav">
+  <ul class="devsite-nav-list">
+  
+    <li class="devsite-nav-item devsite-nav-item-heading">
+    
+      <a 
+           href="https://developers.google.com/identity/"
+         
+         class="devsite-nav-responsive-tab devsite-nav-title gc-analytics-event
+                "
+         data-category="Site-Wide Custom Events" data-label="Responsive Tab: Home">
+        Home
+      </a>
+      
+      
+    
+    </li>
+  
+    <li class="devsite-nav-item devsite-nav-item-heading">
+    
+      <span class="devsite-nav-responsive-forward devsite-nav-responsive-tab devsite-nav-title
+                   devsite-nav-active gc-analytics-event"
+            data-category="Site-Wide Custom Events" data-label="Responsive Tab: Guides"
+            tabindex="0">
+        Guides
+      </span>
+    
+    </li>
+  
+  
+    <li class="devsite-nav-item devsite-nav-item-heading">
+      <a href="https://developers.google.com/products/"
+         class="devsite-nav-responsive-tab devsite-nav-title gc-analytics-event"
+         data-category="Site-Wide Custom Events"
+         data-label="Responsive Tab: all_products">
+        All Products
+      </a>
+    </li>
+  
+  </ul>
+</nav>
+
+
+    
+  </div>
+  
+  
+  <div class="devsite-nav-responsive-sidebar-panel">
+    
+    <div class="devsite-nav-responsive-back" tabindex="0"></div>
+    
+    <nav class="devsite-nav-responsive-sidebar"></nav>
+  </div>
+  
+  
+</nav>
+
+
+        <div class="devsite-main-content clearfix">
+
+        
+        
+          <div class="devsite-banner devsite-banner-announcement
+                    ">
+            <div class="devsite-banner-inner">
+            <p>Check out our new <a href="/identity/one-tap/web/">one-tap sign-up and
+auto sign-in</a> experience for the web!</p>
+
+            </div>
+          </div>
+        
+
+        
+  
+  
+    
+    
+      
+  <nav class="devsite-section-nav devsite-nav nocontent">
+    <ul class="devsite-nav-list"><li class="devsite-nav-item"><a href="https://developers.google.com/identity/choose-auth" class="devsite-nav-title">Compare Auth Options</a></li><li class="devsite-nav-item devsite-nav-item-heading"><span class="devsite-nav-title devsite-nav-title-no-path" aria-label="Google Sign-In, click to expand/collapse" role="link">Google Sign-In</span><li class="devsite-nav-item"><a href="https://developers.google.com/identity/sign-in/android/" class="devsite-nav-title">Android</a></li><li class="devsite-nav-item"><a href="https://developers.google.com/identity/sign-in/ios/" class="devsite-nav-title">iOS</a></li><li class="devsite-nav-item"><a href="https://developers.google.com/identity/sign-in/web/" class="devsite-nav-title">Websites</a></li><li class="devsite-nav-item"><a href="https://developers.google.com/identity/sign-in/devices" class="devsite-nav-title">TVs &amp; Devices</a></li><li class="devsite-nav-item"><a href="https://developers.google.com/identity/branding-guidelines" class="devsite-nav-title">Branding Guidelines</a></li></li><li class="devsite-nav-item devsite-nav-item-heading"><span class="devsite-nav-title devsite-nav-title-no-path" aria-label="Smart Lock for Passwords, click to expand/collapse" role="link">Smart Lock for Passwords</span><li class="devsite-nav-item"><a href="https://developers.google.com/identity/smartlock-passwords/android/" class="devsite-nav-title">Android</a></li></li><li class="devsite-nav-item devsite-nav-item-heading"><span class="devsite-nav-title devsite-nav-title-no-path" aria-label="Firebase Authentication, click to expand/collapse" role="link">Firebase Authentication</span><li class="devsite-nav-item"><a href="https://firebase.google.com/docs/auth/" class="devsite-nav-title">Firebase Auth Overview</a></li></li><li class="devsite-nav-item devsite-nav-item-heading"><span class="devsite-nav-title devsite-nav-title-no-path" aria-label="Auth Protocols, click to expand/collapse" role="link">Auth Protocols</span><li class="devsite-nav-item"><a href="https://developers.google.com/identity/protocols/OAuth2" class="devsite-nav-title">OAuth 2.0 Overview</a></li><li class="devsite-nav-item"><a href="https://developers.google.com/identity/protocols/OpenIDConnect" class="devsite-nav-title">OpenID Connect</a></li><li class="devsite-nav-item devsite-nav-active"><a href="https://developers.google.com/identity/protocols/OAuth2WebServer" class="devsite-nav-title">OAuth 2.0 for Server-side Web Apps</a></li><li class="devsite-nav-item"><a href="https://developers.google.com/identity/protocols/OAuth2UserAgent" class="devsite-nav-title">OAuth 2.0 for JavaScript Web Apps</a></li><li class="devsite-nav-item"><a href="https://developers.google.com/identity/protocols/OAuth2InstalledApp" class="devsite-nav-title">OAuth 2.0 for Mobile &amp; Desktop Apps</a></li><li class="devsite-nav-item"><a href="https://developers.google.com/identity/protocols/OAuth2ForDevices" class="devsite-nav-title">OAuth 2.0 for TV &amp; Device Apps</a></li><li class="devsite-nav-item"><a href="https://developers.google.com/identity/protocols/googlescopes" class="devsite-nav-title">OAuth 2.0 API Scopes</a></li><li class="devsite-nav-item"><a href="https://developers.google.com/identity/protocols/OAuth2ServiceAccount" class="devsite-nav-title">OAuth 2.0 for Service Accounts</a></li><li class="devsite-nav-item"><a href="https://developers.google.com/identity/protocols/CrossClientAuth" class="devsite-nav-title">Cross-client Identity</a></li></li><li class="devsite-nav-item devsite-nav-item-heading"><span class="devsite-nav-title devsite-nav-title-no-path" aria-label="Identity for IT Applications, click to expand/collapse" role="link">Identity for IT Applications</span><li class="devsite-nav-item"><a href="https://developers.google.com/identity/work/it-apps" class="devsite-nav-title">Google Sign-In with Work Accounts</a></li><li class="devsite-nav-item"><a href="https://developers.google.com/identity/work/it-mobile-apps" class="devsite-nav-title">Mobile App Best Practices</a></li></li><li class="devsite-nav-item devsite-nav-item-heading"><span class="devsite-nav-title devsite-nav-title-no-path" aria-label="Identity for SaaS Applications, click to expand/collapse" role="link">Identity for SaaS Applications</span><li class="devsite-nav-item"><a href="https://developers.google.com/identity/work/saas-browser-apps" class="devsite-nav-title">Browser App Best Practices</a></li><li class="devsite-nav-item"><a href="https://developers.google.com/identity/work/saas-mobile-apps" class="devsite-nav-title">Mobile App Best Practices</a></li></li><li class="devsite-nav-item"><hr class="devsite-nav-break"></li><li class="devsite-nav-item"><a href="https://developers.google.com/terms/" class="devsite-nav-title">APIs Terms of Service</a></li><li class="devsite-nav-item"><a href="https://developers.google.com/terms/api-services-user-data-policy" class="devsite-nav-title">APIs User Data Policy</a></li></ul>
+  </nav>
+
+    
+
+    
+  <nav class="devsite-page-nav devsite-nav"></nav>
+
+
+      <article class="devsite-article">
+        <article class="devsite-article-inner">
+  
+          
+  
+
+
+
+  
+  <nav class="devsite-breadcrumb-nav devsite-nav">
+    
+
+
+<ul class="devsite-breadcrumb-list">
+  
+  <li class="devsite-breadcrumb-item">
+    
+    
+    <a href="https://developers.google.com/products/" class="devsite-breadcrumb-link gc-analytics-event"
+       data-category="Site-Wide Custom Events" data-label="Breadcrumbs"
+       data-value="1">
+    
+    
+      Products
+    
+    
+    </a>
+    
+  </li>
+  
+  <li class="devsite-breadcrumb-item">
+    
+    
+    <div class="devsite-breadcrumb-guillemet material-icons"></div>
+    
+    
+    <a href="https://developers.google.com/identity/" class="devsite-breadcrumb-link gc-analytics-event"
+       data-category="Site-Wide Custom Events" data-label="Breadcrumbs"
+       data-value="2">
+    
+    
+      Google Identity Platform
+    
+    
+    </a>
+    
+  </li>
+  
+  <li class="devsite-breadcrumb-item">
+    
+    
+    <div class="devsite-breadcrumb-guillemet material-icons"></div>
+    
+    
+    <a href="https://developers.google.com/identity/choose-auth" class="devsite-breadcrumb-link gc-analytics-event"
+       data-category="Site-Wide Custom Events" data-label="Breadcrumbs"
+       data-value="3">
+    
+    
+      Guides
+    
+    
+    </a>
+    
+  </li>
+  
+</ul>
+
+  </nav>
+  
+  
+  <h1 itemprop="name" class="devsite-page-title">
+    Using OAuth 2.0 for Web Server Applications
+  </h1>
+  
+  
+  <nav class="devsite-page-nav-embedded devsite-nav"></nav>
+  
+  <div class="devsite-article-body clearfix
+            "
+       itemprop="articleBody">
+    
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<p>
+
+  This document explains how web server applications use Google API Client
+  Libraries or Google OAuth 2.0 endpoints to implement OAuth 2.0 authorization
+  to access Google APIs. 
+
+OAuth 2.0 allows users to share specific data with an application while
+keeping their usernames, passwords, and other information private.
+
+For example, an application can use OAuth 2.0 to obtain permission from
+users to store files in their Google Drives.
+
+</p>
+
+<p>This OAuth 2.0 flow is specifically for user authorization. It is designed
+for applications that can store confidential information and maintain state.
+A properly authorized web server application can access an API while the user
+interacts with the application or after the user has left the application.</p>
+
+<p>Web server applications frequently also use
+<a href="https://developers.google.com/identity/protocols/OAuth2ServiceAccount">service accounts</a> to authorize API
+requests, particularly when calling Cloud APIs to access project-based data
+rather than user-specific data. Web server applications can use service
+accounts in conjunction with user authorization.
+
+</p>
+
+
+  <aside class="note"><strong>Note:</strong> Given the security implications
+  of getting the implementation correct, we strongly encourage you to use
+  OAuth 2.0 libraries when interacting with Google's OAuth 2.0 endpoints. It
+  is a best practice to use well-debugged code provided by others, and it
+  will help you protect yourself and your users. For more information, see
+  <a href="#libraries">Client libraries</a>.</aside>
+
+
+
+
+
+  <h2 id="libraries">Client libraries</h2>
+
+<p>The language-specific examples on this page use
+   <a href="https://developers.google.com/api-client-library/">Google API Client Libraries</a> to implement
+   OAuth 2.0 authorization. To run the code samples, you must first install the
+   client library for your language.</p>
+
+<p>When you use a Google API Client Library to handle your application's
+   OAuth 2.0 flow, the client library performs many actions that the
+   application would otherwise need to handle on its own. For example, it
+   determines when the application can use or refresh stored access tokens
+   as well as when the application must reacquire consent. The client
+   library also generates correct redirect URLs and helps to implement
+   redirect handlers that exchange authorization codes for access
+   tokens.</p>
+
+<p>Client libraries are available for the following languages:</p>
+<ul>
+  <li><a href="https://github.com/google/google-api-go-client">Go</a></li>
+  <li><a href="https://developers.google.com/api-client-library/java/">Java</a></li>
+  <li><a href="https://developers.google.com/api-client-library/dotnet/">.NET</a></li>
+  <li><a href="https://github.com/google/google-api-nodejs-client/">Node.js</a></li>
+  <li><a href="https://developers.google.com/api-client-library/php/">PHP</a></li>
+  <li><a href="https://developers.google.com/api-client-library/python/">Python</a></li>
+  <li><a href="https://developers.google.com/api-client-library/ruby/">Ruby</a></li>
+</ul>
+
+
+
+
+
+<h2 id="prerequisites">Prerequisites</h2>
+
+
+<h3 id="enable-apis">Enable APIs for your project</h3>
+<p>Any application that calls Google APIs needs to enable those APIs in the
+API Console. To enable the appropriate APIs for your project:</p>
+
+<ol>
+  <li>Open the <a href="https://console.developers.google.com/apis/library">Library</a> page in the
+    API Console.</li>
+  <li>Select the project associated with your application. Create a project if
+    you do not have one already.</li>
+
+  <li>Use the <b>Library</b> page to find each API that your application will
+    use. Click on each API and enable it for your project.</li>
+
+</ol>
+
+
+
+
+<h3 id="creatingcred">Create authorization credentials</h3>
+<p>Any application that uses OAuth 2.0 to access Google APIs must have
+authorization credentials that identify the application to Google's OAuth 2.0
+server. The following steps explain how to create credentials for your project.
+Your applications can then use the credentials to access APIs that you have
+enabled for that project.</p>
+
+
+
+<ol>
+  
+
+
+
+
+
+
+
+  <li>Open the <a href="https://console.developers.google.com/apis/credentials">Credentials page</a> in the API Console.</li>
+
+  <li>Click <b>Create credentials > OAuth client ID</b>.</li>
+  <li>Complete the form. Set the application type to <code>Web
+      application</code>. Applications that use languages and frameworks
+      like PHP, Java, Python, Ruby, and .NET must specify authorized
+      <b>redirect URIs</b>. The redirect URIs are the endpoints to which the
+      OAuth 2.0 server can send responses.<br><br>
+      For testing, you can specify URIs that refer to the local machine,
+      such as <code>http://localhost:8080</code>. With that in mind, please
+      note that all of the examples in this document use
+      <code>http://localhost:8080</code> as the redirect URI.
+      <br><br>
+      We recommend that you <a href="#protectauthcode">design your app's auth
+      endpoints</a> so that your application does not expose authorization
+      codes to other resources on the page.</li>
+</ol>
+
+<p>After creating your credentials, download the <b>client_secret.json</b> file
+   from the API Console. Securely store the file in a location
+   that only your application can access.</p>
+
+<aside class="note"><b>Important:</b> Do not store the <b>client_secret.json</b>
+   file in a publicly-accessible location. In addition, if you share the source
+   code to your application&mdash;for example, on GitHub&mdash;store the
+   <b>client_secret.json</b> file outside of your source tree to avoid
+   inadvertently sharing your client credentials.</aside>
+ 
+
+
+<h3 id="identify-access-scopes">Identify access scopes</h3>
+
+<p>Scopes enable your application to only request access to the resources that
+it needs while also enabling users to control the amount of access that they
+grant to your application. Thus, there may be an inverse relationship between
+the number of scopes requested and the likelihood of obtaining user consent.</p>
+
+<p>Before you start implementing OAuth 2.0 authorization, we recommend that you
+identify the scopes that your app will need permission to access.</p>
+
+
+<p>We also recommend that your application request access to authorization
+   scopes via an <a href="#incrementalAuth">incremental authorization</a>
+   process, in which your application requests access to user data in context.
+   This best practice helps users to more easily understand why your
+   application needs the access it is requesting.</p>
+
+
+
+
+<p>The <a href="https://developers.google.com/identity/protocols/googlescopes">OAuth 2.0 API Scopes</a>
+document contains a full list of scopes that you might use to access Google
+APIs.</p>
+
+
+
+ 
+
+
+<h3 id="languagespecificrequirements">Language-specific requirements</h3>
+<p>To run any of the code samples in this document, you'll need a Google
+   account, access to the Internet, and a web browser. If you are using one
+   of the API client libraries, also see the language-specific requirements
+   below.</p>
+ 
+<div class="ds-selector-dropdown" data-ds-scope="lang">
+<section>
+<h3 class="hide-from-toc">PHP</h3>
+<p>To run the PHP code samples in this document, you'll need:</p>
+
+<ul>
+  <li>PHP 5.4 or greater with the command-line interface (CLI) and JSON
+      extension installed.</li>
+  <li>The <a href="https://getcomposer.org/">Composer</a> dependency
+      management tool.</li>
+  <li>
+    <p>The Google APIs Client Library for PHP:</p>
+    <pre class="prettyprint">php composer.phar require google/apiclient:^2.0</pre>
+  </li>
+</ul>
+
+</section>
+<section>
+<h3 class="hide-from-toc">Python</h3>
+<p>To run the Python code samples in this document, you'll need:</p>
+
+<ul>
+  <li>Python 2.6 or greater</li>
+  <li>The <a href="https://pypi.python.org/pypi/pip">pip</a> package management tool.
+  <li>
+    <p>The Google APIs Client Library for Python:</p>
+    <pre class="prettyprint">pip install --upgrade google-api-python-client</pre>
+  </li>
+  <li>
+    <p>The <code>google-auth</code>, <code>google-auth-oauthlib</code>, and <code>google-auth-httplib2</code> for user authorization.</p>
+    <pre class="prettyprint">pip install --upgrade google-auth google-auth-oauthlib google-auth-httplib2</pre>
+  </li>
+  <li>
+    <p>The Flask Python web application framework.</p>
+    <pre class="prettyprint">pip install --upgrade flask</pre>
+  </li>
+  <li>
+    <p>The <code>requests</code> HTTP library.</p>
+    <pre class="prettyprint">pip install --upgrade requests</pre>
+  </li>
+</ul>
+
+</section>
+<section>
+<h3 class="hide-from-toc">Ruby</h3>
+<p>To run the Ruby code samples in this document, you'll need:</p>
+
+<ul>
+  <li>Ruby 2.2.2 or greater</li>
+  <li>
+    <p>The Google APIs Client Library for Ruby:</p>
+    <pre class="prettyprint">gem install google-api-client</pre>
+  </li>
+  <li>
+    <p>The Sinatra Ruby web application framework.</p>
+    <pre class="prettyprint">gem install sinatra</pre>
+  </li>
+</ul>
+
+</section>
+<section>
+<h3 class="hide-from-toc">HTTP/REST</h3>
+<p>You do not need to install any libraries to be able to directly call the OAuth 2.0 endpoints.</p>
+</section>
+</div>
+ 
+ 
+
+
+ 
+
+
+
+
+<h2 id="obtainingaccesstokens">Obtaining OAuth 2.0 access tokens</h2>
+
+<p>The following steps show how your application interacts with Google's OAuth
+2.0 server to obtain a user's consent to perform an API request on the user's
+behalf. Your application must have that consent before it can execute a Google
+API request that requires user authorization.</p>
+
+
+
+<p>The list below quickly summarizes these steps:</p>
+<ol>
+  <li>Your application identifies the permissions it needs.</li>
+  <li>Your application redirects the user to Google along with the
+      list of requested permissions.</li>
+  <li>The user decides whether to grant the permissions to your
+      application.</li>
+  <li>Your application finds out what the user decided.</li>
+  <li>If the user granted the requested permissions, your application
+      retrieves tokens needed to make API requests on the user's behalf.</li>
+</ol>
+
+
+
+<h3 id="creatingclient">Step 1: Set authorization parameters</h3>
+ 
+<p>Your first step is to create the authorization request. That request sets
+   parameters that identify your application and define the permissions that
+   the user will be asked to grant to your application.</p>
+
+<ul>
+  <li>
+    <p>If you use a Google client library for OAuth 2.0 authentication and
+       authorization, you create and configure an object that defines these
+       parameters.</p>
+  </li>
+  <li>
+    <p>If you call the Google OAuth 2.0 endpoint directly, you'll generate
+       a URL and set the parameters on that URL.</p>
+  </li>
+</ul>
+
+<p>The tabs below define the supported authorization parameters for web server
+   applications. The language-specific examples also show how to use a client
+   library or authorization library to configure an object that sets those
+   parameters.</p>
+
+<div class="ds-selector-dropdown" data-ds-scope="lang">
+<section>
+<h3 class="hide-from-toc">PHP</h3>
+
+<p>The code snippet below creates a <code>Google_Client()</code> object,
+   which defines the parameters in the authorization request.</p>
+
+<p>That object uses information from your <b>client_secret.json</b> file to
+   identify your application. (See <a href="#creatingcred">creating
+   authorization credentials</a> for more about that file.) The object also
+   identifies the scopes that your application is requesting permission to
+   access and the URL to your application's auth endpoint, which will handle
+   the response from Google's OAuth 2.0 server. Finally, the code sets the
+   optional access_type and include_granted_scopes parameters.</p>
+
+<p>
+For example, this code requests read-only, offline access to a user's
+Google Drive:
+</p>
+
+<pre class="prettyprint">
+$client = new Google_Client();
+$client->setAuthConfig('client_secret.json');
+$client->addScope(Google_Service_Drive::DRIVE_METADATA_READONLY);
+$client->setRedirectUri('http://' . $_SERVER['HTTP_HOST'] . '/oauth2callback.php');
+$client->setAccessType('offline');        // offline access
+$client->setIncludeGrantedScopes(true);   // incremental auth
+</pre>
+
+<p>The request specifies the following information:</p>
+<table class="responsive details">
+  <th colspan="2">Parameters</th>
+  <tr id="request-parameter-client_id">
+    <td><code>client_id</code></td>
+    <td><b>Required</b>. The client ID for your application. You can find
+    this value in the <a href="https://console.developers.google.com/">API Console</a>.
+    
+      In PHP, call the <code>setAuthConfig</code> function to load
+      authorization credentials from a <b>client_secret.json</b> file.
+      <pre class="prettyprint">$client = new Google_Client();
+<b>$client->setAuthConfig('client_secret.json');</b></pre>
+    
+</td>
+  </tr>
+
+  <tr id="request-parameter-redirect_uri">
+    <td><code>redirect_uri</code></td>
+    <td><b>Required</b>. 
+    
+      Determines where the API server redirects the user after the user
+      completes the authorization flow. The value must exactly match one of the
+      <code>redirect_uri</code> values listed for your project in the
+      <a href="https://console.developers.google.com/">API Console</a>. Note that the <code>http</code> or
+      <code>https</code> scheme, case, and trailing slash ('<code>/</code>')
+      must all match.
+      
+        <br><br>
+        To set this value in PHP, call the <code>setRedirectUri</code> function.
+        Note that you must specify a valid redirect URI for your
+        API Console project.
+        <pre class="prettyprint">$client->setRedirectUri('http://localhost:8080/oauth2callback.php');</pre>
+      
+    
+    </td>
+  </tr>
+ 
+
+  <tr id="request-parameter-scope">
+    <td id="scope"><code>scope</code></td>
+    <td><b>Required</b>. A 
+      
+        space-delimited 
+      
+      list of scopes that identify the
+      resources that your application could access on the user's behalf. These
+      values inform the consent screen that Google displays to the user.<br><br>
+
+      Scopes enable your application to only request access to the resources
+      that it needs while also enabling users to control the amount of access
+      that they grant to your application. Thus, there is an inverse
+      relationship between the number of scopes requested and the likelihood
+      of obtaining user consent.
+      
+        To set this value in PHP, call the <code>addScope</code> function:
+        <pre class="prettyprint">$client->addScope(Google_Service_Drive::DRIVE_METADATA_READONLY);</pre>
+      
+    
+    The <a href="https://developers.google.com/identity/protocols/googlescopes">OAuth 2.0 API Scopes</a>
+    document provides a full list of scopes that you might use to access
+    Google APIs.
+    
+
+    <br><br>
+    We recommend that your application request access to authorization scopes
+    in context whenever possible. By requesting access to user data in context,
+    via <a href="#incrementalAuth">incremental authorization</a>,
+    you help users to more easily understand why your application needs the
+    access it is requesting.
+
+</td>
+  </tr>
+
+  <tr id="request-parameter-access_type">
+    <td><code>access_type</code></td>
+    <td><b>Recommended</b>. Indicates whether your application can refresh
+    access tokens when the user is not present at the browser.  Valid parameter
+    values are <code>online</code>, which is the default value, and
+    <code>offline</code>.<br><br>
+    Set the value to <code>offline</code> if your application needs to refresh
+    access tokens when the user is not present at the browser. This is the
+    method of refreshing access tokens described later in this document. This
+    value instructs the Google authorization server to return a refresh token
+    <i>and</i> an access token the first time that your application exchanges
+    an authorization code for tokens.
+    
+      <br><br>
+      To set this value in PHP, call the <code>setAccessType</code> function:
+      <pre class="prettyprint">$client->setAccessType('offline');</pre>
+    
+    </td>
+  </tr>
+
+
+  <tr id="request-parameter-state">
+    <td><code>state</code></td>
+    <td><b>Recommended</b>. Specifies any string value that your application
+    uses to maintain state between your authorization request and the
+    authorization server's response. The server returns the exact value that
+    you send as a <code class="notranslate">name=value</code> pair in the hash
+    (<code class="notranslate">#</code>) fragment of the
+    <code class="notranslate">redirect_uri</code> after the user consents
+    to or denies your application's access request.<br><br>
+    You can use this parameter for several purposes, such as directing the
+    user to the correct resource in your application, sending nonces, and
+    mitigating cross-site request forgery. Since your <code>redirect_uri</code>
+    can be guessed, using a <code>state</code> value can increase your
+    assurance that an incoming connection is the result of an authentication
+    request. If you generate a random string or encode the hash of a cookie or
+    another value that captures the client's state, you can validate the
+    response to additionally ensure that the request and response originated
+    in the same browser, providing protection against attacks such as
+    cross-site request forgery. See the <a
+    href="https://developers.google.com/identity/protocols/OpenIDConnect#createxsrftoken">OpenID Connect</a>
+    documentation for an example of how to create and confirm a
+    <code>state</code> token.
+    
+      <br><br>
+      To set this value in PHP, call the <code>setState</code> function:
+      <pre class="prettyprint">$client->setState($sample_passthrough_value);</pre>
+    
+    
+    </td>
+  </tr>
+
+
+
+
+  <tr id="request-parameter-include_granted_scopes">
+    <td><code>include_granted_scopes</code></td>
+    <td><b>Optional</b>. Enables applications to use incremental authorization
+    to request access to additional scopes in context. If you set this
+    parameter's value to <code>true</code> and the authorization request is
+    granted, then the new access token will also cover any scopes to which the
+    user previously granted the application access. See the
+    <a href="#incrementalAuth">incremental authorization</a> section
+    for examples.
+    
+      <br><br>
+      To set this value in PHP, call the <code>setIncludeGrantedScopes</code>
+      function:
+      <pre class="prettyprint">$client->setIncludeGrantedScopes(true);</pre>
+    
+    </td>
+  </tr>
+
+
+  <tr id="request-parameter-login_hint">
+    <td><code>login_hint</code></td>
+    <td><b>Optional</b>. If your application knows which user is trying to
+    authenticate, it can use this parameter to provide a hint to the Google
+    Authentication Server.  The server uses the hint to simplify the login
+    flow either by prefilling the email field in the sign-in form or by
+    selecting the appropriate multi-login session.<br><br>
+    Set the parameter value to an email address or <code>sub</code>
+    identifier, which is equivalent to the user's Google ID.
+    
+      <br><br>
+      To set this value in PHP, call the <code>setLoginHint</code> function:
+      <pre class="prettyprint">$client->setLoginHint('user@example.com');</pre>
+    
+    </td>
+  </tr>
+
+
+
+
+  <tr id="request-parameter-prompt">
+    <td><code>prompt</code></td>
+    <td>
+      <b>Optional</b>. A space-delimited, case-sensitive list of prompts to
+      present the user. If you don't specify this parameter, the user will be
+      prompted only the first time your app requests access.
+      
+        <br><br>
+        To set this value in PHP, call the <code>setApprovalPrompt</code>
+        function:
+        <pre class="prettyprint">$client->setApprovalPrompt('consent');</pre>
+      
+      Possible values are:
+      <table class="responsive">
+        <tr>
+          <td><code>none</code></td>
+          <td>Do not display any authentication or consent screens. Must not be
+            specified with other values.</td>
+        </tr>
+        <tr>
+          <td><code>consent</code></td>
+          <td>Prompt the user for consent.</td>
+        </tr>
+        <tr>
+          <td><code>select_account</code></td>
+          <td>Prompt the user to select an account.</td>
+        </tr>
+      </table>
+    </td>
+  </tr>
+
+</table>
+
+
+
+
+</section>
+<section>
+<h3 class="hide-from-toc">Python</h3>
+
+<p>The following code snippet uses the <code>google-auth-oauthlib.flow</code>
+   module to construct the authorization request.</p>
+
+<p>The code constructs a <code>Flow</code> object, which identifies your
+   application using information from the <b>client_secret.json</b> file
+   that you downloaded after <a href="#creatingcred">creating authorization
+   credentials</a>. That object also identifies the scopes that your
+   application is requesting permission to access and the URL to your
+   application's auth endpoint, which will handle the response from Google's
+   OAuth 2.0 server. Finally, the code sets the optional
+   <code>access_type</code> and <code>include_granted_scopes</code>
+   parameters.</p>
+
+<p>
+For example, this code requests read-only, offline access to a user's
+Google Drive:
+</p>
+
+<pre class="prettyprint">
+import google.oauth2.credentials
+import google_auth_oauthlib.flow
+
+# Use the client_secret.json file to identify the application requesting
+# authorization. The client ID (from that file) and access scopes are required.
+flow = google_auth_oauthlib.flow.Flow.from_client_secrets_file(
+    'client_secret.json',
+    scope=['https://www.googleapis.com/auth/drive.metadata.readonly'])
+
+# Indicate where the API server will redirect the user after the user completes
+# the authorization flow. The redirect URI is required.
+flow.redirect_uri = 'https://www.example.com/oauth2callback'
+
+# Generate URL for request to Google's OAuth 2.0 server.
+# Use <b>kwargs</b> to set optional request parameters.
+authorization_url, state = flow.authorization_url(
+    # Enable offline access so that you can refresh an access token without
+    # re-prompting the user for permission. Recommended for web server apps.
+    access_type='offline',
+    # Enable incremental authorization. Recommended as a best practice.
+    include_granted_scopes='true')
+</pre>
+
+<p>The request specifies the following information:</p>
+<table class="responsive details">
+  <th colspan="2">Parameters</th>
+  <tr id="request-parameter-client_id">
+    <td><code>client_id</code></td>
+    <td><b>Required</b>. The client ID for your application. You can find
+    this value in the <a href="https://console.developers.google.com/">API Console</a>.
+    
+      
+        In Python, call the <code>from_client_secrets_file</code> method to
+        retrieve the client ID from a <b>client_secret.json</b> file. (You can
+        also use the <code>from_client_config</code> method, which passes the
+        client configuration as it originally appeared in a client secrets file
+        but doesn't access the file itself.)
+        <pre class="prettyprint">
+flow = google_auth_oauthlib.flow.Flow.from_client_secrets_file(
+    <b>'client_secret.json'</b>,
+    scope=['https://www.googleapis.com/auth/drive.metadata.readonly'])
+</pre>
+      
+    
+</td>
+  </tr>
+
+  <tr id="request-parameter-redirect_uri">
+    <td><code>redirect_uri</code></td>
+    <td><b>Required</b>. 
+    
+      Determines where the API server redirects the user after the user
+      completes the authorization flow. The value must exactly match one of the
+      <code>redirect_uri</code> values listed for your project in the
+      <a href="https://console.developers.google.com/">API Console</a>. Note that the <code>http</code> or
+      <code>https</code> scheme, case, and trailing slash ('<code>/</code>')
+      must all match.
+      
+        
+          <br><br>
+          To set this value in Python, set the <code>flow</code> object's
+          <code>redirect_uri</code> property:
+          <pre class="prettyprint">flow.redirect_uri = 'https://www.example.com/oauth2callback'</pre>
+        
+      
+    
+    </td>
+  </tr>
+ 
+
+  <tr id="request-parameter-scope">
+    <td id="scope"><code>scope</code></td>
+    <td><b>Required</b>. A 
+      
+      list of scopes that identify the
+      resources that your application could access on the user's behalf. These
+      values inform the consent screen that Google displays to the user.<br><br>
+
+      Scopes enable your application to only request access to the resources
+      that it needs while also enabling users to control the amount of access
+      that they grant to your application. Thus, there is an inverse
+      relationship between the number of scopes requested and the likelihood
+      of obtaining user consent.
+      
+        
+          In Python, use the same method you use to set the
+          <code><a href="#client_id">client_id</a></code> to specify the list
+          of scopes.
+          <pre class="prettyprint">
+flow = google_auth_oauthlib.flow.Flow.from_client_secrets_file(
+    'client_secret.json',
+    <b>scope=['https://www.googleapis.com/auth/drive.metadata.readonly']</b>)
+</pre>
+      
+      
+    
+    The <a href="https://developers.google.com/identity/protocols/googlescopes">OAuth 2.0 API Scopes</a>
+    document provides a full list of scopes that you might use to access
+    Google APIs.
+    
+
+    <br><br>
+    We recommend that your application request access to authorization scopes
+    in context whenever possible. By requesting access to user data in context,
+    via <a href="#incrementalAuth">incremental authorization</a>,
+    you help users to more easily understand why your application needs the
+    access it is requesting.
+
+</td>
+  </tr>
+
+  <tr id="request-parameter-access_type">
+    <td><code>access_type</code></td>
+    <td><b>Recommended</b>. Indicates whether your application can refresh
+    access tokens when the user is not present at the browser.  Valid parameter
+    values are <code>online</code>, which is the default value, and
+    <code>offline</code>.<br><br>
+    Set the value to <code>offline</code> if your application needs to refresh
+    access tokens when the user is not present at the browser. This is the
+    method of refreshing access tokens described later in this document. This
+    value instructs the Google authorization server to return a refresh token
+    <i>and</i> an access token the first time that your application exchanges
+    an authorization code for tokens.
+    
+      
+        <br><br>
+        In Python, set the <code>access_type</code> parameter by specifying
+        <code>access_type</code> as a keyword argument when calling the
+        <code>flow.authorization_url</code> method:
+        <pre class="prettyprint">authorization_url, state = flow.authorization_url(
+    <b>access_type='offline'</b>,
+    include_granted_scopes='true')</pre>
+      
+    
+    </td>
+  </tr>
+
+
+  <tr id="request-parameter-state">
+    <td><code>state</code></td>
+    <td><b>Recommended</b>. Specifies any string value that your application
+    uses to maintain state between your authorization request and the
+    authorization server's response. The server returns the exact value that
+    you send as a <code class="notranslate">name=value</code> pair in the hash
+    (<code class="notranslate">#</code>) fragment of the
+    <code class="notranslate">redirect_uri</code> after the user consents
+    to or denies your application's access request.<br><br>
+    You can use this parameter for several purposes, such as directing the
+    user to the correct resource in your application, sending nonces, and
+    mitigating cross-site request forgery. Since your <code>redirect_uri</code>
+    can be guessed, using a <code>state</code> value can increase your
+    assurance that an incoming connection is the result of an authentication
+    request. If you generate a random string or encode the hash of a cookie or
+    another value that captures the client's state, you can validate the
+    response to additionally ensure that the request and response originated
+    in the same browser, providing protection against attacks such as
+    cross-site request forgery. See the <a
+    href="https://developers.google.com/identity/protocols/OpenIDConnect#createxsrftoken">OpenID Connect</a>
+    documentation for an example of how to create and confirm a
+    <code>state</code> token.
+    
+      
+        <br><br>
+        In Python, set the <code>state</code> parameter by specifying
+        <code>state</code> as a keyword argument when calling the
+        <code>flow.authorization_url</code> method:
+        <pre class="prettyprint">authorization_url, state = flow.authorization_url(
+    access_type='offline',
+    <b>state=sample_passthrough_value</b>,
+    include_granted_scopes='true')</pre>
+      
+    
+    
+    </td>
+  </tr>
+
+
+
+
+  <tr id="request-parameter-include_granted_scopes">
+    <td><code>include_granted_scopes</code></td>
+    <td><b>Optional</b>. Enables applications to use incremental authorization
+    to request access to additional scopes in context. If you set this
+    parameter's value to <code>true</code> and the authorization request is
+    granted, then the new access token will also cover any scopes to which the
+    user previously granted the application access. See the
+    <a href="#incrementalAuth">incremental authorization</a> section
+    for examples.
+    
+      
+        <br><br>
+        In Python, set the <code>include_granted_scopes</code> parameter by
+        specifying <code>include_granted_scopes</code> as a keyword argument
+        when calling the <code>flow.authorization_url</code> method:
+        <pre class="prettyprint">authorization_url, state = flow.authorization_url(
+    access_type='offline',
+    <b>include_granted_scopes='true'</b>)</pre>
+      
+    
+    </td>
+  </tr>
+
+
+  <tr id="request-parameter-login_hint">
+    <td><code>login_hint</code></td>
+    <td><b>Optional</b>. If your application knows which user is trying to
+    authenticate, it can use this parameter to provide a hint to the Google
+    Authentication Server.  The server uses the hint to simplify the login
+    flow either by prefilling the email field in the sign-in form or by
+    selecting the appropriate multi-login session.<br><br>
+    Set the parameter value to an email address or <code>sub</code>
+    identifier, which is equivalent to the user's Google ID.
+    
+      
+        <br><br>
+        In Python, set the <code>login_hint</code> parameter by specifying
+        <code>login_hint</code> as a keyword argument when calling the
+        <code>flow.authorization_url</code> method:
+        <pre class="prettyprint">authorization_url, state = flow.authorization_url(
+    access_type='offline',
+    <b>login_hint='user@example.com'</b>,
+    include_granted_scopes='true')</pre>
+      
+    
+    </td>
+  </tr>
+
+
+
+
+  <tr id="request-parameter-prompt">
+    <td><code>prompt</code></td>
+    <td>
+      <b>Optional</b>. A space-delimited, case-sensitive list of prompts to
+      present the user. If you don't specify this parameter, the user will be
+      prompted only the first time your app requests access.
+      
+        
+          <br><br>
+          In Python, set the <code>prompt</code> parameter by specifying
+          <code>prompt</code> as a keyword argument when calling the
+          <code>flow.authorization_url</code> method:
+          <pre class="prettyprint">authorization_url, state = flow.authorization_url(
+      access_type='offline',
+      <b>prompt='consent'</b>,
+      include_granted_scopes='true')</pre>
+        
+      
+      Possible values are:
+      <table class="responsive">
+        <tr>
+          <td><code>none</code></td>
+          <td>Do not display any authentication or consent screens. Must not be
+            specified with other values.</td>
+        </tr>
+        <tr>
+          <td><code>consent</code></td>
+          <td>Prompt the user for consent.</td>
+        </tr>
+        <tr>
+          <td><code>select_account</code></td>
+          <td>Prompt the user to select an account.</td>
+        </tr>
+      </table>
+    </td>
+  </tr>
+
+</table>
+
+
+
+
+</section>
+<section>
+<h3 class="hide-from-toc">Ruby</h3>
+
+<p>Use the client_secrets.json file that you created to configure a client
+object in your application. When you configure a client object, you specify the
+scopes your application needs to access, along with the URL to your
+application's auth endpoint, which will handle the response from the OAuth 2.0
+server.</p>
+<p>
+For example, this code requests read-only, offline access to a user's
+Google Drive:
+</p>
+
+<pre class="prettyprint">
+require 'google/apis/drive_v2'
+require 'google/api_client/client_secrets'
+
+client_secrets = Google::APIClient::ClientSecrets.load
+auth_client = client_secrets.to_authorization
+auth_client.update!(
+  :scope => 'https://www.googleapis.com/auth/drive.metadata.readonly',
+  :redirect_uri => 'http://www.example.com/oauth2callback',
+  :additional_parameters => {
+    "access_type" => "offline",         # offline access
+    "include_granted_scopes" => "true"  # incremental auth
+  }
+)</pre>
+<p>Your application uses the client object to perform OAuth 2.0 operations, such
+as generating authorization request URLs and applying access tokens to HTTP
+requests.</p>
+
+
+</section>
+<section>
+<h3 class="hide-from-toc">HTTP/REST</h3>
+<p>Google's OAuth 2.0 endpoint is at <code>https://accounts.google.com/o/oauth2/v2/auth</code>.
+   This endpoint is accessible only over HTTPS. Plain HTTP connections are
+   refused.</p>
+
+<p>The Google authorization server supports the following query string
+   parameters for web server applications:</p>
+
+<table class="responsive details">
+  <th colspan="2">Parameters</th>
+  <tr id="request-parameter-client_id">
+    <td><code>client_id</code></td>
+    <td><b>Required</b>. The client ID for your application. You can find
+    this value in the <a href="https://console.developers.google.com/">API Console</a>.
+    
+    
+</td>
+  </tr>
+
+  <tr id="request-parameter-redirect_uri">
+    <td><code>redirect_uri</code></td>
+    <td><b>Required</b>. 
+    
+      Determines where the API server redirects the user after the user
+      completes the authorization flow. The value must exactly match one of the
+      <code>redirect_uri</code> values listed for your project in the
+      <a href="https://console.developers.google.com/">API Console</a>. Note that the <code>http</code> or
+      <code>https</code> scheme, case, and trailing slash ('<code>/</code>')
+      must all match.
+      
+      
+    
+    </td>
+  </tr>
+ 
+
+  <tr id="request-parameter-scope">
+    <td id="scope"><code>scope</code></td>
+    <td><b>Required</b>. A 
+      
+        space-delimited 
+      
+      list of scopes that identify the
+      resources that your application could access on the user's behalf. These
+      values inform the consent screen that Google displays to the user.<br><br>
+
+      Scopes enable your application to only request access to the resources
+      that it needs while also enabling users to control the amount of access
+      that they grant to your application. Thus, there is an inverse
+      relationship between the number of scopes requested and the likelihood
+      of obtaining user consent.
+      
+      
+    
+    The <a href="https://developers.google.com/identity/protocols/googlescopes">OAuth 2.0 API Scopes</a>
+    document provides a full list of scopes that you might use to access
+    Google APIs.
+    
+
+    <br><br>
+    We recommend that your application request access to authorization scopes
+    in context whenever possible. By requesting access to user data in context,
+    via <a href="#incrementalAuth">incremental authorization</a>,
+    you help users to more easily understand why your application needs the
+    access it is requesting.
+
+</td>
+  </tr>
+
+  <tr id="request-parameter-access_type">
+    <td><code>access_type</code></td>
+    <td><b>Recommended</b>. Indicates whether your application can refresh
+    access tokens when the user is not present at the browser.  Valid parameter
+    values are <code>online</code>, which is the default value, and
+    <code>offline</code>.<br><br>
+    Set the value to <code>offline</code> if your application needs to refresh
+    access tokens when the user is not present at the browser. This is the
+    method of refreshing access tokens described later in this document. This
+    value instructs the Google authorization server to return a refresh token
+    <i>and</i> an access token the first time that your application exchanges
+    an authorization code for tokens.
+    
+    
+    </td>
+  </tr>
+
+
+  <tr id="request-parameter-state">
+    <td><code>state</code></td>
+    <td><b>Recommended</b>. Specifies any string value that your application
+    uses to maintain state between your authorization request and the
+    authorization server's response. The server returns the exact value that
+    you send as a <code class="notranslate">name=value</code> pair in the hash
+    (<code class="notranslate">#</code>) fragment of the
+    <code class="notranslate">redirect_uri</code> after the user consents
+    to or denies your application's access request.<br><br>
+    You can use this parameter for several purposes, such as directing the
+    user to the correct resource in your application, sending nonces, and
+    mitigating cross-site request forgery. Since your <code>redirect_uri</code>
+    can be guessed, using a <code>state</code> value can increase your
+    assurance that an incoming connection is the result of an authentication
+    request. If you generate a random string or encode the hash of a cookie or
+    another value that captures the client's state, you can validate the
+    response to additionally ensure that the request and response originated
+    in the same browser, providing protection against attacks such as
+    cross-site request forgery. See the <a
+    href="https://developers.google.com/identity/protocols/OpenIDConnect#createxsrftoken">OpenID Connect</a>
+    documentation for an example of how to create and confirm a
+    <code>state</code> token.
+    
+    
+    
+    </td>
+  </tr>
+
+
+
+
+  <tr id="request-parameter-include_granted_scopes">
+    <td><code>include_granted_scopes</code></td>
+    <td><b>Optional</b>. Enables applications to use incremental authorization
+    to request access to additional scopes in context. If you set this
+    parameter's value to <code>true</code> and the authorization request is
+    granted, then the new access token will also cover any scopes to which the
+    user previously granted the application access. See the
+    <a href="#incrementalAuth">incremental authorization</a> section
+    for examples.
+    
+    
+    </td>
+  </tr>
+
+
+  <tr id="request-parameter-login_hint">
+    <td><code>login_hint</code></td>
+    <td><b>Optional</b>. If your application knows which user is trying to
+    authenticate, it can use this parameter to provide a hint to the Google
+    Authentication Server.  The server uses the hint to simplify the login
+    flow either by prefilling the email field in the sign-in form or by
+    selecting the appropriate multi-login session.<br><br>
+    Set the parameter value to an email address or <code>sub</code>
+    identifier, which is equivalent to the user's Google ID.
+    
+    
+    </td>
+  </tr>
+
+
+
+
+  <tr id="request-parameter-prompt">
+    <td><code>prompt</code></td>
+    <td>
+      <b>Optional</b>. A space-delimited, case-sensitive list of prompts to
+      present the user. If you don't specify this parameter, the user will be
+      prompted only the first time your app requests access.
+      
+      
+      Possible values are:
+      <table class="responsive">
+        <tr>
+          <td><code>none</code></td>
+          <td>Do not display any authentication or consent screens. Must not be
+            specified with other values.</td>
+        </tr>
+        <tr>
+          <td><code>consent</code></td>
+          <td>Prompt the user for consent.</td>
+        </tr>
+        <tr>
+          <td><code>select_account</code></td>
+          <td>Prompt the user to select an account.</td>
+        </tr>
+      </table>
+    </td>
+  </tr>
+
+</table>
+
+
+
+</section>
+</div>
+ 
+
+ 
+
+
+
+<h3 id="redirecting">Step 2: Redirect to Google's OAuth 2.0 server</h3>
+
+<p>Redirect the user to Google's OAuth 2.0 server to initiate the
+   authentication and authorization process. Typically, this occurs
+   when your application first needs to access the user's data. In the case
+   of <a href="#incrementalAuth">incremental authorization</a>, this step also
+   occurs when your application first needs to access additional resources that
+   it does not yet have permission to access.</p>
+
+
+
+  <div class="ds-selector-dropdown" data-ds-scope="lang">
+    <section>
+      <h3 class="hide-from-toc">PHP</h3>
+      <ol>
+  <li>Generate a URL to request access from Google's OAuth 2.0 server:
+    <pre class="prettyprint">
+$auth_url = $client->createAuthUrl();</pre>
+  </li>
+  <li>Redirect the user to <code>$auth_url</code>: <pre class="prettyprint">
+header('Location: ' . filter_var($auth_url, FILTER_SANITIZE_URL));</pre></li>
+</ol>
+
+    </section>
+    <section>
+      <h3 class="hide-from-toc">Python</h3>
+      <p>This example shows how to redirect the user to the authorization URL
+   using the Flask web application framework:</p>
+<pre class="prettyprint">return flask.redirect(authorization_url)</pre>
+
+    </section>
+    <section>
+      <h3 class="hide-from-toc">Ruby</h3>
+      <ol>
+  <li>Generate a URL to request access from Google's OAuth 2.0 server:
+    <pre class="prettyprint">
+auth_uri = auth_client.authorization_uri.to_s</pre>
+  </li>
+  <li>Redirect the user to <code>auth_uri</code>.</li>
+</ol>
+
+    </section>
+    <section>
+      <h3 class="hide-from-toc">HTTP/REST</h3>
+
+
+      <h4>Sample redirect to Google's authorization server</h4>
+
+      
+<p>An example URL is shown below, with line breaks and spaces for readability.</p>
+
+
+      <pre>https://accounts.google.com/o/oauth2/v2/auth?
+&nbsp;scope=https%3A%2F%2Fwww.googleapis.com%2Fauth%2Fdrive.metadata.readonly&
+&nbsp;access_type=offline&
+&nbsp;include_granted_scopes=true&
+&nbsp;state=state_parameter_passthrough_value&
+&nbsp;redirect_uri=http%3A%2F%2Foauth2.example.com%2Fcallback&
+&nbsp;response_type=code&
+&nbsp;client_id=<span class="code-var-color">client_id</span></pre>
+
+      <p>After you create the request URL, redirect the user to it.</p>
+    </section>
+  </div>
+
+
+
+<p>Google's OAuth 2.0 server authenticates the user and obtains consent from
+the user for your application to access the requested scopes. The response
+is sent back to your application using the redirect URL you specified.</p>
+
+ 
+
+
+<h3 id="userconsentprompt">Step 3: Google prompts user for consent</h3>
+
+<p>In this step, the user decides whether to grant your application the
+requested access. At this stage, Google displays a consent window that shows
+the name of your application and the Google API services that it is requesting
+permission to access with the user's authorization credentials. The user can
+then consent or refuse to grant access to your application.</p>
+
+<p>Your application doesn't need to do anything at this stage as it waits for
+the response from Google's OAuth 2.0 server indicating whether the access was
+granted. That response is explained in the following step.</p>
+
+ 
+
+
+
+
+<h3 id="handlingresponse">Step 4: Handle the OAuth 2.0 server response</h3>
+
+<p>The OAuth 2.0 server responds to your application's access request by using
+the URL specified in the request.</p>
+<p>If the user approves the access request, then the response contains an
+authorization code. If the user does not approve the request, the response
+contains an error message. The authorization code or error message that is
+returned to the web server appears on the query string, as shown below:</p>
+<p>An error response:</p>
+<pre>https://oauth2.example.com/auth?error=access_denied</pre>
+<p>An authorization code response:</p>
+<pre>https://oauth2.example.com/auth?code=4/P7q7W91a-oMsCeLvIaQm6bTrgtp7</pre>
+
+<p class="note" id="protectauthcode"><strong>Important</strong>: If your
+response endpoint renders an HTML page, any resources on that page will be
+able to see the authorization code in the URL. Scripts can read the URL
+directly, and the URL in the <code>Referer</code> HTTP header may be sent
+to any or all resources on the page.<br><br>
+
+Carefully consider whether you want to send authorization credentials to all
+resources on that page (especially third-party scripts such as social plugins
+and analytics). To avoid this issue, we recommend that the server first handle
+the request, then redirect to another URL that doesn't include the response
+parameters.</p>
+
+<h4>Sample OAuth 2.0 server response</h4>
+<p>
+You can test this flow by clicking on the following sample URL, which requests
+read-only access to view metadata for files in your Google Drive:
+</p>
+<pre><a href="https://accounts.google.com/o/oauth2/v2/auth?scope=https%3A%2F%2Fwww.googleapis.com%2Fauth%2Fdrive.metadata.readonly&state=state_parameter_passthrough_value&redirect_uri=http%3A%2F%2Flocalhost%2Foauth2callback&access_type=offline&response_type=code&client_id=583306224539-atbcaa8ne8g85e8kc006o6vmq99qiid0.apps.googleusercontent.com">https://accounts.google.com/o/oauth2/v2/auth?
+&nbsp;scope=https%3A%2F%2Fwww.googleapis.com%2Fauth%2Fdrive.metadata.readonly&
+&nbsp;access_type=offline&
+&nbsp;include_granted_scopes=true&
+&nbsp;state=state_parameter_passthrough_value&
+&nbsp;redirect_uri=http%3A%2F%2Foauth2.example.com%2Fcallback&
+&nbsp;response_type=code&
+&nbsp;client_id=<span class="code-var-color">client_id</span></a></pre>
+
+<p>After completing the OAuth 2.0 flow, you should be redirected to
+<code>http://localhost/oauth2callback</code>, which will likely yield a
+<code>404 NOT FOUND</code> error unless your local machine serves a file
+at that address. The next step provides more detail about the information
+returned in the URI when the user is redirected back to your application.</p>
+
+ 
+
+<h3 id="exchange-authorization-code">Step 5: Exchange authorization code for refresh and access tokens</h3>
+
+<p>After the web server receives the authorization code, it can exchange the
+authorization code for an access token.</p>
+
+
+
+
+
+
+<div class="ds-selector-dropdown" data-ds-scope="lang">
+<section>
+<h3 class="hide-from-toc">PHP</h3>
+<p>To exchange an authorization code for an access token, use the
+<code>authenticate</code> method:</p>
+<pre class="prettyprint">
+$client->authenticate($_GET['code']);</pre>
+<p>You can retrieve the access token with the <code>getAccessToken</code>
+method:</p> <pre class="prettyprint">
+$access_token = $client->getAccessToken();</pre>
+
+</section>
+<section>
+<h3 class="hide-from-toc">Python</h3>
+<p>On your callback page, use the <code>google-auth</code> library to verify
+   the authorization server response. Then, use the
+   <code>flow.fetch_token</code> method to exchange the authorization code
+   in that response for an access token:</p>
+<pre class="prettyprint">
+state = flask.session['state']
+flow = google_auth_oauthlib.flow.Flow.from_client_secrets_file(
+    'client_secret.json',
+    scopes=['https://www.googleapis.com/auth/youtube.force-ssl'],
+    state=state)
+flow.redirect_uri = flask.url_for('oauth2callback', _external=True)
+
+authorization_response = flask.request.url
+<b>flow.fetch_token(authorization_response=authorization_response)</b>
+
+# Store the credentials in the session.
+# ACTION ITEM for developers:
+#     Store user's access and refresh tokens in your data store if
+#     incorporating this code into your real app.
+credentials = flow.credentials
+flask.session['credentials'] = {
+    'token': credentials.token,
+    'refresh_token': credentials.refresh_token,
+    'token_uri': credentials.token_uri,
+    'client_id': credentials.client_id,
+    'client_secret': credentials.client_secret,
+    'scopes': credentials.scopes}</pre>
+
+</section>
+<section>
+<h3 class="hide-from-toc">Ruby</h3>
+<p>To exchange an authorization code for an access token, use the
+<code>fetch_access_token!</code> method:</p>
+<pre class="prettyprint">
+auth_client.code = auth_code
+auth_client.fetch_access_token!</pre>
+
+</section>
+<section>
+<h3 class="hide-from-toc">HTTP/REST</h3>
+<p>To exchange an authorization code for an access token, call the
+<code>https://www.googleapis.com/oauth2/v4/token</code> endpoint and set the following parameters:</p>
+
+<table class="responsive">
+  <tr>
+    <th colspan="2">Fields</th>
+  </tr>
+  <tr>
+    <td><code>code</code></td>
+    <td>The authorization code returned from the initial request.</td>
+  </tr>
+  <tr>
+    <td><code>client_id</code></td>
+    <td>The client ID obtained from the <a href="https://console.developers.google.com/">API Console</a>.</td>
+  </tr>
+  <tr>
+    <td><code>client_secret</code></td>
+    <td>The client secret obtained from the <a href="https://console.developers.google.com/">API Console</a>.
+
+</td>
+  </tr>
+  <tr>
+    <td><code>redirect_uri</code></td>
+    <td>One of the redirect URIs listed for your project in the
+    <a href="https://console.developers.google.com/">API Console</a>.</td>
+  </tr>
+  <tr>
+    <td><code>grant_type</code></td>
+    <td>As defined in the OAuth 2.0 specification, this field must contain a
+    value of <code>authorization_code</code>.</td>
+  </tr>
+
+</table>
+
+<p>The following snippet shows a sample request:</p>
+
+<pre class="notranslate">POST /oauth2/v4/token HTTP/1.1
+Host: www.googleapis.com
+Content-Type: application/x-www-form-urlencoded
+
+code=4/P7q7W91a-oMsCeLvIaQm6bTrgtp7&
+client_id=<var class="apiparam">your_client_id</var>&
+client_secret=<var class="apiparam">your_client_secret</var>&
+redirect_uri=https://oauth2.example.com/code&
+grant_type=authorization_code</pre>
+
+<p>Google responds to this request by returning a JSON object that contains a
+short-lived access token and a refresh token.
+
+Note that the refresh token is only returned if your application set the
+<code>access_type</code> parameter to <code>offline</code> in the initial
+request to Google's authorization server.
+
+</p>
+
+<p>The response contains the following fields:</p>
+
+<table class="responsive details">
+  <tr>
+    <th colspan="2">Fields</th>
+  </tr>
+  <tr>
+    <td><code>access_token</code></td>
+    <td>The token that your application sends to authorize a Google API
+    request.</td>
+  </tr>
+
+
+  <tr>
+    <td><code>refresh_token</code></td>
+    <td>A token that you can use to obtain a new access token. Refresh tokens
+        are valid until the user revokes access.
+    
+        Again, this field is only present in this response if you set the
+        <code>access_type</code> parameter to <code>offline</code> in the
+        initial request to Google's authorization server.
+    
+    </td>
+  </tr>
+  <tr>
+    <td><code>expires_in</code></td>
+    <td>The remaining lifetime of the access token in seconds.</td>
+  </tr>
+  <tr>
+    <td><code>token_type</code></td>
+    <td>The type of token returned. At this time, this field's value is always
+    set to <code>Bearer</code>.</td>
+  </tr>
+</table>
+
+
+<p class="note"><b>Important:</b> Your application should store both
+tokens in a secure, long-lived location that is accessible between different
+invocations of your application. The refresh token enables your application
+to obtain a new access token if the one that you have expires. As such, if
+your application loses the refresh token, the user will need to repeat the
+OAuth 2.0 consent flow so that your application can obtain a new refresh
+token.</p>
+
+
+<p>The following snippet shows a sample response:</p>
+
+<pre class="prettyprint">{
+  "access_token":"1/fFAGRNJru1FTz70BzhT3Zg",
+  "expires_in":3920,
+  "token_type":"Bearer",
+  "refresh_token":"1/xEoDL4iW3cxlI7yDbSRFYNG01kVKM2C-259HOF2aQbI"
+}</pre>
+
+<aside class="note"><strong>Note</strong>: Your application should ignore any
+unrecognized fields included in the response.</aside>
+
+</section>
+</div>
+
+
+ 
+
+
+
+
+
+<h2 id="callinganapi">Calling Google APIs</h2>
+
+ 
+
+<div class="ds-selector-dropdown" data-ds-scope="lang">
+<section>
+<h3 class="hide-from-toc">PHP</h3>
+<p>Use the access token to call Google APIs by completing the following
+steps:</p>
+<ol>
+  <li>If you need to apply an access token to a new <code>Google_Client</code>
+      object&mdash;for example, if you stored the access token in a user
+      session&mdash;use the <code>setAccessToken</code> method:
+      <pre class="prettyprint">
+$client->setAccessToken($access_token);</pre></li>
+  <li>Build a service object for the API that you want to call. You build a
+      a service object by providing an authorized <code>Google_Client</code>
+      object to the constructor for the API you want to call.
+      
+For example, to call the Drive API:
+
+      <pre class="prettyprint">
+$drive = new Google_Service_Drive($client);</pre></li>
+  <li>Make requests to the API service using the
+  <a href="https://developers.google.com/api-client-library/php/start/get_started#build">interface
+  provided by the service object</a>. 
+For example, to list the files in the authenticated user's Google Drive:
+
+  <pre class="prettyprint">$files = $drive->files->listFiles(array())->getItems();</pre>
+  </li>
+</ol>
+
+</section>
+<section>
+<h3 class="hide-from-toc">Python</h3>
+<p>After obtaining an access token, your application can use that token to
+   authorize API requests on behalf of a given user account or service
+   account. Use the user-specific authorization credentials to build a
+   service object for the API that you want to call, and then use that object
+   to make authorized API requests.</p>
+<ol>
+  <li>Build a service object for the API that you want to call. You build a
+      service object by calling the <code>googleapiclient.discovery</code>
+      library's <code>build</code> method with the name and version of the API
+      and the user credentials:
+      
+For example, to call version 2 of the Drive API:
+
+      <pre class="prettyprint">
+from googleapiclient.discovery import build
+
+drive = build('drive', 'v2', credentials=credentials)</pre></li>
+  <li>Make requests to the API service using the
+  <a href="https://developers.google.com/api-client-library/python/start/get_started#build">interface
+  provided by the service object</a>.
+  
+For example, to list the files in the authenticated user's Google Drive:
+
+  <pre class="prettyprint">files = drive.files().list().execute()</pre>
+  </li>
+</ol>
+
+</section>
+<section>
+<h3 class="hide-from-toc">Ruby</h3>
+<p>Use the <code>auth_client</code> object to call Google APIs by
+completing the following steps:</p>
+<ol>
+  <li>Build a service object for the API that you want to call.
+      
+For example, to call version 2 of the Drive API:
+
+      <pre class="prettyprint">
+drive = Google::Apis::DriveV2::DriveService.new</pre></li>
+  <li>Set the credentials on the service:
+  <pre class="prettyprint">
+drive.authorization = auth_client</pre></li>
+  <li>Make requests to the API service using the
+  <a href="https://developers.google.com/api-client-library/ruby/start/get_started#build">interface
+  provided by the service object</a>.
+  
+For example, to list the files in the authenticated user's Google Drive:
+
+
+  <pre class="prettyprint">
+files = drive.list_files</pre>
+
+  </li>
+</ol>
+<p>Alternately, authorization can be provided on a per-method basis by supplying the <code>options</code> parameter to a method:
+
+<pre class="prettyprint">
+files = drive.list_files(options: { authorization: auth_client })</pre>
+
+
+</section>
+<section>
+<h3 class="hide-from-toc">HTTP/REST</h3>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<p>After your application obtains an access token, you can use the token to
+make calls to a Google API on behalf of a given user account or service
+account. To do this, include the access token in a request to the API by
+including either an <code>access_token</code> query parameter or an
+<code>Authorization: Bearer</code> HTTP header. When possible, the HTTP header
+is preferable, because query strings tend to be visible in server logs. In most
+cases you can use a client library to set up your calls to Google APIs (for
+example, when <a href="https://developers.google.com/drive/v2/reference/#Files">calling the
+Drive Files API</a>).</p>
+
+
+
+<p>You can try out all the Google APIs and view their scopes at the <a href="https://developers.google.com/oauthplayground/">OAuth 2.0 Playground</a>.</p>
+
+<h4>HTTP GET examples</h4>
+<p>A call to the <a href="https://developers.google.com/drive/v2/reference/files/list"><code>drive.files</code></a> endpoint (the Drive Files API) using the <code>Authorization: Bearer</code> HTTP header might look like the following. Note that you need to specify your own access token:<p>
+<pre>
+GET /drive/v2/files HTTP/1.1
+Authorization: Bearer <code class="code-var-color">&lt;access_token&gt;</code>
+Host: www.googleapis.com/
+</pre>
+<p>Here is a call to the same API for the authenticated user using the
+<code>access_token</code> query string parameter:</p>
+<pre>
+GET https://www.googleapis.com/drive/v2/files?access_token=<code class="code-var-color">&lt;access_token&gt;</code>
+</pre>
+
+<h4><code>curl</code> examples</h4>
+<p>You can test these commands with the <code>curl</code> command-line application. Here's an example that uses the HTTP header option (preferred):
+<pre>
+curl -H "Authorization: Bearer <code class="code-var-color">&lt;access_token&gt;</code>" https://www.googleapis.com/drive/v2/files
+</pre>
+<p>Or, alternatively, the query string parameter option:</p>
+<pre>
+curl https://www.googleapis.com/drive/v2/files?access_token=<code class="code-var-color">&lt;access_token&gt;</code>
+</pre>
+
+</section>
+</div>
+
+ 
+
+ 
+ 
+
+
+
+<h2 id="example">Complete example</h2>
+
+<p>The following example prints a JSON-formatted list of files in a user's
+Google Drive after the user authenticates and gives consent for the application
+to access the user's Drive files.</p>
+
+
+   
+
+    <div class="ds-selector-dropdown" data-ds-scope="lang">
+      <section>
+        <h3 class="hide-from-toc">PHP</h3>
+        <p>To run this example:</p>
+<ol>
+  <li>In the API Console, add the URL of the local machine to the
+      list of redirect URLs. For example, add
+      <code>http://localhost:8080</code>.</li>
+  <li>Create a new directory and change to it. For example: <pre>
+mkdir ~/php-oauth2-example
+cd ~/php-oauth2-example</pre></li>
+  <li>Install the <a href="https://github.com/google/google-api-php-client">
+      Google API Client Library</a> for PHP using
+      <a href="https://getcomposer.org">Composer</a>:
+      <pre>composer require google/apiclient:^2.0</pre></li>
+  <li>Create the files <code>index.php</code> and
+      <code>oauth2callback.php</code> with the content below.</li>
+  <li>Run the example with a web server configured to serve PHP. If you use PHP
+      5.4 or newer, you can use PHP's built-in test web server:
+      <pre>php -S localhost:8080 ~/php-oauth2-example</pre></li>
+</ol>
+<h4>index.php</h4>
+<pre class="prettyprint">
+&lt;?php
+require_once __DIR__.'/vendor/autoload.php';
+
+session_start();
+
+$client = new Google_Client();
+$client->setAuthConfig('client_secrets.json');
+$client->addScope(Google_Service_Drive::DRIVE_METADATA_READONLY);
+
+if (isset($_SESSION['access_token']) && $_SESSION['access_token']) {
+  $client->setAccessToken($_SESSION['access_token']);
+  $drive = new Google_Service_Drive($client);
+  $files = $drive->files->listFiles(array())->getItems();
+  echo json_encode($files);
+} else {
+  $redirect_uri = 'http://' . $_SERVER['HTTP_HOST'] . '/oauth2callback.php';
+  header('Location: ' . filter_var($redirect_uri, FILTER_SANITIZE_URL));
+}
+</pre>
+<h4>oauth2callback.php</h4>
+<pre class="prettyprint">
+&lt;?php
+require_once __DIR__.'/vendor/autoload.php';
+
+session_start();
+
+$client = new Google_Client();
+$client->setAuthConfigFile('client_secrets.json');
+$client->setRedirectUri('http://' . $_SERVER['HTTP_HOST'] . '/oauth2callback.php');
+$client->addScope(Google_Service_Drive::DRIVE_METADATA_READONLY);
+
+if (! isset($_GET['code'])) {
+  $auth_url = $client->createAuthUrl();
+  header('Location: ' . filter_var($auth_url, FILTER_SANITIZE_URL));
+} else {
+  $client->authenticate($_GET['code']);
+  $_SESSION['access_token'] = $client->getAccessToken();
+  $redirect_uri = 'http://' . $_SERVER['HTTP_HOST'] . '/';
+  header('Location: ' . filter_var($redirect_uri, FILTER_SANITIZE_URL));
+}
+</pre>
+
+      </section>
+      <section>
+        <h3 class="hide-from-toc">Python</h3>
+        <p>This example uses the <a href="http://flask.pocoo.org/">Flask</a>
+   framework. It runs a web application at <code>http://localhost:8080</code>
+   that lets you test the OAuth 2.0 flow. If you go to that URL, you should
+   see four links:</p>
+<ul>
+  <li><b>Test an API request:</b> This link points to a page that tries to
+      to execute a sample API request. If necessary, it starts the authorization
+      flow. If successful, the page displays the API response.</li>
+  <li><b>Test the auth flow directly:</b> This link points to a page that tries
+      to send the user through the <a href="#redirecting">authorization
+      flow</a>. The app requests permission to submit authorized API requests
+      on the user's behalf.</li>
+  <li><b>Revoke current credentials:</b> This link points to a page that
+      <a href="#tokenrevoke">revokes</a> permissions that the user has already
+      granted to the application.</li>
+  <li><b>Clear Flask session credentials:</b> This link clears authorization
+      credentials that are stored in the Flask session. This lets you see what
+      would happen if a user who had already granted permission to your app
+      tried to execute an API request in a new session. It also lets you see
+      the API response your app would get if a user had revoked permissions
+      granted to your app, and your app still tried to authorize a request
+      with a revoked access token.</li>
+</ul>
+<p><b>Note:</b> To run this code locally, you must have followed the
+   directions in the <a href="#prerequisites">prerequisites</a> section,
+   including setting <code>http://localhost:8080</code> as a valid redirect URI
+   for your credentials and downloading the <b>client_secret.json</b> file
+   for those credentials to your working directory.</p>
+<pre class="prettyprint">
+# -*- coding: utf-8 -*-
+
+import os
+import flask
+import requests
+
+import google.oauth2.credentials
+import google_auth_oauthlib.flow
+import googleapiclient.discovery
+
+# This variable specifies the name of a file that contains the OAuth 2.0
+# information for this application, including its client_id and client_secret.
+CLIENT_SECRETS_FILE = "client_secret.json"
+
+# This OAuth 2.0 access scope allows for full read/write access to the
+# authenticated user's account and requires requests to use an SSL connection.
+SCOPES = ['https://www.googleapis.com/auth/drive.metadata.readonly']
+API_SERVICE_NAME = 'drive'
+API_VERSION = 'v2'
+
+app = flask.Flask(__name__)
+# Note: A secret key is included in the sample so that it works.
+# If you use this code in your application, replace this with a truly secret
+# key. See http://flask.pocoo.org/docs/0.12/quickstart/#sessions.
+app.secret_key = 'REPLACE ME - this value is here as a placeholder.'
+
+
+@app.route('/')
+def index():
+  return print_index_table()
+
+
+@app.route('/test')
+def test_api_request():
+  if 'credentials' not in flask.session:
+    return flask.redirect('authorize')
+
+  # Load credentials from the session.
+  credentials = google.oauth2.credentials.Credentials(
+      **flask.session['credentials'])
+
+  drive = googleapiclient.discovery.build(
+      API_SERVICE_NAME, API_VERSION, credentials=credentials)
+
+  files = drive.files().list().execute()
+
+  # Save credentials back to session in case access token was refreshed.
+  # ACTION ITEM: In a production app, you likely want to save these
+  #              credentials in a persistent database instead.
+  flask.session['credentials'] = credentials_to_dict(credentials)
+
+  return flask.jsonify(**files)
+
+
+@app.route('/authorize')
+def authorize():
+  # Create flow instance to manage the OAuth 2.0 Authorization Grant Flow steps.
+  flow = google_auth_oauthlib.flow.Flow.from_client_secrets_file(
+      CLIENT_SECRETS_FILE, scopes=SCOPES)
+
+  flow.redirect_uri = flask.url_for('oauth2callback', _external=True)
+
+  authorization_url, state = flow.authorization_url(
+      # Enable offline access so that you can refresh an access token without
+      # re-prompting the user for permission. Recommended for web server apps.
+      access_type='offline',
+      # Enable incremental authorization. Recommended as a best practice.
+      include_granted_scopes='true')
+
+  # Store the state so the callback can verify the auth server response.
+  flask.session['state'] = state
+
+  return flask.redirect(authorization_url)
+
+
+@app.route('/oauth2callback')
+def oauth2callback():
+  # Specify the state when creating the flow in the callback so that it can
+  # verified in the authorization server response.
+  state = flask.session['state']
+
+  flow = google_auth_oauthlib.flow.Flow.from_client_secrets_file(
+      CLIENT_SECRETS_FILE, scopes=SCOPES, state=state)
+  flow.redirect_uri = flask.url_for('oauth2callback', _external=True)
+
+  # Use the authorization server's response to fetch the OAuth 2.0 tokens.
+  authorization_response = flask.request.url
+  flow.fetch_token(authorization_response=authorization_response)
+
+  # Store credentials in the session.
+  # ACTION ITEM: In a production app, you likely want to save these
+  #              credentials in a persistent database instead.
+  credentials = flow.credentials
+  flask.session['credentials'] = credentials_to_dict(credentials)
+
+  return flask.redirect(flask.url_for('test_api_request'))
+
+
+@app.route('/revoke')
+def revoke():
+  if 'credentials' not in flask.session:
+    return ('You need to &lt;a href="/authorize"&gt;authorize&lt;/a&gt; before ' +
+            'testing the code to revoke credentials.')
+
+  credentials = google.oauth2.credentials.Credentials(
+    **flask.session['credentials'])
+
+  revoke = requests.post('https://accounts.google.com/o/oauth2/revoke',
+      params={'token': credentials.token},
+      headers = {'content-type': 'application/x-www-form-urlencoded'})
+
+  status_code = getattr(revoke, 'status_code')
+  if status_code == 200:
+    return('Credentials successfully revoked.' + print_index_table())
+  else:
+    return('An error occurred.' + print_index_table())
+
+
+@app.route('/clear')
+def clear_credentials():
+  if 'credentials' in flask.session:
+    del flask.session['credentials']
+  return ('Credentials have been cleared.&lt;br&gt;&lt;br&gt;' +
+          print_index_table())
+
+
+def credentials_to_dict(credentials):
+  return {'token': credentials.token,
+          'refresh_token': credentials.refresh_token,
+          'token_uri': credentials.token_uri,
+          'client_id': credentials.client_id,
+          'client_secret': credentials.client_secret,
+          'scopes': credentials.scopes}
+
+def print_index_table():
+  return ('&lt;table&gt;' +
+          '&lt;tr&gt;&lt;td&gt;&lt;a href="/test"&gt;Test an API request&lt;/a&gt;&lt;/td&gt;' +
+          '&lt;td&gt;Submit an API request and see a formatted JSON response. ' +
+          '    Go through the authorization flow if there are no stored ' +
+          '    credentials for the user.&lt;/td&gt;&lt;/tr&gt;' +
+          '&lt;tr&gt;&lt;td&gt;&lt;a href="/authorize"&gt;Test the auth flow directly&lt;/a&gt;&lt;/td&gt;' +
+          '&lt;td&gt;Go directly to the authorization flow. If there are stored ' +
+          '    credentials, you still might not be prompted to reauthorize ' +
+          '    the application.&lt;/td&gt;&lt;/tr&gt;' +
+          '&lt;tr&gt;&lt;td&gt;&lt;a href="/revoke"&gt;Revoke current credentials&lt;/a&gt;&lt;/td&gt;' +
+          '&lt;td&gt;Revoke the access token associated with the current user ' +
+          '    session. After revoking credentials, if you go to the test ' +
+          '    page, you should see an &lt;code&gt;invalid_grant&lt;/code&gt; error.' +
+          '&lt;/td&gt;&lt;/tr&gt;' +
+          '&lt;tr&gt;&lt;td&gt;&lt;a href="/clear"&gt;Clear Flask session credentials&lt;/a&gt;&lt;/td&gt;' +
+          '&lt;td&gt;Clear the access token currently stored in the user session. ' +
+          '    After clearing the token, if you &lt;a href="/test"&gt;test the ' +
+          '    API request&lt;/a&gt; again, you should go back to the auth flow.' +
+          '&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;')
+
+
+if __name__ == '__main__':
+  # When running locally, disable OAuthlib's HTTPs verification.
+  # ACTION ITEM for developers:
+  #     When running in production *do not* leave this option enabled.
+  os.environ['OAUTHLIB_INSECURE_TRANSPORT'] = '1'
+
+  # Specify a hostname and port that are set as a valid redirect URI
+  # for your API project in the Google API Console.
+  app.run('localhost', 8080, debug=True)</pre>
+
+      </section>
+      <section>
+        <h3 class="hide-from-toc">Ruby</h3>
+        <p>This example uses the <a href="http://www.sinatrarb.com/">Sinatra</a>
+framework.</p>
+<pre class="prettyprint">
+require 'google/apis/drive_v2'
+require 'google/api_client/client_secrets'
+require 'json'
+require 'sinatra'
+
+enable :sessions
+set :session_secret, 'setme'
+
+get '/' do
+  unless session.has_key?(:credentials)
+    redirect to('/oauth2callback')
+  end
+  client_opts = JSON.parse(session[:credentials])
+  auth_client = Signet::OAuth2::Client.new(client_opts)
+  drive = Google::Apis::DriveV2::DriveService.new
+  files = drive.list_files(options: { authorization: auth_client })
+  "&lt;pre>#{JSON.pretty_generate(files.to_h)}&lt;/pre>"
+end
+
+get '/oauth2callback' do
+  client_secrets = Google::APIClient::ClientSecrets.load
+  auth_client = client_secrets.to_authorization
+  auth_client.update!(
+    :scope => 'https://www.googleapis.com/auth/drive.metadata.readonly',
+    :redirect_uri => url('/oauth2callback'))
+  if request['code'] == nil
+    auth_uri = auth_client.authorization_uri.to_s
+    redirect to(auth_uri)
+  else
+    auth_client.code = request['code']
+    auth_client.fetch_access_token!
+    auth_client.client_secret = nil
+    session[:credentials] = auth_client.to_json
+    redirect to('/')
+  end
+end</pre>
+
+      </section>
+      <section>
+        <h3 class="hide-from-toc">HTTP/REST</h3>
+        
+
+
+
+<p>This Python example uses the <a href="http://flask.pocoo.org/">Flask</a>
+framework and the <a href="http://requests.readthedocs.org/">Requests</a>
+library to demonstrate the OAuth 2.0 web flow. We recommend using the Google
+API Client Library for Python for this flow. (The example in the Python tab
+does use the client library.)</p>
+
+<pre class="prettyprint">import json
+
+import flask
+import requests
+
+
+app = flask.Flask(__name__)
+
+CLIENT_ID = '123456789.apps.googleusercontent.com'
+CLIENT_SECRET = 'abc123'  # Read from a file or environmental variable in a real app
+SCOPE = 'https://www.googleapis.com/auth/drive.metadata.readonly'
+REDIRECT_URI = 'http://example.com/oauth2callback'
+
+
+@app.route('/')
+def index():
+  if 'credentials' not in flask.session:
+    return flask.redirect(flask.url_for('oauth2callback'))
+  credentials = json.loads(flask.session['credentials'])
+  if credentials['expires_in'] <= 0:
+    return flask.redirect(flask.url_for('oauth2callback'))
+  else:
+    headers = {'Authorization': 'Bearer {}'.format(credentials['access_token'])}
+    req_uri = 'https://www.googleapis.com/drive/v2/files'
+    r = requests.get(req_uri, headers=headers)
+    return r.text
+
+
+@app.route('/oauth2callback')
+def oauth2callback():
+  if 'code' not in flask.request.args:
+    auth_uri = ('https://accounts.google.com/o/oauth2/v2/auth?response_type=code'
+                '&client_id={}&redirect_uri={}&scope={}').format(CLIENT_ID, REDIRECT_URI, SCOPE)
+    return flask.redirect(auth_uri)
+  else:
+    auth_code = flask.request.args.get('code')
+    data = {'code': auth_code,
+            'client_id': CLIENT_ID,
+            'client_secret': CLIENT_SECRET,
+            'redirect_uri': REDIRECT_URI,
+            'grant_type': 'authorization_code'}
+    r = requests.post('https://www.googleapis.com/oauth2/v4/token', data=data)
+    flask.session['credentials'] = r.text
+    return flask.redirect(flask.url_for('index'))
+
+
+if __name__ == '__main__':
+  import uuid
+  app.secret_key = str(uuid.uuid4())
+  app.debug = False
+  app.run()</pre>
+
+      </section>
+    </div>
+
+   
+ 
+ 
+
+
+<h2 id="incrementalAuth">Incremental authorization</h2>
+<p>In the OAuth 2.0 protocol, your app requests authorization to access
+resources, which are identified by scopes. It is considered a best
+user-experience practice to request authorization for resources at the time
+you need them. To enable that practice, Google's authorization server supports
+incremental authorization. This feature lets you request scopes as they are
+needed and, if the user grants permission, add those scopes to your existing
+access token for that user.</p>
+
+
+<p>For example, an app that lets people sample music tracks and create mixes
+might need very few resources at sign-in time, perhaps nothing more than the
+name of the person signing in. However, saving a completed mix would require
+access to their Google Drive. Most people would find it natural if they only
+were asked for access to their Google Drive at the time the app actually
+needed it.</p>
+
+<p>In this case, at sign-in time the app might request the <code>profile</code>
+scope to perform basic sign-in, and then later request the
+<code>https://www.googleapis.com/auth/drive.file</code> scope at the time of the
+first request to save a mix.</p>
+
+
+
+<p>To implement incremental authorization, you complete the normal flow for
+   requesting an access token but make sure that the authorization request
+   includes previously granted scopes. This approach allows your app to avoid
+   having to manage multiple access tokens.</p>
+
+
+<p>The following rules apply to an access token obtained from an incremental
+authorization:</p>
+
+
+<ul>
+  <li>The token can be used to access resources corresponding to any of the
+      scopes rolled into the new, combined authorization.</li>
+  <li>When you use the refresh token for the combined authorization to obtain
+      an access token, the access token represents the combined authorization
+      and can be used for any of its scopes.</li>
+  <li>The combined authorization includes all scopes that the user granted
+      to the API project even if the grants were requested from different
+      clients. For example, if a user granted access to one scope using an
+      application's desktop client and then granted another scope to the
+      same application via a mobile client, the combined authorization would
+      include both scopes.</li>
+  <li>If you revoke a token that represents a combined authorization, access
+      to all of that authorization's scopes on behalf of the associated user
+      are revoked simultaneously.</li>
+</ul>
+
+
+
+
+
+
+  <p>The language-specific code samples in <a href="#creatingclient">Step 1:
+     Set authorization parameters</a> and the sample HTTP/REST redirect URL in
+     <a href="#redirecting">Step 2: Redirect to Google's OAuth 2.0 server</a>
+     all use incremental authorization. The code samples below also show the
+     code that you need to add to use incremental authorization.</p>
+
+  <div class="ds-selector-dropdown" data-ds-scope="lang">
+  <section>
+  <h3 class="hide-from-toc">PHP</h3>
+  <pre class="prettyprint">$client->setIncludeGrantedScopes(true);</pre>
+
+  </section>
+  <section>
+  <h3 class="hide-from-toc">Python</h3>
+  <p>In Python, set the <code>include_granted_scopes</code> keyword argument
+   to <code>true</code> to ensure that an authorization request includes
+   previously granted scopes. It is very possible that
+   <code>include_granted_scopes</code> will not be the <i>only</i> keyword
+   argument that you set, as shown in the example below.</p>
+
+<pre class="prettyprint">authorization_url, state = flow.authorization_url(
+    # Enable offline access so that you can refresh an access token without
+    # re-prompting the user for permission. Recommended for web server apps.
+    access_type='offline',
+    # Enable incremental authorization. Recommended as a best practice.
+    <b>include_granted_scopes='true'</b>)</pre>
+
+  </section>
+  <section>
+  <h3 class="hide-from-toc">Ruby</h3>
+  <pre class="prettyprint">auth_client.update!(
+  :additional_parameters => {"include_granted_scopes" => "true"}
+)</pre>
+
+  </section>
+  <section>
+  <h3 class="hide-from-toc">HTTP/REST</h3>
+  
+  
+<pre class="prettyprint">GET https://accounts.google.com/o/oauth2/v2/auth?
+  scope=https%3A%2F%2Fwww.googleapis.com%2Fauth%2Fdrive.file&amp;
+  state=security_token%3D138r5719ru3e1%26url%3Dhttps://oa2cb.example.com/myHome&amp;
+  redirect_uri=https%3A%2F%2Fmyapp.example.com%2Fcallback&amp;
+  response_type=code&amp;
+  client_id=<var class="apiparam">your_client_id</var>&amp;
+  prompt=consent&amp;
+  <b>include_granted_scopes=true</b></pre>
+
+  </section>
+  </div>
+
+
+ 
+ 
+
+
+<h2 id="offline">Refreshing an access token (offline access)</h2>
+
+
+
+<p>Access tokens periodically expire. You can refresh an access token without
+prompting the user for permission (including when the user is not present) if
+you requested offline access to the scopes associated with the token.</p>
+
+
+  <ul>
+    <li>
+If you use a Google API Client Library, the <a href="#creatingclient">client
+object</a> refreshes the access token as needed as long as you configure that
+object for offline access.
+</li>
+    <li>If you are not using a client library, you need to set the
+        <code>access_type</code> HTTP query parameter to <code>offline</code>
+        when <a href="#redirecting">redirecting the user to Google's OAuth 2.0
+        server</a>. In that case, Google's authorization server returns a
+        refresh token when you <a href="#exchange-authorization-code">exchange
+        an authorization code</a> for an access token. Then, if the access
+        token expires (or at any other time), you can use a refresh token
+        to obtain a new access token.</li>
+  </ul> 
+
+
+<p>Requesting offline access is a requirement for any application that needs
+   to access a Google API when the user is not present. For example, an app
+   that performs backup services or executes actions at predetermined times
+   needs to be able to refresh its access token when the user is not present.
+   The default style of access is called <code>online</code>.</p>
+
+<p>Server-side web applications, installed applications, and devices all
+   obtain refresh tokens during the authorization process. Refresh tokens
+   are not typically used in client-side (JavaScript) web applications.</p>
+
+
+ 
+
+  <div class="ds-selector-dropdown" data-ds-scope="lang">
+    <section>
+      <h3 class="hide-from-toc">PHP</h3>
+      <p>If your application needs offline access to a Google API, set the API
+client's access type to <code>offline</code>:</p>
+<pre class="prettyprint">$client->setAccessType("offline");</pre>
+<p>After a user grants offline access to the requested scopes, you can continue
+to use the API client to access Google APIs on the user's behalf when the user
+is offline. The client object will refresh the access token as needed.</p>
+
+    </section>
+    <section>
+      <h3 class="hide-from-toc">Python</h3>
+      <p>In Python, set the <code>access_type</code> keyword argument to
+   <code>offline</code> to ensure that you will be able to refresh the
+   access token without having to re-prompt the user for permission.
+   It is very possible that <code>access_type</code> will not be the
+   <i>only</i> keyword argument that you set, as shown in the example below.</p>
+
+<pre class="prettyprint">authorization_url, state = flow.authorization_url(
+    # Enable offline access so that you can refresh an access token without
+    # re-prompting the user for permission. Recommended for web server apps.
+    <b>access_type='offline'</b>,
+    # Enable incremental authorization. Recommended as a best practice.
+    include_granted_scopes='true')</pre>
+
+<p>After a user grants offline access to the requested scopes, you can continue
+   to use the API client to access Google APIs on the user's behalf when the
+   user is offline. The client object will refresh the access token as
+   needed.</p>
+
+    </section>
+    <section>
+      <h3 class="hide-from-toc">Ruby</h3>
+      <p>If your application needs offline access to a Google API, set the API
+client's access type to <code>offline</code>:</p>
+<pre class="prettyprint">auth_client.update!(
+  :additional_parameters => {"access_type" => "offline"}
+)</pre>
+<p>After a user grants offline access to the requested scopes, you can continue
+to use the API client to access Google APIs on the user's behalf when the user
+is offline. The client object will refresh the access token as needed.</p>
+
+    </section>
+    <section>
+      <h3 class="hide-from-toc">HTTP/REST</h3>
+      <p>To refresh an access token, your application sends an HTTPS <code class="notranslate">POST</code> request to Google's authorization server (<code>https://www.googleapis.com/oauth2/v4/token</code>) that includes the following parameters:
+
+<table class="responsive">
+  <th colspan="2">Fields</th>
+  <tr>
+    <td><code>refresh_token</code></td>
+    <td>The refresh token returned from the authorization code exchange.</td>
+  </tr>
+  <tr>
+    <td><code>client_id</code></td>
+    <td>The client ID obtained from the <a href="https://console.developers.google.com/">API Console</a>.</td>
+  </tr>
+  <tr>
+    <td><code>client_secret</code></td>
+    <td>The client secret obtained from the <a href="https://console.developers.google.com/">API Console</a>.
+
+    </td>
+  </tr>
+    <td><code>grant_type</code></td>
+    <td>As defined in the OAuth 2.0 specification, this field must contain a
+    value of <code>refresh_token</code>.</td>
+  </tr>
+</table>
+
+<p>The following snippet shows a sample request:</p>
+
+<pre class="notranslate">
+POST /oauth2/v4/token HTTP/1.1
+Host: www.googleapis.com
+Content-Type: application/x-www-form-urlencoded
+
+client_id=<code class="code-var-color">&lt;your_client_id&gt;</code>&amp;
+client_secret=<code class="code-var-color">&lt;your_client_secret&gt;</code>&amp;
+refresh_token=<code class="code-var-color">&lt;refresh_token&gt;</code>&amp;
+grant_type=refresh_token
+</pre>
+
+<p>As long as the user has not revoked the access granted to the application,
+the token server returns a JSON object that contains a new access token.
+The following snippet shows a sample response:</p>
+
+<pre class="notranslate">
+{
+  "access_token":"1/fFAGRNJru1FTz70BzhT3Zg",
+  "expires_in":3920,
+  "token_type":"Bearer"
+}
+</pre>
+
+<p>Note that there are limits on the number of refresh tokens that will be issued; one limit per client/user combination, and another per user across all clients. You should save refresh tokens in long-term storage and continue to use them as long as they remain valid. If your application requests too many refresh tokens, it may run into these limits, in which case older refresh tokens will stop working.</p>
+
+    </section>
+  </div>
+
+
+
+
+
+<h2 id="tokenrevoke">Revoking a token</h2>
+<p>In some cases a user may wish to revoke access given to an application. A
+user can revoke access by visiting
+<a href="https://security.google.com/settings/security/permissions" target="_blank">Account Settings</a>.
+It is also possible for an application to programmatically revoke the access
+given to it. Programmatic revocation is important in instances where a user
+unsubscribes or removes an application. In other words, part of the removal
+process can include an API request to ensure the permissions granted to the
+application are removed.</p>
+
+
+
+
+
+  <div class="ds-selector-dropdown" data-ds-scope="lang">
+    <section>
+      <h3 class="hide-from-toc">PHP</h3>
+      <p>To programmatically revoke a token, call <code>revokeToken()</code>:</p>
+<pre class="prettyprint">$client->revokeToken();</pre>
+
+    </section>
+    <section> 
+      <h3 class="hide-from-toc">Python</h3>
+      <p>To programmatically revoke a token, make a request to
+   <code>https://accounts.google.com/o/oauth2/revoke</code> that includes
+   the token as a parameter and sets the <code>Content-Type</code> header:</p>
+<pre class="prettyprint">
+requests.post('https://accounts.google.com/o/oauth2/revoke',
+    params={'token': credentials.token},
+    headers = {'content-type': 'application/x-www-form-urlencoded'})</pre>
+
+    </section>
+    <section> 
+      <h3 class="hide-from-toc">Ruby</h3>
+      <p>To programmatically revoke a token, make an HTTP request to the
+<code>oauth2.revoke</code> endpoint:</p>
+<pre class="prettyprint">uri = URI('https://accounts.google.com/o/oauth2/revoke')
+params = { :token => auth_client.access_token }
+uri.query = URI.encode_www_form(params)
+response = Net::HTTP.get(uri)</pre>
+
+<p>The token can be an access token or a refresh token. If the token is an
+access token and it has a corresponding refresh token, the refresh token will
+also be revoked.</p>
+
+<p>If the revocation is successfully processed, then the status code of the
+response is <code>200</code>. For error conditions, a status code
+<code>400</code> is returned along with an error code.</p>
+
+    </section>
+    <section>
+      <h3 class="hide-from-toc">HTTP/REST</h3>
+      <p>To programmatically revoke a token, your application makes a request to
+<code>https://accounts.google.com/o/oauth2/revoke</code> and includes the token
+as a parameter:</p>
+<pre class="prettyprint">curl -H "Content-type:application/x-www-form-urlencoded" \
+        https://accounts.google.com/o/oauth2/revoke?token={token}</pre>
+
+<p>The token can be an access token or a refresh token. If the token is an
+access token and it has a corresponding refresh token, the refresh token will
+also be revoked.</p>
+
+
+
+<p>If the revocation is successfully processed, then the status code of the
+response is <code>200</code>. For error conditions, a status code
+<code>400</code> is returned along with an error code.</p>
+
+
+
+    </section>
+  </div>
+
+
+
+
+<aside class="note"><b>Note:</b> Following a successful revocation response, it
+might take some time before the revocation has full effect.</aside>
+
+
+
+
+
+  </div>
+  
+
+  
+        
+  
+
+
+
+
+
+
+
+        
+<div class="devsite-content-footer nocontent">
+  
+  
+    <p>Except as otherwise noted, the content of this page is licensed under the <a href="http://creativecommons.org/licenses/by/3.0/">Creative Commons Attribution 3.0 License</a>, and code samples are licensed under the <a href="http://www.apache.org/licenses/LICENSE-2.0">Apache 2.0 License</a>. For details, see our <a href="https://developers.google.com/terms/site-policies">Site Policies</a>. Java is a registered trademark of Oracle and/or its affiliates.</p>
+  
+
+  
+    
+    <p class="devsite-content-footer-date" itemprop="datePublished"
+       content="2017-10-16T22:26:17.192850">
+      
+      Last updated October 16, 2017.
+    </p>
+  
+
+</div>
+
+        </article>
+      </article>
+  
+
+        </div>
+      
+
+<footer class="devsite-footer-linkboxes nocontent
+               
+               devsite-footer-linkboxes-with-sites"><nav class="devsite-full-site-width"><ul class="devsite-footer-linkboxes-list"><li class="devsite-footer-linkbox "><h3 class="devsite-footer-linkbox-heading">Product Info</h3><ul class="devsite-footer-linkbox-list"><li class="devsite-footer-linkbox-item"><a href="https://developers.google.com/terms" class="gc-analytics-event"
+               data-category="Site-Wide Custom Events"
+               data-label="Content Page Footer Linkbox">
+                Terms of Service
+            </a></li><li class="devsite-footer-linkbox-item"><a href="https://developers.google.com/terms/api-services-user-data-policy" class="gc-analytics-event"
+               data-category="Site-Wide Custom Events"
+               data-label="Content Page Footer Linkbox">
+                APIs User Data Policy
+            </a></li><li class="devsite-footer-linkbox-item"><a href="https://developers.google.com/identity/branding-guidelines" class="gc-analytics-event"
+               data-category="Site-Wide Custom Events"
+               data-label="Content Page Footer Linkbox">
+                Branding Guidelines
+            </a></li></ul></li><li class="devsite-footer-linkbox "><h3 class="devsite-footer-linkbox-heading">Connect</h3><ul class="devsite-footer-linkbox-list"><li class="devsite-footer-linkbox-item"><a href="//groups.google.com/forum/#!forum/google-federated-login-api" class="gc-analytics-event"
+               data-category="Site-Wide Custom Events"
+               data-label="Content Page Footer Linkbox">
+                Google Federated Login API Forum
+            </a></li></ul></li><li class="devsite-footer-linkbox "><h3 class="devsite-footer-linkbox-heading">StackOverflow</h3><ul class="devsite-footer-linkbox-list"><li class="devsite-footer-linkbox-item"><a href="//stackoverflow.com/questions/tagged/google-identity" class="gc-analytics-event"
+               data-category="Site-Wide Custom Events"
+               data-label="Content Page Footer Linkbox">
+                Google Identity solutions
+            </a></li><li class="devsite-footer-linkbox-item"><a href="//stackoverflow.com/questions/tagged/google-oauth" class="gc-analytics-event"
+               data-category="Site-Wide Custom Events"
+               data-label="Content Page Footer Linkbox">
+                Google OAuth 2.0 and OpenID Connect
+            </a></li></ul></li><li class="devsite-footer-linkbox devsite-footer-linkbox-sites"><a href="https://developers.google.com/"
+           class="gc-analytics-event devsite-footer-linkbox-logo-link"
+           data-category="Site-Wide Custom Events" data-label="Footer Google Developers Link"><img class="devsite-footer-linkbox-logo"
+               src="https://developers.google.com/_static/d7147bb846/images/redesign-14/lockup-color-knockout.png"
+               alt="Google Developers"></a><ul class="devsite-footer-linkbox-list"><li class="devsite-footer-linkbox-item"><a href="//developer.android.com/index.html" class="gc-analytics-event"
+               data-category="Site-Wide Custom Events"
+               data-label="Footer Android Link">
+                Android
+            </a></li><li class="devsite-footer-linkbox-item"><a href="//developer.chrome.com/home" class="gc-analytics-event"
+               data-category="Site-Wide Custom Events"
+               data-label="Footer Chrome Link">
+                Chrome
+            </a></li><li class="devsite-footer-linkbox-item"><a href="//firebase.google.com" class="gc-analytics-event"
+               data-category="Site-Wide Custom Events"
+               data-label="Footer Firebase Link">
+                Firebase
+            </a></li><li class="devsite-footer-linkbox-item"><a href="//cloud.google.com" class="gc-analytics-event"
+               data-category="Site-Wide Custom Events"
+               data-label="Footer Cloud Link">
+                Google Cloud Platform
+            </a></li><li class="devsite-footer-linkbox-item"><a href="//developers.google.com/products/" class="gc-analytics-event"
+               data-category="Site-Wide Custom Events"
+               data-label="Footer Products Link">
+                All Products
+            </a></li></ul></li></ul></nav></footer><footer class="devsite-utility-footer"><nav class="devsite-utility-footer-nav devsite-nav devsite-full-site-width"><div class="devsite-utility-footer-nav-left"><form class="devsite-utility-footer-language" action="/i18n/setlang/" method="post"><input type="hidden" name="xsrf_token" value="X9uDLSgy1LB85OQ5KwlGzmA9dr5Laieqhehhuys5cpM6MTUyNDQ2MDExMzc1MDE0MA" /><input type="hidden" name="next" value="/identity/protocols/OAuth2WebServer"><select class="devsite-utility-footer-language-select kd-select" name="language"
+                track-type="languageSelector" track-name="click"><option value="id"
+                
+                track-type="languageSelector" track-name="changed"
+                track-metadata-original-language="en"
+                track-metadata-selected-language="id">
+            Bahasa Indonesia
+          </option><option value="de"
+                
+                track-type="languageSelector" track-name="changed"
+                track-metadata-original-language="en"
+                track-metadata-selected-language="de">
+            Deutsch
+          </option><option value="en"
+                 selected="selected" 
+                track-type="languageSelector" track-name="changed"
+                track-metadata-original-language="en"
+                track-metadata-selected-language="en">
+            English
+          </option><option value="es"
+                
+                track-type="languageSelector" track-name="changed"
+                track-metadata-original-language="en"
+                track-metadata-selected-language="es">
+            español
+          </option><option value="fr"
+                
+                track-type="languageSelector" track-name="changed"
+                track-metadata-original-language="en"
+                track-metadata-selected-language="fr">
+            français
+          </option><option value="pt-br"
+                
+                track-type="languageSelector" track-name="changed"
+                track-metadata-original-language="en"
+                track-metadata-selected-language="pt-br">
+            Português Brasileiro
+          </option><option value="ru"
+                
+                track-type="languageSelector" track-name="changed"
+                track-metadata-original-language="en"
+                track-metadata-selected-language="ru">
+            Русский
+          </option><option value="ja"
+                
+                track-type="languageSelector" track-name="changed"
+                track-metadata-original-language="en"
+                track-metadata-selected-language="ja">
+            日本語
+          </option><option value="zh-cn"
+                
+                track-type="languageSelector" track-name="changed"
+                track-metadata-original-language="en"
+                track-metadata-selected-language="zh-cn">
+            简体中文
+          </option><option value="ko"
+                
+                track-type="languageSelector" track-name="changed"
+                track-metadata-original-language="en"
+                track-metadata-selected-language="ko">
+            한국어
+          </option></select></form><span class="devsite-utility-footer-links"><a class="devsite-utility-footer-link gc-analytics-event"
+           href="https://developers.google.com/terms/site-terms"
+           data-category="Site-Wide Custom Events"
+           data-label="Footer terms link"
+           data-footer-link-id="terms"
+           >Terms
+         </a><a class="devsite-utility-footer-link gc-analytics-event"
+           href="//www.google.com/policies/privacy/"
+           data-category="Site-Wide Custom Events"
+           data-label="Footer privacy link"
+           data-footer-link-id="privacy"
+           >Privacy
+         </a></span></div><div class="devsite-utility-footer-nav-right"><div class="devsite-utility-footer-newsletter-signup-text">
+        Sign up for the Google Developers newsletter
+      </div><a class="button button-primary devsite-utility-footer-newsletter-signup-button"
+         href="//services.google.com/fb/forms/googledevelopersnewsletter/?utm_medium=referral&amp;utm_source=google-products&amp;utm_team=googledevs&amp;utm_campaign=201611-newsletter-launch">
+        
+        Subscribe
+      </a></div></nav></footer><style>
+  .devsite-challenge {
+    color: rgb(255, 255, 255);
+    display: inline;
+    font-family: ShareTechMono, courier;
+    font-size: 13px;
+    height: auto;
+    margin-bottom: 5px;
+    margin-left: 5px;
+    margin-right: 5px;
+    margin-top: 5px;
+    padding-bottom: 2.6px;
+    padding-left: 7.8px;
+    padding-right: 7.8px;
+    padding-top: 2.6px;
+    text-align: center;
+  }
+  .devsite-challenge-play {
+    background-color: rgb(53, 189, 184);
+  }
+  .devsite-challenge-never {
+    background-color: rgb(237, 27, 82);
+  }
+  .devsite-challenge-option {
+    color: rgb(0, 0, 0);
+    cursor: pointer;
+    margin-left: 10px;
+    margin-right: 10px;
+    padding-bottom: 1px;
+    padding-left: 5px;
+    padding-right: 5px;
+    padding-top: 1px;
+  }
+  .devsite-toast-content {
+    max-width: none;
+  }
+  .devsite-toast-hidden {
+    position: fixed;
+    right: -980px;
+    transition: right 1s;
+  }
+  .devsite-toast {
+    top: 107px;
+  }
+  .devsite-toast.rh-active {
+    right: 24px;
+  }
+  .rh-trigger {
+    background: url(/_static/images/rabbit-hole-trigger.png) no-repeat;
+    cursor: pointer;
+    height: 16px;
+    opacity: 0;
+    position: fixed;
+    right: 24px;
+    top: 116px;
+    transition: opacity 1.5s;
+    width: 20px;
+    z-index: 10016;
+  }
+  .rh-trigger.rh-visible {
+    opacity: 1;
+  }
+  .rh-trigger.rh-visible:hover {
+    opacity: .6;
+  }
+  </style><script>
+  devsite.ready(function() {
+    devsite.rabbithole.init('https://www.google.com/foobar/?eid=dgc-11295645990811975476-2308183304847790&amp;usg=AG3vBD3UHRfZY9mQimwoFQNztvI6R8Gqbg');
+  });
+  </script></div><script async defer src="//www.gstatic.com/feedback/api.js"></script><script src="https://developers.google.com/_static2/d7147bb846/jsi18n/"></script><script src="https://developers.google.com/_static/d7147bb846/js/script_foot_closure.js"></script><script src="https://developers.google.com/_static/d7147bb846/js/script_foot.js"></script><script>
+        (function($) {
+          
+          devsite.devsite.Init($, {'ENABLE_BLOCKED_VIDEO_PLACEHOLDER': 0, 'SITE_NAME': 'devsite', 'FULL_SITE_SEARCH_ENABLED': 1, 'ENABLE_CLOUDTRACK': 0, 'VTAGS_ENABLED': 0, 'HISTORY_ENABLED': 1, 'VERSION_HASH': 'd7147bb846', 'SCRIPTSAFE_DOMAIN': 'google-developers.appspot.com', 'ENABLE_BLOCKED_LINK_TOOLTIP': 0, 'ALLOWED_HOSTS': ['.android.com', '.anvato.com', '.apigee.com', '.appspot.com', '.dialogflow.com', '.gonglchuangl.net', '.google.cn', '.google.com', '.googleplex.com', '.nest.com', '.openthread.io', '.openweave.io', '.orbitera.com', '.tensorflow.org'], 'BLOCK_RSS_FEEDS': 0},
+                               '[]','en',
+                               true, '',
+                               {"f62218c009ec029abef196bba5aa34cf": true, "8de7a048f21618359bd37f5ce44be073": false, "098dafe57affddc137df300142652cfd": false, "8e03e230de0bd8a6fe173fdf172e8b3f": true, "cb025a64a50094835616312f4774a53d": true, "51470233c56fc1fde50f00b73c52b216": false, "d169d485cf24243a263783dbe42029b1": true, "039e5d84b87fd75807ffb37b7f1bbf2c": true, "700def1a83e356c06c0925afb05de4b0": false, "6749dcb526ce9bde6993550c7d928d24": true}, '/identity/',
+                               'https://developers.google.com/');
+        })(jQuery);
+
+        
+        devsite.localInit = function() {
+          
+        };
+
+      </script><script>
+      $('.devsite-utility-footer-language-select').each(function() {
+        $(this).change(function(){$('.devsite-utility-footer-language').submit();});
+      });
+      </script></div><span id="devsite-request-elapsed" data-request-elapsed="218.54019165"></span></body></html>

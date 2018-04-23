@@ -1,0 +1,2211 @@
+
+
+
+
+
+
+<!DOCTYPE html><html lang="en"
+      class="chekov"><head><script>var a=window.devsite||{};window.devsite=a;a.readyCallbacks=[];window.devsite.readyCallbacks=a.readyCallbacks;a.ready=function(b){a.readyCallbacks.push(b)};window.devsite.ready=a.ready;
+</script><meta charset="utf-8"><meta name="xsrf_token" content="5g87Z90g8lmMg-x0Tv2wP_-RmEuuH9kLkOKHDKaWTRo6MTUyNDQ2MDEyNTQwNzU5MA" /><link rel="canonical" href="https://cloud.google.com/bigquery/streaming-data-into-bigquery"><link rel="alternate" href="https://cloud.google.com/bigquery/streaming-data-into-bigquery?hl=de" hreflang="de"><link rel="alternate" href="https://cloud.google.com/bigquery/streaming-data-into-bigquery?hl=pt-br" hreflang="pt-br"><link rel="alternate" href="https://cloud.google.com/bigquery/streaming-data-into-bigquery" hreflang="en"><link rel="alternate" href="https://cloud.google.com/bigquery/streaming-data-into-bigquery?hl=ja" hreflang="ja"><link rel="alternate" href="https://cloud.google.com/bigquery/streaming-data-into-bigquery" hreflang="x-default"><link rel="shortcut icon" href="https://cloud.google.com/_static/d7147bb846/images/cloud/icons/favicons/onecloud/favicon.ico"><link rel="apple-touch-icon" href="https://cloud.google.com/_static/d7147bb846/images/cloud/icons/favicons/onecloud/apple-icon.png"><meta name="viewport" content="width=device-width, initial-scale=1"><link rel="stylesheet"
+      
+      href="//fonts.googleapis.com/css?family=Google+Sans:400|Roboto:400,400italic,500,500italic,700,700italic|Roboto+Mono:400,500,700|Material+Icons"
+      ><link rel="stylesheet"
+        href="https://cloud.google.com/_static/d7147bb846/css/devsite-cloud-white.css"><link rel="stylesheet" href="https://cloud.google.com/_static/d7147bb846/css/cloud/cloud-site.css"><link rel="search"
+        type="application/opensearchdescription+xml"
+        title="Google Cloud"
+        href="https://cloud.google.com/s/opensearch.xml"><script src="https://cloud.google.com/_static/d7147bb846/js/jquery-bundle.js"></script><meta property="og:site_name" content="Google Cloud"><meta property="og:type" content="website"><meta property="og:url" content="https://cloud.google.com/bigquery/streaming-data-into-bigquery"><meta property="og:locale" content="en"><script>
+    var ___gcfg = ___gcfg || {};
+    ___gcfg.lang = 'en';
+  </script><title>Streaming Data into BigQuery &nbsp;|&nbsp; BigQuery
+      &nbsp;|&nbsp; Google Cloud</title><meta property="og:title" content="Streaming Data into BigQuery &nbsp;|&nbsp; BigQuery
+      &nbsp;|&nbsp; Google Cloud"></head><body class="
+               devsite-doc-page
+               
+               
+               
+               
+               devsite-header-no-lower-tabs"
+        data-family="endorsed"
+        id="top_of_page"><div class="devsite-wrapper"><div class="devsite-top-section-wrapper
+            "><header class="devsite-top-section nocontent"><div class="devsite-top-logo-row-wrapper-wrapper"><div class="devsite-top-logo-row-wrapper"><div class="devsite-top-logo-row devsite-full-site-width"><button type="button" class="devsite-expand-section-nav devsite-header-icon-button
+                                       button-flat material-icons gc-analytics-event"
+                  data-category="Site-Wide Custom Events" data-label="Hamburger menu"></button><div class="devsite-product-name-wrapper"><a href="https://cloud.google.com/" class="devsite-site-logo-link gc-analytics-event"
+   data-category="Site-Wide Custom Events" data-label="Site logo"><img src="https://cloud.google.com/_static/d7147bb846/images/cloud/cloud-logo.svg"
+       class="devsite-site-logo" alt="Google Cloud"><span class="devsite-site-name devsite-product-name">Google Cloud</span></a></div><div class="devsite-header-upper-tabs"><nav class="devsite-doc-set-nav devsite-nav devsite-overflow-tabs-scroll-wrapper"><ul class="devsite-doc-set-nav-tab-list devsite-overflow-tabs-scroll"><li class="devsite-doc-set-nav-tab-container devsite-nav-tab
+               "><a href="https://cloud.google.com/why-google-cloud/"
+         class=" devsite-nav-tab
+                devsite-doc-set-nav-tab devsite-doc-set-nav-tab-link gc-analytics-event"
+         
+       
+         data-category="Site-Wide Custom Events"
+       
+         data-label="Tab: Why Google"
+       
+         track-type="globalNav"
+       
+         track-name="whyGoogle"
+       >
+        Why Google
+      </a></li><li class="devsite-doc-set-nav-tab-container devsite-nav-tab
+               "><a href="https://cloud.google.com/products/"
+         class=" devsite-nav-tab
+                devsite-doc-set-nav-tab devsite-doc-set-nav-tab-link gc-analytics-event"
+         
+       
+         data-category="Site-Wide Custom Events"
+       
+         data-label="Tab: Products"
+       
+         track-type="globalNav"
+       
+         track-name="products"
+       >
+        Products
+      </a></li><li class="devsite-doc-set-nav-tab-container devsite-nav-tab
+               "><a href="https://cloud.google.com/solutions/"
+         class=" devsite-nav-tab
+                devsite-doc-set-nav-tab devsite-doc-set-nav-tab-link gc-analytics-event"
+         
+       
+         data-category="Site-Wide Custom Events"
+       
+         data-label="Tab: Solutions"
+       
+         track-type="globalNav"
+       
+         track-name="solutions"
+       >
+        Solutions
+      </a></li><li class="devsite-doc-set-nav-tab-container devsite-nav-tab
+               "><a href="https://cloud.google.com/launcher/"
+         class=" devsite-nav-tab
+                devsite-doc-set-nav-tab devsite-doc-set-nav-tab-link gc-analytics-event"
+         
+       
+         data-category="Site-Wide Custom Events"
+       
+         data-label="Tab: Launcher"
+       
+         track-type="globalNav"
+       
+         track-name="launcher"
+       >
+        Launcher
+      </a></li><li class="devsite-doc-set-nav-tab-container devsite-nav-tab
+               "><a href="https://cloud.google.com/pricing/"
+         class=" devsite-nav-tab
+                devsite-doc-set-nav-tab devsite-doc-set-nav-tab-link gc-analytics-event"
+         
+       
+         data-category="Site-Wide Custom Events"
+       
+         data-label="Tab: Pricing"
+       
+         track-type="globalNav"
+       
+         track-name="pricing"
+       >
+        Pricing
+      </a></li><li class="devsite-doc-set-nav-tab-container devsite-nav-tab
+               "><a href="https://cloud.google.com/security/"
+         class=" devsite-nav-tab
+                devsite-doc-set-nav-tab devsite-doc-set-nav-tab-link gc-analytics-event"
+         
+       
+         data-category="Site-Wide Custom Events"
+       
+         data-label="Tab: Security"
+       
+         track-type="globalNav"
+       
+         track-name="security"
+       >
+        Security
+      </a></li><li class="devsite-doc-set-nav-tab-container devsite-nav-tab
+               "><a href="https://cloud.google.com/customers/"
+         class=" devsite-nav-tab
+                devsite-doc-set-nav-tab devsite-doc-set-nav-tab-link gc-analytics-event"
+         
+       
+         data-category="Site-Wide Custom Events"
+       
+         data-label="Tab: Customers"
+       
+         track-type="globalNav"
+       
+         track-name="customers"
+       >
+        Customers
+      </a></li><li class="devsite-doc-set-nav-tab-container devsite-nav-tab
+               "><a href="https://cloud.google.com/docs/"
+         class="devsite-doc-set-nav-active devsite-nav-tab
+                devsite-doc-set-nav-tab devsite-doc-set-nav-tab-link gc-analytics-event"
+         aria-label="Documentation, selected"
+       
+         data-category="Site-Wide Custom Events"
+       
+         data-label="Tab: Documentation"
+       >
+        Documentation
+      </a></li><li class="devsite-doc-set-nav-tab-container devsite-nav-tab
+               "><a href="https://cloud.google.com/support/"
+         class=" devsite-nav-tab
+                devsite-doc-set-nav-tab devsite-doc-set-nav-tab-link gc-analytics-event"
+         
+       
+         data-category="Site-Wide Custom Events"
+       
+         data-label="Tab: Support"
+       
+         track-type="globalNav"
+       
+         track-name="support"
+       >
+        Support
+      </a></li><li class="devsite-doc-set-nav-tab-container devsite-nav-tab
+               "><a href="https://cloud.google.com/partners/"
+         class=" devsite-nav-tab
+                devsite-doc-set-nav-tab devsite-doc-set-nav-tab-link gc-analytics-event"
+         
+       
+         data-category="Site-Wide Custom Events"
+       
+         data-label="Tab: Partners"
+       
+         track-type="globalNav"
+       
+         track-name="partners"
+       >
+        Partners
+      </a></li></ul></nav></div><form class="devsite-search-form"
+                action="https://cloud.google.com/s/results/"
+                method="GET"
+                id="top-search"
+                search-placeholder='Search'><div id="searchbox" class="devsite-searchbox"><input placeholder='Search'
+         
+         type="text"
+         class="devsite-search-field devsite-search-query"
+         name="q"
+         value=""
+         autocomplete="off"
+         
+         aria-label="Search box"><div class="devsite-search-image material-icons"></div></div><input type="hidden"
+       name="p"
+       id="search_project"
+       value="/bigquery/docs/"
+       data-project-name="BigQuery"
+       data-project-path="/bigquery/docs/"
+       data-query-match=""><input type="hidden" class="suggest-project" value="BigQuery" /></form><a class="devsite-header-link devsite-top-button button gc-analytics-event"
+               href="//console.cloud.google.com/"
+               data-category="Site-Wide Custom Events"
+               data-label="Site header link"
+               track-type="navigateTo"
+               track-name="console"
+               track-metadata-position="nav"><div class="devsite-header-link-label">Console</div></a><button type="button" class="devsite-search-button devsite-header-icon-button button-flat
+                                       material-icons"></button><a href="https://www.google.com/accounts/ServiceLogin?passive=true&continue=https%3A%2F%2Fcloud.google.com%2Fbigquery%2Fstreaming-data-into-bigquery%3Frefresh%3D1&service=cloudconsole"
+   class="devsite-user-signin devsite-top-button button gc-analytics-event"
+   data-category="Site-Wide Custom Events" data-label="Sign in button">
+  
+  Sign in
+</a></div></div></div><div class="devsite-collapsible-section"><div class="devsite-header-background devsite-full-site-width"><div class="devsite-product-id-row devsite-full-site-width"><div class="devsite-product-description-row"><ul class="devsite-breadcrumb-list"><li class="devsite-breadcrumb-item">
+    
+    
+    
+      Documentation
+    
+    
+  </li></ul></div><div class="devsite-product-button-row
+            cloud-free-trial-eligible"><button type="button" id="devsite-feedback-project"
+          class="devsite-feedback-button devsite-top-button gc-analytics-event"
+          data-category="Site-Wide Custom Events" data-label="Send Feedback Button"
+          track-type="feedback" track-name="sendFeedbackLink" track-metadata-position="header">
+  
+  Send feedback
+  </button><a
+    
+      href="https://console.cloud.google.com/freetrial"
+    
+    
+      class="cloud-free-trial-button button-primary button"
+    
+    
+      
+      track-type="freeTrial"
+      
+      track-name="try"
+      
+      track-metadata-position="nav"
+      
+    >
+    Try It Free
+  </a><a
+    
+      href="https://cloud.google.com/contact/"
+    
+    
+      class="cloud-contact-sales-button button"
+    
+    
+      
+      track-type="sales"
+      
+      track-name="contact"
+      
+      track-metadata-position="nav"
+      
+    >
+    Contact Sales
+  </a></div></div></div></div></header><script>
+    if (window.jQuery) {
+      $(document).ready(function() {
+        if (window.devsite && window.devsite.search) {
+          
+          window.devsite.search.init('en')
+        }
+      });
+    }
+  </script></div><div id="gc-wrapper"itemscope itemtype="http://schema.org/Article"><input class="google-tag-manager-id" type="hidden" value="GTM-5CVQBG"><script>
+      var dataLayer = [{"freeTrialEligibleUser": "True", "userCountry": "HK", "language": {"requested": "en", "served": "en"}, "projectName": "BigQuery", "scriptsafe": null, "signedIn": "False", "internalUser": "False"}];
+    </script>
+
+      
+        <div class="devsite-site-mask"></div>
+        
+  
+
+
+<nav class="devsite-nav-responsive devsite-nav nocontent" tabindex="0">
+  
+  <div class="devsite-nav-responsive-tabs-panel">
+    
+      
+        
+
+
+
+<nav class="devsite-nav-responsive-tabs devsite-nav">
+  <ul class="devsite-nav-list">
+  
+    <li class="devsite-nav-item devsite-nav-item-heading">
+    
+      <a 
+           href="https://cloud.google.com/why-google-cloud/?nav=true"
+         
+         class="devsite-nav-responsive-tab devsite-nav-title gc-analytics-event
+                "
+         data-category="Site-Wide Custom Events" data-label="Responsive Tab: Why Google">
+        Why Google
+      </a>
+      
+      
+    
+    </li>
+  
+    <li class="devsite-nav-item devsite-nav-item-heading">
+    
+      <a 
+           href="https://cloud.google.com/products/?nav=true"
+         
+         class="devsite-nav-responsive-tab devsite-nav-title gc-analytics-event
+                "
+         data-category="Site-Wide Custom Events" data-label="Responsive Tab: Products">
+        Products
+      </a>
+      
+      
+    
+    </li>
+  
+    <li class="devsite-nav-item devsite-nav-item-heading">
+    
+      <a 
+           href="https://cloud.google.com/solutions/?nav=true"
+         
+         class="devsite-nav-responsive-tab devsite-nav-title gc-analytics-event
+                "
+         data-category="Site-Wide Custom Events" data-label="Responsive Tab: Solutions">
+        Solutions
+      </a>
+      
+      
+    
+    </li>
+  
+    <li class="devsite-nav-item devsite-nav-item-heading">
+    
+      <a 
+           href="https://cloud.google.com/launcher/?nav=true"
+         
+         class="devsite-nav-responsive-tab devsite-nav-title gc-analytics-event
+                "
+         data-category="Site-Wide Custom Events" data-label="Responsive Tab: Launcher">
+        Launcher
+      </a>
+      
+      
+    
+    </li>
+  
+    <li class="devsite-nav-item devsite-nav-item-heading">
+    
+      <a 
+           href="https://cloud.google.com/pricing/?nav=true"
+         
+         class="devsite-nav-responsive-tab devsite-nav-title gc-analytics-event
+                "
+         data-category="Site-Wide Custom Events" data-label="Responsive Tab: Pricing">
+        Pricing
+      </a>
+      
+      
+    
+    </li>
+  
+    <li class="devsite-nav-item devsite-nav-item-heading">
+    
+      <a 
+           href="https://cloud.google.com/security/?nav=true"
+         
+         class="devsite-nav-responsive-tab devsite-nav-title gc-analytics-event
+                "
+         data-category="Site-Wide Custom Events" data-label="Responsive Tab: Security">
+        Security
+      </a>
+      
+      
+    
+    </li>
+  
+    <li class="devsite-nav-item devsite-nav-item-heading">
+    
+      <a 
+           href="https://cloud.google.com/customers/?nav=true"
+         
+         class="devsite-nav-responsive-tab devsite-nav-title gc-analytics-event
+                "
+         data-category="Site-Wide Custom Events" data-label="Responsive Tab: Customers">
+        Customers
+      </a>
+      
+      
+    
+    </li>
+  
+    <li class="devsite-nav-item devsite-nav-item-heading">
+    
+      <span class="devsite-nav-responsive-forward devsite-nav-responsive-tab devsite-nav-title
+                   devsite-nav-active gc-analytics-event"
+            data-category="Site-Wide Custom Events" data-label="Responsive Tab: Documentation"
+            tabindex="0">
+        Documentation
+      </span>
+    
+    </li>
+  
+    <li class="devsite-nav-item devsite-nav-item-heading">
+    
+      <a 
+           href="https://cloud.google.com/support/?nav=true"
+         
+         class="devsite-nav-responsive-tab devsite-nav-title gc-analytics-event
+                "
+         data-category="Site-Wide Custom Events" data-label="Responsive Tab: Support">
+        Support
+      </a>
+      
+      
+    
+    </li>
+  
+    <li class="devsite-nav-item devsite-nav-item-heading">
+    
+      <a 
+           href="https://cloud.google.com/partners/?nav=true"
+         
+         class="devsite-nav-responsive-tab devsite-nav-title gc-analytics-event
+                "
+         data-category="Site-Wide Custom Events" data-label="Responsive Tab: Partners">
+        Partners
+      </a>
+      
+      
+    
+    </li>
+  
+  
+    <li class="devsite-nav-item devsite-nav-item-heading">
+      <a href="//console.cloud.google.com/"
+         class="devsite-nav-responsive-tab devsite-nav-title gc-analytics-event"
+         data-category="Site-Wide Custom Events"
+         data-label="Responsive Tab: console">
+        Console
+      </a>
+    </li>
+  
+  </ul>
+</nav>
+
+
+      
+    
+  </div>
+  
+  
+  <div class="devsite-nav-responsive-sidebar-panel">
+    
+    <div class="devsite-nav-responsive-back" tabindex="0"></div>
+    
+    <nav class="devsite-nav-responsive-sidebar"></nav>
+  </div>
+  
+  
+    <div class="devsite-nav-responsive-index-panel">
+      <div class="devsite-nav-index-back" tabindex="0"></div>
+      <nav>
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+      </nav>
+    </div>
+  
+</nav>
+
+
+        <div class="devsite-main-content clearfix">
+
+        
+        
+
+        
+  
+  
+    
+    
+      
+  <nav class="devsite-section-nav devsite-nav nocontent">
+    <ul class="devsite-nav-list devsite-nav-expandable"><li class="devsite-nav-item devsite-nav-item-heading"><span class="devsite-nav-title devsite-nav-title-no-path" track-type="leftNav" track-name="expandNavSectionNoLink" track-metadata-position="0">BigQuery</span></li><li class="devsite-nav-item"><a href="https://cloud.google.com/bigquery/" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="0" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">Product Overview</a></li><li class="devsite-nav-item"><a href="https://cloud.google.com/bigquery/docs/" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="0" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">Documentation</a></li><li class="devsite-nav-item devsite-nav-item-heading"><span class="devsite-nav-title devsite-nav-title-no-path" track-type="leftNav" track-name="expandNavSectionNoLink" track-metadata-position="0">Quickstarts</span></li><li class="devsite-nav-item"><a href="https://cloud.google.com/bigquery/docs/quickstarts" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="0" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">All Quickstarts</a></li><li class="devsite-nav-item"><a href="https://cloud.google.com/bigquery/quickstart-web-ui" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="0" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">Using the Web UI</a></li><li class="devsite-nav-item"><a href="https://cloud.google.com/bigquery/quickstart-command-line" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="0" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">Using the Command-Line Tool</a></li><li class="devsite-nav-item devsite-nav-item-heading"><span class="devsite-nav-title devsite-nav-title-no-path" track-type="leftNav" track-name="expandNavSectionNoLink" track-metadata-position="0">How-to Guides</span></li><li class="devsite-nav-item"><a href="https://cloud.google.com/bigquery/docs/how-to" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="0" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">All How-to Guides</a></li><li class="devsite-nav-item devsite-nav-item-section-expandable"><span class="devsite-nav-title devsite-nav-title-no-path" track-type="leftNav" track-name="expandNavSectionNoLink"track-metadata-position="0" aria-label="Interacting with BigQuery, click to expand/collapse" role="link">Interacting with BigQuery</span><a class="devsite-nav-toggle devsite-nav-toggle-collapsed material-icons" track-type="leftNav" track-name="expandNavSectionArrow" track-metadata-position="0" aria-hidden="true"></a><ul class="devsite-nav-section devsite-nav-section-collapsed"><li class="devsite-nav-item"><a href="https://cloud.google.com/bigquery/docs/interacting-with-bigquery" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="1" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">Introduction</a></li><li class="devsite-nav-item"><a href="https://cloud.google.com/bigquery/bigquery-web-ui" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="1" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">BigQuery Web UI</a></li><li class="devsite-nav-item"><a href="https://cloud.google.com/bigquery/docs/bq-command-line-tool" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="1" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">bq Command-Line Tool</a></li></ul></li><li class="devsite-nav-item devsite-nav-item-section-expandable"><span class="devsite-nav-title devsite-nav-title-no-path" track-type="leftNav" track-name="expandNavSectionNoLink"track-metadata-position="0" aria-label="Running and Managing Jobs, click to expand/collapse" role="link">Running and Managing Jobs</span><a class="devsite-nav-toggle devsite-nav-toggle-collapsed material-icons" track-type="leftNav" track-name="expandNavSectionArrow" track-metadata-position="0" aria-hidden="true"></a><ul class="devsite-nav-section devsite-nav-section-collapsed"><li class="devsite-nav-item"><a href="https://cloud.google.com/bigquery/docs/jobs-overview" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="1" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">Introduction</a></li><li class="devsite-nav-item"><a href="https://cloud.google.com/bigquery/docs/running-jobs" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="1" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">Running Jobs Programmatically</a></li><li class="devsite-nav-item"><a href="https://cloud.google.com/bigquery/docs/managing-jobs" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="1" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">Managing Jobs</a></li></ul></li><li class="devsite-nav-item devsite-nav-item-section-expandable"><span class="devsite-nav-title devsite-nav-title-no-path" track-type="leftNav" track-name="expandNavSectionNoLink"track-metadata-position="0" aria-label="Working with Datasets, click to expand/collapse" role="link">Working with Datasets</span><a class="devsite-nav-toggle devsite-nav-toggle-collapsed material-icons" track-type="leftNav" track-name="expandNavSectionArrow" track-metadata-position="0" aria-hidden="true"></a><ul class="devsite-nav-section devsite-nav-section-collapsed"><li class="devsite-nav-item"><a href="https://cloud.google.com/bigquery/docs/datasets-intro" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="1" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">Introduction</a></li><li class="devsite-nav-item"><a href="https://cloud.google.com/bigquery/docs/dataset-locations" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="1" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">Dataset Locations</a></li><li class="devsite-nav-item"><a href="https://cloud.google.com/bigquery/docs/datasets" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="1" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">Creating and Using Datasets</a></li><li class="devsite-nav-item"><a href="https://cloud.google.com/bigquery/docs/managing-datasets" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="1" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">Managing Datasets</a></li></ul></li><li class="devsite-nav-item devsite-nav-item-section-expandable"><span class="devsite-nav-title devsite-nav-title-no-path" track-type="leftNav" track-name="expandNavSectionNoLink"track-metadata-position="0" aria-label="Working with Table Schemas, click to expand/collapse" role="link">Working with Table Schemas</span><a class="devsite-nav-toggle devsite-nav-toggle-collapsed material-icons" track-type="leftNav" track-name="expandNavSectionArrow" track-metadata-position="0" aria-hidden="true"></a><ul class="devsite-nav-section devsite-nav-section-collapsed"><li class="devsite-nav-item"><a href="https://cloud.google.com/bigquery/docs/schemas" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="1" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">Specifying a Schema</a></li><li class="devsite-nav-item"><a href="https://cloud.google.com/bigquery/docs/nested-repeated" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="1" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">Specifying Nested and Repeated Columns</a></li><li class="devsite-nav-item"><a href="https://cloud.google.com/bigquery/docs/schema-detect" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="1" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">Auto-Detecting Schemas</a></li><li class="devsite-nav-item"><a href="https://cloud.google.com/bigquery/docs/managing-table-schemas" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="1" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">Modifying Table Schemas</a></li><li class="devsite-nav-item"><a href="https://cloud.google.com/bigquery/docs/manually-changing-schemas" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="1" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">Manually Changing Table Schemas</a></li></ul></li><li class="devsite-nav-item devsite-nav-item-section-expandable"><span class="devsite-nav-title devsite-nav-title-no-path" track-type="leftNav" track-name="expandNavSectionNoLink"track-metadata-position="0" aria-label="Working with Tables, click to expand/collapse" role="link">Working with Tables</span><a class="devsite-nav-toggle devsite-nav-toggle-collapsed material-icons" track-type="leftNav" track-name="expandNavSectionArrow" track-metadata-position="0" aria-hidden="true"></a><ul class="devsite-nav-section devsite-nav-section-collapsed"><li class="devsite-nav-item"><a href="https://cloud.google.com/bigquery/docs/tables-intro" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="1" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">Introduction</a></li><li class="devsite-nav-item"><a href="https://cloud.google.com/bigquery/docs/tables" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="1" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">Creating and Using Tables</a></li><li class="devsite-nav-item"><a href="https://cloud.google.com/bigquery/docs/managing-tables" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="1" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">Managing Tables</a></li><li class="devsite-nav-item"><a href="https://cloud.google.com/bigquery/docs/managing-table-data" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="1" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">Managing Table Data</a></li><li class="devsite-nav-item"><a href="https://cloud.google.com/bigquery/docs/exporting-data" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="1" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">Exporting Table Data</a></li><li class="devsite-nav-item"><a href="https://cloud.google.com/bigquery/docs/updating-data" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="1" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">Updating Table Data Using DML</a></li></ul></li><li class="devsite-nav-item devsite-nav-item-section-expandable"><span class="devsite-nav-title devsite-nav-title-no-path" track-type="leftNav" track-name="expandNavSectionNoLink"track-metadata-position="0" aria-label="Working with Partitioned Tables, click to expand/collapse" role="link">Working with Partitioned Tables</span><a class="devsite-nav-toggle devsite-nav-toggle-collapsed material-icons" track-type="leftNav" track-name="expandNavSectionArrow" track-metadata-position="0" aria-hidden="true"></a><ul class="devsite-nav-section devsite-nav-section-collapsed"><li class="devsite-nav-item"><a href="https://cloud.google.com/bigquery/docs/partitioned-tables" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="1" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">Introduction</a></li><li class="devsite-nav-item"><a href="https://cloud.google.com/bigquery/docs/creating-partitioned-tables" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="1" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">Creating Ingestion-Time Partitioned Tables</a></li><li class="devsite-nav-item devsite-nav-beta devsite-nav-has-status"><a href="https://cloud.google.com/bigquery/docs/creating-column-partitions" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="1" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click"><span class="devsite-nav-text">Creating Partitioned Tables</span><span class="devsite-nav-icon-wrapper"><span class="devsite-nav-icon material-icons" title="Beta"></span></span></a></li><li class="devsite-nav-item"><a href="https://cloud.google.com/bigquery/docs/managing-partitioned-tables" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="1" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">Managing Partitioned Tables</a></li><li class="devsite-nav-item"><a href="https://cloud.google.com/bigquery/docs/managing-partitioned-table-data" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="1" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">Managing Partitioned Table Data</a></li><li class="devsite-nav-item"><a href="https://cloud.google.com/bigquery/docs/querying-partitioned-tables" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="1" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">Querying Partitioned Tables</a></li><li class="devsite-nav-item devsite-nav-beta devsite-nav-has-status"><a href="https://cloud.google.com/bigquery/docs/using-dml-with-partitioned-tables" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="1" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click"><span class="devsite-nav-text">Using DML with Partitioned Tables</span><span class="devsite-nav-icon-wrapper"><span class="devsite-nav-icon material-icons" title="Beta"></span></span></a></li></ul></li><li class="devsite-nav-item devsite-nav-item-section-expandable"><span class="devsite-nav-title devsite-nav-title-no-path" track-type="leftNav" track-name="expandNavSectionNoLink"track-metadata-position="0" aria-label="Working with Views, click to expand/collapse" role="link">Working with Views</span><a class="devsite-nav-toggle devsite-nav-toggle-collapsed material-icons" track-type="leftNav" track-name="expandNavSectionArrow" track-metadata-position="0" aria-hidden="true"></a><ul class="devsite-nav-section devsite-nav-section-collapsed"><li class="devsite-nav-item"><a href="https://cloud.google.com/bigquery/docs/views-intro" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="1" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">Introduction</a></li><li class="devsite-nav-item"><a href="https://cloud.google.com/bigquery/docs/views" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="1" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">Creating and Using Views</a></li><li class="devsite-nav-item"><a href="https://cloud.google.com/bigquery/docs/managing-views" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="1" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">Managing Views</a></li></ul></li><li class="devsite-nav-item"><a href="https://cloud.google.com/bigquery/docs/creating-managing-labels" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="0" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">Creating and Managing Labels</a></li><li class="devsite-nav-item devsite-nav-item-section-expandable"><span class="devsite-nav-title devsite-nav-title-no-path" track-type="leftNav" track-name="expandNavSectionNoLink"track-metadata-position="0" aria-label="Loading Data Into BigQuery, click to expand/collapse" role="link">Loading Data Into BigQuery</span><a class="devsite-nav-toggle devsite-nav-toggle-expanded material-icons" track-type="leftNav" track-name="expandNavSectionArrow" track-metadata-position="0"></a><ul class="devsite-nav-section devsite-nav-section-expanded"><li class="devsite-nav-item"><a href="https://cloud.google.com/bigquery/docs/loading-data" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="1" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">Introduction</a></li><li class="devsite-nav-item devsite-nav-item-section-expandable"><span class="devsite-nav-title devsite-nav-title-no-path" track-type="leftNav" track-name="expandNavSectionNoLink"track-metadata-position="1" aria-label="Loading Data From Cloud Storage, click to expand/collapse" role="link">Loading Data From Cloud Storage</span><a class="devsite-nav-toggle devsite-nav-toggle-collapsed material-icons" track-type="leftNav" track-name="expandNavSectionArrow" track-metadata-position="1" aria-hidden="true"></a><ul class="devsite-nav-section devsite-nav-section-collapsed"><li class="devsite-nav-item"><a href="https://cloud.google.com/bigquery/docs/loading-data-cloud-storage" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="2" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">Introduction</a></li><li class="devsite-nav-item"><a href="https://cloud.google.com/bigquery/docs/loading-data-cloud-storage-avro" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="2" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">Loading Avro Data</a></li><li class="devsite-nav-item devsite-nav-beta devsite-nav-has-status"><a href="https://cloud.google.com/bigquery/docs/loading-data-cloud-storage-parquet" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="2" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click"><span class="devsite-nav-text">Loading Parquet Data</span><span class="devsite-nav-icon-wrapper"><span class="devsite-nav-icon material-icons" title="Beta"></span></span></a></li><li class="devsite-nav-item"><a href="https://cloud.google.com/bigquery/docs/loading-data-cloud-storage-csv" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="2" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">Loading CSV Data</a></li><li class="devsite-nav-item"><a href="https://cloud.google.com/bigquery/docs/loading-data-cloud-storage-json" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="2" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">Loading JSON Data</a></li><li class="devsite-nav-item"><a href="https://cloud.google.com/bigquery/docs/loading-data-cloud-datastore" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="2" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">Loading Data From a Cloud Datastore Backup</a></li></ul></li><li class="devsite-nav-item"><a href="https://cloud.google.com/bigquery/docs/loading-data-local" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="1" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">Loading Data from a Local File</a></li><li class="devsite-nav-item devsite-nav-active"><a href="https://cloud.google.com/bigquery/streaming-data-into-bigquery" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="1" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">Streaming Data Into BigQuery</a></li></ul></li><li class="devsite-nav-item devsite-nav-item-section-expandable"><span class="devsite-nav-title devsite-nav-title-no-path" track-type="leftNav" track-name="expandNavSectionNoLink"track-metadata-position="0" aria-label="Using the BigQuery Data Transfer Service, click to expand/collapse" role="link">Using the BigQuery Data Transfer Service</span><a class="devsite-nav-toggle devsite-nav-toggle-collapsed material-icons" track-type="leftNav" track-name="expandNavSectionArrow" track-metadata-position="0" aria-hidden="true"></a><ul class="devsite-nav-section devsite-nav-section-collapsed"><li class="devsite-nav-item"><a href="https://cloud.google.com/bigquery/docs/transfer-service-overview" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="1" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">Introduction</a></li><li class="devsite-nav-item"><a href="https://cloud.google.com/bigquery/docs/enable-transfer-service" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="1" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">Enabling the BigQuery Data Transfer Service</a></li><li class="devsite-nav-item devsite-nav-alpha devsite-nav-has-status"><a href="https://cloud.google.com/bigquery/docs/transfer-run-notifications" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="1" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click"><span class="devsite-nav-text">Transfer Run Notifications</span><span class="devsite-nav-icon-wrapper"><span class="devsite-nav-icon material-icons" title="Alpha"></span></span></a></li><li class="devsite-nav-item devsite-nav-item-section-expandable devsite-nav-beta devsite-nav-has-status"><span class="devsite-nav-title devsite-nav-title-no-path" track-type="leftNav" track-name="expandNavSectionNoLink"track-metadata-position="1" aria-label="Google AdWords, click to expand/collapse" role="link"><span class="devsite-nav-text">Google AdWords</span><span class="devsite-nav-icon-wrapper"><span class="devsite-nav-icon material-icons" title="Beta"></span></span></span><a class="devsite-nav-toggle devsite-nav-toggle-collapsed material-icons" track-type="leftNav" track-name="expandNavSectionArrow" track-metadata-position="1" aria-hidden="true"></a><ul class="devsite-nav-section devsite-nav-section-collapsed"><li class="devsite-nav-item"><a href="https://cloud.google.com/bigquery/docs/adwords-transfer" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="2" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">Google AdWords Transfers</a></li><li class="devsite-nav-item"><a href="https://cloud.google.com/bigquery/docs/adwords-transformation" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="2" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">Google AdWords Report Transformation</a></li></ul></li><li class="devsite-nav-item"><a href="https://cloud.google.com/bigquery/docs/doubleclick-campaign-transfer" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="1" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">DoubleClick Campaign Manager Transfers</a></li><li class="devsite-nav-item"><a href="https://cloud.google.com/bigquery/docs/doubleclick-publisher-transfer" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="1" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">DoubleClick for Publishers Transfers</a></li><li class="devsite-nav-item devsite-nav-beta devsite-nav-has-status"><a href="https://cloud.google.com/bigquery/docs/youtube-channel-transfer" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="1" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click"><span class="devsite-nav-text">YouTube Channel Transfers</span><span class="devsite-nav-icon-wrapper"><span class="devsite-nav-icon material-icons" title="Beta"></span></span></a></li><li class="devsite-nav-item devsite-nav-beta devsite-nav-has-status"><a href="https://cloud.google.com/bigquery/docs/youtube-content-owner-transfer" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="1" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click"><span class="devsite-nav-text">YouTube Content Owner Transfers</span><span class="devsite-nav-icon-wrapper"><span class="devsite-nav-icon material-icons" title="Beta"></span></span></a></li><li class="devsite-nav-item"><a href="https://cloud.google.com/bigquery/docs/working-with-transfers" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="1" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">Working with Transfers</a></li><li class="devsite-nav-item"><a href="https://cloud.google.com/bigquery/docs/transfer-troubleshooting" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="1" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">Troubleshooting Transfer Setup</a></li><li class="devsite-nav-item"><a href="https://cloud.google.com/bigquery/docs/transfer-support" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="1" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">Transfer Service Support</a></li></ul></li><li class="devsite-nav-item devsite-nav-item-section-expandable"><span class="devsite-nav-title devsite-nav-title-no-path" track-type="leftNav" track-name="expandNavSectionNoLink"track-metadata-position="0" aria-label="Querying BigQuery Data, click to expand/collapse" role="link">Querying BigQuery Data</span><a class="devsite-nav-toggle devsite-nav-toggle-collapsed material-icons" track-type="leftNav" track-name="expandNavSectionArrow" track-metadata-position="0" aria-hidden="true"></a><ul class="devsite-nav-section devsite-nav-section-collapsed"><li class="devsite-nav-item"><a href="https://cloud.google.com/bigquery/docs/query-overview" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="1" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">Introduction</a></li><li class="devsite-nav-item"><a href="https://cloud.google.com/bigquery/docs/running-queries" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="1" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">Running Interactive and Batch Queries</a></li><li class="devsite-nav-item"><a href="https://cloud.google.com/bigquery/docs/writing-results" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="1" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">Writing Query Results</a></li><li class="devsite-nav-item"><a href="https://cloud.google.com/bigquery/docs/cached-results" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="1" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">Using Cached Results</a></li><li class="devsite-nav-item"><a href="https://cloud.google.com/bigquery/docs/parameterized-queries" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="1" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">Running Parameterized Queries</a></li><li class="devsite-nav-item"><a href="https://cloud.google.com/bigquery/docs/querying-wildcard-tables" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="1" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">Querying Data Using a Wildcard Table</a></li><li class="devsite-nav-item"><a href="https://cloud.google.com/bigquery/docs/saving-sharing-queries" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="1" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">Saving and Sharing Queries</a></li><li class="devsite-nav-item"><a href="https://cloud.google.com/bigquery/query-plan-explanation" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="1" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">Using the Query Plan Explanation</a></li><li class="devsite-nav-item"><a href="https://cloud.google.com/bigquery/docs/bigquery-connector-for-excel" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="1" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">Using the BigQuery Connector for Excel</a></li></ul></li><li class="devsite-nav-item devsite-nav-item-section-expandable"><span class="devsite-nav-title devsite-nav-title-no-path" track-type="leftNav" track-name="expandNavSectionNoLink"track-metadata-position="0" aria-label="Controlling Costs, click to expand/collapse" role="link">Controlling Costs</span><a class="devsite-nav-toggle devsite-nav-toggle-collapsed material-icons" track-type="leftNav" track-name="expandNavSectionArrow" track-metadata-position="0" aria-hidden="true"></a><ul class="devsite-nav-section devsite-nav-section-collapsed"><li class="devsite-nav-item"><a href="https://cloud.google.com/bigquery/docs/controlling-costs" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="1" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">Introduction</a></li><li class="devsite-nav-item"><a href="https://cloud.google.com/bigquery/docs/estimate-costs" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="1" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">Estimating Storage and Query Costs</a></li><li class="devsite-nav-item"><a href="https://cloud.google.com/bigquery/docs/custom-quotas" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="1" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">Custom Cost Controls</a></li><li class="devsite-nav-item"><a href="https://cloud.google.com/bigquery/docs/best-practices-costs" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="1" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">Best Practices for Controlling Costs</a></li></ul></li><li class="devsite-nav-item devsite-nav-item-section-expandable"><span class="devsite-nav-title devsite-nav-title-no-path" track-type="leftNav" track-name="expandNavSectionNoLink"track-metadata-position="0" aria-label="Using External Data Sources, click to expand/collapse" role="link">Using External Data Sources</span><a class="devsite-nav-toggle devsite-nav-toggle-collapsed material-icons" track-type="leftNav" track-name="expandNavSectionArrow" track-metadata-position="0" aria-hidden="true"></a><ul class="devsite-nav-section devsite-nav-section-collapsed"><li class="devsite-nav-item"><a href="https://cloud.google.com/bigquery/external-data-sources" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="1" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">Introduction</a></li><li class="devsite-nav-item"><a href="https://cloud.google.com/bigquery/external-table-definition" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="1" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">Creating a Table Definition File</a></li><li class="devsite-nav-item"><a href="https://cloud.google.com/bigquery/external-data-bigtable" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="1" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">Querying Cloud Bigtable Data</a></li><li class="devsite-nav-item"><a href="https://cloud.google.com/bigquery/external-data-cloud-storage" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="1" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">Querying Cloud Storage Data</a></li><li class="devsite-nav-item"><a href="https://cloud.google.com/bigquery/external-data-drive" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="1" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">Querying Google Drive Data</a></li></ul></li><li class="devsite-nav-item"><a href="https://cloud.google.com/bigquery/docs/customer-managed-encryption" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="0" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">Protecting Data with Cloud KMS Keys</a></li><li class="devsite-nav-item devsite-nav-item-section-expandable"><span class="devsite-nav-title devsite-nav-title-no-path" track-type="leftNav" track-name="expandNavSectionNoLink"track-metadata-position="0" aria-label="Monitoring and Logging, click to expand/collapse" role="link">Monitoring and Logging</span><a class="devsite-nav-toggle devsite-nav-toggle-collapsed material-icons" track-type="leftNav" track-name="expandNavSectionArrow" track-metadata-position="0" aria-hidden="true"></a><ul class="devsite-nav-section devsite-nav-section-collapsed"><li class="devsite-nav-item"><a href="https://cloud.google.com/bigquery/docs/monitoring" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="1" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">BigQuery Monitoring using Stackdriver</a></li><li class="devsite-nav-item"><a href="https://cloud.google.com/bigquery/audit-logs" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="1" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">Audit Logs</a></li></ul></li><li class="devsite-nav-item devsite-nav-item-section-expandable"><span class="devsite-nav-title devsite-nav-title-no-path" track-type="leftNav" track-name="expandNavSectionNoLink"track-metadata-position="0" aria-label="BigQuery API Basics, click to expand/collapse" role="link">BigQuery API Basics</span><a class="devsite-nav-toggle devsite-nav-toggle-collapsed material-icons" track-type="leftNav" track-name="expandNavSectionArrow" track-metadata-position="0" aria-hidden="true"></a><ul class="devsite-nav-section devsite-nav-section-collapsed"><li class="devsite-nav-item"><a href="https://cloud.google.com/bigquery/create-simple-app-api" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="1" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">Create A Simple App With the API</a></li><li class="devsite-nav-item devsite-nav-item-section-expandable"><span class="devsite-nav-title devsite-nav-title-no-path" track-type="leftNav" track-name="expandNavSectionNoLink"track-metadata-position="1" aria-label="Authentication, click to expand/collapse" role="link">Authentication</span><a class="devsite-nav-toggle devsite-nav-toggle-collapsed material-icons" track-type="leftNav" track-name="expandNavSectionArrow" track-metadata-position="1" aria-hidden="true"></a><ul class="devsite-nav-section devsite-nav-section-collapsed"><li class="devsite-nav-item"><a href="https://cloud.google.com/bigquery/docs/authentication/" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="2" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">Introduction</a></li><li class="devsite-nav-item"><a href="https://cloud.google.com/bigquery/docs/authentication/getting-started" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="2" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">Getting Started</a></li><li class="devsite-nav-item"><a href="https://cloud.google.com/bigquery/docs/authentication/service-account-file" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="2" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">Authenticating With a Service Account Key File</a></li><li class="devsite-nav-item"><a href="https://cloud.google.com/bigquery/docs/authentication/end-user-installed" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="2" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">Authenticating as an End User</a></li></ul></li><li class="devsite-nav-item"><a href="https://cloud.google.com/bigquery/docs/authorization" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="1" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">Authorizing API Requests</a></li><li class="devsite-nav-item"><a href="https://cloud.google.com/bigquery/batch" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="1" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">Batch Requests</a></li><li class="devsite-nav-item"><a href="https://cloud.google.com/bigquery/docs/paging-results" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="1" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">Paging Through Query Results</a></li><li class="devsite-nav-item"><a href="https://cloud.google.com/bigquery/docs/api-performance" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="1" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">API Performance Tips</a></li></ul></li><li class="devsite-nav-item devsite-nav-item-heading"><span class="devsite-nav-title devsite-nav-title-no-path" track-type="leftNav" track-name="expandNavSectionNoLink" track-metadata-position="0">APIs &amp; Reference</span></li><li class="devsite-nav-item"><a href="https://cloud.google.com/bigquery/docs/reference" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="0" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">All APIs &amp; References</a></li><li class="devsite-nav-item devsite-nav-item-section-expandable"><span class="devsite-nav-title devsite-nav-title-no-path" track-type="leftNav" track-name="expandNavSectionNoLink"track-metadata-position="0" aria-label="Client Libraries, click to expand/collapse" role="link">Client Libraries</span><a class="devsite-nav-toggle devsite-nav-toggle-collapsed material-icons" track-type="leftNav" track-name="expandNavSectionArrow" track-metadata-position="0" aria-hidden="true"></a><ul class="devsite-nav-section devsite-nav-section-collapsed"><li class="devsite-nav-item"><a href="https://cloud.google.com/bigquery/docs/reference/libraries" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="1" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">BigQuery Client Libraries</a></li><li class="devsite-nav-item"><a href="https://cloud.google.com/bigquery/docs/python-client-migration" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="1" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">Migrating from Python Client Library v0.27</a></li><li class="devsite-nav-item devsite-nav-beta devsite-nav-has-status"><a href="https://cloud.google.com/bigquery/transfer/docs/reference/libraries" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="1" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click"><span class="devsite-nav-text">Data Transfer Client Libraries</span><span class="devsite-nav-icon-wrapper"><span class="devsite-nav-icon material-icons" title="Beta"></span></span></a></li></ul></li><li class="devsite-nav-item devsite-nav-item-section-expandable"><span class="devsite-nav-title devsite-nav-title-no-path" track-type="leftNav" track-name="expandNavSectionNoLink"track-metadata-position="0" aria-label="REST Reference, click to expand/collapse" role="link">REST Reference</span><a class="devsite-nav-toggle devsite-nav-toggle-collapsed material-icons" track-type="leftNav" track-name="expandNavSectionArrow" track-metadata-position="0" aria-hidden="true"></a><ul class="devsite-nav-section devsite-nav-section-collapsed"><li class="devsite-nav-item"><a href="https://cloud.google.com/bigquery/docs/reference/rest/v2" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="1" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">Overview</a></li><li class="devsite-nav-item devsite-nav-item-section-expandable"><span class="devsite-nav-title devsite-nav-title-no-path" track-type="leftNav" track-name="expandNavSectionNoLink"track-metadata-position="1" aria-label="v2, click to expand/collapse" role="link">v2</span><a class="devsite-nav-toggle devsite-nav-toggle-collapsed material-icons" track-type="leftNav" track-name="expandNavSectionArrow" track-metadata-position="1" aria-hidden="true"></a><ul class="devsite-nav-section devsite-nav-section-collapsed"><li class="devsite-nav-item devsite-nav-item-section-expandable"><span class="devsite-nav-title devsite-nav-title-no-path" track-type="leftNav" track-name="expandNavSectionNoLink"track-metadata-position="2" aria-label="Datasets, click to expand/collapse" role="link">Datasets</span><a class="devsite-nav-toggle devsite-nav-toggle-collapsed material-icons" track-type="leftNav" track-name="expandNavSectionArrow" track-metadata-position="2" aria-hidden="true"></a><ul class="devsite-nav-section devsite-nav-section-collapsed"><li class="devsite-nav-item"><a href="https://cloud.google.com/bigquery/docs/reference/rest/v2/datasets" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="3" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">Overview</a></li><li class="devsite-nav-item"><a href="https://cloud.google.com/bigquery/docs/reference/rest/v2/datasets/delete" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="3" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">delete</a></li><li class="devsite-nav-item"><a href="https://cloud.google.com/bigquery/docs/reference/rest/v2/datasets/get" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="3" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">get</a></li><li class="devsite-nav-item"><a href="https://cloud.google.com/bigquery/docs/reference/rest/v2/datasets/insert" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="3" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">insert</a></li><li class="devsite-nav-item"><a href="https://cloud.google.com/bigquery/docs/reference/rest/v2/datasets/list" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="3" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">list</a></li><li class="devsite-nav-item"><a href="https://cloud.google.com/bigquery/docs/reference/rest/v2/datasets/patch" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="3" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">patch</a></li><li class="devsite-nav-item"><a href="https://cloud.google.com/bigquery/docs/reference/rest/v2/datasets/update" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="3" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">update</a></li></ul></li><li class="devsite-nav-item devsite-nav-item-section-expandable"><span class="devsite-nav-title devsite-nav-title-no-path" track-type="leftNav" track-name="expandNavSectionNoLink"track-metadata-position="2" aria-label="Jobs, click to expand/collapse" role="link">Jobs</span><a class="devsite-nav-toggle devsite-nav-toggle-collapsed material-icons" track-type="leftNav" track-name="expandNavSectionArrow" track-metadata-position="2" aria-hidden="true"></a><ul class="devsite-nav-section devsite-nav-section-collapsed"><li class="devsite-nav-item"><a href="https://cloud.google.com/bigquery/docs/reference/rest/v2/jobs" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="3" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">Overview</a></li><li class="devsite-nav-item"><a href="https://cloud.google.com/bigquery/docs/reference/rest/v2/jobs/cancel" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="3" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">cancel</a></li><li class="devsite-nav-item"><a href="https://cloud.google.com/bigquery/docs/reference/rest/v2/jobs/get" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="3" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">get</a></li><li class="devsite-nav-item"><a href="https://cloud.google.com/bigquery/docs/reference/rest/v2/jobs/getQueryResults" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="3" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">getQueryResults</a></li><li class="devsite-nav-item"><a href="https://cloud.google.com/bigquery/docs/reference/rest/v2/jobs/insert" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="3" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">insert</a></li><li class="devsite-nav-item"><a href="https://cloud.google.com/bigquery/docs/reference/rest/v2/jobs/list" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="3" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">list</a></li><li class="devsite-nav-item"><a href="https://cloud.google.com/bigquery/docs/reference/rest/v2/jobs/query" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="3" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">query</a></li></ul></li><li class="devsite-nav-item devsite-nav-item-section-expandable"><span class="devsite-nav-title devsite-nav-title-no-path" track-type="leftNav" track-name="expandNavSectionNoLink"track-metadata-position="2" aria-label="Projects, click to expand/collapse" role="link">Projects</span><a class="devsite-nav-toggle devsite-nav-toggle-collapsed material-icons" track-type="leftNav" track-name="expandNavSectionArrow" track-metadata-position="2" aria-hidden="true"></a><ul class="devsite-nav-section devsite-nav-section-collapsed"><li class="devsite-nav-item"><a href="https://cloud.google.com/bigquery/docs/reference/rest/v2/projects" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="3" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">Overview</a></li><li class="devsite-nav-item"><a href="https://cloud.google.com/bigquery/docs/reference/rest/v2/projects/getServiceAccount" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="3" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">getServiceAccount</a></li><li class="devsite-nav-item"><a href="https://cloud.google.com/bigquery/docs/reference/rest/v2/projects/list" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="3" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">list</a></li></ul></li><li class="devsite-nav-item devsite-nav-item-section-expandable"><span class="devsite-nav-title devsite-nav-title-no-path" track-type="leftNav" track-name="expandNavSectionNoLink"track-metadata-position="2" aria-label="Tabledata, click to expand/collapse" role="link">Tabledata</span><a class="devsite-nav-toggle devsite-nav-toggle-collapsed material-icons" track-type="leftNav" track-name="expandNavSectionArrow" track-metadata-position="2" aria-hidden="true"></a><ul class="devsite-nav-section devsite-nav-section-collapsed"><li class="devsite-nav-item"><a href="https://cloud.google.com/bigquery/docs/reference/rest/v2/tabledata" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="3" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">Overview</a></li><li class="devsite-nav-item"><a href="https://cloud.google.com/bigquery/docs/reference/rest/v2/tabledata/insertAll" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="3" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">insertAll</a></li><li class="devsite-nav-item"><a href="https://cloud.google.com/bigquery/docs/reference/rest/v2/tabledata/list" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="3" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">list</a></li></ul></li><li class="devsite-nav-item devsite-nav-item-section-expandable"><span class="devsite-nav-title devsite-nav-title-no-path" track-type="leftNav" track-name="expandNavSectionNoLink"track-metadata-position="2" aria-label="Tables, click to expand/collapse" role="link">Tables</span><a class="devsite-nav-toggle devsite-nav-toggle-collapsed material-icons" track-type="leftNav" track-name="expandNavSectionArrow" track-metadata-position="2" aria-hidden="true"></a><ul class="devsite-nav-section devsite-nav-section-collapsed"><li class="devsite-nav-item"><a href="https://cloud.google.com/bigquery/docs/reference/rest/v2/tables" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="3" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">Overview</a></li><li class="devsite-nav-item"><a href="https://cloud.google.com/bigquery/docs/reference/rest/v2/tables/delete" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="3" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">delete</a></li><li class="devsite-nav-item"><a href="https://cloud.google.com/bigquery/docs/reference/rest/v2/tables/get" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="3" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">get</a></li><li class="devsite-nav-item"><a href="https://cloud.google.com/bigquery/docs/reference/rest/v2/tables/insert" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="3" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">insert</a></li><li class="devsite-nav-item"><a href="https://cloud.google.com/bigquery/docs/reference/rest/v2/tables/list" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="3" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">list</a></li><li class="devsite-nav-item"><a href="https://cloud.google.com/bigquery/docs/reference/rest/v2/tables/patch" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="3" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">patch</a></li><li class="devsite-nav-item"><a href="https://cloud.google.com/bigquery/docs/reference/rest/v2/tables/update" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="3" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">update</a></li></ul></li></ul></li></ul></li><li class="devsite-nav-item devsite-nav-item-section-expandable"><span class="devsite-nav-title devsite-nav-title-no-path" track-type="leftNav" track-name="expandNavSectionNoLink"track-metadata-position="0" aria-label="Data Transfer Service Reference, click to expand/collapse" role="link">Data Transfer Service Reference</span><a class="devsite-nav-toggle devsite-nav-toggle-collapsed material-icons" track-type="leftNav" track-name="expandNavSectionArrow" track-metadata-position="0" aria-hidden="true"></a><ul class="devsite-nav-section devsite-nav-section-collapsed"><li class="devsite-nav-item"><a href="https://cloud.google.com/bigquery/docs/reference/datatransfer/rest/" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="1" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">Overview</a></li><li class="devsite-nav-item devsite-nav-item-heading"><span class="devsite-nav-title devsite-nav-title-no-path" track-type="leftNav" track-name="expandNavSectionNoLink" track-metadata-position="1">REST Resources</span></li><li class="devsite-nav-item devsite-nav-item-section-expandable"><span class="devsite-nav-title devsite-nav-title-no-path" track-type="leftNav" track-name="expandNavSectionNoLink"track-metadata-position="1" aria-label="projects.dataSources, click to expand/collapse" role="link">projects.dataSources</span><a class="devsite-nav-toggle devsite-nav-toggle-collapsed material-icons" track-type="leftNav" track-name="expandNavSectionArrow" track-metadata-position="1" aria-hidden="true"></a><ul class="devsite-nav-section devsite-nav-section-collapsed"><li class="devsite-nav-item"><a href="https://cloud.google.com/bigquery/docs/reference/datatransfer/rest/v1/projects.dataSources" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="2" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">Overview</a></li><li class="devsite-nav-item"><a href="https://cloud.google.com/bigquery/docs/reference/datatransfer/rest/v1/projects.dataSources/checkValidCreds" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="2" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">checkValidCreds</a></li><li class="devsite-nav-item"><a href="https://cloud.google.com/bigquery/docs/reference/datatransfer/rest/v1/projects.dataSources/get" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="2" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">get</a></li><li class="devsite-nav-item"><a href="https://cloud.google.com/bigquery/docs/reference/datatransfer/rest/v1/projects.dataSources/list" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="2" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">list</a></li></ul></li><li class="devsite-nav-item devsite-nav-item-section-expandable"><span class="devsite-nav-title devsite-nav-title-no-path" track-type="leftNav" track-name="expandNavSectionNoLink"track-metadata-position="1" aria-label="projects.locations, click to expand/collapse" role="link">projects.locations</span><a class="devsite-nav-toggle devsite-nav-toggle-collapsed material-icons" track-type="leftNav" track-name="expandNavSectionArrow" track-metadata-position="1" aria-hidden="true"></a><ul class="devsite-nav-section devsite-nav-section-collapsed"><li class="devsite-nav-item"><a href="https://cloud.google.com/bigquery/docs/reference/datatransfer/rest/v1/projects.locations" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="2" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">Overview</a></li><li class="devsite-nav-item"><a href="https://cloud.google.com/bigquery/docs/reference/datatransfer/rest/v1/projects.locations/get" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="2" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">get</a></li><li class="devsite-nav-item"><a href="https://cloud.google.com/bigquery/docs/reference/datatransfer/rest/v1/projects.locations/list" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="2" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">list</a></li></ul></li><li class="devsite-nav-item devsite-nav-item-section-expandable"><span class="devsite-nav-title devsite-nav-title-no-path" track-type="leftNav" track-name="expandNavSectionNoLink"track-metadata-position="1" aria-label="projects.locations.dataSources, click to expand/collapse" role="link">projects.locations.dataSources</span><a class="devsite-nav-toggle devsite-nav-toggle-collapsed material-icons" track-type="leftNav" track-name="expandNavSectionArrow" track-metadata-position="1" aria-hidden="true"></a><ul class="devsite-nav-section devsite-nav-section-collapsed"><li class="devsite-nav-item"><a href="https://cloud.google.com/bigquery/docs/reference/datatransfer/rest/v1/projects.locations.dataSources" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="2" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">Overview</a></li><li class="devsite-nav-item"><a href="https://cloud.google.com/bigquery/docs/reference/datatransfer/rest/v1/projects.locations.dataSources/checkValidCreds" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="2" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">checkValidCreds</a></li><li class="devsite-nav-item"><a href="https://cloud.google.com/bigquery/docs/reference/datatransfer/rest/v1/projects.locations.dataSources/get" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="2" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">get</a></li><li class="devsite-nav-item"><a href="https://cloud.google.com/bigquery/docs/reference/datatransfer/rest/v1/projects.locations.dataSources/list" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="2" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">list</a></li></ul></li><li class="devsite-nav-item devsite-nav-item-section-expandable"><span class="devsite-nav-title devsite-nav-title-no-path" track-type="leftNav" track-name="expandNavSectionNoLink"track-metadata-position="1" aria-label="projects.locations.transferConfigs, click to expand/collapse" role="link">projects.locations.transferConfigs</span><a class="devsite-nav-toggle devsite-nav-toggle-collapsed material-icons" track-type="leftNav" track-name="expandNavSectionArrow" track-metadata-position="1" aria-hidden="true"></a><ul class="devsite-nav-section devsite-nav-section-collapsed"><li class="devsite-nav-item"><a href="https://cloud.google.com/bigquery/docs/reference/datatransfer/rest/v1/projects.locations.transferConfigs" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="2" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">Overview</a></li><li class="devsite-nav-item"><a href="https://cloud.google.com/bigquery/docs/reference/datatransfer/rest/v1/projects.locations.transferConfigs/create" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="2" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">create</a></li><li class="devsite-nav-item"><a href="https://cloud.google.com/bigquery/docs/reference/datatransfer/rest/v1/projects.locations.transferConfigs/delete" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="2" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">delete</a></li><li class="devsite-nav-item"><a href="https://cloud.google.com/bigquery/docs/reference/datatransfer/rest/v1/projects.locations.transferConfigs/get" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="2" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">get</a></li><li class="devsite-nav-item"><a href="https://cloud.google.com/bigquery/docs/reference/datatransfer/rest/v1/projects.locations.transferConfigs/list" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="2" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">list</a></li><li class="devsite-nav-item"><a href="https://cloud.google.com/bigquery/docs/reference/datatransfer/rest/v1/projects.locations.transferConfigs/patch" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="2" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">patch</a></li><li class="devsite-nav-item"><a href="https://cloud.google.com/bigquery/docs/reference/datatransfer/rest/v1/projects.locations.transferConfigs/scheduleRuns" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="2" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">scheduleRuns</a></li></ul></li><li class="devsite-nav-item devsite-nav-item-section-expandable"><span class="devsite-nav-title devsite-nav-title-no-path" track-type="leftNav" track-name="expandNavSectionNoLink"track-metadata-position="1" aria-label="projects.locations.transferConfigs.runs, click to expand/collapse" role="link">projects.locations.transferConfigs.runs</span><a class="devsite-nav-toggle devsite-nav-toggle-collapsed material-icons" track-type="leftNav" track-name="expandNavSectionArrow" track-metadata-position="1" aria-hidden="true"></a><ul class="devsite-nav-section devsite-nav-section-collapsed"><li class="devsite-nav-item"><a href="https://cloud.google.com/bigquery/docs/reference/datatransfer/rest/v1/projects.locations.transferConfigs.runs" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="2" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">Overview</a></li><li class="devsite-nav-item"><a href="https://cloud.google.com/bigquery/docs/reference/datatransfer/rest/v1/projects.locations.transferConfigs.runs/delete" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="2" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">delete</a></li><li class="devsite-nav-item"><a href="https://cloud.google.com/bigquery/docs/reference/datatransfer/rest/v1/projects.locations.transferConfigs.runs/get" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="2" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">get</a></li><li class="devsite-nav-item"><a href="https://cloud.google.com/bigquery/docs/reference/datatransfer/rest/v1/projects.locations.transferConfigs.runs/list" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="2" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">list</a></li></ul></li><li class="devsite-nav-item devsite-nav-item-section-expandable"><span class="devsite-nav-title devsite-nav-title-no-path" track-type="leftNav" track-name="expandNavSectionNoLink"track-metadata-position="1" aria-label="projects.locations.transferConfigs.runs.transferLogs, click to expand/collapse" role="link">projects.locations.transferConfigs.runs.transferLogs</span><a class="devsite-nav-toggle devsite-nav-toggle-collapsed material-icons" track-type="leftNav" track-name="expandNavSectionArrow" track-metadata-position="1" aria-hidden="true"></a><ul class="devsite-nav-section devsite-nav-section-collapsed"><li class="devsite-nav-item"><a href="https://cloud.google.com/bigquery/docs/reference/datatransfer/rest/v1/projects.locations.transferConfigs.runs.transferLogs" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="2" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">Overview</a></li><li class="devsite-nav-item"><a href="https://cloud.google.com/bigquery/docs/reference/datatransfer/rest/v1/projects.locations.transferConfigs.runs.transferLogs/list" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="2" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">list</a></li></ul></li><li class="devsite-nav-item devsite-nav-item-section-expandable"><span class="devsite-nav-title devsite-nav-title-no-path" track-type="leftNav" track-name="expandNavSectionNoLink"track-metadata-position="1" aria-label="projects.transferConfigs, click to expand/collapse" role="link">projects.transferConfigs</span><a class="devsite-nav-toggle devsite-nav-toggle-collapsed material-icons" track-type="leftNav" track-name="expandNavSectionArrow" track-metadata-position="1" aria-hidden="true"></a><ul class="devsite-nav-section devsite-nav-section-collapsed"><li class="devsite-nav-item"><a href="https://cloud.google.com/bigquery/docs/reference/datatransfer/rest/v1/projects.transferConfigs" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="2" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">Overview</a></li><li class="devsite-nav-item"><a href="https://cloud.google.com/bigquery/docs/reference/datatransfer/rest/v1/projects.transferConfigs/create" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="2" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">create</a></li><li class="devsite-nav-item"><a href="https://cloud.google.com/bigquery/docs/reference/datatransfer/rest/v1/projects.transferConfigs/delete" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="2" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">delete</a></li><li class="devsite-nav-item"><a href="https://cloud.google.com/bigquery/docs/reference/datatransfer/rest/v1/projects.transferConfigs/get" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="2" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">get</a></li><li class="devsite-nav-item"><a href="https://cloud.google.com/bigquery/docs/reference/datatransfer/rest/v1/projects.transferConfigs/list" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="2" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">list</a></li><li class="devsite-nav-item"><a href="https://cloud.google.com/bigquery/docs/reference/datatransfer/rest/v1/projects.transferConfigs/patch" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="2" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">patch</a></li><li class="devsite-nav-item"><a href="https://cloud.google.com/bigquery/docs/reference/datatransfer/rest/v1/projects.transferConfigs/scheduleRuns" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="2" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">scheduleRuns</a></li></ul></li><li class="devsite-nav-item devsite-nav-item-section-expandable"><span class="devsite-nav-title devsite-nav-title-no-path" track-type="leftNav" track-name="expandNavSectionNoLink"track-metadata-position="1" aria-label="projects.transferConfigs.runs, click to expand/collapse" role="link">projects.transferConfigs.runs</span><a class="devsite-nav-toggle devsite-nav-toggle-collapsed material-icons" track-type="leftNav" track-name="expandNavSectionArrow" track-metadata-position="1" aria-hidden="true"></a><ul class="devsite-nav-section devsite-nav-section-collapsed"><li class="devsite-nav-item"><a href="https://cloud.google.com/bigquery/docs/reference/datatransfer/rest/v1/projects.transferConfigs.runs" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="2" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">Overview</a></li><li class="devsite-nav-item"><a href="https://cloud.google.com/bigquery/docs/reference/datatransfer/rest/v1/projects.transferConfigs.runs/delete" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="2" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">delete</a></li><li class="devsite-nav-item"><a href="https://cloud.google.com/bigquery/docs/reference/datatransfer/rest/v1/projects.transferConfigs.runs/get" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="2" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">get</a></li><li class="devsite-nav-item"><a href="https://cloud.google.com/bigquery/docs/reference/datatransfer/rest/v1/projects.transferConfigs.runs/list" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="2" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">list</a></li></ul></li><li class="devsite-nav-item devsite-nav-item-section-expandable"><span class="devsite-nav-title devsite-nav-title-no-path" track-type="leftNav" track-name="expandNavSectionNoLink"track-metadata-position="1" aria-label="projects.transferConfigs.runs.transferLogs, click to expand/collapse" role="link">projects.transferConfigs.runs.transferLogs</span><a class="devsite-nav-toggle devsite-nav-toggle-collapsed material-icons" track-type="leftNav" track-name="expandNavSectionArrow" track-metadata-position="1" aria-hidden="true"></a><ul class="devsite-nav-section devsite-nav-section-collapsed"><li class="devsite-nav-item"><a href="https://cloud.google.com/bigquery/docs/reference/datatransfer/rest/v1/projects.transferConfigs.runs.transferLogs" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="2" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">Overview</a></li><li class="devsite-nav-item"><a href="https://cloud.google.com/bigquery/docs/reference/datatransfer/rest/v1/projects.transferConfigs.runs.transferLogs/list" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="2" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">list</a></li></ul></li><li class="devsite-nav-item devsite-nav-item-heading"><span class="devsite-nav-title devsite-nav-title-no-path" track-type="leftNav" track-name="expandNavSectionNoLink" track-metadata-position="1">Types</span></li><li class="devsite-nav-item"><a href="https://cloud.google.com/bigquery/docs/reference/datatransfer/rest/v1/CheckValidCredsResponse" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="1" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">CheckValidCredsResponse</a></li><li class="devsite-nav-item"><a href="https://cloud.google.com/bigquery/docs/reference/datatransfer/rest/v1/ListDataSourcesResponse" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="1" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">ListDataSourcesResponse</a></li><li class="devsite-nav-item"><a href="https://cloud.google.com/bigquery/docs/reference/datatransfer/rest/v1/ListTransferConfigsResponse" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="1" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">ListTransferConfigsResponse</a></li><li class="devsite-nav-item"><a href="https://cloud.google.com/bigquery/docs/reference/datatransfer/rest/v1/ListTransferLogsResponse" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="1" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">ListTransferLogsResponse</a></li><li class="devsite-nav-item"><a href="https://cloud.google.com/bigquery/docs/reference/datatransfer/rest/v1/ListTransferRunsResponse" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="1" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">ListTransferRunsResponse</a></li><li class="devsite-nav-item"><a href="https://cloud.google.com/bigquery/docs/reference/datatransfer/rest/v1/RunAttempt" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="1" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">RunAttempt</a></li><li class="devsite-nav-item"><a href="https://cloud.google.com/bigquery/docs/reference/datatransfer/rest/v1/ScheduleTransferRunsResponse" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="1" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">ScheduleTransferRunsResponse</a></li><li class="devsite-nav-item"><a href="https://cloud.google.com/bigquery/docs/reference/datatransfer/rest/v1/TransferState" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="1" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">TransferState</a></li><li class="devsite-nav-item devsite-nav-item-section-expandable"><span class="devsite-nav-title devsite-nav-title-no-path" track-type="leftNav" track-name="expandNavSectionNoLink"track-metadata-position="1" aria-label="BigQuery Data Transfer API, click to expand/collapse" role="link">BigQuery Data Transfer API</span><a class="devsite-nav-toggle devsite-nav-toggle-collapsed material-icons" track-type="leftNav" track-name="expandNavSectionArrow" track-metadata-position="1" aria-hidden="true"></a><ul class="devsite-nav-section devsite-nav-section-collapsed"><li class="devsite-nav-item"><a href="https://cloud.google.com/bigquery/docs/reference/datatransfer/rpc/" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="2" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">Overview</a></li><li class="devsite-nav-item"><a href="https://cloud.google.com/bigquery/docs/reference/datatransfer/rpc/google.cloud.bigquery.datatransfer.v1" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="2" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">google.cloud.bigquery.datatransfer.v1</a></li><li class="devsite-nav-item"><a href="https://cloud.google.com/bigquery/docs/reference/datatransfer/rpc/google.cloud.location" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="2" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">google.cloud.location</a></li><li class="devsite-nav-item"><a href="https://cloud.google.com/bigquery/docs/reference/datatransfer/rpc/google.rpc" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="2" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">google.rpc</a></li></ul></li></ul></li><li class="devsite-nav-item"><a href="https://cloud.google.com/bigquery/docs/reference/bq-cli-reference" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="0" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">bq Command-Line Tool Reference</a></li><li class="devsite-nav-item devsite-nav-item-section-expandable"><span class="devsite-nav-title devsite-nav-title-no-path" track-type="leftNav" track-name="expandNavSectionNoLink"track-metadata-position="0" aria-label="Standard SQL Query Reference, click to expand/collapse" role="link">Standard SQL Query Reference</span><a class="devsite-nav-toggle devsite-nav-toggle-collapsed material-icons" track-type="leftNav" track-name="expandNavSectionArrow" track-metadata-position="0" aria-hidden="true"></a><ul class="devsite-nav-section devsite-nav-section-collapsed"><li class="devsite-nav-item"><a href="https://cloud.google.com/bigquery/docs/reference/standard-sql" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="1" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">Overview</a></li><li class="devsite-nav-item"><a href="https://cloud.google.com/bigquery/docs/reference/standard-sql/enabling-standard-sql" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="1" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">Enabling Standard SQL</a></li><li class="devsite-nav-item"><a href="https://cloud.google.com/bigquery/docs/reference/standard-sql/data-types" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="1" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">Data Types</a></li><li class="devsite-nav-item"><a href="https://cloud.google.com/bigquery/docs/reference/standard-sql/query-syntax" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="1" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">Query Syntax</a></li><li class="devsite-nav-item"><a href="https://cloud.google.com/bigquery/docs/reference/standard-sql/functions-and-operators" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="1" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">Functions &amp; Operators</a></li><li class="devsite-nav-item"><a href="https://cloud.google.com/bigquery/docs/reference/standard-sql/arrays" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="1" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">Working with Arrays</a></li><li class="devsite-nav-item"><a href="https://cloud.google.com/bigquery/docs/reference/standard-sql/lexical" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="1" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">Lexical Structure</a></li><li class="devsite-nav-item"><a href="https://cloud.google.com/bigquery/docs/reference/standard-sql/user-defined-functions" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="1" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">User-Defined Functions</a></li><li class="devsite-nav-item"><a href="https://cloud.google.com/bigquery/docs/reference/standard-sql/approximate-aggregation" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="1" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">Approximate Aggregation</a></li><li class="devsite-nav-item"><a href="https://cloud.google.com/bigquery/docs/reference/standard-sql/wildcard-table-reference" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="1" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">Wildcard Tables</a></li><li class="devsite-nav-item"><a href="https://cloud.google.com/bigquery/docs/reference/standard-sql/migrating-from-legacy-sql" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="1" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">Migrating to Standard SQL</a></li><li class="devsite-nav-item"><a href="https://cloud.google.com/bigquery/docs/reference/standard-sql/data-manipulation-language" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="1" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">Data Manipulation Language</a></li><li class="devsite-nav-item"><a href="https://cloud.google.com/bigquery/docs/reference/standard-sql/dml-syntax" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="1" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">DML Syntax</a></li><li class="devsite-nav-item devsite-nav-beta devsite-nav-has-status"><a href="https://cloud.google.com/bigquery/docs/data-definition-language" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="1" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click"><span class="devsite-nav-text">Data Definition Language</span><span class="devsite-nav-icon-wrapper"><span class="devsite-nav-icon material-icons" title="Beta"></span></span></a></li></ul></li><li class="devsite-nav-item devsite-nav-item-section-expandable"><span class="devsite-nav-title devsite-nav-title-no-path" track-type="leftNav" track-name="expandNavSectionNoLink"track-metadata-position="0" aria-label="Legacy SQL Query Reference, click to expand/collapse" role="link">Legacy SQL Query Reference</span><a class="devsite-nav-toggle devsite-nav-toggle-collapsed material-icons" track-type="leftNav" track-name="expandNavSectionArrow" track-metadata-position="0" aria-hidden="true"></a><ul class="devsite-nav-section devsite-nav-section-collapsed"><li class="devsite-nav-item"><a href="https://cloud.google.com/bigquery/docs/reference/legacy-sql" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="1" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">Functions and Operators</a></li><li class="devsite-nav-item"><a href="https://cloud.google.com/bigquery/data-types" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="1" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">Data Types</a></li><li class="devsite-nav-item"><a href="https://cloud.google.com/bigquery/docs/legacy-nested-repeated" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="1" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">Querying Nested and Repeated Fields</a></li><li class="devsite-nav-item"><a href="https://cloud.google.com/bigquery/user-defined-functions" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="1" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">User-Defined Functions</a></li><li class="devsite-nav-item"><a href="https://cloud.google.com/bigquery/table-decorators" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="1" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">Table Decorators</a></li></ul></li><li class="devsite-nav-item devsite-nav-item-heading"><span class="devsite-nav-title devsite-nav-title-no-path" track-type="leftNav" track-name="expandNavSectionNoLink" track-metadata-position="0">Concepts</span></li><li class="devsite-nav-item"><a href="https://cloud.google.com/bigquery/docs/concepts" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="0" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">All Concepts</a></li><li class="devsite-nav-item"><a href="https://cloud.google.com/bigquery/what-is-bigquery" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="0" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">Introduction to BigQuery</a></li><li class="devsite-nav-item"><a href="https://cloud.google.com/bigquery/docs/projects" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="0" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">Projects</a></li><li class="devsite-nav-item"><a href="https://cloud.google.com/bigquery/docs/storing-data" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="0" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">Storing Data</a></li><li class="devsite-nav-item"><a href="https://cloud.google.com/bigquery/docs/access-control" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="0" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">Access Control</a></li><li class="devsite-nav-item"><a href="https://cloud.google.com/bigquery/docs/slots" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="0" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">Slots</a></li><li class="devsite-nav-item devsite-nav-item-section-expandable"><span class="devsite-nav-title devsite-nav-title-no-path" track-type="leftNav" track-name="expandNavSectionNoLink"track-metadata-position="0" aria-label="BigQuery Best Practices, click to expand/collapse" role="link">BigQuery Best Practices</span><a class="devsite-nav-toggle devsite-nav-toggle-collapsed material-icons" track-type="leftNav" track-name="expandNavSectionArrow" track-metadata-position="0" aria-hidden="true"></a><ul class="devsite-nav-section devsite-nav-section-collapsed"><li class="devsite-nav-item"><a href="https://cloud.google.com/bigquery/docs/best-practices" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="1" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">Introduction</a></li><li class="devsite-nav-item"><a href="https://cloud.google.com/bigquery/docs/best-practices-costs" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="1" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">Controlling Costs</a></li><li class="devsite-nav-item devsite-nav-item-section-expandable"><span class="devsite-nav-title devsite-nav-title-no-path" track-type="leftNav" track-name="expandNavSectionNoLink"track-metadata-position="1" aria-label="Query Performance, click to expand/collapse" role="link">Query Performance</span><a class="devsite-nav-toggle devsite-nav-toggle-collapsed material-icons" track-type="leftNav" track-name="expandNavSectionArrow" track-metadata-position="1" aria-hidden="true"></a><ul class="devsite-nav-section devsite-nav-section-collapsed"><li class="devsite-nav-item"><a href="https://cloud.google.com/bigquery/docs/best-practices-performance-overview" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="2" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">Introduction</a></li><li class="devsite-nav-item"><a href="https://cloud.google.com/bigquery/docs/best-practices-performance-input" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="2" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">Managing Input Data and Data Sources</a></li><li class="devsite-nav-item"><a href="https://cloud.google.com/bigquery/docs/best-practices-performance-communication" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="2" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">Optimizing Communication Between Slots</a></li><li class="devsite-nav-item"><a href="https://cloud.google.com/bigquery/docs/best-practices-performance-compute" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="2" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">Optimizing Query Computation</a></li><li class="devsite-nav-item"><a href="https://cloud.google.com/bigquery/docs/best-practices-performance-output" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="2" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">Managing Query Outputs</a></li><li class="devsite-nav-item"><a href="https://cloud.google.com/bigquery/docs/best-practices-performance-patterns" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="2" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">Avoiding SQL Anti-Patterns</a></li></ul></li><li class="devsite-nav-item"><a href="https://cloud.google.com/bigquery/docs/best-practices-storage" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="1" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">Optimizing Storage</a></li></ul></li><li class="devsite-nav-item devsite-nav-item-heading"><span class="devsite-nav-title devsite-nav-title-no-path" track-type="leftNav" track-name="expandNavSectionNoLink" track-metadata-position="0">Tutorials</span></li><li class="devsite-nav-item"><a href="https://cloud.google.com/bigquery/docs/tutorials" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="0" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">All Tutorials</a></li><li class="devsite-nav-item"><a href="https://cloud.google.com/bigquery/docs/share-access-views" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="0" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">Creating an Authorized View in BigQuery</a></li><li class="devsite-nav-item"><a href="https://cloud.google.com/bigquery/docs/visualize-data-studio" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="0" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">Visualizing BigQuery Data Using Google Data Studio</a></li><li class="devsite-nav-item"><a href="https://cloud.google.com/bigquery/docs/visualize-datalab" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="0" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">Visualizing BigQuery Data Using Google Cloud Datalab</a></li><li class="devsite-nav-item"><a href="https://cloud.google.com/solutions/mobile/mobile-firebase-analytics-big-query" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="0" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">Importing Firebase Analytics Data into BigQuery</a></li><li class="devsite-nav-item"><a href="https://cloud.google.com/solutions/real-time/kubernetes-redis-bigquery" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="0" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">Real-time data analysis with Kubernetes, Redis, and BigQuery</a></li><li class="devsite-nav-item"><a href="https://cloud.google.com/solutions/real-time/kubernetes-pubsub-bigquery" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="0" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">Real-time data analysis with Kubernetes, Google Cloud Pub/Sub, and BigQuery</a></li><li class="devsite-nav-item"><a href="https://cloud.google.com/solutions/real-time/fluentd-bigquery" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="0" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">Real-time logs analysis using Fluentd and BigQuery</a></li><li class="devsite-nav-item"><a href="https://cloud.google.com/solutions/time-series/bigquery-financial-forex" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="0" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">Analyzing Financial Time Series using BigQuery</a></li><li class="devsite-nav-item devsite-nav-item-heading"><span class="devsite-nav-title devsite-nav-title-no-path" track-type="leftNav" track-name="expandNavSectionNoLink" track-metadata-position="0">Resources</span></li><li class="devsite-nav-item"><a href="https://cloud.google.com/bigquery/docs/resources" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="0" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">All Resources</a></li><li class="devsite-nav-item"><a href="https://cloud.google.com/bigquery/pricing" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="0" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">Pricing</a></li><li class="devsite-nav-item"><a href="https://cloud.google.com/bigquery/quotas" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="0" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">Quotas &amp; Limits</a></li><li class="devsite-nav-item"><a href="https://cloud.google.com/bigquery/docs/release-notes" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="0" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">Release Notes</a></li><li class="devsite-nav-item devsite-nav-item-section-expandable"><span class="devsite-nav-title devsite-nav-title-no-path" track-type="leftNav" track-name="expandNavSectionNoLink"track-metadata-position="0" aria-label="Support &amp; Troubleshooting, click to expand/collapse" role="link">Support &amp; Troubleshooting</span><a class="devsite-nav-toggle devsite-nav-toggle-collapsed material-icons" track-type="leftNav" track-name="expandNavSectionArrow" track-metadata-position="0" aria-hidden="true"></a><ul class="devsite-nav-section devsite-nav-section-collapsed"><li class="devsite-nav-item"><a href="https://cloud.google.com/bigquery/support" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="1" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">Support Overview</a></li><li class="devsite-nav-item"><a href="https://cloud.google.com/bigquery/troubleshooting-errors" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="1" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">Troubleshooting Errors</a></li><li class="devsite-nav-item"><a href="https://cloud.google.com/bigquery/launch-checklist" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="1" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">Launch Checklist</a></li></ul></li><li class="devsite-nav-item devsite-nav-item-section-expandable"><span class="devsite-nav-title devsite-nav-title-no-path" track-type="leftNav" track-name="expandNavSectionNoLink"track-metadata-position="0" aria-label="Public Datasets, click to expand/collapse" role="link">Public Datasets</span><a class="devsite-nav-toggle devsite-nav-toggle-collapsed material-icons" track-type="leftNav" track-name="expandNavSectionArrow" track-metadata-position="0" aria-hidden="true"></a><ul class="devsite-nav-section devsite-nav-section-collapsed"><li class="devsite-nav-item"><a href="https://cloud.google.com/bigquery/public-data" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="1" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">Overview</a></li><li class="devsite-nav-item"><a href="https://cloud.google.com/bigquery/public-data/1000-cannabis" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="1" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">1000 Cannabis Genomes Project</a></li><li class="devsite-nav-item"><a href="https://cloud.google.com/bigquery/public-data/bay-bike-share" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="1" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">Bay Area Bike Share Trips Data</a></li><li class="devsite-nav-item"><a href="https://cloud.google.com/bigquery/public-data/chicago-crime-data" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="1" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">Chicago Crime Data</a></li><li class="devsite-nav-item"><a href="https://cloud.google.com/bigquery/public-data/chicago-taxi" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="1" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">Chicago Taxi Trips</a></li><li class="devsite-nav-item"><a href="https://cloud.google.com/bigquery/public-data/epa" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="1" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">EPA Historical Air Quality Data</a></li><li class="devsite-nav-item"><a href="https://cloud.google.com/bigquery/public-data/gdelt-books" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="1" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">GDELT Books Corpus</a></li><li class="devsite-nav-item"><a href="https://cloud.google.com/bigquery/public-data/github" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="1" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">GitHub Data</a></li><li class="devsite-nav-item"><a href="https://cloud.google.com/bigquery/public-data/hacker-news" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="1" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">Hacker News</a></li><li class="devsite-nav-item"><a href="https://cloud.google.com/bigquery/public-data/hcpcs-level2" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="1" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">Healthcare Common Procedure Coding System (HCPCS) Level II</a></li><li class="devsite-nav-item"><a href="https://cloud.google.com/bigquery/public-data/irs-990" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="1" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">IRS 990 Data</a></li><li class="devsite-nav-item"><a href="https://cloud.google.com/bigquery/public-data/baseball" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="1" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">Major League Baseball</a></li><li class="devsite-nav-item"><a href="https://cloud.google.com/bigquery/public-data/medicare" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="1" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">Medicare</a></li><li class="devsite-nav-item"><a href="https://cloud.google.com/bigquery/public-data/ncaa" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="1" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">NCAA Basketball Data</a></li><li class="devsite-nav-item"><a href="https://cloud.google.com/bigquery/public-data/nhtsa" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="1" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">NHTSA Traffic Fatality Data</a></li><li class="devsite-nav-item"><a href="https://cloud.google.com/bigquery/public-data/noaa-ghcn" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="1" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">NOAA GHCN Weather</a></li><li class="devsite-nav-item"><a href="https://cloud.google.com/bigquery/public-data/noaa-gsod" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="1" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">NOAA GSOD Weather</a></li><li class="devsite-nav-item"><a href="https://cloud.google.com/bigquery/public-data/noaa-icoads" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="1" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">NOAA ICOADS</a></li><li class="devsite-nav-item"><a href="https://cloud.google.com/bigquery/public-data/nyc-311" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="1" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">NYC 311 Service Requests</a></li><li class="devsite-nav-item"><a href="https://cloud.google.com/bigquery/public-data/nyc-citi-bike" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="1" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">NYC Citi Bike Trips</a></li><li class="devsite-nav-item"><a href="https://cloud.google.com/bigquery/public-data/nyc-tlc-trips" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="1" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">NYC TLC Trips</a></li><li class="devsite-nav-item"><a href="https://cloud.google.com/bigquery/public-data/nyc-tree-census" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="1" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">NYC Tree Census</a></li><li class="devsite-nav-item"><a href="https://cloud.google.com/bigquery/public-data/nypd-mv-collisions" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="1" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">NYPD Motor Vehicle Collisions</a></li><li class="devsite-nav-item"><a href="https://cloud.google.com/bigquery/public-data/openaq" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="1" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">OpenAQ: Real-time Air Quality Data</a></li><li class="devsite-nav-item"><a href="https://cloud.google.com/bigquery/public-data/openimages" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="1" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">Open Images</a></li><li class="devsite-nav-item"><a href="https://cloud.google.com/bigquery/public-data/rxnorm" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="1" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">RxNorm</a></li><li class="devsite-nav-item"><a href="https://cloud.google.com/bigquery/sample-tables" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="1" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">Sample Tables</a></li><li class="devsite-nav-item"><a href="https://cloud.google.com/bigquery/public-data/sfo-311" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="1" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">San Francisco 311 Service Requests Data</a></li><li class="devsite-nav-item"><a href="https://cloud.google.com/bigquery/public-data/sffd-service-calls" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="1" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">San Francisco Fire Department Service Calls Data</a></li><li class="devsite-nav-item"><a href="https://cloud.google.com/bigquery/public-data/sfpd-reports" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="1" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">San Francisco Police Reports Data</a></li><li class="devsite-nav-item"><a href="https://cloud.google.com/bigquery/public-data/sfo-trees" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="1" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">San Francisco Street Trees Data</a></li><li class="devsite-nav-item"><a href="https://cloud.google.com/bigquery/public-data/stackoverflow" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="1" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">Stack Overflow</a></li><li class="devsite-nav-item"><a href="https://cloud.google.com/bigquery/public-data/bureau-of-labor-statistics" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="1" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">USA Bureau of Labor Statistics</a></li><li class="devsite-nav-item"><a href="https://cloud.google.com/bigquery/public-data/us-census" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="1" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">United States Census Data</a></li><li class="devsite-nav-item"><a href="https://cloud.google.com/bigquery/public-data/international-census" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="1" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">United States Census Bureau International Data</a></li><li class="devsite-nav-item"><a href="https://cloud.google.com/bigquery/public-data/usa-disease" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="1" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">USA Disease Data</a></li><li class="devsite-nav-item"><a href="https://cloud.google.com/bigquery/public-data/usa-names" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="1" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">USA Names Data</a></li><li class="devsite-nav-item"><a href="https://cloud.google.com/bigquery/public-data/world-bank-education" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="1" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">World Bank: Education Statistics</a></li><li class="devsite-nav-item"><a href="https://cloud.google.com/bigquery/public-data/world-bank-hnp" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="1" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">World Bank: Global Health, Nutrition, and Population</a></li><li class="devsite-nav-item"><a href="https://cloud.google.com/bigquery/public-data/world-bank-international-debt" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="1" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">World Bank: International Debt</a></li></ul></li><li class="devsite-nav-item"><a href="https://cloud.google.com/commercial-datasets/" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="0" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">Commercial Datasets</a></li><li class="devsite-nav-item devsite-nav-item-section-expandable"><span class="devsite-nav-title devsite-nav-title-no-path" track-type="leftNav" track-name="expandNavSectionNoLink"track-metadata-position="0" aria-label="BigQuery Partners, click to expand/collapse" role="link">BigQuery Partners</span><a class="devsite-nav-toggle devsite-nav-toggle-collapsed material-icons" track-type="leftNav" track-name="expandNavSectionArrow" track-metadata-position="0" aria-hidden="true"></a><ul class="devsite-nav-section devsite-nav-section-collapsed"><li class="devsite-nav-item"><a href="https://cloud.google.com/bigquery/partners" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="1" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">Overview</a></li><li class="devsite-nav-item"><a href="https://cloud.google.com/bigquery/partners/simba-drivers" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="1" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">Simba Drivers</a></li></ul></li><li class="devsite-nav-item"><a href="https://cloud.google.com/bigquery/sla" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="0" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">Service Level Agreement</a></li></ul>
+  </nav>
+
+    
+
+    
+  <nav class="devsite-page-nav devsite-nav"></nav>
+
+
+      <article class="devsite-article">
+        <article class="devsite-article-inner">
+  
+          
+  
+
+
+
+  
+  <nav class="devsite-breadcrumb-nav devsite-nav">
+    
+
+
+<ul class="devsite-breadcrumb-list">
+  
+  <li class="devsite-breadcrumb-item">
+    
+    
+    <a href="https://cloud.google.com/bigquery/" class="devsite-breadcrumb-link gc-analytics-event"
+       data-category="Site-Wide Custom Events" data-label="Breadcrumbs"
+       data-value="1">
+    
+    
+      BigQuery
+    
+    
+    </a>
+    
+  </li>
+  
+  <li class="devsite-breadcrumb-item">
+    
+    
+    <div class="devsite-breadcrumb-guillemet material-icons"></div>
+    
+    
+    <a href="https://cloud.google.com/bigquery/docs/" class="devsite-breadcrumb-link gc-analytics-event"
+       data-category="Site-Wide Custom Events" data-label="Breadcrumbs"
+       data-value="2">
+    
+    
+      Documentation
+    
+    
+    </a>
+    
+  </li>
+  
+  <li class="devsite-breadcrumb-item">
+    
+    
+    <div class="devsite-breadcrumb-guillemet material-icons"></div>
+    
+    
+    <a href="https://cloud.google.com/docs/" class="devsite-breadcrumb-link gc-analytics-event"
+       data-category="Site-Wide Custom Events" data-label="Breadcrumbs"
+       data-value="3">
+    
+    
+      Documentation
+    
+    
+    </a>
+    
+  </li>
+  
+</ul>
+
+  </nav>
+  
+  
+  <h1 itemprop="name" class="devsite-page-title">
+    Streaming Data into BigQuery
+  </h1>
+  
+  
+  <nav class="devsite-page-nav-embedded devsite-nav"></nav>
+  
+  <div class="devsite-article-body clearfix
+            "
+       itemprop="articleBody">
+    
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    
+
+
+
+
+  
+
+  
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+Instead of using a job to <a href="https://cloud.google.com/bigquery/loading-data-into-bigquery">load data into BigQuery</a>,
+you can choose to stream your data into BigQuery one record at a time by using the
+<a href="https://cloud.google.com/bigquery/docs/reference/v2/tabledata/insertAll">tabledata().insertAll()</a>
+method. This approach enables querying data without the delay of running a
+load job. This document discusses several important trade-offs to consider
+before choosing an approach, including streaming quotas, data availability,
+and data consistency.</p>
+<h1 class="page-title" id="before_you_begin">Before you begin</h1>
+<ol>
+<li>
+<p>Ensure that you have write access to the dataset that contains your
+destination table. The table must exist before you begin writing data to it
+unless you are using template tables. For more information on template tables,
+see <a href="https://cloud.google.com/bigquery/streaming-data-into-bigquery#template-tables">Creating tables automatically using template tables</a>.</p>
+</li>
+<li>
+<p>Check the <a href="https://cloud.google.com/bigquery/quota-policy#streaminginserts" target="_blank">quota policy for streaming data</a>.</p>
+</li>
+</ol>
+<h2 id="dataavailability">Checking for data availability</h2>
+<p>Streamed data is available for real-time analysis within a few seconds of the first
+streaming insertion into a table. In rare circumstances (such as an outage), data
+in the streaming buffer may be temporarily unavailable. When data is unavailable,
+queries continue to run successfully, but they skip some of the data
+that is still in the streaming buffer. These queries will contain a warning in
+the <code>errors</code> field of <code>bigquery.jobs.getQueryResults</code>, in the response to
+<code>biquery.jobs.query</code> or in the <code>status.errors</code> field of <code>bigquery.jobs.get</code>.</p>
+<p>Data can take up to 90 minutes to become available for copy and export
+operations. Also, when streaming to a partitioned table, data in the streaming
+buffer has a NULL value for the
+<a href="https://cloud.google.com/bigquery/docs/querying-partitioned-tables#the_95partitiontime_pseudo_column"><code>_PARTITIONTIME</code></a>
+pseudo column. To see whether data is available for copy and export, check the
+<code>tables.get</code> response for a section named <code>streamingBuffer</code>. If that section
+is absent, your data should be available for copy or export, and should have a
+non-null value for the <code>_PARTITIONTIME</code> pseudo column.  Additionally, the
+<code>streamingBuffer.oldestEntryTime</code> field can be leveraged to identify the
+age of records in the streaming buffer.</p>
+<h2 id="dataconsistency">Ensuring data consistency</h2>
+<p>To help ensure data consistency, you can supply <code>insertId</code> for each inserted
+row. BigQuery remembers this ID for at least one minute. If you try to stream
+the same set of rows within that time period and the <code>insertId</code> property is
+set, BigQuery uses the <code>insertId</code> property to de-duplicate your data on a
+best effort basis.</p>
+<p>You might have to retry an insert because there's no way to determine the state
+of a streaming insert under certain error conditions, such as network errors
+between your system and BigQuery or internal errors within BigQuery. If you
+retry an insert, use the same <code>insertId</code> for the same set of rows so that
+BigQuery can attempt to de-duplicate your data. For more information, see
+<a href="#troubleshooting">troubleshooting streaming inserts</a>.</p>
+<p>In the rare instance of a Google datacenter losing connectivity unexpectedly,
+automatic deduplication may not be possible.</p>
+<p>If you have stronger requirements for your data,
+<a href="https://cloud.google.com/datastore/">Google Cloud Datastore</a> is an alternative service that supports
+<a href="https://cloud.google.com/datastore/docs/concepts/transactions">transactions</a>.</p>
+<h2 id="streaming_data_across_data_locations">Streaming data across data locations</h2>
+<p>You can stream data to datasets in both the US and EU. Data can flow through
+machines outside the dataset's location while BigQuery processes the <code>insertAll</code>
+request. If you are streaming data from a location outside of the
+dataset's location, you might experience increased latency and error rates.</p>
+<h2 id="streaming_into_partitioned_tables">Streaming into partitioned tables</h2>
+<p>You can stream individual rows into a partitioned table with the <code>insertAll</code>
+requests.  The destination partition for inserted data is by default inferred
+from the current date based on UTC time.  However, this behavior can be
+overridden for a partitioned table by supplying a partition decorator as part
+of the <code>insertAll</code> request.  For example, you can stream to the partition
+corresponding to 2017-03-01 for table
+<code>mydataset.table</code> using the partition decorator:</p>
+<pre class="prettyprint notranslate" translate="no"><code>mydataset.table$20170301
+</code></pre>
+<p>Newly arriving data will be temporarily associated with the <code>NULL</code> partition
+while in the streaming buffer.  A query can therefore exclude data in the
+streaming buffer from a query by filtering out the <code>NULL</code> partition using one of
+the pseudocolumns ([<code>_PARTITIONTIME</code>] or [<code>_PARTITIONDATE</code>] depending on your
+preferred data type).</p>
+<p>When streaming using a partition decorator, you can stream to partitions within
+the last 30 days in the past and 5 days in the future relative to the current
+date, based on current UTC time. To write to partitions for dates outside these
+allowed bounds, you can use load or query jobs, as described in
+<a href="https://cloud.google.com/bigquery/docs/modifying-partitioned-tables#restating_data_in_a_partition">Restating data in a partition</a>.</p>
+<h2 id="template-tables">Creating tables automatically using template tables</h2>
+<p>A common usage pattern for streaming data into BigQuery is to split a logical
+table into many smaller tables to create smaller sets of data (for example, by
+user ID). To create smaller sets of data by date, use <a href="https://cloud.google.com/bigquery/docs/partitioned-tables">time-partitioned tables</a>.
+To create smaller tables that are not date-based, use <em>template tables</em> and
+BigQuery creates the tables for you.</p>
+<p>To use a template table via the BigQuery API, add a <code>templateSuffix</code> parameter
+to your <code>insertAll</code> request. For the bq command line tool, add the
+<code>template_suffix</code> flag to your <code>insert</code> command. If BigQuery detects a
+<code>templateSuffix</code> parameter or the <code>template_suffix</code> flag, it treats the targeted
+table as a base template, and creates a new table that shares the same
+schema as the targeted table and has a name that includes the specified suffix:</p>
+<pre>&lt;targeted_table_name> + &lt;templateSuffix></pre>
+
+<p>By using a template table, you avoid the overhead of creating each table
+individually and specifying the schema for each table. You need only create
+a single template, and supply different suffixes so that BigQuery can create
+the new tables for you. BigQuery places the tables in the same project
+and dataset. Templates also make it easier to update the
+schema because you need only update the template table.</p>
+<p>Tables created via template tables are usually available within a few seconds.
+On rare occasions they may take longer to become available.</p>
+<h3 id="changing_the_template_table_schema">Changing the template table schema</h3>
+<p>If you change a template table schema, all subsequently generated tables will
+use the updated schema. Previously generated tables will not be affected,
+unless the existing table still has a streaming buffer.</p>
+<p>For existing tables that still have a streaming buffer, if you modify the
+template table schema in a backward compatible way, the schema of those
+actively streamed generated tables will also be updated. However,
+if you modify the template table schema in a non-backward compatible way,
+any buffered data that uses the old schema will be lost. Additionally, you
+will not be able to stream new data to existing generated tables that use
+the old, but now incompatible, schema.</p>
+<p>After you change a template table schema, wait until the changes have propagated
+before you try to insert new data or query generated tables. Requests to insert
+new fields should succeed within a few minutes. Attempts to query the new
+fields might require a longer wait of up to 90 minutes.</p>
+<p>If you want to change a generated table's schema, do not change the
+schema until streaming via the template table has ceased and the generated
+table's streaming statistics section is absent from the <code>tables.get()</code> response,
+which indicates that no data is buffered on the table.</p>
+<h3 id="template_table_details">Template table details</h3>
+<dl>
+<dt>Template suffix value</dt>
+<dd>The <code>templateSuffix</code> (or <code>--template_suffix</code>) value must contain only letters
+(a-z, A-Z), numbers (0-9), or underscores (_). The maximum combined length
+of the table name and the table suffix is 1024 characters.</dd>
+<dt>Quota</dt>
+<dd>The same quotas apply to all tables, whether they are based on templates
+or created manually.</dd>
+<dt>Time to live</dt>
+<dd>The generated table inherits its expiration time from the dataset. As with
+normal streaming data, generated tables cannot be copied or exported
+immediately.</dd>
+<dt>Deduplication</dt>
+<dd>Deduplication only happens between uniform references to a destination table.
+For example, if you simultaneously stream to a generated table using both
+template tables and a regular <code>insertAll</code> command, no deduplication occurs
+between rows inserted by template tables and a regular <code>insertAll</code> command.</dd>
+<dt>Views</dt>
+<dd>The template table and the generated tables should not be views.</dd>
+</dl>
+<h2 id="usecases">Example use cases</h2>
+<h3 id="high_volume_event_logging">High volume event logging</h3>
+<p>If you have an app that collects a large amount of data in real-time,
+streaming inserts can be a good choice. Generally, these types of apps
+have the following criteria:</p>
+<ul>
+<li><strong>Not transactional.</strong> High volume, continuously appended rows. The app
+  can tolerate a rare possibility that duplication might occur or that data
+  might be temporarily unavailable.</li>
+<li><strong>Aggregate analysis.</strong> Queries generally are performed for trend analysis,
+  as opposed to single or narrow record selection.</li>
+</ul>
+<p>One example of high volume event logging is event tracking. Suppose you have
+a mobile app that tracks events. Your app, or mobile servers, could
+independently record user interactions or system errors and stream them
+into BigQuery. You could analyze this data to determine overall trends,
+such as areas of high interaction or problems, and monitor error conditions
+in real-time.</p>
+<h3 id="manually_removing_duplicates">Manually removing duplicates</h3>
+<p>You can use the following manual process to ensure that no duplicate rows exist
+after you are done streaming.</p>
+<ol>
+  <li>Add the <code>insertId</code> as a column in your table schema and include the
+    <code>insertId</code> value in the data for each row.</li>
+  <li>After streaming has stopped, perform the following query to check for
+    duplicates:
+
+    <p><pre class="lang-sql prettyprint">#standardSQL
+SELECT
+  MAX(count) FROM(
+  SELECT
+    ID_COLUMN,
+    count(*) as count
+  FROM
+    `TABLE_NAME`
+  GROUP BY
+    ID_COLUMN)</pre></p>
+
+    If the result is greater than 1, duplicates exist.</li>
+
+  <li>To remove duplicates, perform the following query. You should specify
+   a destination table, allow large results, and disable result flattening.
+
+   <p><pre class="lang-sql prettyprint">#standardSQL
+SELECT
+  * EXCEPT(row_number)
+FROM (
+  SELECT
+    *,
+    ROW_NUMBER()
+          OVER (PARTITION BY ID_COLUMN) row_number
+  FROM
+    `TABLE_NAME`)
+WHERE
+  row_number = 1</pre></p></li>
+</ol>
+
+<p>Notes about the duplicate removal query:</p>
+<ul>
+<li>The safer strategy for the duplicate removal query is to target a new table.
+  Alternatively, you can target the source table with write disposition
+  <code>WRITE_TRUNCATE</code>.</li>
+<li>The duplicate removal query adds a <code>row_number</code> column with the value <code>1</code> to
+  the end of the table schema.  The query uses a <a href="https://cloud.google.com/bigquery/docs/reference/standard-sql/query-syntax#select-except">SELECT *
+  EXCEPT</a>
+  statement from <a href="https://cloud.google.com/bigquery/docs/reference/standard-sql">standard SQL</a> to
+  exclude the <code>row_number</code> column from the destination table.  The
+  <code>#standardSQL</code> prefix
+  <a href="https://cloud.google.com/bigquery/docs/reference/standard-sql/enabling-standard-sql">enables</a>
+  standard SQL for this query.  Alternatively, you can can select by specific
+  column names to omit this column.</li>
+<li>For querying live data with duplicates removed, you can also create a view
+  over your table using the duplicate removal query. Be aware that query costs
+  against the view will be calculated based on the columns selected in your
+  view, which can result in large bytes scanned sizes.</li>
+</ul>
+<h2 id="troubleshooting">Troubleshooting streaming inserts</h2>
+<p>For information about how to troubleshoot errors during streaming inserts,
+see <a href="https://cloud.google.com/bigquery/troubleshooting-errors.html#streaming">Troubleshooting streaming inserts</a>
+on the Troubleshooting Errors page.</p>
+<p class="backtotop"><a href="#top">Back to top</a></p>
+<h2 id="streaminginsertexamples">Streaming insert examples</h2>
+
+<div id="bigquery-stream-data-code-sample" class="ds-selector-tabs" data-ds-scope="code-sample">
+  
+
+
+
+
+
+
+
+  
+
+
+  
+    
+  
+
+
+  
+
+<section>
+  
+  <h3 id="bigquery-stream-data-csharp" track-type="sampleTabNav" track-name="csharp" track-metadata-position="bigquery-stream-data">C#</h3>
+  
+  
+    
+    <p>
+      For more on installing and creating a BigQuery client, refer to
+      <a href="https://cloud.google.com/bigquery/docs/reference/libraries" track-type="clientLibrariesReference"
+         track-name="csharp" track-metadata-position="bigquery-stream-data">BigQuery Client Libraries</a>.
+    </p>
+    
+  
+  
+  
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  
+  
+  
+
+
+<!-- Header -->
+
+<div class="github-docwidget-include" style="border: 1px solid #ddd; border-bottom: 0; padding: 4px; background-color: #4285f4; margin-bottom: -10px">
+  
+
+  
+  <div style="text-align: right; float: right;">
+    
+    
+      
+      <a class="button" target="_blank" href="https://github.com/GoogleCloudPlatform/dotnet-docs-samples/blob/47aa6ac0ad2b9db68c484828441cfc583ee341f7/bigquery/api/BigqueryTest/BigqueryTest.cs"
+      track-type="github" track-name="gitHubViewButton"
+      track-metadata-link-destination="https://github.com/GoogleCloudPlatform/dotnet-docs-samples/blob/47aa6ac0ad2b9db68c484828441cfc583ee341f7/bigquery/api/BigqueryTest/BigqueryTest.cs">View on GitHub</a>
+    
+    
+    
+    
+    
+    
+    
+    <a href="#" class="button google-feedback" data-p="1634365" data-b="bdml"
+       data-context="bigquery-stream-data" track-type="feedback" track-name="sampleFeedback"
+       track-metadata-lang="csharp" track-metadata-position="bigquery-stream-data">Feedback</a>
+    
+  </div>
+  
+
+  <div style="clear: both;"></div>
+
+</div>
+
+
+<!-- Code -->
+<div class="github-docwidget-gitinclude-code">
+
+  
+  
+
+<pre class="prettyprint " track-metadata-position="GoogleCloudPlatform/dotnet-docs-samples/bigquery/api/BigqueryTest/BigqueryTest.cs/47aa6ac0ad2b9db68c484828441cfc583ee341f7/stream_row">public void UploadJsonStreaming(string datasetId, string tableId,
+    BigQueryClient client)
+{
+    // The insert ID is optional, but can avoid duplicate data
+    // when retrying inserts.
+    BigQueryInsertRow row1 = new BigQueryInsertRow(&quot;row1&quot;)
+    {
+        { &quot;title&quot;, &quot;exampleJsonFromStream&quot; },
+        { &quot;unique_words&quot;, 1 }
+    };
+    BigQueryInsertRow row2 = new BigQueryInsertRow(&quot;row2&quot;)
+    {
+        { &quot;title&quot;, &quot;moreExampleJsonFromStream&quot; },
+        { &quot;unique_words&quot;, 1 }
+    };
+    client.InsertRows(datasetId, tableId, row1, row2);
+}</pre>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+</section>
+
+
+
+
+
+  
+
+
+
+
+
+
+
+  
+
+
+  
+    
+  
+
+
+  
+
+<section>
+  
+  <h3 id="bigquery-stream-data-go" track-type="sampleTabNav" track-name="go" track-metadata-position="bigquery-stream-data">Go</h3>
+  
+  
+    
+    <p>
+      For more on installing and creating a BigQuery client, refer to
+      <a href="https://cloud.google.com/bigquery/docs/reference/libraries" track-type="clientLibrariesReference"
+         track-name="go" track-metadata-position="bigquery-stream-data">BigQuery Client Libraries</a>.
+    </p>
+    
+  
+  
+  
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  
+  
+
+
+<!-- Header -->
+
+<div class="github-docwidget-include" style="border: 1px solid #ddd; border-bottom: 0; padding: 4px; background-color: #4285f4; margin-bottom: -10px">
+  
+
+  
+  <div style="text-align: right; float: right;">
+    
+    
+      
+      <a class="button" target="_blank" href="https://github.com/GoogleCloudPlatform/golang-samples/blob/cb911eb32a6e5b152369a3375ef024a6b40dbd0c/bigquery/snippets/snippet.go"
+      track-type="github" track-name="gitHubViewButton"
+      track-metadata-link-destination="https://github.com/GoogleCloudPlatform/golang-samples/blob/cb911eb32a6e5b152369a3375ef024a6b40dbd0c/bigquery/snippets/snippet.go">View on GitHub</a>
+    
+    
+    
+    
+    
+    
+    
+    <a href="#" class="button google-feedback" data-p="1634365" data-b="bdml"
+       data-context="bigquery-stream-data" track-type="feedback" track-name="sampleFeedback"
+       track-metadata-lang="go" track-metadata-position="bigquery-stream-data">Feedback</a>
+    
+  </div>
+  
+
+  <div style="clear: both;"></div>
+
+</div>
+
+
+<!-- Code -->
+<div class="github-docwidget-gitinclude-code">
+
+  
+  
+
+<pre class="prettyprint lang-go" track-metadata-position="GoogleCloudPlatform/golang-samples/bigquery/snippets/snippet.go/cb911eb32a6e5b152369a3375ef024a6b40dbd0c/bigquery_insert_stream">u := client.Dataset(datasetID).Table(tableID).Uploader()
+items := []*Item{
+	// Item implements the ValueSaver interface.
+	{Name: &quot;n1&quot;, Count: 7},
+	{Name: &quot;n2&quot;, Count: 2},
+	{Name: &quot;n3&quot;, Count: 1},
+}
+if err := u.Put(ctx, items); err != nil {
+	return err
+}</pre>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+</section>
+
+
+
+
+
+  
+
+
+
+
+
+
+
+  
+
+
+  
+    
+  
+
+
+  
+
+<section>
+  
+  <h3 id="bigquery-stream-data-java" track-type="sampleTabNav" track-name="java" track-metadata-position="bigquery-stream-data">Java</h3>
+  
+  
+    
+    <p>
+      For more on installing and creating a BigQuery client, refer to
+      <a href="https://cloud.google.com/bigquery/docs/reference/libraries" track-type="clientLibrariesReference"
+         track-name="java" track-metadata-position="bigquery-stream-data">BigQuery Client Libraries</a>.
+    </p>
+    
+  
+  
+  
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  
+  
+
+
+<!-- Header -->
+
+<div class="github-docwidget-include" style="border: 1px solid #ddd; border-bottom: 0; padding: 4px; background-color: #4285f4; margin-bottom: -10px">
+  
+
+  
+  <div style="text-align: right; float: right;">
+    
+    
+      
+      <a class="button" target="_blank" href="https://github.com/GoogleCloudPlatform/google-cloud-java/blob/848245e10efcb6a39b0de435c621e2ccb4e8a83d/google-cloud-examples/src/main/java/com/google/cloud/examples/bigquery/snippets/BigQuerySnippets.java"
+      track-type="github" track-name="gitHubViewButton"
+      track-metadata-link-destination="https://github.com/GoogleCloudPlatform/google-cloud-java/blob/848245e10efcb6a39b0de435c621e2ccb4e8a83d/google-cloud-examples/src/main/java/com/google/cloud/examples/bigquery/snippets/BigQuerySnippets.java">View on GitHub</a>
+    
+    
+    
+    
+    
+    
+    
+    <a href="#" class="button google-feedback" data-p="1634365" data-b="bdml"
+       data-context="bigquery-stream-data" track-type="feedback" track-name="sampleFeedback"
+       track-metadata-lang="java" track-metadata-position="bigquery-stream-data">Feedback</a>
+    
+  </div>
+  
+
+  <div style="clear: both;"></div>
+
+</div>
+
+
+<!-- Code -->
+<div class="github-docwidget-gitinclude-code">
+
+  
+  
+
+<pre class="prettyprint lang-java" track-metadata-position="GoogleCloudPlatform/google-cloud-java/google-cloud-examples/src/main/java/com/google/cloud/examples/bigquery/snippets/BigQuerySnippets.java/848245e10efcb6a39b0de435c621e2ccb4e8a83d/insertAll">TableId tableId = TableId.of(datasetName, tableName);
+// Values of the row to insert
+Map&lt;String, Object&gt; rowContent = new HashMap&lt;&gt;();
+rowContent.put(&quot;booleanField&quot;, true);
+// Bytes are passed in base64
+rowContent.put(&quot;bytesField&quot;, &quot;Cg0NDg0=&quot;); // 0xA, 0xD, 0xD, 0xE, 0xD in base64
+// Records are passed as a map
+Map&lt;String, Object&gt; recordsContent = new HashMap&lt;&gt;();
+recordsContent.put(&quot;stringField&quot;, &quot;Hello, World!&quot;);
+rowContent.put(&quot;recordField&quot;, recordsContent);
+InsertAllResponse response = bigquery.insertAll(InsertAllRequest.newBuilder(tableId)
+    .addRow(&quot;rowId&quot;, rowContent)
+    // More rows can be added in the same RPC by invoking .addRow() on the builder
+    .build());
+if (response.hasErrors()) {
+  // If any of the insertions failed, this lets you inspect the errors
+  for (Entry&lt;Long, List&lt;BigQueryError&gt;&gt; entry : response.getInsertErrors().entrySet()) {
+    // inspect row error
+  }
+}</pre>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+</section>
+
+
+
+
+
+  
+
+
+
+
+
+
+
+  
+
+
+  
+    
+  
+
+
+  
+
+<section>
+  
+  <h3 id="bigquery-stream-data-nodejs" track-type="sampleTabNav" track-name="nodejs" track-metadata-position="bigquery-stream-data">Node.js</h3>
+  
+  
+    
+    <p>
+      For more on installing and creating a BigQuery client, refer to
+      <a href="https://cloud.google.com/bigquery/docs/reference/libraries" track-type="clientLibrariesReference"
+         track-name="nodejs" track-metadata-position="bigquery-stream-data">BigQuery Client Libraries</a>.
+    </p>
+    
+  
+  
+  
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  
+  
+
+
+<!-- Header -->
+
+<div class="github-docwidget-include" style="border: 1px solid #ddd; border-bottom: 0; padding: 4px; background-color: #4285f4; margin-bottom: -10px">
+  
+
+  
+  <div style="text-align: right; float: right;">
+    
+    
+      
+      <a class="button" target="_blank" href="https://github.com/googleapis/nodejs-bigquery/blob/7d7ead644e1b9fe8428462958dbc9625fe6c99c8/samples/tables.js"
+      track-type="github" track-name="gitHubViewButton"
+      track-metadata-link-destination="https://github.com/googleapis/nodejs-bigquery/blob/7d7ead644e1b9fe8428462958dbc9625fe6c99c8/samples/tables.js">View on GitHub</a>
+    
+    
+    
+    
+    
+    
+    
+    <a href="#" class="button google-feedback" data-p="1634365" data-b="bdml"
+       data-context="bigquery-stream-data" track-type="feedback" track-name="sampleFeedback"
+       track-metadata-lang="nodejs" track-metadata-position="bigquery-stream-data">Feedback</a>
+    
+  </div>
+  
+
+  <div style="clear: both;"></div>
+
+</div>
+
+
+<!-- Code -->
+<div class="github-docwidget-gitinclude-code">
+
+  
+  
+
+<pre class="prettyprint lang-js" track-metadata-position="googleapis/nodejs-bigquery/samples/tables.js/7d7ead644e1b9fe8428462958dbc9625fe6c99c8/bigquery_insert_stream">// Imports the Google Cloud client library
+const BigQuery = require(&#39;@google-cloud/bigquery&#39;);
+
+/**
+ * TODO(developer): Uncomment the following lines before running the sample.
+ */
+// const projectId = &quot;your-project-id&quot;;
+// const datasetId = &quot;my_dataset&quot;;
+// const tableId = &quot;my_table&quot;;
+// const rows = [{name: &quot;Tom&quot;, age: 30}, {name: &quot;Jane&quot;, age: 32}];
+
+// Creates a client
+const bigquery = new BigQuery({
+  projectId: projectId,
+});
+
+// Inserts data into a table
+bigquery
+  .dataset(datasetId)
+  .table(tableId)
+  .insert(rows)
+  .then(() =&gt; {
+    console.log(`Inserted ${rows.length} rows`);
+  })
+  .catch(err =&gt; {
+    if (err &amp;&amp; err.name === &#39;PartialFailureError&#39;) {
+      if (err.errors &amp;&amp; err.errors.length &gt; 0) {
+        console.log(&#39;Insert errors:&#39;);
+        err.errors.forEach(err =&gt; console.error(err));
+      }
+    } else {
+      console.error(&#39;ERROR:&#39;, err);
+    }
+  });</pre>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+</section>
+
+
+
+
+
+  
+
+
+
+
+
+
+
+  
+
+
+  
+    
+  
+
+
+  
+
+<section>
+  
+  <h3 id="bigquery-stream-data-php" track-type="sampleTabNav" track-name="php" track-metadata-position="bigquery-stream-data">PHP</h3>
+  
+  
+    
+    <p>
+      For more on installing and creating a BigQuery client, refer to
+      <a href="https://cloud.google.com/bigquery/docs/reference/libraries" track-type="clientLibrariesReference"
+         track-name="php" track-metadata-position="bigquery-stream-data">BigQuery Client Libraries</a>.
+    </p>
+    
+  
+  
+  
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  
+  
+
+
+<!-- Header -->
+
+<div class="github-docwidget-include" style="border: 1px solid #ddd; border-bottom: 0; padding: 4px; background-color: #4285f4; margin-bottom: -10px">
+  
+
+  
+  <div style="text-align: right; float: right;">
+    
+    
+      
+      <a class="button" target="_blank" href="https://github.com/GoogleCloudPlatform/php-docs-samples/blob/894829ba785d48220a49b699beea2ace971ba6a3/bigquery/api/src/functions/stream_row.php"
+      track-type="github" track-name="gitHubViewButton"
+      track-metadata-link-destination="https://github.com/GoogleCloudPlatform/php-docs-samples/blob/894829ba785d48220a49b699beea2ace971ba6a3/bigquery/api/src/functions/stream_row.php">View on GitHub</a>
+    
+    
+    
+    
+    
+    
+    
+    <a href="#" class="button google-feedback" data-p="1634365" data-b="bdml"
+       data-context="bigquery-stream-data" track-type="feedback" track-name="sampleFeedback"
+       track-metadata-lang="php" track-metadata-position="bigquery-stream-data">Feedback</a>
+    
+  </div>
+  
+
+  <div style="clear: both;"></div>
+
+</div>
+
+
+<!-- Code -->
+<div class="github-docwidget-gitinclude-code">
+
+  
+  
+
+<pre class="prettyprint lang-php" track-metadata-position="GoogleCloudPlatform/php-docs-samples/bigquery/api/src/functions/stream_row.php/894829ba785d48220a49b699beea2ace971ba6a3/stream_row">use Google\Cloud\BigQuery\BigQueryClient;
+
+/**
+ * Stream a row of data into your BigQuery table
+ * Example:
+ * ```
+ * $data = [
+ *     &quot;field1&quot; =&gt; &quot;value1&quot;,
+ *     &quot;field2&quot; =&gt; &quot;value2&quot;,
+ * ];
+ * stream_row($projectId, $datasetId, $tableId, $data);
+ * ```.
+ *
+ * @param string $projectId The Google project ID.
+ * @param string $datasetId The BigQuery dataset ID.
+ * @param string $tableId   The BigQuery table ID.
+ * @param string $data      An associative array representing a row of data.
+ * @param string $insertId  An optional unique ID to guarantee data consistency.
+ */
+function stream_row($projectId, $datasetId, $tableId, $data, $insertId = null)
+{
+    // instantiate the bigquery table service
+    $bigQuery = new BigQueryClient([
+        &#39;projectId&#39; =&gt; $projectId,
+    ]);
+    $dataset = $bigQuery-&gt;dataset($datasetId);
+    $table = $dataset-&gt;table($tableId);
+
+    $insertResponse = $table-&gt;insertRows([
+        [&#39;insertId&#39; =&gt; $insertId, &#39;data&#39; =&gt; $data],
+        // additional rows can go here
+    ]);
+    if ($insertResponse-&gt;isSuccessful()) {
+        print(&#39;Data streamed into BigQuery successfully&#39; . PHP_EOL);
+    } else {
+        foreach ($insertResponse-&gt;failedRows() as $row) {
+            foreach ($row[&#39;errors&#39;] as $error) {
+                printf(&#39;%s: %s&#39; . PHP_EOL, $error[&#39;reason&#39;], $error[&#39;message&#39;]);
+            }
+        }
+    }
+}</pre>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+</section>
+
+
+
+
+
+  
+
+
+
+
+
+
+
+  
+
+
+  
+    
+  
+
+
+  
+
+<section>
+  
+  <h3 id="bigquery-stream-data-python" track-type="sampleTabNav" track-name="python" track-metadata-position="bigquery-stream-data">Python</h3>
+  
+  
+    
+    <p>
+      For more on installing and creating a BigQuery client, refer to
+      <a href="https://cloud.google.com/bigquery/docs/reference/libraries" track-type="clientLibrariesReference"
+         track-name="python" track-metadata-position="bigquery-stream-data">BigQuery Client Libraries</a>.
+    </p>
+    
+  
+  
+  
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  
+  
+
+
+<!-- Header -->
+
+<div class="github-docwidget-include" style="border: 1px solid #ddd; border-bottom: 0; padding: 4px; background-color: #4285f4; margin-bottom: -10px">
+  
+
+  
+  <div style="text-align: right; float: right;">
+    
+    
+      
+      <a class="button" target="_blank" href="https://github.com/GoogleCloudPlatform/google-cloud-python/blob/4718cdc8f05197fa8689eee946e9f23feffeb28e/docs/bigquery/snippets.py"
+      track-type="github" track-name="gitHubViewButton"
+      track-metadata-link-destination="https://github.com/GoogleCloudPlatform/google-cloud-python/blob/4718cdc8f05197fa8689eee946e9f23feffeb28e/docs/bigquery/snippets.py">View on GitHub</a>
+    
+    
+    
+    
+    
+    
+    
+    <a href="#" class="button google-feedback" data-p="1634365" data-b="bdml"
+       data-context="bigquery-stream-data" track-type="feedback" track-name="sampleFeedback"
+       track-metadata-lang="python" track-metadata-position="bigquery-stream-data">Feedback</a>
+    
+  </div>
+  
+
+  <div style="clear: both;"></div>
+
+</div>
+
+
+<!-- Code -->
+<div class="github-docwidget-gitinclude-code">
+
+  
+  
+
+<pre class="prettyprint lang-py" track-metadata-position="GoogleCloudPlatform/google-cloud-python/docs/bigquery/snippets.py/4718cdc8f05197fa8689eee946e9f23feffeb28e/table_insert_rows">rows_to_insert = [
+    (u&#39;Phred Phlyntstone&#39;, 32),
+    (u&#39;Wylma Phlyntstone&#39;, 29),
+]
+
+errors = client.insert_rows(table, rows_to_insert)  # API request
+
+assert errors == []</pre>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+</section>
+
+
+
+
+
+  
+
+
+
+
+
+
+
+  
+
+
+  
+    
+  
+
+
+  
+
+<section>
+  
+  <h3 id="bigquery-stream-data-ruby" track-type="sampleTabNav" track-name="ruby" track-metadata-position="bigquery-stream-data">Ruby</h3>
+  
+  
+    
+    <p>
+      For more on installing and creating a BigQuery client, refer to
+      <a href="https://cloud.google.com/bigquery/docs/reference/libraries" track-type="clientLibrariesReference"
+         track-name="ruby" track-metadata-position="bigquery-stream-data">BigQuery Client Libraries</a>.
+    </p>
+    
+  
+  
+  
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  
+  
+
+
+<!-- Header -->
+
+<div class="github-docwidget-include" style="border: 1px solid #ddd; border-bottom: 0; padding: 4px; background-color: #4285f4; margin-bottom: -10px">
+  
+
+  
+  <div style="text-align: right; float: right;">
+    
+    
+      
+      <a class="button" target="_blank" href="https://github.com/GoogleCloudPlatform/ruby-docs-samples/blob/3ce09228b6ed89f1ebe79f51c0d950ec48e675ee/bigquery/tables.rb"
+      track-type="github" track-name="gitHubViewButton"
+      track-metadata-link-destination="https://github.com/GoogleCloudPlatform/ruby-docs-samples/blob/3ce09228b6ed89f1ebe79f51c0d950ec48e675ee/bigquery/tables.rb">View on GitHub</a>
+    
+    
+    
+    
+    
+    
+    
+    <a href="#" class="button google-feedback" data-p="1634365" data-b="bdml"
+       data-context="bigquery-stream-data" track-type="feedback" track-name="sampleFeedback"
+       track-metadata-lang="ruby" track-metadata-position="bigquery-stream-data">Feedback</a>
+    
+  </div>
+  
+
+  <div style="clear: both;"></div>
+
+</div>
+
+
+<!-- Code -->
+<div class="github-docwidget-gitinclude-code">
+
+  
+  
+
+<pre class="prettyprint lang-rb" track-metadata-position="GoogleCloudPlatform/ruby-docs-samples/bigquery/tables.rb/3ce09228b6ed89f1ebe79f51c0d950ec48e675ee/import_table_data"># project_id = &quot;Your Google Cloud project ID&quot;
+# dataset_id = &quot;ID of the dataset containing table&quot;
+# table_id   = &quot;ID of the table to import data into&quot;
+# row_data   = [{ column1: value, column2: value }, ...]
+
+require &quot;google/cloud/bigquery&quot;
+
+bigquery = Google::Cloud::Bigquery.new project: project_id
+dataset  = bigquery.dataset dataset_id
+table    = dataset.table table_id
+
+response = table.insert row_data
+
+if response.success?
+  puts &quot;Inserted rows successfully&quot;
+else
+  puts &quot;Failed to insert #{response.error_rows.count} rows&quot;
+end</pre>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+</section>
+
+
+
+
+
+</div></p>
+<p class="backtotop"><a href="#top">Back to top</a></p>
+
+
+  </div>
+  
+    
+
+
+
+  
+
+  
+        
+  
+
+
+
+
+
+
+
+        
+<div class="devsite-content-footer nocontent">
+  
+  
+    <p>Except as otherwise noted, the content of this page is licensed under the <a href="http://creativecommons.org/licenses/by/3.0/">Creative Commons Attribution 3.0 License</a>, and code samples are licensed under the <a href="http://www.apache.org/licenses/LICENSE-2.0">Apache 2.0 License</a>. For details, see our <a href="https://developers.google.com/terms/site-policies">Site Policies</a>. Java is a registered trademark of Oracle and/or its affiliates.</p>
+  
+
+  
+    
+    <p class="devsite-content-footer-date" itemprop="datePublished"
+       content="2018-04-17T23:37:00.286340">
+      
+      Last updated April 17, 2018.
+    </p>
+  
+
+</div>
+
+        </article>
+      </article>
+  
+
+        </div>
+      
+
+<footer class="devsite-footer-linkboxes nocontent
+               devsite-footer-linkboxes-all-backup
+               devsite-footer-linkboxes-with-sites"><nav class="devsite-full-site-width"><ul class="devsite-footer-linkboxes-list"><li class="devsite-footer-linkbox devsite-footer-linkbox-backup"><h3 class="devsite-footer-linkbox-heading">Products</h3><ul class="devsite-footer-linkbox-list"><li class="devsite-footer-linkbox-item"><a href="https://cloud.google.com/products/compute/" class="gc-analytics-event"
+               data-category="Site-Wide Custom Events"
+               data-label="Footer Compute">
+                Compute
+            </a></li><li class="devsite-footer-linkbox-item"><a href="https://cloud.google.com/products/storage/" class="gc-analytics-event"
+               data-category="Site-Wide Custom Events"
+               data-label="Footer Storage">
+                Storage
+            </a></li><li class="devsite-footer-linkbox-item"><a href="https://cloud.google.com/products/networking/" class="gc-analytics-event"
+               data-category="Site-Wide Custom Events"
+               data-label="Footer Networking">
+                Networking
+            </a></li><li class="devsite-footer-linkbox-item"><a href="https://cloud.google.com/products/big-data/" class="gc-analytics-event"
+               data-category="Site-Wide Custom Events"
+               data-label="Footer Big Data">
+                Big Data
+            </a></li><li class="devsite-footer-linkbox-item"><a href="https://cloud.google.com/products/machine-learning/" class="gc-analytics-event"
+               data-category="Site-Wide Custom Events"
+               data-label="Footer Machine Learning">
+                Machine Learning
+            </a></li><li class="devsite-footer-linkbox-item"><a href="https://cloud.google.com/products/#management" class="gc-analytics-event"
+               data-category="Site-Wide Custom Events"
+               data-label="Footer Management Tools">
+                Management Tools
+            </a></li><li class="devsite-footer-linkbox-item"><a href="https://cloud.google.com/products/tools/" class="gc-analytics-event"
+               data-category="Site-Wide Custom Events"
+               data-label="Footer Developer Tools">
+                Developer Tools
+            </a></li><li class="devsite-footer-linkbox-item"><a href="https://cloud.google.com/products/#identity-security" class="gc-analytics-event"
+               data-category="Site-Wide Custom Events"
+               data-label="Footer Identity and Security">
+                Identity &amp; Security
+            </a></li><li class="devsite-footer-linkbox-item"><a href="//status.cloud.google.com" class="gc-analytics-event"
+               data-category="Site-Wide Custom Events"
+               data-label="Footer System Status">
+                System Status
+            </a></li></ul></li><li class="devsite-footer-linkbox devsite-footer-linkbox-backup"><h3 class="devsite-footer-linkbox-heading">Learn More</h3><ul class="devsite-footer-linkbox-list"><li class="devsite-footer-linkbox-item"><a href="https://cloud.google.com/why-google/" class="gc-analytics-event"
+               data-category="Site-Wide Custom Events"
+               data-label="Footer Why Google">
+                Why Google Cloud
+            </a></li><li class="devsite-footer-linkbox-item"><a href="https://cloud.google.com/pricing/" class="gc-analytics-event"
+               data-category="Site-Wide Custom Events"
+               data-label="Footer Pricing">
+                Pricing
+            </a></li><li class="devsite-footer-linkbox-item"><a href="https://cloud.google.com/docs/" class="gc-analytics-event"
+               data-category="Site-Wide Custom Events"
+               data-label="Footer Documentation">
+                Documentation
+            </a></li><li class="devsite-footer-linkbox-item"><a href="https://cloud.google.com/docs/tutorials/" class="gc-analytics-event"
+               data-category="Site-Wide Custom Events"
+               data-label="Footer Tutorials">
+                Tutorials
+            </a></li><li class="devsite-footer-linkbox-item"><a href="https://cloud.google.com/training/" class="gc-analytics-event"
+               data-category="Site-Wide Custom Events"
+               data-label="Footer Training">
+                Training
+            </a></li><li class="devsite-footer-linkbox-item"><a href="https://cloud.google.com/solutions/" class="gc-analytics-event"
+               data-category="Site-Wide Custom Events"
+               data-label="Footer Solutions">
+                Solutions
+            </a></li><li class="devsite-footer-linkbox-item"><a href="https://cloud.google.com/security/" class="gc-analytics-event"
+               data-category="Site-Wide Custom Events"
+               data-label="Footer Security &amp; Compliance">
+                Security &amp; Compliance
+            </a></li><li class="devsite-footer-linkbox-item"><a href="https://cloud.google.com/partners/" class="gc-analytics-event"
+               data-category="Site-Wide Custom Events"
+               data-label="Footer Partners">
+                Partners
+            </a></li><li class="devsite-footer-linkbox-item"><a href="https://cloud.google.com/customers/" class="gc-analytics-event"
+               data-category="Site-Wide Custom Events"
+               data-label="Footer Customers">
+                Customers
+            </a></li><li class="devsite-footer-linkbox-item"><a href="https://cloud.google.com/support/" class="gc-analytics-event"
+               data-category="Site-Wide Custom Events"
+               data-label="Footer Support">
+                Support
+            </a></li><li class="devsite-footer-linkbox-item"><a href="//careers.google.com/cloud/" class="gc-analytics-event"
+               data-category="Site-Wide Custom Events"
+               data-label="Footer Careers">
+                Careers
+            </a></li><li class="devsite-footer-linkbox-item"><a href="//www.google.com/cloud/press" class="gc-analytics-event"
+               data-category="Site-Wide Custom Events"
+               data-label="Footer Press">
+                Press
+            </a></li></ul></li><li class="devsite-footer-linkbox devsite-footer-linkbox-backup"><h3 class="devsite-footer-linkbox-heading">Engage</h3><ul class="devsite-footer-linkbox-list"><li class="devsite-footer-linkbox-item"><a href="https://cloud.google.com/free-trial/" class="gc-analytics-event"
+               data-category="Site-Wide Custom Events"
+               data-label="Footer Free Trial Sign Up">
+                Free Trial Sign Up
+            </a></li><li class="devsite-footer-linkbox-item"><a href="//cloudplatform.googleblog.com" class="gc-analytics-event"
+               data-category="Site-Wide Custom Events"
+               data-label="Footer Blog">
+                Blog
+            </a></li><li class="devsite-footer-linkbox-item"><a href="https://cloud.google.com/community/" class="gc-analytics-event"
+               data-category="Site-Wide Custom Events"
+               data-label="Footer Community">
+                Community
+            </a></li><li class="devsite-footer-linkbox-item"><a href="//plus.google.com/+googlecloudplatform" class="gc-analytics-event"
+               data-category="Site-Wide Custom Events"
+               data-label="Footer Google+">
+                Google+
+            </a></li><li class="devsite-footer-linkbox-item"><a href="//twitter.com/gcpcloud" class="gc-analytics-event"
+               data-category="Site-Wide Custom Events"
+               data-label="Footer Twitter">
+                Twitter
+            </a></li><li class="devsite-footer-linkbox-item"><a href="//www.linkedin.com/showcase/google-cloud" class="gc-analytics-event"
+               data-category="Site-Wide Custom Events"
+               data-label="Footer LinkedIn">
+                LinkedIn
+            </a></li><li class="devsite-footer-linkbox-item"><a href="//stackoverflow.com/questions/tagged/google-cloud-platform" class="gc-analytics-event"
+               data-category="Site-Wide Custom Events"
+               data-label="Footer Stack Overflow">
+                Stack Overflow
+            </a></li><li class="devsite-footer-linkbox-item"><a href="//www.youtube.com/googlecloudplatform" class="gc-analytics-event"
+               data-category="Site-Wide Custom Events"
+               data-label="Footer YouTube">
+                YouTube
+            </a></li><li class="devsite-footer-linkbox-item"><a href="//www.gcppodcast.com" class="gc-analytics-event"
+               data-category="Site-Wide Custom Events"
+               data-label="Footer Podcast">
+                Podcast
+            </a></li><li class="devsite-footer-linkbox-item"><a href="//cloud.google.com/newsletter/" class="gc-analytics-event"
+               data-category="Site-Wide Custom Events"
+               data-label="Footer Newsletter Signup">
+                Newsletter Signup
+            </a></li><li class="devsite-footer-linkbox-item"><a href="//cloud.google.com/usability" class="gc-analytics-event"
+               data-category="Site-Wide Custom Events"
+               data-label="Footer UX Research">
+                UX Research
+            </a></li></ul></li><li class="devsite-footer-linkbox devsite-footer-linkbox-sites"><a href="https://developers.google.com/"
+           class="gc-analytics-event devsite-footer-linkbox-logo-link"
+           data-category="Site-Wide Custom Events" data-label="Footer Google Developers Link"><img class="devsite-footer-linkbox-logo"
+               src="https://cloud.google.com/_static/d7147bb846/images/redesign-14/lockup-color-knockout.png"
+               alt="Google Developers"></a><ul class="devsite-footer-linkbox-list"><li class="devsite-footer-linkbox-item"><a href="//developer.android.com/index.html" class="gc-analytics-event"
+               data-category="Site-Wide Custom Events"
+               data-label="Footer Android Link">
+                Android
+            </a></li><li class="devsite-footer-linkbox-item"><a href="//developer.chrome.com/home" class="gc-analytics-event"
+               data-category="Site-Wide Custom Events"
+               data-label="Footer Chrome Link">
+                Chrome
+            </a></li><li class="devsite-footer-linkbox-item"><a href="//firebase.google.com" class="gc-analytics-event"
+               data-category="Site-Wide Custom Events"
+               data-label="Footer Firebase Link">
+                Firebase
+            </a></li><li class="devsite-footer-linkbox-item"><a href="//cloud.google.com" class="gc-analytics-event"
+               data-category="Site-Wide Custom Events"
+               data-label="Footer Cloud Link">
+                Google Cloud Platform
+            </a></li><li class="devsite-footer-linkbox-item"><a href="//developers.google.com/products/" class="gc-analytics-event"
+               data-category="Site-Wide Custom Events"
+               data-label="Footer Products Link">
+                All Products
+            </a></li></ul></li></ul></nav></footer><footer class="devsite-utility-footer"><nav class="devsite-utility-footer-nav devsite-nav devsite-full-site-width"><div class="devsite-utility-footer-nav-left"><form class="devsite-utility-footer-language" action="/i18n/setlang/" method="post"><input type="hidden" name="xsrf_token" value="5g87Z90g8lmMg-x0Tv2wP_-RmEuuH9kLkOKHDKaWTRo6MTUyNDQ2MDEyNTQwNzU5MA" /><input type="hidden" name="next" value="/bigquery/streaming-data-into-bigquery"><select class="devsite-utility-footer-language-select kd-select" name="language"
+                track-type="languageSelector" track-name="click"><option value="de"
+                
+                track-type="languageSelector" track-name="changed"
+                track-metadata-original-language="en"
+                track-metadata-selected-language="de">
+            Deutsch
+          </option><option value="en"
+                 selected="selected" 
+                track-type="languageSelector" track-name="changed"
+                track-metadata-original-language="en"
+                track-metadata-selected-language="en">
+            English
+          </option><option value="es"
+                
+                track-type="languageSelector" track-name="changed"
+                track-metadata-original-language="en"
+                track-metadata-selected-language="es">
+            español
+          </option><option value="pt-br"
+                
+                track-type="languageSelector" track-name="changed"
+                track-metadata-original-language="en"
+                track-metadata-selected-language="pt-br">
+            Português Brasileiro
+          </option><option value="ja"
+                
+                track-type="languageSelector" track-name="changed"
+                track-metadata-original-language="en"
+                track-metadata-selected-language="ja">
+            日本語
+          </option><option value="zh-tw"
+                
+                track-type="languageSelector" track-name="changed"
+                track-metadata-original-language="en"
+                track-metadata-selected-language="zh-tw">
+            繁體中文
+          </option></select></form><span class="devsite-utility-footer-links"><a class="devsite-utility-footer-link gc-analytics-event"
+           href="https://cloud.google.com/terms/"
+           data-category="Site-Wide Custom Events"
+           data-label="Footer terms link"
+           data-footer-link-id="terms"
+           >Terms
+         </a><a class="devsite-utility-footer-link gc-analytics-event"
+           href="//www.google.com/policies/privacy/"
+           data-category="Site-Wide Custom Events"
+           data-label="Footer privacy link"
+           data-footer-link-id="privacy"
+           >Privacy
+         </a><a class="devsite-utility-footer-link gc-analytics-event"
+           href="//www.google.de/contact/impressum.html"
+           data-category="Site-Wide Custom Events"
+           data-label="Footer impressum link"
+           data-footer-link-id="impressum"
+           >Impressum
+         </a></span></div></nav></footer><div class="devsite-feedback-dialog devsite-dialog"><div class="devsite-dialog-contents"><h3>Send feedback about...</h3><div class="devsite-feedback-item"><a data-type="documentation" class="gc-analytics-event"
+           data-category="Site-Wide Custom Events" data-label="Docs Feedback Image"
+           track-type="feedback" track-name="feedbackDocIcon" track-metadata-position="header"><div class="devsite-feedback-item-icon-container"><div class="devsite-feedback-item-icon-white devsite-feedback-item-icon-docs
+                        material-icons"></div></div></a><div class="devsite-feedback-item-name">
+          
+          This page
+        </div><div class="devsite-feedback-item-description"><a data-type="documentation" tabindex="0" class="gc-analytics-event"
+             data-category="Site-Wide Custom Events" data-label="Docs Feedback Text"
+             track-type="feedback" track-name="feedbackDocText" track-metadata-position="header">
+            
+            Documentation feedback
+          </a></div></div><div class="devsite-feedback-item"><a data-type="product" tabindex="0" class="gc-analytics-event"
+           data-category="Site-Wide Custom Events" data-label="Product Feedback Image"
+           track-type="feedback" track-name="feedbackProductIcon" track-metadata-position="header"
+         
+           href="https://issuetracker.google.com/issues/new?component=187149&template=0"
+         ><img class="devsite-feedback-item-icon"
+               src="https://cloud.google.com/_static/d7147bb846/images/feedback/google_56px.svg"></a><div class="devsite-feedback-item-name">
+        BigQuery
+        </div><div class="devsite-feedback-item-description"><a data-type="product" tabindex="0" class="gc-analytics-event"
+             data-category="Site-Wide Custom Events" data-label="Product Feedback Text"
+             track-type="feedback" track-name="feedbackProductText" track-metadata-position="header"
+           
+             href="https://issuetracker.google.com/issues/new?component=187149&template=0"
+           >
+            
+            Product feedback
+          </a></div></div></div><div class="devsite-dialog-buttons"><button type="button" class="devsite-feedback-cancel button-white gc-analytics-event"
+              data-category="Site-Wide Custom Events" data-label="Cancel Feedback Button"
+              track-type="feedback" track-name="cancelFeedbackButton"
+              track-metadata-position="header">
+        
+        Cancel
+      </button></div></div><script>
+  $(document).ready(function() {
+    new devsite.feedback.Widget({
+        'product_id': '81912',
+        'bucket': 'docs',
+        'context': '',
+        'version': 'devsite-20180420-r00-rc00.default'
+      },
+      document.querySelectorAll('.devsite-feedback-button'),
+      'en',
+      document.querySelector('.devsite-site-mask'),
+      document.querySelector('.devsite-feedback-dialog'),
+      document.querySelector('.devsite-feedback-cancel'),
+      document.querySelectorAll('.devsite-feedback-item a:not([href])')
+    );
+  });
+  </script></div><script async defer src="//www.gstatic.com/feedback/api.js"></script><script src="https://cloud.google.com/_static2/d7147bb846/jsi18n/"></script><script src="https://cloud.google.com/_static/d7147bb846/js/script_foot_closure.js"></script><script src="https://cloud.google.com/_static/d7147bb846/js/script_foot.js"></script><script>
+        (function($) {
+          
+          devsite.devsite.Init($, {'ENABLE_BLOCKED_VIDEO_PLACEHOLDER': 0, 'SITE_NAME': 'cloud', 'FULL_SITE_SEARCH_ENABLED': 1, 'ENABLE_CLOUDTRACK': 1, 'VTAGS_ENABLED': 1, 'HISTORY_ENABLED': 1, 'VERSION_HASH': 'd7147bb846', 'SCRIPTSAFE_DOMAIN': 'cloud-dot-google-developers.appspot.com', 'ENABLE_BLOCKED_LINK_TOOLTIP': 0, 'ALLOWED_HOSTS': ['.android.com', '.anvato.com', '.apigee.com', '.appspot.com', '.dialogflow.com', '.gonglchuangl.net', '.google.cn', '.google.com', '.googleplex.com', '.nest.com', '.openthread.io', '.openweave.io', '.orbitera.com', '.tensorflow.org'], 'BLOCK_RSS_FEEDS': 0},
+                               '[]','en',
+                               true, '',
+                               {"f62218c009ec029abef196bba5aa34cf": true, "8de7a048f21618359bd37f5ce44be073": false, "098dafe57affddc137df300142652cfd": false, "8e03e230de0bd8a6fe173fdf172e8b3f": true, "cb025a64a50094835616312f4774a53d": true, "51470233c56fc1fde50f00b73c52b216": false, "d169d485cf24243a263783dbe42029b1": true, "039e5d84b87fd75807ffb37b7f1bbf2c": true, "700def1a83e356c06c0925afb05de4b0": false, "6749dcb526ce9bde6993550c7d928d24": true}, '/bigquery/docs/',
+                               'https://cloud.google.com/');
+        })(jQuery);
+
+        
+        devsite.localInit = function() {
+          
+        };
+
+      </script><script>
+      $('.devsite-utility-footer-language-select').each(function() {
+        $(this).change(function(){$('.devsite-utility-footer-language').submit();});
+      });
+      </script></div><span id="devsite-request-elapsed" data-request-elapsed="397.000074387"></span></body></html>

@@ -1,0 +1,2170 @@
+
+
+
+
+
+
+<!DOCTYPE html><html lang="en"
+      class="chekov"><head><script>var a=window.devsite||{};window.devsite=a;a.readyCallbacks=[];window.devsite.readyCallbacks=a.readyCallbacks;a.ready=function(b){a.readyCallbacks.push(b)};window.devsite.ready=a.ready;
+</script><meta charset="utf-8"><meta name="xsrf_token" content="LX_a3GqhNWWlt_QG1tWV9OhTNdZ6c6vhSzIwJyFS6Vg6MTUyNDQ2MDE3ODYwMjgzMA" /><link rel="canonical" href="https://cloud.google.com/solutions/real-time/kubernetes-pubsub-bigquery"><link rel="alternate" href="https://cloud.google.com/solutions/real-time/kubernetes-pubsub-bigquery" hreflang="en"><link rel="alternate" href="https://cloud.google.com/solutions/real-time/kubernetes-pubsub-bigquery?hl=ja" hreflang="ja"><link rel="alternate" href="https://cloud.google.com/solutions/real-time/kubernetes-pubsub-bigquery?hl=de" hreflang="de"><link rel="alternate" href="https://cloud.google.com/solutions/real-time/kubernetes-pubsub-bigquery?hl=pt-br" hreflang="pt-br"><link rel="alternate" href="https://cloud.google.com/solutions/real-time/kubernetes-pubsub-bigquery" hreflang="x-default"><link rel="shortcut icon" href="https://cloud.google.com/_static/d7147bb846/images/cloud/icons/favicons/onecloud/favicon.ico"><link rel="apple-touch-icon" href="https://cloud.google.com/_static/d7147bb846/images/cloud/icons/favicons/onecloud/apple-icon.png"><meta name="viewport" content="width=device-width, initial-scale=1"><link rel="stylesheet"
+      
+      href="//fonts.googleapis.com/css?family=Google+Sans:400|Roboto:400,400italic,500,500italic,700,700italic|Roboto+Mono:400,500,700|Material+Icons"
+      ><link rel="stylesheet"
+        href="https://cloud.google.com/_static/d7147bb846/css/devsite-cloud-white.css"><link rel="stylesheet" href="https://cloud.google.com/_static/d7147bb846/css/cloud/cloud-site.css"><link rel="search"
+        type="application/opensearchdescription+xml"
+        title="Google Cloud"
+        href="https://cloud.google.com/s/opensearch.xml"><script src="https://cloud.google.com/_static/d7147bb846/js/jquery-bundle.js"></script><meta property="og:site_name" content="Google Cloud"><meta property="og:type" content="website"><meta property="og:url" content="https://cloud.google.com/solutions/real-time/kubernetes-pubsub-bigquery"><meta property="og:locale" content="en"><script>
+    var ___gcfg = ___gcfg || {};
+    ___gcfg.lang = 'en';
+  </script><title>Real-Time Data Analysis with Kubernetes, Cloud Pub/Sub, and BigQuery &nbsp;|&nbsp; Solutions
+      &nbsp;|&nbsp; Google Cloud</title><meta property="og:title" content="Real-Time Data Analysis with Kubernetes, Cloud Pub/Sub, and BigQuery &nbsp;|&nbsp; Solutions
+      &nbsp;|&nbsp; Google Cloud"><meta name="description" content="In this tutorial, you&#39;ll perform real-time data analysis of Twitter data using a pipeline built on Google Compute Engine, Kubernetes, Google Cloud Pub/Sub, and BigQuery."><meta property="og:description" content="In this tutorial, you&#39;ll perform real-time data analysis of Twitter data using a pipeline built on Google Compute Engine, Kubernetes, Google Cloud Pub/Sub, and BigQuery."><p></p><link href="https://cloud.google.com/assets/css/tutorial.css" type="text/css" rel="stylesheet"></head><body class="
+               devsite-doc-page
+               
+               
+               
+               
+               devsite-header-no-lower-tabs"
+        data-family="endorsed"
+        id="top_of_page"><div class="devsite-wrapper"><div class="devsite-top-section-wrapper
+            "><header class="devsite-top-section nocontent"><div class="devsite-top-logo-row-wrapper-wrapper"><div class="devsite-top-logo-row-wrapper"><div class="devsite-top-logo-row devsite-full-site-width"><button type="button" class="devsite-expand-section-nav devsite-header-icon-button
+                                       button-flat material-icons gc-analytics-event"
+                  data-category="Site-Wide Custom Events" data-label="Hamburger menu"></button><div class="devsite-product-name-wrapper"><a href="https://cloud.google.com/" class="devsite-site-logo-link gc-analytics-event"
+   data-category="Site-Wide Custom Events" data-label="Site logo"><img src="https://cloud.google.com/_static/d7147bb846/images/cloud/cloud-logo.svg"
+       class="devsite-site-logo" alt="Google Cloud"><span class="devsite-site-name devsite-product-name">Google Cloud</span></a></div><div class="devsite-header-upper-tabs"><nav class="devsite-doc-set-nav devsite-nav devsite-overflow-tabs-scroll-wrapper"><ul class="devsite-doc-set-nav-tab-list devsite-overflow-tabs-scroll"><li class="devsite-doc-set-nav-tab-container devsite-nav-tab
+               "><a href="https://cloud.google.com/why-google-cloud/"
+         class=" devsite-nav-tab
+                devsite-doc-set-nav-tab devsite-doc-set-nav-tab-link gc-analytics-event"
+         
+       
+         data-category="Site-Wide Custom Events"
+       
+         data-label="Tab: Why Google"
+       
+         track-type="globalNav"
+       
+         track-name="whyGoogle"
+       >
+        Why Google
+      </a></li><li class="devsite-doc-set-nav-tab-container devsite-nav-tab
+               "><a href="https://cloud.google.com/products/"
+         class=" devsite-nav-tab
+                devsite-doc-set-nav-tab devsite-doc-set-nav-tab-link gc-analytics-event"
+         
+       
+         data-category="Site-Wide Custom Events"
+       
+         data-label="Tab: Products"
+       
+         track-type="globalNav"
+       
+         track-name="products"
+       >
+        Products
+      </a></li><li class="devsite-doc-set-nav-tab-container devsite-nav-tab
+               "><a href="https://cloud.google.com/solutions/"
+         class="devsite-doc-set-nav-active devsite-nav-tab
+                devsite-doc-set-nav-tab devsite-doc-set-nav-tab-link gc-analytics-event"
+         aria-label="Solutions, selected"
+       
+         data-category="Site-Wide Custom Events"
+       
+         data-label="Tab: Solutions"
+       >
+        Solutions
+      </a></li><li class="devsite-doc-set-nav-tab-container devsite-nav-tab
+               "><a href="https://cloud.google.com/launcher/"
+         class=" devsite-nav-tab
+                devsite-doc-set-nav-tab devsite-doc-set-nav-tab-link gc-analytics-event"
+         
+       
+         data-category="Site-Wide Custom Events"
+       
+         data-label="Tab: Launcher"
+       
+         track-type="globalNav"
+       
+         track-name="launcher"
+       >
+        Launcher
+      </a></li><li class="devsite-doc-set-nav-tab-container devsite-nav-tab
+               "><a href="https://cloud.google.com/pricing/"
+         class=" devsite-nav-tab
+                devsite-doc-set-nav-tab devsite-doc-set-nav-tab-link gc-analytics-event"
+         
+       
+         data-category="Site-Wide Custom Events"
+       
+         data-label="Tab: Pricing"
+       
+         track-type="globalNav"
+       
+         track-name="pricing"
+       >
+        Pricing
+      </a></li><li class="devsite-doc-set-nav-tab-container devsite-nav-tab
+               "><a href="https://cloud.google.com/security/"
+         class=" devsite-nav-tab
+                devsite-doc-set-nav-tab devsite-doc-set-nav-tab-link gc-analytics-event"
+         
+       
+         data-category="Site-Wide Custom Events"
+       
+         data-label="Tab: Security"
+       
+         track-type="globalNav"
+       
+         track-name="security"
+       >
+        Security
+      </a></li><li class="devsite-doc-set-nav-tab-container devsite-nav-tab
+               "><a href="https://cloud.google.com/customers/"
+         class=" devsite-nav-tab
+                devsite-doc-set-nav-tab devsite-doc-set-nav-tab-link gc-analytics-event"
+         
+       
+         data-category="Site-Wide Custom Events"
+       
+         data-label="Tab: Customers"
+       
+         track-type="globalNav"
+       
+         track-name="customers"
+       >
+        Customers
+      </a></li><li class="devsite-doc-set-nav-tab-container devsite-nav-tab
+               "><a href="https://cloud.google.com/docs/"
+         class=" devsite-nav-tab
+                devsite-doc-set-nav-tab devsite-doc-set-nav-tab-link gc-analytics-event"
+         
+       
+         data-category="Site-Wide Custom Events"
+       
+         data-label="Tab: Documentation"
+       
+         track-type="globalNav"
+       
+         track-name="documentation"
+       >
+        Documentation
+      </a></li><li class="devsite-doc-set-nav-tab-container devsite-nav-tab
+               "><a href="https://cloud.google.com/support/"
+         class=" devsite-nav-tab
+                devsite-doc-set-nav-tab devsite-doc-set-nav-tab-link gc-analytics-event"
+         
+       
+         data-category="Site-Wide Custom Events"
+       
+         data-label="Tab: Support"
+       
+         track-type="globalNav"
+       
+         track-name="support"
+       >
+        Support
+      </a></li><li class="devsite-doc-set-nav-tab-container devsite-nav-tab
+               "><a href="https://cloud.google.com/partners/"
+         class=" devsite-nav-tab
+                devsite-doc-set-nav-tab devsite-doc-set-nav-tab-link gc-analytics-event"
+         
+       
+         data-category="Site-Wide Custom Events"
+       
+         data-label="Tab: Partners"
+       
+         track-type="globalNav"
+       
+         track-name="partners"
+       >
+        Partners
+      </a></li></ul></nav></div><form class="devsite-search-form"
+                action="https://cloud.google.com/s/results/"
+                method="GET"
+                id="top-search"
+                search-placeholder='Search'><div id="searchbox" class="devsite-searchbox"><input placeholder='Search'
+         
+         type="text"
+         class="devsite-search-field devsite-search-query"
+         name="q"
+         value=""
+         autocomplete="off"
+         
+         aria-label="Search box"><div class="devsite-search-image material-icons"></div></div><input type="hidden"
+       name="p"
+       id="search_project"
+       value="/solutions/"
+       data-project-name="Solutions"
+       data-project-path="/solutions/"
+       data-query-match=""><input type="hidden" class="suggest-project" value="Solutions" /></form><a class="devsite-header-link devsite-top-button button gc-analytics-event"
+               href="//console.cloud.google.com/"
+               data-category="Site-Wide Custom Events"
+               data-label="Site header link"
+               track-type="navigateTo"
+               track-name="console"
+               track-metadata-position="nav"><div class="devsite-header-link-label">Console</div></a><button type="button" class="devsite-search-button devsite-header-icon-button button-flat
+                                       material-icons"></button><a href="https://www.google.com/accounts/ServiceLogin?passive=true&continue=https%3A%2F%2Fcloud.google.com%2Fsolutions%2Freal-time%2Fkubernetes-pubsub-bigquery%3Frefresh%3D1&service=cloudconsole"
+   class="devsite-user-signin devsite-top-button button gc-analytics-event"
+   data-category="Site-Wide Custom Events" data-label="Sign in button">
+  
+  Sign in
+</a></div></div></div><div class="devsite-collapsible-section"><div class="devsite-header-background devsite-full-site-width"><div class="devsite-product-id-row devsite-full-site-width"><div class="devsite-product-description-row"><ul class="devsite-breadcrumb-list"><li class="devsite-breadcrumb-item">
+    
+    
+    
+      Solutions
+    
+    
+  </li></ul></div><div class="devsite-product-button-row
+            cloud-free-trial-eligible"><button type="button" id="devsite-feedback-project"
+          class="devsite-feedback-button devsite-top-button gc-analytics-event"
+          data-category="Site-Wide Custom Events" data-label="Send Feedback Button"
+          track-type="feedback" track-name="sendFeedbackLink" track-metadata-position="header">
+  
+  Send feedback
+  </button><a
+    
+      href="https://console.cloud.google.com/freetrial"
+    
+    
+      class="cloud-free-trial-button button-primary button"
+    
+    
+      
+      track-type="freeTrial"
+      
+      track-name="try"
+      
+      track-metadata-position="nav"
+      
+    >
+    Try It Free
+  </a><a
+    
+      href="https://cloud.google.com/contact/"
+    
+    
+      class="cloud-contact-sales-button button"
+    
+    
+      
+      track-type="sales"
+      
+      track-name="contact"
+      
+      track-metadata-position="nav"
+      
+    >
+    Contact Sales
+  </a></div></div></div></div></header><script>
+    if (window.jQuery) {
+      $(document).ready(function() {
+        if (window.devsite && window.devsite.search) {
+          
+          window.devsite.search.init('en')
+        }
+      });
+    }
+  </script></div><div id="gc-wrapper"itemscope itemtype="http://schema.org/Article"><input class="google-tag-manager-id" type="hidden" value="GTM-5CVQBG"><script>
+      var dataLayer = [{"freeTrialEligibleUser": "True", "userCountry": "HK", "language": {"requested": "en", "served": "en"}, "projectName": "Solutions", "scriptsafe": null, "signedIn": "False", "internalUser": "False"}];
+    </script>
+
+      
+        <div class="devsite-site-mask"></div>
+        
+  
+
+
+<nav class="devsite-nav-responsive devsite-nav nocontent" tabindex="0">
+  
+  <div class="devsite-nav-responsive-tabs-panel">
+    
+      
+        
+
+
+
+<nav class="devsite-nav-responsive-tabs devsite-nav">
+  <ul class="devsite-nav-list">
+  
+    <li class="devsite-nav-item devsite-nav-item-heading">
+    
+      <a 
+           href="https://cloud.google.com/why-google-cloud/?nav=true"
+         
+         class="devsite-nav-responsive-tab devsite-nav-title gc-analytics-event
+                "
+         data-category="Site-Wide Custom Events" data-label="Responsive Tab: Why Google">
+        Why Google
+      </a>
+      
+      
+    
+    </li>
+  
+    <li class="devsite-nav-item devsite-nav-item-heading">
+    
+      <a 
+           href="https://cloud.google.com/products/?nav=true"
+         
+         class="devsite-nav-responsive-tab devsite-nav-title gc-analytics-event
+                "
+         data-category="Site-Wide Custom Events" data-label="Responsive Tab: Products">
+        Products
+      </a>
+      
+      
+    
+    </li>
+  
+    <li class="devsite-nav-item devsite-nav-item-heading">
+    
+      <span class="devsite-nav-responsive-forward devsite-nav-responsive-tab devsite-nav-title
+                   devsite-nav-active gc-analytics-event"
+            data-category="Site-Wide Custom Events" data-label="Responsive Tab: Solutions"
+            tabindex="0">
+        Solutions
+      </span>
+    
+    </li>
+  
+    <li class="devsite-nav-item devsite-nav-item-heading">
+    
+      <a 
+           href="https://cloud.google.com/launcher/?nav=true"
+         
+         class="devsite-nav-responsive-tab devsite-nav-title gc-analytics-event
+                "
+         data-category="Site-Wide Custom Events" data-label="Responsive Tab: Launcher">
+        Launcher
+      </a>
+      
+      
+    
+    </li>
+  
+    <li class="devsite-nav-item devsite-nav-item-heading">
+    
+      <a 
+           href="https://cloud.google.com/pricing/?nav=true"
+         
+         class="devsite-nav-responsive-tab devsite-nav-title gc-analytics-event
+                "
+         data-category="Site-Wide Custom Events" data-label="Responsive Tab: Pricing">
+        Pricing
+      </a>
+      
+      
+    
+    </li>
+  
+    <li class="devsite-nav-item devsite-nav-item-heading">
+    
+      <a 
+           href="https://cloud.google.com/security/?nav=true"
+         
+         class="devsite-nav-responsive-tab devsite-nav-title gc-analytics-event
+                "
+         data-category="Site-Wide Custom Events" data-label="Responsive Tab: Security">
+        Security
+      </a>
+      
+      
+    
+    </li>
+  
+    <li class="devsite-nav-item devsite-nav-item-heading">
+    
+      <a 
+           href="https://cloud.google.com/customers/?nav=true"
+         
+         class="devsite-nav-responsive-tab devsite-nav-title gc-analytics-event
+                "
+         data-category="Site-Wide Custom Events" data-label="Responsive Tab: Customers">
+        Customers
+      </a>
+      
+      
+    
+    </li>
+  
+    <li class="devsite-nav-item devsite-nav-item-heading">
+    
+      <a 
+           href="https://cloud.google.com/docs/?nav=true"
+         
+         class="devsite-nav-responsive-tab devsite-nav-title gc-analytics-event
+                "
+         data-category="Site-Wide Custom Events" data-label="Responsive Tab: Documentation">
+        Documentation
+      </a>
+      
+      
+    
+    </li>
+  
+    <li class="devsite-nav-item devsite-nav-item-heading">
+    
+      <a 
+           href="https://cloud.google.com/support/?nav=true"
+         
+         class="devsite-nav-responsive-tab devsite-nav-title gc-analytics-event
+                "
+         data-category="Site-Wide Custom Events" data-label="Responsive Tab: Support">
+        Support
+      </a>
+      
+      
+    
+    </li>
+  
+    <li class="devsite-nav-item devsite-nav-item-heading">
+    
+      <a 
+           href="https://cloud.google.com/partners/?nav=true"
+         
+         class="devsite-nav-responsive-tab devsite-nav-title gc-analytics-event
+                "
+         data-category="Site-Wide Custom Events" data-label="Responsive Tab: Partners">
+        Partners
+      </a>
+      
+      
+    
+    </li>
+  
+  
+    <li class="devsite-nav-item devsite-nav-item-heading">
+      <a href="//console.cloud.google.com/"
+         class="devsite-nav-responsive-tab devsite-nav-title gc-analytics-event"
+         data-category="Site-Wide Custom Events"
+         data-label="Responsive Tab: console">
+        Console
+      </a>
+    </li>
+  
+  </ul>
+</nav>
+
+
+      
+    
+  </div>
+  
+  
+  <div class="devsite-nav-responsive-sidebar-panel">
+    
+    <div class="devsite-nav-responsive-back" tabindex="0"></div>
+    
+    <nav class="devsite-nav-responsive-sidebar"></nav>
+  </div>
+  
+  
+    <div class="devsite-nav-responsive-index-panel">
+      <div class="devsite-nav-index-back" tabindex="0"></div>
+      <nav>
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+      </nav>
+    </div>
+  
+</nav>
+
+
+        <div class="devsite-main-content clearfix">
+
+        
+        
+
+        
+  
+  
+    
+    
+      
+  <nav class="devsite-section-nav devsite-nav nocontent">
+    <ul class="devsite-nav-list devsite-nav-expandable"><li class="devsite-nav-item devsite-nav-item-heading"><span class="devsite-nav-title devsite-nav-title-no-path" track-type="leftNav" track-name="expandNavSectionNoLink" track-metadata-position="0">Solutions</span></li><li class="devsite-nav-item"><a href="https://cloud.google.com/solutions" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="0" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">Overview</a></li><li class="devsite-nav-item devsite-nav-item-section-expandable"><span class="devsite-nav-title devsite-nav-title-no-path" track-type="leftNav" track-name="expandNavSectionNoLink"track-metadata-position="0" aria-label="Media, click to expand/collapse" role="link">Media</span><a class="devsite-nav-toggle devsite-nav-toggle-collapsed material-icons" track-type="leftNav" track-name="expandNavSectionArrow" track-metadata-position="0" aria-hidden="true"></a><ul class="devsite-nav-section devsite-nav-section-collapsed"><li class="devsite-nav-item"><a href="https://cloud.google.com/solutions/media/" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="1" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">Overview</a></li><li class="devsite-nav-item"><a href="https://cloud.google.com/docs/tutorials#media" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="1" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">Articles</a></li></ul></li><li class="devsite-nav-item devsite-nav-item-section-expandable"><span class="devsite-nav-title devsite-nav-title-no-path" track-type="leftNav" track-name="expandNavSectionNoLink"track-metadata-position="0" aria-label="Gaming, click to expand/collapse" role="link">Gaming</span><a class="devsite-nav-toggle devsite-nav-toggle-collapsed material-icons" track-type="leftNav" track-name="expandNavSectionArrow" track-metadata-position="0" aria-hidden="true"></a><ul class="devsite-nav-section devsite-nav-section-collapsed"><li class="devsite-nav-item"><a href="https://cloud.google.com/solutions/gaming" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="1" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">Overview</a></li><li class="devsite-nav-item"><a href="https://cloud.google.com/docs/tutorials#gaming" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="1" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">Articles</a></li></ul></li><li class="devsite-nav-item devsite-nav-item-section-expandable"><span class="devsite-nav-title devsite-nav-title-no-path" track-type="leftNav" track-name="expandNavSectionNoLink"track-metadata-position="0" aria-label="Financial Services, click to expand/collapse" role="link">Financial Services</span><a class="devsite-nav-toggle devsite-nav-toggle-collapsed material-icons" track-type="leftNav" track-name="expandNavSectionArrow" track-metadata-position="0" aria-hidden="true"></a><ul class="devsite-nav-section devsite-nav-section-collapsed"><li class="devsite-nav-item"><a href="https://cloud.google.com/solutions/financial-services" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="1" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">Overview</a></li><li class="devsite-nav-item"><a href="https://cloud.google.com/docs/tutorials#financial_services" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="1" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">Articles</a></li></ul></li><li class="devsite-nav-item devsite-nav-item-section-expandable"><span class="devsite-nav-title devsite-nav-title-no-path" track-type="leftNav" track-name="expandNavSectionNoLink"track-metadata-position="0" aria-label="Internet of Things, click to expand/collapse" role="link">Internet of Things</span><a class="devsite-nav-toggle devsite-nav-toggle-collapsed material-icons" track-type="leftNav" track-name="expandNavSectionArrow" track-metadata-position="0" aria-hidden="true"></a><ul class="devsite-nav-section devsite-nav-section-collapsed"><li class="devsite-nav-item"><a href="https://cloud.google.com/solutions/iot" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="1" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">Overview</a></li><li class="devsite-nav-item"><a href="https://cloud.google.com/docs/tutorials#internet_of_things" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="1" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">Articles</a></li></ul></li><li class="devsite-nav-item devsite-nav-item-section-expandable"><span class="devsite-nav-title devsite-nav-title-no-path" track-type="leftNav" track-name="expandNavSectionNoLink"track-metadata-position="0" aria-label="Backup &amp; Archive, click to expand/collapse" role="link">Backup &amp; Archive</span><a class="devsite-nav-toggle devsite-nav-toggle-collapsed material-icons" track-type="leftNav" track-name="expandNavSectionArrow" track-metadata-position="0" aria-hidden="true"></a><ul class="devsite-nav-section devsite-nav-section-collapsed"><li class="devsite-nav-item"><a href="https://cloud.google.com/solutions/" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="1" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">Overview</a></li><li class="devsite-nav-item"><a href="https://cloud.google.com/docs/tutorials#backup%20archive" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="1" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">Articles</a></li></ul></li><li class="devsite-nav-item devsite-nav-item-section-expandable"><span class="devsite-nav-title devsite-nav-title-no-path" track-type="leftNav" track-name="expandNavSectionNoLink"track-metadata-position="0" aria-label="Digital Marketing, click to expand/collapse" role="link">Digital Marketing</span><a class="devsite-nav-toggle devsite-nav-toggle-collapsed material-icons" track-type="leftNav" track-name="expandNavSectionArrow" track-metadata-position="0" aria-hidden="true"></a><ul class="devsite-nav-section devsite-nav-section-collapsed"><li class="devsite-nav-item"><a href="https://cloud.google.com/solutions/" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="1" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">Overview</a></li><li class="devsite-nav-item"><a href="https://cloud.google.com/docs/tutorials#marketing" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="1" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">Articles</a></li></ul></li><li class="devsite-nav-item devsite-nav-item-section-expandable"><span class="devsite-nav-title devsite-nav-title-no-path" track-type="leftNav" track-name="expandNavSectionNoLink"track-metadata-position="0" aria-label="Retail &amp; Commerce, click to expand/collapse" role="link">Retail &amp; Commerce</span><a class="devsite-nav-toggle devsite-nav-toggle-collapsed material-icons" track-type="leftNav" track-name="expandNavSectionArrow" track-metadata-position="0" aria-hidden="true"></a><ul class="devsite-nav-section devsite-nav-section-collapsed"><li class="devsite-nav-item"><a href="https://cloud.google.com/solutions/commerce" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="1" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">Overview</a></li><li class="devsite-nav-item"><a href="https://cloud.google.com/docs/tutorials#retail_and_commerce" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="1" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">Articles</a></li></ul></li><li class="devsite-nav-item devsite-nav-item-section-expandable"><span class="devsite-nav-title devsite-nav-title-no-path" track-type="leftNav" track-name="expandNavSectionNoLink"track-metadata-position="0" aria-label="Websites &amp; Web Apps, click to expand/collapse" role="link">Websites &amp; Web Apps</span><a class="devsite-nav-toggle devsite-nav-toggle-collapsed material-icons" track-type="leftNav" track-name="expandNavSectionArrow" track-metadata-position="0" aria-hidden="true"></a><ul class="devsite-nav-section devsite-nav-section-collapsed"><li class="devsite-nav-item"><a href="https://cloud.google.com/solutions/websites" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="1" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">Overview</a></li><li class="devsite-nav-item"><a href="https://cloud.google.com/docs/tutorials#computing" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="1" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">Articles</a></li></ul></li><li class="devsite-nav-item devsite-nav-item-section-expandable"><span class="devsite-nav-title devsite-nav-title-no-path" track-type="leftNav" track-name="expandNavSectionNoLink"track-metadata-position="0" aria-label="Big Data &amp; Machine Learning, click to expand/collapse" role="link">Big Data &amp; Machine Learning</span><a class="devsite-nav-toggle devsite-nav-toggle-expanded material-icons" track-type="leftNav" track-name="expandNavSectionArrow" track-metadata-position="0"></a><ul class="devsite-nav-section devsite-nav-section-expanded"><li class="devsite-nav-item"><a href="https://cloud.google.com/solutions/big-data" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="1" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">Overview</a></li><li class="devsite-nav-item devsite-nav-active"><a href="https://cloud.google.com/docs/tutorials#big_data%20machine_learning" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="1" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">Articles</a></li></ul></li><li class="devsite-nav-item devsite-nav-item-section-expandable"><span class="devsite-nav-title devsite-nav-title-no-path" track-type="leftNav" track-name="expandNavSectionNoLink"track-metadata-position="0" aria-label="Development &amp; Test, click to expand/collapse" role="link">Development &amp; Test</span><a class="devsite-nav-toggle devsite-nav-toggle-collapsed material-icons" track-type="leftNav" track-name="expandNavSectionArrow" track-metadata-position="0" aria-hidden="true"></a><ul class="devsite-nav-section devsite-nav-section-collapsed"><li class="devsite-nav-item"><a href="https://cloud.google.com/solutions/devtest" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="1" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">Overview</a></li><li class="devsite-nav-item"><a href="https://cloud.google.com/docs/tutorials#development_and_test" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="1" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">Articles</a></li></ul></li><li class="devsite-nav-item devsite-nav-item-section-expandable"><span class="devsite-nav-title devsite-nav-title-no-path" track-type="leftNav" track-name="expandNavSectionNoLink"track-metadata-position="0" aria-label="Mobile Applications, click to expand/collapse" role="link">Mobile Applications</span><a class="devsite-nav-toggle devsite-nav-toggle-collapsed material-icons" track-type="leftNav" track-name="expandNavSectionArrow" track-metadata-position="0" aria-hidden="true"></a><ul class="devsite-nav-section devsite-nav-section-collapsed"><li class="devsite-nav-item"><a href="https://cloud.google.com/solutions/mobile" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="1" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">Overview</a></li><li class="devsite-nav-item"><a href="https://cloud.google.com/docs/tutorials#mobile" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="1" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">Articles</a></li></ul></li><li class="devsite-nav-item devsite-nav-item-section-expandable"><span class="devsite-nav-title devsite-nav-title-no-path" track-type="leftNav" track-name="expandNavSectionNoLink"track-metadata-position="0" aria-label="Life Sciences, click to expand/collapse" role="link">Life Sciences</span><a class="devsite-nav-toggle devsite-nav-toggle-collapsed material-icons" track-type="leftNav" track-name="expandNavSectionArrow" track-metadata-position="0" aria-hidden="true"></a><ul class="devsite-nav-section devsite-nav-section-collapsed"><li class="devsite-nav-item"><a href="https://cloud.google.com/solutions/" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="1" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">Overview</a></li><li class="devsite-nav-item"><a href="https://cloud.google.com/docs/tutorials#lifesciences" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="1" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">Articles</a></li></ul></li><li class="devsite-nav-item devsite-nav-item-section-expandable"><span class="devsite-nav-title devsite-nav-title-no-path" track-type="leftNav" track-name="expandNavSectionNoLink"track-metadata-position="0" aria-label="Hybrid, click to expand/collapse" role="link">Hybrid</span><a class="devsite-nav-toggle devsite-nav-toggle-collapsed material-icons" track-type="leftNav" track-name="expandNavSectionArrow" track-metadata-position="0" aria-hidden="true"></a><ul class="devsite-nav-section devsite-nav-section-collapsed"><li class="devsite-nav-item"><a href="https://cloud.google.com/solutions/" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="1" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">Overview</a></li><li class="devsite-nav-item"><a href="https://cloud.google.com/docs/tutorials#hybridcloud" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="1" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">Articles</a></li></ul></li><li class="devsite-nav-item devsite-nav-item-section-expandable"><span class="devsite-nav-title devsite-nav-title-no-path" track-type="leftNav" track-name="expandNavSectionNoLink"track-metadata-position="0" aria-label="Security, click to expand/collapse" role="link">Security</span><a class="devsite-nav-toggle devsite-nav-toggle-collapsed material-icons" track-type="leftNav" track-name="expandNavSectionArrow" track-metadata-position="0" aria-hidden="true"></a><ul class="devsite-nav-section devsite-nav-section-collapsed"><li class="devsite-nav-item"><a href="https://cloud.google.com/security/" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="1" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">Overview</a></li><li class="devsite-nav-item"><a href="https://cloud.google.com/docs/tutorials#security" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="1" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">Articles</a></li></ul></li><li class="devsite-nav-item"><a href="https://cloud.google.com/docs/tutorials#architecture" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="0" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">Architecture Diagrams</a></li><li class="devsite-nav-item"><a href="https://cloud.google.com/docs/tutorials#partner" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="0" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">Partner Solutions</a></li></ul>
+  </nav>
+
+    
+
+    
+  <nav class="devsite-page-nav devsite-nav"></nav>
+
+
+      <article class="devsite-article">
+        <article class="devsite-article-inner">
+  
+          
+  
+
+
+
+  
+  <nav class="devsite-breadcrumb-nav devsite-nav">
+    
+
+
+<ul class="devsite-breadcrumb-list">
+  
+  <li class="devsite-breadcrumb-item">
+    
+    
+    <a href="https://cloud.google.com/solutions/" class="devsite-breadcrumb-link gc-analytics-event"
+       data-category="Site-Wide Custom Events" data-label="Breadcrumbs"
+       data-value="1">
+    
+    
+      Solutions
+    
+    
+    </a>
+    
+  </li>
+  
+  <li class="devsite-breadcrumb-item">
+    
+    
+    <div class="devsite-breadcrumb-guillemet material-icons"></div>
+    
+    
+    <a href="https://cloud.google.com/solutions/" class="devsite-breadcrumb-link gc-analytics-event"
+       data-category="Site-Wide Custom Events" data-label="Breadcrumbs"
+       data-value="2">
+    
+    
+      Solutions
+    
+    
+    </a>
+    
+  </li>
+  
+</ul>
+
+  </nav>
+  
+  
+  <h1 itemprop="name" class="devsite-page-title">
+    Real-Time Data Analysis with Kubernetes, Cloud Pub/Sub, and BigQuery
+  </h1>
+  
+  
+  <nav class="devsite-page-nav-embedded devsite-nav"></nav>
+  
+  <div class="devsite-article-body clearfix
+            "
+       itemprop="articleBody">
+    
+    <div class="tutorial tutorial-lesson">
+
+    <section id="overview">
+      
+<p>In this tutorial, you'll perform real-time data analysis of Twitter data using a
+pipeline built on Google Compute Engine, Kubernetes, Google Cloud Pub/Sub, and
+BigQuery. This type of analysis has a number of useful applications, including:</p>
+<ul>
+<li>Performing sentiment analysis</li>
+<li>Identifying general patterns and trends in data</li>
+<li>Monitoring the performance and reach of campaigns</li>
+<li>Crafting responses in real time</li>
+</ul>
+<aside class="note"><strong>Note:</strong><span> For an alternative version of this tutorial that uses Redis in place of
+Cloud Pub/Sub, see
+<a href="https://cloud.google.com/solutions/real-time/kubernetes-redis-bigquery">Real-Time Data Analysis with Kubernetes, Redis, and BigQuery</a>.</span></aside>
+<p>The following diagram describes the architecture of the example application.</p>
+<p><img alt="The architecture of the example application" src="https://cloud.google.com/solutions/real-time/images/kubernetes-pubsub-bigquery-architecture.svg" width="540" /></p>
+<p>The example application uses Cloud Pub/Sub to buffer incoming tweets. A
+<a href="http://kubernetes.io/docs/user-guide/deployments/" target="k8s" track-metadata-position="body" track-name="externalLink" track-type="tutorial">replicated pod, defined by using a Deployment</a>
+reads Twitter's public sample stream using the
+<a href="https://dev.twitter.com/streaming/overview" target="k8s" track-metadata-position="body" track-name="externalLink" track-type="tutorial">Twitter streaming API</a>,
+publishing incoming tweets to a Cloud Pub/Sub topic. Two additional replicated
+pods subscribe to the topic. When new tweet data is published to the topic,
+these pods add the data to BigQuery using the
+<a href="https://cloud.google.com/bigquery/streaming-data-into-bigquery">BigQuery API</a>.</p>
+
+    </section>
+
+    
+    
+    
+    <section id="objectives">
+      <h2>Objectives</h2>
+      
+<ul>
+<li>Download the source code.</li>
+<li>Configure and start a Kubernetes cluster.</li>
+<li>Create a Twitter application.</li>
+<li>Create a Cloud Pub/Sub topic.</li>
+<li>Start up the Kubernetes app.</li>
+<li>Use BigQuery to query for Twitter data.</li>
+</ul>
+
+    </section>
+    
+
+    
+    
+    <section id="costs">
+     <h2>Costs</h2>
+     
+<p>This tutorial uses several billable components of Google Cloud
+Platform, including:</p>
+<ul>
+<li>5 Compute Engine <code>n1-standard-1</code> virtual machine instances.</li>
+<li>5 Compute Engine 10GB persistent disks.</li>
+<li>BigQuery.</li>
+</ul>
+<p>The cost of running this tutorial varies depending on run time. Use the
+<a href="https://cloud.google.com/products/calculator" track-metadata-position="overview" track-name="pricingCalculator" track-type="tutorial">pricing calculator</a>
+to generate a cost estimate based on your projected usage.</p>
+
+New Cloud Platform users might be
+eligible for a <a href="https://cloud.google.com/free-trial"
+   track-type='freeTrial' track-name='consoleLink'
+   track-metadata-position='prerequisites'
+   track-metadata-end-goal='signUp'
+   target = '_blank'>free trial</a>.
+
+
+    </section>
+    
+
+    <section id="prerequisites">
+      <h2>Before you begin</h2>
+      
+<ul>
+<li>Use Linux or Mac OS X.</li>
+<li>Install
+<a href="https://docs.docker.com/installation/" target="_blank" track-metadata-link-destination="https://docs.docker.com/installation/#installation" track-metadata-position="prereqs" track-name="externalLink" track-type="tutorial">Docker</a>.</li>
+<li>Install the <a href="https://cloud.google.com/sdk/docs/" target="_blank" track-metadata-position="prereqs" track-name="sdkLink" track-type="tutorial">Google Cloud SDK </a>.</li>
+<li><a href="https://twitter.com/signup" target="_blank" track-metadata-link-destination="https://twitter.com/signup" track-metadata-position="prereqs" track-name="externalLink" track-type="tutorial">Create a Twitter account.</a></li>
+</ul>
+<aside class="note"><strong>Note:</strong><span> If you choose to run this tutorial from a Google Compute Engine instance,
+you can <a href="https://cloud.google.com/container-optimized-os/docs/how-to/create-configure-instance" track-metadata-position="prereqs" track-name="internalLink" track-type="tutorial">use a container VM image</a>.
+A container VM already has Docker and the Google Cloud SDK installed, so you can
+skip those prerequisites. When creating the instance, use the <code>scopes</code> option to
+to give it <code>Read/Write</code> permission for storage.  For example:
+<pre>gcloud compute instances create <span class="apiparam">instance-name</span> \
+--scopes storage-rw,bigquery,compute-rw \
+--image container-vm \
+--zone us-central1-a \
+--machine-type f1-micro</pre>
+If you create a VM from a different image by using the Google Cloud Platform Console, you
+can find the scopes setting by using the <strong>Identity and API access</strong> section,
+then selecting <strong>Set access for each API</strong>, and then setting the scopes you need.
+You must set this value when you create the VM, not afterwards.</span></aside>
+<h3 id="create_and_configure_a_new_project">Create and configure a new project</h3>
+<p>To work through this example, you must have a project with
+the required APIs enabled. In the
+<a href="https://console.cloud.google.com/" target="console" track-metadata-position="body" track-name="consoleLink" track-type="tutorial">Google Cloud Platform Console</a>,
+create a new project, and then <a href="https://console.cloud.google.com/apis/library" target="console" track-metadata-end-goal="enableAPI" track-metadata-position="body" track-name="consoleLink" track-type="tutorial">enable the following APIs</a>:</p>
+<ul>
+<li>Google Compute Engine API</li>
+<li>Google Pub/Sub API</li>
+</ul>
+<p>You will be prompted to enable billing if you have not previously done so.</p>
+<p>This tutorial also uses the following APIs that were enabled by default when
+you created your new project:</p>
+<ul>
+<li>BigQuery</li>
+<li>Google Cloud Storage JSON API</li>
+</ul>
+<h3 id="set_up_the_google_cloud_sdk">Set up the Google Cloud SDK</h3>
+<ol>
+<li>
+<p>Authenticate using your Google account:</p>
+<pre class="prettyprint notranslate" translate="no"><code>gcloud auth login
+</code></pre>
+</li>
+<li>
+<p>Set the default project for the Cloud SDK to the project you selected in the
+previous section of this tutorial. Replace <code>PROJECT_ID</code> with your ID:</p>
+<pre class="prettyprint notranslate" translate="no"><code>gcloud config set project [PROJECT_ID]
+</code></pre>
+</li>
+<li>
+<p>Update the components:</p>
+<pre class="prettyprint notranslate" translate="no"><code>gcloud components update
+</code></pre>
+</li>
+<li>
+<p>Install the <code>kubectl</code> binary:</p>
+<pre class="prettyprint notranslate" translate="no"><code>gcloud components update kubectl
+</code></pre>
+</li>
+<li>
+<p>Add the directory to <code>kubectl</code> to your path:</p>
+<pre class="prettyprint notranslate" translate="no"><code>export PATH=$PATH:/usr/local/share/google/google-cloud-sdk/bin/
+</code></pre>
+</li>
+</ol>
+<h3 id="download_the_sample_code">Download the sample code</h3>
+<p>You can get the sample code either of two ways:</p>
+<ul>
+<li>
+<p><a href="https://github.com/GoogleCloudPlatform/kubernetes-bigquery-python/archive/master.zip" track-metadata-position="body" track-name="downloadLink" track-type="tutorial">Download the zip archive</a>. Unzip the code into a directory named <code>kube-pubsub-bq</code>.</p>
+</li>
+<li>
+<p>Clone the GitHub repository. In a terminal window, run the following command:</p>
+<pre class="prettyprint notranslate" translate="no"><code>git clone https://github.com/GoogleCloudPlatform/kubernetes-bigquery-python.git kube-pubsub-bq
+</code></pre>
+</li>
+</ul>
+<h3 id="download_kubernetes">Download Kubernetes</h3>
+<p><a href="http://github.com/GoogleCloudPlatform/kubernetes" target="_blank" track-metadata-link-destination="http://github.com/GoogleCloudPlatform/kubernetes" track-metadata-position="body" track-name="gitHubLink" track-type="tutorial">Kubernetes</a>
+is an open source orchestration system for Docker containers. It schedules
+containers onto the instances in your Compute Engine cluster, manages workloads
+to ensure that their state matches your declared intentions, and organizes
+containers by
+<a href="http://kubernetes.io/docs/user-guide/labels/" target="_blank" track-metadata-position="body" track-name="gitHubLink" track-type="tutorial">label</a>
+and by
+<a href="http://kubernetes.io/docs/user-guide/pods/" target="_blank" track-metadata-position="body" track-name="gitHubLink" track-type="tutorial">task type</a>
+for easy management and discovery.</p>
+<ol>
+<li>
+<p><a href="https://github.com/GoogleCloudPlatform/kubernetes/releases/latest" target="_blank" track-metadata-link-destination="https://github.com/GoogleCloudPlatform/kubernetes/releases/latest" track-metadata-position="body" track-name="gitHubLink" track-type="tutorial">Download the latest Kubernetes binary release</a>.</p>
+</li>
+<li>
+<p>Unpack the file into the same parent directory from where you installed the
+example code. Note that the tar file will unpack into a directory named
+<code>kubernetes</code>, so you don't need to create a new directory. For example, enter:</p>
+<pre class="prettyprint notranslate" translate="no"><code>tar -zxvf kubernetes.tar.gz
+</code></pre>
+</li>
+</ol>
+<aside class="special"><strong>Important:</strong><span> This tutorial assumes that the example code and Kubernetes are both
+contained in the same parent directory. Any paths in command lines or other
+instructions begin with either <code>kube-pubsub-bq/</code>, for the example code, or
+<code>kubernetes/</code>, for Kubernetes. If you installed these items in other locations,
+you'll need to adjust the paths accordingly.</span></aside>
+
+    </section>
+    
+
+    <div id="tutorial-content">
+    
+  <section class="tutorial-content">
+    
+<h2 id="creating_your_bigquery_table">Creating your BigQuery table</h2>
+<p>Create a BigQuery table to store your tweets. BigQuery groups tables into
+abstraction layers called <em>datasets</em>. Use the <code>bq</code>
+command-line tool, which is included with the Cloud SDK, to create a new
+BigQuery dataset named <code>rtda</code>.</p>
+<ol>
+<li>
+<p>In a terminal window, enter the following
+command:</p>
+<pre class="prettyprint notranslate" translate="no"><code>bq mk rtda
+</code></pre>
+</li>
+<li>
+<p>Now that you have a dataset in place, create a new table named <code>tweets</code> to
+contain the incoming tweets. Each BigQuery table must be defined by a schema. To
+save you time, this example provides a predefined schema, <code>schema.json</code>, that
+you can use to define your table. To create the table by using the predefined
+schema, enter the following command:</p>
+<pre class="prettyprint notranslate" translate="no"><code>bq mk -t rtda.tweets kube-pubsub-bq/bigquery-setup/schema.json
+</code></pre>
+</li>
+<li>
+<p>To verify that your new dataset and table have been created, <a href="https://bigquery.cloud.google.com/" target="_blank" track-metadata-link-destination="https://bigquery.cloud.google.com/" track-metadata-position="createBqTable" track-name="bqConsoleLink" track-type="tutorial">use the
+BigQuery web UI</a>.
+You should see the dataset name in the left sidebar. If it isn't there, make
+sure you're looking at the correct project. When you click the arrow next to the
+dataset name, you should see your new table. Alternatively, you can view all
+datasets in a project or all tables in a given dataset by running the following
+commands:</p>
+<pre class="prettyprint notranslate" translate="no"><code>bq ls [PROJECT_ID]:
+</code></pre>
+<aside class="note"><strong>Note:</strong><span> Project IDs must be followed by a trailing colon.</span></aside>
+<pre class="prettyprint notranslate" translate="no"><code>bq ls [DATASET_ID]
+</code></pre>
+<p>In this case, the dataset ID is <code>rtda</code>.</p>
+</li>
+<li>
+<p>Finally, edit <code>kube-pubsub-bq/pubsub/bigquery-controller.yaml</code>. Update the
+ <code>value</code> for the following fields to reflect your BigQuery configuration:</p>
+<ul>
+<li><code>PROJECT_ID</code>: Your project ID.</li>
+<li><code>BQ_DATASET</code>: The BigQuery dataset containing your table (<code>rtda</code>).</li>
+<li><code>BQ_TABLE</code>: The BigQuery table you just created (<code>tweets</code>).</li>
+</ul>
+</li>
+</ol>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  
+  
+
+
+<!-- Header -->
+
+<div class="github-docwidget-include" style="border: 1px solid #ddd; border-bottom: 0; padding: 4px; background-color: #4285f4; margin-bottom: -10px">
+  
+  <div class="github-docwidget-header" style="float: left; padding-top: 3px; margin-left: 5px;">
+    <a href="https://github.com/GoogleCloudPlatform/kubernetes-bigquery-python/blob/master/pubsub/bigquery-controller.yaml" target="_blank" style="color: white;">
+      pubsub/bigquery-controller.yaml
+    </a>
+  </div>
+  
+
+  
+  <div style="text-align: right; float: right;">
+    
+    
+      
+      <a class="button" target="_blank" href="https://github.com/GoogleCloudPlatform/kubernetes-bigquery-python/blob/master/pubsub/bigquery-controller.yaml"
+      track-type="github" track-name="gitHubViewButton"
+      track-metadata-link-destination="https://github.com/GoogleCloudPlatform/kubernetes-bigquery-python/blob/master/pubsub/bigquery-controller.yaml">View on GitHub</a>
+    
+    
+    
+    
+    
+  </div>
+  
+
+  <div style="clear: both;"></div>
+
+</div>
+
+
+<!-- Code -->
+<div class="github-docwidget-gitinclude-code">
+
+  
+  
+
+<pre class="prettyprint lang-yaml" track-metadata-position="GoogleCloudPlatform/kubernetes-bigquery-python/pubsub/bigquery-controller.yaml/master/">apiVersion: apps/v1beta1
+kind: Deployment
+metadata:
+  name: bigquery-controller
+  labels:
+    name: bigquery-controller
+spec:
+  replicas: 2
+  template:
+    metadata:
+      labels:
+        name: bigquery-controller
+    spec:
+      containers:
+      - name: bigquery
+        image: gcr.io/google-samples/pubsub-bq-pipe:v5
+        env:
+        - name: PROCESSINGSCRIPT
+          value: pubsub-to-bigquery
+        # Change this to your pubsub topic
+        - name: PUBSUB_TOPIC
+          value: projects/your-project/topics/your-topic
+        # Change this to your project ID.
+        - name: PROJECT_ID
+          value: xxxx
+        # Change the following two settings to your dataset and table.
+        - name: BQ_DATASET
+          value: xxxx
+        - name: BQ_TABLE
+          value: xxxx
+</pre>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<h2 id="configuring_and_starting_a_kubernetes_cluster">Configuring and starting a Kubernetes cluster</h2>
+<p>Kubernetes is portable&mdash;it uses a set of shell scripts for starting up,
+shutting down, and managing configuration&mdash;so no installation is necessary.</p>
+<ol>
+<li>
+<p>Edit <code>kubernetes/cluster/gce/config-common.sh</code>.</p>
+</li>
+<li>
+<p>Add the <code>bigquery</code> and <code>https://www.googleapis.com/auth/pubsub</code>
+ scopes to the file's <code>NODE_SCOPES</code> definition.</p>
+</li>
+</ol>
+<p>This setting allows your
+<a href="http://kubernetes.io/docs/admin/node/#what-is-a-node" target="_blank" track-metadata-link-destination="http://kubernetes.io/docs/admin/node/#what-is-a-node" track-metadata-position="body" track-name="gitHubLink" track-type="tutorial">nodes</a> to
+write to your BigQuery table. Save the configuration and close your file.</p>
+<h3 id="start_up_your_cluster">Start up your cluster</h3>
+<p>Now you are ready to start up your cluster.</p>
+<ol>
+<li>
+<p>Enter the following command:</p>
+<pre class="prettyprint notranslate" translate="no"><code>kubernetes/cluster/kube-up.sh
+</code></pre>
+<p>Starting the cluster can take some time. During the startup process, you
+might be prompted to create a new SSH key for Compute Engine or, if you've
+already done so previously, to enter your SSH key passphrase.</p>
+</li>
+<li>
+<p>After your cluster has started, enter the following commands to see your
+running instances:</p>
+<p><pre class="devsite-click-to-copy" suppresswarnings>kubectl get nodes</pre>
+<pre class="devsite-click-to-copy" suppresswarnings>kubectl cluster-info</pre></p>
+</li>
+</ol>
+<p>You should see one Kubernetes master instance and four Kubernetes nodes.</p>
+<h2 id="creating_a_twitter_application">Creating a Twitter application</h2>
+<p>To receive tweets from Twitter, you need to create a Twitter
+application and add its key/secret and token/secret values to the specification
+for your Twitter-to-PubSub Kubernetes pod. In all, you will copy four values.
+Follow these steps:</p>
+<ol>
+<li><a href="https://apps.twitter.com/" target="_blank" track-metadata-link-destination="https://apps.twitter.com/" track-metadata-position="body" track-name="externalLink" track-type="tutorial">Create a new Twitter application.</a></li>
+<li>In the Twitter <strong>Application Management</strong> page, navigate to the <strong>Keys and
+   Access Tokens</strong> tab.</li>
+<li>Click the <strong>Create my access token</strong> button to create a new access token.</li>
+<li>Edit <code>kube-pubsub-bq/pubsub/twitter-stream.yaml</code>.</li>
+<li>Replace the following values with your consumer
+   key and consumer secret:<ul>
+<li><code>CONSUMERKEY</code></li>
+<li><code>CONSUMERSECRET</code></li>
+</ul>
+</li>
+<li>Replace the following values with your access
+   token and access token secret:<ul>
+<li><code>ACCESSTOKEN</code></li>
+<li><code>ACCESSTOKENSEC</code></li>
+</ul>
+</li>
+</ol>
+<aside class="note"><strong>Note:</strong><span> It's good practice to avoid storing your credentials in a Docker image. As
+a safer alternative, this example application asks you to specify your
+credentials as environment variables in your Kubernetes manifest files. This
+approach allows you to safely provide your credentials to your Kubernetes pods
+when you start them up.</span></aside>
+<p>The example application reads from a random sample of Twitter's public stream by
+default. To filter on a set of keywords instead:</p>
+<ol>
+<li>Edit <code>kube-pubsub-bq/twitter-stream.yaml</code> and change the value
+    of <code>TWSTREAMMODE</code> to <code>filter</code>.</li>
+<li>Edit <code>twitter-to-pubsub.py</code> and replace the keywords defined in
+   the <code>track</code> variable with the keywords you want to filter on.</li>
+<li>Rebuild the container image. For instructions about how to build the
+container image, see the <a href="#build-docker">appendix</a>.</li>
+</ol>
+<h2 id="creating_a_cloud_pubsub_topic">Creating a Cloud Pub/Sub topic</h2>
+<p>Next, create a Cloud Pub/Sub topic to which your Kubernetes pods can publish
+and subscribe.</p>
+<ol>
+<li>
+<p>Visit the
+<a href="https://cloud.google.com/pubsub/docs/reference/rest/v1/projects.topics/create#try-it" target="_blank">Try It!</a>
+section of the
+<a href="https://cloud.google.com/pubsub/docs/reference/rest/v1/projects.topics/create">relevant Cloud Pub/Sub API page</a>.</p>
+</li>
+<li>
+<p>Enable the <strong>Authorize requests using OAuth 2.0</strong> switch and then click
+   <strong>Authorize</strong>.</p>
+</li>
+<li>
+<p>Enter the following path in the <strong>name</strong> field.  Replace <code>[PROJECT_ID]</code> with
+   your project ID:</p>
+<pre class="prettyprint notranslate" translate="no"><code>projects/[PROJECT_ID]/topics/new_tweets
+</code></pre>
+</li>
+<li>
+<p>Click <strong>Execute</strong> to create your new topic. You can verify that the topic has
+   been created by checking response code in the <strong>Response</strong> section. If the
+   response code is <code>200 OK</code>, your topic was created successfully.</p>
+</li>
+<li>
+<p>Edit the following two files:</p>
+<p><pre supresswarnings class="devsite-click-to-copy">kube-pubsub-bq/pubsub/twitter-stream.yaml</pre></p>
+<p><pre supresswarnings class="devsite-click-to-copy">kube-pubsub-bq/pubsub/bigquery-controller.yaml</pre></p>
+</li>
+<li>
+<p>Update the <code>PUBSUB_TOPIC</code> values in the files with your new topic. Look for
+   this line:</p>
+<pre class="prettyprint notranslate" translate="no"><code>value: projects/your-project/topics/your-topic
+</code></pre>
+<p>Replace <code>your-project</code> with your project ID. Replace <code>your-topic</code>
+with <code>new_tweets</code>.</p>
+</li>
+</ol>
+<aside class="note"><strong>Note:</strong><span> Cloud Pub/Sub provides
+<a href="https://cloud.google.com/pubsub/overview#benefits">guaranteed at-least-once message delivery</a>, a
+policy which can occasionally result in multiple deliveries of the same message.
+As such, you might see more than one copy of certain tweets in your
+BigQuery table.</span></aside>
+<h2 id="understanding_the_docker_image_for_your_kubernetes_pods">Understanding the Docker image for your Kubernetes pods</h2>
+<p>This example uses two different Kubernetes pod templates to construct the
+analysis pipeline. The specification files point to a pre-built Docker image;
+you don't need to do anything special to use it. If you'd like to build the
+image yourself, follow the steps in the <a href="#build-docker">appendix</a>.</p>
+<p>The Docker image contains two main scripts that perform the work for this
+solution.</p>
+<p>The code in <code>twitter-to-pubsub.py</code> streams incoming tweets from Twitter to Cloud
+Pub/Sub.</p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  
+  
+
+
+<!-- Header -->
+
+<div class="github-docwidget-include" style="border: 1px solid #ddd; border-bottom: 0; padding: 4px; background-color: #4285f4; margin-bottom: -10px">
+  
+  <div class="github-docwidget-header" style="float: left; padding-top: 3px; margin-left: 5px;">
+    <a href="https://github.com/GoogleCloudPlatform/kubernetes-bigquery-python/blob/master/pubsub/pubsub-pipe-image/twitter-to-pubsub.py" target="_blank" style="color: white;">
+      pubsub/pubsub-pipe-image/twitter-to-pubsub.py
+    </a>
+  </div>
+  
+
+  
+  <div style="text-align: right; float: right;">
+    
+    
+      
+      <a class="button" target="_blank" href="https://github.com/GoogleCloudPlatform/kubernetes-bigquery-python/blob/master/pubsub/pubsub-pipe-image/twitter-to-pubsub.py"
+      track-type="github" track-name="gitHubViewButton"
+      track-metadata-link-destination="https://github.com/GoogleCloudPlatform/kubernetes-bigquery-python/blob/master/pubsub/pubsub-pipe-image/twitter-to-pubsub.py">View on GitHub</a>
+    
+    
+    
+    
+    
+  </div>
+  
+
+  <div style="clear: both;"></div>
+
+</div>
+
+
+<!-- Code -->
+<div class="github-docwidget-gitinclude-code">
+
+  
+  
+
+<pre class="prettyprint lang-py" track-metadata-position="GoogleCloudPlatform/kubernetes-bigquery-python/pubsub/pubsub-pipe-image/twitter-to-pubsub.py/master/">#!/usr/bin/env python
+# Copyright 2015 Google Inc. All Rights Reserved.
+#
+# Licensed under the Apache License, Version 2.0 (the &quot;License&quot;);
+# you may not use this file except in compliance with the License.
+# You may obtain a copy of the License at
+#
+#      http://www.apache.org/licenses/LICENSE-2.0
+#
+# Unless required by applicable law or agreed to in writing, software
+# distributed under the License is distributed on an &quot;AS IS&quot; BASIS,
+# WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+# See the License for the specific language governing permissions and
+# limitations under the License.
+
+&quot;&quot;&quot;This script uses the Twitter Streaming API, via the tweepy library,
+to pull in tweets and publish them to a PubSub topic.
+&quot;&quot;&quot;
+
+import base64
+import datetime
+import os
+from tweepy import OAuthHandler
+from tweepy import Stream
+from tweepy.streaming import StreamListener
+
+import utils
+
+# Get your twitter credentials from the environment variables.
+# These are set in the &#39;twitter-stream.json&#39; manifest file.
+consumer_key = os.environ[&#39;CONSUMERKEY&#39;]
+consumer_secret = os.environ[&#39;CONSUMERSECRET&#39;]
+access_token = os.environ[&#39;ACCESSTOKEN&#39;]
+access_token_secret = os.environ[&#39;ACCESSTOKENSEC&#39;]
+
+PUBSUB_TOPIC = os.environ[&#39;PUBSUB_TOPIC&#39;]
+NUM_RETRIES = 3
+
+
+def publish(client, pubsub_topic, data_lines):
+    &quot;&quot;&quot;Publish to the given pubsub topic.&quot;&quot;&quot;
+    messages = []
+    for line in data_lines:
+        pub = base64.urlsafe_b64encode(line)
+        messages.append({&#39;data&#39;: pub})
+    body = {&#39;messages&#39;: messages}
+    resp = client.projects().topics().publish(
+            topic=pubsub_topic, body=body).execute(num_retries=NUM_RETRIES)
+    return resp
+
+
+class StdOutListener(StreamListener):
+    &quot;&quot;&quot;A listener handles tweets that are received from the stream.
+    This listener dumps the tweets into a PubSub topic
+    &quot;&quot;&quot;
+
+    count = 0
+    twstring = &#39;&#39;
+    tweets = []
+    batch_size = 50
+    total_tweets = 10000000
+    client = utils.create_pubsub_client(utils.get_credentials())
+
+    def write_to_pubsub(self, tw):
+        publish(self.client, PUBSUB_TOPIC, tw)
+
+    def on_data(self, data):
+        &quot;&quot;&quot;What to do when tweet data is received.&quot;&quot;&quot;
+        self.tweets.append(data)
+        if len(self.tweets) &gt;= self.batch_size:
+            self.write_to_pubsub(self.tweets)
+            self.tweets = []
+        self.count += 1
+        # if we&#39;ve grabbed more than total_tweets tweets, exit the script.
+        # If this script is being run in the context of a kubernetes
+        # replicationController, the pod will be restarted fresh when
+        # that happens.
+        if self.count &gt; self.total_tweets:
+            return False
+        if (self.count % 1000) == 0:
+            print &#39;count is: %s at %s&#39; % (self.count, datetime.datetime.now())
+        return True
+
+    def on_error(self, status):
+        print status
+
+
+if __name__ == &#39;__main__&#39;:
+    print &#39;....&#39;
+    listener = StdOutListener()
+    auth = OAuthHandler(consumer_key, consumer_secret)
+    auth.set_access_token(access_token, access_token_secret)
+
+    print &#39;stream mode is: %s&#39; % os.environ[&#39;TWSTREAMMODE&#39;]
+
+    stream = Stream(auth, listener)
+    # set up the streaming depending upon whether our mode is &#39;sample&#39;, which
+    # will sample the twitter public stream. If not &#39;sample&#39;, instead track
+    # the given set of keywords.
+    # This environment var is set in the &#39;twitter-stream.yaml&#39; file.
+    if os.environ[&#39;TWSTREAMMODE&#39;] == &#39;sample&#39;:
+        stream.sample()
+    else:
+        stream.filter(
+                track=[&#39;bigdata&#39;, &#39;kubernetes&#39;, &#39;bigquery&#39;, &#39;docker&#39;, &#39;google&#39;,
+                       &#39;googlecloud&#39;, &#39;golang&#39;, &#39;dataflow&#39;,
+                       &#39;containers&#39;, &#39;appengine&#39;, &#39;gcp&#39;, &#39;compute&#39;,
+                       &#39;scalability&#39;, &#39;gigaom&#39;, &#39;news&#39;, &#39;tech&#39;, &#39;apple&#39;,
+                       &#39;amazon&#39;, &#39;cluster&#39;, &#39;distributed&#39;, &#39;computing&#39;,
+                       &#39;cloud&#39;, &#39;android&#39;, &#39;mobile&#39;, &#39;ios&#39;, &#39;iphone&#39;,
+                       &#39;python&#39;, &#39;recode&#39;, &#39;techcrunch&#39;, &#39;timoreilly&#39;]
+                )
+</pre>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<p>The code in <code>pubsub-to-bigquery.py</code> streams cached data from Cloud Pub/Sub to
+BigQuery.</p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  
+  
+
+
+<!-- Header -->
+
+<div class="github-docwidget-include" style="border: 1px solid #ddd; border-bottom: 0; padding: 4px; background-color: #4285f4; margin-bottom: -10px">
+  
+  <div class="github-docwidget-header" style="float: left; padding-top: 3px; margin-left: 5px;">
+    <a href="https://github.com/GoogleCloudPlatform/kubernetes-bigquery-python/blob/master/pubsub/pubsub-pipe-image/pubsub-to-bigquery.py" target="_blank" style="color: white;">
+      pubsub/pubsub-pipe-image/pubsub-to-bigquery.py
+    </a>
+  </div>
+  
+
+  
+  <div style="text-align: right; float: right;">
+    
+    
+      
+      <a class="button" target="_blank" href="https://github.com/GoogleCloudPlatform/kubernetes-bigquery-python/blob/master/pubsub/pubsub-pipe-image/pubsub-to-bigquery.py"
+      track-type="github" track-name="gitHubViewButton"
+      track-metadata-link-destination="https://github.com/GoogleCloudPlatform/kubernetes-bigquery-python/blob/master/pubsub/pubsub-pipe-image/pubsub-to-bigquery.py">View on GitHub</a>
+    
+    
+    
+    
+    
+  </div>
+  
+
+  <div style="clear: both;"></div>
+
+</div>
+
+
+<!-- Code -->
+<div class="github-docwidget-gitinclude-code">
+
+  
+  
+
+<pre class="prettyprint lang-py" track-metadata-position="GoogleCloudPlatform/kubernetes-bigquery-python/pubsub/pubsub-pipe-image/pubsub-to-bigquery.py/master/">#!/usr/bin/env python
+# Copyright 2015 Google Inc. All Rights Reserved.
+#
+# Licensed under the Apache License, Version 2.0 (the &quot;License&quot;);
+# you may not use this file except in compliance with the License.
+# You may obtain a copy of the License at
+#
+#      http://www.apache.org/licenses/LICENSE-2.0
+#
+# Unless required by applicable law or agreed to in writing, software
+# distributed under the License is distributed on an &quot;AS IS&quot; BASIS,
+# WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+# See the License for the specific language governing permissions and
+# limitations under the License.
+&quot;&quot;&quot;This script grabs tweets from a PubSub topic, and stores them in BiqQuery
+using the BigQuery Streaming API.
+&quot;&quot;&quot;
+
+import base64
+import datetime
+import json
+import os
+import time
+
+import utils
+
+# Get the project ID and pubsub topic from the environment variables set in
+# the &#39;bigquery-controller.yaml&#39; manifest.
+PROJECT_ID = os.environ[&#39;PROJECT_ID&#39;]
+PUBSUB_TOPIC = os.environ[&#39;PUBSUB_TOPIC&#39;]
+NUM_RETRIES = 3
+
+
+def fqrn(resource_type, project, resource):
+    &quot;&quot;&quot;Returns a fully qualified resource name for Cloud Pub/Sub.&quot;&quot;&quot;
+    return &quot;projects/{}/{}/{}&quot;.format(project, resource_type, resource)
+
+
+def create_subscription(client, project_name, sub_name):
+    &quot;&quot;&quot;Creates a new subscription to a given topic.&quot;&quot;&quot;
+    print &quot;using pubsub topic: %s&quot; % PUBSUB_TOPIC
+    name = get_full_subscription_name(project_name, sub_name)
+    body = {&#39;topic&#39;: PUBSUB_TOPIC}
+    subscription = client.projects().subscriptions().create(
+            name=name, body=body).execute(num_retries=NUM_RETRIES)
+    print &#39;Subscription {} was created.&#39;.format(subscription[&#39;name&#39;])
+
+
+def get_full_subscription_name(project, subscription):
+    &quot;&quot;&quot;Returns a fully qualified subscription name.&quot;&quot;&quot;
+    return fqrn(&#39;subscriptions&#39;, project, subscription)
+
+
+def pull_messages(client, project_name, sub_name):
+    &quot;&quot;&quot;Pulls messages from a given subscription.&quot;&quot;&quot;
+    BATCH_SIZE = 50
+    tweets = []
+    subscription = get_full_subscription_name(project_name, sub_name)
+    body = {
+            &#39;returnImmediately&#39;: False,
+            &#39;maxMessages&#39;: BATCH_SIZE
+    }
+    try:
+        resp = client.projects().subscriptions().pull(
+                subscription=subscription, body=body).execute(
+                        num_retries=NUM_RETRIES)
+    except Exception as e:
+        print &quot;Exception: %s&quot; % e
+        time.sleep(0.5)
+        return
+    receivedMessages = resp.get(&#39;receivedMessages&#39;)
+    if receivedMessages is not None:
+        ack_ids = []
+        for receivedMessage in receivedMessages:
+                message = receivedMessage.get(&#39;message&#39;)
+                if message:
+                        tweets.append(
+                            base64.urlsafe_b64decode(str(message.get(&#39;data&#39;))))
+                        ack_ids.append(receivedMessage.get(&#39;ackId&#39;))
+        ack_body = {&#39;ackIds&#39;: ack_ids}
+        client.projects().subscriptions().acknowledge(
+                subscription=subscription, body=ack_body).execute(
+                        num_retries=NUM_RETRIES)
+    return tweets
+
+
+def write_to_bq(pubsub, sub_name, bigquery):
+    &quot;&quot;&quot;Write the data to BigQuery in small chunks.&quot;&quot;&quot;
+    tweets = []
+    CHUNK = 50  # The size of the BigQuery insertion batch.
+    # If no data on the subscription, the time to sleep in seconds
+    # before checking again.
+    WAIT = 2
+    tweet = None
+    mtweet = None
+    count = 0
+    count_max = 50000
+    while count &lt; count_max:
+        while len(tweets) &lt; CHUNK:
+            twmessages = pull_messages(pubsub, PROJECT_ID, sub_name)
+            if twmessages:
+                for res in twmessages:
+                    try:
+                        tweet = json.loads(res)
+                    except Exception, bqe:
+                        print bqe
+                    # First do some massaging of the raw data
+                    mtweet = utils.cleanup(tweet)
+                    # We only want to write tweets to BigQuery; we&#39;ll skip
+                    # &#39;delete&#39; and &#39;limit&#39; information.
+                    if &#39;delete&#39; in mtweet:
+                        continue
+                    if &#39;limit&#39; in mtweet:
+                        continue
+                    tweets.append(mtweet)
+            else:
+                # pause before checking again
+                print &#39;sleeping...&#39;
+                time.sleep(WAIT)
+        response = utils.bq_data_insert(bigquery, PROJECT_ID, os.environ[&#39;BQ_DATASET&#39;],
+                             os.environ[&#39;BQ_TABLE&#39;], tweets)
+        tweets = []
+        count += 1
+        if count % 25 == 0:
+            print (&quot;processing count: %s of %s at %s: %s&quot; %
+                   (count, count_max, datetime.datetime.now(), response))
+
+
+if __name__ == &#39;__main__&#39;:
+    topic_info = PUBSUB_TOPIC.split(&#39;/&#39;)
+    topic_name = topic_info[-1]
+    sub_name = &quot;tweets-%s&quot; % topic_name
+    print &quot;starting write to BigQuery....&quot;
+    credentials = utils.get_credentials()
+    bigquery = utils.create_bigquery_client(credentials)
+    pubsub = utils.create_pubsub_client(credentials)
+    try:
+        # TODO: check if subscription exists first
+        subscription = create_subscription(pubsub, PROJECT_ID, sub_name)
+    except Exception, e:
+        print e
+    write_to_bq(pubsub, sub_name, bigquery)
+    print &#39;exited write loop&#39;
+</pre>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<h2 id="starting_up_your_kubernetes_app">Starting up your Kubernetes app</h2>
+<p>After optionally building and pushing your Docker image, you can begin starting up your
+Kubernetes app.</p>
+<p>In Kubernetes, <a href="http://kubernetes.io/docs/user-guide/pods/"><strong>pods</strong></a>
+{: target='k8s' track-type='tutorial' track-name='externalLink' track-metadata-position='body'} – rather than individual
+application containers – are the smallest deployable units that can be created, scheduled, and
+managed.</p>
+<p>A <a href="http://kubernetes.io/docs/user-guide/replicasets/"><strong>replica set</strong></a>
+{: target='k8s' track-type='tutorial' track-name='externalLink' track-metadata-position='body'}
+ensures that a specified number of pod replicas are running at any one time. If there are too
+many, it will shut down some. If there are too few, it will start more. As opposed to just creating
+singleton pods or even creating pods in bulk, a replica set replaces pods that are deleted or
+terminated for any reason, such as in the case of node failure.</p>
+<p>A <a href="http://kubernetes.io/docs/user-guide/deployments/">Deployment</a>
+{: target='k8s' track-type='tutorial' track-name='externalLink' track-metadata-position='body'}
+provides declarative updates for pods and replica sets. You only need to describe the desired state
+in a Deployment object, and the Deployment controller will change the actual state to the desired
+state at a controlled rate for you.</p>
+<p>You will use Deployments to launch your Kubernetes app.</p>
+<h3 id="start_the_cloud-pubsub-to-bigquery_deployment">Start the Cloud-Pub/Sub-to-BigQuery Deployment</h3>
+<p>Begin by starting the Deployment for the pods that will subscribe to your Cloud Pub/Sub topic and
+stream tweets to your BigQuery table as they become available.</p>
+<p>Before you start the Deployment, you might find it useful to take a closer look at
+<code>kube-pubsub-bq/pubsub/bigquery-controller.yaml</code>.
+This file defines the Deployment, and specifies a replica set with two pod replicas. The
+characteristics of these replicated pods are defined in the file by using a pod template.</p>
+<ol>
+<li>
+<p>Run the following command to start up the replicated pods:</p>
+<pre class="prettyprint notranslate" translate="no"><code>kubectl create -f kube-pubsub-bq/pubsub/bigquery-controller.yaml
+</code></pre>
+</li>
+<li>
+<p>To verify that the pods are running, run the following:</p>
+<pre class="prettyprint notranslate" translate="no"><code>kubectl get pods
+</code></pre>
+<p>It can take about 30 seconds for your new pods to move from
+<code>ContainerCreating</code> to
+<code>Running</code>. In the list, you should see two
+BigQuery-to-Cloud-Pub/Sub pods labeled <code>bigquery-controller</code>.</p>
+</li>
+<li>
+<p>You can run:</p>
+<p>kubectl get deployments</p>
+</li>
+</ol>
+<p>to see the system's defined deployments, and how many replicas each is specified to have.</p>
+<h3 id="start_the_twitter-to-cloud-pubsub_deployment">Start the Twitter-to-Cloud-Pub/Sub Deployment</h3>
+<p>After your Cloud-Pub/Sub-to-BigQuery pipeline pods are up and running,
+start the Deployment for the pod that
+that pulls in tweets and publishes them to your
+Cloud Pub/Sub topic. Like <code>kube-pubsub-bq/pubsub/bigquery-controller.yaml</code>, the
+Twitter-to-Cloud-Pub/Sub specification file,
+<code>kube-pubsub-bq/pubsub/twitter-stream.yaml</code>, defines a Deployment.
+However, this time the Deployment only asks for one replicated pod,
+as Twitter only allows one streaming API connection at a time.</p>
+<ol>
+<li>
+<p>To start up the Deployment:</p>
+<pre class="prettyprint notranslate" translate="no"><code>kubectl create -f kube-pubsub-bq/pubsub/twitter-stream.yaml
+</code></pre>
+</li>
+<li>
+<p>Verify that all of your pods are now running by running the following command.
+Again, it can take about 30 seconds for your new pod to move from
+<code>ContainerCreating</code> to <code>Running</code>.</p>
+<pre class="prettyprint notranslate" translate="no"><code>kubectl get pods
+</code></pre>
+</li>
+</ol>
+<p>In addition to the pods you saw in the previous step, you should see a new pod
+labeled <code>twitter-stream</code>. Congratulations! Your analysis pipeline is now up and
+running.</p>
+<ol>
+<li>
+<p>You can again run:</p>
+<p>kubectl get deployments</p>
+</li>
+</ol>
+<p>to see the system's defined deployments, and how many replicas each is specified to have.  You
+should now see something like this:</p>
+<pre class="prettyprint notranslate" translate="no"><code>  NAME                   DESIRED   CURRENT   UP-TO-DATE   AVAILABLE   AGE
+  bigquery-controller    2         2         2            2           2m
+  twitter-stream         1         1         1            1           2m
+</code></pre>
+<aside class="note"><strong>Note:</strong><span> If you encounter issues, make sure you have completed all of the above
+steps. If you're still having issues, see the
+<a href="http://kubernetes.io/docs/user-guide/application-troubleshooting/" target="kubernetes">Kubernetes <strong>Troubleshooting Applications</strong> page</a>.</span></aside>
+<h2 id="querying_your_bigquery_table">Querying your BigQuery table</h2>
+<p><a href="https://bigquery.cloud.google.com/" target="_blank" track-metadata-link-destination="https://bigquery.cloud.google.com/" track-metadata-position="queryBqTable" track-name="bqConsoleLink" track-type="tutorial">Open the BigQuery web UI</a>
+and click <strong>Compose Query</strong> to begin writing a new query. You can verify that it
+is working by running a simple query, as follows:</p>
+<pre class="prettyprint notranslate" translate="no"><code>SELECT
+  text
+FROM
+  [rtda.tweets]
+LIMIT
+  1000 IGNORE CASE;
+</code></pre>
+<p>Let your pipeline collect tweets for a while – a few hours should do, but the
+longer you let it run, the richer your data set will be. After you have some
+more data in your BigQuery table, you can try running some interesting sample
+queries.</p>
+<p>This example query
+demonstrates how to find the most retweeted tweets in your table, filtering on a
+specific term (in this case, "android"):</p>
+<pre class="prettyprint notranslate" translate="no"><code>SELECT
+  text,
+  MAX(retweeted_status.retweet_count) AS max_retweets,
+  retweeted_status.user.screen_name
+FROM
+  [rtda.tweets]
+WHERE
+  text CONTAINS 'android'
+GROUP BY
+  text,
+  retweeted_status.user.screen_name
+ORDER BY
+  max_retweets DESC
+LIMIT
+  1000 IGNORE CASE;
+</code></pre>
+<p>You might also find it interesting to filter your collected tweets by a set of
+terms. The following query filters by the words "Kubernetes," "BigQuery,"
+"Cloud Pub/Sub," or "Twitter":</p>
+<pre class="prettyprint notranslate" translate="no"><code>SELECT
+  created_at,
+  text,
+  id,
+  retweeted_status.retweet_count,
+  user.screen_name
+FROM
+  [rtda.tweets]
+WHERE
+  text CONTAINS 'kubernetes'
+  OR text CONTAINS 'BigQuery'
+  OR text CONTAINS 'cloud pub/sub'
+  OR text CONTAINS 'twitter'
+ORDER BY
+  created_at DESC
+LIMIT
+  1000 IGNORE CASE;
+</code></pre>
+<p>The following query looks for a correlation between the number of favorites and
+the number of retweets in your set of tweets:</p>
+<pre class="prettyprint notranslate" translate="no"><code>SELECT
+  CORR(retweeted_status.retweet_count, retweeted_status.favorite_count),
+  lang,
+COUNT(*) c
+FROM [rtda.tweets]
+GROUP BY lang
+HAVING c &gt; 2000000
+ORDER BY 1
+</code></pre>
+<p>Going even deeper, you could also investigate whether the speakers of a specific
+language prefer favoriting to retweeting, or vice versa:</p>
+<pre class="prettyprint notranslate" translate="no"><code>SELECT
+  CORR(retweeted_status.retweet_count, retweeted_status.favorite_count),
+  lang,
+COUNT(*) c,
+AVG(retweeted_status.retweet_count) avg_rt,
+AVG(retweeted_status.favorite_count) avg_fv,
+AVG(retweeted_status.retweet_count)/AVG(retweeted_status.favorite_count) ratio_rt_fv
+FROM [rtda.tweets]
+WHERE retweeted_status.retweet_count &gt; 1 AND retweeted_status.favorite_count &gt; 1
+GROUP BY lang
+HAVING c &gt; 1000000
+ORDER BY 1;
+</code></pre>
+
+  </section>
+
+    </div>
+
+    
+    <section id="cleanup">
+      <h2 id="clean-up">Cleaning up</h2>
+      
+      
+<p>Labels make it easy to select the resources you want to stop or delete. For example:</p>
+<pre class="prettyprint notranslate" translate="no"><code>kubectl delete deployment -l "name in (twitter-stream, bigquery-controller)"
+</code></pre>
+<p>If you'd like to shut down your cluster instances altogether, run the following
+command:</p>
+<pre class="prettyprint notranslate" translate="no"><code>kubernetes/cluster/kube-down.sh
+</code></pre>
+<p>This deletes all of the instances in your cluster.</p>
+<h2 id="build-docker">Appendix: Building and pushing the Docker image</h2>
+<p>Your Kubernetes pods require a Docker image that includes the app scripts and
+their supporting libraries. This image is used to start up the Twitter-to-Cloud-
+Pub/Sub and Cloud-Pub/Sub-to-BigQuery pods that are part of your analysis
+pipeline. The Dockerfile located in the
+<code>kube-pubsub-bq/pubsub/pubsub-pipe-image</code> directory specifies this image
+ as follows:</p>
+<p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  
+  
+  
+
+
+<!-- Header -->
+
+<div class="github-docwidget-include" style="border: 1px solid #ddd; border-bottom: 0; padding: 4px; background-color: #4285f4; margin-bottom: -10px">
+  
+  <div class="github-docwidget-header" style="float: left; padding-top: 3px; margin-left: 5px;">
+    <a href="https://github.com/GoogleCloudPlatform/kubernetes-bigquery-python/blob/master/pubsub/pubsub-pipe-image/Dockerfile" target="_blank" style="color: white;">
+      pubsub/pubsub-pipe-image/Dockerfile
+    </a>
+  </div>
+  
+
+  
+  <div style="text-align: right; float: right;">
+    
+    
+      
+      <a class="button" target="_blank" href="https://github.com/GoogleCloudPlatform/kubernetes-bigquery-python/blob/master/pubsub/pubsub-pipe-image/Dockerfile"
+      track-type="github" track-name="gitHubViewButton"
+      track-metadata-link-destination="https://github.com/GoogleCloudPlatform/kubernetes-bigquery-python/blob/master/pubsub/pubsub-pipe-image/Dockerfile">View on GitHub</a>
+    
+    
+    
+    
+    
+  </div>
+  
+
+  <div style="clear: both;"></div>
+
+</div>
+
+
+<!-- Code -->
+<div class="github-docwidget-gitinclude-code">
+
+  
+  
+
+<pre class="prettyprint " track-metadata-position="GoogleCloudPlatform/kubernetes-bigquery-python/pubsub/pubsub-pipe-image/Dockerfile/master/">FROM python:2
+
+RUN pip install --upgrade pip
+RUN pip install tweepy
+RUN pip install --upgrade google-api-python-client
+RUN pip install python-dateutil
+
+ADD twitter-to-pubsub.py /twitter-to-pubsub.py
+ADD pubsub-to-bigquery.py /pubsub-to-bigquery.py
+ADD controller.py /controller.py
+ADD utils.py /utils.py
+
+CMD python controller.py
+</pre>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</p>
+<p>This Dockerfile first instructs the Docker daemon to install some required Python
+libraries to the new image:</p>
+<ul>
+<li><a href="http://www.tweepy.org/" target="_blank" track-metadata-link-destination="http://www.tweepy.org/" track-metadata-position="body" track-name="externalLink" track-type="tutorial"><code>tweepy</code></a>,
+  a Python wrapper for the Twitter API.</li>
+<li>The Google API Python libraries.</li>
+<li><code>python-dateutil</code>, an extension to Python's standard <code>datetime</code> module.</li>
+</ul>
+<p>Then, four scripts in <code>pubsub-pipe-image</code> are added:</p>
+<ul>
+<li><code>controller.py</code>: Provides a common execution point for the other two Python
+  scripts in the pipeline image.</li>
+<li><code>utils.py</code>: Contains some helper functions.</li>
+<li><code>pubsub-to-bigquery.py</code>: Streams cached data from Cloud Pub/Sub to BigQuery.</li>
+<li>
+<p><code>twitter-to-pubsub.py</code>: Streams incoming tweets from Twitter to Cloud Pub/Sub.</p>
+</li>
+<li>
+<p>To build the pipeline image using the associated Dockerfile, run the
+following command. Replace <code>[PROJECT_ID]</code> with your project ID:</p>
+<pre class="prettyprint notranslate" translate="no"><code>sudo docker build -t gcr.io/[PROJECT_ID]/pubsub_pipeline kube-pubsub-bq/pubsub/pubsub-pipe-image
+</code></pre>
+</li>
+<li>
+<p>After you build your image, push it to the Google Container Registry so that
+Kubernetes can access it. Replace <code>[PROJECT_ID]</code> with your project ID:</p>
+<pre class="prettyprint notranslate" translate="no"><code>sudo gcloud docker -- push gcr.io/[PROJECT_ID]/pubsub_pipeline
+</code></pre>
+</li>
+</ul>
+<aside class="note"><strong>Note:</strong><span> For Docker versions earlier than version 1.5, you must change
+hyphens to underscores in your project ID when you run docker commands.</span></aside>
+<h3 id="update_the_kubernetes_specification_files_to_use_your_custom_image">Update the Kubernetes specification files to use your custom image</h3>
+<p>Next, update the <code>image</code> values in the specification files to use your new
+image. You need to update the following two files:</p>
+<pre class="devsite-click-to-copy">kube-pubsub-bq/pubsub/twitter-stream.yaml</pre>
+
+<pre class="devsite-click-to-copy">kube-pubsub-bq/pubsub/bigquery-controller.yaml</pre>
+
+<ol>
+<li>
+<p>Edit each file and look for this line:</p>
+<pre class="prettyprint notranslate" translate="no"><code>gcr.io/google-samples/pubsub-bq-pipe:v3
+</code></pre>
+</li>
+<li>
+<p>Replace <code>google-samples</code> with your project ID. Replace <code>pubsub-bq-pipe:v3</code>
+with <code>pubsub_pipeline</code>.</p>
+</li>
+<li>
+<p>Save and close the files.</p>
+</li>
+</ol>
+
+    </section>
+    
+
+    
+    <section id="whatsnext">
+      <h2 id="whats-next">What's next</h2>
+      
+<ul>
+<li>
+
+Try out other Google Cloud Platform features for yourself. Have a look at our
+<a href="https://cloud.google.com/docs/tutorials"  track-type="tutorial" track-name="textLink" track-metadata-position="nextSteps">tutorials</a>.
+
+</li>
+</ul>
+
+    </section>
+    
+
+    
+  </div>
+  
+  </div>
+  
+    
+
+
+
+  
+
+  
+        
+  
+
+
+
+
+
+
+
+        
+<div class="devsite-content-footer nocontent">
+  
+  
+    <p>Except as otherwise noted, the content of this page is licensed under the <a href="http://creativecommons.org/licenses/by/3.0/">Creative Commons Attribution 3.0 License</a>, and code samples are licensed under the <a href="http://www.apache.org/licenses/LICENSE-2.0">Apache 2.0 License</a>. For details, see our <a href="https://developers.google.com/terms/site-policies">Site Policies</a>. Java is a registered trademark of Oracle and/or its affiliates.</p>
+  
+
+  
+    
+    <p class="devsite-content-footer-date" itemprop="datePublished"
+       content="2018-01-22T20:31:31.177030">
+      
+      Last updated January 22, 2018.
+    </p>
+  
+
+</div>
+
+        </article>
+      </article>
+  
+
+        </div>
+      
+
+<footer class="devsite-footer-linkboxes nocontent
+               devsite-footer-linkboxes-all-backup
+               devsite-footer-linkboxes-with-sites"><nav class="devsite-full-site-width"><ul class="devsite-footer-linkboxes-list"><li class="devsite-footer-linkbox devsite-footer-linkbox-backup"><h3 class="devsite-footer-linkbox-heading">Products</h3><ul class="devsite-footer-linkbox-list"><li class="devsite-footer-linkbox-item"><a href="https://cloud.google.com/products/compute/" class="gc-analytics-event"
+               data-category="Site-Wide Custom Events"
+               data-label="Footer Compute">
+                Compute
+            </a></li><li class="devsite-footer-linkbox-item"><a href="https://cloud.google.com/products/storage/" class="gc-analytics-event"
+               data-category="Site-Wide Custom Events"
+               data-label="Footer Storage">
+                Storage
+            </a></li><li class="devsite-footer-linkbox-item"><a href="https://cloud.google.com/products/networking/" class="gc-analytics-event"
+               data-category="Site-Wide Custom Events"
+               data-label="Footer Networking">
+                Networking
+            </a></li><li class="devsite-footer-linkbox-item"><a href="https://cloud.google.com/products/big-data/" class="gc-analytics-event"
+               data-category="Site-Wide Custom Events"
+               data-label="Footer Big Data">
+                Big Data
+            </a></li><li class="devsite-footer-linkbox-item"><a href="https://cloud.google.com/products/machine-learning/" class="gc-analytics-event"
+               data-category="Site-Wide Custom Events"
+               data-label="Footer Machine Learning">
+                Machine Learning
+            </a></li><li class="devsite-footer-linkbox-item"><a href="https://cloud.google.com/products/#management" class="gc-analytics-event"
+               data-category="Site-Wide Custom Events"
+               data-label="Footer Management Tools">
+                Management Tools
+            </a></li><li class="devsite-footer-linkbox-item"><a href="https://cloud.google.com/products/tools/" class="gc-analytics-event"
+               data-category="Site-Wide Custom Events"
+               data-label="Footer Developer Tools">
+                Developer Tools
+            </a></li><li class="devsite-footer-linkbox-item"><a href="https://cloud.google.com/products/#identity-security" class="gc-analytics-event"
+               data-category="Site-Wide Custom Events"
+               data-label="Footer Identity and Security">
+                Identity &amp; Security
+            </a></li><li class="devsite-footer-linkbox-item"><a href="//status.cloud.google.com" class="gc-analytics-event"
+               data-category="Site-Wide Custom Events"
+               data-label="Footer System Status">
+                System Status
+            </a></li></ul></li><li class="devsite-footer-linkbox devsite-footer-linkbox-backup"><h3 class="devsite-footer-linkbox-heading">Learn More</h3><ul class="devsite-footer-linkbox-list"><li class="devsite-footer-linkbox-item"><a href="https://cloud.google.com/why-google/" class="gc-analytics-event"
+               data-category="Site-Wide Custom Events"
+               data-label="Footer Why Google">
+                Why Google Cloud
+            </a></li><li class="devsite-footer-linkbox-item"><a href="https://cloud.google.com/pricing/" class="gc-analytics-event"
+               data-category="Site-Wide Custom Events"
+               data-label="Footer Pricing">
+                Pricing
+            </a></li><li class="devsite-footer-linkbox-item"><a href="https://cloud.google.com/docs/" class="gc-analytics-event"
+               data-category="Site-Wide Custom Events"
+               data-label="Footer Documentation">
+                Documentation
+            </a></li><li class="devsite-footer-linkbox-item"><a href="https://cloud.google.com/docs/tutorials/" class="gc-analytics-event"
+               data-category="Site-Wide Custom Events"
+               data-label="Footer Tutorials">
+                Tutorials
+            </a></li><li class="devsite-footer-linkbox-item"><a href="https://cloud.google.com/training/" class="gc-analytics-event"
+               data-category="Site-Wide Custom Events"
+               data-label="Footer Training">
+                Training
+            </a></li><li class="devsite-footer-linkbox-item"><a href="https://cloud.google.com/solutions/" class="gc-analytics-event"
+               data-category="Site-Wide Custom Events"
+               data-label="Footer Solutions">
+                Solutions
+            </a></li><li class="devsite-footer-linkbox-item"><a href="https://cloud.google.com/security/" class="gc-analytics-event"
+               data-category="Site-Wide Custom Events"
+               data-label="Footer Security &amp; Compliance">
+                Security &amp; Compliance
+            </a></li><li class="devsite-footer-linkbox-item"><a href="https://cloud.google.com/partners/" class="gc-analytics-event"
+               data-category="Site-Wide Custom Events"
+               data-label="Footer Partners">
+                Partners
+            </a></li><li class="devsite-footer-linkbox-item"><a href="https://cloud.google.com/customers/" class="gc-analytics-event"
+               data-category="Site-Wide Custom Events"
+               data-label="Footer Customers">
+                Customers
+            </a></li><li class="devsite-footer-linkbox-item"><a href="https://cloud.google.com/support/" class="gc-analytics-event"
+               data-category="Site-Wide Custom Events"
+               data-label="Footer Support">
+                Support
+            </a></li><li class="devsite-footer-linkbox-item"><a href="//careers.google.com/cloud/" class="gc-analytics-event"
+               data-category="Site-Wide Custom Events"
+               data-label="Footer Careers">
+                Careers
+            </a></li><li class="devsite-footer-linkbox-item"><a href="//www.google.com/cloud/press" class="gc-analytics-event"
+               data-category="Site-Wide Custom Events"
+               data-label="Footer Press">
+                Press
+            </a></li></ul></li><li class="devsite-footer-linkbox devsite-footer-linkbox-backup"><h3 class="devsite-footer-linkbox-heading">Engage</h3><ul class="devsite-footer-linkbox-list"><li class="devsite-footer-linkbox-item"><a href="https://cloud.google.com/free-trial/" class="gc-analytics-event"
+               data-category="Site-Wide Custom Events"
+               data-label="Footer Free Trial Sign Up">
+                Free Trial Sign Up
+            </a></li><li class="devsite-footer-linkbox-item"><a href="//cloudplatform.googleblog.com" class="gc-analytics-event"
+               data-category="Site-Wide Custom Events"
+               data-label="Footer Blog">
+                Blog
+            </a></li><li class="devsite-footer-linkbox-item"><a href="https://cloud.google.com/community/" class="gc-analytics-event"
+               data-category="Site-Wide Custom Events"
+               data-label="Footer Community">
+                Community
+            </a></li><li class="devsite-footer-linkbox-item"><a href="//plus.google.com/+googlecloudplatform" class="gc-analytics-event"
+               data-category="Site-Wide Custom Events"
+               data-label="Footer Google+">
+                Google+
+            </a></li><li class="devsite-footer-linkbox-item"><a href="//twitter.com/gcpcloud" class="gc-analytics-event"
+               data-category="Site-Wide Custom Events"
+               data-label="Footer Twitter">
+                Twitter
+            </a></li><li class="devsite-footer-linkbox-item"><a href="//www.linkedin.com/showcase/google-cloud" class="gc-analytics-event"
+               data-category="Site-Wide Custom Events"
+               data-label="Footer LinkedIn">
+                LinkedIn
+            </a></li><li class="devsite-footer-linkbox-item"><a href="//stackoverflow.com/questions/tagged/google-cloud-platform" class="gc-analytics-event"
+               data-category="Site-Wide Custom Events"
+               data-label="Footer Stack Overflow">
+                Stack Overflow
+            </a></li><li class="devsite-footer-linkbox-item"><a href="//www.youtube.com/googlecloudplatform" class="gc-analytics-event"
+               data-category="Site-Wide Custom Events"
+               data-label="Footer YouTube">
+                YouTube
+            </a></li><li class="devsite-footer-linkbox-item"><a href="//www.gcppodcast.com" class="gc-analytics-event"
+               data-category="Site-Wide Custom Events"
+               data-label="Footer Podcast">
+                Podcast
+            </a></li><li class="devsite-footer-linkbox-item"><a href="//cloud.google.com/newsletter/" class="gc-analytics-event"
+               data-category="Site-Wide Custom Events"
+               data-label="Footer Newsletter Signup">
+                Newsletter Signup
+            </a></li><li class="devsite-footer-linkbox-item"><a href="//cloud.google.com/usability" class="gc-analytics-event"
+               data-category="Site-Wide Custom Events"
+               data-label="Footer UX Research">
+                UX Research
+            </a></li></ul></li><li class="devsite-footer-linkbox devsite-footer-linkbox-sites"><a href="https://developers.google.com/"
+           class="gc-analytics-event devsite-footer-linkbox-logo-link"
+           data-category="Site-Wide Custom Events" data-label="Footer Google Developers Link"><img class="devsite-footer-linkbox-logo"
+               src="https://cloud.google.com/_static/d7147bb846/images/redesign-14/lockup-color-knockout.png"
+               alt="Google Developers"></a><ul class="devsite-footer-linkbox-list"><li class="devsite-footer-linkbox-item"><a href="//developer.android.com/index.html" class="gc-analytics-event"
+               data-category="Site-Wide Custom Events"
+               data-label="Footer Android Link">
+                Android
+            </a></li><li class="devsite-footer-linkbox-item"><a href="//developer.chrome.com/home" class="gc-analytics-event"
+               data-category="Site-Wide Custom Events"
+               data-label="Footer Chrome Link">
+                Chrome
+            </a></li><li class="devsite-footer-linkbox-item"><a href="//firebase.google.com" class="gc-analytics-event"
+               data-category="Site-Wide Custom Events"
+               data-label="Footer Firebase Link">
+                Firebase
+            </a></li><li class="devsite-footer-linkbox-item"><a href="//cloud.google.com" class="gc-analytics-event"
+               data-category="Site-Wide Custom Events"
+               data-label="Footer Cloud Link">
+                Google Cloud Platform
+            </a></li><li class="devsite-footer-linkbox-item"><a href="//developers.google.com/products/" class="gc-analytics-event"
+               data-category="Site-Wide Custom Events"
+               data-label="Footer Products Link">
+                All Products
+            </a></li></ul></li></ul></nav></footer><footer class="devsite-utility-footer"><nav class="devsite-utility-footer-nav devsite-nav devsite-full-site-width"><div class="devsite-utility-footer-nav-left"><form class="devsite-utility-footer-language" action="/i18n/setlang/" method="post"><input type="hidden" name="xsrf_token" value="LX_a3GqhNWWlt_QG1tWV9OhTNdZ6c6vhSzIwJyFS6Vg6MTUyNDQ2MDE3ODYwMjgzMA" /><input type="hidden" name="next" value="/solutions/real-time/kubernetes-pubsub-bigquery"><select class="devsite-utility-footer-language-select kd-select" name="language"
+                track-type="languageSelector" track-name="click"><option value="de"
+                
+                track-type="languageSelector" track-name="changed"
+                track-metadata-original-language="en"
+                track-metadata-selected-language="de">
+            Deutsch
+          </option><option value="en"
+                 selected="selected" 
+                track-type="languageSelector" track-name="changed"
+                track-metadata-original-language="en"
+                track-metadata-selected-language="en">
+            English
+          </option><option value="es"
+                
+                track-type="languageSelector" track-name="changed"
+                track-metadata-original-language="en"
+                track-metadata-selected-language="es">
+            español
+          </option><option value="pt-br"
+                
+                track-type="languageSelector" track-name="changed"
+                track-metadata-original-language="en"
+                track-metadata-selected-language="pt-br">
+            Português Brasileiro
+          </option><option value="ja"
+                
+                track-type="languageSelector" track-name="changed"
+                track-metadata-original-language="en"
+                track-metadata-selected-language="ja">
+            日本語
+          </option><option value="zh-tw"
+                
+                track-type="languageSelector" track-name="changed"
+                track-metadata-original-language="en"
+                track-metadata-selected-language="zh-tw">
+            繁體中文
+          </option></select></form><span class="devsite-utility-footer-links"><a class="devsite-utility-footer-link gc-analytics-event"
+           href="https://cloud.google.com/terms/"
+           data-category="Site-Wide Custom Events"
+           data-label="Footer terms link"
+           data-footer-link-id="terms"
+           >Terms
+         </a><a class="devsite-utility-footer-link gc-analytics-event"
+           href="//www.google.com/policies/privacy/"
+           data-category="Site-Wide Custom Events"
+           data-label="Footer privacy link"
+           data-footer-link-id="privacy"
+           >Privacy
+         </a><a class="devsite-utility-footer-link gc-analytics-event"
+           href="//www.google.de/contact/impressum.html"
+           data-category="Site-Wide Custom Events"
+           data-label="Footer impressum link"
+           data-footer-link-id="impressum"
+           >Impressum
+         </a></span></div></nav></footer><div class="devsite-feedback-dialog devsite-dialog"><div class="devsite-dialog-contents"><h3>Send feedback about...</h3><div class="devsite-feedback-item"><a data-type="documentation" class="gc-analytics-event"
+           data-category="Site-Wide Custom Events" data-label="Docs Feedback Image"
+           track-type="feedback" track-name="feedbackDocIcon" track-metadata-position="header"><div class="devsite-feedback-item-icon-container"><div class="devsite-feedback-item-icon-white devsite-feedback-item-icon-docs
+                        material-icons"></div></div></a><div class="devsite-feedback-item-name">
+          
+          This page
+        </div><div class="devsite-feedback-item-description"><a data-type="documentation" tabindex="0" class="gc-analytics-event"
+             data-category="Site-Wide Custom Events" data-label="Docs Feedback Text"
+             track-type="feedback" track-name="feedbackDocText" track-metadata-position="header">
+            
+            Documentation feedback
+          </a></div></div><div class="devsite-feedback-item"><a data-type="product" tabindex="0" class="gc-analytics-event"
+           data-category="Site-Wide Custom Events" data-label="Product Feedback Image"
+           track-type="feedback" track-name="feedbackProductIcon" track-metadata-position="header"
+         ><img class="devsite-feedback-item-icon"
+               src="https://cloud.google.com/_static/d7147bb846/images/feedback/google_56px.svg"></a><div class="devsite-feedback-item-name">
+        Solutions
+        </div><div class="devsite-feedback-item-description"><a data-type="product" tabindex="0" class="gc-analytics-event"
+             data-category="Site-Wide Custom Events" data-label="Product Feedback Text"
+             track-type="feedback" track-name="feedbackProductText" track-metadata-position="header"
+           >
+            
+            Product feedback
+          </a></div></div></div><div class="devsite-dialog-buttons"><button type="button" class="devsite-feedback-cancel button-white gc-analytics-event"
+              data-category="Site-Wide Custom Events" data-label="Cancel Feedback Button"
+              track-type="feedback" track-name="cancelFeedbackButton"
+              track-metadata-position="header">
+        
+        Cancel
+      </button></div></div><script>
+  $(document).ready(function() {
+    new devsite.feedback.Widget({
+        'product_id': '410597',
+        'bucket': 'landingpages',
+        'context': '',
+        'version': 'devsite-20180420-r00-rc00.default'
+      },
+      document.querySelectorAll('.devsite-feedback-button'),
+      'en',
+      document.querySelector('.devsite-site-mask'),
+      document.querySelector('.devsite-feedback-dialog'),
+      document.querySelector('.devsite-feedback-cancel'),
+      document.querySelectorAll('.devsite-feedback-item a:not([href])')
+    );
+  });
+  </script></div><script async defer src="//www.gstatic.com/feedback/api.js"></script><script src="https://cloud.google.com/_static2/d7147bb846/jsi18n/"></script><script src="https://cloud.google.com/_static/d7147bb846/js/script_foot_closure.js"></script><script src="https://cloud.google.com/_static/d7147bb846/js/script_foot.js"></script><script>
+        (function($) {
+          
+          devsite.devsite.Init($, {'ENABLE_BLOCKED_VIDEO_PLACEHOLDER': 0, 'SITE_NAME': 'cloud', 'FULL_SITE_SEARCH_ENABLED': 1, 'ENABLE_CLOUDTRACK': 1, 'VTAGS_ENABLED': 1, 'HISTORY_ENABLED': 1, 'VERSION_HASH': 'd7147bb846', 'SCRIPTSAFE_DOMAIN': 'cloud-dot-google-developers.appspot.com', 'ENABLE_BLOCKED_LINK_TOOLTIP': 0, 'ALLOWED_HOSTS': ['.android.com', '.anvato.com', '.apigee.com', '.appspot.com', '.dialogflow.com', '.gonglchuangl.net', '.google.cn', '.google.com', '.googleplex.com', '.nest.com', '.openthread.io', '.openweave.io', '.orbitera.com', '.tensorflow.org'], 'BLOCK_RSS_FEEDS': 0},
+                               '[]','en',
+                               true, '',
+                               {"f62218c009ec029abef196bba5aa34cf": true, "8de7a048f21618359bd37f5ce44be073": false, "098dafe57affddc137df300142652cfd": false, "8e03e230de0bd8a6fe173fdf172e8b3f": true, "cb025a64a50094835616312f4774a53d": true, "51470233c56fc1fde50f00b73c52b216": false, "d169d485cf24243a263783dbe42029b1": true, "039e5d84b87fd75807ffb37b7f1bbf2c": true, "700def1a83e356c06c0925afb05de4b0": false, "6749dcb526ce9bde6993550c7d928d24": true}, '/solutions/',
+                               'https://cloud.google.com/');
+        })(jQuery);
+
+        
+        devsite.localInit = function() {
+          
+        };
+
+      </script><script>
+      $('.devsite-utility-footer-language-select').each(function() {
+        $(this).change(function(){$('.devsite-utility-footer-language').submit();});
+      });
+      </script></div><span id="devsite-request-elapsed" data-request-elapsed="275.670051575"></span></body></html>

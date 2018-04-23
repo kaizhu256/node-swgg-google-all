@@ -1,0 +1,931 @@
+
+
+
+
+
+
+<!DOCTYPE html><html lang="en"
+      class="chekov"><head><script>var a=window.devsite||{};window.devsite=a;a.readyCallbacks=[];window.devsite.readyCallbacks=a.readyCallbacks;a.ready=function(b){a.readyCallbacks.push(b)};window.devsite.ready=a.ready;
+</script><meta charset="utf-8"><meta name="xsrf_token" content="4qX7TCX8rCXNrGN5ps8j9k1umIywktEyyDYBu-6eCIA6MTUyNDQ2MDExNDI4NzUzMA" /><link rel="canonical" href="https://developers.google.com/hangouts/chat/how-tos/bots-develop"><link rel="alternate" href="https://developers.google.com/hangouts/chat/how-tos/bots-develop" hreflang="en"><link rel="alternate" href="https://developers.google.cn/hangouts/chat/how-tos/bots-develop" hreflang="en-cn"><link rel="alternate" href="https://developers.google.com/hangouts/chat/how-tos/bots-develop" hreflang="x-default"><link rel="shortcut icon" href="https://developers.google.com/_static/d7147bb846/images/favicon.png"><link rel="apple-touch-icon" href="https://developers.google.com/_static/d7147bb846/images/touch-icon.png"><meta name="viewport" content="width=device-width, initial-scale=1"><link rel="stylesheet"
+      
+      href="//fonts.googleapis.com/css?family=Google+Sans:400|Roboto:400,400italic,500,500italic,700,700italic|Roboto+Mono:400,500,700|Material+Icons"
+      ><link rel="stylesheet"
+        href="https://developers.google.com/_static/d7147bb846/css/devsite-teal.css"><link rel="search"
+        type="application/opensearchdescription+xml"
+        title="Google Developers"
+        href="https://developers.google.com/s/opensearch.xml"><script src="https://developers.google.com/_static/d7147bb846/js/jquery-bundle.js"></script><meta property="og:site_name" content="Google Developers"><meta property="og:type" content="website"><meta property="og:url" content="https://developers.google.com/hangouts/chat/how-tos/bots-develop"><meta property="og:locale" content="en"><script>
+    var ___gcfg = ___gcfg || {};
+    ___gcfg.lang = 'en';
+  </script><title>Creating new bots &nbsp;|&nbsp; Hangouts Chat API
+      &nbsp;|&nbsp; Google Developers</title><meta property="og:title" content="Creating new bots &nbsp;|&nbsp; Hangouts Chat API
+      &nbsp;|&nbsp; Google Developers"><meta property="og:image"
+          content="https://developers.google.com/_static/d7147bb846/images/share/devsite-teal.png"><meta property="og:image:secure_url"
+          content="https://developers.google.com/_static/d7147bb846/images/share/devsite-teal.png"><meta property="og:image:width" content="1200"><meta property="og:image:height" content="630"></head><body class="
+               devsite-doc-page
+               
+               
+               
+               devsite-header-no-upper-tabs
+               "
+        data-family="endorsed"
+        id="top_of_page"><div class="devsite-wrapper"><div class="devsite-top-section-wrapper
+            "><header class="devsite-top-section nocontent"><div class="devsite-top-logo-row-wrapper-wrapper"><div class="devsite-top-logo-row-wrapper"><div class="devsite-top-logo-row devsite-full-site-width"><button type="button" class="devsite-expand-section-nav devsite-header-icon-button
+                                       button-flat material-icons gc-analytics-event"
+                  data-category="Site-Wide Custom Events" data-label="Hamburger menu"></button><div class="devsite-product-name-wrapper"><a class="devsite-product-name-link gc-analytics-event"
+       href="https://developers.google.com/hangouts/chat/"
+       data-category="Site-Wide Custom Events"
+       data-label="Project logo (header)"><img src="https://www.gstatic.com/images/branding/product/1x/chat_64dp.png" class="devsite-product-logo"
+               alt="Hangouts Chat API"></a><span class="devsite-product-name"><ul class="devsite-breadcrumb-list"><li class="devsite-breadcrumb-item"><a href="https://developers.google.com/hangouts/chat/" class="devsite-breadcrumb-link gc-analytics-event"
+       data-category="Site-Wide Custom Events" data-label="Upper Header"
+       data-value="1">
+    
+    
+      
+        Hangouts Chat API
+      
+    
+    
+    </a></li></ul></span></div><div class="devsite-header-upper-tabs"></div><form class="devsite-search-form"
+                action="https://developers.google.com/s/results/"
+                method="GET"
+                id="top-search"
+                search-placeholder='Search'><div id="searchbox" class="devsite-searchbox"><input placeholder='Search'
+         
+         type="text"
+         class="devsite-search-field devsite-search-query"
+         name="q"
+         value=""
+         autocomplete="off"
+         
+         aria-label="Search box"><div class="devsite-search-image material-icons"></div></div><input type="hidden"
+       name="p"
+       id="search_project"
+       value="/hangouts/chat/"
+       data-project-name="Hangouts Chat API"
+       data-project-path="/hangouts/chat/"
+       data-query-match=""><input type="hidden" class="suggest-project" value="Hangouts Chat API" /><div class="suggest-project-metadata" data-home_url="/hangouts/chat/" data-path="/hangouts/chat/" data-name="Hangouts Chat" ></div></form><a class="devsite-header-link devsite-top-button button gc-analytics-event"
+               href="https://developers.google.com/products/"
+               data-category="Site-Wide Custom Events"
+               data-label="Site header link"
+               track-type="navigateTo"
+               track-name="all products"
+               track-metadata-position="nav"><div class="devsite-header-link-label">All Products</div></a><button type="button" class="devsite-search-button devsite-header-icon-button button-flat
+                                       material-icons"></button><a href="https://www.google.com/accounts/ServiceLogin?passive=true&continue=https%3A%2F%2Fdevelopers.google.com%2Fhangouts%2Fchat%2Fhow-tos%2Fbots-develop%3Frefresh%3D1&service=ahsid"
+   class="devsite-user-signin devsite-top-button button gc-analytics-event"
+   data-category="Site-Wide Custom Events" data-label="Sign in button">
+  
+  Sign in
+</a></div></div></div><div class="devsite-collapsible-section"><div class="devsite-header-background devsite-full-site-width"><div class="devsite-doc-set-nav-row devsite-full-site-width"><nav class="devsite-doc-set-nav devsite-nav devsite-overflow-tabs-scroll-wrapper"><ul class="devsite-doc-set-nav-tab-list devsite-overflow-tabs-scroll"><li class="devsite-doc-set-nav-tab-container devsite-nav-tab
+               "><a href="https://developers.google.com/hangouts/chat/"
+         class=" devsite-nav-tab
+                devsite-doc-set-nav-tab devsite-doc-set-nav-tab-link gc-analytics-event"
+         
+       
+         data-category="Site-Wide Custom Events"
+       
+         data-label="Tab: Home"
+       >
+        Home
+      </a></li><li class="devsite-doc-set-nav-tab-container devsite-nav-tab
+               "><a href="https://developers.google.com/hangouts/chat/concepts/"
+         class="devsite-doc-set-nav-active devsite-nav-tab
+                devsite-doc-set-nav-tab devsite-doc-set-nav-tab-link gc-analytics-event"
+         aria-label="Guides, selected"
+       
+         data-category="Site-Wide Custom Events"
+       
+         data-label="Tab: Guides"
+       >
+        Guides
+      </a></li><li class="devsite-doc-set-nav-tab-container devsite-nav-tab
+               "><a href="https://developers.google.com/hangouts/chat/reference/"
+         class=" devsite-nav-tab
+                devsite-doc-set-nav-tab devsite-doc-set-nav-tab-link gc-analytics-event"
+         
+       
+         data-category="Site-Wide Custom Events"
+       
+         data-label="Tab: Reference"
+       >
+        Reference
+      </a></li><li class="devsite-doc-set-nav-tab-container devsite-nav-tab
+               "><a href="https://developers.google.com/hangouts/chat/samples"
+         class=" devsite-nav-tab
+                devsite-doc-set-nav-tab devsite-doc-set-nav-tab-link gc-analytics-event"
+         
+       
+         data-category="Site-Wide Custom Events"
+       
+         data-label="Tab: Samples"
+       >
+        Samples
+      </a></li><li class="devsite-doc-set-nav-tab-container devsite-nav-tab
+               "><a href="https://developers.google.com/hangouts/chat/support"
+         class=" devsite-nav-tab
+                devsite-doc-set-nav-tab devsite-doc-set-nav-tab-link gc-analytics-event"
+         
+       
+         data-category="Site-Wide Custom Events"
+       
+         data-label="Tab: Support"
+       >
+        Support
+      </a></li><button type="button" id="devsite-feedback-project"
+          class="devsite-feedback-button devsite-top-button gc-analytics-event"
+          data-category="Site-Wide Custom Events" data-label="Send Feedback Button"
+          track-type="feedback" track-name="sendFeedbackLink" track-metadata-position="header">
+  
+  Send feedback
+  </button></ul></nav></div></div></div></header><script>
+    if (window.jQuery) {
+      $(document).ready(function() {
+        if (window.devsite && window.devsite.search) {
+          
+          window.devsite.search.init('en')
+        }
+      });
+    }
+  </script></div><div id="gc-wrapper"itemscope itemtype="http://schema.org/Article"><input class="google-analytics-id-json" type="hidden" value="{&quot;dimensions&quot;: {&quot;dimension6&quot;: &quot;en&quot;, &quot;dimension4&quot;: &quot;Hangouts Chat API&quot;, &quot;dimension5&quot;: &quot;en&quot;, &quot;dimension3&quot;: false, &quot;dimension1&quot;: &quot;Signed out&quot;, &quot;dimension8&quot;: null}, &quot;gaid&quot;: &quot;UA-24532603-1&quot;}"><script>
+      var dataLayer = [{"freeTrialEligibleUser": "False", "userCountry": "HK", "language": {"requested": "en", "served": "en"}, "projectName": "Hangouts Chat API", "scriptsafe": null, "signedIn": "False", "internalUser": "False"}];
+    </script>
+
+      
+        <div class="devsite-site-mask"></div>
+        
+  
+
+
+<nav class="devsite-nav-responsive devsite-nav nocontent" tabindex="0">
+  
+  <div class="devsite-nav-responsive-tabs-panel">
+    
+      
+
+
+
+<nav class="devsite-nav-responsive-tabs devsite-nav">
+  <ul class="devsite-nav-list">
+  
+    <li class="devsite-nav-item devsite-nav-item-heading">
+    
+      <a 
+           href="https://developers.google.com/hangouts/chat/"
+         
+         class="devsite-nav-responsive-tab devsite-nav-title gc-analytics-event
+                "
+         data-category="Site-Wide Custom Events" data-label="Responsive Tab: Home">
+        Home
+      </a>
+      
+      
+    
+    </li>
+  
+    <li class="devsite-nav-item devsite-nav-item-heading">
+    
+      <span class="devsite-nav-responsive-forward devsite-nav-responsive-tab devsite-nav-title
+                   devsite-nav-active gc-analytics-event"
+            data-category="Site-Wide Custom Events" data-label="Responsive Tab: Guides"
+            tabindex="0">
+        Guides
+      </span>
+    
+    </li>
+  
+    <li class="devsite-nav-item devsite-nav-item-heading">
+    
+      <a 
+           href="https://developers.google.com/hangouts/chat/reference/?nav=true"
+         
+         class="devsite-nav-responsive-tab devsite-nav-title gc-analytics-event
+                "
+         data-category="Site-Wide Custom Events" data-label="Responsive Tab: Reference">
+        Reference
+      </a>
+      
+      
+    
+    </li>
+  
+    <li class="devsite-nav-item devsite-nav-item-heading">
+    
+      <a 
+           href="https://developers.google.com/hangouts/chat/samples?nav=true"
+         
+         class="devsite-nav-responsive-tab devsite-nav-title gc-analytics-event
+                "
+         data-category="Site-Wide Custom Events" data-label="Responsive Tab: Samples">
+        Samples
+      </a>
+      
+      
+    
+    </li>
+  
+    <li class="devsite-nav-item devsite-nav-item-heading">
+    
+      <a 
+           href="https://developers.google.com/hangouts/chat/support?nav=true"
+         
+         class="devsite-nav-responsive-tab devsite-nav-title gc-analytics-event
+                "
+         data-category="Site-Wide Custom Events" data-label="Responsive Tab: Support">
+        Support
+      </a>
+      
+      
+    
+    </li>
+  
+  
+    <li class="devsite-nav-item devsite-nav-item-heading">
+      <a href="https://developers.google.com/products/"
+         class="devsite-nav-responsive-tab devsite-nav-title gc-analytics-event"
+         data-category="Site-Wide Custom Events"
+         data-label="Responsive Tab: all_products">
+        All Products
+      </a>
+    </li>
+  
+  </ul>
+</nav>
+
+
+    
+  </div>
+  
+  
+  <div class="devsite-nav-responsive-sidebar-panel">
+    
+    <div class="devsite-nav-responsive-back" tabindex="0"></div>
+    
+    <nav class="devsite-nav-responsive-sidebar"></nav>
+  </div>
+  
+  
+</nav>
+
+
+        <div class="devsite-main-content clearfix">
+
+        
+        
+
+        
+  
+  
+    
+    
+      
+  <nav class="devsite-section-nav devsite-nav nocontent">
+    <ul class="devsite-nav-list"><li class="devsite-nav-item"><a href="https://developers.google.com/hangouts/chat/concepts/" class="devsite-nav-title">Introduction</a></li><li class="devsite-nav-item devsite-nav-item-heading"><span class="devsite-nav-title devsite-nav-title-no-path" aria-label="Concepts, click to expand/collapse" role="link">Concepts</span><li class="devsite-nav-item"><a href="https://developers.google.com/hangouts/chat/concepts/bots" class="devsite-nav-title">Bots</a></li><li class="devsite-nav-item"><a href="https://developers.google.com/hangouts/chat/concepts/cards" class="devsite-nav-title">Cards</a></li><li class="devsite-nav-item"><a href="https://developers.google.com/hangouts/chat/concepts/ux" class="devsite-nav-title">Design guidelines</a></li></li><li class="devsite-nav-item devsite-nav-item-heading"><span class="devsite-nav-title devsite-nav-title-no-path" aria-label="Get Started, click to expand/collapse" role="link">Get Started</span><li class="devsite-nav-item"><a href="https://developers.google.com/hangouts/chat/quickstart/apps-script-bot" class="devsite-nav-title">Google Apps Script bot</a></li><li class="devsite-nav-item"><a href="https://developers.google.com/hangouts/chat/quickstart/gcf-bot" class="devsite-nav-title">Google Cloud Functions bot</a></li><li class="devsite-nav-item"><a href="https://developers.google.com/hangouts/chat/quickstart/incoming-bot-python" class="devsite-nav-title">Incoming webhook with Python</a></li></li><li class="devsite-nav-item devsite-nav-item-heading"><span class="devsite-nav-title devsite-nav-title-no-path" aria-label="How To..., click to expand/collapse" role="link">How To...</span><li class="devsite-nav-item devsite-nav-active"><a href="https://developers.google.com/hangouts/chat/how-tos/bots-develop" class="devsite-nav-title">Create New Bots</a></li><li class="devsite-nav-item"><a href="https://developers.google.com/hangouts/chat/how-tos/webhooks" class="devsite-nav-title">Use Incoming Webhooks</a></li><li class="devsite-nav-item"><a href="https://developers.google.com/hangouts/chat/how-tos/bots-publish" class="devsite-nav-title">Publish Bots</a></li><li class="devsite-nav-item"><a href="https://developers.google.com/hangouts/chat/how-tos/gsm-list" class="devsite-nav-title">List on G Suite Marketplace</a></li><li class="devsite-nav-item"><hr class="devsite-nav-break"></li><li class="devsite-nav-item"><a href="https://developers.google.com/hangouts/chat/how-tos/pub-sub" class="devsite-nav-title">Set Up a Pub/Sub Endpoint</a></li><li class="devsite-nav-item"><a href="https://developers.google.com/hangouts/chat/how-tos/service-accounts" class="devsite-nav-title">Use Service Accounts</a></li><li class="devsite-nav-item"><a href="https://developers.google.com/hangouts/chat/how-tos/auth-3p" class="devsite-nav-title">Authenticate on 3P services</a></li><li class="devsite-nav-item"><a href="https://developers.google.com/hangouts/chat/how-tos/cards-onclick" class="devsite-nav-title">Create Interactive Cards</a></li><li class="devsite-nav-item"><a href="https://developers.google.com/hangouts/chat/how-tos/bots-apps-script" class="devsite-nav-title">Develop Apps Script Bots</a></li><li class="devsite-nav-item"><hr class="devsite-nav-break"></li><li class="devsite-nav-item"><a href="https://developers.google.com/hangouts/chat/how-tos/rest-api" class="devsite-nav-title">Use the REST API</a></li><li class="devsite-nav-item"><a href="https://developers.google.com/hangouts/chat/how-tos/libraries" class="devsite-nav-title">Access the discovery document</a></li><li class="devsite-nav-item"><hr class="devsite-nav-break"></li><li class="devsite-nav-item"><a href="https://developers.google.com/hangouts/chat/how-tos/manage-releases" class="devsite-nav-title">Manage Bot Releases</a></li></li></ul>
+  </nav>
+
+    
+
+    
+  <nav class="devsite-page-nav devsite-nav"></nav>
+
+
+      <article class="devsite-article">
+        <article class="devsite-article-inner">
+  
+          
+  
+
+
+
+  
+  <nav class="devsite-breadcrumb-nav devsite-nav">
+    
+
+
+<ul class="devsite-breadcrumb-list">
+  
+  <li class="devsite-breadcrumb-item">
+    
+    
+    <a href="https://developers.google.com/products/" class="devsite-breadcrumb-link gc-analytics-event"
+       data-category="Site-Wide Custom Events" data-label="Breadcrumbs"
+       data-value="1">
+    
+    
+      Products
+    
+    
+    </a>
+    
+  </li>
+  
+  <li class="devsite-breadcrumb-item">
+    
+    
+    <div class="devsite-breadcrumb-guillemet material-icons"></div>
+    
+    
+    <a href="https://developers.google.com/hangouts/chat/" class="devsite-breadcrumb-link gc-analytics-event"
+       data-category="Site-Wide Custom Events" data-label="Breadcrumbs"
+       data-value="2">
+    
+    
+      Hangouts Chat API
+    
+    
+    </a>
+    
+  </li>
+  
+  <li class="devsite-breadcrumb-item">
+    
+    
+    <div class="devsite-breadcrumb-guillemet material-icons"></div>
+    
+    
+    <a href="https://developers.google.com/hangouts/chat/concepts/" class="devsite-breadcrumb-link gc-analytics-event"
+       data-category="Site-Wide Custom Events" data-label="Breadcrumbs"
+       data-value="3">
+    
+    
+      Guides
+    
+    
+    </a>
+    
+  </li>
+  
+</ul>
+
+  </nav>
+  
+  
+  <h1 itemprop="name" class="devsite-page-title">
+    Creating new bots
+  </h1>
+  
+  
+  <nav class="devsite-page-nav-embedded devsite-nav"></nav>
+  
+  <div class="devsite-article-body clearfix
+            "
+       itemprop="articleBody">
+    
+
+<p>This page describes how you can create new bots that receive, process, and
+respond to events from Hangouts Chat:</p>
+<ul>
+<li>Receive messages and other kinds of events generated by Hangouts Chat</li>
+<li>Send event responses and other messages into Hangouts Chat</li>
+</ul>
+<h2 id="archstyles">Endpoint types</h2>
+<p>Events from Hangouts Chat are delivered to your bot via an <em>endpoint</em>, of which
+there are different types:</p>
+<ul>
+<li><strong>HTTP endpoints</strong> present your bot as a web service. You'll need to set up a
+  web server to use as an interface for your bot's implementation. Your bot
+  can respond <a href="#syncresponse">synchronously</a> or <a href="#asyncresponse">asynchronously</a>
+  to these events.</li>
+<li><strong><a href="https://developers.google.com/hangouts/chat/how-tos/pub-sub">Google Cloud Pub/Sub endpoints</a></strong> use a topic
+  on Google Cloud Pub/Sub to relay an event to your bot's implementation. This
+  is useful when your implementation is behind a firewall. Bots that use pub/sub
+  endpoints can only respond asynchronously.</li>
+</ul>
+<aside class="note">Bots that respond asynchronously, which includes all bots
+  on pub/sub endpoints, require a
+  <a href="https://developers.google.com/hangouts/chat/how-tos/service-accounts">service account</a> to
+  authorize with Hangouts Chat.
+</aside>
+
+<p>For a simple, straightforward bot architecture, try implementing a bot using an
+HTTP endpoint (a web service, essentially) that responds synchronously, always
+enclosing its payload in the HTTP POST response. This approach does not involve
+authorization, so it doesn't need a service account. See the <a href="#simplimpl">simple bot
+implementation</a> section below for an example of this style of bot.</p>
+<p>You may need to take a more complex approach if your bot is behind a firewall or
+sends unsolicited messages such as alarms or other notifications to Hangouts
+Chat.</p>
+<h3 id="simplimpl">tl;dr... A very simple bot implementation</h3>
+<p>The following code implements a simple bot in Python using the
+<a href="http://flask.pocoo.org/">Flask</a> web framework. </p>
+<pre class="prettyprint"><code>#!/usr/bin/env python3
+&quot;&quot;&quot;Example bot that returns a synchronous response.&quot;&quot;&quot;
+
+from flask import Flask, request, json
+
+app = Flask(__name__)
+
+@app.route('/', methods=['POST'])
+def on_event():
+  &quot;&quot;&quot;Handles an event from Hangouts Chat.&quot;&quot;&quot;
+  event = request.get_json()
+  if event['type'] == 'ADDED_TO_SPACE' and event['space']['type'] == 'ROOM':
+    text = 'Thanks for adding me to &quot;%s&quot;!' % event['space']['displayName']
+  elif event['type'] == 'MESSAGE':
+    text = 'You said: `%s`' % event['message']['text']
+  else:
+    return
+  return json.jsonify({'text': text})
+
+if __name__ == '__main__':
+  app.run(port=8080, debug=True)
+</code></pre>
+
+<p>Because it's a web service, the bot presents an HTTP endpoint and doesn't need
+to use Cloud Pub/Sub to relay events to it. And because it always returns its
+response payload within the JSON response, it doesn't need to authenticate
+using a service account.</p>
+<h2 id="handling_events_from_hangouts_chat">Handling events from Hangouts Chat</h2>
+<p>This section describes how to receive and process events that your bot receives
+from Hangouts Chat.</p>
+<h3 id="registering_the_bot">Registering the bot</h3>
+<p>Before your bot can receive events from Hangouts Chat, you must specify its
+endpoint in the Chat API configuration tab when you <a href="https://developers.google.com/hangouts/chat/how-tos/bots-publish">publish your bot</a>.</p>
+<p>Once you've registered the endpoint and published your bot, Hangouts Chat will
+recognize events addressed to your bot and dispatch them to the specified
+endpoint.</p>
+<p>For security purposes, make sure that your endpoint URL conforms with the
+following properties:</p>
+<ul>
+<li>It should be long</li>
+<li>It should be hard to guess</li>
+<li>It should be a secret between you and Google</li>
+</ul>
+<p>For example, instead registering <code>bot.myservice.com</code>, you should register a more
+complex URL like this:</p>
+<pre class="prettyprint notranslate" translate="no"><code>bot.myservice.com/Zjn53rTGRQwisaYFyT0XZyiOCh7rZUPGx1A
+</code></pre>
+<p>This helps to deter spoofing attacks on your service.</p>
+<h3 id="verifying_bot_authenticity">Verifying bot authenticity</h3>
+<aside class="warning">Expect to see an additional, enhanced security mechanism
+  for this use case in a future release.</aside>
+
+<p>Once you've <a href="https://developers.google.com/hangouts/chat/how-tos/bots-publish">registered your HTTP 
+bot</a>, you
+need a way for your implementation to verify that the request is actually
+coming from Google. You can do this using the verification token that appears in
+the Developer console. You should copy this token and store it in a safe place.</p>
+<p><img class="screenshot"
+     src="https://developers.google.com/hangouts/chat/images/verification-token.png" width="475" /></p>
+<p>All requests coming from Google will contain this secret token. Before
+responding to a request, you should verify that it contains this secret token,
+as shown in the following JSON payload:</p>
+<pre class="prettyprint"><code>{
+  &quot;type&quot;: &quot;MESSAGE&quot;,
+  “token”: “E6jGWpS_mIoszAXSsGYPAtfgjiIbES1IhvHBYBJrNcg=”
+  &quot;eventTime&quot;: &quot;2017-03-02T19:02:59.910959Z&quot;,
+  &quot;space&quot;: {
+    &quot;name&quot;: &quot;spaces/AAAAAAAAAAA&quot;,
+    &quot;displayName&quot;: &quot;Chuck Norris Discussion Room&quot;,
+    &quot;type&quot;: &quot;ROOM&quot;
+  },
+  &quot;message&quot;: {
+    &quot;name&quot;: &quot;spaces/AAAAAAAAAAA/messages/CCCCCCCCCCC&quot;,
+    &quot;sender&quot;: {
+      &quot;name&quot;: &quot;users/12345678901234567890&quot;,
+      &quot;displayName&quot;: &quot;Chuck Norris&quot;,
+      &quot;avatarUrl&quot;: &quot;https://lh3.googleusercontent.com/.../photo.jpg&quot;,
+      &quot;email&quot;: &quot;chuck@example.com&quot;
+    },
+    &quot;createTime&quot;: &quot;2017-03-02T19:02:59.910959Z&quot;,
+    &quot;text&quot;: &quot;Violence is my last option.&quot;,
+    &quot;thread&quot;: {
+      &quot;name&quot;: &quot;spaces/AAAAAAAAAAA/threads/BBBBBBBBBBB&quot;
+    }
+  }
+}
+</code></pre>
+
+<h3 id="event_payload">Event payload</h3>
+<p>When your bot receives an event from Hangouts Chat, the event includes a
+<em>request body</em>: this is the JSON payload that represents the event. The request
+body always includes the following information:</p>
+<ul>
+<li><strong>type</strong>: A string that specifies the type of the event.</li>
+<li><strong>eventTime</strong>: A string containing the event timestamp.</li>
+</ul>
+<p>Additional information contained in the request body depends on the event type.
+The following example shows a possible payload:</p>
+<pre class="prettyprint notranslate" translate="no"><code>{
+  "type": "MESSAGE",
+  "eventTime": "2017-03-02T19:02:59.910959Z",
+  "space": {
+    "name": "spaces/AAAAAAAAAAA",
+    "displayName": "Best Dogs Discussion Room",
+    "type": "ROOM"
+  },
+  "message": {
+    "name": "spaces/AAAAAAAAAAA/messages/CCCCCCCCCCC",
+    "sender": {
+      "name": "users/12345678901234567890",
+      "displayName": "Chris Corgi",
+      "avatarUrl": "https://lh3.googleusercontent.com/.../photo.jpg",
+      "email": "chriscorgi@example.com"
+    },
+    "createTime": "2017-03-02T19:02:59.910959Z",
+    "text": "I mean is there any good reason their legs should be longer?",
+    "thread": {
+      "name": "spaces/AAAAAAAAAAA/threads/BBBBBBBBBBB"
+    }
+  }
+}
+</code></pre>
+<aside class="note">For <a href="https://developers.google.com/hangouts/chat/how-tos/bots-publish">published
+  bots</a>, the <code>displayName</code> and <code>avatarUrl</code> fields are
+  always overridden by their corresponding published settings.</aside>
+
+<p>See the <a href="https://developers.google.com/hangouts/chat/reference/message-formats/events">event formats</a>
+reference for details of the different event types and their request formats.</p>
+<h3 id="processing_the_event">Processing the event</h3>
+<p>When your bot receives an event from Hangouts Chat, what it does with that
+event is completely implementation dependent. The bot may look up some
+information from a data source, record the event information, or just about
+anything else. This processing behavior is essentially what defines the bot.</p>
+<p>In most cases, a bot will not only process the information contained in the
+event, but will generate a response back to the thread that issued the event.
+The following diagram describes a typical interaction with a bot in a chat
+room:</p>
+<p><img alt="" src="https://developers.google.com/hangouts/chat/images/bot-room-seq.png" /></p>
+<p>There are three kinds of events shown in the above diagram: <code>ADDED_TO_SPACE</code>,
+<code>MESSAGE</code>, and <code>REMOVED_FROM_SPACE</code>. A bot can't respond after being removed
+from a room, but it can respond to the other two types.</p>
+<h3 id="syncresponse">Responding synchronously</h3>
+<p>A bot can respond to an event synchronously by returning a JSON-formatted
+message payload in the HTTP response. The deadline for a synchronous response is
+30 seconds.</p>
+<p>A synchronous response from a bot is always posted in the thread that generated
+the event to the bot.</p>
+<h3 id="asyncresponse">Responding asynchronously</h3>
+<p>If a bot needs to respond to a user message beyond the 30-second deadline (for
+example, it may need to report back after completing a long-running task), it
+can respond asynchronously. This is exactly like sending a spontaneous message
+as described in the <a href="#reply_existing_thread">into an existing thread</a> section.</p>
+<aside class="note">To allow your bot to respond asynchronously, make sure to
+  add a <a href="https://developers.google.com/hangouts/chat/how-tos/service-accounts">service account</a>.
+</aside>
+
+<p>Lightweight bots that don't use service accounts cannot respond asynchronously.</p>
+<h3 id="retry">Retry</h3>
+<p>If an HTTP request to your bot fails (e.g. timeout, temporary network failure,
+or a non-2xx HTTP status code), Hangouts Chat will additionally retry delivery
+twice, with at least a ten-second delay between each retry. As a result, a bot
+may receive the same message up to three times in certain situations.
+No retry is attempted if the request completes successfully but returns an
+invalid message payload.</p>
+<h2 id="bot-initiated_messages">Bot-initiated messages</h2>
+<p>This section describes how bots can send arbitrary messages into a space.</p>
+<aside class="note">
+  To send messages as described in this section, a bot must
+  use a
+  <a href="https://developers.google.com/hangouts/chat/how-tos/service-accounts">service account</a>.
+</aside>
+
+<p>Many bots send messages only in direct response to an event that they receive
+from Hangouts Chat. However, some bots might send messages when triggered by
+other things, for example:</p>
+<ul>
+<li>A time-based alarm like a calendar event</li>
+<li>A change in state of some relevant data</li>
+<li>The completion of a remote process</li>
+</ul>
+<p>This section describes how to send these messages from your app to Hangouts
+Chat.</p>
+<h3 id="reply_existing_thread">Into an existing thread</h3>
+<p>To send a message as a reply in an existing thread, specify the thread's ID
+in the message payload as shown below:</p>
+<pre>
+{
+  "text": "...",
+  "thread": {
+     "name": "spaces/<var>SPACE_ID</var>/threads/<var>THREAD_ID</var>"
+  }
+}
+</pre>
+
+<p>The specific <var>THREAD_ID</var> is available in the payload of <code>MESSAGE</code>
+events that your bot receives from Hangouts Chat. Keep track of this ID so that
+the bot can inject messages into the thread.</p>
+<h3 id="as_a_new_thread">As a new thread</h3>
+<p>To send a message into Hangouts Chat as a new thread, your bot should omit the
+thread ID, as shown below:</p>
+<pre>https://chat.googleapis.com/v1/spaces/<var>SPACE_ID</var>/messages</pre>
+
+<p>Requests must specify <code>Content-Type: application/json</code> in the request header.
+See the <a href="https://developers.google.com/hangouts/chat/reference/message-formats/">Hangouts Chat API Message Format</a>
+reference for the JSON format of Hangouts Chat messages.
+The following example shows a simple request using cURL:</p>
+<pre class="prettyprint notranslate" translate="no"><code>curl -X POST \
+    -H 'Content-Type: application/json' \
+    'https://chat.googleapis.com/....' \
+    -d '{"text": "Hello!"}'
+</code></pre>
+<h3 id="thread_key">Thread key</h3>
+<p>In many cases, bots may want to post multiple messages related to the same
+entity into the same thread. For example, a bug tracker integration may
+want to post all notification messages related to the same bug into the same
+thread.</p>
+<p>To achieve this, bots can specify an arbitrary thread key in each request.
+Messages posted with the same thread key will be grouped into the same
+thread. For example, the example bug tracker integration above might use the
+bug ID as part of a consistent thread key. The first notification message for a
+bug will then create a new thread; all subsequent messages for the same bug will
+be posted into that same thread.</p>
+<p>The thread key is specified in the <code>threadKey</code> query parameter in an
+inbound HTTP request. For instance:</p>
+<pre>https://chat.googleapis.com/v1/spaces/<var>SPACE_ID</var>/messages?\
+    threadKey=<var>ARBITRARY_STRING</var></pre>
+
+<p>Thread keys are also scoped to a specific bot; if two different bots happen
+to both post messages using the same thread key, those two messages will
+not be grouped into the same thread.</p>
+
+  </div>
+  
+
+  
+        
+  
+
+
+
+
+
+
+
+        
+<div class="devsite-content-footer nocontent">
+  
+  
+    <p>Except as otherwise noted, the content of this page is licensed under the <a href="http://creativecommons.org/licenses/by/3.0/">Creative Commons Attribution 3.0 License</a>, and code samples are licensed under the <a href="http://www.apache.org/licenses/LICENSE-2.0">Apache 2.0 License</a>. For details, see our <a href="https://developers.google.com/terms/site-policies">Site Policies</a>. Java is a registered trademark of Oracle and/or its affiliates.</p>
+  
+
+  
+    
+    <p class="devsite-content-footer-date" itemprop="datePublished"
+       content="2018-04-19T21:23:43.736370">
+      
+      Last updated April 19, 2018.
+    </p>
+  
+
+</div>
+
+        </article>
+      </article>
+  
+
+        </div>
+      
+
+<footer class="devsite-footer-promos nocontent"><nav class="devsite-full-site-width"><ul class="devsite-footer-promos-list"><li class="devsite-footer-promo"><a href="https://gsuite-developers.googleblog.com"
+           class="devsite-footer-promo-title gc-analytics-event"
+           data-category="Site-Wide Custom Events"
+           data-label="Content Page Footer Promo"
+           ><img class="devsite-footer-promo-icon" src="https://www.gstatic.com/images/icons/material/product/2x/blogger_64dp.png">
+          
+          
+            Blog
+          
+        </a><div class="devsite-footer-promo-description">Stay up-to-date on developing for G Suite</div></li><li class="devsite-footer-promo"><a href="http://github.com/googlesamples/hangouts-chat-samples"
+           class="devsite-footer-promo-title gc-analytics-event"
+           data-category="Site-Wide Custom Events"
+           data-label="Content Page Footer Promo"
+           ><img class="devsite-footer-promo-icon" src="https://developers.google.com/site-assets/logo-github.svg">
+          
+          
+            GitHub
+          
+        </a><div class="devsite-footer-promo-description">Explore our sample bots or fork them to build your own</div></li><li class="devsite-footer-promo"><a href="https://stackoverflow.com/questions/tagged/hangouts-chat"
+           class="devsite-footer-promo-title gc-analytics-event"
+           data-category="Site-Wide Custom Events"
+           data-label="Content Page Footer Promo"
+           ><img class="devsite-footer-promo-icon" src="https://developers.google.com/site-assets/logo-stack-overflow.svg">
+          
+          
+            Stack Overflow
+          
+        </a><div class="devsite-footer-promo-description">Ask questions with the hangouts-chat tag</div></li></ul></nav></footer><footer class="devsite-footer-linkboxes nocontent
+               
+               devsite-footer-linkboxes-with-sites"><nav class="devsite-full-site-width"><ul class="devsite-footer-linkboxes-list"><li class="devsite-footer-linkbox "><h3 class="devsite-footer-linkbox-heading">Product Info</h3><ul class="devsite-footer-linkbox-list"><li class="devsite-footer-linkbox-item"><a href="https://developers.google.com/hangouts/chat/terms" class="gc-analytics-event"
+               data-category="Site-Wide Custom Events"
+               data-label="Content Page Footer Linkbox">
+                Terms of Service
+            </a></li><li class="devsite-footer-linkbox-item"><a href="https://developers.google.com/terms/api-services-user-data-policy" class="gc-analytics-event"
+               data-category="Site-Wide Custom Events"
+               data-label="Content Page Footer Linkbox">
+                User Data Policy
+            </a></li></ul></li><li class="devsite-footer-linkbox devsite-footer-linkbox-backup"><h3 class="devsite-footer-linkbox-heading">Programs</h3><ul class="devsite-footer-linkbox-list"><li class="devsite-footer-linkbox-item"><a href="//www.womentechmakers.com" class="gc-analytics-event"
+               data-category="Site-Wide Custom Events"
+               data-label="Footer Women Techmakers">
+                Women Techmakers
+            </a></li><li class="devsite-footer-linkbox-item"><a href="//developers.google.com/agency/" class="gc-analytics-event"
+               data-category="Site-Wide Custom Events"
+               data-label="Footer Agency">
+                Agency Program
+            </a></li><li class="devsite-footer-linkbox-item"><a href="//developers.google.com/groups/" class="gc-analytics-event"
+               data-category="Site-Wide Custom Events"
+               data-label="Footer Groups">
+                GDG
+            </a></li><li class="devsite-footer-linkbox-item"><a href="//developers.google.com/experts/" class="gc-analytics-event"
+               data-category="Site-Wide Custom Events"
+               data-label="Footer Experts">
+                Google Developers Experts
+            </a></li><li class="devsite-footer-linkbox-item"><a href="//developers.google.com/startups/" class="gc-analytics-event"
+               data-category="Site-Wide Custom Events"
+               data-label="Footer Startups">
+                Startup Launchpad
+            </a></li></ul></li><li class="devsite-footer-linkbox devsite-footer-linkbox-backup"><h3 class="devsite-footer-linkbox-heading">Developer Consoles</h3><ul class="devsite-footer-linkbox-list"><li class="devsite-footer-linkbox-item"><a href="//console.developers.google.com" class="gc-analytics-event"
+               data-category="Site-Wide Custom Events"
+               data-label="Footer Google Developers Console">
+                Google API Console
+            </a></li><li class="devsite-footer-linkbox-item"><a href="//console.cloud.google.com" class="gc-analytics-event"
+               data-category="Site-Wide Custom Events"
+               data-label="Footer Google Cloud Platform Console">
+                Google Cloud Platform Console
+            </a></li><li class="devsite-footer-linkbox-item"><a href="//play.google.com/apps/publish/" class="gc-analytics-event"
+               data-category="Site-Wide Custom Events"
+               data-label="Footer Google Play Console">
+                Google Play Console
+            </a></li><li class="devsite-footer-linkbox-item"><a href="//console.firebase.google.com" class="gc-analytics-event"
+               data-category="Site-Wide Custom Events"
+               data-label="Footer Firebase Console">
+                Firebase Console
+            </a></li><li class="devsite-footer-linkbox-item"><a href="//cast.google.com/publish/" class="gc-analytics-event"
+               data-category="Site-Wide Custom Events"
+               data-label="Footer Cast SDK Developer Console">
+                Cast SDK Developer Console
+            </a></li><li class="devsite-footer-linkbox-item"><a href="//chrome.google.com/webstore/developer/dashboard" class="gc-analytics-event"
+               data-category="Site-Wide Custom Events"
+               data-label="Footer Chrome Web Store Developer Dashboard">
+                Chrome Web Store Dashboard
+            </a></li></ul></li><li class="devsite-footer-linkbox devsite-footer-linkbox-sites"><a href="https://developers.google.com/"
+           class="gc-analytics-event devsite-footer-linkbox-logo-link"
+           data-category="Site-Wide Custom Events" data-label="Footer Google Developers Link"><img class="devsite-footer-linkbox-logo"
+               src="https://developers.google.com/_static/d7147bb846/images/redesign-14/lockup-color-knockout.png"
+               alt="Google Developers"></a><ul class="devsite-footer-linkbox-list"><li class="devsite-footer-linkbox-item"><a href="//developer.android.com/index.html" class="gc-analytics-event"
+               data-category="Site-Wide Custom Events"
+               data-label="Footer Android Link">
+                Android
+            </a></li><li class="devsite-footer-linkbox-item"><a href="//developer.chrome.com/home" class="gc-analytics-event"
+               data-category="Site-Wide Custom Events"
+               data-label="Footer Chrome Link">
+                Chrome
+            </a></li><li class="devsite-footer-linkbox-item"><a href="//firebase.google.com" class="gc-analytics-event"
+               data-category="Site-Wide Custom Events"
+               data-label="Footer Firebase Link">
+                Firebase
+            </a></li><li class="devsite-footer-linkbox-item"><a href="//cloud.google.com" class="gc-analytics-event"
+               data-category="Site-Wide Custom Events"
+               data-label="Footer Cloud Link">
+                Google Cloud Platform
+            </a></li><li class="devsite-footer-linkbox-item"><a href="//developers.google.com/products/" class="gc-analytics-event"
+               data-category="Site-Wide Custom Events"
+               data-label="Footer Products Link">
+                All Products
+            </a></li></ul></li></ul></nav></footer><footer class="devsite-utility-footer"><nav class="devsite-utility-footer-nav devsite-nav devsite-full-site-width"><div class="devsite-utility-footer-nav-left"><form class="devsite-utility-footer-language" action="/i18n/setlang/" method="post"><input type="hidden" name="xsrf_token" value="4qX7TCX8rCXNrGN5ps8j9k1umIywktEyyDYBu-6eCIA6MTUyNDQ2MDExNDI4NzUzMA" /><input type="hidden" name="next" value="/hangouts/chat/how-tos/bots-develop"><select class="devsite-utility-footer-language-select kd-select" name="language"
+                track-type="languageSelector" track-name="click"><option value="id"
+                
+                track-type="languageSelector" track-name="changed"
+                track-metadata-original-language="en"
+                track-metadata-selected-language="id">
+            Bahasa Indonesia
+          </option><option value="de"
+                
+                track-type="languageSelector" track-name="changed"
+                track-metadata-original-language="en"
+                track-metadata-selected-language="de">
+            Deutsch
+          </option><option value="en"
+                 selected="selected" 
+                track-type="languageSelector" track-name="changed"
+                track-metadata-original-language="en"
+                track-metadata-selected-language="en">
+            English
+          </option><option value="es"
+                
+                track-type="languageSelector" track-name="changed"
+                track-metadata-original-language="en"
+                track-metadata-selected-language="es">
+            español
+          </option><option value="fr"
+                
+                track-type="languageSelector" track-name="changed"
+                track-metadata-original-language="en"
+                track-metadata-selected-language="fr">
+            français
+          </option><option value="pt-br"
+                
+                track-type="languageSelector" track-name="changed"
+                track-metadata-original-language="en"
+                track-metadata-selected-language="pt-br">
+            Português Brasileiro
+          </option><option value="ru"
+                
+                track-type="languageSelector" track-name="changed"
+                track-metadata-original-language="en"
+                track-metadata-selected-language="ru">
+            Русский
+          </option><option value="ja"
+                
+                track-type="languageSelector" track-name="changed"
+                track-metadata-original-language="en"
+                track-metadata-selected-language="ja">
+            日本語
+          </option><option value="zh-cn"
+                
+                track-type="languageSelector" track-name="changed"
+                track-metadata-original-language="en"
+                track-metadata-selected-language="zh-cn">
+            简体中文
+          </option><option value="ko"
+                
+                track-type="languageSelector" track-name="changed"
+                track-metadata-original-language="en"
+                track-metadata-selected-language="ko">
+            한국어
+          </option></select></form><span class="devsite-utility-footer-links"><a class="devsite-utility-footer-link gc-analytics-event"
+           href="https://developers.google.com/terms/site-terms"
+           data-category="Site-Wide Custom Events"
+           data-label="Footer terms link"
+           data-footer-link-id="terms"
+           >Terms
+         </a><a class="devsite-utility-footer-link gc-analytics-event"
+           href="//www.google.com/policies/privacy/"
+           data-category="Site-Wide Custom Events"
+           data-label="Footer privacy link"
+           data-footer-link-id="privacy"
+           >Privacy
+         </a></span></div><div class="devsite-utility-footer-nav-right"><div class="devsite-utility-footer-newsletter-signup-text">
+        Sign up for the Google Developers newsletter
+      </div><a class="button button-primary devsite-utility-footer-newsletter-signup-button"
+         href="//services.google.com/fb/forms/googledevelopersnewsletter/?utm_medium=referral&amp;utm_source=google-products&amp;utm_team=googledevs&amp;utm_campaign=201611-newsletter-launch">
+        
+        Subscribe
+      </a></div></nav></footer><div class="devsite-feedback-dialog devsite-dialog"><div class="devsite-dialog-contents"><h3>Send feedback about...</h3><div class="devsite-feedback-item"><a data-type="documentation" class="gc-analytics-event"
+           data-category="Site-Wide Custom Events" data-label="Docs Feedback Image"
+           track-type="feedback" track-name="feedbackDocIcon" track-metadata-position="header"><div class="devsite-feedback-item-icon-container"><div class="devsite-feedback-item-icon-white devsite-feedback-item-icon-docs
+                        material-icons"></div></div></a><div class="devsite-feedback-item-name">
+          
+          This page
+        </div><div class="devsite-feedback-item-description"><a data-type="documentation" tabindex="0" class="gc-analytics-event"
+             data-category="Site-Wide Custom Events" data-label="Docs Feedback Text"
+             track-type="feedback" track-name="feedbackDocText" track-metadata-position="header">
+            
+            Documentation feedback
+          </a></div></div><div class="devsite-feedback-item"><a data-type="product" tabindex="0" class="gc-analytics-event"
+           data-category="Site-Wide Custom Events" data-label="Product Feedback Image"
+           track-type="feedback" track-name="feedbackProductIcon" track-metadata-position="header"
+         
+           href="https://issuetracker.google.com/issues/new?component=350158&template=1047215"
+         ><img src="https://www.gstatic.com/images/branding/product/1x/chat_64dp.png"
+                 class="devsite-feedback-item-icon"
+                 alt="Hangouts Chat API"></a><div class="devsite-feedback-item-name">
+        Hangouts Chat API
+        </div><div class="devsite-feedback-item-description"><a data-type="product" tabindex="0" class="gc-analytics-event"
+             data-category="Site-Wide Custom Events" data-label="Product Feedback Text"
+             track-type="feedback" track-name="feedbackProductText" track-metadata-position="header"
+           
+             href="https://issuetracker.google.com/issues/new?component=350158&template=1047215"
+           >
+            
+            Product feedback
+          </a></div></div></div><div class="devsite-dialog-buttons"><button type="button" class="devsite-feedback-cancel button-white gc-analytics-event"
+              data-category="Site-Wide Custom Events" data-label="Cancel Feedback Button"
+              track-type="feedback" track-name="cancelFeedbackButton"
+              track-metadata-position="header">
+        
+        Cancel
+      </button></div></div><script>
+  $(document).ready(function() {
+    new devsite.feedback.Widget({
+        'product_id': '717201',
+        'bucket': 'hangouts-chat',
+        'context': '',
+        'version': 'devsite-20180420-r00-rc00.default'
+      },
+      document.querySelectorAll('.devsite-feedback-button'),
+      'en',
+      document.querySelector('.devsite-site-mask'),
+      document.querySelector('.devsite-feedback-dialog'),
+      document.querySelector('.devsite-feedback-cancel'),
+      document.querySelectorAll('.devsite-feedback-item a:not([href])')
+    );
+  });
+  </script></div><script async defer src="//www.gstatic.com/feedback/api.js"></script><script src="https://developers.google.com/_static2/d7147bb846/jsi18n/"></script><script src="https://developers.google.com/_static/d7147bb846/js/script_foot_closure.js"></script><script src="https://developers.google.com/_static/d7147bb846/js/script_foot.js"></script><script>
+        (function($) {
+          
+          devsite.devsite.Init($, {'ENABLE_BLOCKED_VIDEO_PLACEHOLDER': 0, 'SITE_NAME': 'devsite', 'FULL_SITE_SEARCH_ENABLED': 1, 'ENABLE_CLOUDTRACK': 0, 'VTAGS_ENABLED': 0, 'HISTORY_ENABLED': 1, 'VERSION_HASH': 'd7147bb846', 'SCRIPTSAFE_DOMAIN': 'google-developers.appspot.com', 'ENABLE_BLOCKED_LINK_TOOLTIP': 0, 'ALLOWED_HOSTS': ['.android.com', '.anvato.com', '.apigee.com', '.appspot.com', '.dialogflow.com', '.gonglchuangl.net', '.google.cn', '.google.com', '.googleplex.com', '.nest.com', '.openthread.io', '.openweave.io', '.orbitera.com', '.tensorflow.org'], 'BLOCK_RSS_FEEDS': 0},
+                               '[]','en',
+                               true, '',
+                               {"f62218c009ec029abef196bba5aa34cf": true, "8de7a048f21618359bd37f5ce44be073": false, "098dafe57affddc137df300142652cfd": false, "8e03e230de0bd8a6fe173fdf172e8b3f": true, "cb025a64a50094835616312f4774a53d": true, "51470233c56fc1fde50f00b73c52b216": false, "d169d485cf24243a263783dbe42029b1": true, "039e5d84b87fd75807ffb37b7f1bbf2c": true, "700def1a83e356c06c0925afb05de4b0": false, "6749dcb526ce9bde6993550c7d928d24": true}, '/hangouts/chat/',
+                               'https://developers.google.com/');
+        })(jQuery);
+
+        
+        devsite.localInit = function() {
+          
+        };
+
+      </script><script>
+      $('.devsite-utility-footer-language-select').each(function() {
+        $(this).change(function(){$('.devsite-utility-footer-language').submit();});
+      });
+      </script></div><span id="devsite-request-elapsed" data-request-elapsed="312.930107117"></span></body></html>

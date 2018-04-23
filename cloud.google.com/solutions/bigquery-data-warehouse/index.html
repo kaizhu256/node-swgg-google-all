@@ -1,0 +1,1854 @@
+
+
+
+
+
+
+<!DOCTYPE html><html lang="en"
+      class="chekov"><head><script>var a=window.devsite||{};window.devsite=a;a.readyCallbacks=[];window.devsite.readyCallbacks=a.readyCallbacks;a.ready=function(b){a.readyCallbacks.push(b)};window.devsite.ready=a.ready;
+</script><meta charset="utf-8"><meta name="xsrf_token" content="ik-uLKAi7IiqlJeB8TOViVIp6JkAYatEExvfjMPK9eU6MTUyNDQ2MDIxOTQ0NzE1MA" /><link rel="canonical" href="https://cloud.google.com/solutions/bigquery-data-warehouse"><link rel="alternate" href="https://cloud.google.com/solutions/bigquery-data-warehouse?hl=ja" hreflang="ja"><link rel="alternate" href="https://cloud.google.com/solutions/bigquery-data-warehouse" hreflang="en"><link rel="alternate" href="https://cloud.google.com/solutions/bigquery-data-warehouse" hreflang="x-default"><link rel="shortcut icon" href="https://cloud.google.com/_static/d7147bb846/images/cloud/icons/favicons/onecloud/favicon.ico"><link rel="apple-touch-icon" href="https://cloud.google.com/_static/d7147bb846/images/cloud/icons/favicons/onecloud/apple-icon.png"><meta name="viewport" content="width=device-width, initial-scale=1"><link rel="stylesheet"
+      
+      href="//fonts.googleapis.com/css?family=Google+Sans:400|Roboto:400,400italic,500,500italic,700,700italic|Roboto+Mono:400,500,700|Material+Icons"
+      ><link rel="stylesheet"
+        href="https://cloud.google.com/_static/d7147bb846/css/devsite-cloud-white.css"><link rel="stylesheet" href="https://cloud.google.com/_static/d7147bb846/css/cloud/cloud-site.css"><link rel="search"
+        type="application/opensearchdescription+xml"
+        title="Google Cloud"
+        href="https://cloud.google.com/s/opensearch.xml"><script src="https://cloud.google.com/_static/d7147bb846/js/jquery-bundle.js"></script><meta property="og:site_name" content="Google Cloud"><meta property="og:type" content="website"><meta property="og:url" content="https://cloud.google.com/solutions/bigquery-data-warehouse"><meta property="og:locale" content="en"><script>
+    var ___gcfg = ___gcfg || {};
+    ___gcfg.lang = 'en';
+  </script><title>BigQuery for Data Warehouse Practitioners &nbsp;|&nbsp; Solutions
+      &nbsp;|&nbsp; Google Cloud</title><meta property="og:title" content="BigQuery for Data Warehouse Practitioners &nbsp;|&nbsp; Solutions
+      &nbsp;|&nbsp; Google Cloud"></head><body class="
+               devsite-doc-page
+               
+               
+               
+               
+               devsite-header-no-lower-tabs"
+        data-family="endorsed"
+        id="top_of_page"><div class="devsite-wrapper"><div class="devsite-top-section-wrapper
+            "><header class="devsite-top-section nocontent"><div class="devsite-top-logo-row-wrapper-wrapper"><div class="devsite-top-logo-row-wrapper"><div class="devsite-top-logo-row devsite-full-site-width"><button type="button" class="devsite-expand-section-nav devsite-header-icon-button
+                                       button-flat material-icons gc-analytics-event"
+                  data-category="Site-Wide Custom Events" data-label="Hamburger menu"></button><div class="devsite-product-name-wrapper"><a href="https://cloud.google.com/" class="devsite-site-logo-link gc-analytics-event"
+   data-category="Site-Wide Custom Events" data-label="Site logo"><img src="https://cloud.google.com/_static/d7147bb846/images/cloud/cloud-logo.svg"
+       class="devsite-site-logo" alt="Google Cloud"><span class="devsite-site-name devsite-product-name">Google Cloud</span></a></div><div class="devsite-header-upper-tabs"><nav class="devsite-doc-set-nav devsite-nav devsite-overflow-tabs-scroll-wrapper"><ul class="devsite-doc-set-nav-tab-list devsite-overflow-tabs-scroll"><li class="devsite-doc-set-nav-tab-container devsite-nav-tab
+               "><a href="https://cloud.google.com/why-google-cloud/"
+         class=" devsite-nav-tab
+                devsite-doc-set-nav-tab devsite-doc-set-nav-tab-link gc-analytics-event"
+         
+       
+         data-category="Site-Wide Custom Events"
+       
+         data-label="Tab: Why Google"
+       
+         track-type="globalNav"
+       
+         track-name="whyGoogle"
+       >
+        Why Google
+      </a></li><li class="devsite-doc-set-nav-tab-container devsite-nav-tab
+               "><a href="https://cloud.google.com/products/"
+         class=" devsite-nav-tab
+                devsite-doc-set-nav-tab devsite-doc-set-nav-tab-link gc-analytics-event"
+         
+       
+         data-category="Site-Wide Custom Events"
+       
+         data-label="Tab: Products"
+       
+         track-type="globalNav"
+       
+         track-name="products"
+       >
+        Products
+      </a></li><li class="devsite-doc-set-nav-tab-container devsite-nav-tab
+               "><a href="https://cloud.google.com/solutions/"
+         class="devsite-doc-set-nav-active devsite-nav-tab
+                devsite-doc-set-nav-tab devsite-doc-set-nav-tab-link gc-analytics-event"
+         aria-label="Solutions, selected"
+       
+         data-category="Site-Wide Custom Events"
+       
+         data-label="Tab: Solutions"
+       >
+        Solutions
+      </a></li><li class="devsite-doc-set-nav-tab-container devsite-nav-tab
+               "><a href="https://cloud.google.com/launcher/"
+         class=" devsite-nav-tab
+                devsite-doc-set-nav-tab devsite-doc-set-nav-tab-link gc-analytics-event"
+         
+       
+         data-category="Site-Wide Custom Events"
+       
+         data-label="Tab: Launcher"
+       
+         track-type="globalNav"
+       
+         track-name="launcher"
+       >
+        Launcher
+      </a></li><li class="devsite-doc-set-nav-tab-container devsite-nav-tab
+               "><a href="https://cloud.google.com/pricing/"
+         class=" devsite-nav-tab
+                devsite-doc-set-nav-tab devsite-doc-set-nav-tab-link gc-analytics-event"
+         
+       
+         data-category="Site-Wide Custom Events"
+       
+         data-label="Tab: Pricing"
+       
+         track-type="globalNav"
+       
+         track-name="pricing"
+       >
+        Pricing
+      </a></li><li class="devsite-doc-set-nav-tab-container devsite-nav-tab
+               "><a href="https://cloud.google.com/security/"
+         class=" devsite-nav-tab
+                devsite-doc-set-nav-tab devsite-doc-set-nav-tab-link gc-analytics-event"
+         
+       
+         data-category="Site-Wide Custom Events"
+       
+         data-label="Tab: Security"
+       
+         track-type="globalNav"
+       
+         track-name="security"
+       >
+        Security
+      </a></li><li class="devsite-doc-set-nav-tab-container devsite-nav-tab
+               "><a href="https://cloud.google.com/customers/"
+         class=" devsite-nav-tab
+                devsite-doc-set-nav-tab devsite-doc-set-nav-tab-link gc-analytics-event"
+         
+       
+         data-category="Site-Wide Custom Events"
+       
+         data-label="Tab: Customers"
+       
+         track-type="globalNav"
+       
+         track-name="customers"
+       >
+        Customers
+      </a></li><li class="devsite-doc-set-nav-tab-container devsite-nav-tab
+               "><a href="https://cloud.google.com/docs/"
+         class=" devsite-nav-tab
+                devsite-doc-set-nav-tab devsite-doc-set-nav-tab-link gc-analytics-event"
+         
+       
+         data-category="Site-Wide Custom Events"
+       
+         data-label="Tab: Documentation"
+       
+         track-type="globalNav"
+       
+         track-name="documentation"
+       >
+        Documentation
+      </a></li><li class="devsite-doc-set-nav-tab-container devsite-nav-tab
+               "><a href="https://cloud.google.com/support/"
+         class=" devsite-nav-tab
+                devsite-doc-set-nav-tab devsite-doc-set-nav-tab-link gc-analytics-event"
+         
+       
+         data-category="Site-Wide Custom Events"
+       
+         data-label="Tab: Support"
+       
+         track-type="globalNav"
+       
+         track-name="support"
+       >
+        Support
+      </a></li><li class="devsite-doc-set-nav-tab-container devsite-nav-tab
+               "><a href="https://cloud.google.com/partners/"
+         class=" devsite-nav-tab
+                devsite-doc-set-nav-tab devsite-doc-set-nav-tab-link gc-analytics-event"
+         
+       
+         data-category="Site-Wide Custom Events"
+       
+         data-label="Tab: Partners"
+       
+         track-type="globalNav"
+       
+         track-name="partners"
+       >
+        Partners
+      </a></li></ul></nav></div><form class="devsite-search-form"
+                action="https://cloud.google.com/s/results/"
+                method="GET"
+                id="top-search"
+                search-placeholder='Search'><div id="searchbox" class="devsite-searchbox"><input placeholder='Search'
+         
+         type="text"
+         class="devsite-search-field devsite-search-query"
+         name="q"
+         value=""
+         autocomplete="off"
+         
+         aria-label="Search box"><div class="devsite-search-image material-icons"></div></div><input type="hidden"
+       name="p"
+       id="search_project"
+       value="/solutions/"
+       data-project-name="Solutions"
+       data-project-path="/solutions/"
+       data-query-match=""><input type="hidden" class="suggest-project" value="Solutions" /></form><a class="devsite-header-link devsite-top-button button gc-analytics-event"
+               href="//console.cloud.google.com/"
+               data-category="Site-Wide Custom Events"
+               data-label="Site header link"
+               track-type="navigateTo"
+               track-name="console"
+               track-metadata-position="nav"><div class="devsite-header-link-label">Console</div></a><button type="button" class="devsite-search-button devsite-header-icon-button button-flat
+                                       material-icons"></button><a href="https://www.google.com/accounts/ServiceLogin?passive=true&continue=https%3A%2F%2Fcloud.google.com%2Fsolutions%2Fbigquery-data-warehouse%3Frefresh%3D1&service=cloudconsole"
+   class="devsite-user-signin devsite-top-button button gc-analytics-event"
+   data-category="Site-Wide Custom Events" data-label="Sign in button">
+  
+  Sign in
+</a></div></div></div><div class="devsite-collapsible-section"><div class="devsite-header-background devsite-full-site-width"><div class="devsite-product-id-row devsite-full-site-width"><div class="devsite-product-description-row"><ul class="devsite-breadcrumb-list"><li class="devsite-breadcrumb-item">
+    
+    
+    
+      Solutions
+    
+    
+  </li></ul></div><div class="devsite-product-button-row
+            cloud-free-trial-eligible"><button type="button" id="devsite-feedback-project"
+          class="devsite-feedback-button devsite-top-button gc-analytics-event"
+          data-category="Site-Wide Custom Events" data-label="Send Feedback Button"
+          track-type="feedback" track-name="sendFeedbackLink" track-metadata-position="header">
+  
+  Send feedback
+  </button><a
+    
+      href="https://console.cloud.google.com/freetrial"
+    
+    
+      class="cloud-free-trial-button button-primary button"
+    
+    
+      
+      track-type="freeTrial"
+      
+      track-name="try"
+      
+      track-metadata-position="nav"
+      
+    >
+    Try It Free
+  </a><a
+    
+      href="https://cloud.google.com/contact/"
+    
+    
+      class="cloud-contact-sales-button button"
+    
+    
+      
+      track-type="sales"
+      
+      track-name="contact"
+      
+      track-metadata-position="nav"
+      
+    >
+    Contact Sales
+  </a></div></div></div></div></header><script>
+    if (window.jQuery) {
+      $(document).ready(function() {
+        if (window.devsite && window.devsite.search) {
+          
+          window.devsite.search.init('en')
+        }
+      });
+    }
+  </script></div><div id="gc-wrapper"itemscope itemtype="http://schema.org/Article"><input class="google-tag-manager-id" type="hidden" value="GTM-5CVQBG"><script>
+      var dataLayer = [{"freeTrialEligibleUser": "True", "userCountry": "HK", "language": {"requested": "en", "served": "en"}, "projectName": "Solutions", "scriptsafe": null, "signedIn": "False", "internalUser": "False"}];
+    </script>
+
+      
+        <div class="devsite-site-mask"></div>
+        
+  
+
+
+<nav class="devsite-nav-responsive devsite-nav nocontent" tabindex="0">
+  
+  <div class="devsite-nav-responsive-tabs-panel">
+    
+      
+        
+
+
+
+<nav class="devsite-nav-responsive-tabs devsite-nav">
+  <ul class="devsite-nav-list">
+  
+    <li class="devsite-nav-item devsite-nav-item-heading">
+    
+      <a 
+           href="https://cloud.google.com/why-google-cloud/?nav=true"
+         
+         class="devsite-nav-responsive-tab devsite-nav-title gc-analytics-event
+                "
+         data-category="Site-Wide Custom Events" data-label="Responsive Tab: Why Google">
+        Why Google
+      </a>
+      
+      
+    
+    </li>
+  
+    <li class="devsite-nav-item devsite-nav-item-heading">
+    
+      <a 
+           href="https://cloud.google.com/products/?nav=true"
+         
+         class="devsite-nav-responsive-tab devsite-nav-title gc-analytics-event
+                "
+         data-category="Site-Wide Custom Events" data-label="Responsive Tab: Products">
+        Products
+      </a>
+      
+      
+    
+    </li>
+  
+    <li class="devsite-nav-item devsite-nav-item-heading">
+    
+      <span class="devsite-nav-responsive-forward devsite-nav-responsive-tab devsite-nav-title
+                   devsite-nav-active gc-analytics-event"
+            data-category="Site-Wide Custom Events" data-label="Responsive Tab: Solutions"
+            tabindex="0">
+        Solutions
+      </span>
+    
+    </li>
+  
+    <li class="devsite-nav-item devsite-nav-item-heading">
+    
+      <a 
+           href="https://cloud.google.com/launcher/?nav=true"
+         
+         class="devsite-nav-responsive-tab devsite-nav-title gc-analytics-event
+                "
+         data-category="Site-Wide Custom Events" data-label="Responsive Tab: Launcher">
+        Launcher
+      </a>
+      
+      
+    
+    </li>
+  
+    <li class="devsite-nav-item devsite-nav-item-heading">
+    
+      <a 
+           href="https://cloud.google.com/pricing/?nav=true"
+         
+         class="devsite-nav-responsive-tab devsite-nav-title gc-analytics-event
+                "
+         data-category="Site-Wide Custom Events" data-label="Responsive Tab: Pricing">
+        Pricing
+      </a>
+      
+      
+    
+    </li>
+  
+    <li class="devsite-nav-item devsite-nav-item-heading">
+    
+      <a 
+           href="https://cloud.google.com/security/?nav=true"
+         
+         class="devsite-nav-responsive-tab devsite-nav-title gc-analytics-event
+                "
+         data-category="Site-Wide Custom Events" data-label="Responsive Tab: Security">
+        Security
+      </a>
+      
+      
+    
+    </li>
+  
+    <li class="devsite-nav-item devsite-nav-item-heading">
+    
+      <a 
+           href="https://cloud.google.com/customers/?nav=true"
+         
+         class="devsite-nav-responsive-tab devsite-nav-title gc-analytics-event
+                "
+         data-category="Site-Wide Custom Events" data-label="Responsive Tab: Customers">
+        Customers
+      </a>
+      
+      
+    
+    </li>
+  
+    <li class="devsite-nav-item devsite-nav-item-heading">
+    
+      <a 
+           href="https://cloud.google.com/docs/?nav=true"
+         
+         class="devsite-nav-responsive-tab devsite-nav-title gc-analytics-event
+                "
+         data-category="Site-Wide Custom Events" data-label="Responsive Tab: Documentation">
+        Documentation
+      </a>
+      
+      
+    
+    </li>
+  
+    <li class="devsite-nav-item devsite-nav-item-heading">
+    
+      <a 
+           href="https://cloud.google.com/support/?nav=true"
+         
+         class="devsite-nav-responsive-tab devsite-nav-title gc-analytics-event
+                "
+         data-category="Site-Wide Custom Events" data-label="Responsive Tab: Support">
+        Support
+      </a>
+      
+      
+    
+    </li>
+  
+    <li class="devsite-nav-item devsite-nav-item-heading">
+    
+      <a 
+           href="https://cloud.google.com/partners/?nav=true"
+         
+         class="devsite-nav-responsive-tab devsite-nav-title gc-analytics-event
+                "
+         data-category="Site-Wide Custom Events" data-label="Responsive Tab: Partners">
+        Partners
+      </a>
+      
+      
+    
+    </li>
+  
+  
+    <li class="devsite-nav-item devsite-nav-item-heading">
+      <a href="//console.cloud.google.com/"
+         class="devsite-nav-responsive-tab devsite-nav-title gc-analytics-event"
+         data-category="Site-Wide Custom Events"
+         data-label="Responsive Tab: console">
+        Console
+      </a>
+    </li>
+  
+  </ul>
+</nav>
+
+
+      
+    
+  </div>
+  
+  
+  <div class="devsite-nav-responsive-sidebar-panel">
+    
+    <div class="devsite-nav-responsive-back" tabindex="0"></div>
+    
+    <nav class="devsite-nav-responsive-sidebar"></nav>
+  </div>
+  
+  
+    <div class="devsite-nav-responsive-index-panel">
+      <div class="devsite-nav-index-back" tabindex="0"></div>
+      <nav>
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+      </nav>
+    </div>
+  
+</nav>
+
+
+        <div class="devsite-main-content clearfix">
+
+        
+        
+
+        
+  
+  
+    
+    
+      
+  <nav class="devsite-section-nav devsite-nav nocontent">
+    <ul class="devsite-nav-list devsite-nav-expandable"><li class="devsite-nav-item devsite-nav-item-heading"><span class="devsite-nav-title devsite-nav-title-no-path" track-type="leftNav" track-name="expandNavSectionNoLink" track-metadata-position="0">Solutions</span></li><li class="devsite-nav-item"><a href="https://cloud.google.com/solutions" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="0" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">Overview</a></li><li class="devsite-nav-item devsite-nav-item-section-expandable"><span class="devsite-nav-title devsite-nav-title-no-path" track-type="leftNav" track-name="expandNavSectionNoLink"track-metadata-position="0" aria-label="Media, click to expand/collapse" role="link">Media</span><a class="devsite-nav-toggle devsite-nav-toggle-collapsed material-icons" track-type="leftNav" track-name="expandNavSectionArrow" track-metadata-position="0" aria-hidden="true"></a><ul class="devsite-nav-section devsite-nav-section-collapsed"><li class="devsite-nav-item"><a href="https://cloud.google.com/solutions/media/" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="1" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">Overview</a></li><li class="devsite-nav-item"><a href="https://cloud.google.com/docs/tutorials#media" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="1" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">Articles</a></li></ul></li><li class="devsite-nav-item devsite-nav-item-section-expandable"><span class="devsite-nav-title devsite-nav-title-no-path" track-type="leftNav" track-name="expandNavSectionNoLink"track-metadata-position="0" aria-label="Gaming, click to expand/collapse" role="link">Gaming</span><a class="devsite-nav-toggle devsite-nav-toggle-collapsed material-icons" track-type="leftNav" track-name="expandNavSectionArrow" track-metadata-position="0" aria-hidden="true"></a><ul class="devsite-nav-section devsite-nav-section-collapsed"><li class="devsite-nav-item"><a href="https://cloud.google.com/solutions/gaming" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="1" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">Overview</a></li><li class="devsite-nav-item"><a href="https://cloud.google.com/docs/tutorials#gaming" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="1" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">Articles</a></li></ul></li><li class="devsite-nav-item devsite-nav-item-section-expandable"><span class="devsite-nav-title devsite-nav-title-no-path" track-type="leftNav" track-name="expandNavSectionNoLink"track-metadata-position="0" aria-label="Financial Services, click to expand/collapse" role="link">Financial Services</span><a class="devsite-nav-toggle devsite-nav-toggle-collapsed material-icons" track-type="leftNav" track-name="expandNavSectionArrow" track-metadata-position="0" aria-hidden="true"></a><ul class="devsite-nav-section devsite-nav-section-collapsed"><li class="devsite-nav-item"><a href="https://cloud.google.com/solutions/financial-services" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="1" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">Overview</a></li><li class="devsite-nav-item"><a href="https://cloud.google.com/docs/tutorials#financial_services" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="1" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">Articles</a></li></ul></li><li class="devsite-nav-item devsite-nav-item-section-expandable"><span class="devsite-nav-title devsite-nav-title-no-path" track-type="leftNav" track-name="expandNavSectionNoLink"track-metadata-position="0" aria-label="Internet of Things, click to expand/collapse" role="link">Internet of Things</span><a class="devsite-nav-toggle devsite-nav-toggle-collapsed material-icons" track-type="leftNav" track-name="expandNavSectionArrow" track-metadata-position="0" aria-hidden="true"></a><ul class="devsite-nav-section devsite-nav-section-collapsed"><li class="devsite-nav-item"><a href="https://cloud.google.com/solutions/iot" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="1" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">Overview</a></li><li class="devsite-nav-item"><a href="https://cloud.google.com/docs/tutorials#internet_of_things" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="1" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">Articles</a></li></ul></li><li class="devsite-nav-item devsite-nav-item-section-expandable"><span class="devsite-nav-title devsite-nav-title-no-path" track-type="leftNav" track-name="expandNavSectionNoLink"track-metadata-position="0" aria-label="Backup &amp; Archive, click to expand/collapse" role="link">Backup &amp; Archive</span><a class="devsite-nav-toggle devsite-nav-toggle-collapsed material-icons" track-type="leftNav" track-name="expandNavSectionArrow" track-metadata-position="0" aria-hidden="true"></a><ul class="devsite-nav-section devsite-nav-section-collapsed"><li class="devsite-nav-item"><a href="https://cloud.google.com/solutions/" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="1" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">Overview</a></li><li class="devsite-nav-item"><a href="https://cloud.google.com/docs/tutorials#backup%20archive" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="1" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">Articles</a></li></ul></li><li class="devsite-nav-item devsite-nav-item-section-expandable"><span class="devsite-nav-title devsite-nav-title-no-path" track-type="leftNav" track-name="expandNavSectionNoLink"track-metadata-position="0" aria-label="Digital Marketing, click to expand/collapse" role="link">Digital Marketing</span><a class="devsite-nav-toggle devsite-nav-toggle-expanded material-icons" track-type="leftNav" track-name="expandNavSectionArrow" track-metadata-position="0"></a><ul class="devsite-nav-section devsite-nav-section-expanded"><li class="devsite-nav-item"><a href="https://cloud.google.com/solutions/" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="1" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">Overview</a></li><li class="devsite-nav-item devsite-nav-active"><a href="https://cloud.google.com/docs/tutorials#marketing" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="1" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">Articles</a></li></ul></li><li class="devsite-nav-item devsite-nav-item-section-expandable"><span class="devsite-nav-title devsite-nav-title-no-path" track-type="leftNav" track-name="expandNavSectionNoLink"track-metadata-position="0" aria-label="Retail &amp; Commerce, click to expand/collapse" role="link">Retail &amp; Commerce</span><a class="devsite-nav-toggle devsite-nav-toggle-collapsed material-icons" track-type="leftNav" track-name="expandNavSectionArrow" track-metadata-position="0" aria-hidden="true"></a><ul class="devsite-nav-section devsite-nav-section-collapsed"><li class="devsite-nav-item"><a href="https://cloud.google.com/solutions/commerce" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="1" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">Overview</a></li><li class="devsite-nav-item"><a href="https://cloud.google.com/docs/tutorials#retail_and_commerce" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="1" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">Articles</a></li></ul></li><li class="devsite-nav-item devsite-nav-item-section-expandable"><span class="devsite-nav-title devsite-nav-title-no-path" track-type="leftNav" track-name="expandNavSectionNoLink"track-metadata-position="0" aria-label="Websites &amp; Web Apps, click to expand/collapse" role="link">Websites &amp; Web Apps</span><a class="devsite-nav-toggle devsite-nav-toggle-collapsed material-icons" track-type="leftNav" track-name="expandNavSectionArrow" track-metadata-position="0" aria-hidden="true"></a><ul class="devsite-nav-section devsite-nav-section-collapsed"><li class="devsite-nav-item"><a href="https://cloud.google.com/solutions/websites" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="1" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">Overview</a></li><li class="devsite-nav-item"><a href="https://cloud.google.com/docs/tutorials#computing" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="1" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">Articles</a></li></ul></li><li class="devsite-nav-item devsite-nav-item-section-expandable"><span class="devsite-nav-title devsite-nav-title-no-path" track-type="leftNav" track-name="expandNavSectionNoLink"track-metadata-position="0" aria-label="Big Data &amp; Machine Learning, click to expand/collapse" role="link">Big Data &amp; Machine Learning</span><a class="devsite-nav-toggle devsite-nav-toggle-collapsed material-icons" track-type="leftNav" track-name="expandNavSectionArrow" track-metadata-position="0" aria-hidden="true"></a><ul class="devsite-nav-section devsite-nav-section-collapsed"><li class="devsite-nav-item"><a href="https://cloud.google.com/solutions/big-data" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="1" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">Overview</a></li><li class="devsite-nav-item"><a href="https://cloud.google.com/docs/tutorials#big_data%20machine_learning" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="1" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">Articles</a></li></ul></li><li class="devsite-nav-item devsite-nav-item-section-expandable"><span class="devsite-nav-title devsite-nav-title-no-path" track-type="leftNav" track-name="expandNavSectionNoLink"track-metadata-position="0" aria-label="Development &amp; Test, click to expand/collapse" role="link">Development &amp; Test</span><a class="devsite-nav-toggle devsite-nav-toggle-collapsed material-icons" track-type="leftNav" track-name="expandNavSectionArrow" track-metadata-position="0" aria-hidden="true"></a><ul class="devsite-nav-section devsite-nav-section-collapsed"><li class="devsite-nav-item"><a href="https://cloud.google.com/solutions/devtest" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="1" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">Overview</a></li><li class="devsite-nav-item"><a href="https://cloud.google.com/docs/tutorials#development_and_test" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="1" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">Articles</a></li></ul></li><li class="devsite-nav-item devsite-nav-item-section-expandable"><span class="devsite-nav-title devsite-nav-title-no-path" track-type="leftNav" track-name="expandNavSectionNoLink"track-metadata-position="0" aria-label="Mobile Applications, click to expand/collapse" role="link">Mobile Applications</span><a class="devsite-nav-toggle devsite-nav-toggle-collapsed material-icons" track-type="leftNav" track-name="expandNavSectionArrow" track-metadata-position="0" aria-hidden="true"></a><ul class="devsite-nav-section devsite-nav-section-collapsed"><li class="devsite-nav-item"><a href="https://cloud.google.com/solutions/mobile" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="1" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">Overview</a></li><li class="devsite-nav-item"><a href="https://cloud.google.com/docs/tutorials#mobile" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="1" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">Articles</a></li></ul></li><li class="devsite-nav-item devsite-nav-item-section-expandable"><span class="devsite-nav-title devsite-nav-title-no-path" track-type="leftNav" track-name="expandNavSectionNoLink"track-metadata-position="0" aria-label="Life Sciences, click to expand/collapse" role="link">Life Sciences</span><a class="devsite-nav-toggle devsite-nav-toggle-collapsed material-icons" track-type="leftNav" track-name="expandNavSectionArrow" track-metadata-position="0" aria-hidden="true"></a><ul class="devsite-nav-section devsite-nav-section-collapsed"><li class="devsite-nav-item"><a href="https://cloud.google.com/solutions/" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="1" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">Overview</a></li><li class="devsite-nav-item"><a href="https://cloud.google.com/docs/tutorials#lifesciences" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="1" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">Articles</a></li></ul></li><li class="devsite-nav-item devsite-nav-item-section-expandable"><span class="devsite-nav-title devsite-nav-title-no-path" track-type="leftNav" track-name="expandNavSectionNoLink"track-metadata-position="0" aria-label="Hybrid, click to expand/collapse" role="link">Hybrid</span><a class="devsite-nav-toggle devsite-nav-toggle-collapsed material-icons" track-type="leftNav" track-name="expandNavSectionArrow" track-metadata-position="0" aria-hidden="true"></a><ul class="devsite-nav-section devsite-nav-section-collapsed"><li class="devsite-nav-item"><a href="https://cloud.google.com/solutions/" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="1" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">Overview</a></li><li class="devsite-nav-item"><a href="https://cloud.google.com/docs/tutorials#hybridcloud" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="1" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">Articles</a></li></ul></li><li class="devsite-nav-item devsite-nav-item-section-expandable"><span class="devsite-nav-title devsite-nav-title-no-path" track-type="leftNav" track-name="expandNavSectionNoLink"track-metadata-position="0" aria-label="Security, click to expand/collapse" role="link">Security</span><a class="devsite-nav-toggle devsite-nav-toggle-collapsed material-icons" track-type="leftNav" track-name="expandNavSectionArrow" track-metadata-position="0" aria-hidden="true"></a><ul class="devsite-nav-section devsite-nav-section-collapsed"><li class="devsite-nav-item"><a href="https://cloud.google.com/security/" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="1" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">Overview</a></li><li class="devsite-nav-item"><a href="https://cloud.google.com/docs/tutorials#security" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="1" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">Articles</a></li></ul></li><li class="devsite-nav-item"><a href="https://cloud.google.com/docs/tutorials#architecture" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="0" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">Architecture Diagrams</a></li><li class="devsite-nav-item"><a href="https://cloud.google.com/docs/tutorials#partner" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="0" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">Partner Solutions</a></li></ul>
+  </nav>
+
+    
+
+    
+  <nav class="devsite-page-nav devsite-nav"></nav>
+
+
+      <article class="devsite-article">
+        <article class="devsite-article-inner">
+  
+          
+  
+
+
+
+  
+  <nav class="devsite-breadcrumb-nav devsite-nav">
+    
+
+
+<ul class="devsite-breadcrumb-list">
+  
+  <li class="devsite-breadcrumb-item">
+    
+    
+    <a href="https://cloud.google.com/solutions/" class="devsite-breadcrumb-link gc-analytics-event"
+       data-category="Site-Wide Custom Events" data-label="Breadcrumbs"
+       data-value="1">
+    
+    
+      Solutions
+    
+    
+    </a>
+    
+  </li>
+  
+  <li class="devsite-breadcrumb-item">
+    
+    
+    <div class="devsite-breadcrumb-guillemet material-icons"></div>
+    
+    
+    <a href="https://cloud.google.com/solutions/" class="devsite-breadcrumb-link gc-analytics-event"
+       data-category="Site-Wide Custom Events" data-label="Breadcrumbs"
+       data-value="2">
+    
+    
+      Solutions
+    
+    
+    </a>
+    
+  </li>
+  
+</ul>
+
+  </nav>
+  
+  
+  <h1 itemprop="name" class="devsite-page-title">
+    BigQuery for Data Warehouse Practitioners
+  </h1>
+  
+  
+  <nav class="devsite-page-nav-embedded devsite-nav"></nav>
+  
+  <div class="devsite-article-body clearfix
+            "
+       itemprop="articleBody">
+    
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<p><em>Updated September 2017</em></p>
+<p>This article explains how to use
+<a href="https://cloud.google.com/bigquery/what-is-bigquery" track-metadata-position="body" track-name="internalLink" track-type="solution">Google BigQuery</a>
+as a data warehouse, first mapping common data warehouse
+concepts to those in BigQuery, and then describing how to perform standard
+data-warehousing tasks in BigQuery.</p>
+<h2 id="service_model_comparison">Service model comparison</h2>
+<p>The following table maps standard data-warehouse concepts to those in
+Google BigQuery:</p>
+<table>
+  <thead>
+    <tr>
+      <th style="width:20%;">Data warehouse</th>
+      <th>BigQuery</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>Data warehouse</td>
+      <td>The <strong>BigQuery</strong> service replaces the typical hardware
+      setup for a traditional data warehouse. That is, it serves as a
+      collective home for
+      all analytical data in an organization.</td>
+    </tr>
+    <tr>
+      <td>Data mart</td>
+      <td><strong>Datasets</strong> are collections of tables that can be
+      divided along business lines or a given analytical domain. Each dataset
+      is tied to a Google Cloud Platform (GCP) project.</td>
+    </tr>
+    <tr>
+      <td>Data lake</td>
+      <td>Your data lake might contain files in <a href="https://cloud.google.com/storage/">Cloud Storage</a>
+        or <a href="https://www.google.com/drive/">Google Drive</a> or
+        transactional data in <a href="https://cloud.google.com/bigtable/">Cloud Bigtable</a>. 
+        BigQuery can define a schema and
+        issue queries directly on external data as
+        <a href="https://cloud.google.com/bigquery/federated-data-sources">federated data sources.</a></td>
+    </tr>
+    <tr>
+      <td>Tables and views</td>
+      <td><strong>Tables and views</strong> function the same way in BigQuery
+      as they do in a traditional data warehouse.</td>
+    </tr>
+    <tr>
+      <td>Grants</td>
+      <td><strong>Google Cloud Identity & Access Management (IAM)</strong> is
+      used to grant permission to perform specific actions in BigQuery.</td>
+    </tr>
+  </tbody>
+</table>
+
+<h3 id="datasets">Datasets</h3>
+<p>BigQuery organizes data tables into units called datasets. These datasets
+are scoped to your GCP project. When you reference a table from the command
+line, in SQL queries, or in code, you refer to it using the following
+construct:</p>
+<pre class="prettyprint notranslate" translate="no"><code>project.dataset.table
+</code></pre>
+<p>These multiple scopes&mdash;project, dataset, and table&mdash;can help you
+structure your information logically.
+You can use multiple datasets to separate tables pertaining to different
+analytical domains, and you can use project-level scoping to isolate
+datasets from each other according to your business needs.</p>
+<p>Here is a structural overview of BigQuery:</p>
+<p><img alt="BigQuery structural overview" src="https://cloud.google.com/solutions/images/dwp1.svg" /></p>
+<h3 id="provisioning_and_system_sizing">Provisioning and system sizing</h3>
+<p>You do not need to provision resources before using BigQuery, unlike many RDBMS
+systems. BigQuery allocates storage and query
+resources dynamically based on your usage patterns.</p>
+<ul>
+<li><strong>Storage</strong> resources are allocated as you consume them and deallocated
+    as you remove data or drop tables.</li>
+<li><strong>Query</strong> resources are allocated according to query type and
+    complexity. Each query uses some number of <a href="https://cloud.google.com/bigquery/docs/slots"><strong>slots</strong>,</a>
+    which are
+    units of computation that comprise a certain amount of CPU and RAM.</li>
+</ul>
+<p>You don't have to make a minimum usage commitment to use BigQuery. The service
+allocates and charges for resources based on your actual usage. By
+default, all BigQuery customers have access to 2,000 slots for query operations.
+You can also reserve a fixed number of slots for your project. For details about
+which approach to use, see the <a href="#costs">Costs</a>
+section.</p>
+<aside class="note"><strong>Note:</strong><span> To start using BigQuery, you create a project to host your data, and then
+you enable billing. For instructions, see the
+<a href="https://cloud.google.com/bigquery/quickstart-web-ui#before-you-begin" track-metadata-position="body" track-name="internalLink" track-type="solution">BigQuery Quickstart</a>.</span></aside>
+<h3 id="storage_management">Storage management</h3>
+<p>Internally, BigQuery stores data in a proprietary columnar format called
+<a href="https://cloud.google.com/blog/big-data/2016/04/inside-capacitor-bigquerys-next-generation-columnar-storage-format" track-metadata-position="body" track-name="internalLink" track-type="solution">Capacitor</a>,
+which has a number of benefits for data warehouse workloads. BigQuery uses a
+proprietary format because it can evolve in tandem with the query engine,
+which takes advantage of deep knowledge of the data layout to optimize query
+execution. BigQuery uses query access patterns to determine the optimal number
+of physical shards and how they are encoded.</p>
+<p>The data is physically stored on Google's distributed file system, called
+<a href="https://cloud.google.com/files/storage_architecture_and_challenges.pdf">Colossus,</a>
+which ensures durability by using <a href="https://wikipedia.org/wiki/Erasure_code" target="external" track-metadata-position="body" track-name="externalLink" track-type="solution">erasure encoding</a>
+to store redundant chunks of the data on multiple physical disks. Moreover,
+the data is replicated to multiple data centers.</p>
+<p>You can also run BigQuery queries on data outside of BigQuery storage,
+such as data stored in Cloud Storage, Google Drive, or Cloud Bigtable,
+by using
+<a href="https://cloud.google.com/bigquery/federated-data-sources" track-metadata-position="body" track-name="internalLink" track-type="solution">federated data sources</a>.
+However, these sources are not optimized for BigQuery operations, so they
+might not perform as well as data stored
+in BigQuery storage.</p>
+<h3 id="maintenance">Maintenance</h3>
+<p>BigQuery is a fully managed service, which means that the BigQuery
+engineering team takes care of updates and maintenance for you.
+Upgrades should not require downtime or hinder system performance.</p>
+<p>Many traditional systems require resource-intensive vacuum processes to run at
+various intervals to reshuffle and sort data blocks and recover space. BigQuery
+has no equivalent of the vacuum process, because the storage engine continuously
+manages and optimizes how data is stored and replicated. Also, because BigQuery
+does not use indexes on tables, you don't need to rebuild indexes.</p>
+<h3 id="backup_and_recovery">Backup and recovery</h3>
+<p>BigQuery addresses backup and disaster recovery at the service level. Also, by
+maintaining a complete 7-day history of changes against your tables, BigQuery
+allows you to query
+<a href="https://cloud.google.com/bigquery/table-decorators#snapshot_decorators" track-metadata-position="body" track-name="internalLink" track-type="solution">a point-in-time snapshot of your data</a>.
+You can easily revert
+changes without having to request a recovery from backups.
+(When a table is explicitly deleted, its history is flushed after 2 days. At the
+time of this writing, the snapshot feature is supported only in legacy SQL.)</p>
+<h2 id="managing_workflows">Managing workflows</h2>
+<p>This section discusses administrative tasks, such as organizing datasets,
+granting permissions, and onboarding work in BigQuery. The section also
+discusses how to manage concurrent workloads, monitor the health of your data
+warehouse, and audit user access.</p>
+<h3 id="organizing_datasets">Organizing datasets</h3>
+<p>You can segment datasets into separate projects based on class of data or
+business unit, or consolidate them into common projects for simplicity.</p>
+<p>You can invite a data analyst to collaborate on an existing dataset in any
+limited role that you define. When a data analysts logs into the
+<a href="https://bigquery.cloud.google.com">BigQuery Web UI</a>, they see only the datasets
+that have been shared with them across projects.
+The activities that they can perform against datasets varies, based on their role
+against each dataset.</p>
+<h3 id="granting_permissions">Granting permissions</h3>
+<p>In a traditional RDBMS system, you grant permissions to view or modify tables by
+creating SQL grants and applying them to a given user within the database
+system. In addition, some RDBMS systems allow you to grant permissions to users
+in an external directory such as LDAP. The BigQuery model for managing users and
+permissions resembles the latter model.</p>
+<p>BigQuery provides <a href="https://cloud.google.com/bigquery/docs/access-control#predefined_roles_details" track-metadata-position="body" track-name="internalLink" track-type="solution">predefined roles</a>
+for controlling access to resources. You can also create custom
+<a href="https://cloud.google.com/bigquery/docs/access-control" track-metadata-position="body" track-name="internalLink" track-type="solution">Cloud IAM roles</a>
+consisting of your defined set of permissions, and then assign
+those roles to users or groups. You can assign a role to a Google email address
+or to a <a href="https://support.google.com/a/answer/33329?hl=en" target="support" track-metadata-position="body" track-name="supportLink" track-type="solution">G Suite Group</a>.</p>
+<p>An important aspect of operating a data warehouse is allowing shared but
+controlled access against the same data to different groups of users. For
+example, finance, HR, and marketing departments all access the same tables, but
+their levels of access differ. Traditional data warehousing tools make this
+possible by enforcing row-level security. You can achieve the same results in
+BigQuery by defining
+<a href="https://cloud.google.com/bigquery/docs/views#authorized-views" track-metadata-position="body" track-name="internalLink" track-type="solution">authorized views</a>
+and
+<a href="https://cloud.google.com/bigquery/docs/views#row-level-permissions" track-metadata-position="body" track-name="internalLink" track-type="solution">row-level permissions</a>.</p>
+<h3 id="onboarding">Onboarding</h3>
+<p>Traditionally, onboarding new data analysts involved significant
+lead time. To enable analysts to run simple queries, you
+had to show them where data sources resided and set up ODBC connections and
+tools and access rights. Using GCP, you can greatly accelerate an analyst's time
+to productivity.</p>
+<p>To onboard an analyst on GCP, you
+<a href="https://support.google.com/cloud/answer/6158846#add-members" target="support" track-metadata-position="body" track-name="supportLink" track-type="solution">grant access to relevant project(s)</a>,
+introduce them to the Google Cloud Platform Console and BigQuery Web UI,
+and share some
+queries to help them get acquainted with the data:</p>
+<ul>
+<li>The <a href="https://console.cloud.google.com/" target="console" track-metadata-position="body" track-name="consoleLink" track-type="solution">GCP Console</a>
+    provides a centralized view of all assets in your cloud environment. The
+    most relevant asset to data analysts might be
+    <a href="https://cloud.google.com/storage/docs/creating-buckets" track-metadata-position="body" track-name="internalLink" track-type="solution">Cloud Storage buckets</a>,
+    where they can collaborate on files.</li>
+<li>The BigQuery Web UI presents the list of datasets that the analyst has access to. Analysts can
+    perform tasks in the console according to the role you grant them, such as
+    viewing metadata, previewing data, executing, and saving and sharing queries.</li>
+</ul>
+<h3 id="managing_workloads_and_concurrency">Managing workloads and concurrency</h3>
+<p>BigQuery limits the maximum rate of incoming requests and enforces appropriate
+quotas on a
+<a href="https://cloud.google.com/bigquery/docs/managing_jobs_datasets_projects" track-metadata-position="body" track-name="internalLink" track-type="solution">per-project</a>
+basis. Specific policies vary depending on resource availability, user profile,
+service usage history, and other factors. For details, see the
+<a href="https://cloud.google.com/bigquery/quota-policy" track-metadata-position="body" track-name="internalLink" track-type="solution">BigQuery Quota Policy</a>.</p>
+<p>BigQuery offers two types of
+<a href="https://cloud.google.com/bigquery/querying-data#interactive-batch" track-metadata-position="body" track-name="internalLink" track-type="solution">query priorities</a>:
+interactive and batch. By default, BigQuery runs interactive queries, which
+means that the query is executed as soon as possible. Interactive queries
+count towards <a href="https://cloud.google.com/bigquery/quota-policy#queries" track-metadata-position="body" track-name="internalLink" track-type="solution">query quotas</a>.
+Batch queries are queued and executed as soon as idle resources are available,
+usually within a few minutes.</p>
+<p>BigQuery does not support fine-grained prioritization of interactive or batch
+queries. Given the speed and scale at which BigQuery operates, many traditional
+workload issues are simply not applicable. If you need
+explicit query prioritization, you can
+separate your sensitive workloads into a project with an explicit number
+of reserved slots. Contact your Google representative to assist in becoming
+a flat-rate customer.</p>
+<h3 id="monitoring_and_auditing">Monitoring and auditing</h3>
+<p>You can monitor BigQuery using
+<a href="https://cloud.google.com/bigquery/docs/monitoring" track-metadata-position="body" track-name="internalLink" track-type="solution">Stackdriver</a>,
+where various charts and alerts are defined based on
+<a href="https://cloud.google.com/bigquery/docs/monitoring#metrics" track-metadata-position="body" track-name="internalLink" track-type="solution">BigQuery metrics</a>.
+For example, you can
+monitor system throughput using the Query Time metric or visualize query demand
+trends based on the Slots Allocated metric. When you need to plan ahead for a
+demanding query, you can use the Slots Available metric. To stay proactive about
+system health, you can
+<a href="https://cloud.google.com/bigquery/docs/monitoring#create-alert" track-metadata-position="body" track-name="internalLink" track-type="solution">create alerts</a>
+based on thresholds that you define. Stackdriver provides a self-service
+web-based portal. You can control access to the portal through
+<a href="https://cloud.google.com/monitoring/accounts/guide" track-metadata-position="body" track-name="internalLink" track-type="solution">Stackdriver accounts</a>.</p>
+<p>BigQuery automatically creates audit logs of user actions.
+You can export audit logs to another BigQuery dataset in a batch or as a data
+stream and use your preferred analysis tool
+to visualize the logs. For details, see
+<a href="https://cloud.google.com/bigquery/audit-logs" track-metadata-position="body" track-name="internalLink" track-type="solution">Analyzing Audit Logs Using BigQuery</a>.</p>
+<h2 id="managing_data">Managing data</h2>
+<p>This section discusses schema design considerations,
+<a href="https://wikipedia.org/wiki/Denormalization">denormalization</a>, how
+partitioning works, and
+methods for loading data into BigQuery. The section concludes with a look at
+handling change in the warehouse while maintaining zero
+analysis downtime.</p>
+<h3 id="designing_schema">Designing schema</h3>
+<p>Follow these general guidelines to design the optimal schema for BigQuery:</p>
+<ul>
+<li>Denormalize a dimension table that is larger than 1 terabyte, unless you see
+    strong evidence that data manipulation,  <code>UPDATE</code> and <code>DELETE</code> operation,
+    costs outweigh the
+    benefits of optimal queries.</li>
+<li>Keep a dimension table that is smaller than 1 terabyte normalized, unless
+    the table rarely goes through <code>UPDATE</code> and <code>DELETE</code> operations.</li>
+<li>Take full advantage of nested and repeated fields in denormalized tables.</li>
+</ul>
+<h4 id="denormalization">Denormalization</h4>
+<p>The conventional method of denormalizing data involves writing a fact,
+along with all its dimensions, into a flat table structure. For example, for
+sales transactions, you would write each fact to a record,
+along with the accompanying dimensions such as order and customer information.</p>
+<p>In contrast, the preferred method for denormalizing data takes advantage of
+BigQuery's native support for nested and repeated structures in JSON or Avro
+input data. Expressing records using nested and repeated structures can provide
+a more natural representation of the underlying data. In the case of the sales
+order, the outer part of a JSON structure contains the order and customer
+information, and the inner part of the structure contains the individual
+line items of the order, which are represented as nested, repeated
+elements.</p>
+<pre>
+{
+  "orderID": "ORDER",
+  "custID": "EMAIL",
+  "custName": "NAME",
+  "timestamp": "TIME",
+  "location": "LOCATION",
+  "purchasedItems": [
+    {
+      "sku": "SKU",
+      "description": "DESCRIPTION",
+      "quantity": "QTY",
+      "price": "PRICE"
+    },
+    {
+      "sku": "SKU",
+      "description": "DESCRIPTION",
+      "quantity": "QTY",
+      "price": "PRICE"
+    }
+  ]
+}
+</pre>
+
+<p>Expressing records using nested and repeated fields simplifies
+data load using JSON or Avro files. After you've created such a
+schema, you can perform <code>SELECT</code>, <code>INSERT</code>, <code>UPDATE</code>, and <code>DELETE</code> operations on any
+individual fields using a dot notation, for example, <code>Order.Item.SKU</code>. For
+examples, see the
+<a href="https://cloud.google.com/bigquery/docs/data" track-metadata-position="body" track-name="internalLink" track-type="solution">BigQuery documentation</a>.</p>
+<h4 id="advantages_of_denormalization">Advantages of denormalization</h4>
+<p>BigQuery is essentially an analytical engine. It supports
+<a href="https://wikipedia.org/wiki/Data_manipulation_language" target="external" track-metadata-position="body" track-name="externalLink" track-type="solution">DML</a>
+actions, but it is not meant to be used as an online transaction processing
+(OLTP) store. The discussion about
+<a href="#handling_change">Changing data</a>
+provides guidelines for dealing with changes while maintaining zero analysis
+downtime and delivering optimal online analytical processing (OLAP) performance.
+While normalized or partially normalized data structures such as star schema or
+snowflake are suitable for update/delete operations, they are not optimal for
+OLAP workloads. When performing OLAP operations on normalized tables, multiple
+tables have to be JOINed to perform the required aggregations.
+<a href="https://cloud.google.com/bigquery/query-reference#joins" track-metadata-position="body" track-name="internalLink" track-type="solution">JOINs</a>
+are possible with BigQuery and sometimes recommended on small tables. However,
+they are typically not as performant as
+denormalized structures.</p>
+<p>The following graph compares query performance using JOINs to simple filters in
+relation to table size. Query performance shows a much steeper
+decay in presence of JOINs.</p>
+<p><img alt="Query time using JOINS versus filters" class="screenshot border" src="https://cloud.google.com/solutions/images/bq-querytime.png" /></p>
+<h4 id="disadvantages_of_denormalization">Disadvantages of denormalization</h4>
+<p>Denormalized schemas are not storage-optimal, but BigQuery's low cost of storage
+addresses concerns about storage inefficiency. You can contrast costs
+against gains in query speed to see why storage is not a
+significant factor.</p>
+<p>One challenge when you work with denormalized schema is maintaining
+data integrity. Depending on the frequency of change and how widespread it is,
+maintaining data integrity can require increased machine time and sometimes
+human time for testing and verification.</p>
+<h3 id="partitioning_tables">Partitioning tables</h3>
+<p>BigQuery supports
+<a href="https://cloud.google.com/bigquery/docs/creating-partitioned-tables" track-metadata-position="body" track-name="internalLink" track-type="solution">partitioning tables by date</a>.
+You enable partitioning during the table-creation process. BigQuery
+creates new date-based partitions automatically, with no need for additional
+maintenance. In addition, you can specify an expiration time for data in the
+partitions.</p>
+<p>New data that is inserted into a partitioned table is written to the raw
+partition at the time of insert. To explicitly control which partition the data
+is loaded to, your load job can specify a particular date partition.</p>
+<h3 id="loading_data">Loading data</h3>
+<p>Before data can be loaded into BigQuery for analytical workloads, it is
+typically stored in a
+<a href="https://cloud.google.com/products/storage/" track-metadata-position="body" track-name="internalLink" track-type="solution">Cloud Storage product</a>
+and in a format that is native to its origin. During early stages of migration
+to GCP, the common pattern is to use existing extract, transform, and load (ETL)
+tools to transform data into the ideal schema for BigQuery.
+After data is transformed, it is transferred to Cloud Storage as CSV, JSON,
+or Avro files, and from there loaded into BigQuery using
+<a href="https://cloud.google.com/bigquery/loading-data" track-metadata-position="body" track-name="internalLink" track-type="solution">load jobs</a>
+or <a href="https://cloud.google.com/bigquery/streaming-data-into-bigquery" track-metadata-position="body" track-name="internalLink" track-type="solution">streaming</a>.
+Alternatively, you can transfer files to Cloud Storage in the schema that is
+native to the existing on-premises data storage, loaded into a set of staging
+tables in BigQuery and then transformed into
+the ideal schema for BigQuery using BigQuery SQL commands. These two
+approaches are visualized here:</p>
+<p><img alt="First approach to loading data" src="https://cloud.google.com/solutions/images/dwp3a.svg" /></p>
+<p><img alt="Second approach to loading data" src="https://cloud.google.com/solutions/images/dwp3b.svg" /></p>
+<p>As you expand your footprint in GCP, you will probably capture your source data
+directly in <a href="https://cloud.google.com/bigtable/" track-metadata-position="body" track-name="internalLink" track-type="solution">Cloud Bigtable</a>,
+<a href="https://cloud.google.com/datastore/" track-metadata-position="body" track-name="internalLink" track-type="solution">Cloud Datastore</a>
+or <a href="https://cloud.google.com/spanner/" track-metadata-position="body" track-name="internalLink" track-type="solution">Cloud Spanner</a>
+and use <a href="https://cloud.google.com/dataflow/" track-metadata-position="body" track-name="internalLink" track-type="solution">Cloud Dataflow</a>
+to ETL data into BigQuery in batch or streams.</p>
+<p><img alt="Capture source code directly" src="https://cloud.google.com/solutions/images/dwp4.svg" /></p>
+<h4 id="using_load_jobs">Using load jobs</h4>
+<p>This section assumes that your data is in Cloud Storage as a collection
+of files in a supported file format. For more information about each data
+format, as well as specific requirements and features to consider when choosing
+a format, see
+<a href="https://cloud.google.com/bigquery/data-formats" track-metadata-position="body" track-name="internalLink" track-type="solution">BigQuery Data Formats</a>.
+<!--For guidance on how to get your data into Cloud Storage, see
+<a href="https://cloud.google.com/solutions/transferring-big-data-sets-to-gcp">Transferring Big Data Sets to Cloud Platform</a>{: track-type="solution" track-name="internalLink" track-metadata-position="body" }.--></p>
+<p>In addition to CSV, you can also use data files with delimiters other than
+commas by using the <code>--field_delimiter</code> flag. For details, see
+<a href="https://cloud.google.com/bigquery/bq-command-line-tool#bq-load-flags" track-metadata-position="body" track-name="internalLink" track-type="solution">bq load flags</a>.</p>
+<p>BigQuery supports loading gzip
+<a href="https://cloud.google.com/bigquery/preparing-data-for-loading#loading_compressed_and_uncompressed_data" track-metadata-position="body" track-name="internalLink" track-type="solution">compressed</a>
+files. However, loading compressed files is not as fast as loading uncompressed
+files. For time-sensitive scenarios or scenarios in which transferring
+uncompressed files to Cloud Storage is bandwidth- or time-constrained, conduct
+a quick loading test to see which alternative works best.</p>
+<p>Because load jobs are asynchronous, you do not need to maintain a client
+connection while the job is being executed. More importantly, load jobs
+do not affect your other BigQuery resources.</p>
+<p>A load job creates a destination table if one does not already exist.</p>
+<p>BigQuery determines the data schema as follows:</p>
+<ul>
+<li>If your data is in Avro format, which is self-describing, BigQuery can
+    determine the schema directly.</li>
+<li>If the data is in JSON or CSV format, BigQuery can
+    <a href="https://cloud.google.com/bigquery/bq-command-line-tool#autodetect" track-metadata-position="body" track-name="internalLink" track-type="solution">auto-detect the schema</a>,
+    but <a href="https://cloud.google.com/bigquery/bq-command-line-tool#autodetect" track-metadata-position="body" track-name="internalLink" track-type="solution">manual verification</a>
+    is recommended.</li>
+</ul>
+<p>You can specify a schema explicitly by passing the schema as an argument to the
+<a href="https://cloud.google.com/bigquery/docs/loading-data-cloud-storage" track-metadata-position="body" track-name="internalLink" track-type="solution">load job</a>.
+Ongoing load jobs can append to the same table using the same procedure as the
+initial load, but do not require the schema to be passed with each job.</p>
+<p>If your CSV files always contain a header row that needs to be ignored after
+the initial load and table creation, you can use the <code>--skip_leading_rows</code> flag
+to ignore the row. For details, see
+<a href="https://cloud.google.com/bigquery/bq-command-line-tool#bq-load-flags" track-metadata-position="body" track-name="internalLink" track-type="solution">bq load flags</a>.</p>
+<p>BigQuery sets daily limits on the number and size of load jobs that you can
+perform per project and per table. In addition, BigQuery sets limits on the
+sizes of individual load files and records. For details, see
+<a href="https://cloud.google.com/bigquery/quota-policy#import" track-metadata-position="body" track-name="internalLink" track-type="solution">Quota Policy</a>.</p>
+<aside class="note"><strong>Note:</strong><span> Because tables are set to a hard limit of 1,000 load jobs per day,
+micro-batching is not advised. To achieve efficient high-volume or real-time
+loading of data, use streaming inserts in
+place of micro-batching.</span></aside>
+<p>You can launch load jobs through the BigQuery Web UI. To automate the process
+you can set up a
+<a href="https://cloud.google.com/functions/" track-metadata-position="body" track-name="internalLink" track-type="solution">Cloud Function</a>
+to listen to a <a href="https://cloud.google.com/functions/docs/calling/storage">Cloud Storage event</a>
+that is associated with arriving new files
+in a given bucket and launch the BigQuery load job.</p>
+<h4 id="using_streaming_inserts">Using streaming inserts</h4>
+<p>For an alternate and complementary approach, you can also stream data
+directly into BigQuery. Streamed data is made available immediately and can
+be queried alongside existing table data in real-time.</p>
+<p>For situations that can benefit from real-time information, such as
+fraud detection or monitoring system metrics, streaming can be a
+significant differentiator. However, unlike load jobs, which are free in
+BigQuery, there is a charge
+for streaming data. Therefore, it is important to use streaming in situations
+where the benefits outweigh the costs.</p>
+<p>When you stream data to the BigQuery tables, you <a href="https://cloud.google.com/bigquery/streaming-data-into-bigquery" track-metadata-position="body" track-name="internalLink" track-type="solution">send your records directly to
+BigQuery</a>
+by using the BigQuery API. If you use Stackdriver Logging, GCP's logging
+service, you can also
+<a href="https://cloud.google.com/logging/docs/export/configure_export" track-metadata-position="body" track-name="internalLink" track-type="solution">stream your GCP project's logs directly into BigQuery</a>,
+including request logs from App Engine and custom log information sent to
+Stackdriver Logging.</p>
+<h3 id="handling_change">Handling change</h3>
+<p>Many data warehouses operate under strict Service Level Agreements (SLAs),
+demanding little to no downtime. While Google handles BigQuery's uptime, you
+control the availability and responsiveness of your datasets with your approach
+to reflecting change in the data.</p>
+<p>All table modifications in BigQuery are
+<a href="https://wikipedia.org/wiki/ACID" target="external" track-metadata-position="body" track-name="externalLink" track-type="solution">ACID</a>
+compliant. This applies to DML operations, queries with destination tables, and
+load jobs. A table that goes through inserts, updates, and deletes while serving
+user queries handles the concurrency gracefully and transitions from one state
+to the next in an atomic fashion. Therefore, modifying a table does not require
+downtime. However, your internal process might require a testing and validation
+phase before making newly refreshed data available for analysis. Also, because
+DML operations compete against analytical workload over slots, you might prefer
+to isolate them. For these reasons, you might introduce downtime. This article
+uses the term "analysis downtime" to avoid confusion with BigQuery service
+downtime.</p>
+<p>You can apply most of the old and proven techniques for handling analysis
+downtime. This section expands on some of the known challenges and remedies.</p>
+<aside class="note"><strong>Note:</strong><span> Using BigQuery as an OLTP store is considered an anti-pattern. Because
+OLTP stores have a high volume of updates and deletes, they are a mismatch
+for the data warehouse use case. Use this
+<a href="https://cloud.google.com/storage-options/">flowchart</a> to help you
+decide which storage option fits your use case best.</span></aside>
+<h4 id="sliding_time_window">Sliding time window</h4>
+<p>A traditional data warehouse, unlike a data lake, retains data only for a fixed
+amount of time, for example, the last 5 years. On each update cycle, new data is
+added to the warehouse and the oldest data rolls off, keeping the duration
+fixed. For the most part, this concept was employed to work around the
+limitations of older technologies.</p>
+<p>BigQuery is built for scale and can scale out as the size of the warehouse
+grows, so there is no need to delete older data. By keeping the entire history,
+you can deliver more insight on your business. If the storage cost is a concern,
+you can take advantage of
+<a href="https://cloud.google.com/bigquery/pricing#long-term-storage" track-metadata-position="body" track-name="internalLink" track-type="solution">BigQuery's long term storage pricing</a>
+by archiving older data and
+using it for special analysis when the need arises. If you still have good
+reasons for dropping older data, you can use BigQuery's native support for
+<a href="https://cloud.google.com/bigquery/docs/creating-partitioned-tables" track-metadata-position="body" track-name="internalLink" track-type="solution">date-partitioned tables</a>
+and
+<a href="https://cloud.google.com/bigquery/docs/managing-partitioned-tables#partition-expiration" track-metadata-position="body" track-name="internalLink" track-type="solution">partition expiration</a>.
+In other words, BigQuery can automatically
+delete older data.</p>
+<h4 id="changing_schemas">Changing schemas</h4>
+<p>While a data warehouse is designed and developed, it is typical to tweak table
+schemas by adding, updating, or dropping columns or even adding or dropping
+whole tables. Unless the change is in the form of an added column or table, it
+could break saved queries and reports that reference a deleted table, a renamed
+column, and so on.</p>
+<p>After the data warehouse is in production, such changes go through strict change
+control. You might decide to handle minor schema changes during an analysis
+downtime, but for the most part reflecting schema changes are scheduled as
+version upgrades. You design, develop, and test the upgrade in parallel while
+the previous version of the data warehouse is serving the analysis workloads.
+You follow the same approach in applying schema changes to a BigQuery data
+warehouse.</p>
+<h4 id="slowly_changing_dimensions">Slowly changing dimensions</h4>
+<p>A normalized data schema minimizes the impact of
+<a href="https://wikipedia.org/wiki/Slowly_changing_dimension" target="external" track-metadata-position="body" track-name="externalLink" track-type="solution">Slowly Changing Dimensions (SCD)</a>
+by isolating the change in the dimension tables. It is generally favorable over
+a denormalized schema, where SCD can cause widespread updates to the flat fact
+table. However, as discussed in the schema design section, use normalization
+carefully for BigQuery.</p>
+<p>When it comes to SCD, there is no one-size-fits-all solution. It is important
+to understand the nature of the change and apply the most relevant solution
+or combinations of solutions to your problem. The remainder of this section
+outlines a few solutions and how to apply them to SCD types.</p>
+<aside class="note"><strong>Note:</strong><span> It is important to address slowly changing dimensions in the context of
+ideal schema for BigQuery. Often you must sacrifice efficient SCD handling in
+exchange for optimized query performance
+or the opposite.</span></aside>
+<h5 id="technique_1">Technique 1: view switching</h5>
+<p>This technique is based on two views of the data: "main" vs. "shadow". The trick
+is to hide the actual table and expose the "main" view to the users. On update
+cycles, the "shadow" view is created/updated and goes through data correctness
+tests while the users work against the "main" view. At switchover time, the
+"main" view is swapped with "shadow." The old "main" and now "shadow" could be
+torn down until the next update cycle or kept around for some workflows depending on
+the rules and processes defined by the organization.</p>
+<p>The two views could be based on a common table and differentiated by a column,
+for example, "view_type," or based on distinct tables. The former method is not
+recommended, because DML operations against the "shadow" view of the table could
+slow down user queries against the "main" view without offering any real
+benefits.</p>
+<p>While view switching offers zero analysis downtime, it has a higher cost because
+during the update cycle, two copies of the data exist. More importantly, if
+update cycles happen at a higher rate than 90 days, this approach could prevent
+your organization from taking advantage of
+<a href="https://cloud.google.com/bigquery/pricing#long-term-storage" track-metadata-position="body" track-name="internalLink" track-type="solution">long term storage pricing</a>.
+Ninety days is based
+on the pricing policy at the time of this writing. Be sure to check the latest
+policy.</p>
+<p>Sometimes different segments of data change at their own pace. For instance,
+sales data in North America is updated on a daily basis, while data for Asia
+Pacific is updated on a biweekly basis. In such situations, it is best to
+partition the table based on the driving factor for the change, Country in this
+example. View switching is then applied to the impacted partitions and not the
+entire data warehouse. At the time of this writing, you can only partition based
+on a custom data attribute, such as Country, by explicitly splitting the data
+into multiple tables.</p>
+<h5 id="technique_2">Technique 2: in-place partition loading</h5>
+<p>When the change in data can be isolated by a partition and brief analysis
+downtime is tolerated, view switching might be overkill. Instead, data for the
+impacted partitions can be staged in other
+BigQuery tables or exported files in Cloud Storage and replaced during analysis
+downtime.</p>
+<p>To replace data in a target partition with data from a query of another table:</p>
+<pre>
+bq query --use_legacy_sql=false --replace \
+         --destination_table 'flight_data.fact_flights_part$20140910' \
+         'select * from `ods.load_flights_20140910`
+</pre>
+
+<p>To replace data in a target partition by loading from Cloud Storage:</p>
+<pre>
+bq load  --replace \
+         --source_format=NEWLINE_DELIMITED_JSON
+         'flight_data.fact_flights_part$20140910' \
+         gs://{bucket}/load_flights_20140910.json
+</pre>
+
+<h5 id="technique_3">Technique 3: update data masking</h5>
+<p>A small and frequently changing dimension is a prime candidate for
+normalization. In this technique, updates to such a dimension are staged in an
+isolated table or view that is conditionally joined with the rest of the data:</p>
+<pre>
+SELECT f.order_id as order_id, f.customer_id as customer_id,
+    IF#introduction_2(u.customer_first_name, f.customer_first_name) as customer_first_name,
+    IF#introduction_2(u.customer_last_name, f.customer_last_name) as customer_last_name
+FROM fact_table f
+LEFT OUTER JOIN pending_customer_updates u
+ON f.customer_id = u.customer_id
+</pre>
+
+<h5 id="scd_type_1_overwrite_attribute_value">SCD Type 1: overwrite attribute value</h5>
+<p>Type 1 SCD overwrites the value of an attribute with new data without
+maintaining the history. For example, if the product "awesome moisturizer cream"
+was part of the "health and beauty" category and is now categorized as
+"cosmetics", the change looks like this:</p>
+<p>Before:</p>
+<table>
+<thead>
+<tr>
+<th><strong>PRD_SK</strong></th>
+<th><strong>PRD_ID</strong></th>
+<th><strong>PRD_DESC</strong></th>
+<th><strong>PRD_CATEGORY</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>123</td>
+<td>ABC</td>
+<td>awesome moisturizer cream - 100 oz</td>
+<td>health and beauty</td>
+</tr>
+</tbody>
+</table>
+
+<p>After:</p>
+<table>
+<thead>
+<tr>
+<th><strong>PRD_SK</strong></th>
+<th><strong>PRD_ID</strong></th>
+<th><strong>PRD_DESC</strong></th>
+<th><strong>PRD_CATEGORY</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>123</td>
+<td>ABC</td>
+<td>awesome moisturizer cream - 100 oz</td>
+<td><strike>health and beauty</strike><br>
+cosmetics</td>
+</tr>
+</tbody>
+</table>
+
+<p>If the attribute is in a normalized dimension table, the change is very
+isolated. You simply update the impacted row in the dimension table. For
+smaller dimension tables with frequent type 1 updates, use
+<a href="#technique_3">Technique 3: update data masking.</a></p>
+<p>If the attribute is embedded in the fact table in a denormalized fashion,
+the change is rather widespread. You will have to update all fact rows where
+the attribute is repeated. In this case, use either
+<a href="#technique_2">Technique 2: in-place partition loading</a>, or <a href="#technique_1">Technique 1: view switching.</a></p>
+<h5 id="scd_type_2_change_attribute_value_and_maintain_history">SCD Type 2: change attribute value and maintain history</h5>
+<p>This method tracks unlimited historical data by creating multiple records
+for a given <a href="https://wikipedia.org/wiki/Natural_key" target="external" track-metadata-position="body" track-name="externalLink" track-type="solution">natural key </a>
+with separate <a href="https://wikipedia.org/wiki/Surrogate_key" target="external" track-metadata-position="body" track-name="externalLink" track-type="solution">surrogate keys</a>.
+For example, the same change that is illustrated in SCD type 1 would be handled
+as below:</p>
+<p>Before:</p>
+<table>
+<thead>
+<tr>
+<th><strong>PRD_SK</strong></th>
+<th><strong>PRD_ID</strong></th>
+<th><strong>PRD_DESC</strong></th>
+<th><strong>PRD_CATEGORY</strong></th>
+<th><strong>START_DATE</strong></th>
+<th><strong>END_DATE</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>123</td>
+<td>ABC</td>
+<td>awesome moisturizer cream - 100 oz</td>
+<td>health and beauty</td>
+<td>31-Jan-2009</td>
+<td><code>NULL</code></td>
+</tr>
+</tbody>
+</table>
+
+<p>After:</p>
+<table>
+<thead>
+<tr>
+<th><strong>PRD_SK</strong></th>
+<th><strong>PRD_ID</strong></th>
+<th><strong>PRD_DESC</strong></th>
+<th><strong>PRD_CATEGORY</strong></th>
+<th><strong>START_DATE</strong></th>
+<th><strong>END_DATE</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>123</td>
+<td>ABC</td>
+<td>awesome moisturizer cream - 100 oz</td>
+<td>health and beauty</td>
+<td>31-Jan-2009</td>
+<td>18-JUL-2017</td>
+</tr>
+<tr>
+<td>124</td>
+<td>ABC</td>
+<td>awesome moisturizer cream - 100 oz</td>
+<td>cosmetics</td>
+<td>19-JUL-2017</td>
+<td><code>NULL</code></td>
+</tr>
+</tbody>
+</table>
+
+<p>If the attribute is in a normalized dimension table, the change is isolated.
+You simply update the previous row and add a new one in the dimension table.
+For smaller dimension tables with frequent type 1 updates, use
+<a href="#technique_3">Technique 3: update data masking</a>.</p>
+<p>If the attribute is embedded in the fact table in a denormalized fashion,
+the situation can be more favorable, as long as you don't maintain
+explicit start and end dates for the value and instead rely on the transaction
+dates. Because the previous value remains true for the date and time the
+previous transactions occurred, you don't need to change previous fact
+table rows. The fact table would look like this:</p>
+<table>
+<thead>
+<tr>
+<th><strong>TRANSACTION_DATE</strong></th>
+<th><strong>PRD_SK</strong></th>
+<th><strong>PRD_ID</strong></th>
+<th><strong>PRD_DESC</strong></th>
+<th><strong>PRD_CATEGORY</strong></th>
+<th><strong>UNITS</strong></th>
+<th><strong>AMOUNT</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>18-JUL-2017</td>
+<td>123</td>
+<td>ABC</td>
+<td>awesome moisturizer cream - 100 oz</td>
+<td>health and beauty</td>
+<td>2</td>
+<td>25.16</td>
+</tr>
+<tr>
+<td>19-JUL-2017</td>
+<td>124</td>
+<td>ABC</td>
+<td>awesome moisturizer cream - 100 oz</td>
+<td>cosmetics</td>
+<td>1</td>
+<td>13.50</td>
+</tr>
+</tbody>
+</table>
+
+<h2 id="querying_data">Querying data</h2>
+<p>BigQuery supports standard SQL queries and is compatible with ANSI SQL 2011.
+BigQuery's <a href="https://cloud.google.com/bigquery/sql-reference/" track-metadata-position="body" track-name="internalLink" track-type="solution">SQL Reference</a>
+provides a comprehensive description of all functions, operators and regex
+capabilities that are supported.</p>
+<aside class="note"><strong>Note:</strong><span> Prior to supporting standard SQL, BigQuery supported an alternate SQL
+version which is now referred to as Legacy SQL. We recommend using the updated
+SQL standard in your queries. For more information, see
+<a href="https://cloud.google.com/bigquery/sql-reference/enabling-standard-sql" track-metadata-position="body" track-name="internalLink" track-type="solution">Enabling Standard SQL</a>.</span></aside>
+<p>Because BigQuery supports nested and repeated fields as part of the data model,
+its SQL support has been extended to specifically support these field types.
+For example, using the
+<a href="https://cloud.google.com/bigquery/public-data/github" track-metadata-position="body" track-name="internalLink" track-type="solution">GitHub public dataset</a>,
+you could issue the
+<a href="https://cloud.google.com/bigquery/sql-reference/query-syntax#unnest" track-metadata-position="body" track-name="internalLink" track-type="solution"><code>UNNEST</code></a>
+command, which lets you iterate over a repeated field:</p>
+<pre>
+SELECT
+  name, count(1) as num_repos
+FROM
+  `bigquery-public-data.github_repos.languages`, UNNEST(language)
+GROUP BY name
+ORDER BY num_repos
+DESC limit 10
+</pre>
+
+<h3 id="interactive_queries">Interactive queries</h3>
+<p>The BigQuery Web UI
+allows interactive querying of datasets and provides a consolidated view of
+datasets across projects that you have access to. The console also provides
+several useful features such as saving and sharing ad-hoc queries, tuning and
+editing historical queries, exploring tables and schemas, and gathering table
+metadata. Refer to the
+<a href="https://cloud.google.com/bigquery/bigquery-web-ui" track-metadata-position="body" track-name="internalLink" track-type="solution">BigQuery Web UI</a>
+for more details.</p>
+<p><img alt="bigquery web ui screen capture" class="screenshot border" src="https://cloud.google.com/solutions/images/bq-composequery.png" /></p>
+<h3 id="automated_queries">Automated queries</h3>
+<p>It is a common practice to automate execution of queries based on a
+schedule/event and cache the results for later consumption.</p>
+<p>If you are using Airflow to orchestrate other automated activities and already
+familiar with the tool, use
+<a href="http://airflow.incubator.apache.org/integration.html?highlight=bigquery#gcp" target="external" track-metadata-position="body" track-name="externalLink" track-type="solution">Apache Airflow API for BigQuery</a>
+for this purpose.
+<a href="https://cloud.google.com/blog/big-data/2017/07/how-to-aggregate-data-for-bigquery-using-apache-airflow" track-metadata-position="body" track-name="internalLink" track-type="solution">This blog post</a>
+walks you through the process of installing Airflow and creating a workflow
+against BigQuery.</p>
+<p>For simpler orchestrations, you can rely on cron jobs.
+<a href="https://cloud.google.com/blog/big-data/2017/04/how-to-build-a-bi-dashboard-using-google-data-studio-and-bigquery" track-metadata-position="body" track-name="internalLink" track-type="solution">This blog post</a>
+shows you how to encapsulate a query as an App Engine app and run it
+as a scheduled cron job.</p>
+<h3 id="query_optimization">Query optimization</h3>
+<p>Each time BigQuery executes a query, it executes a full-column scan.
+BigQuery does not use or support indexes. Because BigQuery performance and
+query costs are based on the amount of data scanned during a query, design your
+queries so that they reference only the columns that are relevant to the query.
+When using date-partitioned tables, ensure only the relevant partitions are
+scanned. You can achieve this by using partition
+<a href="https://cloud.google.com/bigquery/docs/querying-partitioned-tables" track-metadata-position="body" track-name="internalLink" track-type="solution">filters based on PARTITIONTIME or PARTITIONDATE</a>.</p>
+<p>To understand the performance characteristics after a query executes, take a
+look at the detailed
+<a href="https://cloud.google.com/bigquery/query-plan-explanation" track-metadata-position="body" track-name="internalLink" track-type="solution">query plan explanation</a>.
+The explanation breaks down the stages that the query went through,
+the number of input/output rows handled at each stage, and the timing
+profile within each stage. Using the results from the explanation can help you
+understand and optimize your queries.</p>
+<p><img alt="bigquery results screen capture" class="screenshot border" src="https://cloud.google.com/solutions/images/bq-stages.png" /></p>
+<h3 id="external_sources">External sources</h3>
+<p>You can run queries on data that exists outside of BigQuery by using
+<a href="https://cloud.google.com/bigquery/federated-data-sources" track-metadata-position="body" track-name="internalLink" track-type="solution">federated data sources</a>,
+but this approach has performance implications. Use federated data sources
+only if the data must be maintained externally. You can also use query
+federation to perform ETL from an external source to BigQuery. This approach
+allows you to define ETL using familiar SQL syntax.</p>
+<h3 id="user-defined_functions">User-defined functions</h3>
+<p>BigQuery also supports
+<a href="https://cloud.google.com/bigquery/user-defined-functions" track-metadata-position="body" track-name="internalLink" track-type="solution">user-defined functions</a>
+(UDFs) for queries that exceed the complexity of SQL. UDFs allow you to extend
+the built-in SQL functions; they take a list of values, which can be arrays
+or structs, and return a single value, which can also be an array or struct.
+UDFs are written in JavaScript and can include external resources, such as
+encryption or other libraries.</p>
+<h3 id="query_sharing">Query sharing</h3>
+<p>BigQuery allows collaborators to save and share queries between team members.
+This feature can be especially useful in data exploration exercises or as a
+means of coming up to speed on a new dataset or query pattern. For more
+information, see
+<a href="https://cloud.google.com/bigquery/docs/saving-sharing-queries" track-metadata-position="body" track-name="internalLink" track-type="solution">Saving and Sharing Queries</a>.</p>
+<h2 id="analyzing_data">Analyzing data</h2>
+<p>This section presents various ways that you can connect to BigQuery and analyze
+the data. To take full advantage of BigQuery as an analytical engine, you should
+store the data in BigQuery storage. However, your specific use case might
+benefit from analyzing external sources
+either by themselves or JOINed with data in BigQuery storage.</p>
+<h3 id="off-the-shelf_tools">Off-the-shelf tools</h3>
+<p><a href="https://cloud.google.com/data-studio/" track-metadata-position="body" track-name="internalLink" track-type="solution">Data Studio,</a>
+available in beta at the time of this writing, as well as many
+<a href="https://cloud.google.com/bigquery/partners/" track-metadata-position="body" track-name="internalLink" track-type="solution">partner tools</a>
+that are already integrated with BigQuery, can be used to draw analytics from
+BigQuery and build sophisticated interactive data visualizations.</p>
+<p>If you find yourself in a situation where you have to choose a tool, you can
+find comprehensive vendor comparison in
+<a href="https://www.gartner.com/doc/3611117/magic-quadrant-business-intelligence-analytics" target="external" track-metadata-position="body" track-name="externalLink" track-type="solution">Gartner's Magic Quadrant Report</a>
+and <a href="https://www.g2crowd.com/grid_report/documents/grid-for-business-intelligence-platforms-winter-2017" target="external" track-metadata-position="body" track-name="externalLink" track-type="solution">G2 Score Report </a>
+by G2 Crowd. Gartner's report can be obtained from many of our partner sites,
+such as
+<a href="https://www.tableau.com/asset/2017-gartner-magic-quadrant" target="external" track-metadata-position="body" track-name="externalLink" track-type="solution">Tableau</a>.</p>
+<p><img alt="partner logos" src="https://cloud.google.com/solutions/images/bqforbdwp-7x.png" /></p>
+<h3 id="custom_development">Custom development</h3>
+<p>To build custom applications and platforms on top of BigQuery, you can use
+<a href="https://cloud.google.com/bigquery/client-libraries" track-metadata-position="body" track-name="internalLink" track-type="solution">client libraries</a>,
+which are available for most common programming languages, or you can use
+<a href="https://cloud.google.com/bigquery/docs/reference/rest/v2/" track-metadata-position="body" track-name="internalLink" track-type="solution">BigQuery's REST API</a>
+directly.</p>
+<p>For a concrete example, refer to <a href="https://cloud.google.com/solutions/bokeh-and-bigquery-dashboards">this tutorial</a>,
+which uses Python libraries to connect to BigQuery and generate custom
+interactive dashboards.</p>
+<aside class="note"><strong>Note:</strong><span> All the methods for connecting to BigQuery essentially provide a wrapper
+around  BigQuery's REST API. All connections to the BigQuery API are encrypted
+using HTTPS and enforce permissions using
+<a href="https://cloud.google.com/bigquery/docs/access-control">IAM policies</a>.</span></aside>
+<h3 id="third-party_connectors">Third-party connectors</h3>
+<p>To connect to BigQuery from an application that is not natively integrated with
+BigQuery at the API level, you can use the
+<a href="https://cloud.google.com/bigquery/partners/simba-beta-drivers" track-metadata-position="body" track-name="internalLink" track-type="solution">BigQuery JDBC and ODBC drivers</a>.
+The drivers provide a bridge to interact with BigQuery for legacy applications
+or applications that cannot be easily modified, such as
+<a href="https://cloud.google.com/blog/big-data/2016/11/how-to-connect-bigquery-to-microsoft-excel-and-other-apps-with-our-new-odbc-driver" track-metadata-position="body" track-name="internalLink" track-type="solution">Microsoft Excel</a>.
+Although ODBC and JDBC support interacting with BigQuery using SQL, the drivers
+are not as expressive as dealing with the API directly.</p>
+<h2 id="costs">Costs</h2>
+<p>Most data warehouses serve multiple business entities within the organization.
+A common challenge is to analyze cost of operation per business entity. For
+guidance on slicing your bill and attributing cost to consumption, see
+<a href="https://medium.com/google-cloud/visualize-gcp-billing-using-bigquery-and-data-studio-d3e695f90c08" target="external" track-metadata-position="body" track-name="externalLink" track-type="solution">Visualize GCP Billing using BigQuery and Data Studio</a>.</p>
+<p>There are three primary cost dimensions for BigQuery: loading, storage, and
+query costs. This section discusses each dimension in detail.</p>
+<h3 id="storing_data">Storing data</h3>
+<p>Storage pricing is prorated per MB/s.</p>
+<p>If a table has not been edited for 90 consecutive days, it is categorized as
+long-term storage and the price of storage for that table automatically drops by
+50 percent to $0.01 per GB per month. There is no degradation of performance,
+durability, availability, or any other functionality when a table is considered
+long-term storage. When the data in a table is modified, BigQuery resets the
+timer on the table, and any data in the table returns to the normal storage
+price. Actions that do not directly manipulate the data, such as querying and
+creating views, do not reset the timer.</p>
+<p>For more details, see
+<a href="https://cloud.google.com/bigquery/pricing#storage" track-metadata-position="body" track-name="internalLink" track-type="solution">BigQuery storage pricing</a>.</p>
+<h3 id="loading_data_1">Loading data</h3>
+<p>You can load data into BigQuery using a conventional load job at no charge.
+After data is loaded, you pay for the storage as discussed above.</p>
+<p>Streaming inserts are charged based on the amount of data that is being streamed.
+For details, see costs of streaming inserts listed under
+<a href="https://cloud.google.com/bigquery/pricing#storage" track-metadata-position="body" track-name="internalLink" track-type="solution">BigQuery storage pricing</a>.</p>
+<h3 id="querying_data_1">Querying data</h3>
+<p>For queries, BigQuery offers two pricing models: on-demand and flat-rate.</p>
+<aside class="note"><strong>Note:</strong><span> In a multi-project situation where data is hosted in one project and made
+available for queries to users of other projects, the cost of storage and
+streaming is incurred in the hosting project, but the cost of queries is
+incurred in the project where the query is issued from.</span></aside>
+<h4 id="on-demand_pricing">On-demand pricing</h4>
+<p>In the on-demand model, BigQuery charges for the amount of data accessed during
+query execution. Because BigQuery uses a columnar storage format, only the
+columns relevant to your query are accessed. If you only run reports on weekly
+or monthly basis, and you've performed queries on less than 1TB of your data,
+you might find the cost of queries on your bill is very low. For more details
+on how queries are charged, see
+<a href="https://cloud.google.com/bigquery/pricing#queries" track-metadata-position="body" track-name="internalLink" track-type="solution">BigQuery query pricing</a>.</p>
+<p>To help determine how much data any given query is going to scan beforehand, you
+can use the query validator in the web UI. In the case of
+custom development,
+you can set the <code>dryRun</code> flag in the API request and have BigQuery not run the
+job. Instead, return with statistics about the job, such as how many bytes
+would be processed. Refer to the <a href="https://cloud.google.com/bigquery/docs/reference/rest/v2/jobs/query" track-metadata-position="body" track-name="internalLink" track-type="solution">query API</a>
+for more details.</p>
+<p><img alt="Query API" class="screenshot border" src="https://cloud.google.com/solutions/images/bq-runquery.png" /></p>
+<h4 id="flat-rate_pricing">Flat-rate pricing</h4>
+<p>Customers who prefer more consistency of monthly expenses can choose to
+enable flat-rate pricing. To learn more, see
+<a href="https://cloud.google.com/bigquery/pricing#flat_rate_pricing" track-metadata-position="body" track-name="internalLink" track-type="solution">BigQuery flat-rate pricing</a>.</p>
+<h2 id="whats_next">What's next?</h2>
+<ul>
+<li><a href="https://cloud.google.com/bigquery/docs/how-to" track-metadata-position="body" track-name="internalLink" track-type="solution">BigQuery How-tos</a></li>
+<li><a href="https://cloud.google.com/bigquery/public-data/" track-metadata-position="body" track-name="internalLink" track-type="solution">BigQuery Public Datasets</a></li>
+<li><a href="https://www.gcppodcast.com/categories/bigquery" target="external" track-metadata-position="body" track-name="externalLink" track-type="solution">BigQuery on the GCP Podcast</a></li>
+<li><a href="http://stackoverflow.com/questions/tagged/google-bigquery" target="external" track-metadata-position="body" track-name="externalLink" track-type="solution">BigQuery on Stack Overflow</a></li>
+<li><a href="https://www.reddit.com/r/bigquery" target="external" track-metadata-position="body" track-name="externalLink" track-type="solution">r/bigquery on Reddit</a>
+<!--+  <a href="https://docs.google.com/document/d/1EZUHqqknxhHuvpQPGqwOaKcVnSMBwxKgOj_iQZsyLVI/edit#">From Data Warehousing in Teradata to Big Data in GCP</a>{: target="external" track-type="solution" track-name="externalLink" track-metadata-position="body" } --></li>
+</ul>
+<p>
+
+Try out other Google Cloud Platform features for yourself. Have a look at our
+<a href="https://cloud.google.com/docs/tutorials"  track-type="tutorial" track-name="textLink" track-metadata-position="nextSteps">tutorials</a>.
+
+</p>
+
+  </div>
+  
+    
+
+
+
+  
+
+  
+        
+  
+
+
+
+
+
+
+
+        
+<div class="devsite-content-footer nocontent">
+  
+  
+    <p>Except as otherwise noted, the content of this page is licensed under the <a href="http://creativecommons.org/licenses/by/3.0/">Creative Commons Attribution 3.0 License</a>, and code samples are licensed under the <a href="http://www.apache.org/licenses/LICENSE-2.0">Apache 2.0 License</a>. For details, see our <a href="https://developers.google.com/terms/site-policies">Site Policies</a>. Java is a registered trademark of Oracle and/or its affiliates.</p>
+  
+
+  
+    
+    <p class="devsite-content-footer-date" itemprop="datePublished"
+       content="2018-02-09T19:08:37.043660">
+      
+      Last updated February 9, 2018.
+    </p>
+  
+
+</div>
+
+        </article>
+      </article>
+  
+
+        </div>
+      
+
+<footer class="devsite-footer-linkboxes nocontent
+               devsite-footer-linkboxes-all-backup
+               devsite-footer-linkboxes-with-sites"><nav class="devsite-full-site-width"><ul class="devsite-footer-linkboxes-list"><li class="devsite-footer-linkbox devsite-footer-linkbox-backup"><h3 class="devsite-footer-linkbox-heading">Products</h3><ul class="devsite-footer-linkbox-list"><li class="devsite-footer-linkbox-item"><a href="https://cloud.google.com/products/compute/" class="gc-analytics-event"
+               data-category="Site-Wide Custom Events"
+               data-label="Footer Compute">
+                Compute
+            </a></li><li class="devsite-footer-linkbox-item"><a href="https://cloud.google.com/products/storage/" class="gc-analytics-event"
+               data-category="Site-Wide Custom Events"
+               data-label="Footer Storage">
+                Storage
+            </a></li><li class="devsite-footer-linkbox-item"><a href="https://cloud.google.com/products/networking/" class="gc-analytics-event"
+               data-category="Site-Wide Custom Events"
+               data-label="Footer Networking">
+                Networking
+            </a></li><li class="devsite-footer-linkbox-item"><a href="https://cloud.google.com/products/big-data/" class="gc-analytics-event"
+               data-category="Site-Wide Custom Events"
+               data-label="Footer Big Data">
+                Big Data
+            </a></li><li class="devsite-footer-linkbox-item"><a href="https://cloud.google.com/products/machine-learning/" class="gc-analytics-event"
+               data-category="Site-Wide Custom Events"
+               data-label="Footer Machine Learning">
+                Machine Learning
+            </a></li><li class="devsite-footer-linkbox-item"><a href="https://cloud.google.com/products/#management" class="gc-analytics-event"
+               data-category="Site-Wide Custom Events"
+               data-label="Footer Management Tools">
+                Management Tools
+            </a></li><li class="devsite-footer-linkbox-item"><a href="https://cloud.google.com/products/tools/" class="gc-analytics-event"
+               data-category="Site-Wide Custom Events"
+               data-label="Footer Developer Tools">
+                Developer Tools
+            </a></li><li class="devsite-footer-linkbox-item"><a href="https://cloud.google.com/products/#identity-security" class="gc-analytics-event"
+               data-category="Site-Wide Custom Events"
+               data-label="Footer Identity and Security">
+                Identity &amp; Security
+            </a></li><li class="devsite-footer-linkbox-item"><a href="//status.cloud.google.com" class="gc-analytics-event"
+               data-category="Site-Wide Custom Events"
+               data-label="Footer System Status">
+                System Status
+            </a></li></ul></li><li class="devsite-footer-linkbox devsite-footer-linkbox-backup"><h3 class="devsite-footer-linkbox-heading">Learn More</h3><ul class="devsite-footer-linkbox-list"><li class="devsite-footer-linkbox-item"><a href="https://cloud.google.com/why-google/" class="gc-analytics-event"
+               data-category="Site-Wide Custom Events"
+               data-label="Footer Why Google">
+                Why Google Cloud
+            </a></li><li class="devsite-footer-linkbox-item"><a href="https://cloud.google.com/pricing/" class="gc-analytics-event"
+               data-category="Site-Wide Custom Events"
+               data-label="Footer Pricing">
+                Pricing
+            </a></li><li class="devsite-footer-linkbox-item"><a href="https://cloud.google.com/docs/" class="gc-analytics-event"
+               data-category="Site-Wide Custom Events"
+               data-label="Footer Documentation">
+                Documentation
+            </a></li><li class="devsite-footer-linkbox-item"><a href="https://cloud.google.com/docs/tutorials/" class="gc-analytics-event"
+               data-category="Site-Wide Custom Events"
+               data-label="Footer Tutorials">
+                Tutorials
+            </a></li><li class="devsite-footer-linkbox-item"><a href="https://cloud.google.com/training/" class="gc-analytics-event"
+               data-category="Site-Wide Custom Events"
+               data-label="Footer Training">
+                Training
+            </a></li><li class="devsite-footer-linkbox-item"><a href="https://cloud.google.com/solutions/" class="gc-analytics-event"
+               data-category="Site-Wide Custom Events"
+               data-label="Footer Solutions">
+                Solutions
+            </a></li><li class="devsite-footer-linkbox-item"><a href="https://cloud.google.com/security/" class="gc-analytics-event"
+               data-category="Site-Wide Custom Events"
+               data-label="Footer Security &amp; Compliance">
+                Security &amp; Compliance
+            </a></li><li class="devsite-footer-linkbox-item"><a href="https://cloud.google.com/partners/" class="gc-analytics-event"
+               data-category="Site-Wide Custom Events"
+               data-label="Footer Partners">
+                Partners
+            </a></li><li class="devsite-footer-linkbox-item"><a href="https://cloud.google.com/customers/" class="gc-analytics-event"
+               data-category="Site-Wide Custom Events"
+               data-label="Footer Customers">
+                Customers
+            </a></li><li class="devsite-footer-linkbox-item"><a href="https://cloud.google.com/support/" class="gc-analytics-event"
+               data-category="Site-Wide Custom Events"
+               data-label="Footer Support">
+                Support
+            </a></li><li class="devsite-footer-linkbox-item"><a href="//careers.google.com/cloud/" class="gc-analytics-event"
+               data-category="Site-Wide Custom Events"
+               data-label="Footer Careers">
+                Careers
+            </a></li><li class="devsite-footer-linkbox-item"><a href="//www.google.com/cloud/press" class="gc-analytics-event"
+               data-category="Site-Wide Custom Events"
+               data-label="Footer Press">
+                Press
+            </a></li></ul></li><li class="devsite-footer-linkbox devsite-footer-linkbox-backup"><h3 class="devsite-footer-linkbox-heading">Engage</h3><ul class="devsite-footer-linkbox-list"><li class="devsite-footer-linkbox-item"><a href="https://cloud.google.com/free-trial/" class="gc-analytics-event"
+               data-category="Site-Wide Custom Events"
+               data-label="Footer Free Trial Sign Up">
+                Free Trial Sign Up
+            </a></li><li class="devsite-footer-linkbox-item"><a href="//cloudplatform.googleblog.com" class="gc-analytics-event"
+               data-category="Site-Wide Custom Events"
+               data-label="Footer Blog">
+                Blog
+            </a></li><li class="devsite-footer-linkbox-item"><a href="https://cloud.google.com/community/" class="gc-analytics-event"
+               data-category="Site-Wide Custom Events"
+               data-label="Footer Community">
+                Community
+            </a></li><li class="devsite-footer-linkbox-item"><a href="//plus.google.com/+googlecloudplatform" class="gc-analytics-event"
+               data-category="Site-Wide Custom Events"
+               data-label="Footer Google+">
+                Google+
+            </a></li><li class="devsite-footer-linkbox-item"><a href="//twitter.com/gcpcloud" class="gc-analytics-event"
+               data-category="Site-Wide Custom Events"
+               data-label="Footer Twitter">
+                Twitter
+            </a></li><li class="devsite-footer-linkbox-item"><a href="//www.linkedin.com/showcase/google-cloud" class="gc-analytics-event"
+               data-category="Site-Wide Custom Events"
+               data-label="Footer LinkedIn">
+                LinkedIn
+            </a></li><li class="devsite-footer-linkbox-item"><a href="//stackoverflow.com/questions/tagged/google-cloud-platform" class="gc-analytics-event"
+               data-category="Site-Wide Custom Events"
+               data-label="Footer Stack Overflow">
+                Stack Overflow
+            </a></li><li class="devsite-footer-linkbox-item"><a href="//www.youtube.com/googlecloudplatform" class="gc-analytics-event"
+               data-category="Site-Wide Custom Events"
+               data-label="Footer YouTube">
+                YouTube
+            </a></li><li class="devsite-footer-linkbox-item"><a href="//www.gcppodcast.com" class="gc-analytics-event"
+               data-category="Site-Wide Custom Events"
+               data-label="Footer Podcast">
+                Podcast
+            </a></li><li class="devsite-footer-linkbox-item"><a href="//cloud.google.com/newsletter/" class="gc-analytics-event"
+               data-category="Site-Wide Custom Events"
+               data-label="Footer Newsletter Signup">
+                Newsletter Signup
+            </a></li><li class="devsite-footer-linkbox-item"><a href="//cloud.google.com/usability" class="gc-analytics-event"
+               data-category="Site-Wide Custom Events"
+               data-label="Footer UX Research">
+                UX Research
+            </a></li></ul></li><li class="devsite-footer-linkbox devsite-footer-linkbox-sites"><a href="https://developers.google.com/"
+           class="gc-analytics-event devsite-footer-linkbox-logo-link"
+           data-category="Site-Wide Custom Events" data-label="Footer Google Developers Link"><img class="devsite-footer-linkbox-logo"
+               src="https://cloud.google.com/_static/d7147bb846/images/redesign-14/lockup-color-knockout.png"
+               alt="Google Developers"></a><ul class="devsite-footer-linkbox-list"><li class="devsite-footer-linkbox-item"><a href="//developer.android.com/index.html" class="gc-analytics-event"
+               data-category="Site-Wide Custom Events"
+               data-label="Footer Android Link">
+                Android
+            </a></li><li class="devsite-footer-linkbox-item"><a href="//developer.chrome.com/home" class="gc-analytics-event"
+               data-category="Site-Wide Custom Events"
+               data-label="Footer Chrome Link">
+                Chrome
+            </a></li><li class="devsite-footer-linkbox-item"><a href="//firebase.google.com" class="gc-analytics-event"
+               data-category="Site-Wide Custom Events"
+               data-label="Footer Firebase Link">
+                Firebase
+            </a></li><li class="devsite-footer-linkbox-item"><a href="//cloud.google.com" class="gc-analytics-event"
+               data-category="Site-Wide Custom Events"
+               data-label="Footer Cloud Link">
+                Google Cloud Platform
+            </a></li><li class="devsite-footer-linkbox-item"><a href="//developers.google.com/products/" class="gc-analytics-event"
+               data-category="Site-Wide Custom Events"
+               data-label="Footer Products Link">
+                All Products
+            </a></li></ul></li></ul></nav></footer><footer class="devsite-utility-footer"><nav class="devsite-utility-footer-nav devsite-nav devsite-full-site-width"><div class="devsite-utility-footer-nav-left"><form class="devsite-utility-footer-language" action="/i18n/setlang/" method="post"><input type="hidden" name="xsrf_token" value="ik-uLKAi7IiqlJeB8TOViVIp6JkAYatEExvfjMPK9eU6MTUyNDQ2MDIxOTQ0NzE1MA" /><input type="hidden" name="next" value="/solutions/bigquery-data-warehouse"><select class="devsite-utility-footer-language-select kd-select" name="language"
+                track-type="languageSelector" track-name="click"><option value="en"
+                 selected="selected" 
+                track-type="languageSelector" track-name="changed"
+                track-metadata-original-language="en"
+                track-metadata-selected-language="en">
+            English
+          </option><option value="es"
+                
+                track-type="languageSelector" track-name="changed"
+                track-metadata-original-language="en"
+                track-metadata-selected-language="es">
+            español
+          </option><option value="pt-br"
+                
+                track-type="languageSelector" track-name="changed"
+                track-metadata-original-language="en"
+                track-metadata-selected-language="pt-br">
+            Português Brasileiro
+          </option><option value="ja"
+                
+                track-type="languageSelector" track-name="changed"
+                track-metadata-original-language="en"
+                track-metadata-selected-language="ja">
+            日本語
+          </option><option value="zh-tw"
+                
+                track-type="languageSelector" track-name="changed"
+                track-metadata-original-language="en"
+                track-metadata-selected-language="zh-tw">
+            繁體中文
+          </option></select></form><span class="devsite-utility-footer-links"><a class="devsite-utility-footer-link gc-analytics-event"
+           href="https://cloud.google.com/terms/"
+           data-category="Site-Wide Custom Events"
+           data-label="Footer terms link"
+           data-footer-link-id="terms"
+           >Terms
+         </a><a class="devsite-utility-footer-link gc-analytics-event"
+           href="//www.google.com/policies/privacy/"
+           data-category="Site-Wide Custom Events"
+           data-label="Footer privacy link"
+           data-footer-link-id="privacy"
+           >Privacy
+         </a><a class="devsite-utility-footer-link gc-analytics-event"
+           href="//www.google.de/contact/impressum.html"
+           data-category="Site-Wide Custom Events"
+           data-label="Footer impressum link"
+           data-footer-link-id="impressum"
+           >Impressum
+         </a></span></div></nav></footer><div class="devsite-feedback-dialog devsite-dialog"><div class="devsite-dialog-contents"><h3>Send feedback about...</h3><div class="devsite-feedback-item"><a data-type="documentation" class="gc-analytics-event"
+           data-category="Site-Wide Custom Events" data-label="Docs Feedback Image"
+           track-type="feedback" track-name="feedbackDocIcon" track-metadata-position="header"><div class="devsite-feedback-item-icon-container"><div class="devsite-feedback-item-icon-white devsite-feedback-item-icon-docs
+                        material-icons"></div></div></a><div class="devsite-feedback-item-name">
+          
+          This page
+        </div><div class="devsite-feedback-item-description"><a data-type="documentation" tabindex="0" class="gc-analytics-event"
+             data-category="Site-Wide Custom Events" data-label="Docs Feedback Text"
+             track-type="feedback" track-name="feedbackDocText" track-metadata-position="header">
+            
+            Documentation feedback
+          </a></div></div><div class="devsite-feedback-item"><a data-type="product" tabindex="0" class="gc-analytics-event"
+           data-category="Site-Wide Custom Events" data-label="Product Feedback Image"
+           track-type="feedback" track-name="feedbackProductIcon" track-metadata-position="header"
+         ><img class="devsite-feedback-item-icon"
+               src="https://cloud.google.com/_static/d7147bb846/images/feedback/google_56px.svg"></a><div class="devsite-feedback-item-name">
+        Solutions
+        </div><div class="devsite-feedback-item-description"><a data-type="product" tabindex="0" class="gc-analytics-event"
+             data-category="Site-Wide Custom Events" data-label="Product Feedback Text"
+             track-type="feedback" track-name="feedbackProductText" track-metadata-position="header"
+           >
+            
+            Product feedback
+          </a></div></div></div><div class="devsite-dialog-buttons"><button type="button" class="devsite-feedback-cancel button-white gc-analytics-event"
+              data-category="Site-Wide Custom Events" data-label="Cancel Feedback Button"
+              track-type="feedback" track-name="cancelFeedbackButton"
+              track-metadata-position="header">
+        
+        Cancel
+      </button></div></div><script>
+  $(document).ready(function() {
+    new devsite.feedback.Widget({
+        'product_id': '410597',
+        'bucket': 'landingpages',
+        'context': '',
+        'version': 'devsite-20180420-r00-rc00.default'
+      },
+      document.querySelectorAll('.devsite-feedback-button'),
+      'en',
+      document.querySelector('.devsite-site-mask'),
+      document.querySelector('.devsite-feedback-dialog'),
+      document.querySelector('.devsite-feedback-cancel'),
+      document.querySelectorAll('.devsite-feedback-item a:not([href])')
+    );
+  });
+  </script></div><script async defer src="//www.gstatic.com/feedback/api.js"></script><script src="https://cloud.google.com/_static2/d7147bb846/jsi18n/"></script><script src="https://cloud.google.com/_static/d7147bb846/js/script_foot_closure.js"></script><script src="https://cloud.google.com/_static/d7147bb846/js/script_foot.js"></script><script>
+        (function($) {
+          
+          devsite.devsite.Init($, {'ENABLE_BLOCKED_VIDEO_PLACEHOLDER': 0, 'SITE_NAME': 'cloud', 'FULL_SITE_SEARCH_ENABLED': 1, 'ENABLE_CLOUDTRACK': 1, 'VTAGS_ENABLED': 1, 'HISTORY_ENABLED': 1, 'VERSION_HASH': 'd7147bb846', 'SCRIPTSAFE_DOMAIN': 'cloud-dot-google-developers.appspot.com', 'ENABLE_BLOCKED_LINK_TOOLTIP': 0, 'ALLOWED_HOSTS': ['.android.com', '.anvato.com', '.apigee.com', '.appspot.com', '.dialogflow.com', '.gonglchuangl.net', '.google.cn', '.google.com', '.googleplex.com', '.nest.com', '.openthread.io', '.openweave.io', '.orbitera.com', '.tensorflow.org'], 'BLOCK_RSS_FEEDS': 0},
+                               '[]','en',
+                               true, '',
+                               {"f62218c009ec029abef196bba5aa34cf": true, "8de7a048f21618359bd37f5ce44be073": false, "098dafe57affddc137df300142652cfd": false, "8e03e230de0bd8a6fe173fdf172e8b3f": true, "cb025a64a50094835616312f4774a53d": true, "51470233c56fc1fde50f00b73c52b216": false, "d169d485cf24243a263783dbe42029b1": true, "039e5d84b87fd75807ffb37b7f1bbf2c": true, "700def1a83e356c06c0925afb05de4b0": false, "6749dcb526ce9bde6993550c7d928d24": true}, '/solutions/',
+                               'https://cloud.google.com/');
+        })(jQuery);
+
+        
+        devsite.localInit = function() {
+          
+        };
+
+      </script><script>
+      $('.devsite-utility-footer-language-select').each(function() {
+        $(this).change(function(){$('.devsite-utility-footer-language').submit();});
+      });
+      </script></div><span id="devsite-request-elapsed" data-request-elapsed="241.659879684"></span></body></html>

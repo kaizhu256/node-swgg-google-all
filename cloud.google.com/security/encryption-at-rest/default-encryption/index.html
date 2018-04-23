@@ -1,0 +1,1577 @@
+
+
+
+
+
+
+<!DOCTYPE html><html lang="en"
+      class="chekov"><head><script>var a=window.devsite||{};window.devsite=a;a.readyCallbacks=[];window.devsite.readyCallbacks=a.readyCallbacks;a.ready=function(b){a.readyCallbacks.push(b)};window.devsite.ready=a.ready;
+</script><meta charset="utf-8"><meta name="xsrf_token" content="kerxfKutyCBixHl9KB57UJ7fIankx_9HhNcVLJ-p4vM6MTUyNDQ2MDE5NjE4MjM3MA" /><link rel="canonical" href="https://cloud.google.com/security/encryption-at-rest/default-encryption/"><link rel="alternate" href="https://cloud.google.com/security/encryption-at-rest/default-encryption/" hreflang="en"><link rel="alternate" href="https://cloud.google.com/security/encryption-at-rest/default-encryption/?hl=pt-br" hreflang="pt-br"><link rel="alternate" href="https://cloud.google.com/security/encryption-at-rest/default-encryption/?hl=ja" hreflang="ja"><link rel="alternate" href="https://cloud.google.com/security/encryption-at-rest/default-encryption/?hl=de" hreflang="de"><link rel="alternate" href="https://cloud.google.com/security/encryption-at-rest/default-encryption/" hreflang="x-default"><link rel="shortcut icon" href="https://cloud.google.com/_static/d7147bb846/images/cloud/icons/favicons/onecloud/favicon.ico"><link rel="apple-touch-icon" href="https://cloud.google.com/_static/d7147bb846/images/cloud/icons/favicons/onecloud/apple-icon.png"><meta name="viewport" content="width=device-width, initial-scale=1"><link rel="stylesheet"
+      
+      href="//fonts.googleapis.com/css?family=Google+Sans:400|Roboto:400,400italic,500,500italic,700,700italic|Roboto+Mono:400,500,700|Material+Icons"
+      ><link rel="stylesheet"
+        href="https://cloud.google.com/_static/d7147bb846/css/devsite-cloud-white.css"><link rel="stylesheet" href="https://cloud.google.com/_static/d7147bb846/css/cloud/cloud-site.css"><link rel="search"
+        type="application/opensearchdescription+xml"
+        title="Google Cloud"
+        href="https://cloud.google.com/s/opensearch.xml"><script src="https://cloud.google.com/_static/d7147bb846/js/jquery-bundle.js"></script><meta property="og:site_name" content="Google Cloud"><meta property="og:type" content="website"><meta property="og:url" content="https://cloud.google.com/security/encryption-at-rest/default-encryption/"><meta property="og:locale" content="en"><script>
+    var ___gcfg = ___gcfg || {};
+    ___gcfg.lang = 'en';
+  </script><title>Encryption at Rest in Google Cloud Platform &nbsp;|&nbsp; Documentation
+      &nbsp;|&nbsp; Google Cloud</title><meta property="og:title" content="Encryption at Rest in Google Cloud Platform &nbsp;|&nbsp; Documentation
+      &nbsp;|&nbsp; Google Cloud"></head><body class="
+               devsite-doc-page
+               
+               
+               
+               
+               devsite-header-no-lower-tabs"
+        data-family="endorsed"
+        id="top_of_page"><div class="devsite-wrapper"><div class="devsite-top-section-wrapper
+            "><header class="devsite-top-section nocontent"><div class="devsite-top-logo-row-wrapper-wrapper"><div class="devsite-top-logo-row-wrapper"><div class="devsite-top-logo-row devsite-full-site-width"><button type="button" class="devsite-expand-section-nav devsite-header-icon-button
+                                       button-flat material-icons gc-analytics-event"
+                  data-category="Site-Wide Custom Events" data-label="Hamburger menu"></button><div class="devsite-product-name-wrapper"><a href="https://cloud.google.com/" class="devsite-site-logo-link gc-analytics-event"
+   data-category="Site-Wide Custom Events" data-label="Site logo"><img src="https://cloud.google.com/_static/d7147bb846/images/cloud/cloud-logo.svg"
+       class="devsite-site-logo" alt="Google Cloud"><span class="devsite-site-name devsite-product-name">Google Cloud</span></a></div><div class="devsite-header-upper-tabs"><nav class="devsite-doc-set-nav devsite-nav devsite-overflow-tabs-scroll-wrapper"><ul class="devsite-doc-set-nav-tab-list devsite-overflow-tabs-scroll"><li class="devsite-doc-set-nav-tab-container devsite-nav-tab
+               "><a href="https://cloud.google.com/why-google-cloud/"
+         class=" devsite-nav-tab
+                devsite-doc-set-nav-tab devsite-doc-set-nav-tab-link gc-analytics-event"
+         
+       
+         data-category="Site-Wide Custom Events"
+       
+         data-label="Tab: Why Google"
+       
+         track-type="globalNav"
+       
+         track-name="whyGoogle"
+       >
+        Why Google
+      </a></li><li class="devsite-doc-set-nav-tab-container devsite-nav-tab
+               "><a href="https://cloud.google.com/products/"
+         class=" devsite-nav-tab
+                devsite-doc-set-nav-tab devsite-doc-set-nav-tab-link gc-analytics-event"
+         
+       
+         data-category="Site-Wide Custom Events"
+       
+         data-label="Tab: Products"
+       
+         track-type="globalNav"
+       
+         track-name="products"
+       >
+        Products
+      </a></li><li class="devsite-doc-set-nav-tab-container devsite-nav-tab
+               "><a href="https://cloud.google.com/solutions/"
+         class=" devsite-nav-tab
+                devsite-doc-set-nav-tab devsite-doc-set-nav-tab-link gc-analytics-event"
+         
+       
+         data-category="Site-Wide Custom Events"
+       
+         data-label="Tab: Solutions"
+       
+         track-type="globalNav"
+       
+         track-name="solutions"
+       >
+        Solutions
+      </a></li><li class="devsite-doc-set-nav-tab-container devsite-nav-tab
+               "><a href="https://cloud.google.com/launcher/"
+         class=" devsite-nav-tab
+                devsite-doc-set-nav-tab devsite-doc-set-nav-tab-link gc-analytics-event"
+         
+       
+         data-category="Site-Wide Custom Events"
+       
+         data-label="Tab: Launcher"
+       
+         track-type="globalNav"
+       
+         track-name="launcher"
+       >
+        Launcher
+      </a></li><li class="devsite-doc-set-nav-tab-container devsite-nav-tab
+               "><a href="https://cloud.google.com/pricing/"
+         class=" devsite-nav-tab
+                devsite-doc-set-nav-tab devsite-doc-set-nav-tab-link gc-analytics-event"
+         
+       
+         data-category="Site-Wide Custom Events"
+       
+         data-label="Tab: Pricing"
+       
+         track-type="globalNav"
+       
+         track-name="pricing"
+       >
+        Pricing
+      </a></li><li class="devsite-doc-set-nav-tab-container devsite-nav-tab
+               "><a href="https://cloud.google.com/security/"
+         class=" devsite-nav-tab
+                devsite-doc-set-nav-tab devsite-doc-set-nav-tab-link gc-analytics-event"
+         
+       
+         data-category="Site-Wide Custom Events"
+       
+         data-label="Tab: Security"
+       
+         track-type="globalNav"
+       
+         track-name="security"
+       >
+        Security
+      </a></li><li class="devsite-doc-set-nav-tab-container devsite-nav-tab
+               "><a href="https://cloud.google.com/customers/"
+         class=" devsite-nav-tab
+                devsite-doc-set-nav-tab devsite-doc-set-nav-tab-link gc-analytics-event"
+         
+       
+         data-category="Site-Wide Custom Events"
+       
+         data-label="Tab: Customers"
+       
+         track-type="globalNav"
+       
+         track-name="customers"
+       >
+        Customers
+      </a></li><li class="devsite-doc-set-nav-tab-container devsite-nav-tab
+               "><a href="https://cloud.google.com/docs/"
+         class=" devsite-nav-tab
+                devsite-doc-set-nav-tab devsite-doc-set-nav-tab-link gc-analytics-event"
+         
+       
+         data-category="Site-Wide Custom Events"
+       
+         data-label="Tab: Documentation"
+       >
+        Documentation
+      </a></li><li class="devsite-doc-set-nav-tab-container devsite-nav-tab
+               "><a href="https://cloud.google.com/support/"
+         class=" devsite-nav-tab
+                devsite-doc-set-nav-tab devsite-doc-set-nav-tab-link gc-analytics-event"
+         
+       
+         data-category="Site-Wide Custom Events"
+       
+         data-label="Tab: Support"
+       
+         track-type="globalNav"
+       
+         track-name="support"
+       >
+        Support
+      </a></li><li class="devsite-doc-set-nav-tab-container devsite-nav-tab
+               "><a href="https://cloud.google.com/partners/"
+         class=" devsite-nav-tab
+                devsite-doc-set-nav-tab devsite-doc-set-nav-tab-link gc-analytics-event"
+         
+       
+         data-category="Site-Wide Custom Events"
+       
+         data-label="Tab: Partners"
+       
+         track-type="globalNav"
+       
+         track-name="partners"
+       >
+        Partners
+      </a></li></ul></nav></div><form class="devsite-search-form"
+                action="https://cloud.google.com/s/results/"
+                method="GET"
+                id="top-search"
+                search-placeholder='Search'><div id="searchbox" class="devsite-searchbox"><input placeholder='Search'
+         
+         type="text"
+         class="devsite-search-field devsite-search-query"
+         name="q"
+         value=""
+         autocomplete="off"
+         
+         aria-label="Search box"><div class="devsite-search-image material-icons"></div></div><input type="hidden"
+       name="p"
+       id="search_project"
+       value="/docs/"
+       data-project-name="Documentation"
+       data-project-path="/docs/"
+       data-query-match=""><input type="hidden" class="suggest-project" value="Documentation" /></form><a class="devsite-header-link devsite-top-button button gc-analytics-event"
+               href="//console.cloud.google.com/"
+               data-category="Site-Wide Custom Events"
+               data-label="Site header link"
+               track-type="navigateTo"
+               track-name="console"
+               track-metadata-position="nav"><div class="devsite-header-link-label">Console</div></a><button type="button" class="devsite-search-button devsite-header-icon-button button-flat
+                                       material-icons"></button><a href="https://www.google.com/accounts/ServiceLogin?passive=true&continue=https%3A%2F%2Fcloud.google.com%2Fsecurity%2Fencryption-at-rest%2Fdefault-encryption%2F%3Frefresh%3D1&service=cloudconsole"
+   class="devsite-user-signin devsite-top-button button gc-analytics-event"
+   data-category="Site-Wide Custom Events" data-label="Sign in button">
+  
+  Sign in
+</a></div></div></div><div class="devsite-collapsible-section"><div class="devsite-header-background devsite-full-site-width"><button type="button" id="devsite-feedback-project"
+          class="devsite-feedback-button devsite-top-button gc-analytics-event"
+          data-category="Site-Wide Custom Events" data-label="Send Feedback Button"
+          track-type="feedback" track-name="sendFeedbackLink" track-metadata-position="header">
+  
+  Send feedback
+  </button></div></div></header><script>
+    if (window.jQuery) {
+      $(document).ready(function() {
+        if (window.devsite && window.devsite.search) {
+          
+          window.devsite.search.init('en')
+        }
+      });
+    }
+  </script></div><div id="gc-wrapper"itemscope itemtype="http://schema.org/Article"><input class="google-tag-manager-id" type="hidden" value="GTM-5CVQBG"><script>
+      var dataLayer = [{"freeTrialEligibleUser": "True", "userCountry": "HK", "language": {"requested": "en", "served": "en"}, "projectName": "Documentation", "scriptsafe": null, "signedIn": "False", "internalUser": "False"}];
+    </script>
+
+      
+        <div class="devsite-site-mask"></div>
+        
+  
+
+
+<nav class="devsite-nav-responsive devsite-nav nocontent" tabindex="0">
+  
+  <div class="devsite-nav-responsive-tabs-panel">
+    
+      
+        
+
+
+
+<nav class="devsite-nav-responsive-tabs devsite-nav">
+  <ul class="devsite-nav-list">
+  
+    <li class="devsite-nav-item devsite-nav-item-heading">
+    
+      <a 
+           href="https://cloud.google.com/why-google-cloud/?nav=true"
+         
+         class="devsite-nav-responsive-tab devsite-nav-title gc-analytics-event
+                "
+         data-category="Site-Wide Custom Events" data-label="Responsive Tab: Why Google">
+        Why Google
+      </a>
+      
+      
+    
+    </li>
+  
+    <li class="devsite-nav-item devsite-nav-item-heading">
+    
+      <a 
+           href="https://cloud.google.com/products/?nav=true"
+         
+         class="devsite-nav-responsive-tab devsite-nav-title gc-analytics-event
+                "
+         data-category="Site-Wide Custom Events" data-label="Responsive Tab: Products">
+        Products
+      </a>
+      
+      
+    
+    </li>
+  
+    <li class="devsite-nav-item devsite-nav-item-heading">
+    
+      <a 
+           href="https://cloud.google.com/solutions/?nav=true"
+         
+         class="devsite-nav-responsive-tab devsite-nav-title gc-analytics-event
+                "
+         data-category="Site-Wide Custom Events" data-label="Responsive Tab: Solutions">
+        Solutions
+      </a>
+      
+      
+    
+    </li>
+  
+    <li class="devsite-nav-item devsite-nav-item-heading">
+    
+      <a 
+           href="https://cloud.google.com/launcher/?nav=true"
+         
+         class="devsite-nav-responsive-tab devsite-nav-title gc-analytics-event
+                "
+         data-category="Site-Wide Custom Events" data-label="Responsive Tab: Launcher">
+        Launcher
+      </a>
+      
+      
+    
+    </li>
+  
+    <li class="devsite-nav-item devsite-nav-item-heading">
+    
+      <a 
+           href="https://cloud.google.com/pricing/?nav=true"
+         
+         class="devsite-nav-responsive-tab devsite-nav-title gc-analytics-event
+                "
+         data-category="Site-Wide Custom Events" data-label="Responsive Tab: Pricing">
+        Pricing
+      </a>
+      
+      
+    
+    </li>
+  
+    <li class="devsite-nav-item devsite-nav-item-heading">
+    
+      <a 
+           href="https://cloud.google.com/security/?nav=true"
+         
+         class="devsite-nav-responsive-tab devsite-nav-title gc-analytics-event
+                "
+         data-category="Site-Wide Custom Events" data-label="Responsive Tab: Security">
+        Security
+      </a>
+      
+      
+    
+    </li>
+  
+    <li class="devsite-nav-item devsite-nav-item-heading">
+    
+      <a 
+           href="https://cloud.google.com/customers/?nav=true"
+         
+         class="devsite-nav-responsive-tab devsite-nav-title gc-analytics-event
+                "
+         data-category="Site-Wide Custom Events" data-label="Responsive Tab: Customers">
+        Customers
+      </a>
+      
+      
+    
+    </li>
+  
+    <li class="devsite-nav-item devsite-nav-item-heading">
+    
+      <a 
+           href="https://cloud.google.com/docs/?nav=true"
+         
+         class="devsite-nav-responsive-tab devsite-nav-title gc-analytics-event
+                "
+         data-category="Site-Wide Custom Events" data-label="Responsive Tab: Documentation">
+        Documentation
+      </a>
+      
+      
+    
+    </li>
+  
+    <li class="devsite-nav-item devsite-nav-item-heading">
+    
+      <a 
+           href="https://cloud.google.com/support/?nav=true"
+         
+         class="devsite-nav-responsive-tab devsite-nav-title gc-analytics-event
+                "
+         data-category="Site-Wide Custom Events" data-label="Responsive Tab: Support">
+        Support
+      </a>
+      
+      
+    
+    </li>
+  
+    <li class="devsite-nav-item devsite-nav-item-heading">
+    
+      <a 
+           href="https://cloud.google.com/partners/?nav=true"
+         
+         class="devsite-nav-responsive-tab devsite-nav-title gc-analytics-event
+                "
+         data-category="Site-Wide Custom Events" data-label="Responsive Tab: Partners">
+        Partners
+      </a>
+      
+      
+    
+    </li>
+  
+  
+    <li class="devsite-nav-item devsite-nav-item-heading">
+      <a href="//console.cloud.google.com/"
+         class="devsite-nav-responsive-tab devsite-nav-title gc-analytics-event"
+         data-category="Site-Wide Custom Events"
+         data-label="Responsive Tab: console">
+        Console
+      </a>
+    </li>
+  
+  </ul>
+</nav>
+
+
+      
+    
+  </div>
+  
+  
+  
+    <div class="devsite-nav-responsive-index-panel">
+      <div class="devsite-nav-index-back" tabindex="0"></div>
+      <nav>
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+      </nav>
+    </div>
+  
+</nav>
+
+
+        <div class="devsite-main-content clearfix">
+
+        
+        
+
+        
+  
+  
+    
+    
+
+    
+  <nav class="devsite-page-nav devsite-nav"></nav>
+
+
+      <article class="devsite-article">
+        <article class="devsite-article-inner">
+  
+          
+  
+
+
+
+  
+  <nav class="devsite-breadcrumb-nav devsite-nav">
+    
+
+
+<ul class="devsite-breadcrumb-list">
+  
+  <li class="devsite-breadcrumb-item">
+    
+    
+    <a href="https://cloud.google.com/docs/" class="devsite-breadcrumb-link gc-analytics-event"
+       data-category="Site-Wide Custom Events" data-label="Breadcrumbs"
+       data-value="1">
+    
+    
+      Documentation
+    
+    
+    </a>
+    
+  </li>
+  
+</ul>
+
+  </nav>
+  
+  
+  <h1 itemprop="name" class="devsite-page-title">
+    Encryption at Rest in Google Cloud Platform
+  </h1>
+  
+  
+  <nav class="devsite-page-nav-embedded devsite-nav"></nav>
+  
+  <div class="devsite-article-body clearfix
+            "
+       itemprop="articleBody">
+    
+
+<p><em>The content contained herein is correct as of April 2017, and represents the
+status quo as of the time it was written. Google Cloud Platform’s security
+policies and systems may change going forward, as we continually improve
+protection for our customers.</em></p>
+<p><link rel="stylesheet" href="https://cloud.google.com/css/lightbox-override.css"></p>
+<style>
+.download-button {
+  padding: 0 16px;
+  line-height: 36px;
+  text-transform: uppercase;
+  color: #414141;
+  display: inline-block;
+  box-shadow: 0 2px 5px 0 rgba(0,0,0,.26);
+  transition: box-shadow .3s,background-color .3s,color .3s,transform .3s;
+  border-radius: 2px;
+}
+
+.download-button:hover {
+  transform: translate3d(0,-1px,0);
+  cursor: pointer;
+}
+
+.download-button.with-logo {
+  padding-left: 45px;
+  position: relative;
+}
+
+.download-button.with-logo img {
+  position: absolute;
+  left: 16px;
+  top: 8px;
+}
+
+.grey {
+  background: #f5f5f5;
+}
+</style>
+
+<p><a class="download-button grey with-logo" style="margin-top: 15px;"
+   download="encryption-whitepaper.pdf"
+   href="https://cloud.google.com/security/encryption-at-rest/default-encryption/resources/encryption-whitepaper.pdf"
+   target="_blank" track-name="encryptionAtRestPDF" track-type="whitepaper">
+  <img src="https://cloud.google.com/images/security/pdf-icon.png"
+       srcset="https://cloud.google.com/images/security/pdf-icon-2x.png 2x"/>
+  Download pdf version
+</a>
+<div id="cloud-site">
+  <div class="text-center l-pad-top-4">
+    <a class="lb lb-play-overlay lb-play-button-80"
+      data-lightbox-height="506"
+      data-lightbox-width="900"
+      data-lightbox-index="0"
+      href="//www.youtube.com/watch?v=Svz2KHE1mdM&amp;autoplay=1"
+      target="_blank"
+      rel="noopener">
+      <img class="play-button" src="https://cloud.google.com/images/security/video-thumb_transit.jpg" width="420">
+    </a>
+    <p class="l-space-top-1">Google Cloud Encryption at Rest</p>
+  </div>
+</div></p>
+<h2 id="cio-level_summary">CIO-level summary</h2>
+<ul>
+<li>Google uses several layers of encryption to protect customer data at rest in
+  Google Cloud Platform products.</li>
+<li>Google Cloud Platform encrypts customer content stored at rest, without any
+  action required from the customer, using one or more encryption mechanisms.
+  There are some minor exceptions, noted
+  <a href="#cases-data-encrypt">further in this document</a>.</li>
+<li>Data for storage is split into chunks, and each chunk is encrypted with a
+  unique data encryption key. These data encryption keys are stored with the
+  data, encrypted with ("wrapped" by) key encryption keys that are exclusively
+  stored and used inside Google’s central Key Management Service. Google’s Key
+  Management Service is redundant and globally distributed.</li>
+<li>Data stored in Google Cloud Platform is encrypted at the storage level using
+  either AES256 or AES128.</li>
+<li>Google uses a common cryptographic library, CrunchyCrypt, to implement
+  encryption consistently across almost all Google Cloud Platform products.
+  Because this common library is widely accessible, only a small team of
+  cryptographers needs to properly implement and maintain this tightly
+  controlled and reviewed code.</li>
+</ul>
+<h2 id="introduction">Introduction</h2>
+<p>For many individuals and companies, security is a deciding factor in choosing a
+public cloud vendor. At Google, security is of the utmost importance. We take
+security and privacy seriously, and we work tirelessly to protect your
+data — whether it is traveling over the Internet, moving between our data
+centers, or stored on our servers.</p>
+<p>Central to our comprehensive security strategy is encryption in transit and at
+rest, which ensures the data can be accessed only by the authorized roles and
+services with audited access to the encryption keys. This paper describes
+Google’s approach to encryption at rest for the Google Cloud Platform, and how
+Google uses it to keep your information more secure.</p>
+<p>This document is targeted at CISOs and security operations teams currently
+using or considering using Google Cloud Platform. With the exception of the
+introduction, this document assumes a basic understanding of encryption and
+cryptographic primitives.</p>
+<h3 id="what_is_encryption">What is encryption</h3>
+<p>Encryption is a process that takes legible data as input (often called
+plaintext), and transforms it into an output (often called ciphertext) that
+reveals little or no information about the plaintext. The encryption algorithm
+used is public, such as the Advanced Encryption Standard (AES), but execution
+depends on a key, which is kept secret. To decrypt the ciphertext back to its
+original form, you need to employ the key. At Google, the use of encryption to
+keep data confidential is usually combined with integrity protection; someone
+with access to the ciphertext can neither understand it nor make a modification
+without knowledge of the key. For more information on cryptography, a good
+resource is an
+<a href="http://www.cs.umd.edu/~jkatz/imc.html">Introduction to Modern Cryptography</a>.</p>
+<p>In this whitepaper, we focus on encryption at rest. By <em>encryption at rest</em>, we
+mean encryption used to protect data that is stored on a disk
+(including solid-state drives) or backup media.</p>
+<h3 id="why_encryption_helps_secure_customer_data">Why encryption helps secure customer data</h3>
+<p>Encryption is one piece of a broader security strategy. Encryption adds a layer
+of defense in depth for protecting data — encryption ensures that if the data
+accidentally falls into an attacker’s hands, they cannot access the data without
+also having access to the encryption keys. Even if an attacker obtains the
+storage devices containing your data, they won’t be able to understand or
+decrypt it.</p>
+<p>Encryption at rest reduces the surface of attack by effectively "cutting out"
+the lower layers of the hardware and software stack. Even if these lower layers
+are compromised (for example, through physical access to devices), the data on
+those devices is not compromised if adequate encryption is deployed. Encryption
+also acts as a "chokepoint" — centrally managed encryption keys create a single
+place where access to data is enforced and can be audited.</p>
+<p>Encryption provides an important mechanism in how Google ensures the privacy of
+customer data — it allows systems to manipulate data, e.g., for backup, and
+engineers to support our infrastructure, without providing access to content.</p>
+<h3 id="what_we_consider_customer_data">What we consider customer data</h3>
+<p>As defined in the <a href="https://cloud.google.com/terms/">Google Cloud Platform terms of service</a>, <em>customer
+data</em> refers to content provided to Google by a Google Cloud Platform customer
+(or at their direction), directly or indirectly, via Google Cloud Platform
+services used by that customer’s account. Customer data includes customer
+content and customer metadata.</p>
+<p><em>Customer content</em> is data that Google Cloud Platform customers generate
+themselves or provide to Google, like data stored in Google Cloud Storage,
+disk snapshots used by Google Compute Engine, and Cloud IAM policies. The
+encryption at rest of customer content is the focus of this whitepaper.</p>
+<p><em>Customer metadata</em> makes up the rest of customer data, and refers to all data
+that cannot be classified as customer content. This could include auto-generated
+project numbers, timestamps, and IP addresses, as well as the byte size of an
+object in Google Cloud Storage, or the machine type in Google Compute Engine.
+Metadata is protected to a degree that is reasonable for ongoing performance
+and operations.</p>
+<h2 id="googles_default_encryption">Google’s default encryption</h2>
+<h3 id="encryption_of_data_at_rest">Encryption of data at rest</h3>
+<h4 id="layers_of_encryption">Layers of encryption</h4>
+<p>Google uses several layers of encryption to protect data. Using multiple layers
+of encryption adds redundant data protection and allows us to select the optimal
+approach based on application requirements.</p>
+<p><img src="https://cloud.google.com/images/security/whitepaper-chart-01.png"></p>
+<p><em>Figure 1: Several layers of encryption are used to protect data stored in
+Google Cloud Platform. Either distributed file system encryption or database
+and file storage encryption is in place for almost all files; and storage device
+encryption is in place for almost all files.</em></p>
+<h4 id="encryption_at_the_storage_system_layer">Encryption at the storage system layer</h4>
+<p>To understand how specifically Google Cloud Storage encryption works, it’s
+important to understand how Google stores customer data. Data is broken into
+subfile chunks for storage; each chunk can be up to several GB in size. Each
+chunk is encrypted at the storage level with an individual encryption key: two
+chunks will not have the same encryption key, even if they are part of the same
+Google Cloud Storage object, owned by the same customer, or stored on the same
+machine<sup><a href="#footnote1">1</a></sup>. If a chunk of data is updated, it is
+encrypted with a new key, rather than by reusing the existing key. This
+partition of data, each using a different key, means the "blast radius" of a
+potential data encryption key compromise is limited to only that data chunk.</p>
+<p>Google encrypts data prior to it being written to disk. Encryption is inherent
+in all of Google’s storage systems — rather than added on afterward.</p>
+<p>Each data chunk has a unique identifier. Access control lists (ACLs) ensure that
+each chunk can be decrypted only by Google services operating under authorized
+roles, which are granted access at that point in time. This prevents access to
+the data without authorization, bolstering both data security and privacy.</p>
+<p>Each chunk is distributed across Google’s storage systems, and is replicated in
+encrypted form for backup and disaster recovery. A malicious individual who
+wanted to access customer data would need to know and be able to access
+(1) all storage chunks corresponding to the data they want, and (2) the
+encryption keys corresponding to the chunks.</p>
+<p><img src="https://cloud.google.com/images/security/whitepaper-chart-02.png"></p>
+<p><em>Figure 2: Data at Google is broken up into encrypted chunks for storage.</em></p>
+<p>Google uses the Advanced Encryption Standard (AES) algorithm to encrypt data at
+rest. AES is widely used because (1) <a href="http://nvlpubs.nist.gov/nistpubs/SpecialPublications/NIST.SP.800-131Ar1.pdf">both AES256 and AES128 are recommended by
+the National Institute of Standards and Technology (NIST) for long-term storage
+use</a>
+(as of November 2015), and (2) AES is often included as part of customer
+compliance requirements.</p>
+<p>Data stored across Google Cloud Storage is encrypted at the storage level using
+AES, in <a href="http://csrc.nist.gov/groups/ST/toolkit/BCM/documents/proposedmodes/gcm/gcm-spec.pdf">Galois/Counter Mode (GCM)</a>
+in almost all cases. This is implemented in the
+<a href="https://boringssl.googlesource.com/boringssl/">BoringSSL library</a> that Google
+maintains. This library was forked from OpenSSL for internal use, after
+<a href="https://www.openssl.org/news/vulnerabilities.html">many flaws were exposed in OpenSSL</a>.
+In select cases, AES is used in Cipher Block Chaining (CBC) mode with a hashed
+message authentication code (HMAC) for authentication; and for some replicated
+files, AES is used in Counter (CTR) mode with HMAC. (Further details on
+algorithms are provided
+<a href="#googles_common_cryptographic_library">later in this document</a>.) In other
+Google Cloud Platform products, AES is used in a variety of modes.</p>
+<h4 id="encryption_at_the_storage_device_layer">Encryption at the storage device layer</h4>
+<p>In addition to the storage system level encryption described above, in most
+cases data is also encrypted at the storage device level, with at least AES128
+for hard disks (HDD) and AES256 for new solid state drives (SSD), using a
+separate device-level key (which is different than the key used to encrypt the
+data at the storage level). As older devices are replaced, solely AES256 will
+be used for device-level encryption.</p>
+<h4 id="encryption_of_backups">Encryption of backups</h4>
+<p>Google’s backup system ensures that data remains encrypted throughout the backup
+process. This approach avoids unnecessarily exposing plaintext data.</p>
+<p>In addition, the backup system further encrypts each backup file independently
+with its own data encryption key (DEK), derived from a key stored in Google’s
+Key Management Service (KMS) plus a randomly generated per-file seed at backup
+time. Another DEK is used for all metadata in backups, which is also stored in
+Google’s KMS. (Further information on key management is in
+<a href="#key_management">a later section</a>.)</p>
+<h4 id="cases-data-encrypt">Are there cases where data is not encrypted at rest?</h4>
+<p><strong>Google Cloud Platform encrypts customer content stored at rest, without any
+action from the customer, using one or more encryption mechanisms, with the
+following exceptions.</strong></p>
+<ul>
+<li>Serial console logs from virtual machines in Google Compute Engine; this is
+   currently being remediated</li>
+<li>Core dumps written to local drives, when a process fails unexpectedly; this
+   is currently being remediated</li>
+<li>Debugging logs written to local disk; this is currently being remediated</li>
+<li>Temporary files used by storage systems; this is currently being remediated</li>
+<li>Some logs that may include customer content as well as customer metadata;
+   this is planned for remediation</li>
+</ul>
+<p>This data is still protected extensively by the rest of Google’s security
+infrastructure, and in almost all cases still protected by storage-level
+encryption.</p>
+<h3 id="key_management">Key management</h3>
+<h4 id="data_encryption_keys_key_encryption_keys_and_googles_key_management_service">Data encryption keys, key encryption keys, and Google’s Key Management Service</h4>
+<p>The key used to encrypt the data in a chunk is called a <em>data encryption key
+(DEK)</em>. Because of the high volume of keys at Google, and the need for low
+latency and high availability, these keys are stored near the data that they
+encrypt. The DEKs are encrypted with (or “wrapped” by) a <em>key encryption key
+(KEK)</em>. One or more KEKs exist for each Google Cloud Platform service. These
+KEKs are stored centrally in Google’s <em>Key Management Service (KMS)</em>, a
+repository built specifically for storing keys. Having a smaller number of
+KEKs than DEKs and using a central key management service makes storing and
+encrypting data at Google scale manageable, and allows us to track and control
+data access from a central point.</p>
+<p>For each Google Cloud Platform customer, any non-shared
+resources<sup><a href="#footnote2">2</a></sup> are split into data chunks and encrypted
+with keys separate from keys used for other customers<sup><a href="#footnote3">3</a></sup>.
+These DEKs are even separate from those that protect other pieces of the same
+data owned by that same customer.</p>
+<p>DEKs are generated by the storage system using Google’s common cryptographic
+library. They are then sent to KMS to wrap with that storage system’s KEK, and
+the wrapped DEKs are passed back to the storage system to be kept with the data
+chunks. When a storage system needs to retrieve encrypted data, it retrieves
+the wrapped DEK and passes it to KMS. KMS then verifies that this service is
+authorized to use the KEK, and if so, unwraps and returns the plaintext DEK to
+the service. The service then uses the DEK to decrypt the data chunk into
+plaintext and verify its integrity.</p>
+<p>Most KEKs for encrypting data chunks are generated within KMS, and the rest are
+generated inside the storage services. For consistency, all KEKs are generated
+using Google’s common cryptographic library, using a random number generator
+(RNG) built by Google. This RNG is based on NIST 800-90Ar1 CTR-DRBG and
+generates an
+AES256 KEK<sup><a href="#footnote4">4</a></sup>. This RNG is seeded from the Linux
+kernel’s RNG, which in turn is seeded from multiple independent entropy sources.
+This includes entropic events from the data center environment, such as
+fine-grained measurements of disk seeks and inter-packet arrival times, and
+<a href="https://software.intel.com/en-us/articles/intel-digital-random-number-generator-drng-software-implementation-guide">Intel’s RDRAND instruction</a>
+where it is available (on Ivy Bridge and newer CPUs).</p>
+<p>Data stored in Google Cloud Platform is encrypted with DEKs using AES256 or
+AES128, as described above; and any new data encrypted in persistent disks in
+Google Compute Engine is encrypted using AES256. DEKs are wrapped with KEKs
+using AES256 or AES128, depending on the Google Cloud Platform service. We are
+currently working on upgrading all KEKs for Cloud services to AES256.</p>
+<p>Google’s KMS manages KEKs, and was built solely for this purpose. It was
+designed with security in mind. KEKs are not exportable from Google’s KMS by
+design; all encryption and decryption with these keys must be done within KMS.
+This helps prevent leaks and misuse, and enables KMS to emit an audit trail
+when keys are used.</p>
+<p>KMS can automatically rotate KEKs at regular time intervals, using Google’s
+common cryptographic library to generate new keys. Though we often refer to
+just a single key, we really mean that data is protected using a key set: one
+key active for encryption and a set of historical keys for decryption, the
+number of which is determined by the <em>key rotation schedule</em>. The actual
+rotation schedule for a KEK varies by service, but the standard rotation period
+is 90 days. Google Cloud Storage specifically rotates its KEKs every 90 days,
+and can store up to 20 versions, requiring re-encryption of data at least once
+every 5 years (though in practice, data re-encryption is much more frequent).
+KMS-held keys are backed up for disaster recovery purposes, and they are
+indefinitely recoverable.</p>
+<p>The use of KEKs is managed by access control lists (ACLs) in KMS for each key,
+with a per-key policy. Only authorized Google services and users are allowed
+access to a key. The use of each key is tracked at the level of the individual
+operation that requires that key — so every time an individual uses a key,
+it is authenticated and logged. All human data accesses are auditable as part
+of Google’s overall security and privacy policies.</p>
+<p>When a Google Cloud Platform service accesses an encrypted chunk of data,
+here’s what happens:</p>
+<ol>
+<li>The service makes a call to the storage system for the data it needs.</li>
+<li>The storage system identifies the chunks in which that data is stored
+   (the chunk IDs) and where they are stored.</li>
+<li>For each chunk, the storage system pulls the wrapped DEK stored with that
+   chunk (in some cases, this is done by the service), and sends it to KMS for
+   unwrapping.</li>
+<li>The storage system verifies that the identified job is allowed to access
+   that data chunk based on a job identifier, and using the chunk ID; and KMS
+   verifies that the storage system is authorized both to use the KEK associated
+   with the service, and to unwrap that specific DEK.</li>
+<li>KMS does one of the following:<ul>
+<li>Passes the unwrapped DEK back to the storage system, which decrypts the
+    data chunk and passes it to the service. Or, in some rare cases,</li>
+<li>Passes the unwrapped DEK to the service; the storage system passes the
+    encrypted data chunk to the service, which decrypts the data chunk and
+    uses it.</li>
+</ul>
+</li>
+</ol>
+<p>This process is different in dedicated storage devices, such as local SSDs,
+where the device manages and protects the device-level DEK.</p>
+<p><img src="https://cloud.google.com/images/security/whitepaper-chart-03.png"></p>
+<p><em>Figure 3: To decrypt a data chunk, the storage service calls Google’s Key
+Management Service (KMS) to retrieve the unwrapped data encryption key (DEK)
+for that data chunk.</em></p>
+<h4 id="encryption_key_hierarchy_and_root_of_trust">Encryption key hierarchy and root of trust</h4>
+<p>Google’s KMS is protected by a root key called the <em>KMS master key</em>, which wraps
+all the KEKs in KMS. This KMS master key is AES256<sup><a href="#footnote4">4</a></sup>,
+and is itself stored in another key management service, called the <em>Root KMS</em>.
+Root KMS stores a much smaller number of keys — approximately a dozen. For
+additional security, Root KMS is not run on general production machines, but
+instead is run only on dedicated machines in each Google data center.</p>
+<p>Root KMS in turn has its own root key, called the <em>root KMS master key</em>, which
+is also AES256<sup><a href="#footnote4">4</a></sup> and is stored in a peer-to-peer
+infrastructure, <em>the root KMS master key distributor</em>, which replicates these
+keys globally. The root KMS master key distributor only holds the keys in RAM
+on the same dedicated machines as Root KMS, and uses logging to verify proper
+use. One instance of the root KMS master key distributor runs for every
+instance of Root KMS. (The root KMS master key distributor is still being
+phased in, to replace a system that operated in a similar manner but was not
+peer to peer.)</p>
+<p>When a new instance of the root KMS master key distributor is started, it is
+configured with a list of host names already running distributor instances.
+Distributor instances can then obtain the root KMS master key from other
+running instances. Other than the disaster-recovery mechanisms described below,
+the root KMS master key exists only in RAM on a limited number of specially
+secured machines.</p>
+<p>To address the scenario where all instances of the root KMS master key
+distributor restart simultaneously, the root KMS master key is also backed up
+on secure hardware devices stored in physical safes in highly secured areas in
+two physically separated, global Google locations. This backup would be needed
+only if all distributor instances were to go down at once; for example, in a
+global restart. Fewer than 20 Google employees are able to access these safes.</p>
+<p><img src="https://cloud.google.com/images/security/whitepaper-chart-04.png" style="max-width:540px;"></p>
+<p><em>Figure 4: The encryption key hierarchy protects a chunk of data with a DEK,
+wrapped with a KEK in KMS, which is in turn protected by Root KMS and the root
+KMS master key distributor.</em></p>
+<p>To summarize:</p>
+<ul>
+<li>Data is chunked and encrypted with DEKs</li>
+<li>DEKs are encrypted with KEKs</li>
+<li>KEKs are stored in KMS</li>
+<li>KMS is run on multiple machines in data centers globally<ul>
+<li>KMS keys are wrapped with the KMS master key, which is stored in Root KMS</li>
+</ul>
+</li>
+<li>Root KMS is much smaller than KMS and runs only on dedicated machines in each
+  data center<ul>
+<li>Root KMS keys are wrapped with the root KMS master key, which is stored in
+  the root KMS master key distributor</li>
+</ul>
+</li>
+<li>The root KMS master key distributor is a peer-to-peer infrastructure running
+  concurrently in RAM globally on dedicated machines; each gets its key material
+  from other running instances<ul>
+<li>If all instances of the distributor were to go down (total shutdown), a
+  master key is stored in (different) secure hardware in (physical) safes in
+  limited Google locations</li>
+<li>The root KMS master key distributor is currently being phased in, to
+  replace a system that operated in a similar manner but was not peer to
+  peer</li>
+</ul>
+</li>
+</ul>
+<h4 id="global_availability_and_replication">Global availability and replication</h4>
+<p>High availability and low latency, global access to keys, are critical at every
+level; these characteristics are needed for key management services to be used
+across Google.</p>
+<p>For this reason, KMS is highly scalable, and it is replicated thousands of times
+in Google’s data centers globally. It is run on regular machines in Google’s
+production fleet, and instances of KMS run globally to support Google Cloud
+Platform operations. As a result, the latency of any single key operation is
+very low.</p>
+<p>Root KMS is run on several machines dedicated to security operations, in each
+data center. The root KMS master key distributor is run on these same machines,
+one-to-one with Root KMS. The root KMS master key distributor provides a
+distribution mechanism via a <a href="http://dl.acm.org/citation.cfm?doid=41840.41841">gossiping protocol</a>
+— at a fixed time interval, each instance of the distributor picks a random other
+instance to compare its keys with, and reconciles any differences in key versions.
+With this model, there is no central node that all of Google’s infrastructure depends
+on; this allows Google to maintain and protect key material with high availability.</p>
+<h3 id="googles_common_cryptographic_library">Google’s common cryptographic library</h3>
+<p>Google’s common cryptographic library is
+<a href="https://github.com/google/crunchy">CrunchyCrypt</a><sup><a href="#footnote5">5</a></sup>,
+which implements cryptographic algorithms using
+<a href="https://boringssl.googlesource.com/boringssl/">BoringSSL</a><sup><a href="#footnote6">6</a></sup>.
+CrunchyCrypt is available to all Google developers. Because this common library
+is widely accessible, only a small team of cryptographers needs to properly
+implement this tightly controlled and reviewed code — it's not necessary for
+every team at Google to "roll their own" cryptography. A special Google security
+team is responsible for maintaining this common cryptographic library for all
+products.</p>
+<p>The CrunchyCrypt encryption library supports a wide variety of encryption key
+types and modes, and these are reviewed regularly to ensure they are current
+with the latest attacks.</p>
+<p>At the time of this document’s publication, Google uses the following encryption
+algorithms for encryption at rest for DEKs and KEKs. These are subject to
+change as we continue to improve our capabilities and security.</p>
+<table>
+  <thead>
+    <tr>
+      <th>Cryptographic primitive</th>
+      <th>Preferred protocols</th>
+      <th>
+        Other supported protocols<sup><a href="#footnote7" style="text-decoration:none;">7</a></sup>
+      </th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>Symmetric encryption</td>
+      <td>
+        <ul>
+          <li>AES-GCM (256 bits)</li>
+        </ul>
+      </td>
+      <td>
+        <ul>
+          <li>AES-CBC and AES-CTR (128 and 256 bits)</li>
+          <li>AES-EAX (128 and 256 bits)</li>
+        </ul>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        Symmetric signatures (where used with AES-CBC and AES-CTR above for
+        authentication)
+      </td>
+      <td>
+        <ul>
+          <li>HMAC-SHA256</li>
+        </ul>
+      </td>
+      <td>
+        <ul>
+          <li>HMAC-SHA512</li>
+          <li>HMAC-SHA1</li>
+        </ul>
+      </td>
+    </tr>
+  </tbody>
+</table>
+
+<h3 id="granularity_of_encryption_in_each_google_cloud_platform_product">Granularity of encryption in each Google Cloud Platform product</h3>
+<p>Each Google Cloud Platform service splits data at a different level of
+granularity for encryption.</p>
+<table>
+  <thead>
+    <tr>
+      <th>&nbsp;</th>
+      <th>Google Cloud Platform service</th>
+      <th>
+        Granularity of customer data encryption<sup><a href="#footnote8" style="text-decoration:none;">8</a></sup>
+        (size of data encrypted with a single DEK)
+      </th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td rowspan="5">Storage</td>
+      <td>Cloud Bigtable</td>
+      <td>Per data chunk (several per table)</td>
+    </tr>
+    <tr>
+      <td>Cloud Datastore</td>
+      <td>
+        Per data chunk<sup><a href="#footnote9">9</a></sup>
+      </td>
+    </tr>
+    <tr>
+      <td>Cloud Spanner</td>
+      <td>
+        Per data chunk (several per table)
+      </td>
+    </tr>
+    <tr>
+      <td>Cloud SQL</td>
+      <td>
+        <ul>
+          <li>
+            Second generation: Per instance, as in Google Compute Engine (each
+            instance could contain multiple databases)
+          </li>
+          <li>
+            First generation: Per instance
+          </li>
+        </ul>
+      </td>
+    </tr>
+    <tr>
+      <td>Cloud Storage</td>
+      <td>Per data chunk (typically 256KB-8MB)</td>
+    </tr>
+    <tr>
+      <td rowspan="5">Compute</td>
+      <td>
+        App Engine<sup><a href="#footnote10">10</a></sup>
+      </td>
+      <td>
+        Per data chunk<sup><a href="#footnote9">9</a></sup>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        Cloud Functions<sup><a href="#footnote11">11</a></sup>
+      </td>
+      <td>
+        Per data chunk<sup><a href="#footnote9">9</a></sup>
+      </td>
+    </tr>
+    <tr>
+      <td>Compute Engine</td>
+      <td>
+        <ul>
+          <li>
+            Several per disk
+          </li>
+          <li>
+            Per snapshot group, with individual snapshot ranges derived from
+            the snapshot group master key
+          </li>
+          <li>Per image</li>
+        </ul>
+      </td>
+    </tr>
+    <tr>
+      <td>Kubernetes Engine</td>
+      <td>Several per disk, for persistent disks</td>
+    </tr>
+    <tr>
+      <td>Container Registry</td>
+      <td>Stored in Google Cloud Storage, per data chunk</td>
+    </tr>
+    <tr>
+      <td rowspan="5">Big Data</td>
+      <td>BigQuery</td>
+      <td>Several per dataset</td>
+    </tr>
+    <tr>
+      <td>Cloud Dataflow</td>
+      <td>Stored in Google Cloud Storage, per data chunk</td>
+    </tr>
+    <tr>
+      <td>Cloud Datalab</td>
+      <td>Stored in Cloud Bigtable, per notebook file</td>
+    </tr>
+    <tr>
+      <td>Cloud Dataproc</td>
+      <td>Stored in Google Cloud Storage, per data chunk</td>
+    </tr>
+    <tr>
+      <td>Cloud Pub/Sub</td>
+      <td>
+        Per one hour, for up to 1,000,000 messages<sup><a href="#footnote12">12</a></sup>
+      </td>
+    </tr>
+  </tbody>
+</table>
+
+<h2 id="additional_encryption_options_for_cloud_customers">Additional encryption options for Cloud customers</h2>
+<p>In addition to providing encryption by default in Google Cloud Platform, we are
+working to offer customers additional encryption and key management options for
+greater control.</p>
+<p>We want to enable Google Cloud Platform customers to:</p>
+<ul>
+<li>Remain the ultimate custodian of their data, and be able to control access to
+  and use of that data at the finest level of granularity, to ensure both data
+  security and privacy</li>
+<li>Manage encryption for their cloud-hosted data in the same way they currently
+  do on-premises — or, ideally, better</li>
+<li>Have a provable and auditable root of trust over their resources</li>
+<li>Be able to further separate and segregate their data, beyond the use of ACLs</li>
+</ul>
+<p>Customers can use existing encryption keys that they manage with the Google
+Cloud Platform, using the Customer supplied encryption keys feature. This
+feature is available for <a href="https://cloud.google.com/storage/docs/encryption/customer-supplied-keys">Google Cloud Storage</a>
+and for <a href="https://cloud.google.com/compute/docs/disks/customer-supplied-encryption">Google Compute Engine</a>
+for storage layer encryption.</p>
+<p>Customers can also manage their own encryption keys on Google Cloud Platform
+using <a href="https://cloud.google.com/kms">Google Cloud Key Management Service (Cloud KMS)</a>. This product
+allows for application-layer encryption managed by the customer.</p>
+<h2 id="research_and_innovation_in_cryptography">Research and innovation in cryptography</h2>
+<p>To keep pace with the evolution of encryption, Google has a team of world-class
+security engineers tasked with following, developing, and improving encryption
+technology. Our engineers take part in standardization processes and in
+maintaining widely used encryption software.
+<a href="https://www.google.com/about/appsecurity/research/">We regularly publish our research</a>
+in the field of encryption so that everyone in the industry — including the
+general public — can benefit from our knowledge. For example, in 2014 we
+revealed a significant vulnerability in SSL 3.0 encryption
+(known as <a href="https://security.googleblog.com/2014/10/this-poodle-bites-exploiting-ssl-30.html">POODLE</a>),
+and in 2015 we identified a high-risk vulnerability in
+<a href="https://openssl.org/news/secadv/20150709.txt">OpenSSL</a>.</p>
+<p>Google plans to remain the industry leader in encryption for cloud services.
+In terms of developing, implementing, and researching newer cryptographic
+techniques, we have teams working on:</p>
+<ul>
+<li><em>Partially homomorphic cryptography</em>, which allows some operations to be
+  performed on data while it is encrypted, so the cloud never sees the data in
+  plaintext, even in memory. One place this technology is being used is as part
+  of our experimental
+  <a href="https://github.com/google/encrypted-bigquery-client">encrypted BigQuery client</a>,
+  which is openly available.</li>
+<li><em>Format- and order- preserving cryptography</em>, which allows some comparison and
+  ranking operations to be performed on data while it is encrypted.</li>
+<li><em>Post-quantum cryptography</em>, which allows us to replace existing crypto
+  primitives that are vulnerable to efficient quantum attacks with post-quantum
+  candidates that are believed to be more robust against such attacks. The
+  primary focus here is in researching and prototyping lattice-based public-key
+  cryptography, including NIST recommendations on post-quantum algorithms.
+  Lattice-based crypto is currently thought to be <a href="https://pqcrypto.org/www.springer.com/cda/content/document/cda_downloaddocument/9783540887010-c1.pdf">one of the most likely
+  encryption techniques to be used in a
+  post-quantum world</a>,
+  although we are still in early days in terms of best algorithms, concrete
+  parameters, and cryptanalysis for applying lattice-based crypto. Although
+  symmetric key encryption and MACs are weakened by known quantum algorithms,
+  they can still be upgraded to similar bits of security in a post-quantum
+  world by doubling key sizes.</li>
+</ul>
+<h2 id="further_references">Further references</h2>
+<h3 id="google_cloud_platform_security">Google Cloud Platform security</h3>
+<p>For general information on Google Cloud Platform security, see the <a href="https://cloud.google.com/security/">Security section of the Google Cloud Platform website</a>.</p>
+<h3 id="google_cloud_platform_compliance">Google Cloud Platform compliance</h3>
+<p>For information on Google Cloud Platform compliance and compliance
+certifications, see the <a href="https://cloud.google.com/security/compliance">Compliance section of the Google Cloud Platform website</a>, which includes Google’s
+<a href="https://www.google.com/work/soc3.html">public SOC3 audit report</a>.</p>
+<h3 id="g_suite_security">G Suite security</h3>
+<p>For information on G Suite encryption and key management, see the
+<a href="http://services.google.com/fh/files/helpcenter/google_encryptionwp2016.pdf">G Suite encryption whitepaper</a>.
+That whitepaper covers much of the same content included here, but focuses
+solely on G Suite. For all G Suite solutions, we strive to keep customer data
+protected, and to be as transparent as possible about how we secure it.
+Further information on general G Suite security is available in the
+<a href="https://static.googleusercontent.com/media/apps.google.com/en/US/files/google-apps-security-and-compliance-whitepaper.pdf">G Suite Security and Compliance whitepaper</a>.</p>
+<h2 id="footnotes">Footnotes</h2>
+<p><div class="footnote">
+  <div id="footnote1">
+    <sup>1</sup>
+    <span>
+      Data chunks in Cloud Datastore, App Engine, and Cloud Pub/Sub may contain
+      two customers’ data. See the <a href="#granularity_of_encryption_in_each_google_cloud_platform_product">section on granularity of data encryption by
+      service</a>.
+    </span>
+  </div>
+  <div id="footnote2">
+    <sup>2</sup>
+    <span>
+      An example of a shared resource (where this segregation does not apply)
+      would be a shared base image in Google Compute Engine — naturally,
+      multiple customers refer to a single copy, which is encrypted by a
+      single DEK.
+    </span>
+  </div>
+  <div id="footnote3">
+    <sup>3</sup>
+    <span>
+      With the exception of data stored in Cloud Datastore, App Engine, and
+      Cloud Pub/Sub, where more than one customer’s data may be encrypted with
+      the same
+      DEK. See the <a href="#granularity_of_encryption_in_each_google_cloud_platform_product">section on granularity of data encryption by
+      service</a>.
+    </span>
+  </div>
+  <div id="footnote4">
+    <sup>4</sup>
+    <span>
+      Note that in the past, this was AES128, and some of these keys remain
+      active for decrypting data.
+    </span>
+  </div>
+  <div id="footnote5">
+    <sup>5</sup>
+    <span>
+      Google also uses another library, Keymaster. Keymaster shares newer
+      cryptography code in common with CrunchyCrypt, but uses a different
+      key-versioning implementation and supports a wider variety of older
+      algorithms.
+    </span>
+  </div>
+  <div id="footnote6">
+    <sup>6</sup>
+    <span>
+      OpenSSL is also in use, in some places in Google Cloud Storage.
+    </span>
+  </div>
+  <div id="footnote7">
+    <sup>7</sup>
+    <span>
+      Other cryptographic protocols exist in the library and were historically
+      supported, but this list covers the primary uses in Google Cloud Platform.
+    </span>
+  </div>
+  <div id="footnote8">
+    <sup>8</sup>
+    <span>
+      Refers to granularity of encryption for customer content. This does not
+      include customer metadata, such as resource names. In some services, all
+      metadata is encrypted with a single DEK.
+    </span>
+  </div>
+  <div id="footnote9">
+    <sup>9</sup>
+    <span>
+      Not unique to a single customer.
+    </span>
+  </div>
+  <div id="footnote10">
+    <sup>10</sup>
+    <span>
+       Includes application code and application settings. Data used in App
+       Engine is stored in Cloud Datastore, Cloud SQL or Cloud Storage
+       depending on customer configurations.
+    </span>
+  </div>
+  <div id="footnote11">
+    <sup>11</sup>
+    <span>
+       Includes function code, settings and event data. Event data is stored in
+       Cloud Pub/Sub.
+    </span>
+  </div>
+  <div id="footnote12">
+    <sup>12</sup>
+    <span>
+      Cloud Pub/Sub rotates the DEK used to encrypt messages every hour, or
+      sooner if 1,000,000 messages are encrypted. Not unique to a single
+      customer.
+    </span>
+  </div>
+</div>
+<script src="//www.google.com/js/gweb/ui/lightbox.js"></script>
+<script>
+  var lb = new gweb.ui.LightBox();
+  lb.disableNav(true);
+  lb.init();
+</script></p>
+
+  </div>
+  
+    
+
+
+
+  
+
+  
+        
+  
+
+
+
+
+
+
+
+        
+<div class="devsite-content-footer nocontent">
+  
+  
+    <p>All rights reserved. Java is a registered trademark of Oracle and/or its affiliates.</p>
+  
+
+  
+    
+    <p class="devsite-content-footer-date" itemprop="datePublished"
+       content="2018-03-07T18:31:03.824310">
+      
+      Last updated March 7, 2018.
+    </p>
+  
+
+</div>
+
+        </article>
+      </article>
+  
+
+        </div>
+      
+
+<footer class="devsite-footer-linkboxes nocontent
+               devsite-footer-linkboxes-all-backup
+               devsite-footer-linkboxes-with-sites"><nav class="devsite-full-site-width"><ul class="devsite-footer-linkboxes-list"><li class="devsite-footer-linkbox devsite-footer-linkbox-backup"><h3 class="devsite-footer-linkbox-heading">Products</h3><ul class="devsite-footer-linkbox-list"><li class="devsite-footer-linkbox-item"><a href="https://cloud.google.com/products/compute/" class="gc-analytics-event"
+               data-category="Site-Wide Custom Events"
+               data-label="Footer Compute">
+                Compute
+            </a></li><li class="devsite-footer-linkbox-item"><a href="https://cloud.google.com/products/storage/" class="gc-analytics-event"
+               data-category="Site-Wide Custom Events"
+               data-label="Footer Storage">
+                Storage
+            </a></li><li class="devsite-footer-linkbox-item"><a href="https://cloud.google.com/products/networking/" class="gc-analytics-event"
+               data-category="Site-Wide Custom Events"
+               data-label="Footer Networking">
+                Networking
+            </a></li><li class="devsite-footer-linkbox-item"><a href="https://cloud.google.com/products/big-data/" class="gc-analytics-event"
+               data-category="Site-Wide Custom Events"
+               data-label="Footer Big Data">
+                Big Data
+            </a></li><li class="devsite-footer-linkbox-item"><a href="https://cloud.google.com/products/machine-learning/" class="gc-analytics-event"
+               data-category="Site-Wide Custom Events"
+               data-label="Footer Machine Learning">
+                Machine Learning
+            </a></li><li class="devsite-footer-linkbox-item"><a href="https://cloud.google.com/products/#management" class="gc-analytics-event"
+               data-category="Site-Wide Custom Events"
+               data-label="Footer Management Tools">
+                Management Tools
+            </a></li><li class="devsite-footer-linkbox-item"><a href="https://cloud.google.com/products/tools/" class="gc-analytics-event"
+               data-category="Site-Wide Custom Events"
+               data-label="Footer Developer Tools">
+                Developer Tools
+            </a></li><li class="devsite-footer-linkbox-item"><a href="https://cloud.google.com/products/#identity-security" class="gc-analytics-event"
+               data-category="Site-Wide Custom Events"
+               data-label="Footer Identity and Security">
+                Identity &amp; Security
+            </a></li><li class="devsite-footer-linkbox-item"><a href="//status.cloud.google.com" class="gc-analytics-event"
+               data-category="Site-Wide Custom Events"
+               data-label="Footer System Status">
+                System Status
+            </a></li></ul></li><li class="devsite-footer-linkbox devsite-footer-linkbox-backup"><h3 class="devsite-footer-linkbox-heading">Learn More</h3><ul class="devsite-footer-linkbox-list"><li class="devsite-footer-linkbox-item"><a href="https://cloud.google.com/why-google/" class="gc-analytics-event"
+               data-category="Site-Wide Custom Events"
+               data-label="Footer Why Google">
+                Why Google Cloud
+            </a></li><li class="devsite-footer-linkbox-item"><a href="https://cloud.google.com/pricing/" class="gc-analytics-event"
+               data-category="Site-Wide Custom Events"
+               data-label="Footer Pricing">
+                Pricing
+            </a></li><li class="devsite-footer-linkbox-item"><a href="https://cloud.google.com/docs/" class="gc-analytics-event"
+               data-category="Site-Wide Custom Events"
+               data-label="Footer Documentation">
+                Documentation
+            </a></li><li class="devsite-footer-linkbox-item"><a href="https://cloud.google.com/docs/tutorials/" class="gc-analytics-event"
+               data-category="Site-Wide Custom Events"
+               data-label="Footer Tutorials">
+                Tutorials
+            </a></li><li class="devsite-footer-linkbox-item"><a href="https://cloud.google.com/training/" class="gc-analytics-event"
+               data-category="Site-Wide Custom Events"
+               data-label="Footer Training">
+                Training
+            </a></li><li class="devsite-footer-linkbox-item"><a href="https://cloud.google.com/solutions/" class="gc-analytics-event"
+               data-category="Site-Wide Custom Events"
+               data-label="Footer Solutions">
+                Solutions
+            </a></li><li class="devsite-footer-linkbox-item"><a href="https://cloud.google.com/security/" class="gc-analytics-event"
+               data-category="Site-Wide Custom Events"
+               data-label="Footer Security &amp; Compliance">
+                Security &amp; Compliance
+            </a></li><li class="devsite-footer-linkbox-item"><a href="https://cloud.google.com/partners/" class="gc-analytics-event"
+               data-category="Site-Wide Custom Events"
+               data-label="Footer Partners">
+                Partners
+            </a></li><li class="devsite-footer-linkbox-item"><a href="https://cloud.google.com/customers/" class="gc-analytics-event"
+               data-category="Site-Wide Custom Events"
+               data-label="Footer Customers">
+                Customers
+            </a></li><li class="devsite-footer-linkbox-item"><a href="https://cloud.google.com/support/" class="gc-analytics-event"
+               data-category="Site-Wide Custom Events"
+               data-label="Footer Support">
+                Support
+            </a></li><li class="devsite-footer-linkbox-item"><a href="//careers.google.com/cloud/" class="gc-analytics-event"
+               data-category="Site-Wide Custom Events"
+               data-label="Footer Careers">
+                Careers
+            </a></li><li class="devsite-footer-linkbox-item"><a href="//www.google.com/cloud/press" class="gc-analytics-event"
+               data-category="Site-Wide Custom Events"
+               data-label="Footer Press">
+                Press
+            </a></li></ul></li><li class="devsite-footer-linkbox devsite-footer-linkbox-backup"><h3 class="devsite-footer-linkbox-heading">Engage</h3><ul class="devsite-footer-linkbox-list"><li class="devsite-footer-linkbox-item"><a href="https://cloud.google.com/free-trial/" class="gc-analytics-event"
+               data-category="Site-Wide Custom Events"
+               data-label="Footer Free Trial Sign Up">
+                Free Trial Sign Up
+            </a></li><li class="devsite-footer-linkbox-item"><a href="//cloudplatform.googleblog.com" class="gc-analytics-event"
+               data-category="Site-Wide Custom Events"
+               data-label="Footer Blog">
+                Blog
+            </a></li><li class="devsite-footer-linkbox-item"><a href="https://cloud.google.com/community/" class="gc-analytics-event"
+               data-category="Site-Wide Custom Events"
+               data-label="Footer Community">
+                Community
+            </a></li><li class="devsite-footer-linkbox-item"><a href="//plus.google.com/+googlecloudplatform" class="gc-analytics-event"
+               data-category="Site-Wide Custom Events"
+               data-label="Footer Google+">
+                Google+
+            </a></li><li class="devsite-footer-linkbox-item"><a href="//twitter.com/gcpcloud" class="gc-analytics-event"
+               data-category="Site-Wide Custom Events"
+               data-label="Footer Twitter">
+                Twitter
+            </a></li><li class="devsite-footer-linkbox-item"><a href="//www.linkedin.com/showcase/google-cloud" class="gc-analytics-event"
+               data-category="Site-Wide Custom Events"
+               data-label="Footer LinkedIn">
+                LinkedIn
+            </a></li><li class="devsite-footer-linkbox-item"><a href="//stackoverflow.com/questions/tagged/google-cloud-platform" class="gc-analytics-event"
+               data-category="Site-Wide Custom Events"
+               data-label="Footer Stack Overflow">
+                Stack Overflow
+            </a></li><li class="devsite-footer-linkbox-item"><a href="//www.youtube.com/googlecloudplatform" class="gc-analytics-event"
+               data-category="Site-Wide Custom Events"
+               data-label="Footer YouTube">
+                YouTube
+            </a></li><li class="devsite-footer-linkbox-item"><a href="//www.gcppodcast.com" class="gc-analytics-event"
+               data-category="Site-Wide Custom Events"
+               data-label="Footer Podcast">
+                Podcast
+            </a></li><li class="devsite-footer-linkbox-item"><a href="//cloud.google.com/newsletter/" class="gc-analytics-event"
+               data-category="Site-Wide Custom Events"
+               data-label="Footer Newsletter Signup">
+                Newsletter Signup
+            </a></li><li class="devsite-footer-linkbox-item"><a href="//cloud.google.com/usability" class="gc-analytics-event"
+               data-category="Site-Wide Custom Events"
+               data-label="Footer UX Research">
+                UX Research
+            </a></li></ul></li><li class="devsite-footer-linkbox devsite-footer-linkbox-sites"><a href="https://developers.google.com/"
+           class="gc-analytics-event devsite-footer-linkbox-logo-link"
+           data-category="Site-Wide Custom Events" data-label="Footer Google Developers Link"><img class="devsite-footer-linkbox-logo"
+               src="https://cloud.google.com/_static/d7147bb846/images/redesign-14/lockup-color-knockout.png"
+               alt="Google Developers"></a><ul class="devsite-footer-linkbox-list"><li class="devsite-footer-linkbox-item"><a href="//developer.android.com/index.html" class="gc-analytics-event"
+               data-category="Site-Wide Custom Events"
+               data-label="Footer Android Link">
+                Android
+            </a></li><li class="devsite-footer-linkbox-item"><a href="//developer.chrome.com/home" class="gc-analytics-event"
+               data-category="Site-Wide Custom Events"
+               data-label="Footer Chrome Link">
+                Chrome
+            </a></li><li class="devsite-footer-linkbox-item"><a href="//firebase.google.com" class="gc-analytics-event"
+               data-category="Site-Wide Custom Events"
+               data-label="Footer Firebase Link">
+                Firebase
+            </a></li><li class="devsite-footer-linkbox-item"><a href="//cloud.google.com" class="gc-analytics-event"
+               data-category="Site-Wide Custom Events"
+               data-label="Footer Cloud Link">
+                Google Cloud Platform
+            </a></li><li class="devsite-footer-linkbox-item"><a href="//developers.google.com/products/" class="gc-analytics-event"
+               data-category="Site-Wide Custom Events"
+               data-label="Footer Products Link">
+                All Products
+            </a></li></ul></li></ul></nav></footer><footer class="devsite-utility-footer"><nav class="devsite-utility-footer-nav devsite-nav devsite-full-site-width"><div class="devsite-utility-footer-nav-left"><form class="devsite-utility-footer-language" action="/i18n/setlang/" method="post"><input type="hidden" name="xsrf_token" value="kerxfKutyCBixHl9KB57UJ7fIankx_9HhNcVLJ-p4vM6MTUyNDQ2MDE5NjE4MjM3MA" /><input type="hidden" name="next" value="/security/encryption-at-rest/default-encryption/"><select class="devsite-utility-footer-language-select kd-select" name="language"
+                track-type="languageSelector" track-name="click"><option value="de"
+                
+                track-type="languageSelector" track-name="changed"
+                track-metadata-original-language="en"
+                track-metadata-selected-language="de">
+            Deutsch
+          </option><option value="en"
+                 selected="selected" 
+                track-type="languageSelector" track-name="changed"
+                track-metadata-original-language="en"
+                track-metadata-selected-language="en">
+            English
+          </option><option value="es"
+                
+                track-type="languageSelector" track-name="changed"
+                track-metadata-original-language="en"
+                track-metadata-selected-language="es">
+            español
+          </option><option value="pt-br"
+                
+                track-type="languageSelector" track-name="changed"
+                track-metadata-original-language="en"
+                track-metadata-selected-language="pt-br">
+            Português Brasileiro
+          </option><option value="ja"
+                
+                track-type="languageSelector" track-name="changed"
+                track-metadata-original-language="en"
+                track-metadata-selected-language="ja">
+            日本語
+          </option><option value="zh-tw"
+                
+                track-type="languageSelector" track-name="changed"
+                track-metadata-original-language="en"
+                track-metadata-selected-language="zh-tw">
+            繁體中文
+          </option></select></form><span class="devsite-utility-footer-links"><a class="devsite-utility-footer-link gc-analytics-event"
+           href="https://cloud.google.com/terms/"
+           data-category="Site-Wide Custom Events"
+           data-label="Footer terms link"
+           data-footer-link-id="terms"
+           >Terms
+         </a><a class="devsite-utility-footer-link gc-analytics-event"
+           href="//www.google.com/policies/privacy/"
+           data-category="Site-Wide Custom Events"
+           data-label="Footer privacy link"
+           data-footer-link-id="privacy"
+           >Privacy
+         </a><a class="devsite-utility-footer-link gc-analytics-event"
+           href="//www.google.de/contact/impressum.html"
+           data-category="Site-Wide Custom Events"
+           data-label="Footer impressum link"
+           data-footer-link-id="impressum"
+           >Impressum
+         </a></span></div></nav></footer><div class="devsite-feedback-dialog devsite-dialog"><div class="devsite-dialog-contents"><h3>Send feedback about...</h3><div class="devsite-feedback-item"><a data-type="documentation" class="gc-analytics-event"
+           data-category="Site-Wide Custom Events" data-label="Docs Feedback Image"
+           track-type="feedback" track-name="feedbackDocIcon" track-metadata-position="header"><div class="devsite-feedback-item-icon-container"><div class="devsite-feedback-item-icon-white devsite-feedback-item-icon-docs
+                        material-icons"></div></div></a><div class="devsite-feedback-item-name">
+          
+          This page
+        </div><div class="devsite-feedback-item-description"><a data-type="documentation" tabindex="0" class="gc-analytics-event"
+             data-category="Site-Wide Custom Events" data-label="Docs Feedback Text"
+             track-type="feedback" track-name="feedbackDocText" track-metadata-position="header">
+            
+            Documentation feedback
+          </a></div></div><div class="devsite-feedback-item"><a data-type="product" tabindex="0" class="gc-analytics-event"
+           data-category="Site-Wide Custom Events" data-label="Product Feedback Image"
+           track-type="feedback" track-name="feedbackProductIcon" track-metadata-position="header"
+         ><img class="devsite-feedback-item-icon"
+               src="https://cloud.google.com/_static/d7147bb846/images/feedback/google_56px.svg"></a><div class="devsite-feedback-item-name">
+        Documentation
+        </div><div class="devsite-feedback-item-description"><a data-type="product" tabindex="0" class="gc-analytics-event"
+             data-category="Site-Wide Custom Events" data-label="Product Feedback Text"
+             track-type="feedback" track-name="feedbackProductText" track-metadata-position="header"
+           >
+            
+            Product feedback
+          </a></div></div></div><div class="devsite-dialog-buttons"><button type="button" class="devsite-feedback-cancel button-white gc-analytics-event"
+              data-category="Site-Wide Custom Events" data-label="Cancel Feedback Button"
+              track-type="feedback" track-name="cancelFeedbackButton"
+              track-metadata-position="header">
+        
+        Cancel
+      </button></div></div><script>
+  $(document).ready(function() {
+    new devsite.feedback.Widget({
+        'product_id': '83405',
+        'bucket': 'Documentation',
+        'context': '',
+        'version': 'devsite-20180420-r00-rc00.default'
+      },
+      document.querySelectorAll('.devsite-feedback-button'),
+      'en',
+      document.querySelector('.devsite-site-mask'),
+      document.querySelector('.devsite-feedback-dialog'),
+      document.querySelector('.devsite-feedback-cancel'),
+      document.querySelectorAll('.devsite-feedback-item a:not([href])')
+    );
+  });
+  </script></div><script async defer src="//www.gstatic.com/feedback/api.js"></script><script src="https://cloud.google.com/_static2/d7147bb846/jsi18n/"></script><script src="https://cloud.google.com/_static/d7147bb846/js/script_foot_closure.js"></script><script src="https://cloud.google.com/_static/d7147bb846/js/script_foot.js"></script><script>
+        (function($) {
+          
+          devsite.devsite.Init($, {'ENABLE_BLOCKED_VIDEO_PLACEHOLDER': 0, 'SITE_NAME': 'cloud', 'FULL_SITE_SEARCH_ENABLED': 1, 'ENABLE_CLOUDTRACK': 1, 'VTAGS_ENABLED': 1, 'HISTORY_ENABLED': 1, 'VERSION_HASH': 'd7147bb846', 'SCRIPTSAFE_DOMAIN': 'cloud-dot-google-developers.appspot.com', 'ENABLE_BLOCKED_LINK_TOOLTIP': 0, 'ALLOWED_HOSTS': ['.android.com', '.anvato.com', '.apigee.com', '.appspot.com', '.dialogflow.com', '.gonglchuangl.net', '.google.cn', '.google.com', '.googleplex.com', '.nest.com', '.openthread.io', '.openweave.io', '.orbitera.com', '.tensorflow.org'], 'BLOCK_RSS_FEEDS': 0},
+                               '[]','en',
+                               true, '',
+                               {"f62218c009ec029abef196bba5aa34cf": true, "8de7a048f21618359bd37f5ce44be073": false, "098dafe57affddc137df300142652cfd": false, "8e03e230de0bd8a6fe173fdf172e8b3f": true, "cb025a64a50094835616312f4774a53d": true, "51470233c56fc1fde50f00b73c52b216": false, "d169d485cf24243a263783dbe42029b1": true, "039e5d84b87fd75807ffb37b7f1bbf2c": true, "700def1a83e356c06c0925afb05de4b0": false, "6749dcb526ce9bde6993550c7d928d24": true}, '/docs/',
+                               'https://cloud.google.com/');
+        })(jQuery);
+
+        
+        devsite.localInit = function() {
+          
+        };
+
+      </script><script>
+      $('.devsite-utility-footer-language-select').each(function() {
+        $(this).change(function(){$('.devsite-utility-footer-language').submit();});
+      });
+      </script></div><span id="devsite-request-elapsed" data-request-elapsed="372.189998627"></span></body></html>

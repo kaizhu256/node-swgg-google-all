@@ -1,0 +1,1043 @@
+
+
+
+
+
+
+<!DOCTYPE html><html lang="en"
+      class="chekov"><head><script>var a=window.devsite||{};window.devsite=a;a.readyCallbacks=[];window.devsite.readyCallbacks=a.readyCallbacks;a.ready=function(b){a.readyCallbacks.push(b)};window.devsite.ready=a.ready;
+</script><meta charset="utf-8"><meta name="xsrf_token" content="8tn6Bc95Ib6MQUzI6KUNW1rhGnrM3Phgy1hFdcvWNfo6MTUyNDQ1OTkzMTkwODA1MA" /><link rel="canonical" href="https://developers.google.com/zero-touch/guides/customer/emm"><link rel="alternate" href="https://developers.google.com/zero-touch/guides/customer/emm" hreflang="en"><link rel="alternate" href="https://developers.google.cn/zero-touch/guides/customer/emm" hreflang="en-cn"><link rel="alternate" href="https://developers.google.com/zero-touch/guides/customer/emm" hreflang="x-default"><link rel="shortcut icon" href="https://developers.google.com/_static/d7147bb846/images/favicon.png"><link rel="apple-touch-icon" href="https://developers.google.com/_static/d7147bb846/images/touch-icon.png"><meta name="viewport" content="width=device-width, initial-scale=1"><link rel="stylesheet"
+      
+      href="//fonts.googleapis.com/css?family=Google+Sans:400|Roboto:400,400italic,500,500italic,700,700italic|Roboto+Mono:400,500,700|Material+Icons"
+      ><link rel="stylesheet"
+        href="https://developers.google.com/_static/d7147bb846/css/devsite-cyan.css"><link rel="search"
+        type="application/opensearchdescription+xml"
+        title="Google Developers"
+        href="https://developers.google.com/s/opensearch.xml"><script src="https://developers.google.com/_static/d7147bb846/js/jquery-bundle.js"></script><meta property="og:site_name" content="Google Developers"><meta property="og:type" content="website"><meta property="og:url" content="https://developers.google.com/zero-touch/guides/customer/emm"><meta property="og:locale" content="en"><script>
+    var ___gcfg = ___gcfg || {};
+    ___gcfg.lang = 'en';
+  </script><title>EMM integration guide &nbsp;|&nbsp; Android zero-touch enrollment
+      &nbsp;|&nbsp; Google Developers</title><meta property="og:title" content="EMM integration guide &nbsp;|&nbsp; Android zero-touch enrollment
+      &nbsp;|&nbsp; Google Developers"><meta property="og:image"
+          content="https://developers.google.com/_static/d7147bb846/images/share/devsite-cyan.png"><meta property="og:image:secure_url"
+          content="https://developers.google.com/_static/d7147bb846/images/share/devsite-cyan.png"><meta property="og:image:width" content="1200"><meta property="og:image:height" content="630"></head><body class="
+               devsite-doc-page
+               
+               
+               
+               devsite-header-no-upper-tabs
+               "
+        data-family="endorsed"
+        id="top_of_page"><div class="devsite-wrapper"><div class="devsite-top-section-wrapper
+            "><header class="devsite-top-section nocontent"><div class="devsite-top-logo-row-wrapper-wrapper"><div class="devsite-top-logo-row-wrapper"><div class="devsite-top-logo-row devsite-full-site-width"><button type="button" class="devsite-expand-section-nav devsite-header-icon-button
+                                       button-flat material-icons gc-analytics-event"
+                  data-category="Site-Wide Custom Events" data-label="Hamburger menu"></button><div class="devsite-product-name-wrapper"><span class="devsite-product-name"><ul class="devsite-breadcrumb-list"><li class="devsite-breadcrumb-item"><a href="https://developers.google.com/zero-touch/" class="devsite-breadcrumb-link gc-analytics-event"
+       data-category="Site-Wide Custom Events" data-label="Upper Header"
+       data-value="1">
+    
+    
+      
+        Android zero-touch enrollment
+      
+    
+    
+    </a></li></ul></span></div><div class="devsite-header-upper-tabs"></div><form class="devsite-search-form"
+                action="https://developers.google.com/s/results/"
+                method="GET"
+                id="top-search"
+                search-placeholder='Search'><div id="searchbox" class="devsite-searchbox"><input placeholder='Search'
+         
+         type="text"
+         class="devsite-search-field devsite-search-query"
+         name="q"
+         value=""
+         autocomplete="off"
+         
+         aria-label="Search box"><div class="devsite-search-image material-icons"></div></div><input type="hidden"
+       name="p"
+       id="search_project"
+       value="/zero-touch/"
+       data-project-name="Android zero-touch enrollment"
+       data-project-path="/zero-touch/"
+       data-query-match=""><input type="hidden" class="suggest-project" value="Android zero-touch enrollment" /><div class="suggest-project-metadata" data-home_url="/zero-touch/" data-path="/zero-touch/" data-name="Android zero-touch enrollment" ></div></form><a class="devsite-header-link devsite-top-button button gc-analytics-event"
+               href="https://developers.google.com/products/"
+               data-category="Site-Wide Custom Events"
+               data-label="Site header link"
+               track-type="navigateTo"
+               track-name="all products"
+               track-metadata-position="nav"><div class="devsite-header-link-label">All Products</div></a><button type="button" class="devsite-search-button devsite-header-icon-button button-flat
+                                       material-icons"></button><a href="https://www.google.com/accounts/ServiceLogin?passive=true&continue=https%3A%2F%2Fdevelopers.google.com%2Fzero-touch%2Fguides%2Fcustomer%2Femm%3Frefresh%3D1&service=ahsid"
+   class="devsite-user-signin devsite-top-button button gc-analytics-event"
+   data-category="Site-Wide Custom Events" data-label="Sign in button">
+  
+  Sign in
+</a></div></div></div><div class="devsite-collapsible-section"><div class="devsite-header-background devsite-full-site-width"><div class="devsite-doc-set-nav-row devsite-full-site-width"><nav class="devsite-doc-set-nav devsite-nav devsite-overflow-tabs-scroll-wrapper"><ul class="devsite-doc-set-nav-tab-list devsite-overflow-tabs-scroll"><li class="devsite-doc-set-nav-tab-container devsite-nav-tab
+               "><a href="https://developers.google.com/zero-touch/"
+         class=" devsite-nav-tab
+                devsite-doc-set-nav-tab devsite-doc-set-nav-tab-link gc-analytics-event"
+         
+       
+         data-category="Site-Wide Custom Events"
+       
+         data-label="Tab: Home"
+       >
+        Home
+      </a></li><li class="devsite-doc-set-nav-tab-container devsite-nav-tab
+               "><a href="https://developers.google.com/zero-touch/guides/overview"
+         class="devsite-doc-set-nav-active devsite-nav-tab
+                devsite-doc-set-nav-tab devsite-doc-set-nav-tab-link gc-analytics-event"
+         aria-label="Guides, selected"
+       
+         data-category="Site-Wide Custom Events"
+       
+         data-label="Tab: Guides"
+       >
+        Guides
+      </a></li><li class="devsite-doc-set-nav-tab-container devsite-nav-tab
+               "><a href="https://developers.google.com/zero-touch/reference/reseller/rest/"
+         class=" devsite-nav-tab
+                devsite-doc-set-nav-tab devsite-doc-set-nav-tab-link gc-analytics-event"
+         
+       
+         data-category="Site-Wide Custom Events"
+       
+         data-label="Tab: Reference"
+       >
+        Reference
+      </a></li><li class="devsite-doc-set-nav-tab-container devsite-nav-tab
+               "><a href="https://developers.google.com/zero-touch/support/contact"
+         class=" devsite-nav-tab
+                devsite-doc-set-nav-tab devsite-doc-set-nav-tab-link gc-analytics-event"
+         
+       
+         data-category="Site-Wide Custom Events"
+       
+         data-label="Tab: Support"
+       >
+        Support
+      </a></li><button type="button" id="devsite-feedback-project"
+          class="devsite-feedback-button devsite-top-button gc-analytics-event"
+          data-category="Site-Wide Custom Events" data-label="Send Feedback Button"
+          track-type="feedback" track-name="sendFeedbackLink" track-metadata-position="header">
+  
+  Send feedback
+  </button></ul></nav></div></div></div></header><script>
+    if (window.jQuery) {
+      $(document).ready(function() {
+        if (window.devsite && window.devsite.search) {
+          
+          window.devsite.search.init('en')
+        }
+      });
+    }
+  </script></div><div id="gc-wrapper"itemscope itemtype="http://schema.org/Article"><input class="google-analytics-id-json" type="hidden" value="{&quot;dimensions&quot;: {&quot;dimension6&quot;: &quot;en&quot;, &quot;dimension4&quot;: &quot;Android zero-touch enrollment&quot;, &quot;dimension5&quot;: &quot;en&quot;, &quot;dimension3&quot;: false, &quot;dimension1&quot;: &quot;Signed out&quot;, &quot;dimension8&quot;: null}, &quot;gaid&quot;: &quot;UA-24532603-1&quot;}"><input class="google-analytics-id-json" type="hidden" value="{&quot;dimensions&quot;: {}, &quot;gaid&quot;: &quot;UA-100339529-1&quot;}"><script>
+      var dataLayer = [{"freeTrialEligibleUser": "False", "userCountry": "HK", "language": {"requested": "en", "served": "en"}, "projectName": "Android zero-touch enrollment", "scriptsafe": null, "signedIn": "False", "internalUser": "False"}];
+    </script>
+
+      
+        <div class="devsite-site-mask"></div>
+        
+  
+
+
+<nav class="devsite-nav-responsive devsite-nav nocontent" tabindex="0">
+  
+  <div class="devsite-nav-responsive-tabs-panel">
+    
+      
+
+
+
+<nav class="devsite-nav-responsive-tabs devsite-nav">
+  <ul class="devsite-nav-list">
+  
+    <li class="devsite-nav-item devsite-nav-item-heading">
+    
+      <a 
+           href="https://developers.google.com/zero-touch/"
+         
+         class="devsite-nav-responsive-tab devsite-nav-title gc-analytics-event
+                "
+         data-category="Site-Wide Custom Events" data-label="Responsive Tab: Home">
+        Home
+      </a>
+      
+      
+    
+    </li>
+  
+    <li class="devsite-nav-item devsite-nav-item-heading">
+    
+      <span class="devsite-nav-responsive-forward devsite-nav-responsive-tab devsite-nav-title
+                   devsite-nav-active gc-analytics-event"
+            data-category="Site-Wide Custom Events" data-label="Responsive Tab: Guides"
+            tabindex="0">
+        Guides
+      </span>
+    
+    </li>
+  
+    <li class="devsite-nav-item devsite-nav-item-heading">
+    
+      <a 
+           href="https://developers.google.com/zero-touch/reference/reseller/rest/?nav=true"
+         
+         class="devsite-nav-responsive-tab devsite-nav-title gc-analytics-event
+                "
+         data-category="Site-Wide Custom Events" data-label="Responsive Tab: Reference">
+        Reference
+      </a>
+      
+      
+    
+    </li>
+  
+    <li class="devsite-nav-item devsite-nav-item-heading">
+    
+      <a 
+           href="https://developers.google.com/zero-touch/support/contact?nav=true"
+         
+         class="devsite-nav-responsive-tab devsite-nav-title gc-analytics-event
+                "
+         data-category="Site-Wide Custom Events" data-label="Responsive Tab: Support">
+        Support
+      </a>
+      
+      
+    
+    </li>
+  
+  
+    <li class="devsite-nav-item devsite-nav-item-heading">
+      <a href="https://developers.google.com/products/"
+         class="devsite-nav-responsive-tab devsite-nav-title gc-analytics-event"
+         data-category="Site-Wide Custom Events"
+         data-label="Responsive Tab: all_products">
+        All Products
+      </a>
+    </li>
+  
+  </ul>
+</nav>
+
+
+    
+  </div>
+  
+  
+  <div class="devsite-nav-responsive-sidebar-panel">
+    
+    <div class="devsite-nav-responsive-back" tabindex="0"></div>
+    
+    <nav class="devsite-nav-responsive-sidebar"></nav>
+  </div>
+  
+  
+</nav>
+
+
+        <div class="devsite-main-content clearfix">
+
+        
+        
+
+        
+  
+  
+    
+    
+      
+  <nav class="devsite-section-nav devsite-nav nocontent">
+    <ul class="devsite-nav-list devsite-nav-expandable"><li class="devsite-nav-item"><a href="https://developers.google.com/zero-touch/guides/overview" class="devsite-nav-title">Overview</a></li><li class="devsite-nav-item devsite-nav-item-heading"><span class="devsite-nav-title devsite-nav-title-no-path">Portal</span></li><li class="devsite-nav-item"><a href="https://developers.google.com/zero-touch/guides/portal" class="devsite-nav-title">Reseller Guide</a></li><li class="devsite-nav-item devsite-nav-item-heading"><span class="devsite-nav-title devsite-nav-title-no-path">Reseller API</span></li><li class="devsite-nav-item"><a href="https://developers.google.com/zero-touch/guides/how-it-works" class="devsite-nav-title">How it works</a></li><li class="devsite-nav-item"><a href="https://developers.google.com/zero-touch/guides/get-started" class="devsite-nav-title">Get started</a></li><li class="devsite-nav-item"><a href="https://developers.google.com/zero-touch/guides/auth" class="devsite-nav-title">Authorization</a></li><li class="devsite-nav-item"><a href="https://developers.google.com/zero-touch/guides/identifiers" class="devsite-nav-title">Identifiers</a></li><li class="devsite-nav-item"><a href="https://developers.google.com/zero-touch/guides/metadata" class="devsite-nav-title">Device metadata</a></li><li class="devsite-nav-item devsite-nav-item-heading devsite-nav-new devsite-nav-has-status"><span class="devsite-nav-title devsite-nav-title-no-path"><span class="devsite-nav-text">Customer API</span><span class="devsite-nav-icon-wrapper"><span class="devsite-nav-icon material-icons" title="New!"></span></span></span></li><li class="devsite-nav-item"><a href="https://developers.google.com/zero-touch/guides/customer/how-it-works" class="devsite-nav-title">How it works</a></li><li class="devsite-nav-item"><a href="https://developers.google.com/zero-touch/guides/customer/auth" class="devsite-nav-title">Authorization</a></li><li class="devsite-nav-item devsite-nav-item-section-expandable"><span class="devsite-nav-title devsite-nav-title-no-path" aria-label="Quickstarts, click to expand/collapse" role="link">Quickstarts</span><a class="devsite-nav-toggle devsite-nav-toggle-collapsed material-icons" track-type="leftNav" track-name="expandNavSectionArrow" track-metadata-position="0" aria-hidden="true"></a><ul class="devsite-nav-section devsite-nav-section-collapsed"><li class="devsite-nav-item"><a href="https://developers.google.com/zero-touch/guides/customer/quickstart/java" class="devsite-nav-title">Java</a></li><li class="devsite-nav-item"><a href="https://developers.google.com/zero-touch/guides/customer/quickstart/dotnet" class="devsite-nav-title">.NET</a></li><li class="devsite-nav-item"><a href="https://developers.google.com/zero-touch/guides/customer/quickstart/python" class="devsite-nav-title">Python</a></li></ul></li><li class="devsite-nav-item devsite-nav-active"><a href="https://developers.google.com/zero-touch/guides/customer/emm" class="devsite-nav-title">EMM integration</a></li></ul>
+  </nav>
+
+    
+
+    
+  <nav class="devsite-page-nav devsite-nav"></nav>
+
+
+      <article class="devsite-article">
+        <article class="devsite-article-inner">
+  
+          
+  
+
+
+
+  
+  <nav class="devsite-breadcrumb-nav devsite-nav">
+    
+
+
+<ul class="devsite-breadcrumb-list">
+  
+  <li class="devsite-breadcrumb-item">
+    
+    
+    <a href="https://developers.google.com/products/" class="devsite-breadcrumb-link gc-analytics-event"
+       data-category="Site-Wide Custom Events" data-label="Breadcrumbs"
+       data-value="1">
+    
+    
+      Products
+    
+    
+    </a>
+    
+  </li>
+  
+  <li class="devsite-breadcrumb-item">
+    
+    
+    <div class="devsite-breadcrumb-guillemet material-icons"></div>
+    
+    
+    <a href="https://developers.google.com/zero-touch/" class="devsite-breadcrumb-link gc-analytics-event"
+       data-category="Site-Wide Custom Events" data-label="Breadcrumbs"
+       data-value="2">
+    
+    
+      Android zero-touch enrollment
+    
+    
+    </a>
+    
+  </li>
+  
+  <li class="devsite-breadcrumb-item">
+    
+    
+    <div class="devsite-breadcrumb-guillemet material-icons"></div>
+    
+    
+    <a href="https://developers.google.com/zero-touch/guides/overview" class="devsite-breadcrumb-link gc-analytics-event"
+       data-category="Site-Wide Custom Events" data-label="Breadcrumbs"
+       data-value="3">
+    
+    
+      Guides
+    
+    
+    </a>
+    
+  </li>
+  
+</ul>
+
+  </nav>
+  
+  
+  <h1 itemprop="name" class="devsite-page-title">
+    EMM integration guide
+  </h1>
+  
+  
+  <nav class="devsite-page-nav-embedded devsite-nav"></nav>
+  
+  <div class="devsite-article-body clearfix
+            "
+       itemprop="articleBody">
+    
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!--* freshness: { owner: 'benjaminmiller' reviewed: '2018-01-30' } *-->
+
+<p>This guide helps enterprise mobility management (EMM) providers integrate
+zero-touch enrollment into their console.
+Continue reading to learn more about enrollment and see best-practice advice to
+help your DPC (device policy controller) provision devices. If you have a DPC,
+you'll learn best practices when provisioning devices and get advice to help
+with development and testing.</p>
+<h2 id="features_for_it_admins">Features for IT admins</h2>
+<p>Use the customer API to help IT admins setup zero-touch enrollment direct from
+your console. Here are some tasks an IT admin might complete in your console:</p>
+<ul>
+<li>Create, edit, and delete zero-touch enrollment configurations based on your
+mobile policies.</li>
+<li>Set a default configuration so your DPC provisions future devices the
+organization purchases.</li>
+<li>Apply individual configurations to devices or remove devices from zero-touch
+enrollment.</li>
+</ul>
+<p>To learn more about zero-touch enrollment, read the
+<a href="https://developers.google.com/zero-touch/guides/overview">overview</a>.</p>
+<h2 id="prerequisites">Prerequisites</h2>
+<p>Before you add zero-touch enrollment to your EMM console, confirm that your
+solution supports the following:</p>
+<ul>
+<li>Your EMM solution needs to provision corp-liable Android devices into device
+owner mode. Zero-touch enrollment can't help with work profile provisioning.</li>
+<li>Because zero-touch enrollment automatically downloads and installs a DPC, your
+DPC must be available from Google Play. We maintain a list of compatible DPCs
+that IT admins can configure using the customer API or the portal. <a href="https://developers.google.com/zero-touch/support/contact">Contact
+us</a> to add your DPC to the list.</li>
+<li>Your customers need a zero-touch enrollment account to call the customer API.
+A partner reseller sets up the account for an IT admin's organization when the
+organization purchases their devices.</li>
+</ul>
+<h2 id="call_the_api">Call the API</h2>
+<p>Your console's users (using their Google Account) authorize your API requests to
+the customer API. This flow is different to the authorization you perform for
+other EMM APIs. Read <a href="https://developers.google.com/zero-touch/guides/customer/auth">Authorization</a> to learn how to do this in your app.</p>
+<aside class="key-point"><strong>Key Point:</strong><span> Remind your console's users to use the same Google Account that their
+reseller or organization set up in their zero-touch enrollment account.</span></aside>
+<h3 id="tos">Handle Terms of Service</h3>
+<p>Your users need to <a href="https://developers.google.com/zero-touch/guides/customer/auth#tos">accept the latest Terms of Service</a> (ToS) before
+calling the API. If the API call returns an HTTP <code>403 Forbidden</code> status code and
+the response body contains a <a href="https://developers.google.com/zero-touch/reference/customer/rest/v1/TosError"><code>TosError</code></a>, prompt the user to accept
+the ToS by signing in to the zero-touch enrollment portal. The example below
+shows one of the ways you could do this:</p>
+<div class="ds-selector-tabs">
+  <section>
+    <h3>Java</h3>
+    <pre class="prettyprint lang-java">// Authorize this method call as a user that hasn&#39;t yet accepted the ToS.
+final String googleApiFormatHttpHeader = &quot;X-GOOG-API-FORMAT-VERSION&quot;;
+final String googleApiFormatVersion = &quot;2&quot;;
+final String tosErrorType =
+      &quot;type.googleapis.com/google.android.device.provisioning.v1.TosError&quot;;
+
+try {
+  // Send an API request to list all the DPCs available including the HTTP header
+  // X-GOOG-API-FORMAT-VERSION with the value 2. Import the  exception:
+  // from googleapiclient.errors import HttpError
+  AndroidProvisioningPartner.Customers.Dpcs.List request =
+        service.customers().dpcs().list(customerAccount);
+  request.getRequestHeaders().put(googleApiFormatHttpHeader, googleApiFormatVersion);
+  CustomerListDpcsResponse response = request.execute();
+  return response.getDpcs();
+
+} catch (GoogleJsonResponseException e) {
+  // Get the error details. In your app, check details exists first.
+  ArrayList&lt;Map&gt; details = (ArrayList&lt;Map&gt;) e.getDetails().get(&quot;details&quot;);
+  for (Map detail : details) {
+    if (detail.get(&quot;@type&quot;).equals(tosErrorType)
+          &amp;&amp; (boolean) detail.get(&quot;latestTosAccepted&quot;) != true) {
+      // Ask the user to accept the ToS. If they agree, open the portal in a browser.
+      // ...
+    }
+  }
+  return null;
+}</pre>
+  </section>
+  <section>
+    <h3>.NET</h3>
+    <pre class="prettyprint lang-cs">// Authorize this method call as a user that hasn&#39;t yet accepted the ToS.
+try
+{
+    var request = service.Customers.Dpcs.List(customerAccount);
+    CustomerListDpcsResponse response = request.Execute();
+    return response.Dpcs;
+}
+catch (GoogleApiException e)
+{
+    foreach (SingleError error in e.Error?.Errors)
+    {
+        if (error.Message.StartsWith(&quot;The user must agree the terms of service&quot;))
+        {
+            // Ask the user to accept the ToS. If they agree, open the portal in a browser.
+            // ...
+        }
+    }
+}</pre>
+  </section>
+    <section>
+    <h3>Python</h3>
+    <pre class="prettyprint lang-py"># Authorize this method call as a user that hasn&#39;t yet accepted the ToS.
+tos_error_type = (&#39;type.googleapis.com/&#39;
+                  &#39;google.android.device.provisioning.v1.TosError&#39;)
+portal_url = &#39;https://partner.android.com/zerotouch&#39;
+
+# Send an API request to list all the DPCs available including the HTTP
+# header X-GOOG-API-FORMAT-VERSION with the value 2. Import the exception:
+# from googleapiclient.errors import HttpError
+try:
+  request = service.customers().dpcs().list(parent=customer_account)
+  request.headers[&#39;X-GOOG-API-FORMAT-VERSION&#39;] = &#39;2&#39;
+  response = request.execute()
+  return response[&#39;dpcs&#39;]
+
+except HttpError as err:
+  # Parse the JSON content of the error. In your app, check ToS exists first.
+  error = json.loads(err.content)
+  tos_error = error[&#39;error&#39;][&#39;details&#39;][0]
+
+  # Ask the user to accept the ToS (not shown here). If they agree, then open
+  # the portal in a browser.
+  if (tos_error[&#39;@type&#39;] == tos_error_type
+      and tos_error[&#39;latestTosAccepted&#39;] is not True):
+    if raw_input(&#39;Accept the ToS in the zero-touch portal? y|n &#39;) == &#39;y&#39;:
+      webbrowser.open(portal_url)</pre>
+  </section>
+</div>
+
+<p>If your Google API client supports detailed errors (Java, Python, or HTTP
+requests), include the HTTP header <code>X-GOOG-API-FORMAT-VERSION</code> with the value
+<code>2</code> in your requests. If your client doesn't support detailed errors (.NET and
+others), match the error message.</p>
+<p>When we update the ToS in the future, if you follow this approach, your app
+directs the user to re-accept the new ToS.</p>
+<h3 id="link_to_the_portal">Link to the portal</h3>
+<p>IT admins use the zero-touch enrollment portal to manage the users for their
+organization—you can't offer this through the customer API. IT admins can also
+manage devices and configurations using the portal. If you need to link to the
+portal from your console or in your documentation, use this URL:</p>
+<pre class="prettyprint lang-sh"><code>https://partner.android.com/zerotouch
+</code></pre>
+
+<p>You might want to inform IT admins that they're prompted to sign in with their
+Google Account.</p>
+<h2 id="device_enrollment">Device enrollment</h2>
+<p>Zero-touch enrollment is a mechanism to enroll devices and is like NFC
+enrollment or QR-code enrollment. Your console needs to support managed devices
+and your DPC must be able to run in device owner mode.</p>
+<p>Zero-touch enrollment is available on supported devices running Android 8.0 or
+later. IT admins must purchase <a href="https://www.android.com/intl/en_uk/enterprise/management/zero-touch/">supported devices from a partner
+reseller</a>. Because a device manufacturer includes support
+for zero-touch enrollment in the factory, older devices can't add support for
+zero-touch enrollment through an Android system upgrade. Your console can track
+which of the IT admin's devices are available for zero-touch enrollment by
+calling <a href="https://developers.google.com/zero-touch/reference/customer/rest/v1/customers.devices/list"><code>customers.devices.list</code></a>.</p>
+<p>Here's an outline of how enrollment works:</p>
+<ol>
+<li>A device checks in with a Google server on first startup (or after a factory
+reset) for zero-touch enrollment.</li>
+<li>If the IT admin has applied a configuration to the device, zero-touch
+enrollment runs the device owner Android setup wizard and personalizes the
+screens with metadata from the configuration.</li>
+<li>Zero-touch enrollment downloads and installs your DPC from Google Play.</li>
+<li>Your DPC receives the
+<a href="http://developer.android.com/reference/android/app/admin/DevicePolicyManager.html#ACTION_PROVISION_MANAGED_DEVICE"><code>ACTION_PROVISION_MANAGED_DEVICE</code></a> intent and
+provisions the device.</li>
+</ol>
+<p>If there isn't an internet connection, the check happens when one becomes
+available. To learn more about device provisioning with zero-touch enrollment,
+see <a href="#provision">Provisioning</a> below.</p>
+<h3 id="default_configurations">Default configurations</h3>
+<p>Zero-touch enrollment helps IT admins most when they set a default configuration
+that's applied to any new devices their organization purchases. Promote setting
+a default configuration from your console if one isn't set. You can check the
+value of <a href="https://developers.google.com/zero-touch/reference/customer/rest/v1/customers.configurations"><code>customers.configurations.isDefault</code></a> to
+find out if an organization has set a  default configuration.</p>
+<p>The example below shows how you might make an existing configuration the
+default:</p>
+<div class="ds-selector-tabs">
+  <section>
+    <h3>Java</h3>
+    <pre class="prettyprint lang-java">// Send minimal data with the request. Just the 2 required fields.
+// targetConfiguration is an existing configuration that we want to make the default.
+Configuration configuration = new Configuration();
+configuration.setIsDefault(true);
+configuration.setConfigurationId(targetConfiguration.getConfigurationId());
+
+// Call the API, including the FieldMask to avoid setting other fields to null.
+AndroidProvisioningPartner.Customers.Configurations.Patch request = service
+      .customers()
+      .configurations()
+      .patch(targetConfiguration.getName(), configuration);
+request.setUpdateMask(&quot;isDefault&quot;);
+Configuration results = request.execute();</pre>
+  </section>
+  <section>
+    <h3>.NET</h3>
+    <pre class="prettyprint lang-cs">// Send minimal data with the request. Just the 2 required fields.
+// targetConfiguration is an existing configuration that we want to make the default.
+Configuration configuration = new Configuration
+{
+    IsDefault = true,
+    ConfigurationId = targetConfiguration.ConfigurationId,
+};
+
+// Call the API, including the FieldMask to avoid setting other fields to null.
+var request = service.Customers.Configurations.Patch(configuration,
+                                                     targetConfiguration.Name);
+request.UpdateMask = &quot;IsDefault&quot;;
+Configuration results = request.Execute();</pre>
+  </section>
+    <section>
+    <h3>Python</h3>
+    <pre class="prettyprint lang-py"># Send minimal data with the request. Just the 2 required fields.
+# target_configuration is an existing configuration we&#39;ll make the default.
+configuration = {
+    &#39;isDefault&#39;: True,
+    &#39;configurationId&#39;: target_configuration[&#39;configurationId&#39;]}
+
+# Call the API, including the FieldMask to avoid setting other fields to null.
+response = service.customers().configurations().patch(
+    name=target_configuration[&#39;name&#39;],
+    body=configuration, updateMask=&#39;isDefault&#39;).execute()</pre>
+  </section>
+</div>
+
+<h3 id="referencing_your_dpc">Referencing your DPC</h3>
+<p>We recommend using the API resource name <a href="https://developers.google.com/zero-touch/reference/customer/rest/v1/customers.dpcs"><code>customers.dpcs.name</code></a>
+to identify your DPC and use it in configurations. The resource name contains a
+unique and unchanging identifier for the DPC. Call
+<a href="https://developers.google.com/zero-touch/reference/customer/rest/v1/customers.dpcs/list"><code>customers.dpcs.list</code></a> to get the list of all supported
+DPCs. Because the resource name also includes the customer ID, filter the list
+using the last path component to find a matching <code>Dpc</code> instance. The example
+below shows how to match your DPC and persist for it later use in a
+configuration:</p>
+<div class="ds-selector-tabs">
+  <section>
+    <h3>Java</h3>
+    <pre class="prettyprint lang-java">// Return a customer Dpc instance for the specified DPC ID.
+String myDpcIdentifier = &quot;AH6Gbe4aiS459wlz58L30cqbbXbUa_JR9...xMSWCiYiuHRWeBbu86Yjq&quot;;
+final int dpcIdIndex = 3;
+final String dpcComponentSeparator = &quot;/&quot;;
+// ...
+for (Dpc dpcApp : dpcs) {
+    // Because the DPC name is in the format customers/{CUST_ID}/dpcs/{DPC_ID}, check the
+    // fourth component matches the DPC ID.
+    String dpcId = dpcApp.getName().split(dpcComponentSeparator)[dpcIdIndex];
+    if (dpcId.equals(myDpcIdentifier)) {
+        System.out.format(&quot;My DPC is: %s\n&quot;, dpcApp.getDpcName());
+        return dpcApp;
+    }
+}
+// Handle the case when the DPC isn&#39;t found...</pre>
+  </section>
+  <section>
+    <h3>.NET</h3>
+    <pre class="prettyprint lang-cs">// Return a customer Dpc instance for the specified DPC ID.
+var myDpcIdentifer = &quot;AH6Gbe4aiS459wlz58L30cqbbXbUa_JR9...fE9WdHcxMSWCiYiuHRWeBbu86Yjq&quot;;
+const int dpcIdIndex = 3;
+const String dpcComponentSeparator = &quot;/&quot;;
+// ...
+foreach (Dpc dpcApp in dpcs)
+{
+    // Because the DPC name is in the format customers/{CUST_ID}/dpcs/{DPC_ID}, check the
+    // fourth component matches the DPC ID.
+    String dpcId = dpcApp.Name.Split(dpcComponentSeparator)[dpcIdIndex];
+    if (dpcId.Equals(myDpcIdentifer))
+    {
+        Console.WriteLine(&quot;Matched DPC is: {0}&quot;, dpcApp.DpcName);
+        return dpcApp;
+    }
+}
+// Handle the case when the DPC isn&#39;t found...</pre>
+  </section>
+    <section>
+    <h3>Python</h3>
+    <pre class="prettyprint lang-py"># Return a customer Dpc instance for the specified DPC ID.
+my_dpc_id = &#39;AH6Gbe4aiS459wlz58L30cqb...fE9WdHcxMSWCiYiuHRWeBbu86Yjq&#39;
+# ...
+for dpc_app in dpcs:
+  # Because the DPC name is in the format customers/{CUST_ID}/dpcs/{DPC_ID},
+  # check the fourth component matches the DPC ID.
+  dpc_id = dpc_app[&#39;name&#39;].split(&#39;/&#39;)[3]
+  if dpc_id == my_dpc_id:
+    return dpc_app
+
+# Handle the case when the DPC isn&#39;t found...</pre>
+  </section>
+</div>
+
+<p>If you need to show the name of a DPC in your console's user interface, display
+the value returned from <a href="https://developers.google.com/zero-touch/reference/customer/rest/v1/customers.dpcs"><code>customers.dpcs.dpcName</code></a>.</p>
+<h2 id="provision">Provisioning</h2>
+<p>Take the opportunity to provide a great user experience for device provisioning.
+A username and password should be all that's needed to provision the device.
+Remember, that resellers might ship devices directly to remote users. Include
+all other settings, such as EMM server or organizational unit, in
+<a href="https://developers.google.com/zero-touch/reference/customer/rest/v1/customers.configurations"><code>customers.configuration.dpcExtras</code></a>.</p>
+<p>The JSON snippet below shows part of an example configuration:</p>
+<pre class="prettyprint lang-json"><code>{
+  &quot;android.app.extra.PROVISIONING_LOCALE&quot;: &quot;en_GB&quot;,
+  &quot;android.app.extra.PROVISIONING_TIME_ZONE&quot;: &quot;Europe/London&quot;,
+  &quot;android.app.extra.PROVISIONING_LEAVE_ALL_SYSTEM_APPS_ENABLED&quot;: true,
+  &quot;android.app.extra.PROVISIONING_ADMIN_EXTRAS_BUNDLE&quot;: {
+    &quot;workflow_type&quot;: 3,
+    &quot;default_password_quality&quot;: 327680,
+    &quot;default_min_password_length&quot;: 6,
+    &quot;company_name&quot;: &quot;XYZ Corp&quot;,
+    &quot;organizational_unit&quot;: &quot;sales-uk&quot;,
+    &quot;management_server&quot;: &quot;emm.example.com&quot;,
+    &quot;detail_tos_url&quot;: &quot;https://www.example.com/policies/terms/&quot;,
+    &quot;allowed_user_domains&quot;: &quot;[\&quot;example.com\&quot;, \&quot;example.org\&quot;, \&quot;example.net\&quot;]&quot;
+    }
+}
+</code></pre>
+
+<p>Zero-touch enrollment installs and launches your DPC using an Android Intent.
+The system sends the values in the
+<code>android.app.extra.PROVISIONING_ADMIN_EXTRAS_BUNDLE</code> JSON property to your DPC
+as extras in the intent. Your DPC can read the provisioning settings from the
+<a href="https://developer.android.com/reference/android/os/PersistableBundle.html"><code>PersistableBundle</code></a> using the same keys.</p>
+<p><span class="compare-better">Recommended</span>—use the following intent extras
+to set up your DPC:</p>
+<ul>
+<li><a href="http://developer.android.com/reference/android/app/admin/DevicePolicyManager.html#EXTRA_PROVISIONING_ADMIN_EXTRAS_BUNDLE"><code>EXTRA_PROVISIONING_ADMIN_EXTRAS_BUNDLE</code></a></li>
+<li><a href="http://developer.android.com/reference/android/app/admin/DevicePolicyManager.html#EXTRA_PROVISIONING_LOCALE"><code>EXTRA_PROVISIONING_LOCALE</code></a></li>
+<li><a href="http://developer.android.com/reference/android/app/admin/DevicePolicyManager.html#EXTRA_PROVISIONING_TIME_ZONE"><code>EXTRA_PROVISIONING_TIME_ZONE</code></a></li>
+<li><a href="http://developer.android.com/reference/android/app/admin/DevicePolicyManager.html#EXTRA_PROVISIONING_LOCAL_TIME"><code>EXTRA_PROVISIONING_LOCAL_TIME</code></a></li>
+<li><a href="http://developer.android.com/reference/android/app/admin/DevicePolicyManager.html#EXTRA_PROVISIONING_LEAVE_ALL_SYSTEM_APPS_ENABLED"><code>EXTRA_PROVISIONING_LEAVE_ALL_SYSTEM_APPS_ENABLED</code></a></li>
+<li><a href="http://developer.android.com/reference/android/app/admin/DevicePolicyManager.html#EXTRA_PROVISIONING_MAIN_COLOR"><code>EXTRA_PROVISIONING_MAIN_COLOR</code></a></li>
+<li><a href="http://developer.android.com/reference/android/app/admin/DevicePolicyManager.html#EXTRA_PROVISIONING_DISCLAIMERS"><code>EXTRA_PROVISIONING_DISCLAIMERS</code></a></li>
+</ul>
+<p><span class="compare-worse">Not recommended</span>—don't include the following
+extras that you might use in other enrollment methods:</p>
+<ul>
+<li><a href="http://developer.android.com/reference/android/app/admin/DevicePolicyManager.html#EXTRA_PROVISIONING_DEVICE_ADMIN_COMPONENT_NAME"><code>EXTRA_PROVISIONING_DEVICE_ADMIN_COMPONENT_NAME</code></a></li>
+<li><a href="http://developer.android.com/reference/android/app/admin/DevicePolicyManager.html#EXTRA_PROVISIONING_DEVICE_ADMIN_PACKAGE_CHECKSUM"><code>EXTRA_PROVISIONING_DEVICE_ADMIN_PACKAGE_CHECKSUM</code></a></li>
+<li><a href="http://developer.android.com/reference/android/app/admin/DevicePolicyManager.html#EXTRA_PROVISIONING_DEVICE_ADMIN_PACKAGE_DOWNLOAD_COOKIE_HEADER"><code>EXTRA_PROVISIONING_DEVICE_ADMIN_PACKAGE_DOWNLOAD_COOKIE_HEADER</code></a></li>
+<li><a href="http://developer.android.com/reference/android/app/admin/DevicePolicyManager.html#EXTRA_PROVISIONING_DEVICE_ADMIN_PACKAGE_DOWNLOAD_LOCATION"><code>EXTRA_PROVISIONING_DEVICE_ADMIN_PACKAGE_DOWNLOAD_LOCATION</code></a></li>
+<li><a href="https://developer.android.com/reference/android/app/admin/DevicePolicyManager.html#EXTRA_PROVISIONING_DEVICE_ADMIN_SIGNATURE_CHECKSUM"><code>EXTRA_PROVISIONING_DEVICE_ADMIN_SIGNATURE_CHECKSUM</code></a></li>
+</ul>
+<p>To learn how to extract and use these settings in your DPC, read <a href="https://developers.google.com/android/work/prov-devices">Provision
+customer devices</a>.</p>
+<h2 id="development_and_testing">Development and testing</h2>
+<p>To develop and test your console's zero-touch enrollment features, you'll need
+the following:</p>
+<ul>
+<li>a supported device</li>
+<li>a customer zero-touch enrollment account</li>
+</ul>
+<p>Develop and test with <a href="https://www.android.com/intl/en_uk/enterprise/management/zero-touch/">devices that support zero-touch
+enrollment</a>, such as the Google Pixel. You don't have to
+purchase your development devices from a reseller partner.</p>
+<p><a href="https://developers.google.com/zero-touch/support/contact">Contact us</a> to get a test customer account and access to the
+zero-touch enrollment portal. Email us from your corporate email address that's
+<a href="https://developers.google.com/zero-touch/guides/portal/#associate-account">associated</a> with a Google
+Account. Tell us the <a href="https://developers.google.com/zero-touch/resources/manufacturer-names">manufacturer</a>
+and IMEI number of one or two devices and we'll add them to your development
+account.</p>
+<p>Remember, because zero-touch enrollment automatically downloads and installs a
+DPC, your DPC must be available from Google Play before you can test
+provisioning. You can't test with a development version of your DPC.</p>
+<h2 id="support_for_it_admins">Support for IT admins</h2>
+<p>If you need to help IT admins in your console's interface or your documentation,
+look at <a href="https://support.google.com/work/android/answer/7514005">Zero-touch enrollment for IT admins</a> for guidance. You
+can also direct your console's users to that help center article.</p>
+<h2 id="further_reading">Further reading</h2>
+<p>Read these documents to help you integrate zero-touch enrollment in your
+console:</p>
+<ul>
+<li><a href="https://support.google.com/work/android/answer/7514005">Zero-touch enrollment for IT admins</a> in Android enterprise
+Help.</li>
+<li><a href="https://developers.google.com/android/work/prov-devices">Provision customer devices</a> from the Android EMM
+Developers site.</li>
+</ul>
+
+  </div>
+  
+
+  
+        
+  
+
+
+
+
+
+
+
+        
+<div class="devsite-content-footer nocontent">
+  
+  
+    <p>Except as otherwise noted, the content of this page is licensed under the <a href="http://creativecommons.org/licenses/by/3.0/">Creative Commons Attribution 3.0 License</a>, and code samples are licensed under the <a href="http://www.apache.org/licenses/LICENSE-2.0">Apache 2.0 License</a>. For details, see our <a href="https://developers.google.com/terms/site-policies">Site Policies</a>. Java is a registered trademark of Oracle and/or its affiliates.</p>
+  
+
+  
+    
+    <p class="devsite-content-footer-date" itemprop="datePublished"
+       content="2018-03-15T14:28:04.314480">
+      
+      Last updated March 15, 2018.
+    </p>
+  
+
+</div>
+
+        </article>
+      </article>
+  
+
+        </div>
+      
+
+<footer class="devsite-footer-linkboxes nocontent
+               
+               devsite-footer-linkboxes-with-sites"><nav class="devsite-full-site-width"><ul class="devsite-footer-linkboxes-list"><li class="devsite-footer-linkbox "><h3 class="devsite-footer-linkbox-heading">Product Info</h3><ul class="devsite-footer-linkbox-list"><li class="devsite-footer-linkbox-item"><a href="https://developers.google.com/zero-touch/support/terms" class="gc-analytics-event"
+               data-category="Site-Wide Custom Events"
+               data-label="Content Page Footer Linkbox">
+                Terms of Service
+            </a></li><li class="devsite-footer-linkbox-item"><a href="https://developers.google.com/zero-touch/support/usage" class="gc-analytics-event"
+               data-category="Site-Wide Custom Events"
+               data-label="Content Page Footer Linkbox">
+                Usage Limits
+            </a></li><li class="devsite-footer-linkbox-item"><a href="https://developers.google.com/zero-touch/support/pricing" class="gc-analytics-event"
+               data-category="Site-Wide Custom Events"
+               data-label="Content Page Footer Linkbox">
+                Pricing
+            </a></li></ul></li><li class="devsite-footer-linkbox devsite-footer-linkbox-backup"><h3 class="devsite-footer-linkbox-heading">Programs</h3><ul class="devsite-footer-linkbox-list"><li class="devsite-footer-linkbox-item"><a href="//www.womentechmakers.com" class="gc-analytics-event"
+               data-category="Site-Wide Custom Events"
+               data-label="Footer Women Techmakers">
+                Women Techmakers
+            </a></li><li class="devsite-footer-linkbox-item"><a href="//developers.google.com/agency/" class="gc-analytics-event"
+               data-category="Site-Wide Custom Events"
+               data-label="Footer Agency">
+                Agency Program
+            </a></li><li class="devsite-footer-linkbox-item"><a href="//developers.google.com/groups/" class="gc-analytics-event"
+               data-category="Site-Wide Custom Events"
+               data-label="Footer Groups">
+                GDG
+            </a></li><li class="devsite-footer-linkbox-item"><a href="//developers.google.com/experts/" class="gc-analytics-event"
+               data-category="Site-Wide Custom Events"
+               data-label="Footer Experts">
+                Google Developers Experts
+            </a></li><li class="devsite-footer-linkbox-item"><a href="//developers.google.com/startups/" class="gc-analytics-event"
+               data-category="Site-Wide Custom Events"
+               data-label="Footer Startups">
+                Startup Launchpad
+            </a></li></ul></li><li class="devsite-footer-linkbox devsite-footer-linkbox-backup"><h3 class="devsite-footer-linkbox-heading">Developer Consoles</h3><ul class="devsite-footer-linkbox-list"><li class="devsite-footer-linkbox-item"><a href="//console.developers.google.com" class="gc-analytics-event"
+               data-category="Site-Wide Custom Events"
+               data-label="Footer Google Developers Console">
+                Google API Console
+            </a></li><li class="devsite-footer-linkbox-item"><a href="//console.cloud.google.com" class="gc-analytics-event"
+               data-category="Site-Wide Custom Events"
+               data-label="Footer Google Cloud Platform Console">
+                Google Cloud Platform Console
+            </a></li><li class="devsite-footer-linkbox-item"><a href="//play.google.com/apps/publish/" class="gc-analytics-event"
+               data-category="Site-Wide Custom Events"
+               data-label="Footer Google Play Console">
+                Google Play Console
+            </a></li><li class="devsite-footer-linkbox-item"><a href="//console.firebase.google.com" class="gc-analytics-event"
+               data-category="Site-Wide Custom Events"
+               data-label="Footer Firebase Console">
+                Firebase Console
+            </a></li><li class="devsite-footer-linkbox-item"><a href="//cast.google.com/publish/" class="gc-analytics-event"
+               data-category="Site-Wide Custom Events"
+               data-label="Footer Cast SDK Developer Console">
+                Cast SDK Developer Console
+            </a></li><li class="devsite-footer-linkbox-item"><a href="//chrome.google.com/webstore/developer/dashboard" class="gc-analytics-event"
+               data-category="Site-Wide Custom Events"
+               data-label="Footer Chrome Web Store Developer Dashboard">
+                Chrome Web Store Dashboard
+            </a></li></ul></li><li class="devsite-footer-linkbox devsite-footer-linkbox-sites"><a href="https://developers.google.com/"
+           class="gc-analytics-event devsite-footer-linkbox-logo-link"
+           data-category="Site-Wide Custom Events" data-label="Footer Google Developers Link"><img class="devsite-footer-linkbox-logo"
+               src="https://developers.google.com/_static/d7147bb846/images/redesign-14/lockup-color-knockout.png"
+               alt="Google Developers"></a><ul class="devsite-footer-linkbox-list"><li class="devsite-footer-linkbox-item"><a href="//developer.android.com/index.html" class="gc-analytics-event"
+               data-category="Site-Wide Custom Events"
+               data-label="Footer Android Link">
+                Android
+            </a></li><li class="devsite-footer-linkbox-item"><a href="//developer.chrome.com/home" class="gc-analytics-event"
+               data-category="Site-Wide Custom Events"
+               data-label="Footer Chrome Link">
+                Chrome
+            </a></li><li class="devsite-footer-linkbox-item"><a href="//firebase.google.com" class="gc-analytics-event"
+               data-category="Site-Wide Custom Events"
+               data-label="Footer Firebase Link">
+                Firebase
+            </a></li><li class="devsite-footer-linkbox-item"><a href="//cloud.google.com" class="gc-analytics-event"
+               data-category="Site-Wide Custom Events"
+               data-label="Footer Cloud Link">
+                Google Cloud Platform
+            </a></li><li class="devsite-footer-linkbox-item"><a href="//developers.google.com/products/" class="gc-analytics-event"
+               data-category="Site-Wide Custom Events"
+               data-label="Footer Products Link">
+                All Products
+            </a></li></ul></li></ul></nav></footer><footer class="devsite-utility-footer"><nav class="devsite-utility-footer-nav devsite-nav devsite-full-site-width"><div class="devsite-utility-footer-nav-left"><form class="devsite-utility-footer-language" action="/i18n/setlang/" method="post"><input type="hidden" name="xsrf_token" value="8tn6Bc95Ib6MQUzI6KUNW1rhGnrM3Phgy1hFdcvWNfo6MTUyNDQ1OTkzMTkwODA1MA" /><input type="hidden" name="next" value="/zero-touch/guides/customer/emm"><select class="devsite-utility-footer-language-select kd-select" name="language"
+                track-type="languageSelector" track-name="click"><option value="id"
+                
+                track-type="languageSelector" track-name="changed"
+                track-metadata-original-language="en"
+                track-metadata-selected-language="id">
+            Bahasa Indonesia
+          </option><option value="de"
+                
+                track-type="languageSelector" track-name="changed"
+                track-metadata-original-language="en"
+                track-metadata-selected-language="de">
+            Deutsch
+          </option><option value="en"
+                 selected="selected" 
+                track-type="languageSelector" track-name="changed"
+                track-metadata-original-language="en"
+                track-metadata-selected-language="en">
+            English
+          </option><option value="es"
+                
+                track-type="languageSelector" track-name="changed"
+                track-metadata-original-language="en"
+                track-metadata-selected-language="es">
+            español
+          </option><option value="fr"
+                
+                track-type="languageSelector" track-name="changed"
+                track-metadata-original-language="en"
+                track-metadata-selected-language="fr">
+            français
+          </option><option value="pt-br"
+                
+                track-type="languageSelector" track-name="changed"
+                track-metadata-original-language="en"
+                track-metadata-selected-language="pt-br">
+            Português Brasileiro
+          </option><option value="ru"
+                
+                track-type="languageSelector" track-name="changed"
+                track-metadata-original-language="en"
+                track-metadata-selected-language="ru">
+            Русский
+          </option><option value="ja"
+                
+                track-type="languageSelector" track-name="changed"
+                track-metadata-original-language="en"
+                track-metadata-selected-language="ja">
+            日本語
+          </option><option value="zh-cn"
+                
+                track-type="languageSelector" track-name="changed"
+                track-metadata-original-language="en"
+                track-metadata-selected-language="zh-cn">
+            简体中文
+          </option><option value="ko"
+                
+                track-type="languageSelector" track-name="changed"
+                track-metadata-original-language="en"
+                track-metadata-selected-language="ko">
+            한국어
+          </option></select></form><span class="devsite-utility-footer-links"><a class="devsite-utility-footer-link gc-analytics-event"
+           href="https://developers.google.com/terms/site-terms"
+           data-category="Site-Wide Custom Events"
+           data-label="Footer terms link"
+           data-footer-link-id="terms"
+           >Terms
+         </a><a class="devsite-utility-footer-link gc-analytics-event"
+           href="//www.google.com/policies/privacy/"
+           data-category="Site-Wide Custom Events"
+           data-label="Footer privacy link"
+           data-footer-link-id="privacy"
+           >Privacy
+         </a></span></div><div class="devsite-utility-footer-nav-right"><div class="devsite-utility-footer-newsletter-signup-text">
+        Sign up for the Google Developers newsletter
+      </div><a class="button button-primary devsite-utility-footer-newsletter-signup-button"
+         href="//services.google.com/fb/forms/googledevelopersnewsletter/?utm_medium=referral&amp;utm_source=google-products&amp;utm_team=googledevs&amp;utm_campaign=201611-newsletter-launch">
+        
+        Subscribe
+      </a></div></nav></footer><div class="devsite-feedback-dialog devsite-dialog"><div class="devsite-dialog-contents"><h3>Send feedback about...</h3><div class="devsite-feedback-item"><a data-type="documentation" class="gc-analytics-event"
+           data-category="Site-Wide Custom Events" data-label="Docs Feedback Image"
+           track-type="feedback" track-name="feedbackDocIcon" track-metadata-position="header"><div class="devsite-feedback-item-icon-container"><div class="devsite-feedback-item-icon-white devsite-feedback-item-icon-docs
+                        material-icons"></div></div></a><div class="devsite-feedback-item-name">
+          
+          This page
+        </div><div class="devsite-feedback-item-description"><a data-type="documentation" tabindex="0" class="gc-analytics-event"
+             data-category="Site-Wide Custom Events" data-label="Docs Feedback Text"
+             track-type="feedback" track-name="feedbackDocText" track-metadata-position="header">
+            
+            Documentation feedback
+          </a></div></div><div class="devsite-feedback-item"><a data-type="product" tabindex="0" class="gc-analytics-event"
+           data-category="Site-Wide Custom Events" data-label="Product Feedback Image"
+           track-type="feedback" track-name="feedbackProductIcon" track-metadata-position="header"
+         ><img class="devsite-feedback-item-icon"
+               src="https://developers.google.com/_static/d7147bb846/images/feedback/google_56px.svg"></a><div class="devsite-feedback-item-name">
+        Android zero-touch enrollment
+        </div><div class="devsite-feedback-item-description"><a data-type="product" tabindex="0" class="gc-analytics-event"
+             data-category="Site-Wide Custom Events" data-label="Product Feedback Text"
+             track-type="feedback" track-name="feedbackProductText" track-metadata-position="header"
+           >
+            
+            Product feedback
+          </a></div></div></div><div class="devsite-dialog-buttons"><button type="button" class="devsite-feedback-cancel button-white gc-analytics-event"
+              data-category="Site-Wide Custom Events" data-label="Cancel Feedback Button"
+              track-type="feedback" track-name="cancelFeedbackButton"
+              track-metadata-position="header">
+        
+        Cancel
+      </button></div></div><script>
+  $(document).ready(function() {
+    new devsite.feedback.Widget({
+        'product_id': '1633838',
+        'bucket': '',
+        'context': '',
+        'version': 'devsite-20180420-r00-rc00.default'
+      },
+      document.querySelectorAll('.devsite-feedback-button'),
+      'en',
+      document.querySelector('.devsite-site-mask'),
+      document.querySelector('.devsite-feedback-dialog'),
+      document.querySelector('.devsite-feedback-cancel'),
+      document.querySelectorAll('.devsite-feedback-item a:not([href])')
+    );
+  });
+  </script></div><script async defer src="//www.gstatic.com/feedback/api.js"></script><script src="https://developers.google.com/_static2/d7147bb846/jsi18n/"></script><script src="https://developers.google.com/_static/d7147bb846/js/script_foot_closure.js"></script><script src="https://developers.google.com/_static/d7147bb846/js/script_foot.js"></script><script>
+        (function($) {
+          
+          devsite.devsite.Init($, {'ENABLE_BLOCKED_VIDEO_PLACEHOLDER': 0, 'SITE_NAME': 'devsite', 'FULL_SITE_SEARCH_ENABLED': 1, 'ENABLE_CLOUDTRACK': 0, 'VTAGS_ENABLED': 0, 'HISTORY_ENABLED': 1, 'VERSION_HASH': 'd7147bb846', 'SCRIPTSAFE_DOMAIN': 'google-developers.appspot.com', 'ENABLE_BLOCKED_LINK_TOOLTIP': 0, 'ALLOWED_HOSTS': ['.android.com', '.anvato.com', '.apigee.com', '.appspot.com', '.dialogflow.com', '.gonglchuangl.net', '.google.cn', '.google.com', '.googleplex.com', '.nest.com', '.openthread.io', '.openweave.io', '.orbitera.com', '.tensorflow.org'], 'BLOCK_RSS_FEEDS': 0},
+                               '[]','en',
+                               true, '',
+                               {"f62218c009ec029abef196bba5aa34cf": true, "8de7a048f21618359bd37f5ce44be073": false, "098dafe57affddc137df300142652cfd": false, "8e03e230de0bd8a6fe173fdf172e8b3f": true, "cb025a64a50094835616312f4774a53d": true, "51470233c56fc1fde50f00b73c52b216": false, "d169d485cf24243a263783dbe42029b1": true, "039e5d84b87fd75807ffb37b7f1bbf2c": true, "700def1a83e356c06c0925afb05de4b0": false, "6749dcb526ce9bde6993550c7d928d24": true}, '/zero-touch/',
+                               'https://developers.google.com/');
+        })(jQuery);
+
+        
+        devsite.localInit = function() {
+          
+        };
+
+      </script><script>
+      $('.devsite-utility-footer-language-select').each(function() {
+        $(this).change(function(){$('.devsite-utility-footer-language').submit();});
+      });
+      </script></div><span id="devsite-request-elapsed" data-request-elapsed="220.629930496"></span></body></html>

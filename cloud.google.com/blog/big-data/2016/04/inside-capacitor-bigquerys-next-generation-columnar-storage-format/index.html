@@ -1,0 +1,1051 @@
+
+
+
+
+
+
+<!DOCTYPE html><html lang="en"
+      class="chekov"><head><script>var a=window.devsite||{};window.devsite=a;a.readyCallbacks=[];window.devsite.readyCallbacks=a.readyCallbacks;a.ready=function(b){a.readyCallbacks.push(b)};window.devsite.ready=a.ready;
+</script><meta charset="utf-8"><meta name="xsrf_token" content="ONmR5J_iFaHSOc52QoswghmQLo2U9s79nenZO-SSW9s6MTUyNDQ2MDE5ODMxMzg5MA" /><link rel="canonical" href="https://cloud.google.com/blog/big-data/2016/04/inside-capacitor-bigquerys-next-generation-columnar-storage-format"><link rel="alternate" href="https://cloud.google.com/blog/big-data/2016/04/inside-capacitor-bigquerys-next-generation-columnar-storage-format" hreflang="en"><link rel="alternate" href="https://cloud.google.com/blog/big-data/2016/04/inside-capacitor-bigquerys-next-generation-columnar-storage-format" hreflang="x-default"><link rel="shortcut icon" href="https://cloud.google.com/_static/d7147bb846/images/cloud/icons/favicons/onecloud/favicon.ico"><link rel="apple-touch-icon" href="https://cloud.google.com/_static/d7147bb846/images/cloud/icons/favicons/onecloud/apple-icon.png"><meta name="viewport" content="width=device-width, initial-scale=1"><link rel="stylesheet"
+      
+      href="//fonts.googleapis.com/css?family=Google+Sans:400|Roboto:400,400italic,500,500italic,700,700italic|Roboto+Mono:400,500,700|Material+Icons"
+      ><link rel="stylesheet"
+        href="https://cloud.google.com/_static/d7147bb846/css/devsite-cloud-white.css"><link rel="stylesheet" href="https://cloud.google.com/_static/d7147bb846/css/cloud/cloud-site.css"><link rel="search"
+        type="application/opensearchdescription+xml"
+        title="Google Cloud"
+        href="https://cloud.google.com/s/opensearch.xml"><script src="https://cloud.google.com/_static/d7147bb846/js/jquery-bundle.js"></script><meta property="og:site_name" content="Google Cloud"><meta property="og:type" content="website"><meta property="og:url" content="https://cloud.google.com/blog/big-data/2016/04/inside-capacitor-bigquerys-next-generation-columnar-storage-format"><meta property="og:locale" content="en"><script>
+    var ___gcfg = ___gcfg || {};
+    ___gcfg.lang = 'en';
+  </script><title>Inside Capacitor, BigQuery’s next-generation columnar storage format | Google Cloud Big Data and Machine Learning Blog &nbsp;|&nbsp; Google Cloud</title><meta property="og:title" content="Inside Capacitor, BigQuery’s next-generation columnar storage format | Google Cloud Big Data and Machine Learning Blog &nbsp;|&nbsp; Google Cloud"><meta name="description" content="BigQuery / Dremel engineer Mosha Pasumansky deep dives into BigQuery storage. He discusses how the new Capacitor storage engine improves efficiency."><meta property="og:description" content="BigQuery / Dremel engineer Mosha Pasumansky deep dives into BigQuery storage. He discusses how the new Capacitor storage engine improves efficiency."><link rel="stylesheet" href="https://cloud.google.com/css/cloud-blog.css"></head><body class="
+               devsite-doc-page
+               
+               devsite-full-width-page
+               
+               
+               devsite-header-no-lower-tabs"
+        data-family="endorsed"
+        id="top_of_page"><div class="devsite-wrapper"><div class="devsite-top-section-wrapper
+            "><header class="devsite-top-section nocontent"><div class="devsite-top-logo-row-wrapper-wrapper"><div class="devsite-top-logo-row-wrapper"><div class="devsite-top-logo-row devsite-full-site-width"><button type="button" class="devsite-expand-section-nav devsite-header-icon-button
+                                       button-flat material-icons gc-analytics-event"
+                  data-category="Site-Wide Custom Events" data-label="Hamburger menu"></button><div class="devsite-product-name-wrapper"><a href="https://cloud.google.com/" class="devsite-site-logo-link gc-analytics-event"
+   data-category="Site-Wide Custom Events" data-label="Site logo"><img src="https://cloud.google.com/_static/d7147bb846/images/cloud/cloud-logo.svg"
+       class="devsite-site-logo" alt="Google Cloud"><span class="devsite-site-name devsite-product-name">Google Cloud</span></a></div><div class="devsite-header-upper-tabs"><nav class="devsite-doc-set-nav devsite-nav devsite-overflow-tabs-scroll-wrapper"><ul class="devsite-doc-set-nav-tab-list devsite-overflow-tabs-scroll"><li class="devsite-doc-set-nav-tab-container devsite-nav-tab
+               "><a href="https://cloud.google.com/"
+         class=" devsite-nav-tab
+                devsite-doc-set-nav-tab devsite-doc-set-nav-tab-link gc-analytics-event"
+         
+       
+         data-category="Site-Wide Custom Events"
+       
+         data-label="Tab: Home"
+       
+         track-type="globalNav"
+       
+         track-name="home"
+       >
+        Home
+      </a></li><li class="devsite-doc-set-nav-tab-container devsite-nav-tab
+               "><a href="https://cloud.google.com/about/locations/"
+         class=" devsite-nav-tab
+                devsite-doc-set-nav-tab devsite-doc-set-nav-tab-link gc-analytics-event"
+         
+       
+         data-category="Site-Wide Custom Events"
+       
+         data-label="Tab: About"
+       
+         track-type="globalNav"
+       
+         track-name="about"
+       >
+        About
+      </a></li><li class="devsite-doc-set-nav-tab-container devsite-nav-tab
+               "><a href="https://cloud.google.com/why-google-cloud/"
+         class=" devsite-nav-tab
+                devsite-doc-set-nav-tab devsite-doc-set-nav-tab-link gc-analytics-event"
+         
+       
+         data-category="Site-Wide Custom Events"
+       
+         data-label="Tab: Why Google"
+       
+         track-type="globalNav"
+       
+         track-name="whyGoogle"
+       >
+        Why Google
+      </a></li><li class="devsite-doc-set-nav-tab-container devsite-nav-tab
+               "><a href="https://cloud.google.com/products/"
+         class=" devsite-nav-tab
+                devsite-doc-set-nav-tab devsite-doc-set-nav-tab-link gc-analytics-event"
+         
+       
+         data-category="Site-Wide Custom Events"
+       
+         data-label="Tab: Products"
+       
+         track-type="globalNav"
+       
+         track-name="products"
+       >
+        Products
+      </a></li><li class="devsite-doc-set-nav-tab-container devsite-nav-tab
+               "><a href="https://cloud.google.com/solutions/"
+         class=" devsite-nav-tab
+                devsite-doc-set-nav-tab devsite-doc-set-nav-tab-link gc-analytics-event"
+         
+       
+         data-category="Site-Wide Custom Events"
+       
+         data-label="Tab: Solutions"
+       
+         track-type="globalNav"
+       
+         track-name="solutions"
+       >
+        Solutions
+      </a></li><li class="devsite-doc-set-nav-tab-container devsite-nav-tab
+               "><a href="https://cloud.google.com/launcher/"
+         class=" devsite-nav-tab
+                devsite-doc-set-nav-tab devsite-doc-set-nav-tab-link gc-analytics-event"
+         
+       
+         data-category="Site-Wide Custom Events"
+       
+         data-label="Tab: Launcher"
+       
+         track-type="globalNav"
+       
+         track-name="launcher"
+       >
+        Launcher
+      </a></li><li class="devsite-doc-set-nav-tab-container devsite-nav-tab
+               "><a href="https://cloud.google.com/pricing/"
+         class=" devsite-nav-tab
+                devsite-doc-set-nav-tab devsite-doc-set-nav-tab-link gc-analytics-event"
+         
+       
+         data-category="Site-Wide Custom Events"
+       
+         data-label="Tab: Pricing"
+       
+         track-type="globalNav"
+       
+         track-name="pricing"
+       >
+        Pricing
+      </a></li><li class="devsite-doc-set-nav-tab-container devsite-nav-tab
+               "><a href="https://cloud.google.com/security/"
+         class=" devsite-nav-tab
+                devsite-doc-set-nav-tab devsite-doc-set-nav-tab-link gc-analytics-event"
+         
+       
+         data-category="Site-Wide Custom Events"
+       
+         data-label="Tab: Security"
+       
+         track-type="globalNav"
+       
+         track-name="security"
+       >
+        Security
+      </a></li><li class="devsite-doc-set-nav-tab-container devsite-nav-tab
+               "><a href="https://cloud.google.com/customers/"
+         class=" devsite-nav-tab
+                devsite-doc-set-nav-tab devsite-doc-set-nav-tab-link gc-analytics-event"
+         
+       
+         data-category="Site-Wide Custom Events"
+       
+         data-label="Tab: Customers"
+       
+         track-type="globalNav"
+       
+         track-name="customers"
+       >
+        Customers
+      </a></li><li class="devsite-doc-set-nav-tab-container devsite-nav-tab
+               "><a href="https://cloud.google.com/docs/"
+         class=" devsite-nav-tab
+                devsite-doc-set-nav-tab devsite-doc-set-nav-tab-link gc-analytics-event"
+         
+       
+         data-category="Site-Wide Custom Events"
+       
+         data-label="Tab: Documentation"
+       
+         track-type="globalNav"
+       
+         track-name="documentation"
+       >
+        Documentation
+      </a></li><li class="devsite-doc-set-nav-tab-container devsite-nav-tab
+               "><a href="https://cloud.google.com/support/"
+         class=" devsite-nav-tab
+                devsite-doc-set-nav-tab devsite-doc-set-nav-tab-link gc-analytics-event"
+         
+       
+         data-category="Site-Wide Custom Events"
+       
+         data-label="Tab: Support"
+       
+         track-type="globalNav"
+       
+         track-name="support"
+       >
+        Support
+      </a></li><li class="devsite-doc-set-nav-tab-container devsite-nav-tab
+               "><a href="https://cloud.google.com/partners/"
+         class=" devsite-nav-tab
+                devsite-doc-set-nav-tab devsite-doc-set-nav-tab-link gc-analytics-event"
+         
+       
+         data-category="Site-Wide Custom Events"
+       
+         data-label="Tab: Partners"
+       
+         track-type="globalNav"
+       
+         track-name="partners"
+       >
+        Partners
+      </a></li><li class="devsite-doc-set-nav-tab-container devsite-nav-tab
+               "><a href="https://cloud.google.com/blog/big-data/"
+         class=" devsite-nav-tab
+                devsite-doc-set-nav-tab devsite-doc-set-nav-tab-link gc-analytics-event"
+         
+       
+         data-category="Site-Wide Custom Events"
+       
+         data-label="Tab: Social"
+       
+         track-type="globalNav"
+       
+         track-name="social"
+       >
+        Social
+      </a></li><li class="devsite-doc-set-nav-tab-container devsite-nav-tab
+               "><a href="https://cloud.google.com/contact/"
+         class=" devsite-nav-tab
+                devsite-doc-set-nav-tab devsite-doc-set-nav-tab-link gc-analytics-event"
+         
+       
+         data-category="Site-Wide Custom Events"
+       
+         data-label="Tab: Contact"
+       
+         track-type="globalNav"
+       
+         track-name="contact"
+       >
+        Contact
+      </a></li></ul></nav></div><form class="devsite-search-form"
+                action="https://cloud.google.com/s/results/"
+                method="GET"
+                id="top-search"
+                search-placeholder='Search'><div id="searchbox" class="devsite-searchbox"><input placeholder='Search'
+         
+         type="text"
+         class="devsite-search-field devsite-search-query"
+         name="q"
+         value=""
+         autocomplete="off"
+         
+         aria-label="Search box"><div class="devsite-search-image material-icons"></div></div><input type="hidden"
+       name="p"
+       id="search_project"
+       value="/"
+       data-project-name="Google Cloud Platform"
+       data-project-path="/"
+       data-query-match=""><input type="hidden" class="suggest-project" value="Google Cloud Platform" /><div class="suggest-project-metadata" data-home_url="/" data-path="/" data-name="Android Developers" ></div><div class="suggest-project-metadata" data-home_url="/" data-path="/" data-name="Android Open Source Project" ></div><div class="suggest-project-metadata" data-home_url="/" data-path="/" data-name="Apigee Docs" ></div><div class="suggest-project-metadata" data-home_url="/" data-path="/" data-name="Google Cloud Platform" ></div><div class="suggest-project-metadata" data-home_url="/" data-path="/" data-name="Dialogflow" ></div><div class="suggest-project-metadata" data-home_url="/" data-path="/" data-name="Firebase" ></div><div class="suggest-project-metadata" data-home_url="/" data-path="/" data-name="Android Developers" ></div><div class="suggest-project-metadata" data-home_url="/" data-path="/" data-name="Link.app" ></div><div class="suggest-project-metadata" data-home_url="/" data-path="/" data-name="Nest Developers" ></div><div class="suggest-project-metadata" data-home_url="/" data-path="/" data-name="OpenThread" ></div><div class="suggest-project-metadata" data-home_url="https://www.orbitera.com/" data-path="/" data-name="Orbitera" ></div><div class="suggest-project-metadata" data-home_url="/" data-path="/" data-name="TensorFlow" ></div></form><a class="devsite-header-link devsite-top-button button gc-analytics-event"
+               href="//console.cloud.google.com/"
+               data-category="Site-Wide Custom Events"
+               data-label="Site header link"
+               track-type="navigateTo"
+               track-name="console"
+               track-metadata-position="nav"><div class="devsite-header-link-label">Console</div></a><button type="button" class="devsite-search-button devsite-header-icon-button button-flat
+                                       material-icons"></button><a href="https://www.google.com/accounts/ServiceLogin?passive=true&continue=https%3A%2F%2Fcloud.google.com%2Fblog%2Fbig-data%2F2016%2F04%2Finside-capacitor-bigquerys-next-generation-columnar-storage-format%3Frefresh%3D1&service=cloudconsole"
+   class="devsite-user-signin devsite-top-button button gc-analytics-event"
+   data-category="Site-Wide Custom Events" data-label="Sign in button">
+  
+  Sign in
+</a></div></div></div><div class="devsite-collapsible-section"><div class="devsite-header-background devsite-full-site-width"></div></div></header><script>
+    if (window.jQuery) {
+      $(document).ready(function() {
+        if (window.devsite && window.devsite.search) {
+          
+          window.devsite.search.init('en')
+        }
+      });
+    }
+  </script></div><div id="gc-wrapper"itemscope itemtype="http://schema.org/Article"><input class="google-tag-manager-id" type="hidden" value="GTM-5CVQBG"><script>
+      var dataLayer = [{"freeTrialEligibleUser": "True", "userCountry": "HK", "language": {"requested": "en", "served": "en"}, "projectName": "Google Cloud Platform", "scriptsafe": null, "signedIn": "False", "internalUser": "False"}];
+    </script>
+
+      
+        <div class="devsite-site-mask"></div>
+        
+  
+
+
+<nav class="devsite-nav-responsive devsite-nav nocontent" tabindex="0">
+  
+  <div class="devsite-nav-responsive-tabs-panel">
+    
+      
+        
+
+
+
+<nav class="devsite-nav-responsive-tabs devsite-nav">
+  <ul class="devsite-nav-list">
+  
+    <li class="devsite-nav-item devsite-nav-item-heading">
+    
+      <a 
+           href="https://cloud.google.com/"
+         
+         class="devsite-nav-responsive-tab devsite-nav-title gc-analytics-event
+                "
+         data-category="Site-Wide Custom Events" data-label="Responsive Tab: Home">
+        Home
+      </a>
+      
+      
+    
+    </li>
+  
+    <li class="devsite-nav-item devsite-nav-item-heading">
+    
+      <a 
+           href="https://cloud.google.com/about/locations/?nav=true"
+         
+         class="devsite-nav-responsive-tab devsite-nav-title gc-analytics-event
+                "
+         data-category="Site-Wide Custom Events" data-label="Responsive Tab: About">
+        About
+      </a>
+      
+      
+    
+    </li>
+  
+    <li class="devsite-nav-item devsite-nav-item-heading">
+    
+      <a 
+           href="https://cloud.google.com/why-google-cloud/?nav=true"
+         
+         class="devsite-nav-responsive-tab devsite-nav-title gc-analytics-event
+                "
+         data-category="Site-Wide Custom Events" data-label="Responsive Tab: Why Google">
+        Why Google
+      </a>
+      
+      
+    
+    </li>
+  
+    <li class="devsite-nav-item devsite-nav-item-heading">
+    
+      <a 
+           href="https://cloud.google.com/products/?nav=true"
+         
+         class="devsite-nav-responsive-tab devsite-nav-title gc-analytics-event
+                "
+         data-category="Site-Wide Custom Events" data-label="Responsive Tab: Products">
+        Products
+      </a>
+      
+      
+    
+    </li>
+  
+    <li class="devsite-nav-item devsite-nav-item-heading">
+    
+      <a 
+           href="https://cloud.google.com/solutions/?nav=true"
+         
+         class="devsite-nav-responsive-tab devsite-nav-title gc-analytics-event
+                "
+         data-category="Site-Wide Custom Events" data-label="Responsive Tab: Solutions">
+        Solutions
+      </a>
+      
+      
+    
+    </li>
+  
+    <li class="devsite-nav-item devsite-nav-item-heading">
+    
+      <a 
+           href="https://cloud.google.com/launcher/?nav=true"
+         
+         class="devsite-nav-responsive-tab devsite-nav-title gc-analytics-event
+                "
+         data-category="Site-Wide Custom Events" data-label="Responsive Tab: Launcher">
+        Launcher
+      </a>
+      
+      
+    
+    </li>
+  
+    <li class="devsite-nav-item devsite-nav-item-heading">
+    
+      <a 
+           href="https://cloud.google.com/pricing/?nav=true"
+         
+         class="devsite-nav-responsive-tab devsite-nav-title gc-analytics-event
+                "
+         data-category="Site-Wide Custom Events" data-label="Responsive Tab: Pricing">
+        Pricing
+      </a>
+      
+      
+    
+    </li>
+  
+    <li class="devsite-nav-item devsite-nav-item-heading">
+    
+      <a 
+           href="https://cloud.google.com/security/?nav=true"
+         
+         class="devsite-nav-responsive-tab devsite-nav-title gc-analytics-event
+                "
+         data-category="Site-Wide Custom Events" data-label="Responsive Tab: Security">
+        Security
+      </a>
+      
+      
+    
+    </li>
+  
+    <li class="devsite-nav-item devsite-nav-item-heading">
+    
+      <a 
+           href="https://cloud.google.com/customers/?nav=true"
+         
+         class="devsite-nav-responsive-tab devsite-nav-title gc-analytics-event
+                "
+         data-category="Site-Wide Custom Events" data-label="Responsive Tab: Customers">
+        Customers
+      </a>
+      
+      
+    
+    </li>
+  
+    <li class="devsite-nav-item devsite-nav-item-heading">
+    
+      <a 
+           href="https://cloud.google.com/docs/?nav=true"
+         
+         class="devsite-nav-responsive-tab devsite-nav-title gc-analytics-event
+                "
+         data-category="Site-Wide Custom Events" data-label="Responsive Tab: Documentation">
+        Documentation
+      </a>
+      
+      
+    
+    </li>
+  
+    <li class="devsite-nav-item devsite-nav-item-heading">
+    
+      <a 
+           href="https://cloud.google.com/support/?nav=true"
+         
+         class="devsite-nav-responsive-tab devsite-nav-title gc-analytics-event
+                "
+         data-category="Site-Wide Custom Events" data-label="Responsive Tab: Support">
+        Support
+      </a>
+      
+      
+    
+    </li>
+  
+    <li class="devsite-nav-item devsite-nav-item-heading">
+    
+      <a 
+           href="https://cloud.google.com/partners/?nav=true"
+         
+         class="devsite-nav-responsive-tab devsite-nav-title gc-analytics-event
+                "
+         data-category="Site-Wide Custom Events" data-label="Responsive Tab: Partners">
+        Partners
+      </a>
+      
+      
+    
+    </li>
+  
+    <li class="devsite-nav-item devsite-nav-item-heading">
+    
+      <a 
+           href="https://cloud.google.com/blog/big-data/?nav=true"
+         
+         class="devsite-nav-responsive-tab devsite-nav-title gc-analytics-event
+                "
+         data-category="Site-Wide Custom Events" data-label="Responsive Tab: Social">
+        Social
+      </a>
+      
+      
+    
+    </li>
+  
+    <li class="devsite-nav-item devsite-nav-item-heading">
+    
+      <a 
+           href="https://cloud.google.com/contact/?nav=true"
+         
+         class="devsite-nav-responsive-tab devsite-nav-title gc-analytics-event
+                "
+         data-category="Site-Wide Custom Events" data-label="Responsive Tab: Contact">
+        Contact
+      </a>
+      
+      
+    
+    </li>
+  
+  
+    <li class="devsite-nav-item devsite-nav-item-heading">
+      <a href="//console.cloud.google.com/"
+         class="devsite-nav-responsive-tab devsite-nav-title gc-analytics-event"
+         data-category="Site-Wide Custom Events"
+         data-label="Responsive Tab: console">
+        Console
+      </a>
+    </li>
+  
+  </ul>
+</nav>
+
+
+      
+    
+  </div>
+  
+  
+  
+    <div class="devsite-nav-responsive-index-panel">
+      <div class="devsite-nav-index-back" tabindex="0"></div>
+      <nav>
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+      </nav>
+    </div>
+  
+</nav>
+
+
+        <div class="devsite-main-content clearfix">
+
+        
+        
+
+        
+  
+  
+          
+  
+
+
+
+  
+  <nav class="devsite-breadcrumb-nav devsite-nav">
+    
+
+
+<ul class="devsite-breadcrumb-list">
+  
+  <li class="devsite-breadcrumb-item">
+    
+    
+    <a href="https://cloud.google.com/" class="devsite-breadcrumb-link gc-analytics-event"
+       data-category="Site-Wide Custom Events" data-label="Breadcrumbs"
+       data-value="1">
+    
+    
+      Google Cloud Platform
+    
+    
+    </a>
+    
+  </li>
+  
+</ul>
+
+  </nav>
+  
+  
+  
+  <div class="devsite-article-body clearfix
+            
+              devsite-no-page-title
+            "
+       itemprop="articleBody">
+    
+
+
+
+
+
+
+
+
+  
+  <article id="cloud-site" class="l-fixed-width">
+    <header class="hero background-servers full-bleed-section">
+  <div class="l-max-width-standard">
+    <h1 class="hero-title text-display-1"><a href="https://cloud.google.com/blog/big-data/">Google Cloud Big Data and Machine Learning Blog</a></h1>
+    <h2 class="hero-subtitle text-subhead">Innovation in data processing and machine learning technology</h2>
+  </div>
+</header>
+
+    
+      
+    
+
+    <div class="grid-fluid l-max-width-standard">
+      <div class="c9">
+        
+        
+
+        <div class="blog_post l-space-top-4">
+          <img src="https://cloud.google.com/blog/big-data/images/logo_avatar_anonymous_square_48dp.svg" class="avatar">
+          <h2>Inside Capacitor, BigQuery’s next-generation columnar storage format</h2>
+          <div><small>Tuesday, April 26, 2016</small></div>
+          <div>
+            
+
+
+
+
+
+
+
+
+  <p><em>Posted by Mosha Pasumansky, Dremel / BigQuery Technical Lead</em></p>
+
+<p>The “<a href="https://cloud.google.com/blog/big-data/2016/01/bigquery-under-the-hood">BigQuery</a><a href="https://cloud.google.com/blog/big-data/2016/01/bigquery-under-the-hood"> under the hood</a>” blog post gave an overview of different BigQuery subsystems. Today, we&#39;ll take a deeper dive into one of them — the storage system. We&#39;ll follow data as it&#39;s loaded into a BigQuery table.BigQuery supports several input formats — CSV, JSON, Datastore backups, <a href="https://cloud.google.com/blog/big-data/2016/03/improve-bigquery-ingestion-times-10x-by-using-avro-source-format">AVRO</a> — and when they&#39;re imported, data is converted into our internal representation. BigQuery uses a columnar storage that supports semistructured data — nested and repeated fields. When Google published the <a href="http://research.google.com/pubs/pub36632.html">Dremel paper</a> in 2010, it explained how this structure is preserved within column store. Every column, in addition to its value, also stores two numbers — definition and repetition levels. This encoding ensures that the full or partial structure of the record can be reconstructed by reading only requested columns, and never requires reading parent columns (which is the case with alternative encodings). That same paper gives an exact algorithm for both encoding the data and reconstructing the record.</p>
+
+<p><img alt="" src="https://cloud.google.com/blog/big-data/2016/04/images/146162354644267/inside-bigquery-storage-3.png" /></p>
+
+<p><span style="font-size:10px"><em>Example of encoding semistructured data using definition and repetition levels</em></span></p>
+
+<p>The definition and repetition levels encoding is so efficient for semistructured data that other open source columnar formats, such as <a href="https://blog.twitter.com/2013/dremel-made-simple-with-parquet">Parquet</a>, also adopted this technique. In addition to helping with storing and building structured records, definition and repetition levels can also be used in algorithms for efficient query processing.</p>
+
+<p>In 2014, Google published another paper — <a href="http://research.google.com/pubs/pub43119.html">Storing and Querying tree-structured records in Dremel</a> — which lays theoretical foundation and proves correctness of algorithms for filtering and aggregation operators, which take advantage of the above encoding.</p>
+
+<p>Now that we understand how the record structure is implemented, what about the actual values? In the last 10 years, there&#39;s been a resurgence of research in column oriented database systems. One of the classic papers in this area — <a href="http://db.csail.mit.edu/projects/cstore/abadisigmod06.pdf" style="line-height: 1.6em;">Integrating Compression and Execution in Column-Oriented Database Systems</a> — describes various techniques and encodings, such as Run Length Encoding (RLE), Dictionary encoding, Bit-Vector encoding, Frame of Reference encoding, etc. The paper discusses various tradeoffs and algorithms that can be used with these different encodings.</p>
+
+<p><img alt="" src="https://cloud.google.com/blog/big-data/2016/04/images/146162354644267/inside-bigquery-storage-4.png" /><span style="font-size:11px"><em>Example of Run Length Encoding (left) and Dictionary Encoding (right). Taken from VLDB 2009 tutorial on <a href="http://homepages.cwi.nl/~boncz/Friday_ColumnOriented_Database_Systems.pdf">Column Oriented Database Systems</a>.</em></span></p>
+
+<p>Capacitor — the storage format in BigQuery, builds heavily on this research and employs variations and advancements of these techniques. To show one example where Capacitor advances the state of the art, we&#39;ll review the problem of reordering of input rows. This is one of the less studied problems in research (see <a href="http://arxiv.org/abs/1207.2189">this paper</a> for some background). To illustrate the problem, let’s consider the following example of input with 3 columns:</p>
+
+<pre>
+<code><span style="background-color:transparent; color:rgb(0, 0, 0); font-family:courier new; font-size:14.6667px">c1 c2 </span><span style="background-color:transparent; color:rgb(0, 0, 0); font-family:courier new; font-size:14.6667px">c3</span>
+<span style="background-color:transparent; color:rgb(0, 0, 0); font-family:courier new; font-size:14.6667px">--------</span>
+<span style="background-color:transparent; color:rgb(0, 0, 0); font-family:courier new; font-size:14.6667px">b  1 </span><span style="background-color:transparent; color:rgb(0, 0, 0); font-family:courier new; font-size:14.6667px"> x </span>
+<span style="background-color:transparent; color:rgb(0, 0, 0); font-family:courier new; font-size:14.6667px">a  2 </span><span style="background-color:transparent; color:rgb(0, 0, 0); font-family:courier new; font-size:14.6667px"> z</span>
+<span style="background-color:transparent; color:rgb(0, 0, 0); font-family:courier new; font-size:14.6667px">b  1 </span><span style="background-color:transparent; color:rgb(0, 0, 0); font-family:courier new; font-size:14.6667px"> y</span>
+<span style="background-color:transparent; color:rgb(0, 0, 0); font-family:courier new; font-size:14.6667px">a  2 </span><span style="background-color:transparent; color:rgb(0, 0, 0); font-family:courier new; font-size:14.6667px"> x</span>
+<span style="background-color:transparent; color:rgb(0, 0, 0); font-family:courier new; font-size:14.6667px">b  3 </span><span style="background-color:transparent; color:rgb(0, 0, 0); font-family:courier new; font-size:14.6667px"> z</span>
+<span style="background-color:transparent; color:rgb(0, 0, 0); font-family:courier new; font-size:14.6667px">a  1 </span><span style="background-color:transparent; color:rgb(0, 0, 0); font-family:courier new; font-size:14.6667px"> x</span>
+<span style="background-color:transparent; color:rgb(0, 0, 0); font-family:courier new; font-size:14.6667px">b  3 </span><span style="background-color:transparent; color:rgb(0, 0, 0); font-family:courier new; font-size:14.6667px"> y</span></code></pre>
+
+<p>If we were to encode these data with RLE, it would not be very optimal, since in every column every value doesn’t repeat more than once, so all the <a href="https://en.wikipedia.org/wiki/Run-length_encoding">run lengths</a> would be 1, and we&#39;ll end up with total of 21 runs.</p>
+
+<p>However, if the input rows are reshuffled into following:</p>
+
+<pre>
+<code><span style="background-color:transparent; color:rgb(0, 0, 0); font-family:courier new; font-size:14.6667px">c1 c2 c3             c1       c2      c3
+--------    RLE      ----------------------
+</span><span style="background-color:transparent; color:rgb(0, 0, 0); font-family:courier new; font-size:14.6667px">a  2  z     ====>    (3, a)   (2, 2)  (1, z)
+</span><span style="background-color:transparent; color:rgb(0, 0, 0); font-family:courier new; font-size:14.6667px">a  2  x              (4, b)   (3, 1)  (3, x)
+</span><span style="background-color:transparent; color:rgb(0, 0, 0); font-family:courier new; font-size:14.6667px">a  1  x                       (2, 3)  (2, y)
+</span><span style="background-color:transparent; color:rgb(0, 0, 0); font-family:courier new; font-size:14.6667px">b  1  x                               (1, z)
+</span><span style="background-color:transparent; color:rgb(0, 0, 0); font-family:courier new; font-size:14.6667px">b  1  </span><span style="background-color:transparent; color:rgb(0, 0, 0); font-family:courier new; font-size:14.6667px">y
+</span><span style="background-color:transparent; color:rgb(0, 0, 0); font-family:courier new; font-size:14.6667px">b</span><span style="background-color:transparent; color:rgb(0, 0, 0); font-family:courier new; font-size:14.6667px">  3  </span><span style="background-color:transparent; color:rgb(0, 0, 0); font-family:courier new; font-size:14.6667px">y
+</span><span style="background-color:transparent; color:rgb(0, 0, 0); font-family:courier new; font-size:14.6667px">b</span><span style="background-color:transparent; color:rgb(0, 0, 0); font-family:courier new; font-size:14.6667px">  3  z</span></code></pre>
+
+<p>we&#39;ll be able to take great advantage of RLE, and will end up with a total of 9 runs. This permutation is the optimal solution for the given input, and it produces better results than lexicographical sort by any combination of columns. Unfortunately, finding the optimal solution is known to be a <a href="https://en.wikipedia.org/wiki/NP-completeness">NP-complete problem</a> in computer science, which means that finding the optimal solution is not practical, even for a modest number of input rows, let alone for millions and billions of rows of typical input to BigQuery. To further complicate matters, we should notice that not all columns are born equal. Some might be very long strings, where shorter RLE runs are more beneficial than longer runs on the small integers column. Finally, we must take into account actual usage: some columns are more likely to be selected in queries than others, and some columns are more likely to be used as filters, for example in WHERE clauses. Capacitor builds an approximation model that takes into account all relevant factors and comes up with a reasonable solution. The runtime of evaluating this model is bound, since we wouldn’t want data import to BigQuery to take forever!</p>
+
+<p>While every column is being encoded, Capacitor and BigQuery collect various statistics about the data — these statistics are persisted and later are used during query execution — they both feed into query planner to help compiling optimal plans, and into the dynamic runtime to choose most efficient runtime algorithms for required operators.</p>
+
+<p>Once all column data is encoded, it&#39;s written to Google’s distributed file system — <a href="https://cloud.google.com/files/storage_architecture_and_challenges.pdf">Colossus</a>. More decisions must be made at this time, the most important one being how to shard the input data. A shard is a unit of processing at query time. We don’t want too few shards, because we would like to take advantage of distributed processing capabilities of BigQuery, processing a table in parallel using potentially thousands of machines — each one reading individual shards. But we also don’t want too many shards, because every unit of storage and processing has constant overhead. Future query patterns influence the sharding strategy as well. Queries that will read lots of columns may benefit from smaller shards, but queries that read only few might be better of with larger shards. Again, BigQuery has a model that evaluates all of the different factors, and comes up with an ideal number of shards.</p>
+
+<p>When data is sent to Colossus for permanent storage, all of it is encrypted. There are many levels of defense against unauthorized access in <a href="https://cloud.google.com/">Google Cloud Platform</a>, and 100% of data being encrypted at rest is one of them.</p>
+
+<p>Colossus is a reliable and fault tolerant file system, leveraging techniques such as <a href="https://en.wikipedia.org/wiki/Reed%E2%80%93Solomon_error_correction">Reed Solomon codes</a> to ensure that data is never lost. In addition, immediately upon writing data to Colossus, BigQuery starts the geo-replication process, mirroring all the data into different data centers around the specified jurisdiction, be it US or EU. Having data in multiple data centers enables the highest availability, in case one data center is temporarily unavailable, and also helps query load balancing.</p>
+
+<p>For Cloud Platform users, all this encoding, encryption and replication are already included in the price of BigQuery storage!</p>
+
+<p>It doesn’t end here. BigQuery has background processes that constantly look at all the stored data and check if it can be optimized even further. Perhaps initially data was loaded in small chunks, and without seeing all the data, some decisions were not globally optimal. Or perhaps some parameters of the system have changed, and there are new opportunities for storage restructuring. Or perhaps, Capacitor models got more trained and tuned, and it possible to enhance existing data. Whatever the case might be, when the system detects an opportunity to improve storage, it kickstarts data conversion tasks. These tasks do not compete with queries for resources, they run completely in parallel, and don’t degrade query performance. Once the new, optimized storage is complete, it atomically replaces old storage data — without interfering with running queries. Old data will be garbage-collected later.</p>
+
+<p>BigQuery performs all this maintenance behind the scenes, and it&#39;s completely invisible to you, and free of charge, both money and performance. BigQuery is a true NoOps service — it lets you focus on solving your business problems, and takes care of managing the rest for you!</p>
+
+<div></div>
+
+
+          </div>
+        </div>
+
+        <div id="showImage" class="modalDialog">
+          <div id="modalDiv"></div>
+        </div>
+
+        <div id="blog_back">Back to <a href="https://cloud.google.com/blog/big-data/">Google Cloud Big Data and Machine Learning Blog</a></div>
+
+        <div id="social">
+          <div>
+  <g:plusone></g:plusone>
+  
+  <span class="twitter-custom social-wrapper" onclick='sharingPopup(this);'
+    data-href="http://twitter.com/share?text=Inside%20Capacitor%2C%20BigQuery%E2%80%99s%20next-generation%20columnar%20storage%20format&url=https://cloud.google.com/blog/big-data/2016/04/inside-capacitor-bigquerys-next-generation-columnar-storage-format.html&via=GCPBigData">
+    <img alt="Share on Twitter" src="https://cloud.google.com/_static/d7147bb846/images/cloud/icons/social/twitter-white-on-blue.svg"/>
+  </span>
+  
+
+  
+</div>
+
+<script src="https://apis.google.com/js/plusone.js"></script>
+<script>
+  function sharingPopup (elem) {
+    var url = elem.getAttribute("data-href");
+    window.open(
+    url,'popUpWindow','height=500,width=500,left=10,top=10,resizable=yes,scrollbars=yes,toolbar=yes,menubar=no,location=no,directories=no,status=yes');
+  }
+</script>
+        </div>
+      </div>
+      <div id="right_nav" class="c3">
+       
+  
+  
+
+
+<ul>
+  <li class="border"><h2>Big Data Solutions</h2></li>
+  <li class="border"><h4 class="text-body">Product deep dives, technical comparisons, how-to&#39;s and tips and tricks for using the latest data processing and machine learning technologies.</h4></li>
+  <li><h4><a href="https://cloud.google.com/solutions/bigdata/">Learn More</a></h4></li>
+</ul>
+
+<div class="free-trial">
+  <img src="https://cloud.google.com/blog/big-data/images/gcp_blog_logo.png">
+  <h3>12 Months FREE TRIAL</h3>
+  <h4>Try BigQuery, Machine Learning and other cloud products and get $300 free credit to spend over 12 months.</h4>
+  <a href="https://console.cloud.google.com/freetrial" class="button button-large button-cloud" track-type="sales" track-name="contact" track-metadata-position="body">TRY IT FREE</a>
+</div>
+
+<ul>
+  <li class="border"><h2>Recent Articles</h2></li>
+  <div class="recent-articles"></div>
+  <li><h4><a href="https://cloud.google.com/blog/big-data/archive/2017" id="side-view-archive" >View Archive</a></h4></li>
+</ul>
+
+<ul>
+  <li class="border"><h2>Related Blogs</h2></li>
+  <li class="border"><a href="http://googlecloudplatform.blogspot.com/">Google Cloud Platform Blog</a></li>
+  <li class="border"><a href="http://googlecloudplatform-japan.blogspot.com/">Google Cloud Platform Japan Blog</a></li>
+  <li><a href="http://blog.kubernetes.io/">Kubernetes Blog</a></li>
+</ul>
+
+<div class="social-media">
+  
+
+  
+  <a href="https://twitter.com/GCPBigData" class="twitter"><i class="icon-twitter"></i></a>
+  
+
+  
+
+  
+
+  
+
+  <a href="https://cloud.google.com/blog/big-data/feed.xml"><i class="icon-feed"></i></a>
+</div>
+      </div>
+    </div>
+    </article>
+ 
+
+
+  
+
+
+<script src="https://cloud.google.com/js/cloud-blog.min.js"></script>
+<script>new cloud.blogController('recent-articles');</script>
+
+
+
+
+  
+  </div>
+  
+    
+
+
+
+  
+
+  
+
+        </div>
+      
+
+<footer class="devsite-footer-linkboxes nocontent
+               devsite-footer-linkboxes-all-backup
+               devsite-footer-linkboxes-with-sites"><nav class="devsite-full-site-width"><ul class="devsite-footer-linkboxes-list"><li class="devsite-footer-linkbox devsite-footer-linkbox-backup"><h3 class="devsite-footer-linkbox-heading">Products</h3><ul class="devsite-footer-linkbox-list"><li class="devsite-footer-linkbox-item"><a href="https://cloud.google.com/products/compute/" class="gc-analytics-event"
+               data-category="Site-Wide Custom Events"
+               data-label="Footer Compute">
+                Compute
+            </a></li><li class="devsite-footer-linkbox-item"><a href="https://cloud.google.com/products/storage/" class="gc-analytics-event"
+               data-category="Site-Wide Custom Events"
+               data-label="Footer Storage">
+                Storage
+            </a></li><li class="devsite-footer-linkbox-item"><a href="https://cloud.google.com/products/networking/" class="gc-analytics-event"
+               data-category="Site-Wide Custom Events"
+               data-label="Footer Networking">
+                Networking
+            </a></li><li class="devsite-footer-linkbox-item"><a href="https://cloud.google.com/products/big-data/" class="gc-analytics-event"
+               data-category="Site-Wide Custom Events"
+               data-label="Footer Big Data">
+                Big Data
+            </a></li><li class="devsite-footer-linkbox-item"><a href="https://cloud.google.com/products/machine-learning/" class="gc-analytics-event"
+               data-category="Site-Wide Custom Events"
+               data-label="Footer Machine Learning">
+                Machine Learning
+            </a></li><li class="devsite-footer-linkbox-item"><a href="https://cloud.google.com/products/#management" class="gc-analytics-event"
+               data-category="Site-Wide Custom Events"
+               data-label="Footer Management Tools">
+                Management Tools
+            </a></li><li class="devsite-footer-linkbox-item"><a href="https://cloud.google.com/products/tools/" class="gc-analytics-event"
+               data-category="Site-Wide Custom Events"
+               data-label="Footer Developer Tools">
+                Developer Tools
+            </a></li><li class="devsite-footer-linkbox-item"><a href="https://cloud.google.com/products/#identity-security" class="gc-analytics-event"
+               data-category="Site-Wide Custom Events"
+               data-label="Footer Identity and Security">
+                Identity &amp; Security
+            </a></li><li class="devsite-footer-linkbox-item"><a href="//status.cloud.google.com" class="gc-analytics-event"
+               data-category="Site-Wide Custom Events"
+               data-label="Footer System Status">
+                System Status
+            </a></li></ul></li><li class="devsite-footer-linkbox devsite-footer-linkbox-backup"><h3 class="devsite-footer-linkbox-heading">Learn More</h3><ul class="devsite-footer-linkbox-list"><li class="devsite-footer-linkbox-item"><a href="https://cloud.google.com/why-google/" class="gc-analytics-event"
+               data-category="Site-Wide Custom Events"
+               data-label="Footer Why Google">
+                Why Google Cloud
+            </a></li><li class="devsite-footer-linkbox-item"><a href="https://cloud.google.com/pricing/" class="gc-analytics-event"
+               data-category="Site-Wide Custom Events"
+               data-label="Footer Pricing">
+                Pricing
+            </a></li><li class="devsite-footer-linkbox-item"><a href="https://cloud.google.com/docs/" class="gc-analytics-event"
+               data-category="Site-Wide Custom Events"
+               data-label="Footer Documentation">
+                Documentation
+            </a></li><li class="devsite-footer-linkbox-item"><a href="https://cloud.google.com/docs/tutorials/" class="gc-analytics-event"
+               data-category="Site-Wide Custom Events"
+               data-label="Footer Tutorials">
+                Tutorials
+            </a></li><li class="devsite-footer-linkbox-item"><a href="https://cloud.google.com/training/" class="gc-analytics-event"
+               data-category="Site-Wide Custom Events"
+               data-label="Footer Training">
+                Training
+            </a></li><li class="devsite-footer-linkbox-item"><a href="https://cloud.google.com/solutions/" class="gc-analytics-event"
+               data-category="Site-Wide Custom Events"
+               data-label="Footer Solutions">
+                Solutions
+            </a></li><li class="devsite-footer-linkbox-item"><a href="https://cloud.google.com/security/" class="gc-analytics-event"
+               data-category="Site-Wide Custom Events"
+               data-label="Footer Security &amp; Compliance">
+                Security &amp; Compliance
+            </a></li><li class="devsite-footer-linkbox-item"><a href="https://cloud.google.com/partners/" class="gc-analytics-event"
+               data-category="Site-Wide Custom Events"
+               data-label="Footer Partners">
+                Partners
+            </a></li><li class="devsite-footer-linkbox-item"><a href="https://cloud.google.com/customers/" class="gc-analytics-event"
+               data-category="Site-Wide Custom Events"
+               data-label="Footer Customers">
+                Customers
+            </a></li><li class="devsite-footer-linkbox-item"><a href="https://cloud.google.com/support/" class="gc-analytics-event"
+               data-category="Site-Wide Custom Events"
+               data-label="Footer Support">
+                Support
+            </a></li><li class="devsite-footer-linkbox-item"><a href="//careers.google.com/cloud/" class="gc-analytics-event"
+               data-category="Site-Wide Custom Events"
+               data-label="Footer Careers">
+                Careers
+            </a></li><li class="devsite-footer-linkbox-item"><a href="//www.google.com/cloud/press" class="gc-analytics-event"
+               data-category="Site-Wide Custom Events"
+               data-label="Footer Press">
+                Press
+            </a></li></ul></li><li class="devsite-footer-linkbox devsite-footer-linkbox-backup"><h3 class="devsite-footer-linkbox-heading">Engage</h3><ul class="devsite-footer-linkbox-list"><li class="devsite-footer-linkbox-item"><a href="https://cloud.google.com/free-trial/" class="gc-analytics-event"
+               data-category="Site-Wide Custom Events"
+               data-label="Footer Free Trial Sign Up">
+                Free Trial Sign Up
+            </a></li><li class="devsite-footer-linkbox-item"><a href="//cloudplatform.googleblog.com" class="gc-analytics-event"
+               data-category="Site-Wide Custom Events"
+               data-label="Footer Blog">
+                Blog
+            </a></li><li class="devsite-footer-linkbox-item"><a href="https://cloud.google.com/community/" class="gc-analytics-event"
+               data-category="Site-Wide Custom Events"
+               data-label="Footer Community">
+                Community
+            </a></li><li class="devsite-footer-linkbox-item"><a href="//plus.google.com/+googlecloudplatform" class="gc-analytics-event"
+               data-category="Site-Wide Custom Events"
+               data-label="Footer Google+">
+                Google+
+            </a></li><li class="devsite-footer-linkbox-item"><a href="//twitter.com/gcpcloud" class="gc-analytics-event"
+               data-category="Site-Wide Custom Events"
+               data-label="Footer Twitter">
+                Twitter
+            </a></li><li class="devsite-footer-linkbox-item"><a href="//www.linkedin.com/showcase/google-cloud" class="gc-analytics-event"
+               data-category="Site-Wide Custom Events"
+               data-label="Footer LinkedIn">
+                LinkedIn
+            </a></li><li class="devsite-footer-linkbox-item"><a href="//stackoverflow.com/questions/tagged/google-cloud-platform" class="gc-analytics-event"
+               data-category="Site-Wide Custom Events"
+               data-label="Footer Stack Overflow">
+                Stack Overflow
+            </a></li><li class="devsite-footer-linkbox-item"><a href="//www.youtube.com/googlecloudplatform" class="gc-analytics-event"
+               data-category="Site-Wide Custom Events"
+               data-label="Footer YouTube">
+                YouTube
+            </a></li><li class="devsite-footer-linkbox-item"><a href="//www.gcppodcast.com" class="gc-analytics-event"
+               data-category="Site-Wide Custom Events"
+               data-label="Footer Podcast">
+                Podcast
+            </a></li><li class="devsite-footer-linkbox-item"><a href="//cloud.google.com/newsletter/" class="gc-analytics-event"
+               data-category="Site-Wide Custom Events"
+               data-label="Footer Newsletter Signup">
+                Newsletter Signup
+            </a></li><li class="devsite-footer-linkbox-item"><a href="//cloud.google.com/usability" class="gc-analytics-event"
+               data-category="Site-Wide Custom Events"
+               data-label="Footer UX Research">
+                UX Research
+            </a></li></ul></li><li class="devsite-footer-linkbox devsite-footer-linkbox-sites"><a href="https://developers.google.com/"
+           class="gc-analytics-event devsite-footer-linkbox-logo-link"
+           data-category="Site-Wide Custom Events" data-label="Footer Google Developers Link"><img class="devsite-footer-linkbox-logo"
+               src="https://cloud.google.com/_static/d7147bb846/images/redesign-14/lockup-color-knockout.png"
+               alt="Google Developers"></a><ul class="devsite-footer-linkbox-list"><li class="devsite-footer-linkbox-item"><a href="//developer.android.com/index.html" class="gc-analytics-event"
+               data-category="Site-Wide Custom Events"
+               data-label="Footer Android Link">
+                Android
+            </a></li><li class="devsite-footer-linkbox-item"><a href="//developer.chrome.com/home" class="gc-analytics-event"
+               data-category="Site-Wide Custom Events"
+               data-label="Footer Chrome Link">
+                Chrome
+            </a></li><li class="devsite-footer-linkbox-item"><a href="//firebase.google.com" class="gc-analytics-event"
+               data-category="Site-Wide Custom Events"
+               data-label="Footer Firebase Link">
+                Firebase
+            </a></li><li class="devsite-footer-linkbox-item"><a href="//cloud.google.com" class="gc-analytics-event"
+               data-category="Site-Wide Custom Events"
+               data-label="Footer Cloud Link">
+                Google Cloud Platform
+            </a></li><li class="devsite-footer-linkbox-item"><a href="//developers.google.com/products/" class="gc-analytics-event"
+               data-category="Site-Wide Custom Events"
+               data-label="Footer Products Link">
+                All Products
+            </a></li></ul></li></ul></nav></footer><footer class="devsite-utility-footer"><nav class="devsite-utility-footer-nav devsite-nav devsite-full-site-width"><div class="devsite-utility-footer-nav-left"><form class="devsite-utility-footer-language" action="/i18n/setlang/" method="post"><input type="hidden" name="xsrf_token" value="ONmR5J_iFaHSOc52QoswghmQLo2U9s79nenZO-SSW9s6MTUyNDQ2MDE5ODMxMzg5MA" /><input type="hidden" name="next" value="/blog/big-data/2016/04/inside-capacitor-bigquerys-next-generation-columnar-storage-format"><select class="devsite-utility-footer-language-select kd-select" name="language"
+                track-type="languageSelector" track-name="click"><option value="en"
+                 selected="selected" 
+                track-type="languageSelector" track-name="changed"
+                track-metadata-original-language="en"
+                track-metadata-selected-language="en">
+            English
+          </option><option value="es"
+                
+                track-type="languageSelector" track-name="changed"
+                track-metadata-original-language="en"
+                track-metadata-selected-language="es">
+            español
+          </option><option value="pt-br"
+                
+                track-type="languageSelector" track-name="changed"
+                track-metadata-original-language="en"
+                track-metadata-selected-language="pt-br">
+            Português Brasileiro
+          </option><option value="ja"
+                
+                track-type="languageSelector" track-name="changed"
+                track-metadata-original-language="en"
+                track-metadata-selected-language="ja">
+            日本語
+          </option><option value="zh-tw"
+                
+                track-type="languageSelector" track-name="changed"
+                track-metadata-original-language="en"
+                track-metadata-selected-language="zh-tw">
+            繁體中文
+          </option></select></form><span class="devsite-utility-footer-links"><a class="devsite-utility-footer-link gc-analytics-event"
+           href="https://cloud.google.com/terms/"
+           data-category="Site-Wide Custom Events"
+           data-label="Footer terms link"
+           data-footer-link-id="terms"
+           >Terms
+         </a><a class="devsite-utility-footer-link gc-analytics-event"
+           href="//www.google.com/policies/privacy/"
+           data-category="Site-Wide Custom Events"
+           data-label="Footer privacy link"
+           data-footer-link-id="privacy"
+           >Privacy
+         </a><a class="devsite-utility-footer-link gc-analytics-event"
+           href="//www.google.de/contact/impressum.html"
+           data-category="Site-Wide Custom Events"
+           data-label="Footer impressum link"
+           data-footer-link-id="impressum"
+           >Impressum
+         </a></span></div></nav></footer></div><script async defer src="//www.gstatic.com/feedback/api.js"></script><script src="https://cloud.google.com/_static2/d7147bb846/jsi18n/"></script><script src="https://cloud.google.com/_static/d7147bb846/js/script_foot_closure.js"></script><script src="https://cloud.google.com/_static/d7147bb846/js/script_foot.js"></script><script>
+        (function($) {
+          
+          devsite.devsite.Init($, {'ENABLE_BLOCKED_VIDEO_PLACEHOLDER': 0, 'SITE_NAME': 'cloud', 'FULL_SITE_SEARCH_ENABLED': 1, 'ENABLE_CLOUDTRACK': 1, 'VTAGS_ENABLED': 1, 'HISTORY_ENABLED': 1, 'VERSION_HASH': 'd7147bb846', 'SCRIPTSAFE_DOMAIN': 'cloud-dot-google-developers.appspot.com', 'ENABLE_BLOCKED_LINK_TOOLTIP': 0, 'ALLOWED_HOSTS': ['.android.com', '.anvato.com', '.apigee.com', '.appspot.com', '.dialogflow.com', '.gonglchuangl.net', '.google.cn', '.google.com', '.googleplex.com', '.nest.com', '.openthread.io', '.openweave.io', '.orbitera.com', '.tensorflow.org'], 'BLOCK_RSS_FEEDS': 0},
+                               '[]','en',
+                               true, '',
+                               {"f62218c009ec029abef196bba5aa34cf": true, "8de7a048f21618359bd37f5ce44be073": false, "098dafe57affddc137df300142652cfd": false, "8e03e230de0bd8a6fe173fdf172e8b3f": true, "cb025a64a50094835616312f4774a53d": true, "51470233c56fc1fde50f00b73c52b216": false, "d169d485cf24243a263783dbe42029b1": true, "039e5d84b87fd75807ffb37b7f1bbf2c": true, "700def1a83e356c06c0925afb05de4b0": false, "6749dcb526ce9bde6993550c7d928d24": true}, '/',
+                               'https://cloud.google.com/');
+        })(jQuery);
+
+        
+        devsite.localInit = function() {
+          
+        };
+
+      </script><script>
+      $('.devsite-utility-footer-language-select').each(function() {
+        $(this).change(function(){$('.devsite-utility-footer-language').submit();});
+      });
+      </script></div><span id="devsite-request-elapsed" data-request-elapsed="357.65004158"></span></body></html>

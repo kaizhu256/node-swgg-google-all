@@ -1,0 +1,1208 @@
+
+
+
+
+
+
+<!DOCTYPE html><html lang="en"
+      class="chekov"><head><script>var a=window.devsite||{};window.devsite=a;a.readyCallbacks=[];window.devsite.readyCallbacks=a.readyCallbacks;a.ready=function(b){a.readyCallbacks.push(b)};window.devsite.ready=a.ready;
+</script><meta charset="utf-8"><meta name="xsrf_token" content="rAH6Lpi9PB-8B-I-_NfA4B6Krrjv8a4xxgxngxlOPYc6MTUyNDQ2MDE4NjY2NTQ0MA" /><link rel="canonical" href="https://developers.google.com/ad-exchange/buyer-rest/guides/v2/rtb-troubleshooting"><link rel="alternate" href="https://developers.google.com/ad-exchange/buyer-rest/guides/v2/rtb-troubleshooting" hreflang="en"><link rel="alternate" href="https://developers.google.cn/ad-exchange/buyer-rest/guides/v2/rtb-troubleshooting" hreflang="en-cn"><link rel="alternate" href="https://developers.google.com/ad-exchange/buyer-rest/guides/v2/rtb-troubleshooting" hreflang="x-default"><link rel="shortcut icon" href="https://developers.google.com/_static/d7147bb846/images/favicon.png"><link rel="apple-touch-icon" href="https://developers.google.com/_static/d7147bb846/images/touch-icon.png"><meta name="viewport" content="width=device-width, initial-scale=1"><link rel="stylesheet"
+      
+      href="//fonts.googleapis.com/css?family=Google+Sans:400|Roboto:400,400italic,500,500italic,700,700italic|Roboto+Mono:400,500,700|Material+Icons"
+      ><link rel="stylesheet"
+        href="https://developers.google.com/_static/d7147bb846/css/devsite-google-green.css"><link rel="search"
+        type="application/opensearchdescription+xml"
+        title="Google Developers"
+        href="https://developers.google.com/s/opensearch.xml"><script src="https://developers.google.com/_static/d7147bb846/js/jquery-bundle.js"></script><meta property="og:site_name" content="Google Developers"><meta property="og:type" content="website"><meta property="og:url" content="https://developers.google.com/ad-exchange/buyer-rest/guides/v2/rtb-troubleshooting"><meta property="og:locale" content="en"><script>
+    var ___gcfg = ___gcfg || {};
+    ___gcfg.lang = 'en';
+  </script><title>RTB Troubleshooting &nbsp;|&nbsp; DoubleClick Ad Exchange Buyer API
+      &nbsp;|&nbsp; Google Developers</title><meta property="og:title" content="RTB Troubleshooting &nbsp;|&nbsp; DoubleClick Ad Exchange Buyer API
+      &nbsp;|&nbsp; Google Developers"><meta property="og:image"
+          content="https://developers.google.com/_static/d7147bb846/images/share/devsite-google-green.png"><meta property="og:image:secure_url"
+          content="https://developers.google.com/_static/d7147bb846/images/share/devsite-google-green.png"><meta property="og:image:width" content="1200"><meta property="og:image:height" content="630"></head><body class="
+               devsite-doc-page
+               
+               
+               
+               devsite-header-no-upper-tabs
+               "
+        data-family="endorsed"
+        id="top_of_page"><div class="devsite-wrapper"><div class="devsite-top-section-wrapper
+            "><header class="devsite-top-section nocontent"><div class="devsite-top-logo-row-wrapper-wrapper"><div class="devsite-top-logo-row-wrapper"><div class="devsite-top-logo-row devsite-full-site-width"><button type="button" class="devsite-expand-section-nav devsite-header-icon-button
+                                       button-flat material-icons gc-analytics-event"
+                  data-category="Site-Wide Custom Events" data-label="Hamburger menu"></button><div class="devsite-product-name-wrapper"><a class="devsite-product-name-link gc-analytics-event"
+       href="https://developers.google.com/ad-exchange/buyer-rest/"
+       data-category="Site-Wide Custom Events"
+       data-label="Project logo (header)"><img src="https://developers.google.com/ads/images/dclk-logo-mark-128px.png" class="devsite-product-logo"
+               alt="DoubleClick Ad Exchange Buyer API"></a><span class="devsite-product-name"><ul class="devsite-breadcrumb-list"><li class="devsite-breadcrumb-item"><a href="https://developers.google.com/ad-exchange/buyer-rest/" class="devsite-breadcrumb-link gc-analytics-event"
+       data-category="Site-Wide Custom Events" data-label="Upper Header"
+       data-value="1">
+    
+    
+      
+        DoubleClick Ad Exchange Buyer API
+      
+    
+    
+    </a></li></ul></span></div><div class="devsite-header-upper-tabs"></div><form class="devsite-search-form"
+                action="https://developers.google.com/s/results/"
+                method="GET"
+                id="top-search"
+                search-placeholder='Search'><div id="searchbox" class="devsite-searchbox"><input placeholder='Search'
+         
+         type="text"
+         class="devsite-search-field devsite-search-query"
+         name="q"
+         value=""
+         autocomplete="off"
+         
+         aria-label="Search box"><div class="devsite-search-image material-icons"></div></div><input type="hidden"
+       name="p"
+       id="search_project"
+       value="/ad-exchange/buyer-rest/"
+       data-project-name="DoubleClick Ad Exchange Buyer API"
+       data-project-path="/ad-exchange/buyer-rest/"
+       data-query-match=""><input type="hidden" class="suggest-project" value="DoubleClick Ad Exchange Buyer API" /></form><a class="devsite-header-link devsite-top-button button gc-analytics-event"
+               href="https://developers.google.com/products/"
+               data-category="Site-Wide Custom Events"
+               data-label="Site header link"
+               track-type="navigateTo"
+               track-name="all products"
+               track-metadata-position="nav"><div class="devsite-header-link-label">All Products</div></a><button type="button" class="devsite-search-button devsite-header-icon-button button-flat
+                                       material-icons"></button><a href="https://www.google.com/accounts/ServiceLogin?passive=true&continue=https%3A%2F%2Fdevelopers.google.com%2Fad-exchange%2Fbuyer-rest%2Fguides%2Fv2%2Frtb-troubleshooting%3Frefresh%3D1&service=ahsid"
+   class="devsite-user-signin devsite-top-button button gc-analytics-event"
+   data-category="Site-Wide Custom Events" data-label="Sign in button">
+  
+  Sign in
+</a></div></div></div><div class="devsite-collapsible-section"><div class="devsite-header-background devsite-full-site-width"><div class="devsite-doc-set-nav-row devsite-full-site-width"><nav class="devsite-doc-set-nav devsite-nav devsite-overflow-tabs-scroll-wrapper"><ul class="devsite-doc-set-nav-tab-list devsite-overflow-tabs-scroll"><li class="devsite-doc-set-nav-tab-container devsite-nav-tab
+               "><a href="https://developers.google.com/ad-exchange/buyer-rest/"
+         class=" devsite-nav-tab
+                devsite-doc-set-nav-tab devsite-doc-set-nav-tab-link gc-analytics-event"
+         
+       
+         data-category="Site-Wide Custom Events"
+       
+         data-label="Tab: Home"
+       >
+        Home
+      </a></li><li class="devsite-doc-set-nav-tab-container devsite-nav-tab
+               "><a href="https://developers.google.com/ad-exchange/buyer-rest/guides/start"
+         class="devsite-doc-set-nav-active devsite-nav-tab
+                devsite-doc-set-nav-tab devsite-doc-set-nav-tab-link gc-analytics-event"
+         aria-label="Guides, selected"
+       
+         data-category="Site-Wide Custom Events"
+       
+         data-label="Tab: Guides"
+       >
+        Guides
+      </a></li><li class="devsite-doc-set-nav-tab-container devsite-nav-tab
+               "><a href="https://developers.google.com/ad-exchange/buyer-rest/relnotes"
+         class=" devsite-nav-tab
+                devsite-doc-set-nav-tab devsite-doc-set-nav-tab-link gc-analytics-event"
+         
+       
+         data-category="Site-Wide Custom Events"
+       
+         data-label="Tab: Reference"
+       >
+        Reference
+      </a></li><li class="devsite-doc-set-nav-tab-container devsite-nav-tab
+               "><a href="https://developers.google.com/ad-exchange/buyer-rest/downloads"
+         class=" devsite-nav-tab
+                devsite-doc-set-nav-tab devsite-doc-set-nav-tab-link gc-analytics-event"
+         
+       
+         data-category="Site-Wide Custom Events"
+       
+         data-label="Tab: Samples"
+       >
+        Samples
+      </a></li><li class="devsite-doc-set-nav-tab-container devsite-nav-tab
+               "><a href="https://developers.google.com/ad-exchange/buyer-rest/community/"
+         class=" devsite-nav-tab
+                devsite-doc-set-nav-tab devsite-doc-set-nav-tab-link gc-analytics-event"
+         
+       
+         data-category="Site-Wide Custom Events"
+       
+         data-label="Tab: Support"
+       >
+        Support
+      </a></li><button type="button" id="devsite-feedback-project"
+          class="devsite-feedback-button devsite-top-button gc-analytics-event"
+          data-category="Site-Wide Custom Events" data-label="Send Feedback Button"
+          track-type="feedback" track-name="sendFeedbackLink" track-metadata-position="header">
+  
+  Send feedback
+  </button></ul></nav></div></div></div></header><script>
+    if (window.jQuery) {
+      $(document).ready(function() {
+        if (window.devsite && window.devsite.search) {
+          
+          window.devsite.search.init('en')
+        }
+      });
+    }
+  </script></div><div id="gc-wrapper"itemscope itemtype="http://schema.org/Article"><input class="google-analytics-id-json" type="hidden" value="{&quot;dimensions&quot;: {&quot;dimension6&quot;: &quot;en&quot;, &quot;dimension4&quot;: &quot;DoubleClick Ad Exchange Buyer API&quot;, &quot;dimension5&quot;: &quot;en&quot;, &quot;dimension3&quot;: false, &quot;dimension1&quot;: &quot;Signed out&quot;, &quot;dimension8&quot;: null}, &quot;gaid&quot;: &quot;UA-24532603-1&quot;}"><input class="google-analytics-id-json" type="hidden" value="{&quot;dimensions&quot;: {}, &quot;gaid&quot;: &quot;UA-54828107-5&quot;}"><script>
+      var dataLayer = [{"freeTrialEligibleUser": "False", "userCountry": "HK", "language": {"requested": "en", "served": "en"}, "projectName": "DoubleClick Ad Exchange Buyer API", "scriptsafe": null, "signedIn": "False", "internalUser": "False"}];
+    </script>
+
+      
+        <div class="devsite-site-mask"></div>
+        
+  
+
+
+<nav class="devsite-nav-responsive devsite-nav nocontent" tabindex="0">
+  
+  <div class="devsite-nav-responsive-tabs-panel">
+    
+      
+
+
+
+<nav class="devsite-nav-responsive-tabs devsite-nav">
+  <ul class="devsite-nav-list">
+  
+    <li class="devsite-nav-item devsite-nav-item-heading">
+    
+      <a 
+           href="https://developers.google.com/ad-exchange/buyer-rest/"
+         
+         class="devsite-nav-responsive-tab devsite-nav-title gc-analytics-event
+                "
+         data-category="Site-Wide Custom Events" data-label="Responsive Tab: Home">
+        Home
+      </a>
+      
+      
+    
+    </li>
+  
+    <li class="devsite-nav-item devsite-nav-item-heading">
+    
+      <span class="devsite-nav-responsive-forward devsite-nav-responsive-tab devsite-nav-title
+                   devsite-nav-active gc-analytics-event"
+            data-category="Site-Wide Custom Events" data-label="Responsive Tab: Guides"
+            tabindex="0">
+        Guides
+      </span>
+    
+    </li>
+  
+    <li class="devsite-nav-item devsite-nav-item-heading">
+    
+      <a 
+           href="https://developers.google.com/ad-exchange/buyer-rest/relnotes?nav=true"
+         
+         class="devsite-nav-responsive-tab devsite-nav-title gc-analytics-event
+                "
+         data-category="Site-Wide Custom Events" data-label="Responsive Tab: Reference">
+        Reference
+      </a>
+      
+      
+    
+    </li>
+  
+    <li class="devsite-nav-item devsite-nav-item-heading">
+    
+      <a 
+           href="https://developers.google.com/ad-exchange/buyer-rest/downloads?nav=true"
+         
+         class="devsite-nav-responsive-tab devsite-nav-title gc-analytics-event
+                "
+         data-category="Site-Wide Custom Events" data-label="Responsive Tab: Samples">
+        Samples
+      </a>
+      
+      
+    
+    </li>
+  
+    <li class="devsite-nav-item devsite-nav-item-heading">
+    
+      <a 
+           href="https://developers.google.com/ad-exchange/buyer-rest/community/"
+         
+         class="devsite-nav-responsive-tab devsite-nav-title gc-analytics-event
+                "
+         data-category="Site-Wide Custom Events" data-label="Responsive Tab: Support">
+        Support
+      </a>
+      
+      
+    
+    </li>
+  
+  
+    <li class="devsite-nav-item devsite-nav-item-heading">
+      <a href="https://developers.google.com/products/"
+         class="devsite-nav-responsive-tab devsite-nav-title gc-analytics-event"
+         data-category="Site-Wide Custom Events"
+         data-label="Responsive Tab: all_products">
+        All Products
+      </a>
+    </li>
+  
+  </ul>
+</nav>
+
+
+    
+  </div>
+  
+  
+  <div class="devsite-nav-responsive-sidebar-panel">
+    
+    <div class="devsite-nav-responsive-back" tabindex="0"></div>
+    
+    <nav class="devsite-nav-responsive-sidebar"></nav>
+  </div>
+  
+  
+</nav>
+
+
+        <div class="devsite-main-content clearfix">
+
+        
+        
+
+        
+  
+  
+    
+    
+      
+  <nav class="devsite-section-nav devsite-nav nocontent">
+    <ul class="devsite-nav-list devsite-nav-expandable devsite-nav-only-accordions"><li class="devsite-nav-item"><a href="https://developers.google.com/ad-exchange/buyer-rest/guides/start" class="devsite-nav-title">Get Started</a></li><li class="devsite-nav-item"><a href="https://developers.google.com/ad-exchange/buyer-rest/guides/background" class="devsite-nav-title">Background</a></li><li class="devsite-nav-item"><a href="https://developers.google.com/ad-exchange/buyer-rest/guides/authorization" class="devsite-nav-title">Authorization</a></li><li class="devsite-nav-item"><a href="https://developers.google.com/ad-exchange/buyer-rest/guides/performance" class="devsite-nav-title">Performance Tips</a></li><li class="devsite-nav-item devsite-nav-item-section-expandable devsite-nav-accordion"><span class="devsite-nav-title devsite-nav-title-no-path" aria-label="V1 APIs, click to expand/collapse" role="link">V1 APIs</span><a class="devsite-nav-toggle devsite-nav-toggle-collapsed material-icons" track-type="leftNav" track-name="expandNavSectionArrow" track-metadata-position="0" aria-hidden="true"></a><ul class="devsite-nav-section devsite-nav-section-collapsed"><li class="devsite-nav-item"><a href="https://developers.google.com/ad-exchange/buyer-rest/guides/v1/accounts" class="devsite-nav-title">Accounts</a></li><li class="devsite-nav-item"><a href="https://developers.google.com/ad-exchange/buyer-rest/guides/v1/creatives" class="devsite-nav-title">Creatives</a></li><li class="devsite-nav-item devsite-nav-deprecated devsite-nav-has-status"><a href="https://developers.google.com/ad-exchange/buyer-rest/guides/v1/deals" class="devsite-nav-title"><span class="devsite-nav-text">Direct Deals</span><span class="devsite-nav-icon-wrapper"><span class="devsite-nav-icon material-icons" title="Deprecated"></span></span></a></li><li class="devsite-nav-item"><a href="https://developers.google.com/ad-exchange/buyer-rest/guides/v1/pretargeting" class="devsite-nav-title">Pretargeting</a></li><li class="devsite-nav-item"><a href="https://developers.google.com/ad-exchange/buyer-rest/guides/v1/marketplace" class="devsite-nav-title">Marketplace</a></li><li class="devsite-nav-item"><a href="https://developers.google.com/ad-exchange/buyer-rest/guides/v1/billing-info" class="devsite-nav-title">Billing and Budget</a></li></ul></li><li class="devsite-nav-item devsite-nav-item-section-expandable devsite-nav-accordion"><span class="devsite-nav-title devsite-nav-title-no-path" aria-label="V2 APIs (Open Beta), click to expand/collapse" role="link">V2 APIs (Open Beta)</span><a class="devsite-nav-toggle devsite-nav-toggle-expanded material-icons" track-type="leftNav" track-name="expandNavSectionArrow" track-metadata-position="0"></a><ul class="devsite-nav-section devsite-nav-section-expanded"><li class="devsite-nav-item"><a href="https://developers.google.com/ad-exchange/buyer-rest/guides/v2/client-access" class="devsite-nav-title">Client Access</a></li><li class="devsite-nav-item devsite-nav-active"><a href="https://developers.google.com/ad-exchange/buyer-rest/guides/v2/rtb-troubleshooting" class="devsite-nav-title">RTB Troubleshooting</a></li></ul></li></ul>
+  </nav>
+
+    
+
+    
+  <nav class="devsite-page-nav devsite-nav"></nav>
+
+
+      <article class="devsite-article">
+        <article class="devsite-article-inner">
+  
+          
+  
+
+
+
+  
+  <nav class="devsite-breadcrumb-nav devsite-nav">
+    
+
+
+<ul class="devsite-breadcrumb-list">
+  
+  <li class="devsite-breadcrumb-item">
+    
+    
+    <a href="https://developers.google.com/products/" class="devsite-breadcrumb-link gc-analytics-event"
+       data-category="Site-Wide Custom Events" data-label="Breadcrumbs"
+       data-value="1">
+    
+    
+      Products
+    
+    
+    </a>
+    
+  </li>
+  
+  <li class="devsite-breadcrumb-item">
+    
+    
+    <div class="devsite-breadcrumb-guillemet material-icons"></div>
+    
+    
+    <a href="https://developers.google.com/ads/" class="devsite-breadcrumb-link gc-analytics-event"
+       data-category="Site-Wide Custom Events" data-label="Breadcrumbs"
+       data-value="2">
+    
+    
+      Ads
+    
+    
+    </a>
+    
+  </li>
+  
+  <li class="devsite-breadcrumb-item">
+    
+    
+    <div class="devsite-breadcrumb-guillemet material-icons"></div>
+    
+    
+    <a href="https://developers.google.com/ad-exchange/" class="devsite-breadcrumb-link gc-analytics-event"
+       data-category="Site-Wide Custom Events" data-label="Breadcrumbs"
+       data-value="3">
+    
+    
+      DoubleClick Ad Exchange APIs
+    
+    
+    </a>
+    
+  </li>
+  
+  <li class="devsite-breadcrumb-item">
+    
+    
+    <div class="devsite-breadcrumb-guillemet material-icons"></div>
+    
+    
+    <a href="https://developers.google.com/ad-exchange/buyer-rest/" class="devsite-breadcrumb-link gc-analytics-event"
+       data-category="Site-Wide Custom Events" data-label="Breadcrumbs"
+       data-value="4">
+    
+    
+      DoubleClick Ad Exchange Buyer API
+    
+    
+    </a>
+    
+  </li>
+  
+  <li class="devsite-breadcrumb-item">
+    
+    
+    <div class="devsite-breadcrumb-guillemet material-icons"></div>
+    
+    
+    <a href="https://developers.google.com/ad-exchange/buyer-rest/guides/start" class="devsite-breadcrumb-link gc-analytics-event"
+       data-category="Site-Wide Custom Events" data-label="Breadcrumbs"
+       data-value="5">
+    
+    
+      Guides
+    
+    
+    </a>
+    
+  </li>
+  
+</ul>
+
+  </nav>
+  
+  
+  <h1 itemprop="name" class="devsite-page-title">
+    RTB Troubleshooting
+  </h1>
+  
+  
+  <nav class="devsite-page-nav-embedded devsite-nav"></nav>
+  
+  <div class="devsite-article-body clearfix
+            "
+       itemprop="articleBody">
+    
+
+<p>This guide covers RTB troubleshooting resources, which allow you to programmatically access
+  real-time bidding campaign metrics that are also exposed through the
+  <a href="https://www.google.com/adx/buyer/Main.html#BIDDING">RTB Breakout</a> tool found in the
+  DoubleClick Ad Exchange UI. These include <code>bidders.filterSets</code>, <code>bidders.accounts.filterSets</code>, and
+  all resources under them hierarchically.</p>
+<p>Using metrics from the RTB troubleshooting resources, you can gain insights on missed opportunities
+  to win impressions that can help you optimize your real-time bidding campaign.</p>
+<h2>Adjustments to API structure and style</h2>
+<p>The RTB troubleshooting resources introduce a few changes to explicitly indicate ownership and
+  access, provide more granular control over the data returned by the API, and better align with
+  <a href="https://cloud.google.com/apis/design/">Google API design practices</a>.</p>
+<h3>Bidder-level and account-level resources</h3>
+<p>Resources are structured under both <code>bidders</code> and <code>bidders.accounts</code>. These allow you to specify
+  whether an API call is targeting a bidder (also known as a parent account) and all associated
+  child accounts, or individual DoubleClick Ad Exchange accounts. In the context of RTB
+  Troubleshooting, resources structured under <code>bidders.filterSets</code> will return aggregated metrics
+  for the given bidder and all associated child accounts. In contrast, those under
+  <code>bidders.accounts.filterSets</code> will only return metrics for the specified account regardless of
+  whether it is a bidder or child account.</p>
+<p class="note">Note: Accounts that delegate their bidding to another buyer are not bidder accounts, and
+  consequently can't access bidder-level resources. Additionally, non-bidder accounts can't
+  access account-level <code>impressionMetrics</code>, <code>filteredBidResponses</code>, <code>bidResponseErrors</code>, and
+  <code>bidResponsesWithoutBids</code> resources.</p>
+<h3>Introducing resource names as unique identifiers</h3>
+<p><a href="https://cloud.google.com/apis/design/resource_names">Resource names</a> are used as
+  unique identifiers rather than integer or string IDs. When creating a new instance of a given
+  resource type, you must now specify a
+  <a href="https://cloud.google.com/apis/design/resource_names#relative_resource_name">relative
+    resource name</a> using the resource's URI path followed by the desired resource ID. The
+  following are examples of names relevant for RTB Troubleshooting resources:</p>
+
+  <table class="matchpre">
+    <thead>
+      <tr>
+        <th>Resource</th>
+        <th>Name example</th>
+      </tr>
+    </thead>
+    <tbody>
+     <tr>
+      <td>bidders.filterSets</td>
+      <td>bidders/12345678/filterSets/fset_1</td>
+    </tr>
+    <tr>
+      <td>bidders.accounts.filterSets</td>
+      <td>bidders/12345678/accounts/87654321/filterSets/fset_2</td>
+    </tr>
+    </tbody>
+  </table>
+
+<p class="note">Note: The resource ID specified for <code>bidders</code> in the name must be a bidder's
+  DoubleClick Ad Exchange account ID. For <code>accounts</code>, the resource ID must be an account ID of either
+  the bidder or a child account managed by it. If you do not know which DoubleClick Ad Exchange
+  accounts are associated with your Google account, you can use the
+  <a href="https://developers.google.com/ad-exchange/buyer-rest/v1.4/accounts/list">accounts.list</a> method to find them.</p>
+<h2>Filter sets</h2>
+<p>A filter set is a representation of the filtering options that are available, and can be created
+  at the bidder or account level. It is used to filter the list results of RTB Troubleshooting
+  resources that retrieve metrics for your real-time bidding campaigns.</p>
+
+<p>The filter applied when retrieving metrics is the intersection of each filter in the specified
+  filter set. List filters, such as <code>platforms</code>, are interpreted as the union of each item in the list.</p>
+
+<p>Bidder and account-level filter sets are distinct and only accessible from the level in which
+  they were created—regardless of the account used to create them. A bidder and child account share
+  filter sets created at the account level, whereas only a bidder can access resources at the
+  bidder level. The following table summarizes how bidder and child accounts can access resources
+  at either level:</p>
+
+<table class="matchpre">
+    <thead>
+      <tr>
+        <th>&nbsp;</th>
+      <th>bidders.filterSets</th>
+      <th>bidders.accounts.filterSets</th>
+    </tr>
+  </thead>
+    <tbody>
+     <tr>
+      <td>Bidder Account</td>
+      <td>An API call affecting only bidder-level filter sets.</td>
+      <td>An API call affecting only account-level filter sets.</td>
+    </tr>
+    <tr>
+      <td>Child Account</td>
+      <td>This API call will return an error response.</td>
+      <td>An API call affecting only account-level filter sets.</td>
+    </tr>
+  </tbody>
+  </table>
+
+<h3>Create a filter set</h3>
+<p>When creating a filter set, you must specify a time range as either a <code>relativeDateRange</code>,
+  <code>absoluteDateRange</code>, or <code>realtimeTimeRange</code>. When retrieving metrics, the
+  default behavior is for all data to be provided for the entire time range. If you want to receive
+  a time series breakdown over the time range, you may specify <code>timeSeriesGranularity</code>
+  to indicate <code>HOURLY</code> or <code>DAILY</code> intervals.</p>
+
+<p>If you only require a filter set for a short period of time, you may set the <code>isTransient</code>
+  query parameter to <code>true</code>. This will indicate that the filter set is transient, meaning that it will not be persisted indefinitely. Transient filter sets will be available for at least one hour following their creation, but will eventually be deleted. By default, filter sets are not transient.</p>
+<h3>Bidder-level example</h3>
+<p>To create a new bidder-level filter set, send a <code>POST</code> request to the <code>bidders.filterSets</code> resource URI, which has the following format:</p>
+
+<pre>https://adexchangebuyer.googleapis.com/v2beta1/bidders/{bidder resource ID}/filterSets</pre>
+
+<p class="warning">Warning: Bidder-level filter sets are not capable of filtering by creative or deal IDs. If you specify these filters when creating a bidder-level filter set, you will receive an error response.</p>
+<strong>Request</strong>
+<p>Here's an example of a <code>POST</code> request that creates a new non-transient bidder-level filter set:</p>
+
+<pre>POST https://adexchangebuyer.googleapis.com/v2beta1/bidders/12345678/filterSets
+Authorization: Bearer access token here
+Content-Type: application/json
+
+{
+  "name": "bidders/12345678/filterSets/bidder-fs",
+  "format": "DISPLAY",
+  "environment": "APP",
+  "platforms": ["TABLET", "MOBILE"],
+  "absoluteDateRange": {
+    "startDate": {
+      "month": 11,
+      "day": 26,
+      "year": 2017
+    },
+    "endDate": {
+      "month": 12,
+      "day": 3,
+      "year": 2017
+    }
+  },
+  "timeSeriesGranularity": "DAILY"
+}
+
+</pre>
+<strong>Response</strong>
+<p>If the request succeeds, the server responds with a 200 OK status code. The response body will include the created filter set resource, which will be identical to the filter set submitted in the request.</p>
+<h3>Account-level example</h3>
+<p>To create a new account-level filter set, send a <code>POST</code> request to the
+  <code>bidders.accounts.filterSets</code> resource URI, which has the following format:</p>
+
+<pre>https://adexchangebuyer.googleapis.com/v2beta1/bidders/{bidder resource ID}/accounts/{account resource ID}/filterSets</pre>
+
+<p class="note">Note: The resource ID specified for <code>accounts</code> can be the account ID of any DoubleClick Ad Exchange account accessible to the bidder account specified in the URI, including the bidder account itself.</p>
+<strong>Request</strong>
+<p>Here's an example of a <code>POST</code> request that creates a new non-transient account-level filter set:</p>
+
+<pre>POST https://adexchangebuyer.googleapis.com/v2beta1/bidders/12345678/accounts/87654321/filterSets
+Authorization: Bearer access token here
+Content-Type: application/json
+
+{
+  "name": "bidders/12345678/accounts/87654321/filterSets/account-fs",
+  "format": "VIDEO",
+  "environment": "WEB",
+  "platforms": ["DESKTOP"],
+  "absoluteDateRange": {
+    "startDate": {
+      "month": 11,
+      "day": 26,
+      "year": 2017
+    },
+    "endDate": {
+      "month": 12,
+      "day": 3,
+      "year": 2017
+    }
+  },
+  "timeSeriesGranularity": "DAILY"
+}
+</pre>
+<strong>Response</strong>
+<p>If the request succeeds, the server responds with a 200 OK status code. The response body will
+  include the created filter set resource, which will be identical to the filter set submitted in
+  the request.</p>
+
+<h3>Get a filter set</h3>
+<p>The get method can only get a filter set at the same level it was created. For example, a bidder
+  account should use <code>bidders.accounts.filterSets.get</code> to retrieve a filter set created at the account
+  level rather than the <code>bidders.filterSets.get</code> method.</p>
+<h4>Bidder-level</h4>
+<p>You can retrieve a bidder-level filter set by sending an HTTP GET request to the <code>bidders.filterSets</code> resource URI, which has the following format:</p>
+
+<pre>GET https://adexchangebuyer.googleapis.com/v2beta1/bidders/{bidder resource ID}/filterSets/{filter set resource ID}</pre>
+<strong>Request</strong>
+<p>Here's an example:</p>
+
+<pre>GET https://adexchangebuyer.googleapis.com/v2beta1/bidders/12345678/filterSets/bidder-fs</pre>
+<strong>Response</strong>
+<p>If the request succeeds, the server responds with a <code>200 OK</code> HTTP status code and the retrieved filter set:</p>
+
+<pre>
+{
+  "name": "bidders/12345678/filterSets/bidder-fs",
+  "format": "DISPLAY",
+  "environment": "APP",
+  "platforms": ["TABLET", "MOBILE"],
+  "absoluteDateRange": {
+    "startDate": {
+      "month": 11,
+      "day": 26,
+      "year": 2017
+    },
+    "endDate": {
+      "month": 12,
+      "day": 3,
+      "year": 2017
+    }
+  },
+  "timeSeriesGranularity": "DAILY"
+}
+
+</pre>
+<h4>Account-level</h4>
+<p>You can retrieve an account-level filter set by sending an HTTP <code>GET</code> request to the <code>bidders.accounts.filterSets</code> resource URI, which has the following format:</p>
+
+<pre>GET https://adexchangebuyer.googleapis.com/v2beta1/bidders/{bidder resource ID}/accounts/{account resource ID}/filterSets/{filter set resource ID}</pre>
+<strong>Request</strong>
+<p>Here's an example:</p>
+
+<pre>GET https://adexchangebuyer.googleapis.com/v2beta1/bidders/12345678/accounts/87654321/filterSets/account-fs</pre>
+<strong>Response</strong>
+<p>If the request succeeds, the server responds with a <code>200 OK</code> HTTP status code and the retrieved filter set:</p>
+
+<pre>
+{
+  "name": "bidders/12345678/accounts/87654321/filterSets/account-fs",
+  "format": "VIDEO",
+  "environment": "WEB",
+  "platforms": ["DESKTOP"],
+  "absoluteDateRange": {
+    "startDate": {
+      "month": 11,
+      "day": 26,
+      "year": 2017
+    },
+    "endDate": {
+      "month": 12,
+      "day": 3,
+      "year": 2017
+    }
+  },
+  "timeSeriesGranularity": "DAILY"
+}
+</pre>
+<h3>List filter sets</h3>
+<p>The list method will only return filter sets accessible from the level it is being called.
+  For example, a bidder account will not see filter sets created for itself via
+  <code>bidders.accounts.filterSets.create</code> when calling <code>bidders.filterSets.list</code>.</p>
+<h4>Bidder-level</h4>
+<p>You can retrieve all bidder-level filter sets for a given bidder by sending an HTTP <code>GET</code>
+  request to the <code>bidders.filtersets</code> resource URI, which has the following format:</p>
+<pre>GET https://adexchangebuyer.googleapis.com/v2beta1/bidders/{bidder resource ID}/filterSets</pre>
+<strong>Request</strong>
+<p>Here's an example listing all bidder-level filter sets for a bidder with an account ID of 12345678:</p>
+
+<pre>GET https://adexchangebuyer.googleapis.com/v2beta1/bidders/12345678/filterSets</pre>
+<strong>Response</strong>
+<pre>
+{
+  "filterSets": [{
+      "filterSetId": "99994",
+      "name": "bidders/12345678/filterSets/test-b-1",
+      "relativeDateRange": {
+        "durationDays": 30
+      }
+    },
+    {
+      "realtimeTimeRange": {
+        "startTimeStamp": "2017-11-15T12:30:30.072831583Z"
+      },
+      "filterSetId": "99995",
+      "name": "bidders/12345678/filterSets/test-b-2",
+      "timeSeriesGranularity": "HOURLY"
+    },
+    {
+      "absoluteDateRange": {
+        "endDate": {
+          "day": 12,
+          "month": 3,
+          "year": 2017
+        },
+        "startDate": {
+          "day": 26,
+          "month": 11,
+          "year": 2017
+        }
+      },
+      "filterSetId": "99996",
+      "name": "bidders/12345678/filterSets/bidder-fs",
+      "timeSeriesGranularity": "DAILY",
+      "platforms": ["TABLET", "MOBILE"],
+      "environment": "APP",
+      "format": "DISPLAY"
+    }
+  ]
+}
+
+</pre>
+<h4>Account-level</h4>
+<p>You can retrieve all account-level filter sets for a given account by sending an HTTP <code>GET</code>
+  request to the <code>bidders.accounts.filtersets</code> resource URI, which has the following format:</p>
+<pre>GET https://adexchangebuyer.googleapis.com/v2beta1/bidders/{bidder resource ID}/accounts/{account resource ID}/filterSets</pre>
+<strong>Request</strong>
+<p>Here's an example listing all account-level filter sets for a child account with an account ID of 87654321:</p>
+<pre>GET https://adexchangebuyer.googleapis.com/v2beta1/bidders/12345678/accounts/87654321/filterSets</pre>
+<strong>Response</strong>
+<pre>{
+  "filterSets": [{
+        "realtimeTimeRange": {
+        "startTimeStamp": "2017-11-19T04:24:43.252893487Z"
+      },
+      "filterSetId": "99997",
+      "name": "bidders/12345678/accounts/87654321/filterSets/test-a-1",
+      "timeSeriesGranularity": "DAILY"
+    },
+    {
+      "absoluteDateRange": {
+        "endDate": {
+          "day": 3,
+          "month": 12,
+          "year": 2017
+        },
+        "startDate": {
+          "day": 26,
+          "month": 11,
+          "year": 2017
+        }
+      },
+      "filterSetId": "99998",
+      "name": "bidders/12345678/accounts/87654321/filterSets/account-fs",
+      "timeSeriesGranularity": "DAILY",
+      "platforms": ["DESKTOP"],
+      "environment": "WEB",
+      "format": "VIDEO"
+    }
+  ]
+}
+</pre>
+<h3>Delete a filter set</h3>
+<p>You can use the <code>delete</code> method to remove any non-transient filter sets that are no
+  longer needed. It can only remove filter sets accessible from the level it is being called;
+  for example, a bidder account can't delete a filter set created with <code>bidders.accounts.filterSets.create</code>
+  with <code>bidders.filterSets.delete</code>.</p>
+<h4>Bidder-level</h4>
+<p>You can delete a bidder-level filter set for a given account by sending an HTTP <code>DELETE</code> request
+  to the <code>bidders.filtersets</code> resource URI, which has the following format:</p>
+
+<pre>DELETE https://adexchangebuyer.googleapis.com/v2beta1/bidders/{bidder resource ID}/filterSets/{filter set resource ID}</pre>
+<strong>Request</strong>
+<p>Here's an example deleting a bidder-level filter set:</p>
+<pre>DELETE https://adexchangebuyer.googleapis.com/v2beta1/bidders/12345678/filterSets/test-b-2</pre>
+<strong>Response</strong>
+<p>If successful, the request body will be empty. The specified filter set will no longer be accessible.</p>
+<h4>Account-level</h4>
+<p>You can delete an account-level filter set for a given account by sending an HTTP <code>DELETE</code>
+  request to the <code>bidders.accounts.filtersets</code> resource URI, which has the following format:</p>
+<pre>DELETE https://adexchangebuyer.googleapis.com/v2beta1/bidders/{bidder resource ID}/accounts/{account resource ID}/filterSets/{filter set resource ID}</pre>
+<strong>Request</strong>
+<p>Here's an example deleting an account-level filter set:</p>
+<pre>DELETE https://adexchangebuyer.googleapis.com/v2beta1/bidders/12345678/accounts/87654321/filterSets/test-a-1</pre>
+
+<strong>Response</strong>
+<p>If successful, the request body will be empty. The specified filter set will no longer be accessible.</p>
+
+<h2>Retrieve RTB troubleshooting metrics</h2>
+<p>All RTB troubleshooting resources used to receive metrics operate in a similar way—they have a
+  single method to list metrics for the filter set specified via a <code>filterSetName</code> path
+  parameter. The filter set specified will determine what filters and settings will be applied when
+  querying the metrics. Calling these resources from the bidder level will return aggregated metrics
+  from the bidder account and all associated child accounts, whereas a call from the account level
+  will only return metrics for an individual account.</p>
+<h3>Bid Metrics</h3>
+<p>The <code>bidMetrics</code> resource is used to retrieve metrics that are measured in the
+  number of bids. For example, you can use this to determine your total number of bids over a
+  given time range, and how many of those were not filtered from the auction, won an impression,
+  etc. Like all other RTB troubleshooting resources used to collect metrics, it only has a <code>list</code> method.</p>
+<h3>List bidder-level bid metrics</h3>
+<p>You can list bidder-level bid metrics for a given filter set by sending an HTTP <code>GET</code>
+  request to the <code>bidders.filtersets.bidMetrics</code> resource URI, which has the following format:</p>
+
+<pre>GET https://adexchangebuyer.googleapis.com/v2beta1/bidders/{bidder resource ID}/filterSets/{filter set resource ID}/bidMetrics</pre>
+<strong>Request</strong>
+<p>Here's an example listing bidder-level bid metrics:</p>
+<pre>GET https://adexchangebuyer.googleapis.com/v2beta1/bidders/12345678/filterSets/bidder-fs/bidMetrics</pre>
+<strong>Response</strong>
+<p>If the request succeeds, the server responds with a <code>200 OK</code> status code and a body containing rows of metrics for the specified dimensions and granularity.</p>
+<pre>
+{
+  "bidMetricsRows": [{
+        "bids": {
+        "value": "6160"
+      },
+      "bidsInAuction": {
+        "value": "5698"
+      },
+      "billedImpressions": {
+        "value": "1196"
+      },
+      "impressionsWon": {
+        "value": "2920"
+      },
+      "measurableImpressions": {
+        "value": "1160"
+      },
+      "rowDimensions": {
+        "timeInterval": {
+          "endTime": "2017-11-29T08:00:00Z",
+          "startTime": "2017-11-28T08:00:00Z"
+        }
+      },
+      "viewableImpressions": {
+        "value": "683"
+      }
+    },
+    {
+      "bids": {
+        "value": "104288"
+      },
+      "bidsInAuction": {
+        "value": "94016"
+      },
+      "billedImpressions": {
+        "value": "99"
+      },
+      "impressionsWon": {
+        "value": "125"
+      },
+      "measurableImpressions": {
+        "value": "94"
+      },
+      "rowDimensions": {
+        "timeInterval": {
+          "endTime": "2017-11-30T08:00:00Z",
+          "startTime": "2017-11-29T08:00:00Z"
+        }
+      },
+      "viewableImpressions": {
+        "value": "87"
+      }
+    },
+    {
+      "bids": {
+        "value": "3999"
+      },
+      "bidsInAuction": {
+        "value": "3631"
+      },
+      "billedImpressions": {
+        "value": "618"
+      },
+      "impressionsWon": {
+        "value": "1819"
+      },
+      "measurableImpressions": {
+        "value": "604"
+      },
+      "rowDimensions": {
+        "timeInterval": {
+          "endTime": "2017-12-01T08:00:00Z",
+          "startTime": "2017-11-30T08:00:00Z"
+        }
+      },
+      "viewableImpressions": {
+        "value": "369"
+      }
+    },
+    {
+      "bids": {
+        "value": "15"
+      },
+      "bidsInAuction": {
+        "value": "3"
+      },
+      "billedImpressions": {},
+      "impressionsWon": {
+        "value": "3"
+      },
+      "measurableImpressions": {},
+      "rowDimensions": {
+        "timeInterval": {
+          "endTime": "2017-12-02T08:00:00Z",
+          "startTime": "2017-12-01T08:00:00Z"
+        }
+      },
+      "viewableImpressions": {}
+    }
+  ]
+}
+
+</pre>
+<p class="note">Note: Any fields set to 0 for a given metric will not appear in the response.
+  The empty <code>billedImpressions</code> and <code>measurableImpressions</code> metrics above
+  indicate that both the value and variance for these are set to 0.</p>
+
+<p class="warning">Warning: For any breakdown of data in the response, the response will not
+  include rows if they don't contain at least one non-zero metric. For example, when a
+  <code>timeSeriesGranularity</code> is specified, the response will not include rows for any
+  <code>timeInterval</code> over the filter set's specified time range where all metrics are zero.</p>
+<h3>List account-level bid metrics</h3>
+<p>You can list account-level bid metrics for a given filter set by sending an HTTP <code>GET</code>
+  request to the <code>bidders.accounts.filtersets.bidMetrics</code> resource URI, which has the
+  following format:</p>
+
+<pre>GET https://adexchangebuyer.googleapis.com/v2beta1/bidders/{bidder resource ID}/accounts/{account resource ID}/filterSets/{filter set resource ID}/bidMetrics</pre>
+<strong>Request</strong>
+<p>Here's an example listing account-level bid metrics:</p>
+
+<pre>GET https://adexchangebuyer.googleapis.com/v2beta1/bidders/12345678/accounts/87654321/filterSets/account-fs/bidMetrics</pre>
+<strong>Response</strong>
+<p>If the request succeeds, the server responds with a <code>200 OK</code> status code and a body containing rows of metrics for the specified dimensions and granularity.</p>
+<pre>
+{
+  "bidMetricsRows": [{
+      "bids": {
+        "value": "1748"
+      },
+      "bidsInAuction": {
+        "value": "1421"
+      },
+      "billedImpressions": {
+        "value": "301"
+      },
+      "impressionsWon": {
+        "value": "915"
+      },
+      "measurableImpressions": {
+        "value": "298"
+      },
+      "rowDimensions": {
+        "timeInterval": {
+          "endTime": "2017-12-01T08:00:00Z",
+          "startTime": "2017-11-30T08:00:00Z"
+        }
+      },
+      "viewableImpressions": {
+        "value": "172"
+      }
+    },
+    {
+      "bids": {
+        "value": "6"
+      },
+      "bidsInAuction": {
+        "value": "2"
+      },
+      "billedImpressions": {},
+      "impressionsWon": {
+        "value": "1"
+      },
+      "measurableImpressions": {},
+      "rowDimensions": {
+        "timeInterval": {
+          "endTime": "2017-12-02T08:00:00Z",
+          "startTime": "2017-12-01T08:00:00Z"
+        }
+      },
+      "viewableImpressions": {}
+    }
+  ]
+}
+</pre>
+
+<p class="note">Note: Any fields set to 0 for a given metric will not appear in the response. The
+  empty <code>billedImpressions</code> and <code>measurableImpressions</code> metrics above indicate
+  that both the value and variance for these are set to 0.</p>
+<p class="warning">Warning: For any breakdown of data in the response, the response will not include
+  rows if they don't contain at least one non-zero metric. For example, when a
+  <code>timeSeriesGranularity</code> is specified, the response will not include rows for any
+  <code>timeInterval</code> over the filter set's specified time range where all metrics are zero.</p>
+
+
+  </div>
+  
+
+  
+        
+  
+
+
+
+
+
+
+
+        
+<div class="devsite-content-footer nocontent">
+  
+  
+    <p>Except as otherwise noted, the content of this page is licensed under the <a href="http://creativecommons.org/licenses/by/3.0/">Creative Commons Attribution 3.0 License</a>, and code samples are licensed under the <a href="http://www.apache.org/licenses/LICENSE-2.0">Apache 2.0 License</a>. For details, see our <a href="https://developers.google.com/terms/site-policies">Site Policies</a>. Java is a registered trademark of Oracle and/or its affiliates.</p>
+  
+
+  
+    
+    <p class="devsite-content-footer-date" itemprop="datePublished"
+       content="2017-12-07T15:52:56.205880">
+      
+      Last updated December 7, 2017.
+    </p>
+  
+
+</div>
+
+        </article>
+      </article>
+  
+
+        </div>
+      
+
+<footer class="devsite-footer-linkboxes nocontent
+               
+               devsite-footer-linkboxes-with-sites"><nav class="devsite-full-site-width"><ul class="devsite-footer-linkboxes-list"><li class="devsite-footer-linkbox "><h3 class="devsite-footer-linkbox-heading">Support</h3><ul class="devsite-footer-linkbox-list"><li class="devsite-footer-linkbox-item"><a href="//groups.google.com/forum/#!forum/google-doubleclick-ad-exchange-buyer-api" class="gc-analytics-event"
+               data-category="Site-Wide Custom Events"
+               data-label="Content Page Footer Linkbox">
+                Forum
+            </a></li></ul></li><li class="devsite-footer-linkbox "><h3 class="devsite-footer-linkbox-heading">Connect</h3><ul class="devsite-footer-linkbox-list"><li class="devsite-footer-linkbox-item"><a href="http://googleadsdeveloper.blogspot.com/search/label/ad_exchange" class="gc-analytics-event"
+               data-category="Site-Wide Custom Events"
+               data-label="Content Page Footer Linkbox">
+                Blog
+            </a></li><li class="devsite-footer-linkbox-item"><a href="//plus.google.com/+GoogleAdsDevelopers" class="gc-analytics-event"
+               data-category="Site-Wide Custom Events"
+               data-label="Content Page Footer Linkbox">
+                Google+
+            </a></li></ul></li><li class="devsite-footer-linkbox "><h3 class="devsite-footer-linkbox-heading">Product Info</h3><ul class="devsite-footer-linkbox-list"><li class="devsite-footer-linkbox-item"><a href="//www.google.com/doubleclick/adxbuyer/guidelines.html" class="gc-analytics-event"
+               data-category="Site-Wide Custom Events"
+               data-label="Content Page Footer Linkbox">
+                Program Guidelines
+            </a></li><li class="devsite-footer-linkbox-item"><a href="https://developers.google.com/ad-exchange/buyer-rest/terms" class="gc-analytics-event"
+               data-category="Site-Wide Custom Events"
+               data-label="Content Page Footer Linkbox">
+                Terms of Service
+            </a></li></ul></li><li class="devsite-footer-linkbox devsite-footer-linkbox-sites"><a href="https://developers.google.com/"
+           class="gc-analytics-event devsite-footer-linkbox-logo-link"
+           data-category="Site-Wide Custom Events" data-label="Footer Google Developers Link"><img class="devsite-footer-linkbox-logo"
+               src="https://developers.google.com/_static/d7147bb846/images/redesign-14/lockup-color-knockout.png"
+               alt="Google Developers"></a><ul class="devsite-footer-linkbox-list"><li class="devsite-footer-linkbox-item"><a href="//developer.android.com/index.html" class="gc-analytics-event"
+               data-category="Site-Wide Custom Events"
+               data-label="Footer Android Link">
+                Android
+            </a></li><li class="devsite-footer-linkbox-item"><a href="//developer.chrome.com/home" class="gc-analytics-event"
+               data-category="Site-Wide Custom Events"
+               data-label="Footer Chrome Link">
+                Chrome
+            </a></li><li class="devsite-footer-linkbox-item"><a href="//firebase.google.com" class="gc-analytics-event"
+               data-category="Site-Wide Custom Events"
+               data-label="Footer Firebase Link">
+                Firebase
+            </a></li><li class="devsite-footer-linkbox-item"><a href="//cloud.google.com" class="gc-analytics-event"
+               data-category="Site-Wide Custom Events"
+               data-label="Footer Cloud Link">
+                Google Cloud Platform
+            </a></li><li class="devsite-footer-linkbox-item"><a href="//developers.google.com/products/" class="gc-analytics-event"
+               data-category="Site-Wide Custom Events"
+               data-label="Footer Products Link">
+                All Products
+            </a></li></ul></li></ul></nav></footer><footer class="devsite-utility-footer"><nav class="devsite-utility-footer-nav devsite-nav devsite-full-site-width"><div class="devsite-utility-footer-nav-left"><form class="devsite-utility-footer-language" action="/i18n/setlang/" method="post"><input type="hidden" name="xsrf_token" value="rAH6Lpi9PB-8B-I-_NfA4B6Krrjv8a4xxgxngxlOPYc6MTUyNDQ2MDE4NjY2NTQ0MA" /><input type="hidden" name="next" value="/ad-exchange/buyer-rest/guides/v2/rtb-troubleshooting"><select class="devsite-utility-footer-language-select kd-select" name="language"
+                track-type="languageSelector" track-name="click"><option value="id"
+                
+                track-type="languageSelector" track-name="changed"
+                track-metadata-original-language="en"
+                track-metadata-selected-language="id">
+            Bahasa Indonesia
+          </option><option value="de"
+                
+                track-type="languageSelector" track-name="changed"
+                track-metadata-original-language="en"
+                track-metadata-selected-language="de">
+            Deutsch
+          </option><option value="en"
+                 selected="selected" 
+                track-type="languageSelector" track-name="changed"
+                track-metadata-original-language="en"
+                track-metadata-selected-language="en">
+            English
+          </option><option value="es"
+                
+                track-type="languageSelector" track-name="changed"
+                track-metadata-original-language="en"
+                track-metadata-selected-language="es">
+            español
+          </option><option value="fr"
+                
+                track-type="languageSelector" track-name="changed"
+                track-metadata-original-language="en"
+                track-metadata-selected-language="fr">
+            français
+          </option><option value="pt-br"
+                
+                track-type="languageSelector" track-name="changed"
+                track-metadata-original-language="en"
+                track-metadata-selected-language="pt-br">
+            Português Brasileiro
+          </option><option value="ru"
+                
+                track-type="languageSelector" track-name="changed"
+                track-metadata-original-language="en"
+                track-metadata-selected-language="ru">
+            Русский
+          </option><option value="ja"
+                
+                track-type="languageSelector" track-name="changed"
+                track-metadata-original-language="en"
+                track-metadata-selected-language="ja">
+            日本語
+          </option><option value="zh-cn"
+                
+                track-type="languageSelector" track-name="changed"
+                track-metadata-original-language="en"
+                track-metadata-selected-language="zh-cn">
+            简体中文
+          </option><option value="ko"
+                
+                track-type="languageSelector" track-name="changed"
+                track-metadata-original-language="en"
+                track-metadata-selected-language="ko">
+            한국어
+          </option></select></form><span class="devsite-utility-footer-links"><a class="devsite-utility-footer-link gc-analytics-event"
+           href="https://developers.google.com/terms/site-terms"
+           data-category="Site-Wide Custom Events"
+           data-label="Footer terms link"
+           data-footer-link-id="terms"
+           >Terms
+         </a><a class="devsite-utility-footer-link gc-analytics-event"
+           href="//www.google.com/policies/privacy/"
+           data-category="Site-Wide Custom Events"
+           data-label="Footer privacy link"
+           data-footer-link-id="privacy"
+           >Privacy
+         </a></span></div><div class="devsite-utility-footer-nav-right"><div class="devsite-utility-footer-newsletter-signup-text">
+        Sign up for the Google Developers newsletter
+      </div><a class="button button-primary devsite-utility-footer-newsletter-signup-button"
+         href="//services.google.com/fb/forms/googledevelopersnewsletter/?utm_medium=referral&amp;utm_source=google-products&amp;utm_team=googledevs&amp;utm_campaign=201611-newsletter-launch">
+        
+        Subscribe
+      </a></div></nav></footer><div class="devsite-feedback-dialog devsite-dialog"><div class="devsite-dialog-contents"><h3>Send feedback about...</h3><div class="devsite-feedback-item"><a data-type="documentation" class="gc-analytics-event"
+           data-category="Site-Wide Custom Events" data-label="Docs Feedback Image"
+           track-type="feedback" track-name="feedbackDocIcon" track-metadata-position="header"><div class="devsite-feedback-item-icon-container"><div class="devsite-feedback-item-icon-white devsite-feedback-item-icon-docs
+                        material-icons"></div></div></a><div class="devsite-feedback-item-name">
+          
+          This page
+        </div><div class="devsite-feedback-item-description"><a data-type="documentation" tabindex="0" class="gc-analytics-event"
+             data-category="Site-Wide Custom Events" data-label="Docs Feedback Text"
+             track-type="feedback" track-name="feedbackDocText" track-metadata-position="header">
+            
+            Documentation feedback
+          </a></div></div><div class="devsite-feedback-item"><a data-type="product" tabindex="0" class="gc-analytics-event"
+           data-category="Site-Wide Custom Events" data-label="Product Feedback Image"
+           track-type="feedback" track-name="feedbackProductIcon" track-metadata-position="header"
+         ><img src="https://developers.google.com/ads/images/dclk-logo-mark-128px.png"
+                 class="devsite-feedback-item-icon"
+                 alt="DoubleClick Ad Exchange Buyer API"></a><div class="devsite-feedback-item-name">
+        DoubleClick Ad Exchange Buyer API
+        </div><div class="devsite-feedback-item-description"><a data-type="product" tabindex="0" class="gc-analytics-event"
+             data-category="Site-Wide Custom Events" data-label="Product Feedback Text"
+             track-type="feedback" track-name="feedbackProductText" track-metadata-position="header"
+           >
+            
+            Product feedback
+          </a></div></div></div><div class="devsite-dialog-buttons"><button type="button" class="devsite-feedback-cancel button-white gc-analytics-event"
+              data-category="Site-Wide Custom Events" data-label="Cancel Feedback Button"
+              track-type="feedback" track-name="cancelFeedbackButton"
+              track-metadata-position="header">
+        
+        Cancel
+      </button></div></div><script>
+  $(document).ready(function() {
+    new devsite.feedback.Widget({
+        'product_id': '82128',
+        'bucket': 'AdExchangeBuyerRest',
+        'context': '',
+        'version': 'devsite-20180420-r00-rc00.default'
+      },
+      document.querySelectorAll('.devsite-feedback-button'),
+      'en',
+      document.querySelector('.devsite-site-mask'),
+      document.querySelector('.devsite-feedback-dialog'),
+      document.querySelector('.devsite-feedback-cancel'),
+      document.querySelectorAll('.devsite-feedback-item a:not([href])')
+    );
+  });
+  </script></div><script async defer src="//www.gstatic.com/feedback/api.js"></script><script src="https://developers.google.com/_static2/d7147bb846/jsi18n/"></script><script src="https://developers.google.com/_static/d7147bb846/js/script_foot_closure.js"></script><script src="https://developers.google.com/_static/d7147bb846/js/script_foot.js"></script><script>
+        (function($) {
+          
+          devsite.devsite.Init($, {'ENABLE_BLOCKED_VIDEO_PLACEHOLDER': 0, 'SITE_NAME': 'devsite', 'FULL_SITE_SEARCH_ENABLED': 1, 'ENABLE_CLOUDTRACK': 0, 'VTAGS_ENABLED': 0, 'HISTORY_ENABLED': 1, 'VERSION_HASH': 'd7147bb846', 'SCRIPTSAFE_DOMAIN': 'google-developers.appspot.com', 'ENABLE_BLOCKED_LINK_TOOLTIP': 0, 'ALLOWED_HOSTS': ['.android.com', '.anvato.com', '.apigee.com', '.appspot.com', '.dialogflow.com', '.gonglchuangl.net', '.google.cn', '.google.com', '.googleplex.com', '.nest.com', '.openthread.io', '.openweave.io', '.orbitera.com', '.tensorflow.org'], 'BLOCK_RSS_FEEDS': 0},
+                               '[]','en',
+                               true, '',
+                               {"f62218c009ec029abef196bba5aa34cf": true, "8de7a048f21618359bd37f5ce44be073": false, "098dafe57affddc137df300142652cfd": false, "8e03e230de0bd8a6fe173fdf172e8b3f": true, "cb025a64a50094835616312f4774a53d": true, "51470233c56fc1fde50f00b73c52b216": false, "d169d485cf24243a263783dbe42029b1": true, "039e5d84b87fd75807ffb37b7f1bbf2c": true, "700def1a83e356c06c0925afb05de4b0": false, "6749dcb526ce9bde6993550c7d928d24": true}, '/ad-exchange/buyer-rest/',
+                               'https://developers.google.com/');
+        })(jQuery);
+
+        
+        devsite.localInit = function() {
+          
+        };
+
+      </script><script>
+      $('.devsite-utility-footer-language-select').each(function() {
+        $(this).change(function(){$('.devsite-utility-footer-language').submit();});
+      });
+      </script></div><span id="devsite-request-elapsed" data-request-elapsed="171.489953995"></span></body></html>

@@ -1,0 +1,913 @@
+
+
+
+
+
+
+<!DOCTYPE html><html lang="en"
+      class="chekov"><head><script>var a=window.devsite||{};window.devsite=a;a.readyCallbacks=[];window.devsite.readyCallbacks=a.readyCallbacks;a.ready=function(b){a.readyCallbacks.push(b)};window.devsite.ready=a.ready;
+</script><meta charset="utf-8"><meta name="xsrf_token" content="Z9PqtnIU1Xl5L0fXtBmCje8mqFaIQ3_rE7dTtiAk7Ak6MTUyNDQ1OTkzMTkxMDIwMA" /><link rel="canonical" href="https://developers.google.com/zero-touch/guides/customer/auth"><link rel="alternate" href="https://developers.google.com/zero-touch/guides/customer/auth" hreflang="en"><link rel="alternate" href="https://developers.google.cn/zero-touch/guides/customer/auth" hreflang="en-cn"><link rel="alternate" href="https://developers.google.com/zero-touch/guides/customer/auth" hreflang="x-default"><link rel="shortcut icon" href="https://developers.google.com/_static/d7147bb846/images/favicon.png"><link rel="apple-touch-icon" href="https://developers.google.com/_static/d7147bb846/images/touch-icon.png"><meta name="viewport" content="width=device-width, initial-scale=1"><link rel="stylesheet"
+      
+      href="//fonts.googleapis.com/css?family=Google+Sans:400|Roboto:400,400italic,500,500italic,700,700italic|Roboto+Mono:400,500,700|Material+Icons"
+      ><link rel="stylesheet"
+        href="https://developers.google.com/_static/d7147bb846/css/devsite-cyan.css"><link rel="search"
+        type="application/opensearchdescription+xml"
+        title="Google Developers"
+        href="https://developers.google.com/s/opensearch.xml"><script src="https://developers.google.com/_static/d7147bb846/js/jquery-bundle.js"></script><meta property="og:site_name" content="Google Developers"><meta property="og:type" content="website"><meta property="og:url" content="https://developers.google.com/zero-touch/guides/customer/auth"><meta property="og:locale" content="en"><script>
+    var ___gcfg = ___gcfg || {};
+    ___gcfg.lang = 'en';
+  </script><title>Authorization &nbsp;|&nbsp; Android zero-touch enrollment
+      &nbsp;|&nbsp; Google Developers</title><meta property="og:title" content="Authorization &nbsp;|&nbsp; Android zero-touch enrollment
+      &nbsp;|&nbsp; Google Developers"><meta property="og:image"
+          content="https://developers.google.com/_static/d7147bb846/images/share/devsite-cyan.png"><meta property="og:image:secure_url"
+          content="https://developers.google.com/_static/d7147bb846/images/share/devsite-cyan.png"><meta property="og:image:width" content="1200"><meta property="og:image:height" content="630"></head><body class="
+               devsite-doc-page
+               
+               
+               
+               devsite-header-no-upper-tabs
+               "
+        data-family="endorsed"
+        id="top_of_page"><div class="devsite-wrapper"><div class="devsite-top-section-wrapper
+            "><header class="devsite-top-section nocontent"><div class="devsite-top-logo-row-wrapper-wrapper"><div class="devsite-top-logo-row-wrapper"><div class="devsite-top-logo-row devsite-full-site-width"><button type="button" class="devsite-expand-section-nav devsite-header-icon-button
+                                       button-flat material-icons gc-analytics-event"
+                  data-category="Site-Wide Custom Events" data-label="Hamburger menu"></button><div class="devsite-product-name-wrapper"><span class="devsite-product-name"><ul class="devsite-breadcrumb-list"><li class="devsite-breadcrumb-item"><a href="https://developers.google.com/zero-touch/" class="devsite-breadcrumb-link gc-analytics-event"
+       data-category="Site-Wide Custom Events" data-label="Upper Header"
+       data-value="1">
+    
+    
+      
+        Android zero-touch enrollment
+      
+    
+    
+    </a></li></ul></span></div><div class="devsite-header-upper-tabs"></div><form class="devsite-search-form"
+                action="https://developers.google.com/s/results/"
+                method="GET"
+                id="top-search"
+                search-placeholder='Search'><div id="searchbox" class="devsite-searchbox"><input placeholder='Search'
+         
+         type="text"
+         class="devsite-search-field devsite-search-query"
+         name="q"
+         value=""
+         autocomplete="off"
+         
+         aria-label="Search box"><div class="devsite-search-image material-icons"></div></div><input type="hidden"
+       name="p"
+       id="search_project"
+       value="/zero-touch/"
+       data-project-name="Android zero-touch enrollment"
+       data-project-path="/zero-touch/"
+       data-query-match=""><input type="hidden" class="suggest-project" value="Android zero-touch enrollment" /><div class="suggest-project-metadata" data-home_url="/zero-touch/" data-path="/zero-touch/" data-name="Android zero-touch enrollment" ></div></form><a class="devsite-header-link devsite-top-button button gc-analytics-event"
+               href="https://developers.google.com/products/"
+               data-category="Site-Wide Custom Events"
+               data-label="Site header link"
+               track-type="navigateTo"
+               track-name="all products"
+               track-metadata-position="nav"><div class="devsite-header-link-label">All Products</div></a><button type="button" class="devsite-search-button devsite-header-icon-button button-flat
+                                       material-icons"></button><a href="https://www.google.com/accounts/ServiceLogin?passive=true&continue=https%3A%2F%2Fdevelopers.google.com%2Fzero-touch%2Fguides%2Fcustomer%2Fauth%3Frefresh%3D1&service=ahsid"
+   class="devsite-user-signin devsite-top-button button gc-analytics-event"
+   data-category="Site-Wide Custom Events" data-label="Sign in button">
+  
+  Sign in
+</a></div></div></div><div class="devsite-collapsible-section"><div class="devsite-header-background devsite-full-site-width"><div class="devsite-doc-set-nav-row devsite-full-site-width"><nav class="devsite-doc-set-nav devsite-nav devsite-overflow-tabs-scroll-wrapper"><ul class="devsite-doc-set-nav-tab-list devsite-overflow-tabs-scroll"><li class="devsite-doc-set-nav-tab-container devsite-nav-tab
+               "><a href="https://developers.google.com/zero-touch/"
+         class=" devsite-nav-tab
+                devsite-doc-set-nav-tab devsite-doc-set-nav-tab-link gc-analytics-event"
+         
+       
+         data-category="Site-Wide Custom Events"
+       
+         data-label="Tab: Home"
+       >
+        Home
+      </a></li><li class="devsite-doc-set-nav-tab-container devsite-nav-tab
+               "><a href="https://developers.google.com/zero-touch/guides/overview"
+         class="devsite-doc-set-nav-active devsite-nav-tab
+                devsite-doc-set-nav-tab devsite-doc-set-nav-tab-link gc-analytics-event"
+         aria-label="Guides, selected"
+       
+         data-category="Site-Wide Custom Events"
+       
+         data-label="Tab: Guides"
+       >
+        Guides
+      </a></li><li class="devsite-doc-set-nav-tab-container devsite-nav-tab
+               "><a href="https://developers.google.com/zero-touch/reference/reseller/rest/"
+         class=" devsite-nav-tab
+                devsite-doc-set-nav-tab devsite-doc-set-nav-tab-link gc-analytics-event"
+         
+       
+         data-category="Site-Wide Custom Events"
+       
+         data-label="Tab: Reference"
+       >
+        Reference
+      </a></li><li class="devsite-doc-set-nav-tab-container devsite-nav-tab
+               "><a href="https://developers.google.com/zero-touch/support/contact"
+         class=" devsite-nav-tab
+                devsite-doc-set-nav-tab devsite-doc-set-nav-tab-link gc-analytics-event"
+         
+       
+         data-category="Site-Wide Custom Events"
+       
+         data-label="Tab: Support"
+       >
+        Support
+      </a></li><button type="button" id="devsite-feedback-project"
+          class="devsite-feedback-button devsite-top-button gc-analytics-event"
+          data-category="Site-Wide Custom Events" data-label="Send Feedback Button"
+          track-type="feedback" track-name="sendFeedbackLink" track-metadata-position="header">
+  
+  Send feedback
+  </button></ul></nav></div></div></div></header><script>
+    if (window.jQuery) {
+      $(document).ready(function() {
+        if (window.devsite && window.devsite.search) {
+          
+          window.devsite.search.init('en')
+        }
+      });
+    }
+  </script></div><div id="gc-wrapper"itemscope itemtype="http://schema.org/Article"><input class="google-analytics-id-json" type="hidden" value="{&quot;dimensions&quot;: {&quot;dimension6&quot;: &quot;en&quot;, &quot;dimension4&quot;: &quot;Android zero-touch enrollment&quot;, &quot;dimension5&quot;: &quot;en&quot;, &quot;dimension3&quot;: false, &quot;dimension1&quot;: &quot;Signed out&quot;, &quot;dimension8&quot;: null}, &quot;gaid&quot;: &quot;UA-24532603-1&quot;}"><input class="google-analytics-id-json" type="hidden" value="{&quot;dimensions&quot;: {}, &quot;gaid&quot;: &quot;UA-100339529-1&quot;}"><script>
+      var dataLayer = [{"freeTrialEligibleUser": "False", "userCountry": "HK", "language": {"requested": "en", "served": "en"}, "projectName": "Android zero-touch enrollment", "scriptsafe": null, "signedIn": "False", "internalUser": "False"}];
+    </script>
+
+      
+        <div class="devsite-site-mask"></div>
+        
+  
+
+
+<nav class="devsite-nav-responsive devsite-nav nocontent" tabindex="0">
+  
+  <div class="devsite-nav-responsive-tabs-panel">
+    
+      
+
+
+
+<nav class="devsite-nav-responsive-tabs devsite-nav">
+  <ul class="devsite-nav-list">
+  
+    <li class="devsite-nav-item devsite-nav-item-heading">
+    
+      <a 
+           href="https://developers.google.com/zero-touch/"
+         
+         class="devsite-nav-responsive-tab devsite-nav-title gc-analytics-event
+                "
+         data-category="Site-Wide Custom Events" data-label="Responsive Tab: Home">
+        Home
+      </a>
+      
+      
+    
+    </li>
+  
+    <li class="devsite-nav-item devsite-nav-item-heading">
+    
+      <span class="devsite-nav-responsive-forward devsite-nav-responsive-tab devsite-nav-title
+                   devsite-nav-active gc-analytics-event"
+            data-category="Site-Wide Custom Events" data-label="Responsive Tab: Guides"
+            tabindex="0">
+        Guides
+      </span>
+    
+    </li>
+  
+    <li class="devsite-nav-item devsite-nav-item-heading">
+    
+      <a 
+           href="https://developers.google.com/zero-touch/reference/reseller/rest/?nav=true"
+         
+         class="devsite-nav-responsive-tab devsite-nav-title gc-analytics-event
+                "
+         data-category="Site-Wide Custom Events" data-label="Responsive Tab: Reference">
+        Reference
+      </a>
+      
+      
+    
+    </li>
+  
+    <li class="devsite-nav-item devsite-nav-item-heading">
+    
+      <a 
+           href="https://developers.google.com/zero-touch/support/contact?nav=true"
+         
+         class="devsite-nav-responsive-tab devsite-nav-title gc-analytics-event
+                "
+         data-category="Site-Wide Custom Events" data-label="Responsive Tab: Support">
+        Support
+      </a>
+      
+      
+    
+    </li>
+  
+  
+    <li class="devsite-nav-item devsite-nav-item-heading">
+      <a href="https://developers.google.com/products/"
+         class="devsite-nav-responsive-tab devsite-nav-title gc-analytics-event"
+         data-category="Site-Wide Custom Events"
+         data-label="Responsive Tab: all_products">
+        All Products
+      </a>
+    </li>
+  
+  </ul>
+</nav>
+
+
+    
+  </div>
+  
+  
+  <div class="devsite-nav-responsive-sidebar-panel">
+    
+    <div class="devsite-nav-responsive-back" tabindex="0"></div>
+    
+    <nav class="devsite-nav-responsive-sidebar"></nav>
+  </div>
+  
+  
+</nav>
+
+
+        <div class="devsite-main-content clearfix">
+
+        
+        
+
+        
+  
+  
+    
+    
+      
+  <nav class="devsite-section-nav devsite-nav nocontent">
+    <ul class="devsite-nav-list devsite-nav-expandable"><li class="devsite-nav-item"><a href="https://developers.google.com/zero-touch/guides/overview" class="devsite-nav-title">Overview</a></li><li class="devsite-nav-item devsite-nav-item-heading"><span class="devsite-nav-title devsite-nav-title-no-path">Portal</span></li><li class="devsite-nav-item"><a href="https://developers.google.com/zero-touch/guides/portal" class="devsite-nav-title">Reseller Guide</a></li><li class="devsite-nav-item devsite-nav-item-heading"><span class="devsite-nav-title devsite-nav-title-no-path">Reseller API</span></li><li class="devsite-nav-item"><a href="https://developers.google.com/zero-touch/guides/how-it-works" class="devsite-nav-title">How it works</a></li><li class="devsite-nav-item"><a href="https://developers.google.com/zero-touch/guides/get-started" class="devsite-nav-title">Get started</a></li><li class="devsite-nav-item"><a href="https://developers.google.com/zero-touch/guides/auth" class="devsite-nav-title">Authorization</a></li><li class="devsite-nav-item"><a href="https://developers.google.com/zero-touch/guides/identifiers" class="devsite-nav-title">Identifiers</a></li><li class="devsite-nav-item"><a href="https://developers.google.com/zero-touch/guides/metadata" class="devsite-nav-title">Device metadata</a></li><li class="devsite-nav-item devsite-nav-item-heading devsite-nav-new devsite-nav-has-status"><span class="devsite-nav-title devsite-nav-title-no-path"><span class="devsite-nav-text">Customer API</span><span class="devsite-nav-icon-wrapper"><span class="devsite-nav-icon material-icons" title="New!"></span></span></span></li><li class="devsite-nav-item"><a href="https://developers.google.com/zero-touch/guides/customer/how-it-works" class="devsite-nav-title">How it works</a></li><li class="devsite-nav-item devsite-nav-active"><a href="https://developers.google.com/zero-touch/guides/customer/auth" class="devsite-nav-title">Authorization</a></li><li class="devsite-nav-item devsite-nav-item-section-expandable"><span class="devsite-nav-title devsite-nav-title-no-path" aria-label="Quickstarts, click to expand/collapse" role="link">Quickstarts</span><a class="devsite-nav-toggle devsite-nav-toggle-collapsed material-icons" track-type="leftNav" track-name="expandNavSectionArrow" track-metadata-position="0" aria-hidden="true"></a><ul class="devsite-nav-section devsite-nav-section-collapsed"><li class="devsite-nav-item"><a href="https://developers.google.com/zero-touch/guides/customer/quickstart/java" class="devsite-nav-title">Java</a></li><li class="devsite-nav-item"><a href="https://developers.google.com/zero-touch/guides/customer/quickstart/dotnet" class="devsite-nav-title">.NET</a></li><li class="devsite-nav-item"><a href="https://developers.google.com/zero-touch/guides/customer/quickstart/python" class="devsite-nav-title">Python</a></li></ul></li><li class="devsite-nav-item"><a href="https://developers.google.com/zero-touch/guides/customer/emm" class="devsite-nav-title">EMM integration</a></li></ul>
+  </nav>
+
+    
+
+    
+  <nav class="devsite-page-nav devsite-nav"></nav>
+
+
+      <article class="devsite-article">
+        <article class="devsite-article-inner">
+  
+          
+  
+
+
+
+  
+  <nav class="devsite-breadcrumb-nav devsite-nav">
+    
+
+
+<ul class="devsite-breadcrumb-list">
+  
+  <li class="devsite-breadcrumb-item">
+    
+    
+    <a href="https://developers.google.com/products/" class="devsite-breadcrumb-link gc-analytics-event"
+       data-category="Site-Wide Custom Events" data-label="Breadcrumbs"
+       data-value="1">
+    
+    
+      Products
+    
+    
+    </a>
+    
+  </li>
+  
+  <li class="devsite-breadcrumb-item">
+    
+    
+    <div class="devsite-breadcrumb-guillemet material-icons"></div>
+    
+    
+    <a href="https://developers.google.com/zero-touch/" class="devsite-breadcrumb-link gc-analytics-event"
+       data-category="Site-Wide Custom Events" data-label="Breadcrumbs"
+       data-value="2">
+    
+    
+      Android zero-touch enrollment
+    
+    
+    </a>
+    
+  </li>
+  
+  <li class="devsite-breadcrumb-item">
+    
+    
+    <div class="devsite-breadcrumb-guillemet material-icons"></div>
+    
+    
+    <a href="https://developers.google.com/zero-touch/guides/overview" class="devsite-breadcrumb-link gc-analytics-event"
+       data-category="Site-Wide Custom Events" data-label="Breadcrumbs"
+       data-value="3">
+    
+    
+      Guides
+    
+    
+    </a>
+    
+  </li>
+  
+</ul>
+
+  </nav>
+  
+  
+  <h1 itemprop="name" class="devsite-page-title">
+    Authorization
+  </h1>
+  
+  
+  <nav class="devsite-page-nav-embedded devsite-nav"></nav>
+  
+  <div class="devsite-article-body clearfix
+            "
+       itemprop="articleBody">
+    
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!--* freshness: { owner: 'benjaminmiller' reviewed: '2018-01-30' } *-->
+
+<p>Apps authorize calls to the zero-touch enrollment <a href="https://developers.google.com/zero-touch/reference/customer/rest/">customer API</a>
+using <a class="external" href="https://oauth.net/2/">OAuth</a>. This document explains the API's authorization for
+enterprise mobility management (EMM) providers and enterprise IT developers.
+After reading this document, you'll know how to authorize API requests in your
+app and explain the account requirements to your app's users.</p>
+<h2 id="authorization_quickstart">Authorization quickstart</h2>
+<ul>
+<li>To set up a Google Cloud Platform project with the zero-touch enrollment API
+  and OAuth client secrets, run <a href="https://console.developers.google.com/start/api?id=androiddeviceprovisioning.googleapis.com">this wizard</a>.</li>
+<li>Build the quickstart sample code for <a href="https://developers.google.com/zero-touch/guides/customer/quickstart/java">Java</a>, <a href="https://developers.google.com/zero-touch/guides/customer/quickstart/dotnet">.NET</a>, or
+  <a href="https://developers.google.com/zero-touch/guides/customer/quickstart/python">Python</a>. Use Google's API client libraries to support other
+  languages.</li>
+</ul>
+<h2 id="overview">Overview</h2>
+<p><img alt="Device and customer resource relationship" src="https://developers.google.com/zero-touch/images/guides/customer/auth/access-token.svg" /></p>
+<ol>
+<li>One or more IT admins are users in a zero-touch enrollment customer account.</li>
+<li>IT admins use a Google Account to authenticate themselves.</li>
+<li>API requests pass an OAuth2 token to authorize API requests on behalf of an
+IT admin.</li>
+</ol>
+<h2 id="customer_accounts">Customer accounts</h2>
+<p>An organization's configurations, devices, and (IT admin) users belong to a
+customer account. A customer account is similar to a group and isn't an
+individual user. A reseller sets up a customer when the organization first
+purchases devices for zero-touch enrollment. IT admins manage other users in
+their organization using the zero-touch enrollment portal.</p>
+<p>The API uses numeric customer IDs to identify accounts. You pass the customer ID
+as part of the URL path when calling API methods. Your app needs to get a user's
+customer ID before calling any API methods.</p>
+<p>The example below shows how to get the customer accounts for the user that
+authorizes the API call:</p>
+<div class="ds-selector-tabs">
+  <section>
+    <h3>Java</h3>
+    <pre class="prettyprint lang-java">AndroidProvisioningPartner.Customers.List accountRequest = service.customers().list();
+accountRequest.setPageSize(100);
+CustomerListCustomersResponse accountResponse = accountRequest.execute();
+
+List&lt;Company&gt; customers = accountResponse.getCustomers();
+if (customers == null || customers.isEmpty()) {
+    // No accounts found for the user. Confirm the Google Account
+    // that authorizes the request can access the zero-touch portal.
+    System.out.println(&quot;No zero-touch enrollment account found.&quot;);
+} else {
+    // Print the customers in this page.
+    for (Company customer : customers) {
+        System.out.format(&quot;%s\tcustomers/%d\n&quot;,
+              customer.getCompanyName(), customer.getCompanyId());
+    }
+}</pre>
+  </section>
+  <section>
+    <h3>.NET</h3>
+    <pre class="prettyprint lang-cs">CustomersResource.ListRequest accountRequest = service.Customers.List();
+accountRequest.PageSize = 100;
+CustomerListCustomersResponse accountResponse = accountRequest.Execute();
+IList&lt;Company&gt; customers = accountResponse.Customers ?? new List&lt;Company&gt;();
+if (customers.Count == 0)
+{
+    // No accounts found for the user. Confirm the Google Account
+    // that authorizes the request can access the zero-touch portal.
+    Console.WriteLine(&quot;No zero-touch enrollment account found.&quot;);
+}
+foreach (Company customer in customers)
+{
+    Console.WriteLine(&quot;{0}\tcustomers/{1}&quot;,
+                      customer.CompanyName,
+                      customer.CompanyId);
+}</pre>
+  </section>
+    <section>
+    <h3>Python</h3>
+    <pre class="prettyprint lang-py">response = service.customers().list(pageSize=100).execute()
+if &#39;customers&#39; not in response:
+  # No accounts found for the user. Confirm the Google Account
+  # that authorizes the request can access the zero-touch portal.
+  print &#39;No zero-touch enrollment account found.&#39;
+  response[&#39;customers&#39;] = []
+
+for customer in response[&#39;customers&#39;]:
+  print &#39;{0}\tcustomers/{1}&#39;.format(
+      customer[&#39;companyName&#39;], customer[&#39;companyId&#39;])</pre>
+  </section>
+</div>
+
+<p>In your app, you'll need to navigate the account result pages because the
+example above only prints the first 100 accounts. To learn how to do this, read
+<a href="https://developers.google.com/zero-touch/guides/customer/how-it-works#paged">Paged results</a>.</p>
+<p>An organization typically has one customer account but larger organizations
+might use separate customer accounts for each division. Because an IT admin can
+be a member of different customer accounts, your app should help users find and
+use new customer accounts. In your app, label each customer account using the
+<a href="https://developers.google.com/zero-touch/reference/customer/rest/v1/customers#Companys"><code>companyName</code></a> value.</p>
+<h2 id="users">Users</h2>
+<p>IT admins authorize the API requests your app sends on their behalf. To
+authorize API requests, your app's user need to do the following:</p>
+<ol>
+<li>Associate a Google Account with their email address.</li>
+<li>Join a customer account using the same email address.</li>
+<li>Accept the zero-touch enrollment customer Terms of Service (ToS).</li>
+</ol>
+<p>To help your app's users get set up, reuse our guidance for IT admins in <a href="https://support.google.com/work/android/answer/7514005#get-started">Get
+started</a> and <a href="https://support.google.com/work/android/answer/7514005#associate-account">Associate a Google Account</a>
+in your own documentation.</p>
+<h3 id="user_management">User management</h3>
+<p>IT admins manage the users for their customer accounts in the zero-touch
+enrollment portal. Users in a customer account have a role that's either an
+<em>Owner</em> or an <em>Admin</em>. Both roles have the same access to the customer API but
+an <em>Owner</em> can manage other users.</p>
+<h3 id="tos_acceptance">ToS acceptance</h3>
+<p>Before your app's users can authorize API calls, they need to accept the latest
+ToS. This happens when IT admins first use zero-touch enrollment or when we
+update the ToS. When a user hasn't accepted the latest ToS, the API returns an
+HTTP <code>403 Forbidden</code> status code and the response body contains a
+<a href="https://developers.google.com/zero-touch/reference/customer/rest/v1/TosError"><code>TosError</code></a>.</p>
+<p>The portal automatically prompts users to accept the latest ToS when they sign
+in. To see suggested approaches your app could include, read <a href="https://developers.google.com/zero-touch/guides/customer/emm#tos">Handle Terms of
+Service</a> in the EMM integration guide.</p>
+<h2 id="add_authorization_to_your_app">Add authorization to your app</h2>
+<p>Every request your app sends to the customer API must include an authorization
+token. The token also identifies your application to Google. Because the
+customer API accesses user data, authorization must come from the owner of the
+data. Your app delegates API authorization to IT admins using the <a class="external" href="https://oauth.net/2/">OAuth 2.0
+protocol</a>.</p>
+<aside class="key-point"><strong>Key Point:</strong><span> To make it simpler to set up authorization and authentication, Google
+provides <a href="https://developers.google.com/api-client-library/">client libraries</a> that can reduce the amount of
+code you need to write and make your code more robust. We recommend using a
+client library to call the customer API—see the quickstarts for <a href="https://developers.google.com/zero-touch/guides/customer/quickstart/java">Java</a>,
+<a href="https://developers.google.com/zero-touch/guides/customer/quickstart/dotnet">.NET</a>, and <a href="https://developers.google.com/zero-touch/guides/customer/quickstart/python">Python</a>.</span></aside>
+<h3 id="instructions">Instructions</h3>
+<p>We provide quickstart guides for <a href="https://developers.google.com/zero-touch/guides/customer/quickstart/java">Java</a>, <a href="https://developers.google.com/zero-touch/guides/customer/quickstart/dotnet">.NET</a>, and
+<a href="https://developers.google.com/zero-touch/guides/customer/quickstart/python">Python</a> apps. If you're using a different language, follow the two
+steps below to set up authorization for your
+app.</p>
+<section class="expandable" id="turn-api-on">
+
+
+
+<h4 class="showalways">Step 1: turn on the zero-touch enrollment API</h4>
+  
+
+<ol>
+  <li>Use <a href="https://console.developers.google.com/start/api?id=androiddeviceprovisioning.googleapis.com">this
+    wizard</a> to create or select a project in the Google Developers Console and
+    automatically turn on the API. Click <strong>Continue</strong>, then <strong>Go to credentials
+    </strong>.</li>
+  <li>Click <strong>Cancel</strong> on the Add credentials to your project page.</li>
+  <li>At the top of the page, select the <strong>OAuth consent screen</strong> tab. Select an
+    <strong>Email address</strong>, enter a <strong>Product name</strong> if not already set, and
+    click the <strong>Save</strong> button.</li>
+  <li>Select the <strong>Credentials</strong> tab, click the <strong>Create credentials</strong>
+    button and select <strong>OAuth client ID</strong>.</li>
+  
+  <li>Select an <strong>Application type</strong>
+  based on what type of app you're building.</li>
+<li>Set <strong>Name</strong> to your app's name.</li>
+<li>Click <strong>Create</strong>.</li>
+  
+  <li>Click <span class="material-icons">file_download</span> <strong>Download JSON</strong>.</li>
+  <li>Move the file to your working directory and rename it <code>client_secret.json</code>.</li>
+</ol>
+
+</section>
+
+<section class="expandable" id="lib-install">
+<h4 class="showalways">Step 2: install the client library</h4>
+  <p>To install the client library for your language:</p>
+
+<ol>
+  <li>Go to <a href="https://developers.google.com/api-client-library/">Google API Client Libraries</a> and select your language
+    from the list of supported languages.</li>
+  <li>Follow the guidance to install the client library.</li>
+</ol>
+
+</section>
+
+<p>To learn more about authorization, read <a href="https://developers.google.com/identity/protocols/OAuth2">Using OAuth 2.0 to Access Google
+APIs</a>.</p>
+<h3 id="authorization_scopes">Authorization scopes</h3>
+<p>Use the API authorization scope
+<code>https://www.googleapis.com/auth/androidworkzerotouchemm</code> in your app to request
+an OAuth 2.0 access token.</p>
+<p>A scope parameter controls the set of resources and operations that an access
+token permits calls to. Access tokens are valid only for the set of operations
+and resources described in the scope of the token request. The API covers all
+the methods and resources with the single zero-touch enrollment scope shown
+above.</p>
+<p>For an example of the zero-touch enrollment scope used with the Google API
+client library, see the quickstarts for <a href="https://developers.google.com/zero-touch/guides/customer/quickstart/java">Java</a>, <a href="https://developers.google.com/zero-touch/guides/customer/quickstart/dotnet">.NET</a>, and
+<a href="https://developers.google.com/zero-touch/guides/customer/quickstart/python">Python</a>. To learn more about using Google API scopes, read <a href="https://developers.google.com/identity/protocols/OAuth2">Using
+OAuth 2.0 to Access Google APIs</a>.</p>
+<h3 id="best_practices_for_api_keys">Best practices for API keys</h3>
+
+
+
+
+
+
+
+
+<p>When you use API keys in your applications, take care to keep them secure.
+Publicly exposing your credentials can result in your account being
+compromised, which could lead to unexpected charges on your account. To keep
+your API keys secure, follow these best practices:</p>
+<dl>
+  <dt>Do not embed API keys directly in code</dt>
+  <dd>API keys that are embedded in code can be accidentally exposed to the
+  public&mdash;for example, if you forget to remove the keys from code that you
+  share. Instead of embedding your API keys in your applications, store them in
+  environment variables or in files outside of your application's source
+  tree.</dd>
+
+  <dt>Do not store API keys in files inside your application's source tree</dt>
+  <dd>If you store API keys in files, keep the files outside your application's
+  source tree to help ensure your keys do not end up in your source code control
+  system. This is particularly important if you use a public source code
+  management system such as GitHub.</dd>
+
+  <dt>Restrict your API keys to be used by only the IP addresses, referrer URLs,
+  and mobile apps that need them</dt>
+  <dd>By restricting the IP addresses, referrer URLs, and mobile apps that can
+  use each key, you can reduce the impact of a compromised API key. You can
+  specify the hosts and apps that can use each key from the <a href="https://console.developers.google.com/">Google API Console</a>
+  by opening the <a href="https://console.developers.google.com/apis/credentials">Credentials page</a> and then either <a
+  href="https://support.google.com/cloud/answer/6158862">creating a new API
+  key</a> with the settings you want, or editing the settings of an API
+  key.</dd>
+
+  <dt>Delete unneeded API keys</dt>
+  <dd>To minimize your exposure to attack, delete any API keys that you no
+  longer need.</dd>
+
+  <dt>Regenerate your API keys periodically</dt>
+  <dd>You can regenerate API keys from the <a href="https://console.developers.google.com/">Google API Console</a> by opening the
+  <a href="https://console.developers.google.com/apis/credentials">Credentials page</a>, selecting an API key, and clicking <b>Regenerate
+  key</b> for each key. Then update your applications to use the newly-generated
+  keys. Your old keys will continue to work for 24 hours after you generate
+  replacement keys.</dd>
+
+  <dt>Review your code before publicly releasing it</dt>
+  <dd>Ensure that your code does not contain API keys or any other private
+  information before you make your code publicly available.</dd>
+</dl>
+
+
+  </div>
+  
+
+  
+        
+  
+
+
+
+
+
+
+
+        
+<div class="devsite-content-footer nocontent">
+  
+  
+    <p>Except as otherwise noted, the content of this page is licensed under the <a href="http://creativecommons.org/licenses/by/3.0/">Creative Commons Attribution 3.0 License</a>, and code samples are licensed under the <a href="http://www.apache.org/licenses/LICENSE-2.0">Apache 2.0 License</a>. For details, see our <a href="https://developers.google.com/terms/site-policies">Site Policies</a>. Java is a registered trademark of Oracle and/or its affiliates.</p>
+  
+
+  
+    
+    <p class="devsite-content-footer-date" itemprop="datePublished"
+       content="2018-03-15T14:28:04.294830">
+      
+      Last updated March 15, 2018.
+    </p>
+  
+
+</div>
+
+        </article>
+      </article>
+  
+
+        </div>
+      
+
+<footer class="devsite-footer-linkboxes nocontent
+               
+               devsite-footer-linkboxes-with-sites"><nav class="devsite-full-site-width"><ul class="devsite-footer-linkboxes-list"><li class="devsite-footer-linkbox "><h3 class="devsite-footer-linkbox-heading">Product Info</h3><ul class="devsite-footer-linkbox-list"><li class="devsite-footer-linkbox-item"><a href="https://developers.google.com/zero-touch/support/terms" class="gc-analytics-event"
+               data-category="Site-Wide Custom Events"
+               data-label="Content Page Footer Linkbox">
+                Terms of Service
+            </a></li><li class="devsite-footer-linkbox-item"><a href="https://developers.google.com/zero-touch/support/usage" class="gc-analytics-event"
+               data-category="Site-Wide Custom Events"
+               data-label="Content Page Footer Linkbox">
+                Usage Limits
+            </a></li><li class="devsite-footer-linkbox-item"><a href="https://developers.google.com/zero-touch/support/pricing" class="gc-analytics-event"
+               data-category="Site-Wide Custom Events"
+               data-label="Content Page Footer Linkbox">
+                Pricing
+            </a></li></ul></li><li class="devsite-footer-linkbox devsite-footer-linkbox-backup"><h3 class="devsite-footer-linkbox-heading">Programs</h3><ul class="devsite-footer-linkbox-list"><li class="devsite-footer-linkbox-item"><a href="//www.womentechmakers.com" class="gc-analytics-event"
+               data-category="Site-Wide Custom Events"
+               data-label="Footer Women Techmakers">
+                Women Techmakers
+            </a></li><li class="devsite-footer-linkbox-item"><a href="//developers.google.com/agency/" class="gc-analytics-event"
+               data-category="Site-Wide Custom Events"
+               data-label="Footer Agency">
+                Agency Program
+            </a></li><li class="devsite-footer-linkbox-item"><a href="//developers.google.com/groups/" class="gc-analytics-event"
+               data-category="Site-Wide Custom Events"
+               data-label="Footer Groups">
+                GDG
+            </a></li><li class="devsite-footer-linkbox-item"><a href="//developers.google.com/experts/" class="gc-analytics-event"
+               data-category="Site-Wide Custom Events"
+               data-label="Footer Experts">
+                Google Developers Experts
+            </a></li><li class="devsite-footer-linkbox-item"><a href="//developers.google.com/startups/" class="gc-analytics-event"
+               data-category="Site-Wide Custom Events"
+               data-label="Footer Startups">
+                Startup Launchpad
+            </a></li></ul></li><li class="devsite-footer-linkbox devsite-footer-linkbox-backup"><h3 class="devsite-footer-linkbox-heading">Developer Consoles</h3><ul class="devsite-footer-linkbox-list"><li class="devsite-footer-linkbox-item"><a href="//console.developers.google.com" class="gc-analytics-event"
+               data-category="Site-Wide Custom Events"
+               data-label="Footer Google Developers Console">
+                Google API Console
+            </a></li><li class="devsite-footer-linkbox-item"><a href="//console.cloud.google.com" class="gc-analytics-event"
+               data-category="Site-Wide Custom Events"
+               data-label="Footer Google Cloud Platform Console">
+                Google Cloud Platform Console
+            </a></li><li class="devsite-footer-linkbox-item"><a href="//play.google.com/apps/publish/" class="gc-analytics-event"
+               data-category="Site-Wide Custom Events"
+               data-label="Footer Google Play Console">
+                Google Play Console
+            </a></li><li class="devsite-footer-linkbox-item"><a href="//console.firebase.google.com" class="gc-analytics-event"
+               data-category="Site-Wide Custom Events"
+               data-label="Footer Firebase Console">
+                Firebase Console
+            </a></li><li class="devsite-footer-linkbox-item"><a href="//cast.google.com/publish/" class="gc-analytics-event"
+               data-category="Site-Wide Custom Events"
+               data-label="Footer Cast SDK Developer Console">
+                Cast SDK Developer Console
+            </a></li><li class="devsite-footer-linkbox-item"><a href="//chrome.google.com/webstore/developer/dashboard" class="gc-analytics-event"
+               data-category="Site-Wide Custom Events"
+               data-label="Footer Chrome Web Store Developer Dashboard">
+                Chrome Web Store Dashboard
+            </a></li></ul></li><li class="devsite-footer-linkbox devsite-footer-linkbox-sites"><a href="https://developers.google.com/"
+           class="gc-analytics-event devsite-footer-linkbox-logo-link"
+           data-category="Site-Wide Custom Events" data-label="Footer Google Developers Link"><img class="devsite-footer-linkbox-logo"
+               src="https://developers.google.com/_static/d7147bb846/images/redesign-14/lockup-color-knockout.png"
+               alt="Google Developers"></a><ul class="devsite-footer-linkbox-list"><li class="devsite-footer-linkbox-item"><a href="//developer.android.com/index.html" class="gc-analytics-event"
+               data-category="Site-Wide Custom Events"
+               data-label="Footer Android Link">
+                Android
+            </a></li><li class="devsite-footer-linkbox-item"><a href="//developer.chrome.com/home" class="gc-analytics-event"
+               data-category="Site-Wide Custom Events"
+               data-label="Footer Chrome Link">
+                Chrome
+            </a></li><li class="devsite-footer-linkbox-item"><a href="//firebase.google.com" class="gc-analytics-event"
+               data-category="Site-Wide Custom Events"
+               data-label="Footer Firebase Link">
+                Firebase
+            </a></li><li class="devsite-footer-linkbox-item"><a href="//cloud.google.com" class="gc-analytics-event"
+               data-category="Site-Wide Custom Events"
+               data-label="Footer Cloud Link">
+                Google Cloud Platform
+            </a></li><li class="devsite-footer-linkbox-item"><a href="//developers.google.com/products/" class="gc-analytics-event"
+               data-category="Site-Wide Custom Events"
+               data-label="Footer Products Link">
+                All Products
+            </a></li></ul></li></ul></nav></footer><footer class="devsite-utility-footer"><nav class="devsite-utility-footer-nav devsite-nav devsite-full-site-width"><div class="devsite-utility-footer-nav-left"><form class="devsite-utility-footer-language" action="/i18n/setlang/" method="post"><input type="hidden" name="xsrf_token" value="Z9PqtnIU1Xl5L0fXtBmCje8mqFaIQ3_rE7dTtiAk7Ak6MTUyNDQ1OTkzMTkxMDIwMA" /><input type="hidden" name="next" value="/zero-touch/guides/customer/auth"><select class="devsite-utility-footer-language-select kd-select" name="language"
+                track-type="languageSelector" track-name="click"><option value="id"
+                
+                track-type="languageSelector" track-name="changed"
+                track-metadata-original-language="en"
+                track-metadata-selected-language="id">
+            Bahasa Indonesia
+          </option><option value="de"
+                
+                track-type="languageSelector" track-name="changed"
+                track-metadata-original-language="en"
+                track-metadata-selected-language="de">
+            Deutsch
+          </option><option value="en"
+                 selected="selected" 
+                track-type="languageSelector" track-name="changed"
+                track-metadata-original-language="en"
+                track-metadata-selected-language="en">
+            English
+          </option><option value="es"
+                
+                track-type="languageSelector" track-name="changed"
+                track-metadata-original-language="en"
+                track-metadata-selected-language="es">
+            español
+          </option><option value="fr"
+                
+                track-type="languageSelector" track-name="changed"
+                track-metadata-original-language="en"
+                track-metadata-selected-language="fr">
+            français
+          </option><option value="pt-br"
+                
+                track-type="languageSelector" track-name="changed"
+                track-metadata-original-language="en"
+                track-metadata-selected-language="pt-br">
+            Português Brasileiro
+          </option><option value="ru"
+                
+                track-type="languageSelector" track-name="changed"
+                track-metadata-original-language="en"
+                track-metadata-selected-language="ru">
+            Русский
+          </option><option value="ja"
+                
+                track-type="languageSelector" track-name="changed"
+                track-metadata-original-language="en"
+                track-metadata-selected-language="ja">
+            日本語
+          </option><option value="zh-cn"
+                
+                track-type="languageSelector" track-name="changed"
+                track-metadata-original-language="en"
+                track-metadata-selected-language="zh-cn">
+            简体中文
+          </option><option value="ko"
+                
+                track-type="languageSelector" track-name="changed"
+                track-metadata-original-language="en"
+                track-metadata-selected-language="ko">
+            한국어
+          </option></select></form><span class="devsite-utility-footer-links"><a class="devsite-utility-footer-link gc-analytics-event"
+           href="https://developers.google.com/terms/site-terms"
+           data-category="Site-Wide Custom Events"
+           data-label="Footer terms link"
+           data-footer-link-id="terms"
+           >Terms
+         </a><a class="devsite-utility-footer-link gc-analytics-event"
+           href="//www.google.com/policies/privacy/"
+           data-category="Site-Wide Custom Events"
+           data-label="Footer privacy link"
+           data-footer-link-id="privacy"
+           >Privacy
+         </a></span></div><div class="devsite-utility-footer-nav-right"><div class="devsite-utility-footer-newsletter-signup-text">
+        Sign up for the Google Developers newsletter
+      </div><a class="button button-primary devsite-utility-footer-newsletter-signup-button"
+         href="//services.google.com/fb/forms/googledevelopersnewsletter/?utm_medium=referral&amp;utm_source=google-products&amp;utm_team=googledevs&amp;utm_campaign=201611-newsletter-launch">
+        
+        Subscribe
+      </a></div></nav></footer><div class="devsite-feedback-dialog devsite-dialog"><div class="devsite-dialog-contents"><h3>Send feedback about...</h3><div class="devsite-feedback-item"><a data-type="documentation" class="gc-analytics-event"
+           data-category="Site-Wide Custom Events" data-label="Docs Feedback Image"
+           track-type="feedback" track-name="feedbackDocIcon" track-metadata-position="header"><div class="devsite-feedback-item-icon-container"><div class="devsite-feedback-item-icon-white devsite-feedback-item-icon-docs
+                        material-icons"></div></div></a><div class="devsite-feedback-item-name">
+          
+          This page
+        </div><div class="devsite-feedback-item-description"><a data-type="documentation" tabindex="0" class="gc-analytics-event"
+             data-category="Site-Wide Custom Events" data-label="Docs Feedback Text"
+             track-type="feedback" track-name="feedbackDocText" track-metadata-position="header">
+            
+            Documentation feedback
+          </a></div></div><div class="devsite-feedback-item"><a data-type="product" tabindex="0" class="gc-analytics-event"
+           data-category="Site-Wide Custom Events" data-label="Product Feedback Image"
+           track-type="feedback" track-name="feedbackProductIcon" track-metadata-position="header"
+         ><img class="devsite-feedback-item-icon"
+               src="https://developers.google.com/_static/d7147bb846/images/feedback/google_56px.svg"></a><div class="devsite-feedback-item-name">
+        Android zero-touch enrollment
+        </div><div class="devsite-feedback-item-description"><a data-type="product" tabindex="0" class="gc-analytics-event"
+             data-category="Site-Wide Custom Events" data-label="Product Feedback Text"
+             track-type="feedback" track-name="feedbackProductText" track-metadata-position="header"
+           >
+            
+            Product feedback
+          </a></div></div></div><div class="devsite-dialog-buttons"><button type="button" class="devsite-feedback-cancel button-white gc-analytics-event"
+              data-category="Site-Wide Custom Events" data-label="Cancel Feedback Button"
+              track-type="feedback" track-name="cancelFeedbackButton"
+              track-metadata-position="header">
+        
+        Cancel
+      </button></div></div><script>
+  $(document).ready(function() {
+    new devsite.feedback.Widget({
+        'product_id': '1633838',
+        'bucket': '',
+        'context': '',
+        'version': 'devsite-20180420-r00-rc00.default'
+      },
+      document.querySelectorAll('.devsite-feedback-button'),
+      'en',
+      document.querySelector('.devsite-site-mask'),
+      document.querySelector('.devsite-feedback-dialog'),
+      document.querySelector('.devsite-feedback-cancel'),
+      document.querySelectorAll('.devsite-feedback-item a:not([href])')
+    );
+  });
+  </script></div><script async defer src="//www.gstatic.com/feedback/api.js"></script><script src="https://developers.google.com/_static2/d7147bb846/jsi18n/"></script><script src="https://developers.google.com/_static/d7147bb846/js/script_foot_closure.js"></script><script src="https://developers.google.com/_static/d7147bb846/js/script_foot.js"></script><script>
+        (function($) {
+          
+          devsite.devsite.Init($, {'ENABLE_BLOCKED_VIDEO_PLACEHOLDER': 0, 'SITE_NAME': 'devsite', 'FULL_SITE_SEARCH_ENABLED': 1, 'ENABLE_CLOUDTRACK': 0, 'VTAGS_ENABLED': 0, 'HISTORY_ENABLED': 1, 'VERSION_HASH': 'd7147bb846', 'SCRIPTSAFE_DOMAIN': 'google-developers.appspot.com', 'ENABLE_BLOCKED_LINK_TOOLTIP': 0, 'ALLOWED_HOSTS': ['.android.com', '.anvato.com', '.apigee.com', '.appspot.com', '.dialogflow.com', '.gonglchuangl.net', '.google.cn', '.google.com', '.googleplex.com', '.nest.com', '.openthread.io', '.openweave.io', '.orbitera.com', '.tensorflow.org'], 'BLOCK_RSS_FEEDS': 0},
+                               '[]','en',
+                               true, '',
+                               {"f62218c009ec029abef196bba5aa34cf": true, "8de7a048f21618359bd37f5ce44be073": false, "098dafe57affddc137df300142652cfd": false, "8e03e230de0bd8a6fe173fdf172e8b3f": true, "cb025a64a50094835616312f4774a53d": true, "51470233c56fc1fde50f00b73c52b216": false, "d169d485cf24243a263783dbe42029b1": true, "039e5d84b87fd75807ffb37b7f1bbf2c": true, "700def1a83e356c06c0925afb05de4b0": false, "6749dcb526ce9bde6993550c7d928d24": true}, '/zero-touch/',
+                               'https://developers.google.com/');
+        })(jQuery);
+
+        
+        devsite.localInit = function() {
+          
+        };
+
+      </script><script>
+      $('.devsite-utility-footer-language-select').each(function() {
+        $(this).change(function(){$('.devsite-utility-footer-language').submit();});
+      });
+      </script></div><span id="devsite-request-elapsed" data-request-elapsed="198.040008545"></span></body></html>

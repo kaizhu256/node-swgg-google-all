@@ -1,0 +1,823 @@
+
+
+
+
+
+
+<!DOCTYPE html><html lang="en"
+      class="chekov"><head><script>var a=window.devsite||{};window.devsite=a;a.readyCallbacks=[];window.devsite.readyCallbacks=a.readyCallbacks;a.ready=function(b){a.readyCallbacks.push(b)};window.devsite.ready=a.ready;
+</script><meta charset="utf-8"><meta name="xsrf_token" content="GzeMRgHLHeP5bXwq40w5JA2jNWaVmuxo6oSKdA3P3sg6MTUyNDQ2MDE4NDg1NzE3MA" /><link rel="canonical" href="https://developers.google.com/ad-exchange/buyer-rest/guides/background"><link rel="alternate" href="https://developers.google.com/ad-exchange/buyer-rest/guides/background" hreflang="en"><link rel="alternate" href="https://developers.google.cn/ad-exchange/buyer-rest/guides/background" hreflang="en-cn"><link rel="alternate" href="https://developers.google.com/ad-exchange/buyer-rest/guides/background" hreflang="x-default"><link rel="shortcut icon" href="https://developers.google.com/_static/d7147bb846/images/favicon.png"><link rel="apple-touch-icon" href="https://developers.google.com/_static/d7147bb846/images/touch-icon.png"><meta name="viewport" content="width=device-width, initial-scale=1"><link rel="stylesheet"
+      
+      href="//fonts.googleapis.com/css?family=Google+Sans:400|Roboto:400,400italic,500,500italic,700,700italic|Roboto+Mono:400,500,700|Material+Icons"
+      ><link rel="stylesheet"
+        href="https://developers.google.com/_static/d7147bb846/css/devsite-google-green.css"><link rel="search"
+        type="application/opensearchdescription+xml"
+        title="Google Developers"
+        href="https://developers.google.com/s/opensearch.xml"><script src="https://developers.google.com/_static/d7147bb846/js/jquery-bundle.js"></script><meta property="og:site_name" content="Google Developers"><meta property="og:type" content="website"><meta property="og:url" content="https://developers.google.com/ad-exchange/buyer-rest/guides/background"><meta property="og:locale" content="en"><script>
+    var ___gcfg = ___gcfg || {};
+    ___gcfg.lang = 'en';
+  </script><title>Background &nbsp;|&nbsp; DoubleClick Ad Exchange Buyer API
+      &nbsp;|&nbsp; Google Developers</title><meta property="og:title" content="Background &nbsp;|&nbsp; DoubleClick Ad Exchange Buyer API
+      &nbsp;|&nbsp; Google Developers"><meta property="og:image"
+          content="https://developers.google.com/_static/d7147bb846/images/share/devsite-google-green.png"><meta property="og:image:secure_url"
+          content="https://developers.google.com/_static/d7147bb846/images/share/devsite-google-green.png"><meta property="og:image:width" content="1200"><meta property="og:image:height" content="630"></head><body class="
+               devsite-doc-page
+               
+               
+               
+               devsite-header-no-upper-tabs
+               "
+        data-family="endorsed"
+        id="top_of_page"><div class="devsite-wrapper"><div class="devsite-top-section-wrapper
+            "><header class="devsite-top-section nocontent"><div class="devsite-top-logo-row-wrapper-wrapper"><div class="devsite-top-logo-row-wrapper"><div class="devsite-top-logo-row devsite-full-site-width"><button type="button" class="devsite-expand-section-nav devsite-header-icon-button
+                                       button-flat material-icons gc-analytics-event"
+                  data-category="Site-Wide Custom Events" data-label="Hamburger menu"></button><div class="devsite-product-name-wrapper"><a class="devsite-product-name-link gc-analytics-event"
+       href="https://developers.google.com/ad-exchange/buyer-rest/"
+       data-category="Site-Wide Custom Events"
+       data-label="Project logo (header)"><img src="https://developers.google.com/ads/images/dclk-logo-mark-128px.png" class="devsite-product-logo"
+               alt="DoubleClick Ad Exchange Buyer API"></a><span class="devsite-product-name"><ul class="devsite-breadcrumb-list"><li class="devsite-breadcrumb-item"><a href="https://developers.google.com/ad-exchange/buyer-rest/" class="devsite-breadcrumb-link gc-analytics-event"
+       data-category="Site-Wide Custom Events" data-label="Upper Header"
+       data-value="1">
+    
+    
+      
+        DoubleClick Ad Exchange Buyer API
+      
+    
+    
+    </a></li></ul></span></div><div class="devsite-header-upper-tabs"></div><form class="devsite-search-form"
+                action="https://developers.google.com/s/results/"
+                method="GET"
+                id="top-search"
+                search-placeholder='Search'><div id="searchbox" class="devsite-searchbox"><input placeholder='Search'
+         
+         type="text"
+         class="devsite-search-field devsite-search-query"
+         name="q"
+         value=""
+         autocomplete="off"
+         
+         aria-label="Search box"><div class="devsite-search-image material-icons"></div></div><input type="hidden"
+       name="p"
+       id="search_project"
+       value="/ad-exchange/buyer-rest/"
+       data-project-name="DoubleClick Ad Exchange Buyer API"
+       data-project-path="/ad-exchange/buyer-rest/"
+       data-query-match=""><input type="hidden" class="suggest-project" value="DoubleClick Ad Exchange Buyer API" /></form><a class="devsite-header-link devsite-top-button button gc-analytics-event"
+               href="https://developers.google.com/products/"
+               data-category="Site-Wide Custom Events"
+               data-label="Site header link"
+               track-type="navigateTo"
+               track-name="all products"
+               track-metadata-position="nav"><div class="devsite-header-link-label">All Products</div></a><button type="button" class="devsite-search-button devsite-header-icon-button button-flat
+                                       material-icons"></button><a href="https://www.google.com/accounts/ServiceLogin?passive=true&continue=https%3A%2F%2Fdevelopers.google.com%2Fad-exchange%2Fbuyer-rest%2Fguides%2Fbackground%3Frefresh%3D1&service=ahsid"
+   class="devsite-user-signin devsite-top-button button gc-analytics-event"
+   data-category="Site-Wide Custom Events" data-label="Sign in button">
+  
+  Sign in
+</a></div></div></div><div class="devsite-collapsible-section"><div class="devsite-header-background devsite-full-site-width"><div class="devsite-doc-set-nav-row devsite-full-site-width"><nav class="devsite-doc-set-nav devsite-nav devsite-overflow-tabs-scroll-wrapper"><ul class="devsite-doc-set-nav-tab-list devsite-overflow-tabs-scroll"><li class="devsite-doc-set-nav-tab-container devsite-nav-tab
+               "><a href="https://developers.google.com/ad-exchange/buyer-rest/"
+         class=" devsite-nav-tab
+                devsite-doc-set-nav-tab devsite-doc-set-nav-tab-link gc-analytics-event"
+         
+       
+         data-category="Site-Wide Custom Events"
+       
+         data-label="Tab: Home"
+       >
+        Home
+      </a></li><li class="devsite-doc-set-nav-tab-container devsite-nav-tab
+               "><a href="https://developers.google.com/ad-exchange/buyer-rest/guides/start"
+         class="devsite-doc-set-nav-active devsite-nav-tab
+                devsite-doc-set-nav-tab devsite-doc-set-nav-tab-link gc-analytics-event"
+         aria-label="Guides, selected"
+       
+         data-category="Site-Wide Custom Events"
+       
+         data-label="Tab: Guides"
+       >
+        Guides
+      </a></li><li class="devsite-doc-set-nav-tab-container devsite-nav-tab
+               "><a href="https://developers.google.com/ad-exchange/buyer-rest/relnotes"
+         class=" devsite-nav-tab
+                devsite-doc-set-nav-tab devsite-doc-set-nav-tab-link gc-analytics-event"
+         
+       
+         data-category="Site-Wide Custom Events"
+       
+         data-label="Tab: Reference"
+       >
+        Reference
+      </a></li><li class="devsite-doc-set-nav-tab-container devsite-nav-tab
+               "><a href="https://developers.google.com/ad-exchange/buyer-rest/downloads"
+         class=" devsite-nav-tab
+                devsite-doc-set-nav-tab devsite-doc-set-nav-tab-link gc-analytics-event"
+         
+       
+         data-category="Site-Wide Custom Events"
+       
+         data-label="Tab: Samples"
+       >
+        Samples
+      </a></li><li class="devsite-doc-set-nav-tab-container devsite-nav-tab
+               "><a href="https://developers.google.com/ad-exchange/buyer-rest/community/"
+         class=" devsite-nav-tab
+                devsite-doc-set-nav-tab devsite-doc-set-nav-tab-link gc-analytics-event"
+         
+       
+         data-category="Site-Wide Custom Events"
+       
+         data-label="Tab: Support"
+       >
+        Support
+      </a></li><button type="button" id="devsite-feedback-project"
+          class="devsite-feedback-button devsite-top-button gc-analytics-event"
+          data-category="Site-Wide Custom Events" data-label="Send Feedback Button"
+          track-type="feedback" track-name="sendFeedbackLink" track-metadata-position="header">
+  
+  Send feedback
+  </button></ul></nav></div></div></div></header><script>
+    if (window.jQuery) {
+      $(document).ready(function() {
+        if (window.devsite && window.devsite.search) {
+          
+          window.devsite.search.init('en')
+        }
+      });
+    }
+  </script></div><div id="gc-wrapper"itemscope itemtype="http://schema.org/Article"><input class="google-analytics-id-json" type="hidden" value="{&quot;dimensions&quot;: {&quot;dimension6&quot;: &quot;en&quot;, &quot;dimension4&quot;: &quot;DoubleClick Ad Exchange Buyer API&quot;, &quot;dimension5&quot;: &quot;en&quot;, &quot;dimension3&quot;: false, &quot;dimension1&quot;: &quot;Signed out&quot;, &quot;dimension8&quot;: null}, &quot;gaid&quot;: &quot;UA-24532603-1&quot;}"><input class="google-analytics-id-json" type="hidden" value="{&quot;dimensions&quot;: {}, &quot;gaid&quot;: &quot;UA-54828107-5&quot;}"><script>
+      var dataLayer = [{"freeTrialEligibleUser": "False", "userCountry": "HK", "language": {"requested": "en", "served": "en"}, "projectName": "DoubleClick Ad Exchange Buyer API", "scriptsafe": null, "signedIn": "False", "internalUser": "False"}];
+    </script>
+
+      
+        <div class="devsite-site-mask"></div>
+        
+  
+
+
+<nav class="devsite-nav-responsive devsite-nav nocontent" tabindex="0">
+  
+  <div class="devsite-nav-responsive-tabs-panel">
+    
+      
+
+
+
+<nav class="devsite-nav-responsive-tabs devsite-nav">
+  <ul class="devsite-nav-list">
+  
+    <li class="devsite-nav-item devsite-nav-item-heading">
+    
+      <a 
+           href="https://developers.google.com/ad-exchange/buyer-rest/"
+         
+         class="devsite-nav-responsive-tab devsite-nav-title gc-analytics-event
+                "
+         data-category="Site-Wide Custom Events" data-label="Responsive Tab: Home">
+        Home
+      </a>
+      
+      
+    
+    </li>
+  
+    <li class="devsite-nav-item devsite-nav-item-heading">
+    
+      <span class="devsite-nav-responsive-forward devsite-nav-responsive-tab devsite-nav-title
+                   devsite-nav-active gc-analytics-event"
+            data-category="Site-Wide Custom Events" data-label="Responsive Tab: Guides"
+            tabindex="0">
+        Guides
+      </span>
+    
+    </li>
+  
+    <li class="devsite-nav-item devsite-nav-item-heading">
+    
+      <a 
+           href="https://developers.google.com/ad-exchange/buyer-rest/relnotes?nav=true"
+         
+         class="devsite-nav-responsive-tab devsite-nav-title gc-analytics-event
+                "
+         data-category="Site-Wide Custom Events" data-label="Responsive Tab: Reference">
+        Reference
+      </a>
+      
+      
+    
+    </li>
+  
+    <li class="devsite-nav-item devsite-nav-item-heading">
+    
+      <a 
+           href="https://developers.google.com/ad-exchange/buyer-rest/downloads?nav=true"
+         
+         class="devsite-nav-responsive-tab devsite-nav-title gc-analytics-event
+                "
+         data-category="Site-Wide Custom Events" data-label="Responsive Tab: Samples">
+        Samples
+      </a>
+      
+      
+    
+    </li>
+  
+    <li class="devsite-nav-item devsite-nav-item-heading">
+    
+      <a 
+           href="https://developers.google.com/ad-exchange/buyer-rest/community/"
+         
+         class="devsite-nav-responsive-tab devsite-nav-title gc-analytics-event
+                "
+         data-category="Site-Wide Custom Events" data-label="Responsive Tab: Support">
+        Support
+      </a>
+      
+      
+    
+    </li>
+  
+  
+    <li class="devsite-nav-item devsite-nav-item-heading">
+      <a href="https://developers.google.com/products/"
+         class="devsite-nav-responsive-tab devsite-nav-title gc-analytics-event"
+         data-category="Site-Wide Custom Events"
+         data-label="Responsive Tab: all_products">
+        All Products
+      </a>
+    </li>
+  
+  </ul>
+</nav>
+
+
+    
+  </div>
+  
+  
+  <div class="devsite-nav-responsive-sidebar-panel">
+    
+    <div class="devsite-nav-responsive-back" tabindex="0"></div>
+    
+    <nav class="devsite-nav-responsive-sidebar"></nav>
+  </div>
+  
+  
+</nav>
+
+
+        <div class="devsite-main-content clearfix">
+
+        
+        
+
+        
+  
+  
+    
+    
+      
+  <nav class="devsite-section-nav devsite-nav nocontent">
+    <ul class="devsite-nav-list devsite-nav-expandable devsite-nav-only-accordions"><li class="devsite-nav-item"><a href="https://developers.google.com/ad-exchange/buyer-rest/guides/start" class="devsite-nav-title">Get Started</a></li><li class="devsite-nav-item devsite-nav-active"><a href="https://developers.google.com/ad-exchange/buyer-rest/guides/background" class="devsite-nav-title">Background</a></li><li class="devsite-nav-item"><a href="https://developers.google.com/ad-exchange/buyer-rest/guides/authorization" class="devsite-nav-title">Authorization</a></li><li class="devsite-nav-item"><a href="https://developers.google.com/ad-exchange/buyer-rest/guides/performance" class="devsite-nav-title">Performance Tips</a></li><li class="devsite-nav-item devsite-nav-item-section-expandable devsite-nav-accordion"><span class="devsite-nav-title devsite-nav-title-no-path" aria-label="V1 APIs, click to expand/collapse" role="link">V1 APIs</span><a class="devsite-nav-toggle devsite-nav-toggle-collapsed material-icons" track-type="leftNav" track-name="expandNavSectionArrow" track-metadata-position="0" aria-hidden="true"></a><ul class="devsite-nav-section devsite-nav-section-collapsed"><li class="devsite-nav-item"><a href="https://developers.google.com/ad-exchange/buyer-rest/guides/v1/accounts" class="devsite-nav-title">Accounts</a></li><li class="devsite-nav-item"><a href="https://developers.google.com/ad-exchange/buyer-rest/guides/v1/creatives" class="devsite-nav-title">Creatives</a></li><li class="devsite-nav-item devsite-nav-deprecated devsite-nav-has-status"><a href="https://developers.google.com/ad-exchange/buyer-rest/guides/v1/deals" class="devsite-nav-title"><span class="devsite-nav-text">Direct Deals</span><span class="devsite-nav-icon-wrapper"><span class="devsite-nav-icon material-icons" title="Deprecated"></span></span></a></li><li class="devsite-nav-item"><a href="https://developers.google.com/ad-exchange/buyer-rest/guides/v1/pretargeting" class="devsite-nav-title">Pretargeting</a></li><li class="devsite-nav-item"><a href="https://developers.google.com/ad-exchange/buyer-rest/guides/v1/marketplace" class="devsite-nav-title">Marketplace</a></li><li class="devsite-nav-item"><a href="https://developers.google.com/ad-exchange/buyer-rest/guides/v1/billing-info" class="devsite-nav-title">Billing and Budget</a></li></ul></li><li class="devsite-nav-item devsite-nav-item-section-expandable devsite-nav-accordion"><span class="devsite-nav-title devsite-nav-title-no-path" aria-label="V2 APIs (Open Beta), click to expand/collapse" role="link">V2 APIs (Open Beta)</span><a class="devsite-nav-toggle devsite-nav-toggle-collapsed material-icons" track-type="leftNav" track-name="expandNavSectionArrow" track-metadata-position="0" aria-hidden="true"></a><ul class="devsite-nav-section devsite-nav-section-collapsed"><li class="devsite-nav-item"><a href="https://developers.google.com/ad-exchange/buyer-rest/guides/v2/client-access" class="devsite-nav-title">Client Access</a></li><li class="devsite-nav-item"><a href="https://developers.google.com/ad-exchange/buyer-rest/guides/v2/rtb-troubleshooting" class="devsite-nav-title">RTB Troubleshooting</a></li></ul></li></ul>
+  </nav>
+
+    
+
+    
+  <nav class="devsite-page-nav devsite-nav"></nav>
+
+
+      <article class="devsite-article">
+        <article class="devsite-article-inner">
+  
+          
+  
+
+
+
+  
+  <nav class="devsite-breadcrumb-nav devsite-nav">
+    
+
+
+<ul class="devsite-breadcrumb-list">
+  
+  <li class="devsite-breadcrumb-item">
+    
+    
+    <a href="https://developers.google.com/products/" class="devsite-breadcrumb-link gc-analytics-event"
+       data-category="Site-Wide Custom Events" data-label="Breadcrumbs"
+       data-value="1">
+    
+    
+      Products
+    
+    
+    </a>
+    
+  </li>
+  
+  <li class="devsite-breadcrumb-item">
+    
+    
+    <div class="devsite-breadcrumb-guillemet material-icons"></div>
+    
+    
+    <a href="https://developers.google.com/ads/" class="devsite-breadcrumb-link gc-analytics-event"
+       data-category="Site-Wide Custom Events" data-label="Breadcrumbs"
+       data-value="2">
+    
+    
+      Ads
+    
+    
+    </a>
+    
+  </li>
+  
+  <li class="devsite-breadcrumb-item">
+    
+    
+    <div class="devsite-breadcrumb-guillemet material-icons"></div>
+    
+    
+    <a href="https://developers.google.com/ad-exchange/" class="devsite-breadcrumb-link gc-analytics-event"
+       data-category="Site-Wide Custom Events" data-label="Breadcrumbs"
+       data-value="3">
+    
+    
+      DoubleClick Ad Exchange APIs
+    
+    
+    </a>
+    
+  </li>
+  
+  <li class="devsite-breadcrumb-item">
+    
+    
+    <div class="devsite-breadcrumb-guillemet material-icons"></div>
+    
+    
+    <a href="https://developers.google.com/ad-exchange/buyer-rest/" class="devsite-breadcrumb-link gc-analytics-event"
+       data-category="Site-Wide Custom Events" data-label="Breadcrumbs"
+       data-value="4">
+    
+    
+      DoubleClick Ad Exchange Buyer API
+    
+    
+    </a>
+    
+  </li>
+  
+  <li class="devsite-breadcrumb-item">
+    
+    
+    <div class="devsite-breadcrumb-guillemet material-icons"></div>
+    
+    
+    <a href="https://developers.google.com/ad-exchange/buyer-rest/guides/start" class="devsite-breadcrumb-link gc-analytics-event"
+       data-category="Site-Wide Custom Events" data-label="Breadcrumbs"
+       data-value="5">
+    
+    
+      Guides
+    
+    
+    </a>
+    
+  </li>
+  
+</ul>
+
+  </nav>
+  
+  
+  <h1 itemprop="name" class="devsite-page-title">
+    Background
+  </h1>
+  
+  
+  <nav class="devsite-page-nav-embedded devsite-nav"></nav>
+  
+  <div class="devsite-article-body clearfix
+            "
+       itemprop="articleBody">
+    
+
+
+
+
+
+
+
+
+
+
+
+
+
+<h2>Before you start</h2>
+<ol>
+  <li>Ask your account representative to set up proper permissions for accounts
+  your application will access.</li>
+  <li>If you're unfamiliar with Ad Exchange Buyer concepts, read the
+  <a href="//support.google.com/adxbuyer/">DoubleClick Ad Exchange Help</a> and
+  experiment with the <a href="//www.google.com/adx">user interface</a>.
+  If your application is expected to perform real-time bidding, read the
+  <a href="https://developers.google.com/ad-exchange/rtb">Ad Exchange RTB Protocol</a> documentation.</li>
+  <li>Visit the
+  <a href="//code.google.com/apis/console/?api=adexchangebuyer" target="_blank">APIs Console</a>
+  to set up a new project. Either sign into your developer Google account or
+  create an account. You will then be prompted to create a project and sign off
+  on a couple of Terms of Service.</li>
+</ol>
+
+<h2>Parent and child accounts</h2>
+<p>If you're working within an account structure containing parent and child
+  accounts, you may be able to work more effectively if you understand how they
+  interact. The following is a brief summary:</p>
+
+<h3>Child accounts</h3>
+
+<p>A user with credentials that grant access to a child account can only
+  view and modify resources associated with their account. Child accounts can't
+  view or modify resources belonging to other child or parent accounts.</p>
+
+<h3>Parent accounts</h3>
+
+<p>A user with credentials that grant access to a parent account can view
+  and modify resources for the parent account in addition to all associated
+  child accounts. For operations listing all of a given resource, this user
+  will receive a response including data for their account and all of their
+  child accounts. Note that for other types of requests targeting resources for child seats, a
+  parent account will need to specify an <code>accountId</code> path parameter for the child
+  account rather than their own <code>accountId</code>.</p>
+
+<aside class="note"><strong>Note:</strong> You should contact your Technical
+  Account Manager if you want to configure an account structure with parent and
+  child accounts.</aside>
+
+<h2>The REST API data model</h2>
+
+<p>A resource is an individual data entity with a unique identifier. The
+Accounts resource represents an Ad Exchange buyer account entry, and is the root
+data class for the Ad Exchange Buyer REST API. The API's methods operate on individual
+Accounts resources, and on collections of Accounts resources.</p>
+
+<p>An <a href="https://developers.google.com/ad-exchange/buyer-rest/v1.4/accounts">Accounts
+Resource</a> includes: an Account ID, information used in cookie matching,
+bidder locations, the URL to which Ad Exchange sends bid requests, and a request
+to specify the maximum queries per second to be sent by the Ad Exchange.</p>
+
+<p>In addition to the Accounts resource and collection, the Ad Exchange Buyer REST API
+defines the following data structures:</p>
+<dl>
+<dt id="bidder_location">Bidder location</dt>
+  <dd><p>Bidder locations are structures that are returned with Accounts Resources
+  to provide the URL to which the Ad Exchange should send bid requests and the
+  maximum number of queries per second the Ad Exchange should send. Here is an
+  example of a bidder location, expressed in JSON:
+<pre class="prettyprint">
+"bidderLocation": [
+    {
+      "url": "http://bid.url.com/bidder",
+      "maximumQps": 1500
+    }
+  ],
+</pre></p></dd>
+<dt id="items">Items</dt>
+  <dd><p>Items provide a  list of accounts. Here is an example of items, expressed in JSON:
+<pre class="prettyprint">
+{
+  "kind": "adexchangebuyer#accountsList",
+  "items": [
+    accounts Resource
+  ]
+}
+</pre></p></dd>
+</dl>
+
+<h2>Supported operations</h2>
+
+<p>You can invoke three different methods on collections and resources in the
+Ad Exchange Buyer REST API as described in the following table. All operations require
+<a href="https://developers.google.com/ad-exchange/buyer-rest/guides/authorization">authorization</a>.</p>
+<table>
+  <tr>
+    <th>Operation</th>
+    <th>Description</th>
+    <th>REST HTTP mappings</th>
+  </tr>
+  <tr>
+    <td><span class="apimethod">list</span></td>
+    <td>Lists all accounts that can be accessed by the currently authenticated
+    user.</td>
+    <td><code>GET</code> on a collection URI.</td>
+  </tr>
+  <tr>
+    <td><span class="apimethod">get</span></td>
+    <td>Gets a specific Accounts resource.</td>
+    <td><code>GET</code> on a resource URI.</td>
+  </tr>
+  <tr>
+    <td><span class="apimethod">update</span></td>
+    <td>Updates a specific Accounts resource.</td>
+    <td><code>PUT</code> on a resource URI, where you pass in data for the
+    updated resource.</td>
+  </tr>
+</table>
+
+<h2>Calling style</h2>
+
+
+
+
+
+<p>REST is a style of software architecture that provides a convenient and consistent approach to requesting and modifying data.</p>
+<p>The term REST is short for "<a href="https://en.wikipedia.org/wiki/Representational_state_transfer">Representational State Transfer</a>." In the context of Google APIs, it refers to using HTTP verbs to retrieve and modify representations of data stored by Google.</p>
+<p>In a RESTful system, resources are stored in a data store; a client sends a request that the server perform a particular action (such as creating, retrieving, updating, or deleting a resource), and the server performs the action and sends a response, often in the form of a representation of the specified resource.</p>
+<p>In Google's RESTful APIs, the client specifies an action using an HTTP verb such as <code>POST</code>, <code>GET</code>, <code>PUT</code>, or <code>DELETE</code>. It specifies a resource by a globally-unique URI of the following form:</p>
+<pre>
+https://www.googleapis.com/<span class="apiparam">apiName</span>/<span class="apiparam">apiVersion</span>/<span class="apiparam">resourcePath</span>?<span class="apiparam">parameters</span>
+</pre>
+<p>Because all API resources have unique HTTP-accessible URIs, REST enables data caching and is optimized to work with the web's distributed infrastructure.</p>
+<p>You may find the <a href="https://tools.ietf.org/html/rfc7231#section-4.3">method definitions</a> in the HTTP 1.1 standards documentation useful; they include specifications for <code>GET</code>, <code>POST</code>, <code>PUT</code>, and <code>DELETE</code>.</p>
+
+
+<h3>REST in the Ad Exchange Buyer REST API</h3>
+
+<p>The supported operations map directly to REST HTTP verbs, as described in
+<a href="#operations">API operations</a>.</p>
+
+<p>The specific format for API URIs are:</p>
+<pre class="prettyprint">https://www.googleapis.com/adexchangebuyer/v1.4/<span class="apiparam">resourceID</span>?<span class="apiparam">parameters</span></pre>
+
+<p>where <code class="apiparam">resourceID</code> is the identifier for an
+Accounts resource, and <code class="apiparam"><i>parameters</i></code> are any
+parameters to apply to the query. See
+<a href="https://developers.google.com/ad-exchange/buyer-rest/standard_params">standard query parameters</a>
+and the
+<a href="https://developers.google.com/ad-exchange/buyer-rest/v1.4">reference documentation</a>
+for details.</p>
+
+<p>The format of the <code class="apiparam">resourceID</code> path extensions
+lets you identify the resource you're currently operating on, for example:</p>
+<pre class="prettyprint">
+https://www.googleapis.com/adexchangebuyer/v1.4/accounts
+https://www.googleapis.com/adexchangebuyer/v1.4/accounts/<span class="apiparam">id</span></pre>
+
+<p>The full set of URIs used for each supported operation in the API is
+summarized in the
+<a href="https://developers.google.com/ad-exchange/buyer-rest/v1.4">reference documentation</a>.
+</p>
+
+<p>Here's an example of how this works in the Ad Exchange Buyer API.</p>
+
+<p>Get the authenticated user's list of accounts:</p>
+<pre class="prettyprint">
+GET https://www.googleapis.com/adexchangebuyer/v1.4/accounts
+</pre>
+
+<h2>Data format</h2>
+
+<h3>JSON</h3>
+<p>
+
+
+
+
+<p><a href="http://en.wikipedia.org/wiki/JSON">JSON</a> (JavaScript Object Notation) is a common, language-independent data format that provides a simple text representation of arbitrary data structures. For more information, see <a href="http://www.json.org/">json.org</a>.</p>
+</p>
+
+  
+  </div>
+  
+
+  
+        
+  
+
+
+
+
+
+
+
+        
+<div class="devsite-content-footer nocontent">
+  
+  
+    <p>Except as otherwise noted, the content of this page is licensed under the <a href="http://creativecommons.org/licenses/by/3.0/">Creative Commons Attribution 3.0 License</a>, and code samples are licensed under the <a href="http://www.apache.org/licenses/LICENSE-2.0">Apache 2.0 License</a>. For details, see our <a href="https://developers.google.com/terms/site-policies">Site Policies</a>. Java is a registered trademark of Oracle and/or its affiliates.</p>
+  
+
+  
+    
+    <p class="devsite-content-footer-date" itemprop="datePublished"
+       content="2017-11-02T14:35:05.056550">
+      
+      Last updated November 2, 2017.
+    </p>
+  
+
+</div>
+
+        </article>
+      </article>
+  
+
+        </div>
+      
+
+<footer class="devsite-footer-linkboxes nocontent
+               
+               devsite-footer-linkboxes-with-sites"><nav class="devsite-full-site-width"><ul class="devsite-footer-linkboxes-list"><li class="devsite-footer-linkbox "><h3 class="devsite-footer-linkbox-heading">Support</h3><ul class="devsite-footer-linkbox-list"><li class="devsite-footer-linkbox-item"><a href="//groups.google.com/forum/#!forum/google-doubleclick-ad-exchange-buyer-api" class="gc-analytics-event"
+               data-category="Site-Wide Custom Events"
+               data-label="Content Page Footer Linkbox">
+                Forum
+            </a></li></ul></li><li class="devsite-footer-linkbox "><h3 class="devsite-footer-linkbox-heading">Connect</h3><ul class="devsite-footer-linkbox-list"><li class="devsite-footer-linkbox-item"><a href="http://googleadsdeveloper.blogspot.com/search/label/ad_exchange" class="gc-analytics-event"
+               data-category="Site-Wide Custom Events"
+               data-label="Content Page Footer Linkbox">
+                Blog
+            </a></li><li class="devsite-footer-linkbox-item"><a href="//plus.google.com/+GoogleAdsDevelopers" class="gc-analytics-event"
+               data-category="Site-Wide Custom Events"
+               data-label="Content Page Footer Linkbox">
+                Google+
+            </a></li></ul></li><li class="devsite-footer-linkbox "><h3 class="devsite-footer-linkbox-heading">Product Info</h3><ul class="devsite-footer-linkbox-list"><li class="devsite-footer-linkbox-item"><a href="//www.google.com/doubleclick/adxbuyer/guidelines.html" class="gc-analytics-event"
+               data-category="Site-Wide Custom Events"
+               data-label="Content Page Footer Linkbox">
+                Program Guidelines
+            </a></li><li class="devsite-footer-linkbox-item"><a href="https://developers.google.com/ad-exchange/buyer-rest/terms" class="gc-analytics-event"
+               data-category="Site-Wide Custom Events"
+               data-label="Content Page Footer Linkbox">
+                Terms of Service
+            </a></li></ul></li><li class="devsite-footer-linkbox devsite-footer-linkbox-sites"><a href="https://developers.google.com/"
+           class="gc-analytics-event devsite-footer-linkbox-logo-link"
+           data-category="Site-Wide Custom Events" data-label="Footer Google Developers Link"><img class="devsite-footer-linkbox-logo"
+               src="https://developers.google.com/_static/d7147bb846/images/redesign-14/lockup-color-knockout.png"
+               alt="Google Developers"></a><ul class="devsite-footer-linkbox-list"><li class="devsite-footer-linkbox-item"><a href="//developer.android.com/index.html" class="gc-analytics-event"
+               data-category="Site-Wide Custom Events"
+               data-label="Footer Android Link">
+                Android
+            </a></li><li class="devsite-footer-linkbox-item"><a href="//developer.chrome.com/home" class="gc-analytics-event"
+               data-category="Site-Wide Custom Events"
+               data-label="Footer Chrome Link">
+                Chrome
+            </a></li><li class="devsite-footer-linkbox-item"><a href="//firebase.google.com" class="gc-analytics-event"
+               data-category="Site-Wide Custom Events"
+               data-label="Footer Firebase Link">
+                Firebase
+            </a></li><li class="devsite-footer-linkbox-item"><a href="//cloud.google.com" class="gc-analytics-event"
+               data-category="Site-Wide Custom Events"
+               data-label="Footer Cloud Link">
+                Google Cloud Platform
+            </a></li><li class="devsite-footer-linkbox-item"><a href="//developers.google.com/products/" class="gc-analytics-event"
+               data-category="Site-Wide Custom Events"
+               data-label="Footer Products Link">
+                All Products
+            </a></li></ul></li></ul></nav></footer><footer class="devsite-utility-footer"><nav class="devsite-utility-footer-nav devsite-nav devsite-full-site-width"><div class="devsite-utility-footer-nav-left"><form class="devsite-utility-footer-language" action="/i18n/setlang/" method="post"><input type="hidden" name="xsrf_token" value="GzeMRgHLHeP5bXwq40w5JA2jNWaVmuxo6oSKdA3P3sg6MTUyNDQ2MDE4NDg1NzE3MA" /><input type="hidden" name="next" value="/ad-exchange/buyer-rest/guides/background"><select class="devsite-utility-footer-language-select kd-select" name="language"
+                track-type="languageSelector" track-name="click"><option value="id"
+                
+                track-type="languageSelector" track-name="changed"
+                track-metadata-original-language="en"
+                track-metadata-selected-language="id">
+            Bahasa Indonesia
+          </option><option value="de"
+                
+                track-type="languageSelector" track-name="changed"
+                track-metadata-original-language="en"
+                track-metadata-selected-language="de">
+            Deutsch
+          </option><option value="en"
+                 selected="selected" 
+                track-type="languageSelector" track-name="changed"
+                track-metadata-original-language="en"
+                track-metadata-selected-language="en">
+            English
+          </option><option value="es"
+                
+                track-type="languageSelector" track-name="changed"
+                track-metadata-original-language="en"
+                track-metadata-selected-language="es">
+            español
+          </option><option value="fr"
+                
+                track-type="languageSelector" track-name="changed"
+                track-metadata-original-language="en"
+                track-metadata-selected-language="fr">
+            français
+          </option><option value="pt-br"
+                
+                track-type="languageSelector" track-name="changed"
+                track-metadata-original-language="en"
+                track-metadata-selected-language="pt-br">
+            Português Brasileiro
+          </option><option value="ru"
+                
+                track-type="languageSelector" track-name="changed"
+                track-metadata-original-language="en"
+                track-metadata-selected-language="ru">
+            Русский
+          </option><option value="ja"
+                
+                track-type="languageSelector" track-name="changed"
+                track-metadata-original-language="en"
+                track-metadata-selected-language="ja">
+            日本語
+          </option><option value="zh-cn"
+                
+                track-type="languageSelector" track-name="changed"
+                track-metadata-original-language="en"
+                track-metadata-selected-language="zh-cn">
+            简体中文
+          </option><option value="ko"
+                
+                track-type="languageSelector" track-name="changed"
+                track-metadata-original-language="en"
+                track-metadata-selected-language="ko">
+            한국어
+          </option></select></form><span class="devsite-utility-footer-links"><a class="devsite-utility-footer-link gc-analytics-event"
+           href="https://developers.google.com/terms/site-terms"
+           data-category="Site-Wide Custom Events"
+           data-label="Footer terms link"
+           data-footer-link-id="terms"
+           >Terms
+         </a><a class="devsite-utility-footer-link gc-analytics-event"
+           href="//www.google.com/policies/privacy/"
+           data-category="Site-Wide Custom Events"
+           data-label="Footer privacy link"
+           data-footer-link-id="privacy"
+           >Privacy
+         </a></span></div><div class="devsite-utility-footer-nav-right"><div class="devsite-utility-footer-newsletter-signup-text">
+        Sign up for the Google Developers newsletter
+      </div><a class="button button-primary devsite-utility-footer-newsletter-signup-button"
+         href="//services.google.com/fb/forms/googledevelopersnewsletter/?utm_medium=referral&amp;utm_source=google-products&amp;utm_team=googledevs&amp;utm_campaign=201611-newsletter-launch">
+        
+        Subscribe
+      </a></div></nav></footer><div class="devsite-feedback-dialog devsite-dialog"><div class="devsite-dialog-contents"><h3>Send feedback about...</h3><div class="devsite-feedback-item"><a data-type="documentation" class="gc-analytics-event"
+           data-category="Site-Wide Custom Events" data-label="Docs Feedback Image"
+           track-type="feedback" track-name="feedbackDocIcon" track-metadata-position="header"><div class="devsite-feedback-item-icon-container"><div class="devsite-feedback-item-icon-white devsite-feedback-item-icon-docs
+                        material-icons"></div></div></a><div class="devsite-feedback-item-name">
+          
+          This page
+        </div><div class="devsite-feedback-item-description"><a data-type="documentation" tabindex="0" class="gc-analytics-event"
+             data-category="Site-Wide Custom Events" data-label="Docs Feedback Text"
+             track-type="feedback" track-name="feedbackDocText" track-metadata-position="header">
+            
+            Documentation feedback
+          </a></div></div><div class="devsite-feedback-item"><a data-type="product" tabindex="0" class="gc-analytics-event"
+           data-category="Site-Wide Custom Events" data-label="Product Feedback Image"
+           track-type="feedback" track-name="feedbackProductIcon" track-metadata-position="header"
+         ><img src="https://developers.google.com/ads/images/dclk-logo-mark-128px.png"
+                 class="devsite-feedback-item-icon"
+                 alt="DoubleClick Ad Exchange Buyer API"></a><div class="devsite-feedback-item-name">
+        DoubleClick Ad Exchange Buyer API
+        </div><div class="devsite-feedback-item-description"><a data-type="product" tabindex="0" class="gc-analytics-event"
+             data-category="Site-Wide Custom Events" data-label="Product Feedback Text"
+             track-type="feedback" track-name="feedbackProductText" track-metadata-position="header"
+           >
+            
+            Product feedback
+          </a></div></div></div><div class="devsite-dialog-buttons"><button type="button" class="devsite-feedback-cancel button-white gc-analytics-event"
+              data-category="Site-Wide Custom Events" data-label="Cancel Feedback Button"
+              track-type="feedback" track-name="cancelFeedbackButton"
+              track-metadata-position="header">
+        
+        Cancel
+      </button></div></div><script>
+  $(document).ready(function() {
+    new devsite.feedback.Widget({
+        'product_id': '82128',
+        'bucket': 'AdExchangeBuyerRest',
+        'context': '',
+        'version': 'devsite-20180420-r00-rc00.default'
+      },
+      document.querySelectorAll('.devsite-feedback-button'),
+      'en',
+      document.querySelector('.devsite-site-mask'),
+      document.querySelector('.devsite-feedback-dialog'),
+      document.querySelector('.devsite-feedback-cancel'),
+      document.querySelectorAll('.devsite-feedback-item a:not([href])')
+    );
+  });
+  </script></div><script async defer src="//www.gstatic.com/feedback/api.js"></script><script src="https://developers.google.com/_static2/d7147bb846/jsi18n/"></script><script src="https://developers.google.com/_static/d7147bb846/js/script_foot_closure.js"></script><script src="https://developers.google.com/_static/d7147bb846/js/script_foot.js"></script><script>
+        (function($) {
+          
+          devsite.devsite.Init($, {'ENABLE_BLOCKED_VIDEO_PLACEHOLDER': 0, 'SITE_NAME': 'devsite', 'FULL_SITE_SEARCH_ENABLED': 1, 'ENABLE_CLOUDTRACK': 0, 'VTAGS_ENABLED': 0, 'HISTORY_ENABLED': 1, 'VERSION_HASH': 'd7147bb846', 'SCRIPTSAFE_DOMAIN': 'google-developers.appspot.com', 'ENABLE_BLOCKED_LINK_TOOLTIP': 0, 'ALLOWED_HOSTS': ['.android.com', '.anvato.com', '.apigee.com', '.appspot.com', '.dialogflow.com', '.gonglchuangl.net', '.google.cn', '.google.com', '.googleplex.com', '.nest.com', '.openthread.io', '.openweave.io', '.orbitera.com', '.tensorflow.org'], 'BLOCK_RSS_FEEDS': 0},
+                               '[]','en',
+                               true, '',
+                               {"f62218c009ec029abef196bba5aa34cf": true, "8de7a048f21618359bd37f5ce44be073": false, "098dafe57affddc137df300142652cfd": false, "8e03e230de0bd8a6fe173fdf172e8b3f": true, "cb025a64a50094835616312f4774a53d": true, "51470233c56fc1fde50f00b73c52b216": false, "d169d485cf24243a263783dbe42029b1": true, "039e5d84b87fd75807ffb37b7f1bbf2c": true, "700def1a83e356c06c0925afb05de4b0": false, "6749dcb526ce9bde6993550c7d928d24": true}, '/ad-exchange/buyer-rest/',
+                               'https://developers.google.com/');
+        })(jQuery);
+
+        
+        devsite.localInit = function() {
+          
+        };
+
+      </script><script>
+      $('.devsite-utility-footer-language-select').each(function() {
+        $(this).change(function(){$('.devsite-utility-footer-language').submit();});
+      });
+      </script></div><span id="devsite-request-elapsed" data-request-elapsed="230.289936066"></span></body></html>
