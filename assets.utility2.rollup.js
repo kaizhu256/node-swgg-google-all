@@ -17600,7 +17600,7 @@ local.assetsDict['/favicon.ico'] = '';
                     }
                     local.fsWriteFileWithMkdirpSync(options.file, options.xhr.responseText);
                     console.error('ajaxCrawl - ' + (options.ii + 1) + '/' + options.list.length +
-                        ' ajaxCrawl - save ' + options.url + ' -> ' + options.file);
+                        ' - save ' + options.url + ' -> ' + options.file);
                     onError(null, options);
                 },
                 rgx: (/href="(.*?)"/g),
@@ -17652,10 +17652,13 @@ local.assetsDict['/favicon.ico'] = '';
                     break;
                 // ajax(options);
                 case 3:
-                    local.ajax(options, options.onNext);
+                    local.ajax(options, function (error, xhr) {
+                        local.onErrorDefault(error);
+                        options.xhr = xhr;
+                        options.onNext();
+                    });
                     break;
                 case 4:
-                    options.xhr = data;
                     options.onEach(options, options.onNext);
                     break;
                 case 5:
