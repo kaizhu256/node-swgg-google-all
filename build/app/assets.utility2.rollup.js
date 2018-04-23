@@ -17248,12 +17248,12 @@ local.assetsDict['/favicon.ico'] = '';
          * https://developer.mozilla.org/en-US/docs/Web/API/XMLHttpRequest#send()
          * Sends the request
          */
-            var self;
-            self = this;
-            self.data = data;
+            var xhr;
+            xhr = this;
+            xhr.data = data;
             // asynchronously send data
             setTimeout(function () {
-                self.requestStream.end(self.data);
+                xhr.requestStream.end(xhr.data);
             });
         };
 
@@ -18146,11 +18146,9 @@ local.assetsDict['/favicon.ico'] = '';
                         }
                         break;
                     case 'html':
-                        options.fs.writeFileSync(
-                            options.fileScreenshot.replace((/\.\w+$/), '.html'),
-                            data.data
-                        );
-                        setTimeout(function () {
+                        options.fs.writeFile(options.fileScreenshot.replace((
+                            /\.\w+$/
+                        ), '.html'), data.data, function () {
                             document.title = options.fileElectronHtml + ' html written';
                         });
                         break;
@@ -18160,18 +18158,16 @@ local.assetsDict['/favicon.ico'] = '';
                     break;
                 // node.electron - screenshot
                 case 13:
-                    options.browserWindow.capturePage(options, function (data) {
-                        local.fs.writeFileSync(options.fileScreenshot, data.toPng());
-                        console.error('\nbrowserTest - created screenshot file ' +
-                            options.fileScreenshot + '\n');
-                        onNext();
-                    });
+                    options.browserWindow.capturePage(options, onNext);
                     break;
-                // node.electron - screenshot-after
                 case 14:
+                    local.fs.writeFile(options.fileScreenshot, error.toPng(), onNext);
+                    break;
+                case 15:
+                    console.error('\nbrowserTest - created screenshot file ' +
+                        options.fileScreenshot + '\n');
                     console.error('browserTest - created screenshot file ' +
                         options.fileScreenshot.replace((/\.\w+$/), '.html'));
-                    onNext();
                     local.exit();
                     break;
                 // node - after electron
@@ -22845,13 +22841,10 @@ instruction\n\
             'assets.swgg.swagger.server.json'
         ].forEach(function (file) {
             local.assetsDict['/' + file] = local.assetsDict['/' + file] || '';
-            if (!local.fs.existsSync(file)) {
-                return;
-            }
-            if (process.argv[2] !== '--help') {
+            if (process.argv[2] !== '--help' && local.fs.existsSync(file)) {
                 console.error('override assets ' + file);
+                local.assetsDict['/' + file] = local.fs.readFileSync(file, 'utf8');
             }
-            local.assetsDict['/' + file] = local.fs.readFileSync(file, 'utf8');
         });
         if (local.global.utility2_rollup) {
             local.assetsDict['/assets.utility2.rollup.js'] = local.fs.readFileSync(
