@@ -1,0 +1,1344 @@
+
+
+
+
+
+
+<!DOCTYPE html><html lang="en"
+      class="chekov"><head><script>var a=window.devsite||{};window.devsite=a;a.readyCallbacks=[];window.devsite.readyCallbacks=a.readyCallbacks;a.ready=function(b){a.readyCallbacks.push(b)};window.devsite.ready=a.ready;
+</script><meta charset="utf-8"><meta name="xsrf_token" content="QkwkHsV-DH4Uyjw90nzXMBzAw5jX_NG5nGPg9JboPo46MTUyNDQ1ODMxNjMzMzkzMA" /><link rel="canonical" href="https://developers.google.com/youtube/v3/code_samples/ruby"><link rel="alternate" href="https://developers.google.com/youtube/v3/code_samples/ruby?hl=ja" hreflang="ja"><link rel="alternate" href="https://developers.google.com/youtube/v3/code_samples/ruby?hl=pt-br" hreflang="pt-br"><link rel="alternate" href="https://developers.google.com/youtube/v3/code_samples/ruby?hl=es" hreflang="es"><link rel="alternate" href="https://developers.google.com/youtube/v3/code_samples/ruby?hl=ko" hreflang="ko"><link rel="alternate" href="https://developers.google.com/youtube/v3/code_samples/ruby" hreflang="en"><link rel="alternate" href="https://developers.google.cn/youtube/v3/code_samples/ruby?hl=ja" hreflang="ja-cn"><link rel="alternate" href="https://developers.google.cn/youtube/v3/code_samples/ruby?hl=pt-br" hreflang="pt-br-cn"><link rel="alternate" href="https://developers.google.cn/youtube/v3/code_samples/ruby?hl=es" hreflang="es-cn"><link rel="alternate" href="https://developers.google.cn/youtube/v3/code_samples/ruby?hl=ko" hreflang="ko-cn"><link rel="alternate" href="https://developers.google.cn/youtube/v3/code_samples/ruby" hreflang="en-cn"><link rel="alternate" href="https://developers.google.com/youtube/v3/code_samples/ruby" hreflang="x-default"><link rel="shortcut icon" href="https://developers.google.com/_static/d7147bb846/images/favicon.png"><link rel="apple-touch-icon" href="https://developers.google.com/_static/d7147bb846/images/touch-icon.png"><meta name="viewport" content="width=device-width, initial-scale=1"><link rel="stylesheet"
+      
+      href="//fonts.googleapis.com/css?family=Google+Sans:400|Roboto:400,400italic,500,500italic,700,700italic|Roboto+Mono:400,500,700|Material+Icons"
+      ><link rel="stylesheet"
+        href="https://developers.google.com/_static/d7147bb846/css/devsite-youtube-red.css"><link rel="search"
+        type="application/opensearchdescription+xml"
+        title="Google Developers"
+        href="https://developers.google.com/s/opensearch.xml"><script src="https://developers.google.com/_static/d7147bb846/js/jquery-bundle.js"></script><meta property="og:site_name" content="Google Developers"><meta property="og:type" content="website"><meta property="og:url" content="https://developers.google.com/youtube/v3/code_samples/ruby"><meta property="og:locale" content="en"><script>
+    var ___gcfg = ___gcfg || {};
+    ___gcfg.lang = 'en';
+  </script><title>Ruby Code Samples &nbsp;|&nbsp; YouTube Data API
+      &nbsp;|&nbsp; Google Developers</title><meta property="og:title" content="Ruby Code Samples &nbsp;|&nbsp; YouTube Data API
+      &nbsp;|&nbsp; Google Developers"><meta property="og:image"
+          content="https://developers.google.com/_static/d7147bb846/images/share/devsite-youtube-red.png"><meta property="og:image:secure_url"
+          content="https://developers.google.com/_static/d7147bb846/images/share/devsite-youtube-red.png"><meta property="og:image:width" content="1200"><meta property="og:image:height" content="630">
+  
+
+  
+    
+    
+    
+    
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+{# Vars for auth docs %}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<style>
+  .deprecated {color: red}
+</style></head><body class="
+               devsite-doc-page
+               
+               
+               
+               devsite-header-no-upper-tabs
+               "
+        data-family="endorsed"
+        id="top_of_page"><div class="devsite-wrapper"><div class="devsite-top-section-wrapper
+            "><header class="devsite-top-section nocontent"><div class="devsite-top-logo-row-wrapper-wrapper"><div class="devsite-top-logo-row-wrapper"><div class="devsite-top-logo-row devsite-full-site-width"><button type="button" class="devsite-expand-section-nav devsite-header-icon-button
+                                       button-flat material-icons gc-analytics-event"
+                  data-category="Site-Wide Custom Events" data-label="Hamburger menu"></button><div class="devsite-product-name-wrapper"><a class="devsite-product-name-link gc-analytics-event"
+       href="https://developers.google.com/youtube/"
+       data-category="Site-Wide Custom Events"
+       data-label="Project logo (header)"><img src="https://developers.google.com/site-assets/logo-youtube.svg" class="devsite-product-logo"
+               alt="YouTube"></a><span class="devsite-product-name"><ul class="devsite-breadcrumb-list"><li class="devsite-breadcrumb-item"><a href="https://developers.google.com/youtube/" class="devsite-breadcrumb-link gc-analytics-event"
+       data-category="Site-Wide Custom Events" data-label="Upper Header"
+       data-value="1">
+    
+    
+      
+        YouTube
+      
+    
+    
+    </a></li><li class="devsite-breadcrumb-item"><div class="devsite-breadcrumb-guillemet material-icons"></div><a href="https://developers.google.com/youtube/v3/" class="devsite-breadcrumb-link gc-analytics-event"
+       data-category="Site-Wide Custom Events" data-label="Upper Header"
+       data-value="2">
+    
+    
+      Data API
+    
+    
+    </a></li></ul></span></div><div class="devsite-header-upper-tabs"></div><form class="devsite-search-form"
+                action="https://developers.google.com/s/results/"
+                method="GET"
+                id="top-search"
+                search-placeholder='Search'><div id="searchbox" class="devsite-searchbox"><input placeholder='Search'
+         
+         type="text"
+         class="devsite-search-field devsite-search-query"
+         name="q"
+         value=""
+         autocomplete="off"
+         
+         aria-label="Search box"><div class="devsite-search-image material-icons"></div></div><input type="hidden"
+       name="p"
+       id="search_project"
+       value="/youtube/v3/"
+       data-project-name="YouTube Data API"
+       data-project-path="/youtube/v3/"
+       data-query-match=""><input type="hidden" class="suggest-project" value="YouTube Data API" /><div class="suggest-project-metadata" data-home_url="/youtube/" data-path="/youtube/" data-name="YouTube" ></div><div class="suggest-project-metadata" data-home_url="/youtube/android/player/" data-path="/youtube/android/player/" data-name="YouTube Android Player API" ></div></form><a class="devsite-header-link devsite-top-button button gc-analytics-event"
+               href="https://developers.google.com/products/"
+               data-category="Site-Wide Custom Events"
+               data-label="Site header link"
+               track-type="navigateTo"
+               track-name="all products"
+               track-metadata-position="nav"><div class="devsite-header-link-label">All Products</div></a><button type="button" class="devsite-search-button devsite-header-icon-button button-flat
+                                       material-icons"></button><a href="https://www.google.com/accounts/ServiceLogin?passive=true&continue=https%3A%2F%2Fdevelopers.google.com%2Fyoutube%2Fv3%2Fcode_samples%2Fruby%3Frefresh%3D1&service=ahsid"
+   class="devsite-user-signin devsite-top-button button gc-analytics-event"
+   data-category="Site-Wide Custom Events" data-label="Sign in button">
+  
+  Sign in
+</a></div></div></div><div class="devsite-collapsible-section"><div class="devsite-header-background devsite-full-site-width"><div class="devsite-doc-set-nav-row devsite-full-site-width"><nav class="devsite-doc-set-nav devsite-nav devsite-overflow-tabs-scroll-wrapper"><ul class="devsite-doc-set-nav-tab-list devsite-overflow-tabs-scroll"><li class="devsite-doc-set-nav-tab-container devsite-nav-tab
+               "><a href="https://developers.google.com/youtube/v3/"
+         class=" devsite-nav-tab
+                devsite-doc-set-nav-tab devsite-doc-set-nav-tab-link gc-analytics-event"
+         
+       
+         data-category="Site-Wide Custom Events"
+       
+         data-label="Tab: Home"
+       >
+        Home
+      </a></li><li class="devsite-doc-set-nav-tab-container devsite-nav-tab
+               "><a href="https://developers.google.com/youtube/v3/getting-started"
+         class=" devsite-nav-tab
+                devsite-doc-set-nav-tab devsite-doc-set-nav-tab-link gc-analytics-event"
+         
+       
+         data-category="Site-Wide Custom Events"
+       
+         data-label="Tab: Guides"
+       >
+        Guides
+      </a></li><li class="devsite-doc-set-nav-tab-container devsite-nav-tab
+               "><a href="https://developers.google.com/youtube/v3/docs/"
+         class=" devsite-nav-tab
+                devsite-doc-set-nav-tab devsite-doc-set-nav-tab-link gc-analytics-event"
+         
+       
+         data-category="Site-Wide Custom Events"
+       
+         data-label="Tab: Reference"
+       >
+        Reference
+      </a></li><li class="devsite-doc-set-nav-tab-container devsite-nav-tab
+               "><a href="https://developers.google.com/youtube/v3/code_samples/"
+         class="devsite-doc-set-nav-active devsite-nav-tab
+                devsite-doc-set-nav-tab devsite-doc-set-nav-tab-link gc-analytics-event"
+         aria-label="Samples, selected"
+       
+         data-category="Site-Wide Custom Events"
+       
+         data-label="Tab: Samples"
+       >
+        Samples
+      </a></li><li class="devsite-doc-set-nav-tab-container devsite-nav-tab
+               "><a href="https://developers.google.com/youtube/v3/support"
+         class=" devsite-nav-tab
+                devsite-doc-set-nav-tab devsite-doc-set-nav-tab-link gc-analytics-event"
+         
+       
+         data-category="Site-Wide Custom Events"
+       
+         data-label="Tab: Support"
+       >
+        Support
+      </a></li><button type="button" id="devsite-feedback-project"
+          class="devsite-feedback-button devsite-top-button gc-analytics-event"
+          data-category="Site-Wide Custom Events" data-label="Send Feedback Button"
+          track-type="feedback" track-name="sendFeedbackLink" track-metadata-position="header">
+  
+  Send feedback
+  </button></ul></nav></div></div></div></header><script>
+    if (window.jQuery) {
+      $(document).ready(function() {
+        if (window.devsite && window.devsite.search) {
+          
+          window.devsite.search.init('en')
+        }
+      });
+    }
+  </script></div><div id="gc-wrapper"itemscope itemtype="http://schema.org/Article"><input class="google-analytics-id-json" type="hidden" value="{&quot;dimensions&quot;: {&quot;dimension6&quot;: &quot;en&quot;, &quot;dimension4&quot;: &quot;YouTube Data API&quot;, &quot;dimension5&quot;: &quot;en&quot;, &quot;dimension3&quot;: false, &quot;dimension1&quot;: &quot;Signed out&quot;, &quot;dimension8&quot;: null}, &quot;gaid&quot;: &quot;UA-24532603-1&quot;}"><script>
+      var dataLayer = [{"freeTrialEligibleUser": "False", "userCountry": "HK", "language": {"requested": "en", "served": "en"}, "projectName": "YouTube Data API", "scriptsafe": null, "signedIn": "False", "internalUser": "False"}];
+    </script>
+
+      
+        <div class="devsite-site-mask"></div>
+        
+  
+
+
+<nav class="devsite-nav-responsive devsite-nav nocontent" tabindex="0">
+  
+  <div class="devsite-nav-responsive-tabs-panel">
+    
+      
+
+
+
+<nav class="devsite-nav-responsive-tabs devsite-nav">
+  <ul class="devsite-nav-list">
+  
+    <li class="devsite-nav-item devsite-nav-item-heading">
+    
+      <a 
+           href="https://developers.google.com/youtube/v3/"
+         
+         class="devsite-nav-responsive-tab devsite-nav-title gc-analytics-event
+                "
+         data-category="Site-Wide Custom Events" data-label="Responsive Tab: Home">
+        Home
+      </a>
+      
+      
+    
+    </li>
+  
+    <li class="devsite-nav-item devsite-nav-item-heading">
+    
+      <a 
+           href="https://developers.google.com/youtube/v3/getting-started?nav=true"
+         
+         class="devsite-nav-responsive-tab devsite-nav-title gc-analytics-event
+                "
+         data-category="Site-Wide Custom Events" data-label="Responsive Tab: Guides">
+        Guides
+      </a>
+      
+      
+    
+    </li>
+  
+    <li class="devsite-nav-item devsite-nav-item-heading">
+    
+      <a 
+           href="https://developers.google.com/youtube/v3/docs/?nav=true"
+         
+         class="devsite-nav-responsive-tab devsite-nav-title gc-analytics-event
+                "
+         data-category="Site-Wide Custom Events" data-label="Responsive Tab: Reference">
+        Reference
+      </a>
+      
+      
+    
+    </li>
+  
+    <li class="devsite-nav-item devsite-nav-item-heading">
+    
+      <span class="devsite-nav-responsive-forward devsite-nav-responsive-tab devsite-nav-title
+                   devsite-nav-active gc-analytics-event"
+            data-category="Site-Wide Custom Events" data-label="Responsive Tab: Samples"
+            tabindex="0">
+        Samples
+      </span>
+    
+    </li>
+  
+    <li class="devsite-nav-item devsite-nav-item-heading">
+    
+      <a 
+           href="https://developers.google.com/youtube/v3/support?nav=true"
+         
+         class="devsite-nav-responsive-tab devsite-nav-title gc-analytics-event
+                "
+         data-category="Site-Wide Custom Events" data-label="Responsive Tab: Support">
+        Support
+      </a>
+      
+      
+    
+    </li>
+  
+  
+    <li class="devsite-nav-item devsite-nav-item-heading">
+      <a href="https://developers.google.com/products/"
+         class="devsite-nav-responsive-tab devsite-nav-title gc-analytics-event"
+         data-category="Site-Wide Custom Events"
+         data-label="Responsive Tab: all_products">
+        All Products
+      </a>
+    </li>
+  
+  </ul>
+</nav>
+
+
+    
+  </div>
+  
+  
+  <div class="devsite-nav-responsive-sidebar-panel">
+    
+    <div class="devsite-nav-responsive-back" tabindex="0"></div>
+    
+    <nav class="devsite-nav-responsive-sidebar"></nav>
+  </div>
+  
+  
+</nav>
+
+
+        <div class="devsite-main-content clearfix">
+
+        
+        
+
+        
+  
+  
+    
+    
+      
+  <nav class="devsite-section-nav devsite-nav nocontent">
+    <ul class="devsite-nav-list"><li class="devsite-nav-item"><a href="https://developers.google.com/youtube/v3/code_samples/" class="devsite-nav-title">Index</a></li><li class="devsite-nav-item"><a href="https://developers.google.com/youtube/v3/code_samples/apps-script" class="devsite-nav-title">Apps Script</a></li><li class="devsite-nav-item"><a href="https://developers.google.com/youtube/v3/code_samples/go" class="devsite-nav-title">Go</a></li><li class="devsite-nav-item"><a href="https://developers.google.com/youtube/v3/code_samples/java" class="devsite-nav-title">Java</a></li><li class="devsite-nav-item"><a href="https://developers.google.com/youtube/v3/code_samples/javascript" class="devsite-nav-title">JavaScript</a></li><li class="devsite-nav-item"><a href="https://developers.google.com/youtube/v3/code_samples/dotnet" class="devsite-nav-title">.NET</a></li><li class="devsite-nav-item"><a href="https://developers.google.com/youtube/v3/code_samples/php" class="devsite-nav-title">PHP</a></li><li class="devsite-nav-item"><a href="https://developers.google.com/youtube/v3/code_samples/python" class="devsite-nav-title">Python</a></li><li class="devsite-nav-item"><a href="https://developers.google.com/youtube/v3/code_samples/python_appengine" class="devsite-nav-title">Python on App Engine</a></li><li class="devsite-nav-item devsite-nav-active"><a href="https://developers.google.com/youtube/v3/code_samples/ruby" class="devsite-nav-title">Ruby</a></li><li class="devsite-nav-item devsite-nav-item-heading"><span class="devsite-nav-title devsite-nav-title-no-path" aria-label="Tools, click to expand/collapse" role="link">Tools</span><li class="devsite-nav-item"><a href="https://developers.google.com/youtube/v3/code_samples/code_snippets" class="devsite-nav-title">Data API Code Snippets</a></li><li class="devsite-nav-item"><a href="https://developers.google.com/youtube/v3/code_samples/code_snippet_instructions" class="devsite-nav-title">Code Snippet Tool Instructions</a></li></li></ul>
+  </nav>
+
+    
+
+    
+  <nav class="devsite-page-nav devsite-nav"></nav>
+
+
+      <article class="devsite-article">
+        <article class="devsite-article-inner">
+  
+          
+  
+
+
+
+  
+  <nav class="devsite-breadcrumb-nav devsite-nav">
+    
+
+
+<ul class="devsite-breadcrumb-list">
+  
+  <li class="devsite-breadcrumb-item">
+    
+    
+    <a href="https://developers.google.com/products/" class="devsite-breadcrumb-link gc-analytics-event"
+       data-category="Site-Wide Custom Events" data-label="Breadcrumbs"
+       data-value="1">
+    
+    
+      Products
+    
+    
+    </a>
+    
+  </li>
+  
+  <li class="devsite-breadcrumb-item">
+    
+    
+    <div class="devsite-breadcrumb-guillemet material-icons"></div>
+    
+    
+    <a href="https://developers.google.com/youtube/" class="devsite-breadcrumb-link gc-analytics-event"
+       data-category="Site-Wide Custom Events" data-label="Breadcrumbs"
+       data-value="2">
+    
+    
+      YouTube
+    
+    
+    </a>
+    
+  </li>
+  
+  <li class="devsite-breadcrumb-item">
+    
+    
+    <div class="devsite-breadcrumb-guillemet material-icons"></div>
+    
+    
+    <a href="https://developers.google.com/youtube/v3/" class="devsite-breadcrumb-link gc-analytics-event"
+       data-category="Site-Wide Custom Events" data-label="Breadcrumbs"
+       data-value="3">
+    
+    
+      Data API
+    
+    
+    </a>
+    
+  </li>
+  
+  <li class="devsite-breadcrumb-item">
+    
+    
+    <div class="devsite-breadcrumb-guillemet material-icons"></div>
+    
+    
+    <a href="https://developers.google.com/youtube/v3/code_samples/" class="devsite-breadcrumb-link gc-analytics-event"
+       data-category="Site-Wide Custom Events" data-label="Breadcrumbs"
+       data-value="4">
+    
+    
+      Samples
+    
+    
+    </a>
+    
+  </li>
+  
+</ul>
+
+  </nav>
+  
+  
+  <h1 itemprop="name" class="devsite-page-title">
+    Ruby Code Samples
+  </h1>
+  
+  
+  <nav class="devsite-page-nav-embedded devsite-nav"></nav>
+  
+  <div class="devsite-article-body clearfix
+            "
+       itemprop="articleBody">
+    
+
+<p>The following code samples, which use the <a href="https://developers.google.com/api-client-library/ruby/">Google APIs Client Library for <span class="notranslate">Ruby</span></a>, are available for the <span class="notranslate">YouTube Data API</span>. You can download these code samples from the <code>ruby</code> folder of the <a href="https://github.com/youtube/api-samples">YouTube APIs code sample repository on GitHub</a>.
+</p>
+
+<h2 id="add_a_channel_subscription">Add a channel subscription</h2>
+<p>This sample calls the API's <code>subscriptions.insert</code> method to add a subscription
+to a specified channel.</p>
+<pre class="prettyprint lang-ruby notranslate">#!/usr/bin/ruby
+
+require &#39;rubygems&#39;
+gem &#39;google-api-client&#39;, &#39;&gt;0.7&#39;
+require &#39;google/api_client&#39;
+require &#39;google/api_client/client_secrets&#39;
+require &#39;google/api_client/auth/file_storage&#39;
+require &#39;google/api_client/auth/installed_app&#39;
+require &#39;trollop&#39;
+
+# This OAuth 2.0 access scope allows for full read/write access to the
+# authenticated user&#39;s account.
+YOUTUBE_SCOPE = &#39;https://www.googleapis.com/auth/youtube&#39;
+YOUTUBE_API_SERVICE_NAME = &#39;youtube&#39;
+YOUTUBE_API_VERSION = &#39;v3&#39;
+
+def get_authenticated_service
+  client = Google::APIClient.new(
+    :application_name =&gt; $PROGRAM_NAME,
+    :application_version =&gt; &#39;1.0.0&#39;
+  )
+  youtube = client.discovered_api(YOUTUBE_API_SERVICE_NAME, YOUTUBE_API_VERSION)
+
+  file_storage = Google::APIClient::FileStorage.new(&quot;#{$PROGRAM_NAME}-oauth2.json&quot;)
+  if file_storage.authorization.nil?
+    client_secrets = Google::APIClient::ClientSecrets.load
+    flow = Google::APIClient::InstalledAppFlow.new(
+      :client_id =&gt; client_secrets.client_id,
+      :client_secret =&gt; client_secrets.client_secret,
+      :scope =&gt; [YOUTUBE_SCOPE]
+    )
+    client.authorization = flow.authorize(file_storage)
+  else
+    client.authorization = file_storage.authorization
+  end
+
+  return client, youtube
+end
+
+def main
+  opts = Trollop::options do
+    opt :channel_id, &#39;ID of the channel to subscribe to.&#39;, :type =&gt; String,
+          :default =&gt; &#39;UCtVd0c0tGXuTSbU5d8cSBUg&#39;
+  end
+
+  client, youtube = get_authenticated_service
+
+  begin
+    body = {
+      :snippet =&gt; {
+        :resourceId =&gt; {
+          :channelId =&gt; opts[:channel_id]
+        }
+      }
+    }
+
+    # Call the API&#39;s youtube.subscriptions.insert method to add the subscription
+    # to the specified channel.
+    subscriptions_response = client.execute!(
+      :api_method =&gt; youtube.subscriptions.insert,
+      :parameters =&gt; {
+        :part =&gt; body.keys.join(&#39;,&#39;)
+      },
+      :body_object =&gt; body
+    )
+
+    puts &quot;A subscription to &#39;#{subscriptions_response.data.snippet.title}&#39; was added.&quot;
+  rescue Google::APIClient::TransmissionError =&gt; e
+    puts e.result.body
+  end
+end
+
+main
+<div class="devsite-github-link nocode"><a target="_top" href="https://github.com/youtube/api-samples/blob/master/ruby/add_subscription.rb" class="gc-analytics-event" data-category="github_link" data-label="youtube/api-samples/ruby/add_subscription.rb">add_subscription.rb</a></div></pre>
+
+<h2 id="authorize_a_request">Authorize a request</h2>
+<p>The following code sample performs OAuth 2.0 authorization by checking for the presence of a local
+file that contains authorization credentials. If the file is not present, the script opens a browser and waits
+for a response, then saves the returned credentials locally.</p>
+<pre class="prettyprint lang-ruby notranslate">require &#39;google/api_client&#39;
+require &#39;google/api_client/client_secrets&#39;
+require &#39;json&#39;
+require &#39;launchy&#39;
+require &#39;thin&#39;
+
+RESPONSE_HTML = &lt;&lt;stop
+&lt;html&gt;
+  &lt;head&gt;
+    &lt;title&gt;OAuth 2 Flow Complete&lt;/title&gt;
+  &lt;/head&gt;
+  &lt;body&gt;
+    You have successfully completed the OAuth 2 flow. Please close this browser window and return to your program.
+  &lt;/body&gt;
+&lt;/html&gt;
+stop
+
+FILE_POSTFIX = &#39;-oauth2.json&#39;
+
+# Small helper for the sample apps for performing OAuth 2.0 flows from the command
+# line. Starts an embedded server to handle redirects.
+class CommandLineOAuthHelper
+
+  def initialize(scope)
+    credentials = Google::APIClient::ClientSecrets.load
+    @authorization = Signet::OAuth2::Client.new(
+      :authorization_uri =&gt; credentials.authorization_uri,
+      :token_credential_uri =&gt; credentials.token_credential_uri,
+      :client_id =&gt; credentials.client_id,
+      :client_secret =&gt; credentials.client_secret,
+      :redirect_uri =&gt; credentials.redirect_uris.first,
+      :scope =&gt; scope
+    )
+  end
+
+  # Request authorization. Checks to see if a local file with credentials is present, and uses that.
+  # Otherwise, opens a browser and waits for response, then saves the credentials locally.
+  def authorize
+    credentialsFile = $0 + FILE_POSTFIX
+
+    if File.exist? credentialsFile
+      File.open(credentialsFile, &#39;r&#39;) do |file|
+        credentials = JSON.load(file)
+        @authorization.access_token = credentials[&#39;access_token&#39;]
+        @authorization.client_id = credentials[&#39;client_id&#39;]
+        @authorization.client_secret = credentials[&#39;client_secret&#39;]
+        @authorization.refresh_token = credentials[&#39;refresh_token&#39;]
+        @authorization.expires_in = (Time.parse(credentials[&#39;token_expiry&#39;]) - Time.now).ceil
+        if @authorization.expired?
+          @authorization.fetch_access_token!
+          save(credentialsFile)
+        end
+      end
+    else
+      auth = @authorization
+      url = @authorization.authorization_uri().to_s
+      server = Thin::Server.new(&#39;0.0.0.0&#39;, 8080) do
+        run lambda { |env|
+          # Exchange the auth code &amp; quit
+          req = Rack::Request.new(env)
+          auth.code = req[&#39;code&#39;]
+          auth.fetch_access_token!
+          server.stop()
+          [200, {&#39;Content-Type&#39; =&gt; &#39;text/html&#39;}, RESPONSE_HTML]
+        }
+      end
+
+      Launchy.open(url)
+      server.start()
+
+      save(credentialsFile)
+    end
+
+    return @authorization
+  end
+
+  def save(credentialsFile)
+    File.open(credentialsFile, &#39;w&#39;, 0600) do |file|
+      json = JSON.dump({
+        :access_token =&gt; @authorization.access_token,
+        :client_id =&gt; @authorization.client_id,
+        :client_secret =&gt; @authorization.client_secret,
+        :refresh_token =&gt; @authorization.refresh_token,
+        :token_expiry =&gt; @authorization.expires_at
+      })
+      file.write(json)
+    end
+  end
+end
+<div class="devsite-github-link nocode"><a target="_top" href="https://github.com/youtube/api-samples/blob/master/ruby/oauth/oauth_util.rb" class="gc-analytics-event" data-category="github_link" data-label="youtube/api-samples/ruby/oauth/oauth_util.rb">oauth_util.rb</a></div></pre>
+
+<h2 id="post_a_channel_bulletin">Post a channel bulletin</h2>
+<p>This sample calls the API's <code>activities.insert</code> method to post a bulletin to the channel
+associated with the request.</p>
+<pre class="prettyprint lang-ruby notranslate">#!/usr/bin/ruby
+
+require &#39;rubygems&#39;
+gem &#39;google-api-client&#39;, &#39;&gt;0.7&#39;
+require &#39;google/api_client&#39;
+require &#39;google/api_client/client_secrets&#39;
+require &#39;google/api_client/auth/file_storage&#39;
+require &#39;google/api_client/auth/installed_app&#39;
+require &#39;trollop&#39;
+
+# This OAuth 2.0 access scope allows for full read/write access to the
+# authenticated user&#39;s account.
+YOUTUBE_SCOPE = &#39;https://www.googleapis.com/auth/youtube&#39;
+YOUTUBE_API_SERVICE_NAME = &#39;youtube&#39;
+YOUTUBE_API_VERSION = &#39;v3&#39;
+
+def get_authenticated_service
+  client = Google::APIClient.new(
+    :application_name =&gt; $PROGRAM_NAME,
+    :application_version =&gt; &#39;1.0.0&#39;
+  )
+  youtube = client.discovered_api(YOUTUBE_API_SERVICE_NAME, YOUTUBE_API_VERSION)
+
+  file_storage = Google::APIClient::FileStorage.new(&quot;#{$PROGRAM_NAME}-oauth2.json&quot;)
+  if file_storage.authorization.nil?
+    client_secrets = Google::APIClient::ClientSecrets.load
+    flow = Google::APIClient::InstalledAppFlow.new(
+      :client_id =&gt; client_secrets.client_id,
+      :client_secret =&gt; client_secrets.client_secret,
+      :scope =&gt; [YOUTUBE_SCOPE]
+    )
+    client.authorization = flow.authorize(file_storage)
+  else
+    client.authorization = file_storage.authorization
+  end
+
+  return client, youtube
+end
+
+def main
+  opts = Trollop::options do
+    opt :message, &#39;Required text of message to post.&#39;, :type =&gt; String
+    opt :video_id, &#39;Optional ID of video to post.&#39;, :type =&gt; String
+    opt :playlist_id, &#39;Optional ID of playlist to post.&#39;, :type =&gt; String
+  end
+
+  # You can post a message with or without an accompanying video or playlist.
+  # However, you can&#39;t post a video and a playlist at the same time.
+  if opts[:video_id] and opts[:playlist_id]
+    Trollop::die &#39;You cannot post a video and a playlist at the same time&#39;
+  end
+  Trollop::die :message, &#39;is required&#39; unless opts[:message]
+
+  client, youtube = get_authenticated_service
+
+  begin
+    body = {
+      :snippet =&gt; {
+        :description =&gt; opts[:message]
+      }
+    }
+
+    if opts[:video_id]
+      body[:contentDetails] = {
+        :bulletin =&gt; {
+          :resourceId =&gt; {
+            :kind =&gt; &#39;youtube#video&#39;,
+            :videoId =&gt; opts[:video_id]
+          }
+        }
+      }
+    end
+
+    if opts[:playlist_id]
+      body[:contentDetails] = {
+        :bulletin =&gt; {
+          :resourceId =&gt; {
+            :kind =&gt; &#39;youtube#playlist&#39;,
+            :playlistId =&gt; opts[:playlist_id]
+          }
+        }
+      }
+    end
+
+    # Call the youtube.activities.insert method to post the channel bulletin.
+    client.execute!(
+      :api_method =&gt; youtube.activities.insert,
+      :parameters =&gt; {
+        :part =&gt; body.keys.join(&#39;,&#39;)
+      },
+      :body_object =&gt; body
+    )
+
+    puts &quot;The bulletin was posted to your channel.&quot;
+  rescue Google::APIClient::TransmissionError =&gt; e
+    puts e.result.body
+  end
+end
+
+main
+<div class="devsite-github-link nocode"><a target="_top" href="https://github.com/youtube/api-samples/blob/master/ruby/channel_bulletin.rb" class="gc-analytics-event" data-category="github_link" data-label="youtube/api-samples/ruby/channel_bulletin.rb">channel_bulletin.rb</a></div></pre>
+
+<h2 id="retrieve_my_uploads">Retrieve my uploads</h2>
+<p>This sample calls the API's <code>playlistItems.list</code> method to retrieve a list of videos uploaded
+to the channel associated with the request. The code also calls the <code>channels.list</code> method with the
+<code>mine</code> parameter set to <code>true</code> to retrieve the playlist ID that identifies the channel's
+uploaded videos.</p>
+<pre class="prettyprint lang-ruby notranslate">#!/usr/bin/ruby
+
+require &#39;rubygems&#39;
+gem &#39;google-api-client&#39;, &#39;&gt;0.7&#39;
+require &#39;google/api_client&#39;
+require &#39;google/api_client/client_secrets&#39;
+require &#39;google/api_client/auth/file_storage&#39;
+require &#39;google/api_client/auth/installed_app&#39;
+
+# This OAuth 2.0 access scope allows for read-only access to the authenticated
+# user&#39;s account, but not other types of account access.
+YOUTUBE_READONLY_SCOPE = &#39;https://www.googleapis.com/auth/youtube.readonly&#39;
+YOUTUBE_API_SERVICE_NAME = &#39;youtube&#39;
+YOUTUBE_API_VERSION = &#39;v3&#39;
+
+def get_authenticated_service
+  client = Google::APIClient.new(
+    :application_name =&gt; $PROGRAM_NAME,
+    :application_version =&gt; &#39;1.0.0&#39;
+  )
+  youtube = client.discovered_api(YOUTUBE_API_SERVICE_NAME, YOUTUBE_API_VERSION)
+
+  file_storage = Google::APIClient::FileStorage.new(&quot;#{$PROGRAM_NAME}-oauth2.json&quot;)
+  if file_storage.authorization.nil?
+    client_secrets = Google::APIClient::ClientSecrets.load
+    flow = Google::APIClient::InstalledAppFlow.new(
+      :client_id =&gt; client_secrets.client_id,
+      :client_secret =&gt; client_secrets.client_secret,
+      :scope =&gt; [YOUTUBE_READONLY_SCOPE]
+    )
+    client.authorization = flow.authorize(file_storage)
+  else
+    client.authorization = file_storage.authorization
+  end
+
+  return client, youtube
+end
+
+def main
+  client, youtube = get_authenticated_service
+
+  begin
+    # Retrieve the &quot;contentDetails&quot; part of the channel resource for the
+    # authenticated user&#39;s channel.
+    channels_response = client.execute!(
+      :api_method =&gt; youtube.channels.list,
+      :parameters =&gt; {
+        :mine =&gt; true,
+        :part =&gt; &#39;contentDetails&#39;
+      }
+    )
+
+    channels_response.data.items.each do |channel|
+      # From the API response, extract the playlist ID that identifies the list
+      # of videos uploaded to the authenticated user&#39;s channel.
+      uploads_list_id = channel[&#39;contentDetails&#39;][&#39;relatedPlaylists&#39;][&#39;uploads&#39;]
+
+      # Retrieve the list of videos uploaded to the authenticated user&#39;s channel.
+      next_page_token = &#39;&#39;
+      until next_page_token.nil?
+        playlistitems_response = client.execute!(
+          :api_method =&gt; youtube.playlist_items.list,
+          :parameters =&gt; {
+            :playlistId =&gt; uploads_list_id,
+            :part =&gt; &#39;snippet&#39;,
+            :maxResults =&gt; 50,
+            :pageToken =&gt; next_page_token
+          }
+        )
+
+        puts &quot;Videos in list #{uploads_list_id}&quot;
+
+        # Print information about each video.
+        playlistitems_response.data.items.each do |playlist_item|
+          title = playlist_item[&#39;snippet&#39;][&#39;title&#39;]
+          video_id = playlist_item[&#39;snippet&#39;][&#39;resourceId&#39;][&#39;videoId&#39;]
+
+          puts &quot;#{title} (#{video_id})&quot;
+        end
+
+        next_page_token = playlistitems_response.next_page_token
+      end
+
+      puts
+    end
+  rescue Google::APIClient::TransmissionError =&gt; e
+    puts e.result.body
+  end
+end
+
+main
+<div class="devsite-github-link nocode"><a target="_top" href="https://github.com/youtube/api-samples/blob/master/ruby/my_uploads.rb" class="gc-analytics-event" data-category="github_link" data-label="youtube/api-samples/ruby/my_uploads.rb">my_uploads.rb</a></div></pre>
+
+<h2 id="search_by_keyword">Search by keyword</h2>
+<p>This sample calls the API's <code>search.list</code> method to retrieve search results
+associated with a particular keyword.</p>
+<pre class="prettyprint lang-ruby notranslate">#!/usr/bin/ruby
+
+require &#39;rubygems&#39;
+gem &#39;google-api-client&#39;, &#39;&gt;0.7&#39;
+require &#39;google/api_client&#39;
+require &#39;trollop&#39;
+
+# Set DEVELOPER_KEY to the API key value from the APIs &amp; auth &gt; Credentials
+# tab of
+# {{ Google Cloud Console }} &lt;{{ https://cloud.google.com/console }}&gt;
+# Please ensure that you have enabled the YouTube Data API for your project.
+DEVELOPER_KEY = &#39;REPLACE_ME&#39;
+YOUTUBE_API_SERVICE_NAME = &#39;youtube&#39;
+YOUTUBE_API_VERSION = &#39;v3&#39;
+
+def get_service
+  client = Google::APIClient.new(
+    :key =&gt; DEVELOPER_KEY,
+    :authorization =&gt; nil,
+    :application_name =&gt; $PROGRAM_NAME,
+    :application_version =&gt; &#39;1.0.0&#39;
+  )
+  youtube = client.discovered_api(YOUTUBE_API_SERVICE_NAME, YOUTUBE_API_VERSION)
+
+  return client, youtube
+end
+
+def main
+  opts = Trollop::options do
+    opt :q, &#39;Search term&#39;, :type =&gt; String, :default =&gt; &#39;Google&#39;
+    opt :max_results, &#39;Max results&#39;, :type =&gt; :int, :default =&gt; 25
+  end
+
+  client, youtube = get_service
+
+  begin
+    # Call the search.list method to retrieve results matching the specified
+    # query term.
+    search_response = client.execute!(
+      :api_method =&gt; youtube.search.list,
+      :parameters =&gt; {
+        :part =&gt; &#39;snippet&#39;,
+        :q =&gt; opts[:q],
+        :maxResults =&gt; opts[:max_results]
+      }
+    )
+
+    videos = []
+    channels = []
+    playlists = []
+
+    # Add each result to the appropriate list, and then display the lists of
+    # matching videos, channels, and playlists.
+    search_response.data.items.each do |search_result|
+      case search_result.id.kind
+        when &#39;youtube#video&#39;
+          videos &lt;&lt; &quot;#{search_result.snippet.title} (#{search_result.id.videoId})&quot;
+        when &#39;youtube#channel&#39;
+          channels &lt;&lt; &quot;#{search_result.snippet.title} (#{search_result.id.channelId})&quot;
+        when &#39;youtube#playlist&#39;
+          playlists &lt;&lt; &quot;#{search_result.snippet.title} (#{search_result.id.playlistId})&quot;
+      end
+    end
+
+    puts &quot;Videos:\n&quot;, videos, &quot;\n&quot;
+    puts &quot;Channels:\n&quot;, channels, &quot;\n&quot;
+    puts &quot;Playlists:\n&quot;, playlists, &quot;\n&quot;
+  rescue Google::APIClient::TransmissionError =&gt; e
+    puts e.result.body
+  end
+end
+
+main
+<div class="devsite-github-link nocode"><a target="_top" href="https://github.com/youtube/api-samples/blob/master/ruby/search.rb" class="gc-analytics-event" data-category="github_link" data-label="youtube/api-samples/ruby/search.rb">search.rb</a></div></pre>
+
+<h2 id="upload_a_video">Upload a video</h2>
+<p>This sample calls the API's <code>videos.insert</code> method to upload a video to the channel
+associated with the request.</p>
+<pre class="prettyprint lang-ruby notranslate">#!/usr/bin/ruby
+
+require &#39;rubygems&#39;
+gem &#39;google-api-client&#39;, &#39;&gt;0.7&#39;
+require &#39;google/api_client&#39;
+require &#39;google/api_client/client_secrets&#39;
+require &#39;google/api_client/auth/file_storage&#39;
+require &#39;google/api_client/auth/installed_app&#39;
+require &#39;trollop&#39;
+
+# A limited OAuth 2 access scope that allows for uploading files, but not other
+# types of account access.
+YOUTUBE_UPLOAD_SCOPE = &#39;https://www.googleapis.com/auth/youtube.upload&#39;
+YOUTUBE_API_SERVICE_NAME = &#39;youtube&#39;
+YOUTUBE_API_VERSION = &#39;v3&#39;
+
+def get_authenticated_service
+  client = Google::APIClient.new(
+    :application_name =&gt; $PROGRAM_NAME,
+    :application_version =&gt; &#39;1.0.0&#39;
+  )
+  youtube = client.discovered_api(YOUTUBE_API_SERVICE_NAME, YOUTUBE_API_VERSION)
+
+  file_storage = Google::APIClient::FileStorage.new(&quot;#{$PROGRAM_NAME}-oauth2.json&quot;)
+  if file_storage.authorization.nil?
+    client_secrets = Google::APIClient::ClientSecrets.load
+    flow = Google::APIClient::InstalledAppFlow.new(
+      :client_id =&gt; client_secrets.client_id,
+      :client_secret =&gt; client_secrets.client_secret,
+      :scope =&gt; [YOUTUBE_UPLOAD_SCOPE]
+    )
+    client.authorization = flow.authorize(file_storage)
+  else
+    client.authorization = file_storage.authorization
+  end
+
+  return client, youtube
+end
+
+def main
+  opts = Trollop::options do
+    opt :file, &#39;Video file to upload&#39;, :type =&gt; String
+    opt :title, &#39;Video title&#39;, :default =&gt; &#39;Test Title&#39;, :type =&gt; String
+    opt :description, &#39;Video description&#39;,
+          :default =&gt; &#39;Test Description&#39;, :type =&gt; String
+    opt :category_id, &#39;Numeric video category. See https://developers.google.com/youtube/v3/docs/videoCategories/list&#39;,
+          :default =&gt; 22, :type =&gt; :int
+    opt :keywords, &#39;Video keywords, comma-separated&#39;,
+          :default =&gt; &#39;&#39;, :type =&gt; String
+    opt :privacy_status, &#39;Video privacy status: public, private, or unlisted&#39;,
+          :default =&gt; &#39;public&#39;, :type =&gt; String
+  end
+
+  if opts[:file].nil? or not File.file?(opts[:file])
+    Trollop::die :file, &#39;does not exist&#39;
+  end
+
+  client, youtube = get_authenticated_service
+
+  begin
+    body = {
+      :snippet =&gt; {
+        :title =&gt; opts[:title],
+        :description =&gt; opts[:description],
+        :tags =&gt; opts[:keywords].split(&#39;,&#39;),
+        :categoryId =&gt; opts[:category_id],
+      },
+      :status =&gt; {
+        :privacyStatus =&gt; opts[:privacy_status]
+      }
+    }
+
+    videos_insert_response = client.execute!(
+      :api_method =&gt; youtube.videos.insert,
+      :body_object =&gt; body,
+      :media =&gt; Google::APIClient::UploadIO.new(opts[:file], &#39;video/*&#39;),
+      :parameters =&gt; {
+        :uploadType =&gt; &#39;resumable&#39;,
+        :part =&gt; body.keys.join(&#39;,&#39;)
+      }
+    )
+
+    videos_insert_response.resumable_upload.send_all(client)
+
+    puts &quot;Video id &#39;#{videos_insert_response.data.id}&#39; was successfully uploaded.&quot;
+  rescue Google::APIClient::TransmissionError =&gt; e
+    puts e.result.body
+  end
+end
+
+main
+<div class="devsite-github-link nocode"><a target="_top" href="https://github.com/youtube/api-samples/blob/master/ruby/upload_video.rb" class="gc-analytics-event" data-category="github_link" data-label="youtube/api-samples/ruby/upload_video.rb">upload_video.rb</a></div></pre>
+
+  
+  </div>
+  
+
+  
+        
+  
+
+
+
+
+
+
+
+        
+<div class="devsite-content-footer nocontent">
+  
+  
+    <p>Except as otherwise noted, the content of this page is licensed under the <a href="http://creativecommons.org/licenses/by/3.0/">Creative Commons Attribution 3.0 License</a>, and code samples are licensed under the <a href="http://www.apache.org/licenses/LICENSE-2.0">Apache 2.0 License</a>. For details, see our <a href="https://developers.google.com/terms/site-policies">Site Policies</a>. Java is a registered trademark of Oracle and/or its affiliates.</p>
+  
+
+  
+    
+    <p class="devsite-content-footer-date" itemprop="datePublished"
+       content="2016-12-02T15:54:27.424740">
+      
+      Last updated December 2, 2016.
+    </p>
+  
+
+</div>
+
+        </article>
+      </article>
+  
+
+        </div>
+      
+
+<footer class="devsite-footer-promos nocontent"><nav class="devsite-full-site-width"><ul class="devsite-footer-promos-list"><li class="devsite-footer-promo"><a href="http://apiblog.youtube.com"
+           class="devsite-footer-promo-title gc-analytics-event"
+           data-category="Site-Wide Custom Events"
+           data-label="Content Page Footer Promo"
+           ><img class="devsite-footer-promo-icon" src="https://www.gstatic.com/images/icons/material/product/2x/blogger_64dp.png">
+          
+          
+            Blog
+          
+        </a><div class="devsite-footer-promo-description">The latest news on the YouTube API blog</div></li><li class="devsite-footer-promo"><a href="https://github.com/youtube/api-samples"
+           class="devsite-footer-promo-title gc-analytics-event"
+           data-category="Site-Wide Custom Events"
+           data-label="Content Page Footer Promo"
+           ><img class="devsite-footer-promo-icon" src="https://developers.google.com/site-assets/logo-github.svg">
+          
+          
+            GitHub
+          
+        </a><div class="devsite-footer-promo-description">Find API code samples and other YouTube open-source projects.</div></li><li class="devsite-footer-promo"><a href="https://code.google.com/p/gdata-issues/issues/entry?template=YouTube%20(Defect%20Report)"
+           class="devsite-footer-promo-title gc-analytics-event"
+           data-category="Site-Wide Custom Events"
+           data-label="Content Page Footer Promo"
+           ><img class="devsite-footer-promo-icon" src="https://developers.google.com/site-assets/developers_64dp.png">
+          
+          
+            Issue Tracker
+          
+        </a><div class="devsite-footer-promo-description">Something wrong? Send us a bug report!</div></li><li class="devsite-footer-promo"><a href="http://stackoverflow.com/questions/ask?tags=youtube-api"
+           class="devsite-footer-promo-title gc-analytics-event"
+           data-category="Site-Wide Custom Events"
+           data-label="Content Page Footer Promo"
+           ><img class="devsite-footer-promo-icon" src="https://developers.google.com/site-assets/logo-stack-overflow.svg">
+          
+          
+            Stack Overflow
+          
+        </a><div class="devsite-footer-promo-description">Ask a question under the youtube-api tag</div></li><li class="devsite-footer-promo"><a href="https://www.youtube.com/user/YouTubeDev"
+           class="devsite-footer-promo-title gc-analytics-event"
+           data-category="Site-Wide Custom Events"
+           data-label="Content Page Footer Promo"
+           ><img class="devsite-footer-promo-icon" src="https://www.gstatic.com/images/icons/material/product/2x/youtube_64dp.png">
+          
+          
+            Videos
+          
+        </a><div class="devsite-footer-promo-description">Check out the YouTube Developer Relations team&#39;s YouTube channel</div></li></ul></nav></footer><footer class="devsite-footer-linkboxes nocontent
+               
+               devsite-footer-linkboxes-with-sites"><nav class="devsite-full-site-width"><ul class="devsite-footer-linkboxes-list"><li class="devsite-footer-linkbox "><h3 class="devsite-footer-linkbox-heading">Tools</h3><ul class="devsite-footer-linkbox-list"><li class="devsite-footer-linkbox-item"><a href="https://developers.google.com/apis-explorer/#p/" class="gc-analytics-event"
+               data-category="Site-Wide Custom Events"
+               data-label="Content Page Footer Linkbox">
+                Google APIs Explorer
+            </a></li><li class="devsite-footer-linkbox-item"><a href="https://developers.google.com/youtube/youtube_player_demo" class="gc-analytics-event"
+               data-category="Site-Wide Custom Events"
+               data-label="Content Page Footer Linkbox">
+                YouTube Player Demo
+            </a></li><li class="devsite-footer-linkbox-item"><a href="https://developers.google.com/youtube/youtube_subscribe_button" class="gc-analytics-event"
+               data-category="Site-Wide Custom Events"
+               data-label="Content Page Footer Linkbox">
+                Configure a Subscribe Button
+            </a></li></ul></li><li class="devsite-footer-linkbox "><h3 class="devsite-footer-linkbox-heading">Issue Tracker</h3><ul class="devsite-footer-linkbox-list"><li class="devsite-footer-linkbox-item"><a href="https://code.google.com/p/gdata-issues/issues/entry?template=YouTube%20(Defect%20Report)" class="gc-analytics-event"
+               data-category="Site-Wide Custom Events"
+               data-label="Content Page Footer Linkbox">
+                File a bug
+            </a></li><li class="devsite-footer-linkbox-item"><a href="https://code.google.com/p/gdata-issues/issues/entry?template=YouTube%20(Enhancement%20Request)" class="gc-analytics-event"
+               data-category="Site-Wide Custom Events"
+               data-label="Content Page Footer Linkbox">
+                Request a feature
+            </a></li><li class="devsite-footer-linkbox-item"><a href="https://code.google.com/p/gdata-issues/issues/list?q=label:API-YouTube" class="gc-analytics-event"
+               data-category="Site-Wide Custom Events"
+               data-label="Content Page Footer Linkbox">
+                See open issues
+            </a></li></ul></li><li class="devsite-footer-linkbox "><h3 class="devsite-footer-linkbox-heading">Product Info</h3><ul class="devsite-footer-linkbox-list"><li class="devsite-footer-linkbox-item"><a href="https://developers.google.com/youtube/terms" class="gc-analytics-event"
+               data-category="Site-Wide Custom Events"
+               data-label="Content Page Footer Linkbox">
+                Terms of Service
+            </a></li><li class="devsite-footer-linkbox-item"><a href="https://developers.google.com/youtube/branding_guidelines" class="gc-analytics-event"
+               data-category="Site-Wide Custom Events"
+               data-label="Content Page Footer Linkbox">
+                Branding Guidelines
+            </a></li><li class="devsite-footer-linkbox-item"><a href="https://developers.google.com/youtube/creating_monetizable_applications" class="gc-analytics-event"
+               data-category="Site-Wide Custom Events"
+               data-label="Content Page Footer Linkbox">
+                Monetization Guidelines
+            </a></li><li class="devsite-footer-linkbox-item"><a href="https://developers.google.com/youtube/youtube-api-list" class="gc-analytics-event"
+               data-category="Site-Wide Custom Events"
+               data-label="Content Page Footer Linkbox">
+                APIs subject to Deprecation Policy
+            </a></li></ul></li><li class="devsite-footer-linkbox devsite-footer-linkbox-sites"><a href="https://developers.google.com/"
+           class="gc-analytics-event devsite-footer-linkbox-logo-link"
+           data-category="Site-Wide Custom Events" data-label="Footer Google Developers Link"><img class="devsite-footer-linkbox-logo"
+               src="https://developers.google.com/_static/d7147bb846/images/redesign-14/lockup-color-knockout.png"
+               alt="Google Developers"></a><ul class="devsite-footer-linkbox-list"><li class="devsite-footer-linkbox-item"><a href="//developer.android.com/index.html" class="gc-analytics-event"
+               data-category="Site-Wide Custom Events"
+               data-label="Footer Android Link">
+                Android
+            </a></li><li class="devsite-footer-linkbox-item"><a href="//developer.chrome.com/home" class="gc-analytics-event"
+               data-category="Site-Wide Custom Events"
+               data-label="Footer Chrome Link">
+                Chrome
+            </a></li><li class="devsite-footer-linkbox-item"><a href="//firebase.google.com" class="gc-analytics-event"
+               data-category="Site-Wide Custom Events"
+               data-label="Footer Firebase Link">
+                Firebase
+            </a></li><li class="devsite-footer-linkbox-item"><a href="//cloud.google.com" class="gc-analytics-event"
+               data-category="Site-Wide Custom Events"
+               data-label="Footer Cloud Link">
+                Google Cloud Platform
+            </a></li><li class="devsite-footer-linkbox-item"><a href="//developers.google.com/products/" class="gc-analytics-event"
+               data-category="Site-Wide Custom Events"
+               data-label="Footer Products Link">
+                All Products
+            </a></li></ul></li></ul></nav></footer><footer class="devsite-utility-footer"><nav class="devsite-utility-footer-nav devsite-nav devsite-full-site-width"><div class="devsite-utility-footer-nav-left"><form class="devsite-utility-footer-language" action="/i18n/setlang/" method="post"><input type="hidden" name="xsrf_token" value="QkwkHsV-DH4Uyjw90nzXMBzAw5jX_NG5nGPg9JboPo46MTUyNDQ1ODMxNjMzMzkzMA" /><input type="hidden" name="next" value="/youtube/v3/code_samples/ruby"><select class="devsite-utility-footer-language-select kd-select" name="language"
+                track-type="languageSelector" track-name="click"><option value="id"
+                
+                track-type="languageSelector" track-name="changed"
+                track-metadata-original-language="en"
+                track-metadata-selected-language="id">
+            Bahasa Indonesia
+          </option><option value="de"
+                
+                track-type="languageSelector" track-name="changed"
+                track-metadata-original-language="en"
+                track-metadata-selected-language="de">
+            Deutsch
+          </option><option value="en"
+                 selected="selected" 
+                track-type="languageSelector" track-name="changed"
+                track-metadata-original-language="en"
+                track-metadata-selected-language="en">
+            English
+          </option><option value="es"
+                
+                track-type="languageSelector" track-name="changed"
+                track-metadata-original-language="en"
+                track-metadata-selected-language="es">
+            español
+          </option><option value="fr"
+                
+                track-type="languageSelector" track-name="changed"
+                track-metadata-original-language="en"
+                track-metadata-selected-language="fr">
+            français
+          </option><option value="pt-br"
+                
+                track-type="languageSelector" track-name="changed"
+                track-metadata-original-language="en"
+                track-metadata-selected-language="pt-br">
+            Português Brasileiro
+          </option><option value="ru"
+                
+                track-type="languageSelector" track-name="changed"
+                track-metadata-original-language="en"
+                track-metadata-selected-language="ru">
+            Русский
+          </option><option value="ja"
+                
+                track-type="languageSelector" track-name="changed"
+                track-metadata-original-language="en"
+                track-metadata-selected-language="ja">
+            日本語
+          </option><option value="zh-cn"
+                
+                track-type="languageSelector" track-name="changed"
+                track-metadata-original-language="en"
+                track-metadata-selected-language="zh-cn">
+            简体中文
+          </option><option value="ko"
+                
+                track-type="languageSelector" track-name="changed"
+                track-metadata-original-language="en"
+                track-metadata-selected-language="ko">
+            한국어
+          </option></select></form><span class="devsite-utility-footer-links"><a class="devsite-utility-footer-link gc-analytics-event"
+           href="https://developers.google.com/terms/site-terms"
+           data-category="Site-Wide Custom Events"
+           data-label="Footer terms link"
+           data-footer-link-id="terms"
+           >Terms
+         </a><a class="devsite-utility-footer-link gc-analytics-event"
+           href="//www.google.com/policies/privacy/"
+           data-category="Site-Wide Custom Events"
+           data-label="Footer privacy link"
+           data-footer-link-id="privacy"
+           >Privacy
+         </a></span></div><div class="devsite-utility-footer-nav-right"><div class="devsite-utility-footer-newsletter-signup-text">
+        Sign up for the Google Developers newsletter
+      </div><a class="button button-primary devsite-utility-footer-newsletter-signup-button"
+         href="//services.google.com/fb/forms/googledevelopersnewsletter/?utm_medium=referral&amp;utm_source=google-products&amp;utm_team=googledevs&amp;utm_campaign=201611-newsletter-launch">
+        
+        Subscribe
+      </a></div></nav></footer><div class="devsite-feedback-dialog devsite-dialog"><div class="devsite-dialog-contents"><h3>Send feedback about...</h3><div class="devsite-feedback-item"><a data-type="documentation" class="gc-analytics-event"
+           data-category="Site-Wide Custom Events" data-label="Docs Feedback Image"
+           track-type="feedback" track-name="feedbackDocIcon" track-metadata-position="header"><div class="devsite-feedback-item-icon-container"><div class="devsite-feedback-item-icon-white devsite-feedback-item-icon-docs
+                        material-icons"></div></div></a><div class="devsite-feedback-item-name">
+          
+          This page
+        </div><div class="devsite-feedback-item-description"><a data-type="documentation" tabindex="0" class="gc-analytics-event"
+             data-category="Site-Wide Custom Events" data-label="Docs Feedback Text"
+             track-type="feedback" track-name="feedbackDocText" track-metadata-position="header">
+            
+            Documentation feedback
+          </a></div></div><div class="devsite-feedback-item"><a data-type="product" tabindex="0" class="gc-analytics-event"
+           data-category="Site-Wide Custom Events" data-label="Product Feedback Image"
+           track-type="feedback" track-name="feedbackProductIcon" track-metadata-position="header"
+         ><img src="https://developers.google.com/site-assets/logo-youtube.svg"
+                 class="devsite-feedback-item-icon"
+                 alt="YouTube Data API"></a><div class="devsite-feedback-item-name">
+        YouTube Data API
+        </div><div class="devsite-feedback-item-description"><a data-type="product" tabindex="0" class="gc-analytics-event"
+             data-category="Site-Wide Custom Events" data-label="Product Feedback Text"
+             track-type="feedback" track-name="feedbackProductText" track-metadata-position="header"
+           >
+            
+            Product feedback
+          </a></div></div></div><div class="devsite-dialog-buttons"><button type="button" class="devsite-feedback-cancel button-white gc-analytics-event"
+              data-category="Site-Wide Custom Events" data-label="Cancel Feedback Button"
+              track-type="feedback" track-name="cancelFeedbackButton"
+              track-metadata-position="header">
+        
+        Cancel
+      </button></div></div><script>
+  $(document).ready(function() {
+    new devsite.feedback.Widget({
+        'product_id': '5020320',
+        'bucket': 'Default',
+        'context': '',
+        'version': 'devsite-20180420-r00-rc00.default'
+      },
+      document.querySelectorAll('.devsite-feedback-button'),
+      'en',
+      document.querySelector('.devsite-site-mask'),
+      document.querySelector('.devsite-feedback-dialog'),
+      document.querySelector('.devsite-feedback-cancel'),
+      document.querySelectorAll('.devsite-feedback-item a:not([href])')
+    );
+  });
+  </script></div><script async defer src="//www.gstatic.com/feedback/api.js"></script><script src="https://developers.google.com/_static2/d7147bb846/jsi18n/"></script><script src="https://developers.google.com/_static/d7147bb846/js/script_foot_closure.js"></script><script src="https://developers.google.com/_static/d7147bb846/js/script_foot.js"></script><script>
+        (function($) {
+          
+          devsite.devsite.Init($, {'ENABLE_BLOCKED_VIDEO_PLACEHOLDER': 0, 'SITE_NAME': 'devsite', 'FULL_SITE_SEARCH_ENABLED': 1, 'ENABLE_CLOUDTRACK': 0, 'VTAGS_ENABLED': 0, 'HISTORY_ENABLED': 1, 'VERSION_HASH': 'd7147bb846', 'SCRIPTSAFE_DOMAIN': 'google-developers.appspot.com', 'ENABLE_BLOCKED_LINK_TOOLTIP': 0, 'ALLOWED_HOSTS': ['.android.com', '.anvato.com', '.apigee.com', '.appspot.com', '.dialogflow.com', '.gonglchuangl.net', '.google.cn', '.google.com', '.googleplex.com', '.nest.com', '.openthread.io', '.openweave.io', '.orbitera.com', '.tensorflow.org'], 'BLOCK_RSS_FEEDS': 0},
+                               '[]','en',
+                               true, '',
+                               {"f62218c009ec029abef196bba5aa34cf": true, "8de7a048f21618359bd37f5ce44be073": false, "098dafe57affddc137df300142652cfd": false, "8e03e230de0bd8a6fe173fdf172e8b3f": true, "cb025a64a50094835616312f4774a53d": true, "51470233c56fc1fde50f00b73c52b216": false, "d169d485cf24243a263783dbe42029b1": true, "039e5d84b87fd75807ffb37b7f1bbf2c": true, "700def1a83e356c06c0925afb05de4b0": false, "6749dcb526ce9bde6993550c7d928d24": true}, '/youtube/v3/',
+                               'https://developers.google.com/');
+        })(jQuery);
+
+        
+        devsite.localInit = function() {
+          
+        };
+
+      </script><script>
+      $('.devsite-utility-footer-language-select').each(function() {
+        $(this).change(function(){$('.devsite-utility-footer-language').submit();});
+      });
+      </script></div><span id="devsite-request-elapsed" data-request-elapsed="271.229982376"></span></body></html>

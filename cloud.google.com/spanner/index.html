@@ -1,0 +1,1395 @@
+
+
+
+
+
+
+<!DOCTYPE html><html lang="en"
+      class="chekov"><head><script>var a=window.devsite||{};window.devsite=a;a.readyCallbacks=[];window.devsite.readyCallbacks=a.readyCallbacks;a.ready=function(b){a.readyCallbacks.push(b)};window.devsite.ready=a.ready;
+</script><meta charset="utf-8"><meta name="xsrf_token" content="hsTbHNsrssQBQYEu_n8gelJokN3vvdFf4yUgMrJXpl46MTUyNDQ1ODI0ODM0MDMzMA" /><link rel="canonical" href="https://cloud.google.com/spanner/"><link rel="alternate" href="https://cloud.google.com/spanner/?hl=it" hreflang="it"><link rel="alternate" href="https://cloud.google.com/spanner/?hl=tr" hreflang="tr"><link rel="alternate" href="https://cloud.google.com/spanner/?hl=nl" hreflang="nl"><link rel="alternate" href="https://cloud.google.com/spanner/?hl=de" hreflang="de"><link rel="alternate" href="https://cloud.google.com/spanner/?hl=pt-br" hreflang="pt-br"><link rel="alternate" href="https://cloud.google.com/spanner/?hl=ja" hreflang="ja"><link rel="alternate" href="https://cloud.google.com/spanner/" hreflang="en"><link rel="alternate" href="https://cloud.google.com/spanner/?hl=ko" hreflang="ko"><link rel="alternate" href="https://cloud.google.com/spanner/?hl=zh-cn" hreflang="zh-Hans"><link rel="alternate" href="https://cloud.google.com/spanner/" hreflang="x-default"><link rel="shortcut icon" href="https://cloud.google.com/_static/d7147bb846/images/cloud/icons/favicons/onecloud/favicon.ico"><link rel="apple-touch-icon" href="https://cloud.google.com/_static/d7147bb846/images/cloud/icons/favicons/onecloud/apple-icon.png"><meta name="viewport" content="width=device-width, initial-scale=1"><link rel="stylesheet"
+      
+      href="//fonts.googleapis.com/css?family=Google+Sans:400|Roboto:400,400italic,500,500italic,700,700italic|Roboto+Mono:400,500,700|Material+Icons"
+      ><link rel="stylesheet"
+        href="https://cloud.google.com/_static/d7147bb846/css/devsite-cloud-white.css"><link rel="stylesheet" href="https://cloud.google.com/_static/d7147bb846/css/cloud/cloud-site.css"><link rel="search"
+        type="application/opensearchdescription+xml"
+        title="Google Cloud"
+        href="https://cloud.google.com/s/opensearch.xml"><script src="https://cloud.google.com/_static/d7147bb846/js/jquery-bundle.js"></script><meta property="og:site_name" content="Google Cloud"><meta property="og:type" content="website"><meta property="og:url" content="https://cloud.google.com/spanner/"><meta property="og:locale" content="en"><script>
+    var ___gcfg = ___gcfg || {};
+    ___gcfg.lang = 'en';
+  </script><title>Cloud Spanner | Automatic Sharding with Transactional Consistency at Scale &nbsp;|&nbsp; Google Cloud</title><meta property="og:title" content="Cloud Spanner | Automatic Sharding with Transactional Consistency at Scale &nbsp;|&nbsp; Google Cloud"><meta name="description" content="The only enterprise-grade, globally-distributed, and strongly consistent relational database service."><meta property="og:description" content="The only enterprise-grade, globally-distributed, and strongly consistent relational database service."><link rel="stylesheet" href="https://cloud.google.com/css/lightbox-override.css"><style>
+     #cloud-site .video {
+      border-radius: 4px;
+      box-shadow: 0 2px 5px 0 rgba(0,0,0,.26);
+      display: block;
+      height: 191px;
+      transition: all .3s;
+      max-width: 315px;
+      width: 315px;
+      margin: 0 auto;
+    }
+    #cloud-site .video img {
+      padding: 0;
+    }
+    #cloud-site .video:hover {
+      transform: translate3d(0,-2px,0);
+      box-shadow: 0 4px 8px 0 rgba(0,0,0,.4);
+    }
+    #table-spanner .material-icons {
+      margin-right: 12px;
+      vertical-align: middle;
+    }
+    #table-spanner .md-green {
+      color: #0f9d58;
+    }
+    #table-spanner .md-red {
+      color: #b71c1c;
+    }
+    #table-spanner .md-yellow {
+      color: #ffd601;
+    }
+    table#table-spanner {
+      border: 1px solid #e0e0e0;
+    }
+    #table-spanner thead tr th {
+      background-color: #eee;
+      color: #757575;
+      font-size: 14px;
+    }
+    #table-spanner thead tr th:nth-child(2) {
+      color: #414141;
+      background-color: #dfdfdf;
+    }
+    #table-spanner tbody tr td {
+      border-right: none;
+      border-left: none;
+    }
+    #table-spanner tbody tr td:nth-child(1) {
+      color: #757575;
+      font-size: 13px;
+      font-weight: 500;
+      padding-left: 25px;
+    }
+    #table-spanner tbody tr td:nth-child(2) {
+      background: rgba(224, 224, 224, 0.1);
+      color: #212121;
+      font-size: 15px;
+      font-weight: 700;
+    }
+
+  </style></head><body class="
+               devsite-doc-page
+               
+               devsite-full-width-page
+               
+               
+               devsite-header-no-lower-tabs"
+        data-family="endorsed"
+        id="top_of_page"><div class="devsite-wrapper"><div class="devsite-top-section-wrapper
+            "><header class="devsite-top-section nocontent"><div class="devsite-top-logo-row-wrapper-wrapper"><div class="devsite-top-logo-row-wrapper"><div class="devsite-top-logo-row devsite-full-site-width"><button type="button" class="devsite-expand-section-nav devsite-header-icon-button
+                                       button-flat material-icons gc-analytics-event"
+                  data-category="Site-Wide Custom Events" data-label="Hamburger menu"></button><div class="devsite-product-name-wrapper"><a href="https://cloud.google.com/" class="devsite-site-logo-link gc-analytics-event"
+   data-category="Site-Wide Custom Events" data-label="Site logo"><img src="https://cloud.google.com/_static/d7147bb846/images/cloud/cloud-logo.svg"
+       class="devsite-site-logo" alt="Google Cloud"><span class="devsite-site-name devsite-product-name">Google Cloud</span></a></div><div class="devsite-header-upper-tabs"><nav class="devsite-doc-set-nav devsite-nav devsite-overflow-tabs-scroll-wrapper"><ul class="devsite-doc-set-nav-tab-list devsite-overflow-tabs-scroll"><li class="devsite-doc-set-nav-tab-container devsite-nav-tab
+               "><a href="https://cloud.google.com/"
+         class=" devsite-nav-tab
+                devsite-doc-set-nav-tab devsite-doc-set-nav-tab-link gc-analytics-event"
+         
+       
+         data-category="Site-Wide Custom Events"
+       
+         data-label="Tab: Home"
+       
+         track-type="globalNav"
+       
+         track-name="home"
+       >
+        Home
+      </a></li><li class="devsite-doc-set-nav-tab-container devsite-nav-tab
+               "><a href="https://cloud.google.com/about/locations/"
+         class=" devsite-nav-tab
+                devsite-doc-set-nav-tab devsite-doc-set-nav-tab-link gc-analytics-event"
+         
+       
+         data-category="Site-Wide Custom Events"
+       
+         data-label="Tab: About"
+       
+         track-type="globalNav"
+       
+         track-name="about"
+       >
+        About
+      </a></li><li class="devsite-doc-set-nav-tab-container devsite-nav-tab
+               "><a href="https://cloud.google.com/why-google-cloud/"
+         class=" devsite-nav-tab
+                devsite-doc-set-nav-tab devsite-doc-set-nav-tab-link gc-analytics-event"
+         
+       
+         data-category="Site-Wide Custom Events"
+       
+         data-label="Tab: Why Google"
+       
+         track-type="globalNav"
+       
+         track-name="whyGoogle"
+       >
+        Why Google
+      </a></li><li class="devsite-doc-set-nav-tab-container devsite-nav-tab
+               "><a href="https://cloud.google.com/products/"
+         class="devsite-doc-set-nav-active devsite-nav-tab
+                devsite-doc-set-nav-tab devsite-doc-set-nav-tab-link gc-analytics-event"
+         aria-label="Products, selected"
+       
+         data-category="Site-Wide Custom Events"
+       
+         data-label="Tab: Products"
+       
+         track-type="globalNav"
+       
+         track-name="products"
+       >
+        Products
+      </a></li><li class="devsite-doc-set-nav-tab-container devsite-nav-tab
+               "><a href="https://cloud.google.com/solutions/"
+         class=" devsite-nav-tab
+                devsite-doc-set-nav-tab devsite-doc-set-nav-tab-link gc-analytics-event"
+         
+       
+         data-category="Site-Wide Custom Events"
+       
+         data-label="Tab: Solutions"
+       
+         track-type="globalNav"
+       
+         track-name="solutions"
+       >
+        Solutions
+      </a></li><li class="devsite-doc-set-nav-tab-container devsite-nav-tab
+               "><a href="https://cloud.google.com/launcher/"
+         class=" devsite-nav-tab
+                devsite-doc-set-nav-tab devsite-doc-set-nav-tab-link gc-analytics-event"
+         
+       
+         data-category="Site-Wide Custom Events"
+       
+         data-label="Tab: Launcher"
+       
+         track-type="globalNav"
+       
+         track-name="launcher"
+       >
+        Launcher
+      </a></li><li class="devsite-doc-set-nav-tab-container devsite-nav-tab
+               "><a href="https://cloud.google.com/pricing/"
+         class=" devsite-nav-tab
+                devsite-doc-set-nav-tab devsite-doc-set-nav-tab-link gc-analytics-event"
+         
+       
+         data-category="Site-Wide Custom Events"
+       
+         data-label="Tab: Pricing"
+       
+         track-type="globalNav"
+       
+         track-name="pricing"
+       >
+        Pricing
+      </a></li><li class="devsite-doc-set-nav-tab-container devsite-nav-tab
+               "><a href="https://cloud.google.com/security/"
+         class=" devsite-nav-tab
+                devsite-doc-set-nav-tab devsite-doc-set-nav-tab-link gc-analytics-event"
+         
+       
+         data-category="Site-Wide Custom Events"
+       
+         data-label="Tab: Security"
+       
+         track-type="globalNav"
+       
+         track-name="security"
+       >
+        Security
+      </a></li><li class="devsite-doc-set-nav-tab-container devsite-nav-tab
+               "><a href="https://cloud.google.com/customers/"
+         class=" devsite-nav-tab
+                devsite-doc-set-nav-tab devsite-doc-set-nav-tab-link gc-analytics-event"
+         
+       
+         data-category="Site-Wide Custom Events"
+       
+         data-label="Tab: Customers"
+       
+         track-type="globalNav"
+       
+         track-name="customers"
+       >
+        Customers
+      </a></li><li class="devsite-doc-set-nav-tab-container devsite-nav-tab
+               "><a href="https://cloud.google.com/docs/"
+         class=" devsite-nav-tab
+                devsite-doc-set-nav-tab devsite-doc-set-nav-tab-link gc-analytics-event"
+         
+       
+         data-category="Site-Wide Custom Events"
+       
+         data-label="Tab: Documentation"
+       
+         track-type="globalNav"
+       
+         track-name="documentation"
+       >
+        Documentation
+      </a></li><li class="devsite-doc-set-nav-tab-container devsite-nav-tab
+               "><a href="https://cloud.google.com/support/"
+         class=" devsite-nav-tab
+                devsite-doc-set-nav-tab devsite-doc-set-nav-tab-link gc-analytics-event"
+         
+       
+         data-category="Site-Wide Custom Events"
+       
+         data-label="Tab: Support"
+       
+         track-type="globalNav"
+       
+         track-name="support"
+       >
+        Support
+      </a></li><li class="devsite-doc-set-nav-tab-container devsite-nav-tab
+               "><a href="https://cloud.google.com/partners/"
+         class=" devsite-nav-tab
+                devsite-doc-set-nav-tab devsite-doc-set-nav-tab-link gc-analytics-event"
+         
+       
+         data-category="Site-Wide Custom Events"
+       
+         data-label="Tab: Partners"
+       
+         track-type="globalNav"
+       
+         track-name="partners"
+       >
+        Partners
+      </a></li><li class="devsite-doc-set-nav-tab-container devsite-nav-tab
+               "><a href="https://cloud.google.com/blog/big-data/"
+         class=" devsite-nav-tab
+                devsite-doc-set-nav-tab devsite-doc-set-nav-tab-link gc-analytics-event"
+         
+       
+         data-category="Site-Wide Custom Events"
+       
+         data-label="Tab: Social"
+       
+         track-type="globalNav"
+       
+         track-name="social"
+       >
+        Social
+      </a></li><li class="devsite-doc-set-nav-tab-container devsite-nav-tab
+               "><a href="https://cloud.google.com/contact/"
+         class=" devsite-nav-tab
+                devsite-doc-set-nav-tab devsite-doc-set-nav-tab-link gc-analytics-event"
+         
+       
+         data-category="Site-Wide Custom Events"
+       
+         data-label="Tab: Contact"
+       
+         track-type="globalNav"
+       
+         track-name="contact"
+       >
+        Contact
+      </a></li></ul></nav></div><form class="devsite-search-form"
+                action="https://cloud.google.com/s/results/"
+                method="GET"
+                id="top-search"
+                search-placeholder='Search'><div id="searchbox" class="devsite-searchbox"><input placeholder='Search'
+         
+         type="text"
+         class="devsite-search-field devsite-search-query"
+         name="q"
+         value=""
+         autocomplete="off"
+         
+         aria-label="Search box"><div class="devsite-search-image material-icons"></div></div><input type="hidden"
+       name="p"
+       id="search_project"
+       value="/"
+       data-project-name="Google Cloud Platform"
+       data-project-path="/"
+       data-query-match=""><input type="hidden" class="suggest-project" value="Google Cloud Platform" /><div class="suggest-project-metadata" data-home_url="/" data-path="/" data-name="Android Developers" ></div><div class="suggest-project-metadata" data-home_url="/" data-path="/" data-name="Android Open Source Project" ></div><div class="suggest-project-metadata" data-home_url="/" data-path="/" data-name="Apigee Docs" ></div><div class="suggest-project-metadata" data-home_url="/" data-path="/" data-name="Google Cloud Platform" ></div><div class="suggest-project-metadata" data-home_url="/" data-path="/" data-name="Dialogflow" ></div><div class="suggest-project-metadata" data-home_url="/" data-path="/" data-name="Firebase" ></div><div class="suggest-project-metadata" data-home_url="/" data-path="/" data-name="Android Developers" ></div><div class="suggest-project-metadata" data-home_url="/" data-path="/" data-name="Link.app" ></div><div class="suggest-project-metadata" data-home_url="/" data-path="/" data-name="Nest Developers" ></div><div class="suggest-project-metadata" data-home_url="/" data-path="/" data-name="OpenThread" ></div><div class="suggest-project-metadata" data-home_url="https://www.orbitera.com/" data-path="/" data-name="Orbitera" ></div><div class="suggest-project-metadata" data-home_url="/" data-path="/" data-name="TensorFlow" ></div></form><a class="devsite-header-link devsite-top-button button gc-analytics-event"
+               href="//console.cloud.google.com/"
+               data-category="Site-Wide Custom Events"
+               data-label="Site header link"
+               track-type="navigateTo"
+               track-name="console"
+               track-metadata-position="nav"><div class="devsite-header-link-label">Console</div></a><button type="button" class="devsite-search-button devsite-header-icon-button button-flat
+                                       material-icons"></button><a href="https://www.google.com/accounts/ServiceLogin?passive=true&continue=https%3A%2F%2Fcloud.google.com%2Fspanner%2F%3Frefresh%3D1&service=cloudconsole"
+   class="devsite-user-signin devsite-top-button button gc-analytics-event"
+   data-category="Site-Wide Custom Events" data-label="Sign in button">
+  
+  Sign in
+</a></div></div></div><div class="devsite-collapsible-section"><div class="devsite-header-background devsite-full-site-width"><div class="devsite-product-id-row devsite-full-site-width"><div class="devsite-product-description-row"><ul class="devsite-breadcrumb-list"><li class="devsite-breadcrumb-item">
+    
+    
+    
+      Products
+    
+    
+  </li></ul></div><div class="devsite-product-button-row
+            cloud-free-trial-eligible"><a
+    
+      href="https://console.cloud.google.com/freetrial"
+    
+    
+      class="cloud-free-trial-button button-primary button"
+    
+    
+      
+      track-type="freeTrial"
+      
+      track-name="try"
+      
+      track-metadata-position="nav"
+      
+    >
+    Try It Free
+  </a><a
+    
+      href="https://cloud.google.com/contact/"
+    
+    
+      class="cloud-contact-sales-button button"
+    
+    
+      
+      track-type="sales"
+      
+      track-name="contact"
+      
+      track-metadata-position="nav"
+      
+    >
+    Contact Sales
+  </a></div></div></div></div></header><script>
+    if (window.jQuery) {
+      $(document).ready(function() {
+        if (window.devsite && window.devsite.search) {
+          
+          window.devsite.search.init('en')
+        }
+      });
+    }
+  </script></div><div id="gc-wrapper"itemscope itemtype="http://schema.org/Article"><input class="google-tag-manager-id" type="hidden" value="GTM-5CVQBG"><script>
+      var dataLayer = [{"freeTrialEligibleUser": "True", "userCountry": "HK", "language": {"requested": "en", "served": "en"}, "projectName": "Google Cloud Platform", "scriptsafe": null, "signedIn": "False", "internalUser": "False"}];
+    </script>
+
+      
+        <div class="devsite-site-mask"></div>
+        
+  
+
+
+<nav class="devsite-nav-responsive devsite-nav nocontent" tabindex="0">
+  
+  <div class="devsite-nav-responsive-tabs-panel">
+    
+      
+        
+
+
+
+<nav class="devsite-nav-responsive-tabs devsite-nav">
+  <ul class="devsite-nav-list">
+  
+    <li class="devsite-nav-item devsite-nav-item-heading">
+    
+      <a 
+           href="https://cloud.google.com/"
+         
+         class="devsite-nav-responsive-tab devsite-nav-title gc-analytics-event
+                "
+         data-category="Site-Wide Custom Events" data-label="Responsive Tab: Home">
+        Home
+      </a>
+      
+      
+    
+    </li>
+  
+    <li class="devsite-nav-item devsite-nav-item-heading">
+    
+      <a 
+           href="https://cloud.google.com/about/locations/?nav=true"
+         
+         class="devsite-nav-responsive-tab devsite-nav-title gc-analytics-event
+                "
+         data-category="Site-Wide Custom Events" data-label="Responsive Tab: About">
+        About
+      </a>
+      
+      
+    
+    </li>
+  
+    <li class="devsite-nav-item devsite-nav-item-heading">
+    
+      <a 
+           href="https://cloud.google.com/why-google-cloud/?nav=true"
+         
+         class="devsite-nav-responsive-tab devsite-nav-title gc-analytics-event
+                "
+         data-category="Site-Wide Custom Events" data-label="Responsive Tab: Why Google">
+        Why Google
+      </a>
+      
+      
+    
+    </li>
+  
+    <li class="devsite-nav-item devsite-nav-item-heading">
+    
+      <span class="devsite-nav-responsive-forward devsite-nav-responsive-tab devsite-nav-title
+                   devsite-nav-active gc-analytics-event"
+            data-category="Site-Wide Custom Events" data-label="Responsive Tab: Products"
+            tabindex="0">
+        Products
+      </span>
+    
+    </li>
+  
+    <li class="devsite-nav-item devsite-nav-item-heading">
+    
+      <a 
+           href="https://cloud.google.com/solutions/?nav=true"
+         
+         class="devsite-nav-responsive-tab devsite-nav-title gc-analytics-event
+                "
+         data-category="Site-Wide Custom Events" data-label="Responsive Tab: Solutions">
+        Solutions
+      </a>
+      
+      
+    
+    </li>
+  
+    <li class="devsite-nav-item devsite-nav-item-heading">
+    
+      <a 
+           href="https://cloud.google.com/launcher/?nav=true"
+         
+         class="devsite-nav-responsive-tab devsite-nav-title gc-analytics-event
+                "
+         data-category="Site-Wide Custom Events" data-label="Responsive Tab: Launcher">
+        Launcher
+      </a>
+      
+      
+    
+    </li>
+  
+    <li class="devsite-nav-item devsite-nav-item-heading">
+    
+      <a 
+           href="https://cloud.google.com/pricing/?nav=true"
+         
+         class="devsite-nav-responsive-tab devsite-nav-title gc-analytics-event
+                "
+         data-category="Site-Wide Custom Events" data-label="Responsive Tab: Pricing">
+        Pricing
+      </a>
+      
+      
+    
+    </li>
+  
+    <li class="devsite-nav-item devsite-nav-item-heading">
+    
+      <a 
+           href="https://cloud.google.com/security/?nav=true"
+         
+         class="devsite-nav-responsive-tab devsite-nav-title gc-analytics-event
+                "
+         data-category="Site-Wide Custom Events" data-label="Responsive Tab: Security">
+        Security
+      </a>
+      
+      
+    
+    </li>
+  
+    <li class="devsite-nav-item devsite-nav-item-heading">
+    
+      <a 
+           href="https://cloud.google.com/customers/?nav=true"
+         
+         class="devsite-nav-responsive-tab devsite-nav-title gc-analytics-event
+                "
+         data-category="Site-Wide Custom Events" data-label="Responsive Tab: Customers">
+        Customers
+      </a>
+      
+      
+    
+    </li>
+  
+    <li class="devsite-nav-item devsite-nav-item-heading">
+    
+      <a 
+           href="https://cloud.google.com/docs/?nav=true"
+         
+         class="devsite-nav-responsive-tab devsite-nav-title gc-analytics-event
+                "
+         data-category="Site-Wide Custom Events" data-label="Responsive Tab: Documentation">
+        Documentation
+      </a>
+      
+      
+    
+    </li>
+  
+    <li class="devsite-nav-item devsite-nav-item-heading">
+    
+      <a 
+           href="https://cloud.google.com/support/?nav=true"
+         
+         class="devsite-nav-responsive-tab devsite-nav-title gc-analytics-event
+                "
+         data-category="Site-Wide Custom Events" data-label="Responsive Tab: Support">
+        Support
+      </a>
+      
+      
+    
+    </li>
+  
+    <li class="devsite-nav-item devsite-nav-item-heading">
+    
+      <a 
+           href="https://cloud.google.com/partners/?nav=true"
+         
+         class="devsite-nav-responsive-tab devsite-nav-title gc-analytics-event
+                "
+         data-category="Site-Wide Custom Events" data-label="Responsive Tab: Partners">
+        Partners
+      </a>
+      
+      
+    
+    </li>
+  
+    <li class="devsite-nav-item devsite-nav-item-heading">
+    
+      <a 
+           href="https://cloud.google.com/blog/big-data/?nav=true"
+         
+         class="devsite-nav-responsive-tab devsite-nav-title gc-analytics-event
+                "
+         data-category="Site-Wide Custom Events" data-label="Responsive Tab: Social">
+        Social
+      </a>
+      
+      
+    
+    </li>
+  
+    <li class="devsite-nav-item devsite-nav-item-heading">
+    
+      <a 
+           href="https://cloud.google.com/contact/?nav=true"
+         
+         class="devsite-nav-responsive-tab devsite-nav-title gc-analytics-event
+                "
+         data-category="Site-Wide Custom Events" data-label="Responsive Tab: Contact">
+        Contact
+      </a>
+      
+      
+    
+    </li>
+  
+  
+    <li class="devsite-nav-item devsite-nav-item-heading">
+      <a href="//console.cloud.google.com/"
+         class="devsite-nav-responsive-tab devsite-nav-title gc-analytics-event"
+         data-category="Site-Wide Custom Events"
+         data-label="Responsive Tab: console">
+        Console
+      </a>
+    </li>
+  
+  </ul>
+</nav>
+
+
+      
+    
+  </div>
+  
+  
+  <div class="devsite-nav-responsive-sidebar-panel">
+    
+    <div class="devsite-nav-responsive-back" tabindex="0"></div>
+    
+    <nav class="devsite-nav-responsive-sidebar"></nav>
+  </div>
+  
+  
+    <div class="devsite-nav-responsive-index-panel">
+      <div class="devsite-nav-index-back" tabindex="0"></div>
+      <nav>
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+      </nav>
+    </div>
+  
+</nav>
+
+
+        <div class="devsite-main-content clearfix">
+
+        
+        
+
+        
+  
+  
+          
+  
+
+
+
+  
+  <nav class="devsite-breadcrumb-nav devsite-nav">
+    
+
+
+<ul class="devsite-breadcrumb-list">
+  
+  <li class="devsite-breadcrumb-item">
+    
+    
+    <a href="https://cloud.google.com/" class="devsite-breadcrumb-link gc-analytics-event"
+       data-category="Site-Wide Custom Events" data-label="Breadcrumbs"
+       data-value="1">
+    
+    
+      Google Cloud Platform
+    
+    
+    </a>
+    
+  </li>
+  
+  <li class="devsite-breadcrumb-item">
+    
+    
+    <div class="devsite-breadcrumb-guillemet material-icons"></div>
+    
+    
+    <a href="https://cloud.google.com/products/" class="devsite-breadcrumb-link gc-analytics-event"
+       data-category="Site-Wide Custom Events" data-label="Breadcrumbs"
+       data-value="2">
+    
+    
+      Products
+    
+    
+    </a>
+    
+  </li>
+  
+</ul>
+
+  </nav>
+  
+  
+  
+  <div class="devsite-article-body clearfix
+            
+              devsite-no-page-title
+            "
+       itemprop="articleBody">
+    
+  <article id="cloud-site" class="l-fixed-width">
+    <header class="hero l-clearfix product-hero">
+      <div class="l-space-top-3 l-space-bottom-2 l-max-width-standard">
+        <h1 class="hero-title text-display-1">Cloud Spanner</h1>
+        <h2 class="hero-subtitle text-subhead">The first horizontally scalable, strongly consistent, relational database service</h2>
+        
+        <a href="https://console.cloud.google.com/freetrial" class="button button-large spanner-button" track-type="freeTrial"
+           track-name="try" track-metadata-position="banner" target="_blank" rel="noopener">Try It Free</a>
+        
+      </div>
+      <div id="hero-gear"></div>
+    </header>
+    <section class="background-grey l-content text-platinum full-bleed-section">
+      <div class="l-showcase is-large is-split-left l-space-bottom-10">
+        <div class="l-showcase-content l-pad-right-50 l-pad-top-1">
+          <h2 class="text-display-1">No-Compromise Relational Database Service</h2>
+          <p class="text-body">
+            Cloud Spanner is the only enterprise-grade, globally-distributed, and strongly consistent database service built for the cloud specifically to combine the benefits of relational database structure with non-relational horizontal scale. This combination delivers high-performance transactions and strong consistency across rows, regions, and continents with an industry-leading 99.999% availability SLA, no planned downtime, and enterprise-grade security. Cloud Spanner revolutionizes database administration and management and makes application development more efficient.
+          </p>
+          <p class="text-body">
+            In today’s always-on, globally-distributed world, IT and developer efficiency, measured in app downtime and time to market, is one of an organization’s most precious resources. The challenge of efficiently managing app database backends while at the same time giving developers the tools they need to build efficiently was previously a challenge.
+          </p>
+        </div>
+        <div class="l-showcase-image l-pad-top-2">
+          <a class="lb video" data-lightbox-height="506" data-lightbox-width="900" data-lightbox-index="0" href="https://www.youtube.com/watch?v=amcf6W2Xv6M&amp;autoplay=1">
+            <img src="https://cloud.google.com/images/products/spanner/spanner-vid.png" srcset="https://cloud.google.com/images/products/spanner/spanner-vid_2x.png 2x">
+          </a>
+        </div>
+      </div>
+      <div class="c12 l-pad-bottom-4">
+        <div class="devsite-table-wrapper">
+          <table id="table-spanner">
+            <h2 class="text-headline">Cloud Spanner: The best of the relational and non-relational worlds</h2>
+            <thead>
+              <tr>
+                <th></th>
+                <th>Cloud Spanner</th>
+                <th>Traditional Relational</th>
+                <th>Traditional Non-Relational</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>Schema</td>
+                <td><i class="material-icons md-green notranslate">done</i>Yes</td>
+                <td><i class="material-icons md-green notranslate">done</i>Yes</td>
+                <td><i class="material-icons md-red notranslate">clear</i>No</td>
+              </tr>
+              <tr>
+                <td>SQL</td>
+                <td><i class="material-icons md-green notranslate">done</i>Yes</td>
+                <td><i class="material-icons md-green notranslate">done</i>Yes</td>
+                <td><i class="material-icons md-red notranslate">clear</i>No</td>
+              </tr>
+              <tr>
+                <td>Consistency</td>
+                <td><i class="material-icons md-green notranslate">done</i>Strong</td>
+                <td><i class="material-icons md-green notranslate">done</i>Strong</td>
+                <td><i class="material-icons md-red notranslate">clear</i>Eventual</td>
+              </tr>
+              <tr>
+                <td>Availability</td>
+                <td><i class="material-icons md-green notranslate">done</i>High</td>
+                <td><i class="material-icons md-red notranslate">clear</i>Failover</td>
+                <td><i class="material-icons md-green notranslate">done</i>High</td>
+              </tr>
+              <tr>
+                <td>Scalability</td>
+                <td><i class="material-icons md-green notranslate">done</i>Horizontal</td>
+                <td><i class="material-icons md-red notranslate">clear</i>Vertical</td>
+                <td><i class="material-icons md-green notranslate">done</i>Horizontal</td>
+              </tr>
+              <tr>
+                <td>Replication</td>
+                <td><i class="material-icons md-green notranslate">done</i>Automatic</td>
+                <td><i class="material-icons md-yellow notranslate">autorenew</i>Configurable</td>
+                <td><i class="material-icons md-yellow notranslate">autorenew</i>Configurable</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+      <div class="c12 l-pad-bottom-6">
+        <h2 class="text-headline l-pad-bottom-3">Customers across industries can use Cloud Spanner to deliver value to their customers:</h2>
+        <table>
+            <thead>
+              <tr>
+                <th>Use Case</th>
+                <th>Before Cloud Spanner</th>
+                <th>With Cloud Spanner</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <th>Financial trading</th>
+                <td>Inconsistencies lead to potential monetary loss during reconciliation. Global synchronous replication of trades is not feasible.</td>
+                <td>Cost savings and a consistent, unified, global view.</td>
+              </tr>
+              <tr>
+                <th>Insurance</th>
+                <td>Inconsistencies lead to incomplete views of customers.</td>
+                <td>Up-to-date customer views provide more accurate, real-time data.</td>
+              </tr>
+              <tr>
+                <th>Global call centers</th>
+                <td>Eventual and out-of-touch.</td>
+                <td>Real-time and up-to-date. </td>
+              </tr>
+              <tr>
+                <th>Supply-chain management and manufacturing</th>
+                <td>Global supply chain presents an inconsistent global view and/or data must be shipped in batches.</td>
+                <td>Global, real-time, consistent view enables real-time decision making.</td>
+              </tr>
+              <tr>
+                <th>Telecom and billing</th>
+                <td>Processing capacity limited to finite scale-up compute resources.</td>
+                <td>Scale-out allows improved processing speed.</td>
+              </tr>
+              <tr>
+                <th>Logistics and Transportation</th>
+                <td>Regional reach with many systems glued together.</td>
+                <td>Global reach with lower latency and a consistent view.</td>
+              </tr>
+              <tr>
+                <th>Gaming</th>
+                <td>Each server or cluster is its own universe.</td>
+                <td>Consistent, global view delivers a unified experience.</td>
+              </tr>
+              <tr>
+                <th>E-Commerce (High Availability)</th>
+                <td>Limited availability SLA or no SLA guarantees. In practice, potential missed sales.</td>
+                <td>Guaranteed max of 5 minutes of downtime (including planned downtime) on paper and in practice.</td>
+              </tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="l-showcase is-split-right l-space-bottom-5">
+        <div class="l-showcase-content l-pad-left-40">
+          <h2 class="text-headline">No Trade-Offs Required</h2>
+          <p class="text-body">
+            Most databases today require making trade-offs between scale and consistency. With Cloud Spanner, you get the best of relational database structure and non-relational database scale and performance with external strong consistency across rows, regions, and continents.
+          </p>
+
+          <p class="text-body">
+            Cloud Spanner scales horizontally and serves data with low latency while maintaining transactional consistency and industry-leading 99.999% (five 9s) availability - 10x less downtime than four nines (&lt;5 minutes per year). Cloud Spanner helps future-proof your database backend. It can scale to arbitrarily large database sizes to help avoid rewrites and migrations. The use of multiple databases or sharded databases as an alternative solution introduces unnecessary complexity and cost.
+          </p>
+        </div>
+        <figure class="l-showcase-image">
+          <img src="https://cloud.google.com/images/products/spanner/scale.png" srcset="https://cloud.google.com/images/products/spanner/scale_2x.png 2x">
+        </figure>
+      </div>
+      <div class="l-showcase is-split-left l-space-bottom-8">
+        <div class="l-showcase-content l-pad-right-38">
+          <h2 class="text-headline l-pad-top-2">Do Fewer Thankless Tasks</h2>
+          <p class="text-body">
+            IT Admins and DBAs are inundated with thankless tasks. With Cloud Spanner, focus on value-add and innovation instead of maintenance. Creating or scaling a globally replicated database for mission-critical apps now takes a handful of clicks.
+          </p>
+          <p class="text-body">
+            Industry-leading high-availability and Google-grade security as defaults, not expensive add-ons, help ensure your apps stay online and more secure. When architecting apps, Cloud Spanner has a simple billing model that does not charge extra over your configuration choice for high-availability, replication, or ensuring more secure, global strongly consistent data.
+          </p>
+        </div>
+        <figure class="l-showcase-image l-pad-top-7">
+          <img src="https://cloud.google.com/images/products/spanner/thankless-tasks.svg">
+        </figure>
+      </div>
+      <div class="l-showcase is-split-right l-space-bottom-10">
+        <div class="l-showcase-content l-pad-left-33">
+          <h2 class="text-headline l-pad-top-2">Launch Faster</h2>
+          <p class="text-body">
+            Cloud Spanner is a relational database with full relational semantics and handles schema changes as an online operation with no planned downtime. Reuse existing SQL skills to query data in Cloud Spanner using familiar, industry-standard ANSI 2011 SQL.
+          </p>
+          <p class="text-body">
+            Deliver better experiences for end users with external, strong consistency. Apps must be built for a global user base and you need synchronous replication to deliver correct, accurate, and consistent data. The alternative is possibly inconsistent stale reads, a diminished end-user experience, and complex application logic resulting in difficult, time-consuming bugs.
+          </p>
+          <p class="text-body">
+            Cloud Spanner is battle tested by Google’s own mission-critical applications and services.
+          </p>
+        </div>
+        <figure class="l-showcase-image l-pad-top-6">
+          <img src="https://cloud.google.com/images/products/spanner/global-scale-consistency.png" srcset="https://cloud.google.com/images/products/spanner/global-scale-consistency_2x.png 2x">
+        </figure>
+      </div>
+      <div class="l-showcase is-split-left l-space-bottom-10">
+        <div class="l-showcase-content l-pad-right-38">
+          <h2 class="text-headline">Get Comprehensive Security and Control</h2>
+          <p class="text-body">
+            Google-grade security includes <a href="https://cloud.google.com/security/encryption-at-rest/">encryption by default in transit and at rest</a>, granular
+            <a href="https://cloud.google.com/iam/">identity &amp; access management</a>, comprehensive audit logging, custom-manufactured hardware,
+            hardware tracking and disposal, and the Google-owned and controlled <a href="https://cloud.google.com/about/locations/#network-tab/">global network</a>.
+            Learn more about Google Cloud Platform’s <a href="https://cloud.google.com/security/security-design/">comprehensive security architecture</a>.
+          </p>
+        </div>
+        <figure class="l-showcase-image">
+          <img src="https://cloud.google.com/images/products/spanner/security.png" srcset="https://cloud.google.com/images/products/spanner/security_2x.png 2x">
+        </figure>
+      </div>
+    </section>
+    <!-- FEATURES -->
+    <section id="websites" class="background-mist text-platinum l-content full-bleed-section">
+      <span class="sticker l-divider">
+      <img src="https://cloud.google.com/images/products/logos/spanner-grey-icon.png" class="sticker-top is-small">
+      <span class="sticker-bottom is-circle"></span>
+      </span>
+      <div class="grid-fluid l-max-width-standard l-clearfix">
+        <header class="c12 text-header">
+          <h1 class="text-display-1 l-space-bottom-0">Cloud Spanner Features</h1>
+          <h2 class="text-title">The first horizontally scalable, globally consistent, relational database service</h2>
+        </header>
+        <dl class="c5 a1">
+          <dt>Global Scale</dt>
+          <dd>
+            Horizontally scalable across rows, regions, and continents, from 1 to hundreds or thousands of nodes.
+          </dd>
+          <dt>Fully Managed</dt>
+          <dd>
+            Ease of deployment at every scale and every stage. Synchronous replication and maintenance are automatic and built-in.
+          </dd>
+          <dt>Relational Semantics</dt>
+          <dd>
+            Everything you would expect from a relational database—schemas, ACID transactions, and <a href="https://cloud.google.com/spanner/docs/query-syntax/">SQL queries</a> (ANSI 2011).
+          </dd>
+        </dl>
+        <dl class="c5">
+          <dt>Multi-Language Support</dt>
+          <dd>
+            <a href="https://cloud.google.com/spanner/docs/reference/libraries/">Client libraries</a> in C#, Go, Java, Node.js,
+            PHP, Python, and Ruby. <a href="https://cloud.google.com/spanner/docs/partners/drivers">JDBC driver</a>
+            for connectivity with popular third-party tools.
+          </dd>
+          <dt>Transactional Consistency</dt>
+          <dd>
+            Purpose-built for <a href="https://cloud.google.com/spanner/docs/true-time-external-consistency">external</a>, global, strong, global transactional consistency.
+          </dd>
+          <dt>Enterprise Grade Security</dt>
+          <dd>
+            Data-layer encryption, <a href="https://cloud.google.com/spanner/docs/iam/">IAM integration</a> for access and controls, and <a href="https://cloud.google.com/spanner/docs/logs">audit logging</a>.
+          </dd>
+          <dt>Highly Available</dt>
+          <dd>
+            Whenever, wherever, your data is <a href="https://cloud.google.com/spanner/sla">highly available</a>.
+          </dd>
+        </dl>
+      </div>
+    </section>
+    <div class="l-content l-clearfix">
+      <div class="c12">
+        <blockquote class="text-quote l-max-width-standard">
+          <p>
+            “It was essential for us to have order sequence in our app logic, and with Cloud Spanner, it’s built in. When we started looking at GCP,  we quickly identified Cloud Spanner as the solution, as it provided relational semantics and incredible scalability within a managed service. <strong>We hadn’t found a Cloud Spanner-like product in other clouds</strong>.”
+          </p>
+          <strong>- Manoj Goyal</strong>
+          <em>Chief Product Officer, Marketo</em>
+        </blockquote>
+      </div>
+      <div class="c12">
+        <blockquote class="text-quote l-max-width-standard">
+          <p>
+            “With Cloud Spanner, we can process <strong>ten times more transactions per second</strong> (using a current benchmark of 55k transactions per second), allowing us to better serve customers, with a dramatically reduced total cost of ownership.”
+          </p>
+          <strong>- Danielle Royston</strong>
+          <em>CEO, Optiva</em>
+        </blockquote>
+      </div>
+    </div>
+    <!-- PRICING -->
+    <section class="background-mist l-content l-clearfix full-bleed-section">
+       <span class="sticker l-divider">
+        <img src="https://cloud.google.com/images/products/logos/spanner-grey-icon.png" class="sticker-top is-small">
+        <span class="sticker-bottom is-circle"></span>
+      </span>
+      <div class="l-max-width-standard">
+        <header class="text-header c12">
+          <h1 class="text-display-1 l-space-bottom-0">Cloud Spanner Pricing</h1>
+          <h2 class="text-title">
+            Pricing for Cloud Spanner is simple and predictable. You are only charged for the
+            number of nodes in your instance, the amount of storage that your tables and secondary
+            indexes use (not pre-provisioned), and the amount of network bandwidth used. Note
+            that there is no additional charge for replication. For more detailed pricing
+            information, please view the
+            <a href="https://cloud.google.com/spanner/pricing" track-type="keepReading" track-name="pricing">pricing guide</a>.
+          </h2>
+        </header>
+        <div class="c12">
+          <table>
+            <thead>
+              <tr>
+                <th>Feature</th>
+                <th>REGIONAL PRICE (USD)</th>
+                <th>MULTI-REGION PRICE (USD)</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>Nodes</td>
+                <td>From $0.90 per node per hr</td>
+                <td>From $3.00 per node per hr</td>
+              </tr>
+              <tr>
+                <td>Storage</td>
+                <td>From $0.30 per GB per month</td>
+                <td>From $0.50 per GB per month</td>
+              </tr>
+              <tr>
+                <td>Network Ingress</td>
+                <td colspan="2">FREE</td>
+              </tr>
+              <tr>
+                <td>Network Egress</td>
+                <td colspan="2">Cross-region and internet egress rates apply</td>
+              </tr>
+            </tbody>
+          </table>
+          <small>
+If you pay in a currency other than USD, the prices listed in your currency on
+<a href="https://cloud.google.com/skus/">Cloud Platform SKUs</a> apply.
+</small>
+        </div>
+      </div>
+    </section>
+    <!-- ADDITIONAL RESOURCES -->
+    <section class="text-platinum grid-fluid l-content l-clearfix full-bleed-section">
+      <div class="cta-bar c12 l-space-bottom-6 l-pad-top-2">
+        
+        <a href="https://console.cloud.google.com/freetrial" class="button button-large button-cloud md-raised md-primary"
+           track-type="freeTrial" track-name="try" track-metadata-position="bottom"
+           target="_blank" rel="noopener">Try It Free</a>
+        
+      </div>
+      <div class="l-max-width-standard">
+        <header class="c12 l-space-bottom-2">
+          <h1 class="text-headline text-uppercase">
+            Additional Resources
+          </h1>
+        </header>
+        <div class="c4">
+          <a href="https://cloud.google.com/spanner/docs" class="hover-card is-button"
+             track-type="keepReading" track-name="docs">
+            <h3 class="text-headline">Cloud Spanner Docs</h3>
+            <p>View Cloud Spanner Docs</p>
+          </a>
+        </div>
+        <div class="c4">
+          <a href="https://research.google.com/pubs/pub45855.html" target="_blank"
+             class="hover-card is-button" track-type="keepReading" track-name="SpannerAndCAPTheorem">
+            <h3 class="text-headline">Spanner and CAP Theorem</h3>
+            <p>Whitepaper by Eric Brewer</p>
+          </a>
+        </div>
+        <div class="c4">
+          <a href="https://quizlet.com/blog/quizlet-cloud-spanner" target="_blank"
+             class="hover-card is-button" track-type="keepReading" track-name="CaseStudyQuizlet">
+            <h3 class="text-headline">Cloud Spanner Case Study</h3>
+            <p>Quizlet Blog</p>
+          </a>
+        </div>
+      </div>
+      <div class="c12 l-pad-top-3 text-center">
+          <p>
+          <small>
+            Java is a registered trademark of Oracle and/or its affiliates.
+          </small>
+        </p>
+        </div>
+    </section>
+  </article>
+  <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.5.5/angular.min.js"></script>
+<script src="//ajax.googleapis.com/ajax/libs/angularjs/1.5.5/angular-sanitize.min.js"></script>
+<script src="//ajax.googleapis.com/ajax/libs/angularjs/1.5.5/angular-route.min.js"></script>
+<script src="//ajax.googleapis.com/ajax/libs/angularjs/1.5.5/angular-cookies.min.js"></script>
+<script src="//ajax.googleapis.com/ajax/libs/angularjs/1.5.5/angular-animate.min.js"></script>
+<script src="//ajax.googleapis.com/ajax/libs/angularjs/1.5.5/angular-aria.js"></script>
+
+  <script
+  src="https://ajax.googleapis.com/ajax/libs/angular_material/1.1.1/angular-material.min.js">
+</script>
+
+  <script src="https://cloud.google.com/js/base.min.js"></script>
+  <script>
+   var lb = new gweb.ui.LightBox();
+       lb.disableNav(true);
+       lb.init();
+  </script>
+
+  </div>
+  
+    
+
+
+
+  
+
+  
+
+        </div>
+      
+
+<footer class="devsite-footer-linkboxes nocontent
+               devsite-footer-linkboxes-all-backup
+               devsite-footer-linkboxes-with-sites"><nav class="devsite-full-site-width"><ul class="devsite-footer-linkboxes-list"><li class="devsite-footer-linkbox devsite-footer-linkbox-backup"><h3 class="devsite-footer-linkbox-heading">Products</h3><ul class="devsite-footer-linkbox-list"><li class="devsite-footer-linkbox-item"><a href="https://cloud.google.com/products/compute/" class="gc-analytics-event"
+               data-category="Site-Wide Custom Events"
+               data-label="Footer Compute">
+                Compute
+            </a></li><li class="devsite-footer-linkbox-item"><a href="https://cloud.google.com/products/storage/" class="gc-analytics-event"
+               data-category="Site-Wide Custom Events"
+               data-label="Footer Storage">
+                Storage
+            </a></li><li class="devsite-footer-linkbox-item"><a href="https://cloud.google.com/products/networking/" class="gc-analytics-event"
+               data-category="Site-Wide Custom Events"
+               data-label="Footer Networking">
+                Networking
+            </a></li><li class="devsite-footer-linkbox-item"><a href="https://cloud.google.com/products/big-data/" class="gc-analytics-event"
+               data-category="Site-Wide Custom Events"
+               data-label="Footer Big Data">
+                Big Data
+            </a></li><li class="devsite-footer-linkbox-item"><a href="https://cloud.google.com/products/machine-learning/" class="gc-analytics-event"
+               data-category="Site-Wide Custom Events"
+               data-label="Footer Machine Learning">
+                Machine Learning
+            </a></li><li class="devsite-footer-linkbox-item"><a href="https://cloud.google.com/products/#management" class="gc-analytics-event"
+               data-category="Site-Wide Custom Events"
+               data-label="Footer Management Tools">
+                Management Tools
+            </a></li><li class="devsite-footer-linkbox-item"><a href="https://cloud.google.com/products/tools/" class="gc-analytics-event"
+               data-category="Site-Wide Custom Events"
+               data-label="Footer Developer Tools">
+                Developer Tools
+            </a></li><li class="devsite-footer-linkbox-item"><a href="https://cloud.google.com/products/#identity-security" class="gc-analytics-event"
+               data-category="Site-Wide Custom Events"
+               data-label="Footer Identity and Security">
+                Identity &amp; Security
+            </a></li><li class="devsite-footer-linkbox-item"><a href="//status.cloud.google.com" class="gc-analytics-event"
+               data-category="Site-Wide Custom Events"
+               data-label="Footer System Status">
+                System Status
+            </a></li></ul></li><li class="devsite-footer-linkbox devsite-footer-linkbox-backup"><h3 class="devsite-footer-linkbox-heading">Learn More</h3><ul class="devsite-footer-linkbox-list"><li class="devsite-footer-linkbox-item"><a href="https://cloud.google.com/why-google/" class="gc-analytics-event"
+               data-category="Site-Wide Custom Events"
+               data-label="Footer Why Google">
+                Why Google Cloud
+            </a></li><li class="devsite-footer-linkbox-item"><a href="https://cloud.google.com/pricing/" class="gc-analytics-event"
+               data-category="Site-Wide Custom Events"
+               data-label="Footer Pricing">
+                Pricing
+            </a></li><li class="devsite-footer-linkbox-item"><a href="https://cloud.google.com/docs/" class="gc-analytics-event"
+               data-category="Site-Wide Custom Events"
+               data-label="Footer Documentation">
+                Documentation
+            </a></li><li class="devsite-footer-linkbox-item"><a href="https://cloud.google.com/docs/tutorials/" class="gc-analytics-event"
+               data-category="Site-Wide Custom Events"
+               data-label="Footer Tutorials">
+                Tutorials
+            </a></li><li class="devsite-footer-linkbox-item"><a href="https://cloud.google.com/training/" class="gc-analytics-event"
+               data-category="Site-Wide Custom Events"
+               data-label="Footer Training">
+                Training
+            </a></li><li class="devsite-footer-linkbox-item"><a href="https://cloud.google.com/solutions/" class="gc-analytics-event"
+               data-category="Site-Wide Custom Events"
+               data-label="Footer Solutions">
+                Solutions
+            </a></li><li class="devsite-footer-linkbox-item"><a href="https://cloud.google.com/security/" class="gc-analytics-event"
+               data-category="Site-Wide Custom Events"
+               data-label="Footer Security &amp; Compliance">
+                Security &amp; Compliance
+            </a></li><li class="devsite-footer-linkbox-item"><a href="https://cloud.google.com/partners/" class="gc-analytics-event"
+               data-category="Site-Wide Custom Events"
+               data-label="Footer Partners">
+                Partners
+            </a></li><li class="devsite-footer-linkbox-item"><a href="https://cloud.google.com/customers/" class="gc-analytics-event"
+               data-category="Site-Wide Custom Events"
+               data-label="Footer Customers">
+                Customers
+            </a></li><li class="devsite-footer-linkbox-item"><a href="https://cloud.google.com/support/" class="gc-analytics-event"
+               data-category="Site-Wide Custom Events"
+               data-label="Footer Support">
+                Support
+            </a></li><li class="devsite-footer-linkbox-item"><a href="//careers.google.com/cloud/" class="gc-analytics-event"
+               data-category="Site-Wide Custom Events"
+               data-label="Footer Careers">
+                Careers
+            </a></li><li class="devsite-footer-linkbox-item"><a href="//www.google.com/cloud/press" class="gc-analytics-event"
+               data-category="Site-Wide Custom Events"
+               data-label="Footer Press">
+                Press
+            </a></li></ul></li><li class="devsite-footer-linkbox devsite-footer-linkbox-backup"><h3 class="devsite-footer-linkbox-heading">Engage</h3><ul class="devsite-footer-linkbox-list"><li class="devsite-footer-linkbox-item"><a href="https://cloud.google.com/free-trial/" class="gc-analytics-event"
+               data-category="Site-Wide Custom Events"
+               data-label="Footer Free Trial Sign Up">
+                Free Trial Sign Up
+            </a></li><li class="devsite-footer-linkbox-item"><a href="//cloudplatform.googleblog.com" class="gc-analytics-event"
+               data-category="Site-Wide Custom Events"
+               data-label="Footer Blog">
+                Blog
+            </a></li><li class="devsite-footer-linkbox-item"><a href="https://cloud.google.com/community/" class="gc-analytics-event"
+               data-category="Site-Wide Custom Events"
+               data-label="Footer Community">
+                Community
+            </a></li><li class="devsite-footer-linkbox-item"><a href="//plus.google.com/+googlecloudplatform" class="gc-analytics-event"
+               data-category="Site-Wide Custom Events"
+               data-label="Footer Google+">
+                Google+
+            </a></li><li class="devsite-footer-linkbox-item"><a href="//twitter.com/gcpcloud" class="gc-analytics-event"
+               data-category="Site-Wide Custom Events"
+               data-label="Footer Twitter">
+                Twitter
+            </a></li><li class="devsite-footer-linkbox-item"><a href="//www.linkedin.com/showcase/google-cloud" class="gc-analytics-event"
+               data-category="Site-Wide Custom Events"
+               data-label="Footer LinkedIn">
+                LinkedIn
+            </a></li><li class="devsite-footer-linkbox-item"><a href="//stackoverflow.com/questions/tagged/google-cloud-platform" class="gc-analytics-event"
+               data-category="Site-Wide Custom Events"
+               data-label="Footer Stack Overflow">
+                Stack Overflow
+            </a></li><li class="devsite-footer-linkbox-item"><a href="//www.youtube.com/googlecloudplatform" class="gc-analytics-event"
+               data-category="Site-Wide Custom Events"
+               data-label="Footer YouTube">
+                YouTube
+            </a></li><li class="devsite-footer-linkbox-item"><a href="//www.gcppodcast.com" class="gc-analytics-event"
+               data-category="Site-Wide Custom Events"
+               data-label="Footer Podcast">
+                Podcast
+            </a></li><li class="devsite-footer-linkbox-item"><a href="//cloud.google.com/newsletter/" class="gc-analytics-event"
+               data-category="Site-Wide Custom Events"
+               data-label="Footer Newsletter Signup">
+                Newsletter Signup
+            </a></li><li class="devsite-footer-linkbox-item"><a href="//cloud.google.com/usability" class="gc-analytics-event"
+               data-category="Site-Wide Custom Events"
+               data-label="Footer UX Research">
+                UX Research
+            </a></li></ul></li><li class="devsite-footer-linkbox devsite-footer-linkbox-sites"><a href="https://developers.google.com/"
+           class="gc-analytics-event devsite-footer-linkbox-logo-link"
+           data-category="Site-Wide Custom Events" data-label="Footer Google Developers Link"><img class="devsite-footer-linkbox-logo"
+               src="https://cloud.google.com/_static/d7147bb846/images/redesign-14/lockup-color-knockout.png"
+               alt="Google Developers"></a><ul class="devsite-footer-linkbox-list"><li class="devsite-footer-linkbox-item"><a href="//developer.android.com/index.html" class="gc-analytics-event"
+               data-category="Site-Wide Custom Events"
+               data-label="Footer Android Link">
+                Android
+            </a></li><li class="devsite-footer-linkbox-item"><a href="//developer.chrome.com/home" class="gc-analytics-event"
+               data-category="Site-Wide Custom Events"
+               data-label="Footer Chrome Link">
+                Chrome
+            </a></li><li class="devsite-footer-linkbox-item"><a href="//firebase.google.com" class="gc-analytics-event"
+               data-category="Site-Wide Custom Events"
+               data-label="Footer Firebase Link">
+                Firebase
+            </a></li><li class="devsite-footer-linkbox-item"><a href="//cloud.google.com" class="gc-analytics-event"
+               data-category="Site-Wide Custom Events"
+               data-label="Footer Cloud Link">
+                Google Cloud Platform
+            </a></li><li class="devsite-footer-linkbox-item"><a href="//developers.google.com/products/" class="gc-analytics-event"
+               data-category="Site-Wide Custom Events"
+               data-label="Footer Products Link">
+                All Products
+            </a></li></ul></li></ul></nav></footer><footer class="devsite-utility-footer"><nav class="devsite-utility-footer-nav devsite-nav devsite-full-site-width"><div class="devsite-utility-footer-nav-left"><form class="devsite-utility-footer-language" action="/i18n/setlang/" method="post"><input type="hidden" name="xsrf_token" value="hsTbHNsrssQBQYEu_n8gelJokN3vvdFf4yUgMrJXpl46MTUyNDQ1ODI0ODM0MDMzMA" /><input type="hidden" name="next" value="/spanner/"><select class="devsite-utility-footer-language-select kd-select" name="language"
+                track-type="languageSelector" track-name="click"><option value="de"
+                
+                track-type="languageSelector" track-name="changed"
+                track-metadata-original-language="en"
+                track-metadata-selected-language="de">
+            Deutsch
+          </option><option value="en"
+                 selected="selected" 
+                track-type="languageSelector" track-name="changed"
+                track-metadata-original-language="en"
+                track-metadata-selected-language="en">
+            English
+          </option><option value="es"
+                
+                track-type="languageSelector" track-name="changed"
+                track-metadata-original-language="en"
+                track-metadata-selected-language="es">
+            español
+          </option><option value="it"
+                
+                track-type="languageSelector" track-name="changed"
+                track-metadata-original-language="en"
+                track-metadata-selected-language="it">
+            italiano
+          </option><option value="nl"
+                
+                track-type="languageSelector" track-name="changed"
+                track-metadata-original-language="en"
+                track-metadata-selected-language="nl">
+            Nederlands
+          </option><option value="pt-br"
+                
+                track-type="languageSelector" track-name="changed"
+                track-metadata-original-language="en"
+                track-metadata-selected-language="pt-br">
+            Português Brasileiro
+          </option><option value="tr"
+                
+                track-type="languageSelector" track-name="changed"
+                track-metadata-original-language="en"
+                track-metadata-selected-language="tr">
+            Türkçe
+          </option><option value="ja"
+                
+                track-type="languageSelector" track-name="changed"
+                track-metadata-original-language="en"
+                track-metadata-selected-language="ja">
+            日本語
+          </option><option value="zh-cn"
+                
+                track-type="languageSelector" track-name="changed"
+                track-metadata-original-language="en"
+                track-metadata-selected-language="zh-cn">
+            简体中文
+          </option><option value="zh-tw"
+                
+                track-type="languageSelector" track-name="changed"
+                track-metadata-original-language="en"
+                track-metadata-selected-language="zh-tw">
+            繁體中文
+          </option><option value="ko"
+                
+                track-type="languageSelector" track-name="changed"
+                track-metadata-original-language="en"
+                track-metadata-selected-language="ko">
+            한국어
+          </option></select></form><span class="devsite-utility-footer-links"><a class="devsite-utility-footer-link gc-analytics-event"
+           href="https://cloud.google.com/terms/"
+           data-category="Site-Wide Custom Events"
+           data-label="Footer terms link"
+           data-footer-link-id="terms"
+           >Terms
+         </a><a class="devsite-utility-footer-link gc-analytics-event"
+           href="//www.google.com/policies/privacy/"
+           data-category="Site-Wide Custom Events"
+           data-label="Footer privacy link"
+           data-footer-link-id="privacy"
+           >Privacy
+         </a><a class="devsite-utility-footer-link gc-analytics-event"
+           href="//www.google.de/contact/impressum.html"
+           data-category="Site-Wide Custom Events"
+           data-label="Footer impressum link"
+           data-footer-link-id="impressum"
+           >Impressum
+         </a></span></div></nav></footer></div><script async defer src="//www.gstatic.com/feedback/api.js"></script><script src="https://cloud.google.com/_static2/d7147bb846/jsi18n/"></script><script src="https://cloud.google.com/_static/d7147bb846/js/script_foot_closure.js"></script><script src="https://cloud.google.com/_static/d7147bb846/js/script_foot.js"></script><script>
+        (function($) {
+          
+          devsite.devsite.Init($, {'ENABLE_BLOCKED_VIDEO_PLACEHOLDER': 0, 'SITE_NAME': 'cloud', 'FULL_SITE_SEARCH_ENABLED': 1, 'ENABLE_CLOUDTRACK': 1, 'VTAGS_ENABLED': 1, 'HISTORY_ENABLED': 1, 'VERSION_HASH': 'd7147bb846', 'SCRIPTSAFE_DOMAIN': 'cloud-dot-google-developers.appspot.com', 'ENABLE_BLOCKED_LINK_TOOLTIP': 0, 'ALLOWED_HOSTS': ['.android.com', '.anvato.com', '.apigee.com', '.appspot.com', '.dialogflow.com', '.gonglchuangl.net', '.google.cn', '.google.com', '.googleplex.com', '.nest.com', '.openthread.io', '.openweave.io', '.orbitera.com', '.tensorflow.org'], 'BLOCK_RSS_FEEDS': 0},
+                               '[]','en',
+                               true, '',
+                               {"f62218c009ec029abef196bba5aa34cf": true, "8de7a048f21618359bd37f5ce44be073": false, "098dafe57affddc137df300142652cfd": false, "8e03e230de0bd8a6fe173fdf172e8b3f": true, "cb025a64a50094835616312f4774a53d": true, "51470233c56fc1fde50f00b73c52b216": false, "d169d485cf24243a263783dbe42029b1": true, "039e5d84b87fd75807ffb37b7f1bbf2c": true, "700def1a83e356c06c0925afb05de4b0": false, "6749dcb526ce9bde6993550c7d928d24": true}, '/',
+                               'https://cloud.google.com/');
+        })(jQuery);
+
+        
+        devsite.localInit = function() {
+          
+        };
+
+      </script><script>
+      $('.devsite-utility-footer-language-select').each(function() {
+        $(this).change(function(){$('.devsite-utility-footer-language').submit();});
+      });
+      </script></div><span id="devsite-request-elapsed" data-request-elapsed="430.589914322"></span></body></html>

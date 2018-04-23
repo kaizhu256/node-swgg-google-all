@@ -1,0 +1,1207 @@
+
+
+
+
+
+
+<!DOCTYPE html><html lang="en"
+      class="chekov"><head><script>var a=window.devsite||{};window.devsite=a;a.readyCallbacks=[];window.devsite.readyCallbacks=a.readyCallbacks;a.ready=function(b){a.readyCallbacks.push(b)};window.devsite.ready=a.ready;
+</script><meta charset="utf-8"><meta name="xsrf_token" content="YCKLcKlQ9mcV5stpXq_h27KRlfWet8XB0Cc_KZzBdm46MTUyNDQ1ODMxNTU3NTczMA" /><link rel="canonical" href="https://developers.google.com/youtube/v3/code_samples/go"><link rel="alternate" href="https://developers.google.com/youtube/v3/code_samples/go?hl=ja" hreflang="ja"><link rel="alternate" href="https://developers.google.com/youtube/v3/code_samples/go?hl=pt-br" hreflang="pt-br"><link rel="alternate" href="https://developers.google.com/youtube/v3/code_samples/go?hl=es" hreflang="es"><link rel="alternate" href="https://developers.google.com/youtube/v3/code_samples/go?hl=ko" hreflang="ko"><link rel="alternate" href="https://developers.google.com/youtube/v3/code_samples/go" hreflang="en"><link rel="alternate" href="https://developers.google.cn/youtube/v3/code_samples/go?hl=ja" hreflang="ja-cn"><link rel="alternate" href="https://developers.google.cn/youtube/v3/code_samples/go?hl=pt-br" hreflang="pt-br-cn"><link rel="alternate" href="https://developers.google.cn/youtube/v3/code_samples/go?hl=es" hreflang="es-cn"><link rel="alternate" href="https://developers.google.cn/youtube/v3/code_samples/go?hl=ko" hreflang="ko-cn"><link rel="alternate" href="https://developers.google.cn/youtube/v3/code_samples/go" hreflang="en-cn"><link rel="alternate" href="https://developers.google.com/youtube/v3/code_samples/go" hreflang="x-default"><link rel="shortcut icon" href="https://developers.google.com/_static/d7147bb846/images/favicon.png"><link rel="apple-touch-icon" href="https://developers.google.com/_static/d7147bb846/images/touch-icon.png"><meta name="viewport" content="width=device-width, initial-scale=1"><link rel="stylesheet"
+      
+      href="//fonts.googleapis.com/css?family=Google+Sans:400|Roboto:400,400italic,500,500italic,700,700italic|Roboto+Mono:400,500,700|Material+Icons"
+      ><link rel="stylesheet"
+        href="https://developers.google.com/_static/d7147bb846/css/devsite-youtube-red.css"><link rel="search"
+        type="application/opensearchdescription+xml"
+        title="Google Developers"
+        href="https://developers.google.com/s/opensearch.xml"><script src="https://developers.google.com/_static/d7147bb846/js/jquery-bundle.js"></script><meta property="og:site_name" content="Google Developers"><meta property="og:type" content="website"><meta property="og:url" content="https://developers.google.com/youtube/v3/code_samples/go"><meta property="og:locale" content="en"><script>
+    var ___gcfg = ___gcfg || {};
+    ___gcfg.lang = 'en';
+  </script><title>Go Code Samples &nbsp;|&nbsp; YouTube Data API
+      &nbsp;|&nbsp; Google Developers</title><meta property="og:title" content="Go Code Samples &nbsp;|&nbsp; YouTube Data API
+      &nbsp;|&nbsp; Google Developers"><meta property="og:image"
+          content="https://developers.google.com/_static/d7147bb846/images/share/devsite-youtube-red.png"><meta property="og:image:secure_url"
+          content="https://developers.google.com/_static/d7147bb846/images/share/devsite-youtube-red.png"><meta property="og:image:width" content="1200"><meta property="og:image:height" content="630"><style>
+  .deprecated {color: red}
+</style></head><body class="
+               devsite-doc-page
+               
+               
+               
+               devsite-header-no-upper-tabs
+               "
+        data-family="endorsed"
+        id="top_of_page"><div class="devsite-wrapper"><div class="devsite-top-section-wrapper
+            "><header class="devsite-top-section nocontent"><div class="devsite-top-logo-row-wrapper-wrapper"><div class="devsite-top-logo-row-wrapper"><div class="devsite-top-logo-row devsite-full-site-width"><button type="button" class="devsite-expand-section-nav devsite-header-icon-button
+                                       button-flat material-icons gc-analytics-event"
+                  data-category="Site-Wide Custom Events" data-label="Hamburger menu"></button><div class="devsite-product-name-wrapper"><a class="devsite-product-name-link gc-analytics-event"
+       href="https://developers.google.com/youtube/"
+       data-category="Site-Wide Custom Events"
+       data-label="Project logo (header)"><img src="https://developers.google.com/site-assets/logo-youtube.svg" class="devsite-product-logo"
+               alt="YouTube"></a><span class="devsite-product-name"><ul class="devsite-breadcrumb-list"><li class="devsite-breadcrumb-item"><a href="https://developers.google.com/youtube/" class="devsite-breadcrumb-link gc-analytics-event"
+       data-category="Site-Wide Custom Events" data-label="Upper Header"
+       data-value="1">
+    
+    
+      
+        YouTube
+      
+    
+    
+    </a></li><li class="devsite-breadcrumb-item"><div class="devsite-breadcrumb-guillemet material-icons"></div><a href="https://developers.google.com/youtube/v3/" class="devsite-breadcrumb-link gc-analytics-event"
+       data-category="Site-Wide Custom Events" data-label="Upper Header"
+       data-value="2">
+    
+    
+      Data API
+    
+    
+    </a></li></ul></span></div><div class="devsite-header-upper-tabs"></div><form class="devsite-search-form"
+                action="https://developers.google.com/s/results/"
+                method="GET"
+                id="top-search"
+                search-placeholder='Search'><div id="searchbox" class="devsite-searchbox"><input placeholder='Search'
+         
+         type="text"
+         class="devsite-search-field devsite-search-query"
+         name="q"
+         value=""
+         autocomplete="off"
+         
+         aria-label="Search box"><div class="devsite-search-image material-icons"></div></div><input type="hidden"
+       name="p"
+       id="search_project"
+       value="/youtube/v3/"
+       data-project-name="YouTube Data API"
+       data-project-path="/youtube/v3/"
+       data-query-match=""><input type="hidden" class="suggest-project" value="YouTube Data API" /><div class="suggest-project-metadata" data-home_url="/youtube/" data-path="/youtube/" data-name="YouTube" ></div><div class="suggest-project-metadata" data-home_url="/youtube/android/player/" data-path="/youtube/android/player/" data-name="YouTube Android Player API" ></div></form><a class="devsite-header-link devsite-top-button button gc-analytics-event"
+               href="https://developers.google.com/products/"
+               data-category="Site-Wide Custom Events"
+               data-label="Site header link"
+               track-type="navigateTo"
+               track-name="all products"
+               track-metadata-position="nav"><div class="devsite-header-link-label">All Products</div></a><button type="button" class="devsite-search-button devsite-header-icon-button button-flat
+                                       material-icons"></button><a href="https://www.google.com/accounts/ServiceLogin?passive=true&continue=https%3A%2F%2Fdevelopers.google.com%2Fyoutube%2Fv3%2Fcode_samples%2Fgo%3Frefresh%3D1&service=ahsid"
+   class="devsite-user-signin devsite-top-button button gc-analytics-event"
+   data-category="Site-Wide Custom Events" data-label="Sign in button">
+  
+  Sign in
+</a></div></div></div><div class="devsite-collapsible-section"><div class="devsite-header-background devsite-full-site-width"><div class="devsite-doc-set-nav-row devsite-full-site-width"><nav class="devsite-doc-set-nav devsite-nav devsite-overflow-tabs-scroll-wrapper"><ul class="devsite-doc-set-nav-tab-list devsite-overflow-tabs-scroll"><li class="devsite-doc-set-nav-tab-container devsite-nav-tab
+               "><a href="https://developers.google.com/youtube/v3/"
+         class=" devsite-nav-tab
+                devsite-doc-set-nav-tab devsite-doc-set-nav-tab-link gc-analytics-event"
+         
+       
+         data-category="Site-Wide Custom Events"
+       
+         data-label="Tab: Home"
+       >
+        Home
+      </a></li><li class="devsite-doc-set-nav-tab-container devsite-nav-tab
+               "><a href="https://developers.google.com/youtube/v3/getting-started"
+         class=" devsite-nav-tab
+                devsite-doc-set-nav-tab devsite-doc-set-nav-tab-link gc-analytics-event"
+         
+       
+         data-category="Site-Wide Custom Events"
+       
+         data-label="Tab: Guides"
+       >
+        Guides
+      </a></li><li class="devsite-doc-set-nav-tab-container devsite-nav-tab
+               "><a href="https://developers.google.com/youtube/v3/docs/"
+         class=" devsite-nav-tab
+                devsite-doc-set-nav-tab devsite-doc-set-nav-tab-link gc-analytics-event"
+         
+       
+         data-category="Site-Wide Custom Events"
+       
+         data-label="Tab: Reference"
+       >
+        Reference
+      </a></li><li class="devsite-doc-set-nav-tab-container devsite-nav-tab
+               "><a href="https://developers.google.com/youtube/v3/code_samples/"
+         class="devsite-doc-set-nav-active devsite-nav-tab
+                devsite-doc-set-nav-tab devsite-doc-set-nav-tab-link gc-analytics-event"
+         aria-label="Samples, selected"
+       
+         data-category="Site-Wide Custom Events"
+       
+         data-label="Tab: Samples"
+       >
+        Samples
+      </a></li><li class="devsite-doc-set-nav-tab-container devsite-nav-tab
+               "><a href="https://developers.google.com/youtube/v3/support"
+         class=" devsite-nav-tab
+                devsite-doc-set-nav-tab devsite-doc-set-nav-tab-link gc-analytics-event"
+         
+       
+         data-category="Site-Wide Custom Events"
+       
+         data-label="Tab: Support"
+       >
+        Support
+      </a></li><button type="button" id="devsite-feedback-project"
+          class="devsite-feedback-button devsite-top-button gc-analytics-event"
+          data-category="Site-Wide Custom Events" data-label="Send Feedback Button"
+          track-type="feedback" track-name="sendFeedbackLink" track-metadata-position="header">
+  
+  Send feedback
+  </button></ul></nav></div></div></div></header><script>
+    if (window.jQuery) {
+      $(document).ready(function() {
+        if (window.devsite && window.devsite.search) {
+          
+          window.devsite.search.init('en')
+        }
+      });
+    }
+  </script></div><div id="gc-wrapper"itemscope itemtype="http://schema.org/Article"><input class="google-analytics-id-json" type="hidden" value="{&quot;dimensions&quot;: {&quot;dimension6&quot;: &quot;en&quot;, &quot;dimension4&quot;: &quot;YouTube Data API&quot;, &quot;dimension5&quot;: &quot;en&quot;, &quot;dimension3&quot;: false, &quot;dimension1&quot;: &quot;Signed out&quot;, &quot;dimension8&quot;: null}, &quot;gaid&quot;: &quot;UA-24532603-1&quot;}"><script>
+      var dataLayer = [{"freeTrialEligibleUser": "False", "userCountry": "HK", "language": {"requested": "en", "served": "en"}, "projectName": "YouTube Data API", "scriptsafe": null, "signedIn": "False", "internalUser": "False"}];
+    </script>
+
+      
+        <div class="devsite-site-mask"></div>
+        
+  
+
+
+<nav class="devsite-nav-responsive devsite-nav nocontent" tabindex="0">
+  
+  <div class="devsite-nav-responsive-tabs-panel">
+    
+      
+
+
+
+<nav class="devsite-nav-responsive-tabs devsite-nav">
+  <ul class="devsite-nav-list">
+  
+    <li class="devsite-nav-item devsite-nav-item-heading">
+    
+      <a 
+           href="https://developers.google.com/youtube/v3/"
+         
+         class="devsite-nav-responsive-tab devsite-nav-title gc-analytics-event
+                "
+         data-category="Site-Wide Custom Events" data-label="Responsive Tab: Home">
+        Home
+      </a>
+      
+      
+    
+    </li>
+  
+    <li class="devsite-nav-item devsite-nav-item-heading">
+    
+      <a 
+           href="https://developers.google.com/youtube/v3/getting-started?nav=true"
+         
+         class="devsite-nav-responsive-tab devsite-nav-title gc-analytics-event
+                "
+         data-category="Site-Wide Custom Events" data-label="Responsive Tab: Guides">
+        Guides
+      </a>
+      
+      
+    
+    </li>
+  
+    <li class="devsite-nav-item devsite-nav-item-heading">
+    
+      <a 
+           href="https://developers.google.com/youtube/v3/docs/?nav=true"
+         
+         class="devsite-nav-responsive-tab devsite-nav-title gc-analytics-event
+                "
+         data-category="Site-Wide Custom Events" data-label="Responsive Tab: Reference">
+        Reference
+      </a>
+      
+      
+    
+    </li>
+  
+    <li class="devsite-nav-item devsite-nav-item-heading">
+    
+      <span class="devsite-nav-responsive-forward devsite-nav-responsive-tab devsite-nav-title
+                   devsite-nav-active gc-analytics-event"
+            data-category="Site-Wide Custom Events" data-label="Responsive Tab: Samples"
+            tabindex="0">
+        Samples
+      </span>
+    
+    </li>
+  
+    <li class="devsite-nav-item devsite-nav-item-heading">
+    
+      <a 
+           href="https://developers.google.com/youtube/v3/support?nav=true"
+         
+         class="devsite-nav-responsive-tab devsite-nav-title gc-analytics-event
+                "
+         data-category="Site-Wide Custom Events" data-label="Responsive Tab: Support">
+        Support
+      </a>
+      
+      
+    
+    </li>
+  
+  
+    <li class="devsite-nav-item devsite-nav-item-heading">
+      <a href="https://developers.google.com/products/"
+         class="devsite-nav-responsive-tab devsite-nav-title gc-analytics-event"
+         data-category="Site-Wide Custom Events"
+         data-label="Responsive Tab: all_products">
+        All Products
+      </a>
+    </li>
+  
+  </ul>
+</nav>
+
+
+    
+  </div>
+  
+  
+  <div class="devsite-nav-responsive-sidebar-panel">
+    
+    <div class="devsite-nav-responsive-back" tabindex="0"></div>
+    
+    <nav class="devsite-nav-responsive-sidebar"></nav>
+  </div>
+  
+  
+</nav>
+
+
+        <div class="devsite-main-content clearfix">
+
+        
+        
+
+        
+  
+  
+    
+    
+      
+  <nav class="devsite-section-nav devsite-nav nocontent">
+    <ul class="devsite-nav-list"><li class="devsite-nav-item"><a href="https://developers.google.com/youtube/v3/code_samples/" class="devsite-nav-title">Index</a></li><li class="devsite-nav-item"><a href="https://developers.google.com/youtube/v3/code_samples/apps-script" class="devsite-nav-title">Apps Script</a></li><li class="devsite-nav-item devsite-nav-active"><a href="https://developers.google.com/youtube/v3/code_samples/go" class="devsite-nav-title">Go</a></li><li class="devsite-nav-item"><a href="https://developers.google.com/youtube/v3/code_samples/java" class="devsite-nav-title">Java</a></li><li class="devsite-nav-item"><a href="https://developers.google.com/youtube/v3/code_samples/javascript" class="devsite-nav-title">JavaScript</a></li><li class="devsite-nav-item"><a href="https://developers.google.com/youtube/v3/code_samples/dotnet" class="devsite-nav-title">.NET</a></li><li class="devsite-nav-item"><a href="https://developers.google.com/youtube/v3/code_samples/php" class="devsite-nav-title">PHP</a></li><li class="devsite-nav-item"><a href="https://developers.google.com/youtube/v3/code_samples/python" class="devsite-nav-title">Python</a></li><li class="devsite-nav-item"><a href="https://developers.google.com/youtube/v3/code_samples/python_appengine" class="devsite-nav-title">Python on App Engine</a></li><li class="devsite-nav-item"><a href="https://developers.google.com/youtube/v3/code_samples/ruby" class="devsite-nav-title">Ruby</a></li><li class="devsite-nav-item devsite-nav-item-heading"><span class="devsite-nav-title devsite-nav-title-no-path" aria-label="Tools, click to expand/collapse" role="link">Tools</span><li class="devsite-nav-item"><a href="https://developers.google.com/youtube/v3/code_samples/code_snippets" class="devsite-nav-title">Data API Code Snippets</a></li><li class="devsite-nav-item"><a href="https://developers.google.com/youtube/v3/code_samples/code_snippet_instructions" class="devsite-nav-title">Code Snippet Tool Instructions</a></li></li></ul>
+  </nav>
+
+    
+
+    
+  <nav class="devsite-page-nav devsite-nav"></nav>
+
+
+      <article class="devsite-article">
+        <article class="devsite-article-inner">
+  
+          
+  
+
+
+
+  
+  <nav class="devsite-breadcrumb-nav devsite-nav">
+    
+
+
+<ul class="devsite-breadcrumb-list">
+  
+  <li class="devsite-breadcrumb-item">
+    
+    
+    <a href="https://developers.google.com/products/" class="devsite-breadcrumb-link gc-analytics-event"
+       data-category="Site-Wide Custom Events" data-label="Breadcrumbs"
+       data-value="1">
+    
+    
+      Products
+    
+    
+    </a>
+    
+  </li>
+  
+  <li class="devsite-breadcrumb-item">
+    
+    
+    <div class="devsite-breadcrumb-guillemet material-icons"></div>
+    
+    
+    <a href="https://developers.google.com/youtube/" class="devsite-breadcrumb-link gc-analytics-event"
+       data-category="Site-Wide Custom Events" data-label="Breadcrumbs"
+       data-value="2">
+    
+    
+      YouTube
+    
+    
+    </a>
+    
+  </li>
+  
+  <li class="devsite-breadcrumb-item">
+    
+    
+    <div class="devsite-breadcrumb-guillemet material-icons"></div>
+    
+    
+    <a href="https://developers.google.com/youtube/v3/" class="devsite-breadcrumb-link gc-analytics-event"
+       data-category="Site-Wide Custom Events" data-label="Breadcrumbs"
+       data-value="3">
+    
+    
+      Data API
+    
+    
+    </a>
+    
+  </li>
+  
+  <li class="devsite-breadcrumb-item">
+    
+    
+    <div class="devsite-breadcrumb-guillemet material-icons"></div>
+    
+    
+    <a href="https://developers.google.com/youtube/v3/code_samples/" class="devsite-breadcrumb-link gc-analytics-event"
+       data-category="Site-Wide Custom Events" data-label="Breadcrumbs"
+       data-value="4">
+    
+    
+      Samples
+    
+    
+    </a>
+    
+  </li>
+  
+</ul>
+
+  </nav>
+  
+  
+  <h1 itemprop="name" class="devsite-page-title">
+    Go Code Samples
+  </h1>
+  
+  
+  <nav class="devsite-page-nav-embedded devsite-nav"></nav>
+  
+  <div class="devsite-article-body clearfix
+            "
+       itemprop="articleBody">
+    
+
+<p>The following code samples, which use the <a href="https://github.com/google/google-api-go-client">Google APIs Client Library for <span class="notranslate">Go</span></a>, are available for the <span class="notranslate">YouTube Data API</span>. You can download these code samples from the <code>go</code> folder of the <a href="https://github.com/youtube/api-samples">YouTube APIs code sample repository on GitHub</a>.
+</p>
+
+<h2 id="authorize_a_request">Authorize a request</h2>
+<p>This code sample performs OAuth 2.0 authorization by checking for the presence of a local file that
+contains authorization credentials. If the file is not present, the script opens a browser and waits for a response,
+then saves the returned credentials locally.</p>
+<pre class="prettyprint lang-go notranslate">package main
+
+import (
+	&quot;encoding/json&quot;
+	&quot;errors&quot;
+	&quot;flag&quot;
+	&quot;fmt&quot;
+	&quot;io/ioutil&quot;
+	&quot;net&quot;
+	&quot;net/http&quot;
+	&quot;os&quot;
+	&quot;os/exec&quot;
+	&quot;path/filepath&quot;
+	&quot;runtime&quot;
+
+	&quot;code.google.com/p/goauth2/oauth&quot;
+)
+
+const missingClientSecretsMessage = `
+Please configure OAuth 2.0
+
+To make this sample run, you need to populate the client_secrets.json file
+found at:
+
+   %v
+
+with information from the {{ Google Cloud Console }}
+{{ https://cloud.google.com/console }}
+
+For more information about the client_secrets.json file format, please visit:
+https://developers.google.com/api-client-library/python/guide/aaa_client_secrets
+`
+
+var (
+	clientSecretsFile = flag.String(&quot;secrets&quot;, &quot;client_secrets.json&quot;, &quot;Client Secrets configuration&quot;)
+	cacheFile         = flag.String(&quot;cache&quot;, &quot;request.token&quot;, &quot;Token cache file&quot;)
+)
+
+// ClientConfig is a data structure definition for the client_secrets.json file.
+// The code unmarshals the JSON configuration file into this structure.
+type ClientConfig struct {
+	ClientID     string   `json:&quot;client_id&quot;`
+	ClientSecret string   `json:&quot;client_secret&quot;`
+	RedirectURIs []string `json:&quot;redirect_uris&quot;`
+	AuthURI      string   `json:&quot;auth_uri&quot;`
+	TokenURI     string   `json:&quot;token_uri&quot;`
+}
+
+// Config is a root-level configuration object.
+type Config struct {
+	Installed ClientConfig `json:&quot;installed&quot;`
+	Web       ClientConfig `json:&quot;web&quot;`
+}
+
+// openURL opens a browser window to the specified location.
+// This code originally appeared at:
+//   http://stackoverflow.com/questions/10377243/how-can-i-launch-a-process-that-is-not-a-file-in-go
+func openURL(url string) error {
+	var err error
+	switch runtime.GOOS {
+	case &quot;linux&quot;:
+		err = exec.Command(&quot;xdg-open&quot;, url).Start()
+	case &quot;windows&quot;:
+		err = exec.Command(&quot;rundll32&quot;, &quot;url.dll,FileProtocolHandler&quot;, &quot;http://localhost:4001/&quot;).Start()
+	case &quot;darwin&quot;:
+		err = exec.Command(&quot;open&quot;, url).Start()
+	default:
+		err = fmt.Errorf(&quot;Cannot open URL %s on this platform&quot;, url)
+	}
+	return err
+}
+
+// readConfig reads the configuration from clientSecretsFile.
+// It returns an oauth configuration object for use with the Google API client.
+func readConfig(scope string) (*oauth.Config, error) {
+	// Read the secrets file
+	data, err := ioutil.ReadFile(*clientSecretsFile)
+	if err != nil {
+		pwd, _ := os.Getwd()
+		fullPath := filepath.Join(pwd, *clientSecretsFile)
+		return nil, fmt.Errorf(missingClientSecretsMessage, fullPath)
+	}
+
+	cfg := new(Config)
+	err = json.Unmarshal(data, &amp;cfg)
+	if err != nil {
+		return nil, err
+	}
+
+	var redirectUri string
+	if len(cfg.Web.RedirectURIs) &gt; 0 {
+		redirectUri = cfg.Web.RedirectURIs[0]
+	} else if len(cfg.Installed.RedirectURIs) &gt; 0 {
+		redirectUri = cfg.Installed.RedirectURIs[0]
+	} else {
+		return nil, errors.New(&quot;Must specify a redirect URI in config file or when creating OAuth client&quot;)
+	}
+
+	return &amp;oauth.Config{
+		ClientId:     cfg.Installed.ClientID,
+		ClientSecret: cfg.Installed.ClientSecret,
+		Scope:        scope,
+		AuthURL:      cfg.Installed.AuthURI,
+		TokenURL:     cfg.Installed.TokenURI,
+		RedirectURL:  redirectUri,
+		TokenCache:   oauth.CacheFile(*cacheFile),
+		// Get a refresh token so we can use the access token indefinitely
+		AccessType: &quot;offline&quot;,
+		// If we want a refresh token, we must set this attribute
+		// to force an approval prompt or the code won&#39;t work.
+		ApprovalPrompt: &quot;force&quot;,
+	}, nil
+}
+
+// startWebServer starts a web server that listens on http://localhost:8080.
+// The webserver waits for an oauth code in the three-legged auth flow.
+func startWebServer() (codeCh chan string, err error) {
+	listener, err := net.Listen(&quot;tcp&quot;, &quot;localhost:8080&quot;)
+	if err != nil {
+		return nil, err
+	}
+	codeCh = make(chan string)
+	go http.Serve(listener, http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
+		code := r.FormValue(&quot;code&quot;)
+		codeCh &lt;- code // send code to OAuth flow
+		listener.Close()
+		w.Header().Set(&quot;Content-Type&quot;, &quot;text/plain&quot;)
+		fmt.Fprintf(w, &quot;Received code: %v\r\nYou can now safely close this browser window.&quot;, code)
+	}))
+
+	return codeCh, nil
+}
+
+// buildOAuthHTTPClient takes the user through the three-legged OAuth flow.
+// It opens a browser in the native OS or outputs a URL, then blocks until
+// the redirect completes to the /oauth2callback URI.
+// It returns an instance of an HTTP client that can be passed to the
+// constructor of the YouTube client.
+func buildOAuthHTTPClient(scope string) (*http.Client, error) {
+	config, err := readConfig(scope)
+	if err != nil {
+		msg := fmt.Sprintf(&quot;Cannot read configuration file: %v&quot;, err)
+		return nil, errors.New(msg)
+	}
+
+	transport := &amp;oauth.Transport{Config: config}
+
+	// Try to read the token from the cache file.
+	// If an error occurs, do the three-legged OAuth flow because
+	// the token is invalid or doesn&#39;t exist.
+	token, err := config.TokenCache.Token()
+	if err != nil {
+		// Start web server.
+		// This is how this program receives the authorization code
+		// when the browser redirects.
+		codeCh, err := startWebServer()
+		if err != nil {
+			return nil, err
+		}
+
+		// Open url in browser
+		url := config.AuthCodeURL(&quot;&quot;)
+		err = openURL(url)
+		if err != nil {
+			fmt.Println(&quot;Visit the URL below to get a code.&quot;,
+				&quot; This program will pause until the site is visted.&quot;)
+		} else {
+			fmt.Println(&quot;Your browser has been opened to an authorization URL.&quot;,
+				&quot; This program will resume once authorization has been provided.\n&quot;)
+		}
+		fmt.Println(url)
+
+		// Wait for the web server to get the code.
+		code := &lt;-codeCh
+
+		// This code caches the authorization code on the local
+		// filesystem, if necessary, as long as the TokenCache
+		// attribute in the config is set.
+		token, err = transport.Exchange(code)
+		if err != nil {
+			return nil, err
+		}
+	}
+
+	transport.Token = token
+	return transport.Client(), nil
+}
+<div class="devsite-github-link nocode"><a target="_top" href="https://github.com/youtube/api-samples/blob/master/go/oauth.go" class="gc-analytics-event" data-category="github_link" data-label="youtube/api-samples/go/oauth.go">oauth.go</a></div></pre>
+
+<h2 id="post_a_channel_bulletin">Post a channel bulletin</h2>
+<p>This code sample calls the API's <code>activities.insert</code> method to post a bulletin to the
+channel associated with the request.</p>
+<pre class="prettyprint lang-go notranslate">package main
+
+import (
+	&quot;flag&quot;
+	&quot;fmt&quot;
+	&quot;log&quot;
+
+	&quot;google.golang.org/api/youtube/v3&quot;
+)
+
+var (
+	message    = flag.String(&quot;message&quot;, &quot;&quot;, &quot;Text message to post&quot;)
+	videoID    = flag.String(&quot;videoid&quot;, &quot;&quot;, &quot;ID of video to post&quot;)
+	playlistID = flag.String(&quot;playlistid&quot;, &quot;&quot;, &quot;ID of playlist to post&quot;)
+)
+
+func main() {
+	flag.Parse()
+
+	// A bulletin must contain a message and may also contain a video or a
+	// playlist. You can post a message with or without an accompanying video
+	// or playlist, but you can&#39;t post a video and playlist at the same time.
+	if *message == &quot;&quot; {
+		log.Fatalf(&quot;Please provide a message.&quot;)
+	}
+
+	if *videoID != &quot;&quot; &amp;&amp; *playlistID != &quot;&quot; {
+		log.Fatalf(&quot;You cannot post a video and a playlist at the same time.&quot;)
+	}
+
+	client, err := buildOAuthHTTPClient(youtube.YoutubeScope)
+	if err != nil {
+		log.Fatalf(&quot;Error building OAuth client: %v&quot;, err)
+	}
+
+	service, err := youtube.New(client)
+	if err != nil {
+		log.Fatalf(&quot;Error creating YouTube client: %v&quot;, err)
+	}
+
+	// Start making YouTube API calls.
+	parts := &quot;snippet&quot;
+	bulletin := &amp;youtube.Activity{
+		Snippet: &amp;youtube.ActivitySnippet{
+			Description: *message,
+		},
+	}
+
+	if *videoID != &quot;&quot; || *playlistID != &quot;&quot; {
+		parts = &quot;snippet,contentDetails&quot;
+
+		// The resource ID element value differs depending on
+		// whether a playlist or a video is being posted.
+		var resourceId *youtube.ResourceId
+		switch {
+		case *videoID != &quot;&quot;:
+			resourceId = &amp;youtube.ResourceId{
+				Kind:    &quot;youtube#video&quot;,
+				VideoId: *videoID,
+			}
+		case *playlistID != &quot;&quot;:
+			resourceId = &amp;youtube.ResourceId{
+				Kind:       &quot;youtube#playlist&quot;,
+				PlaylistId: *playlistID,
+			}
+		}
+
+		bulletin.ContentDetails = &amp;youtube.ActivityContentDetails{
+			Bulletin: &amp;youtube.ActivityContentDetailsBulletin{
+				ResourceId: resourceId,
+			},
+		}
+	}
+
+	call := service.Activities.Insert(parts, bulletin)
+	_, err = call.Do()
+	if err != nil {
+		log.Fatalf(&quot;Error making API call to post bulletin: %v&quot;, err.Error())
+	}
+
+	fmt.Println(&quot;The bulletin was posted to your channel.&quot;)
+}
+<div class="devsite-github-link nocode"><a target="_top" href="https://github.com/youtube/api-samples/blob/master/go/post_bulletin.go" class="gc-analytics-event" data-category="github_link" data-label="youtube/api-samples/go/post_bulletin.go">post_bulletin.go</a></div></pre>
+
+<h2 id="retrieve_my_uploads">Retrieve my uploads</h2>
+<p>This code sample calls the API's <code>playlistItems.list</code> method to retrieve a list of 
+videos uploaded to the channel associated with the request. The code also calls the <code>channels.list</code> 
+method with the <code>mine</code> parameter set to <code>true</code> to retrieve the playlist ID that identifies 
+the channel's uploaded videos.</p>
+<pre class="prettyprint lang-go notranslate">package main
+
+import (
+	&quot;flag&quot;
+	&quot;fmt&quot;
+	&quot;log&quot;
+
+	&quot;google.golang.org/api/youtube/v3&quot;
+)
+
+func main() {
+	flag.Parse()
+
+	client, err := buildOAuthHTTPClient(youtube.YoutubeReadonlyScope)
+	if err != nil {
+		log.Fatalf(&quot;Error building OAuth client: %v&quot;, err)
+	}
+
+	service, err := youtube.New(client)
+	if err != nil {
+		log.Fatalf(&quot;Error creating YouTube client: %v&quot;, err)
+	}
+
+	// Start making YouTube API calls.
+	// Call the channels.list method. Set the mine parameter to true to
+	// retrieve the playlist ID for uploads to the authenticated user&#39;s
+	// channel.
+	call := service.Channels.List(&quot;contentDetails&quot;).Mine(true)
+
+	response, err := call.Do()
+	if err != nil {
+		// The channels.list method call returned an error.
+		log.Fatalf(&quot;Error making API call to list channels: %v&quot;, err.Error())
+	}
+
+	for _, channel := range response.Items {
+		playlistId := channel.ContentDetails.RelatedPlaylists.Uploads
+		// Print the playlist ID for the list of uploaded videos.
+		fmt.Printf(&quot;Videos in list %s\r\n&quot;, playlistId)
+
+		nextPageToken := &quot;&quot;
+		for {
+			// Call the playlistItems.list method to retrieve the
+			// list of uploaded videos. Each request retrieves 50
+			// videos until all videos have been retrieved.
+			playlistCall := service.PlaylistItems.List(&quot;snippet&quot;).
+				PlaylistId(playlistId).
+				MaxResults(50).
+				PageToken(nextPageToken)
+
+			playlistResponse, err := playlistCall.Do()
+
+			if err != nil {
+				// The playlistItems.list method call returned an error.
+				log.Fatalf(&quot;Error fetching playlist items: %v&quot;, err.Error())
+			}
+
+			for _, playlistItem := range playlistResponse.Items {
+				title := playlistItem.Snippet.Title
+				videoId := playlistItem.Snippet.ResourceId.VideoId
+				fmt.Printf(&quot;%v, (%v)\r\n&quot;, title, videoId)
+			}
+
+			// Set the token to retrieve the next page of results
+			// or exit the loop if all results have been retrieved.
+			nextPageToken = playlistResponse.NextPageToken
+			if nextPageToken == &quot;&quot; {
+				break
+			}
+			fmt.Println()
+		}
+	}
+}
+<div class="devsite-github-link nocode"><a target="_top" href="https://github.com/youtube/api-samples/blob/master/go/my_uploads.go" class="gc-analytics-event" data-category="github_link" data-label="youtube/api-samples/go/my_uploads.go">my_uploads.go</a></div></pre>
+
+<h2 id="search_by_keyword">Search by keyword</h2>
+<p>This code sample calls the API's <code>search.list</code> method to retrieve search results associated
+with a particular keyword.</p>
+<pre class="prettyprint lang-go notranslate">package main
+
+import (
+	&quot;flag&quot;
+	&quot;fmt&quot;
+	&quot;log&quot;
+	&quot;net/http&quot;
+
+	&quot;google.golang.org/api/googleapi/transport&quot;
+	&quot;google.golang.org/api/youtube/v3&quot;
+)
+
+var (
+	query      = flag.String(&quot;query&quot;, &quot;Google&quot;, &quot;Search term&quot;)
+	maxResults = flag.Int64(&quot;max-results&quot;, 25, &quot;Max YouTube results&quot;)
+)
+
+const developerKey = &quot;YOUR DEVELOPER KEY&quot;
+
+func main() {
+	flag.Parse()
+
+	client := &amp;http.Client{
+		Transport: &amp;transport.APIKey{Key: developerKey},
+	}
+
+	service, err := youtube.New(client)
+	if err != nil {
+		log.Fatalf(&quot;Error creating new YouTube client: %v&quot;, err)
+	}
+
+	// Make the API call to YouTube.
+	call := service.Search.List(&quot;id,snippet&quot;).
+		Q(*query).
+		MaxResults(*maxResults)
+	response, err := call.Do()
+	if err != nil {
+		log.Fatalf(&quot;Error making search API call: %v&quot;, err)
+	}
+
+	// Group video, channel, and playlist results in separate lists.
+	videos := make(map[string]string)
+	channels := make(map[string]string)
+	playlists := make(map[string]string)
+
+	// Iterate through each item and add it to the correct list.
+	for _, item := range response.Items {
+		switch item.Id.Kind {
+		case &quot;youtube#video&quot;:
+			videos[item.Id.VideoId] = item.Snippet.Title
+		case &quot;youtube#channel&quot;:
+			channels[item.Id.ChannelId] = item.Snippet.Title
+		case &quot;youtube#playlist&quot;:
+			playlists[item.Id.PlaylistId] = item.Snippet.Title
+		}
+	}
+
+	printIDs(&quot;Videos&quot;, videos)
+	printIDs(&quot;Channels&quot;, channels)
+	printIDs(&quot;Playlists&quot;, playlists)
+}
+
+// Print the ID and title of each result in a list as well as a name that
+// identifies the list. For example, print the word section name &quot;Videos&quot;
+// above a list of video search results, followed by the video ID and title
+// of each matching video.
+func printIDs(sectionName string, matches map[string]string) {
+	fmt.Printf(&quot;%v:\n&quot;, sectionName)
+	for id, title := range matches {
+		fmt.Printf(&quot;[%v] %v\n&quot;, id, title)
+	}
+	fmt.Printf(&quot;\n\n&quot;)
+}
+<div class="devsite-github-link nocode"><a target="_top" href="https://github.com/youtube/api-samples/blob/master/go/search_by_keyword.go" class="gc-analytics-event" data-category="github_link" data-label="youtube/api-samples/go/search_by_keyword.go">search_by_keyword.go</a></div></pre>
+
+<h2 id="upload_a_video">Upload a video</h2>
+<p>This code sample calls the API's <code>videos.insert</code> method to upload a video to the channel
+associated with the request.</p>
+<pre class="prettyprint lang-go notranslate">package main
+
+import (
+	&quot;flag&quot;
+	&quot;fmt&quot;
+	&quot;log&quot;
+	&quot;os&quot;
+	&quot;strings&quot;
+
+	&quot;google.golang.org/api/youtube/v3&quot;
+)
+
+var (
+	filename    = flag.String(&quot;filename&quot;, &quot;&quot;, &quot;Name of video file to upload&quot;)
+	title       = flag.String(&quot;title&quot;, &quot;Test Title&quot;, &quot;Video title&quot;)
+	description = flag.String(&quot;description&quot;, &quot;Test Description&quot;, &quot;Video description&quot;)
+	category    = flag.String(&quot;category&quot;, &quot;22&quot;, &quot;Video category&quot;)
+	keywords    = flag.String(&quot;keywords&quot;, &quot;&quot;, &quot;Comma separated list of video keywords&quot;)
+	privacy     = flag.String(&quot;privacy&quot;, &quot;unlisted&quot;, &quot;Video privacy status&quot;)
+)
+
+func main() {
+	flag.Parse()
+
+	if *filename == &quot;&quot; {
+		log.Fatalf(&quot;You must provide a filename of a video file to upload&quot;)
+	}
+
+	client, err := buildOAuthHTTPClient(youtube.YoutubeUploadScope)
+	if err != nil {
+		log.Fatalf(&quot;Error building OAuth client: %v&quot;, err)
+	}
+
+	service, err := youtube.New(client)
+	if err != nil {
+		log.Fatalf(&quot;Error creating YouTube client: %v&quot;, err)
+	}
+
+	upload := &amp;youtube.Video{
+		Snippet: &amp;youtube.VideoSnippet{
+			Title:       *title,
+			Description: *description,
+			CategoryId:  *category,
+		},
+		Status: &amp;youtube.VideoStatus{PrivacyStatus: *privacy},
+	}
+
+	// The API returns a 400 Bad Request response if tags is an empty string.
+	if strings.Trim(*keywords, &quot;&quot;) != &quot;&quot; {
+		upload.Snippet.Tags = strings.Split(*keywords, &quot;,&quot;)
+	}
+
+	call := service.Videos.Insert(&quot;snippet,status&quot;, upload)
+
+	file, err := os.Open(*filename)
+	defer file.Close()
+	if err != nil {
+		log.Fatalf(&quot;Error opening %v: %v&quot;, *filename, err)
+	}
+
+	response, err := call.Media(file).Do()
+	if err != nil {
+		log.Fatalf(&quot;Error making YouTube API call: %v&quot;, err)
+	}
+	fmt.Printf(&quot;Upload successful! Video ID: %v\n&quot;, response.Id)
+}
+<div class="devsite-github-link nocode"><a target="_top" href="https://github.com/youtube/api-samples/blob/master/go/upload_video.go" class="gc-analytics-event" data-category="github_link" data-label="youtube/api-samples/go/upload_video.go">upload_video.go</a></div></pre>
+
+  
+  </div>
+  
+
+  
+        
+  
+
+
+
+
+
+
+
+        
+<div class="devsite-content-footer nocontent">
+  
+  
+    <p>Except as otherwise noted, the content of this page is licensed under the <a href="http://creativecommons.org/licenses/by/3.0/">Creative Commons Attribution 3.0 License</a>, and code samples are licensed under the <a href="http://www.apache.org/licenses/LICENSE-2.0">Apache 2.0 License</a>. For details, see our <a href="https://developers.google.com/terms/site-policies">Site Policies</a>. Java is a registered trademark of Oracle and/or its affiliates.</p>
+  
+
+  
+    
+    <p class="devsite-content-footer-date" itemprop="datePublished"
+       content="2017-08-02T20:35:56.607110">
+      
+      Last updated August 2, 2017.
+    </p>
+  
+
+</div>
+
+        </article>
+      </article>
+  
+
+        </div>
+      
+
+<footer class="devsite-footer-promos nocontent"><nav class="devsite-full-site-width"><ul class="devsite-footer-promos-list"><li class="devsite-footer-promo"><a href="http://apiblog.youtube.com"
+           class="devsite-footer-promo-title gc-analytics-event"
+           data-category="Site-Wide Custom Events"
+           data-label="Content Page Footer Promo"
+           ><img class="devsite-footer-promo-icon" src="https://www.gstatic.com/images/icons/material/product/2x/blogger_64dp.png">
+          
+          
+            Blog
+          
+        </a><div class="devsite-footer-promo-description">The latest news on the YouTube API blog</div></li><li class="devsite-footer-promo"><a href="https://github.com/youtube/api-samples"
+           class="devsite-footer-promo-title gc-analytics-event"
+           data-category="Site-Wide Custom Events"
+           data-label="Content Page Footer Promo"
+           ><img class="devsite-footer-promo-icon" src="https://developers.google.com/site-assets/logo-github.svg">
+          
+          
+            GitHub
+          
+        </a><div class="devsite-footer-promo-description">Find API code samples and other YouTube open-source projects.</div></li><li class="devsite-footer-promo"><a href="https://code.google.com/p/gdata-issues/issues/entry?template=YouTube%20(Defect%20Report)"
+           class="devsite-footer-promo-title gc-analytics-event"
+           data-category="Site-Wide Custom Events"
+           data-label="Content Page Footer Promo"
+           ><img class="devsite-footer-promo-icon" src="https://developers.google.com/site-assets/developers_64dp.png">
+          
+          
+            Issue Tracker
+          
+        </a><div class="devsite-footer-promo-description">Something wrong? Send us a bug report!</div></li><li class="devsite-footer-promo"><a href="http://stackoverflow.com/questions/ask?tags=youtube-api"
+           class="devsite-footer-promo-title gc-analytics-event"
+           data-category="Site-Wide Custom Events"
+           data-label="Content Page Footer Promo"
+           ><img class="devsite-footer-promo-icon" src="https://developers.google.com/site-assets/logo-stack-overflow.svg">
+          
+          
+            Stack Overflow
+          
+        </a><div class="devsite-footer-promo-description">Ask a question under the youtube-api tag</div></li><li class="devsite-footer-promo"><a href="https://www.youtube.com/user/YouTubeDev"
+           class="devsite-footer-promo-title gc-analytics-event"
+           data-category="Site-Wide Custom Events"
+           data-label="Content Page Footer Promo"
+           ><img class="devsite-footer-promo-icon" src="https://www.gstatic.com/images/icons/material/product/2x/youtube_64dp.png">
+          
+          
+            Videos
+          
+        </a><div class="devsite-footer-promo-description">Check out the YouTube Developer Relations team&#39;s YouTube channel</div></li></ul></nav></footer><footer class="devsite-footer-linkboxes nocontent
+               
+               devsite-footer-linkboxes-with-sites"><nav class="devsite-full-site-width"><ul class="devsite-footer-linkboxes-list"><li class="devsite-footer-linkbox "><h3 class="devsite-footer-linkbox-heading">Tools</h3><ul class="devsite-footer-linkbox-list"><li class="devsite-footer-linkbox-item"><a href="https://developers.google.com/apis-explorer/#p/" class="gc-analytics-event"
+               data-category="Site-Wide Custom Events"
+               data-label="Content Page Footer Linkbox">
+                Google APIs Explorer
+            </a></li><li class="devsite-footer-linkbox-item"><a href="https://developers.google.com/youtube/youtube_player_demo" class="gc-analytics-event"
+               data-category="Site-Wide Custom Events"
+               data-label="Content Page Footer Linkbox">
+                YouTube Player Demo
+            </a></li><li class="devsite-footer-linkbox-item"><a href="https://developers.google.com/youtube/youtube_subscribe_button" class="gc-analytics-event"
+               data-category="Site-Wide Custom Events"
+               data-label="Content Page Footer Linkbox">
+                Configure a Subscribe Button
+            </a></li></ul></li><li class="devsite-footer-linkbox "><h3 class="devsite-footer-linkbox-heading">Issue Tracker</h3><ul class="devsite-footer-linkbox-list"><li class="devsite-footer-linkbox-item"><a href="https://code.google.com/p/gdata-issues/issues/entry?template=YouTube%20(Defect%20Report)" class="gc-analytics-event"
+               data-category="Site-Wide Custom Events"
+               data-label="Content Page Footer Linkbox">
+                File a bug
+            </a></li><li class="devsite-footer-linkbox-item"><a href="https://code.google.com/p/gdata-issues/issues/entry?template=YouTube%20(Enhancement%20Request)" class="gc-analytics-event"
+               data-category="Site-Wide Custom Events"
+               data-label="Content Page Footer Linkbox">
+                Request a feature
+            </a></li><li class="devsite-footer-linkbox-item"><a href="https://code.google.com/p/gdata-issues/issues/list?q=label:API-YouTube" class="gc-analytics-event"
+               data-category="Site-Wide Custom Events"
+               data-label="Content Page Footer Linkbox">
+                See open issues
+            </a></li></ul></li><li class="devsite-footer-linkbox "><h3 class="devsite-footer-linkbox-heading">Product Info</h3><ul class="devsite-footer-linkbox-list"><li class="devsite-footer-linkbox-item"><a href="https://developers.google.com/youtube/terms" class="gc-analytics-event"
+               data-category="Site-Wide Custom Events"
+               data-label="Content Page Footer Linkbox">
+                Terms of Service
+            </a></li><li class="devsite-footer-linkbox-item"><a href="https://developers.google.com/youtube/branding_guidelines" class="gc-analytics-event"
+               data-category="Site-Wide Custom Events"
+               data-label="Content Page Footer Linkbox">
+                Branding Guidelines
+            </a></li><li class="devsite-footer-linkbox-item"><a href="https://developers.google.com/youtube/creating_monetizable_applications" class="gc-analytics-event"
+               data-category="Site-Wide Custom Events"
+               data-label="Content Page Footer Linkbox">
+                Monetization Guidelines
+            </a></li><li class="devsite-footer-linkbox-item"><a href="https://developers.google.com/youtube/youtube-api-list" class="gc-analytics-event"
+               data-category="Site-Wide Custom Events"
+               data-label="Content Page Footer Linkbox">
+                APIs subject to Deprecation Policy
+            </a></li></ul></li><li class="devsite-footer-linkbox devsite-footer-linkbox-sites"><a href="https://developers.google.com/"
+           class="gc-analytics-event devsite-footer-linkbox-logo-link"
+           data-category="Site-Wide Custom Events" data-label="Footer Google Developers Link"><img class="devsite-footer-linkbox-logo"
+               src="https://developers.google.com/_static/d7147bb846/images/redesign-14/lockup-color-knockout.png"
+               alt="Google Developers"></a><ul class="devsite-footer-linkbox-list"><li class="devsite-footer-linkbox-item"><a href="//developer.android.com/index.html" class="gc-analytics-event"
+               data-category="Site-Wide Custom Events"
+               data-label="Footer Android Link">
+                Android
+            </a></li><li class="devsite-footer-linkbox-item"><a href="//developer.chrome.com/home" class="gc-analytics-event"
+               data-category="Site-Wide Custom Events"
+               data-label="Footer Chrome Link">
+                Chrome
+            </a></li><li class="devsite-footer-linkbox-item"><a href="//firebase.google.com" class="gc-analytics-event"
+               data-category="Site-Wide Custom Events"
+               data-label="Footer Firebase Link">
+                Firebase
+            </a></li><li class="devsite-footer-linkbox-item"><a href="//cloud.google.com" class="gc-analytics-event"
+               data-category="Site-Wide Custom Events"
+               data-label="Footer Cloud Link">
+                Google Cloud Platform
+            </a></li><li class="devsite-footer-linkbox-item"><a href="//developers.google.com/products/" class="gc-analytics-event"
+               data-category="Site-Wide Custom Events"
+               data-label="Footer Products Link">
+                All Products
+            </a></li></ul></li></ul></nav></footer><footer class="devsite-utility-footer"><nav class="devsite-utility-footer-nav devsite-nav devsite-full-site-width"><div class="devsite-utility-footer-nav-left"><form class="devsite-utility-footer-language" action="/i18n/setlang/" method="post"><input type="hidden" name="xsrf_token" value="YCKLcKlQ9mcV5stpXq_h27KRlfWet8XB0Cc_KZzBdm46MTUyNDQ1ODMxNTU3NTczMA" /><input type="hidden" name="next" value="/youtube/v3/code_samples/go"><select class="devsite-utility-footer-language-select kd-select" name="language"
+                track-type="languageSelector" track-name="click"><option value="id"
+                
+                track-type="languageSelector" track-name="changed"
+                track-metadata-original-language="en"
+                track-metadata-selected-language="id">
+            Bahasa Indonesia
+          </option><option value="de"
+                
+                track-type="languageSelector" track-name="changed"
+                track-metadata-original-language="en"
+                track-metadata-selected-language="de">
+            Deutsch
+          </option><option value="en"
+                 selected="selected" 
+                track-type="languageSelector" track-name="changed"
+                track-metadata-original-language="en"
+                track-metadata-selected-language="en">
+            English
+          </option><option value="es"
+                
+                track-type="languageSelector" track-name="changed"
+                track-metadata-original-language="en"
+                track-metadata-selected-language="es">
+            español
+          </option><option value="fr"
+                
+                track-type="languageSelector" track-name="changed"
+                track-metadata-original-language="en"
+                track-metadata-selected-language="fr">
+            français
+          </option><option value="pt-br"
+                
+                track-type="languageSelector" track-name="changed"
+                track-metadata-original-language="en"
+                track-metadata-selected-language="pt-br">
+            Português Brasileiro
+          </option><option value="ru"
+                
+                track-type="languageSelector" track-name="changed"
+                track-metadata-original-language="en"
+                track-metadata-selected-language="ru">
+            Русский
+          </option><option value="ja"
+                
+                track-type="languageSelector" track-name="changed"
+                track-metadata-original-language="en"
+                track-metadata-selected-language="ja">
+            日本語
+          </option><option value="zh-cn"
+                
+                track-type="languageSelector" track-name="changed"
+                track-metadata-original-language="en"
+                track-metadata-selected-language="zh-cn">
+            简体中文
+          </option><option value="ko"
+                
+                track-type="languageSelector" track-name="changed"
+                track-metadata-original-language="en"
+                track-metadata-selected-language="ko">
+            한국어
+          </option></select></form><span class="devsite-utility-footer-links"><a class="devsite-utility-footer-link gc-analytics-event"
+           href="https://developers.google.com/terms/site-terms"
+           data-category="Site-Wide Custom Events"
+           data-label="Footer terms link"
+           data-footer-link-id="terms"
+           >Terms
+         </a><a class="devsite-utility-footer-link gc-analytics-event"
+           href="//www.google.com/policies/privacy/"
+           data-category="Site-Wide Custom Events"
+           data-label="Footer privacy link"
+           data-footer-link-id="privacy"
+           >Privacy
+         </a></span></div><div class="devsite-utility-footer-nav-right"><div class="devsite-utility-footer-newsletter-signup-text">
+        Sign up for the Google Developers newsletter
+      </div><a class="button button-primary devsite-utility-footer-newsletter-signup-button"
+         href="//services.google.com/fb/forms/googledevelopersnewsletter/?utm_medium=referral&amp;utm_source=google-products&amp;utm_team=googledevs&amp;utm_campaign=201611-newsletter-launch">
+        
+        Subscribe
+      </a></div></nav></footer><div class="devsite-feedback-dialog devsite-dialog"><div class="devsite-dialog-contents"><h3>Send feedback about...</h3><div class="devsite-feedback-item"><a data-type="documentation" class="gc-analytics-event"
+           data-category="Site-Wide Custom Events" data-label="Docs Feedback Image"
+           track-type="feedback" track-name="feedbackDocIcon" track-metadata-position="header"><div class="devsite-feedback-item-icon-container"><div class="devsite-feedback-item-icon-white devsite-feedback-item-icon-docs
+                        material-icons"></div></div></a><div class="devsite-feedback-item-name">
+          
+          This page
+        </div><div class="devsite-feedback-item-description"><a data-type="documentation" tabindex="0" class="gc-analytics-event"
+             data-category="Site-Wide Custom Events" data-label="Docs Feedback Text"
+             track-type="feedback" track-name="feedbackDocText" track-metadata-position="header">
+            
+            Documentation feedback
+          </a></div></div><div class="devsite-feedback-item"><a data-type="product" tabindex="0" class="gc-analytics-event"
+           data-category="Site-Wide Custom Events" data-label="Product Feedback Image"
+           track-type="feedback" track-name="feedbackProductIcon" track-metadata-position="header"
+         ><img src="https://developers.google.com/site-assets/logo-youtube.svg"
+                 class="devsite-feedback-item-icon"
+                 alt="YouTube Data API"></a><div class="devsite-feedback-item-name">
+        YouTube Data API
+        </div><div class="devsite-feedback-item-description"><a data-type="product" tabindex="0" class="gc-analytics-event"
+             data-category="Site-Wide Custom Events" data-label="Product Feedback Text"
+             track-type="feedback" track-name="feedbackProductText" track-metadata-position="header"
+           >
+            
+            Product feedback
+          </a></div></div></div><div class="devsite-dialog-buttons"><button type="button" class="devsite-feedback-cancel button-white gc-analytics-event"
+              data-category="Site-Wide Custom Events" data-label="Cancel Feedback Button"
+              track-type="feedback" track-name="cancelFeedbackButton"
+              track-metadata-position="header">
+        
+        Cancel
+      </button></div></div><script>
+  $(document).ready(function() {
+    new devsite.feedback.Widget({
+        'product_id': '5020320',
+        'bucket': 'Default',
+        'context': '',
+        'version': 'devsite-20180420-r00-rc00.default'
+      },
+      document.querySelectorAll('.devsite-feedback-button'),
+      'en',
+      document.querySelector('.devsite-site-mask'),
+      document.querySelector('.devsite-feedback-dialog'),
+      document.querySelector('.devsite-feedback-cancel'),
+      document.querySelectorAll('.devsite-feedback-item a:not([href])')
+    );
+  });
+  </script></div><script async defer src="//www.gstatic.com/feedback/api.js"></script><script src="https://developers.google.com/_static2/d7147bb846/jsi18n/"></script><script src="https://developers.google.com/_static/d7147bb846/js/script_foot_closure.js"></script><script src="https://developers.google.com/_static/d7147bb846/js/script_foot.js"></script><script>
+        (function($) {
+          
+          devsite.devsite.Init($, {'ENABLE_BLOCKED_VIDEO_PLACEHOLDER': 0, 'SITE_NAME': 'devsite', 'FULL_SITE_SEARCH_ENABLED': 1, 'ENABLE_CLOUDTRACK': 0, 'VTAGS_ENABLED': 0, 'HISTORY_ENABLED': 1, 'VERSION_HASH': 'd7147bb846', 'SCRIPTSAFE_DOMAIN': 'google-developers.appspot.com', 'ENABLE_BLOCKED_LINK_TOOLTIP': 0, 'ALLOWED_HOSTS': ['.android.com', '.anvato.com', '.apigee.com', '.appspot.com', '.dialogflow.com', '.gonglchuangl.net', '.google.cn', '.google.com', '.googleplex.com', '.nest.com', '.openthread.io', '.openweave.io', '.orbitera.com', '.tensorflow.org'], 'BLOCK_RSS_FEEDS': 0},
+                               '[]','en',
+                               true, '',
+                               {"f62218c009ec029abef196bba5aa34cf": true, "8de7a048f21618359bd37f5ce44be073": false, "098dafe57affddc137df300142652cfd": false, "8e03e230de0bd8a6fe173fdf172e8b3f": true, "cb025a64a50094835616312f4774a53d": true, "51470233c56fc1fde50f00b73c52b216": false, "d169d485cf24243a263783dbe42029b1": true, "039e5d84b87fd75807ffb37b7f1bbf2c": true, "700def1a83e356c06c0925afb05de4b0": false, "6749dcb526ce9bde6993550c7d928d24": true}, '/youtube/v3/',
+                               'https://developers.google.com/');
+        })(jQuery);
+
+        
+        devsite.localInit = function() {
+          
+        };
+
+      </script><script>
+      $('.devsite-utility-footer-language-select').each(function() {
+        $(this).change(function(){$('.devsite-utility-footer-language').submit();});
+      });
+      </script></div><span id="devsite-request-elapsed" data-request-elapsed="160.48002243"></span></body></html>

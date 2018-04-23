@@ -1,0 +1,1994 @@
+
+
+
+
+
+
+<!DOCTYPE html><html lang="en"
+      class="chekov"><head><script>var a=window.devsite||{};window.devsite=a;a.readyCallbacks=[];window.devsite.readyCallbacks=a.readyCallbacks;a.ready=function(b){a.readyCallbacks.push(b)};window.devsite.ready=a.ready;
+</script><meta charset="utf-8"><meta name="xsrf_token" content="xnEctJQTnQbAPSEg1rCU-tOJyb6h4rjLIzqdrW7waO86MTUyNDQ1ODI5NDc4OTY5MA" /><link rel="canonical" href="https://cloud.google.com/solutions/recommendations-using-machine-learning-on-compute-engine"><link rel="alternate" href="https://cloud.google.com/solutions/recommendations-using-machine-learning-on-compute-engine?hl=ja" hreflang="ja"><link rel="alternate" href="https://cloud.google.com/solutions/recommendations-using-machine-learning-on-compute-engine" hreflang="en"><link rel="alternate" href="https://cloud.google.com/solutions/recommendations-using-machine-learning-on-compute-engine" hreflang="x-default"><link rel="shortcut icon" href="https://cloud.google.com/_static/d7147bb846/images/cloud/icons/favicons/onecloud/favicon.ico"><link rel="apple-touch-icon" href="https://cloud.google.com/_static/d7147bb846/images/cloud/icons/favicons/onecloud/apple-icon.png"><meta name="viewport" content="width=device-width, initial-scale=1"><link rel="stylesheet"
+      
+      href="//fonts.googleapis.com/css?family=Google+Sans:400|Roboto:400,400italic,500,500italic,700,700italic|Roboto+Mono:400,500,700|Material+Icons"
+      ><link rel="stylesheet"
+        href="https://cloud.google.com/_static/d7147bb846/css/devsite-cloud-white.css"><link rel="stylesheet" href="https://cloud.google.com/_static/d7147bb846/css/cloud/cloud-site.css"><link rel="search"
+        type="application/opensearchdescription+xml"
+        title="Google Cloud"
+        href="https://cloud.google.com/s/opensearch.xml"><script src="https://cloud.google.com/_static/d7147bb846/js/jquery-bundle.js"></script><meta property="og:site_name" content="Google Cloud"><meta property="og:type" content="website"><meta property="og:url" content="https://cloud.google.com/solutions/recommendations-using-machine-learning-on-compute-engine"><meta property="og:locale" content="en"><script>
+    var ___gcfg = ___gcfg || {};
+    ___gcfg.lang = 'en';
+  </script><title>Using Machine Learning on Compute Engine to Make Product Recommendations &nbsp;|&nbsp; Solutions
+      &nbsp;|&nbsp; Google Cloud</title><meta property="og:title" content="Using Machine Learning on Compute Engine to Make Product Recommendations &nbsp;|&nbsp; Solutions
+      &nbsp;|&nbsp; Google Cloud"><link href="https://cloud.google.com/assets/css/tutorial.css" type="text/css" rel="stylesheet"><style>
+    
+      h1.page-title { line-height: 50px; padding-left: 60px; position: relative;}
+      h1.page-title:before {
+        width: 55px;
+        height: 55px;
+        content: '';
+        position: absolute;
+        background: url('/images/compute-icon-54x48.png') no-repeat top left transparent;
+        left: 0px;
+      }
+    
+    </style></head><body class="
+               devsite-doc-page
+               
+               
+               
+               
+               devsite-header-no-lower-tabs"
+        data-family="endorsed"
+        id="top_of_page"><div class="devsite-wrapper"><div class="devsite-top-section-wrapper
+            "><header class="devsite-top-section nocontent"><div class="devsite-top-logo-row-wrapper-wrapper"><div class="devsite-top-logo-row-wrapper"><div class="devsite-top-logo-row devsite-full-site-width"><button type="button" class="devsite-expand-section-nav devsite-header-icon-button
+                                       button-flat material-icons gc-analytics-event"
+                  data-category="Site-Wide Custom Events" data-label="Hamburger menu"></button><div class="devsite-product-name-wrapper"><a href="https://cloud.google.com/" class="devsite-site-logo-link gc-analytics-event"
+   data-category="Site-Wide Custom Events" data-label="Site logo"><img src="https://cloud.google.com/_static/d7147bb846/images/cloud/cloud-logo.svg"
+       class="devsite-site-logo" alt="Google Cloud"><span class="devsite-site-name devsite-product-name">Google Cloud</span></a></div><div class="devsite-header-upper-tabs"><nav class="devsite-doc-set-nav devsite-nav devsite-overflow-tabs-scroll-wrapper"><ul class="devsite-doc-set-nav-tab-list devsite-overflow-tabs-scroll"><li class="devsite-doc-set-nav-tab-container devsite-nav-tab
+               "><a href="https://cloud.google.com/why-google-cloud/"
+         class=" devsite-nav-tab
+                devsite-doc-set-nav-tab devsite-doc-set-nav-tab-link gc-analytics-event"
+         
+       
+         data-category="Site-Wide Custom Events"
+       
+         data-label="Tab: Why Google"
+       
+         track-type="globalNav"
+       
+         track-name="whyGoogle"
+       >
+        Why Google
+      </a></li><li class="devsite-doc-set-nav-tab-container devsite-nav-tab
+               "><a href="https://cloud.google.com/products/"
+         class=" devsite-nav-tab
+                devsite-doc-set-nav-tab devsite-doc-set-nav-tab-link gc-analytics-event"
+         
+       
+         data-category="Site-Wide Custom Events"
+       
+         data-label="Tab: Products"
+       
+         track-type="globalNav"
+       
+         track-name="products"
+       >
+        Products
+      </a></li><li class="devsite-doc-set-nav-tab-container devsite-nav-tab
+               "><a href="https://cloud.google.com/solutions/"
+         class="devsite-doc-set-nav-active devsite-nav-tab
+                devsite-doc-set-nav-tab devsite-doc-set-nav-tab-link gc-analytics-event"
+         aria-label="Solutions, selected"
+       
+         data-category="Site-Wide Custom Events"
+       
+         data-label="Tab: Solutions"
+       >
+        Solutions
+      </a></li><li class="devsite-doc-set-nav-tab-container devsite-nav-tab
+               "><a href="https://cloud.google.com/launcher/"
+         class=" devsite-nav-tab
+                devsite-doc-set-nav-tab devsite-doc-set-nav-tab-link gc-analytics-event"
+         
+       
+         data-category="Site-Wide Custom Events"
+       
+         data-label="Tab: Launcher"
+       
+         track-type="globalNav"
+       
+         track-name="launcher"
+       >
+        Launcher
+      </a></li><li class="devsite-doc-set-nav-tab-container devsite-nav-tab
+               "><a href="https://cloud.google.com/pricing/"
+         class=" devsite-nav-tab
+                devsite-doc-set-nav-tab devsite-doc-set-nav-tab-link gc-analytics-event"
+         
+       
+         data-category="Site-Wide Custom Events"
+       
+         data-label="Tab: Pricing"
+       
+         track-type="globalNav"
+       
+         track-name="pricing"
+       >
+        Pricing
+      </a></li><li class="devsite-doc-set-nav-tab-container devsite-nav-tab
+               "><a href="https://cloud.google.com/security/"
+         class=" devsite-nav-tab
+                devsite-doc-set-nav-tab devsite-doc-set-nav-tab-link gc-analytics-event"
+         
+       
+         data-category="Site-Wide Custom Events"
+       
+         data-label="Tab: Security"
+       
+         track-type="globalNav"
+       
+         track-name="security"
+       >
+        Security
+      </a></li><li class="devsite-doc-set-nav-tab-container devsite-nav-tab
+               "><a href="https://cloud.google.com/customers/"
+         class=" devsite-nav-tab
+                devsite-doc-set-nav-tab devsite-doc-set-nav-tab-link gc-analytics-event"
+         
+       
+         data-category="Site-Wide Custom Events"
+       
+         data-label="Tab: Customers"
+       
+         track-type="globalNav"
+       
+         track-name="customers"
+       >
+        Customers
+      </a></li><li class="devsite-doc-set-nav-tab-container devsite-nav-tab
+               "><a href="https://cloud.google.com/docs/"
+         class=" devsite-nav-tab
+                devsite-doc-set-nav-tab devsite-doc-set-nav-tab-link gc-analytics-event"
+         
+       
+         data-category="Site-Wide Custom Events"
+       
+         data-label="Tab: Documentation"
+       
+         track-type="globalNav"
+       
+         track-name="documentation"
+       >
+        Documentation
+      </a></li><li class="devsite-doc-set-nav-tab-container devsite-nav-tab
+               "><a href="https://cloud.google.com/support/"
+         class=" devsite-nav-tab
+                devsite-doc-set-nav-tab devsite-doc-set-nav-tab-link gc-analytics-event"
+         
+       
+         data-category="Site-Wide Custom Events"
+       
+         data-label="Tab: Support"
+       
+         track-type="globalNav"
+       
+         track-name="support"
+       >
+        Support
+      </a></li><li class="devsite-doc-set-nav-tab-container devsite-nav-tab
+               "><a href="https://cloud.google.com/partners/"
+         class=" devsite-nav-tab
+                devsite-doc-set-nav-tab devsite-doc-set-nav-tab-link gc-analytics-event"
+         
+       
+         data-category="Site-Wide Custom Events"
+       
+         data-label="Tab: Partners"
+       
+         track-type="globalNav"
+       
+         track-name="partners"
+       >
+        Partners
+      </a></li></ul></nav></div><form class="devsite-search-form"
+                action="https://cloud.google.com/s/results/"
+                method="GET"
+                id="top-search"
+                search-placeholder='Search'><div id="searchbox" class="devsite-searchbox"><input placeholder='Search'
+         
+         type="text"
+         class="devsite-search-field devsite-search-query"
+         name="q"
+         value=""
+         autocomplete="off"
+         
+         aria-label="Search box"><div class="devsite-search-image material-icons"></div></div><input type="hidden"
+       name="p"
+       id="search_project"
+       value="/solutions/"
+       data-project-name="Solutions"
+       data-project-path="/solutions/"
+       data-query-match=""><input type="hidden" class="suggest-project" value="Solutions" /></form><a class="devsite-header-link devsite-top-button button gc-analytics-event"
+               href="//console.cloud.google.com/"
+               data-category="Site-Wide Custom Events"
+               data-label="Site header link"
+               track-type="navigateTo"
+               track-name="console"
+               track-metadata-position="nav"><div class="devsite-header-link-label">Console</div></a><button type="button" class="devsite-search-button devsite-header-icon-button button-flat
+                                       material-icons"></button><a href="https://www.google.com/accounts/ServiceLogin?passive=true&continue=https%3A%2F%2Fcloud.google.com%2Fsolutions%2Frecommendations-using-machine-learning-on-compute-engine%3Frefresh%3D1&service=cloudconsole"
+   class="devsite-user-signin devsite-top-button button gc-analytics-event"
+   data-category="Site-Wide Custom Events" data-label="Sign in button">
+  
+  Sign in
+</a></div></div></div><div class="devsite-collapsible-section"><div class="devsite-header-background devsite-full-site-width"><div class="devsite-product-id-row devsite-full-site-width"><div class="devsite-product-description-row"><ul class="devsite-breadcrumb-list"><li class="devsite-breadcrumb-item">
+    
+    
+    
+      Solutions
+    
+    
+  </li></ul></div><div class="devsite-product-button-row
+            cloud-free-trial-eligible"><button type="button" id="devsite-feedback-project"
+          class="devsite-feedback-button devsite-top-button gc-analytics-event"
+          data-category="Site-Wide Custom Events" data-label="Send Feedback Button"
+          track-type="feedback" track-name="sendFeedbackLink" track-metadata-position="header">
+  
+  Send feedback
+  </button><a
+    
+      href="https://console.cloud.google.com/freetrial"
+    
+    
+      class="cloud-free-trial-button button-primary button"
+    
+    
+      
+      track-type="freeTrial"
+      
+      track-name="try"
+      
+      track-metadata-position="nav"
+      
+    >
+    Try It Free
+  </a><a
+    
+      href="https://cloud.google.com/contact/"
+    
+    
+      class="cloud-contact-sales-button button"
+    
+    
+      
+      track-type="sales"
+      
+      track-name="contact"
+      
+      track-metadata-position="nav"
+      
+    >
+    Contact Sales
+  </a></div></div></div></div></header><script>
+    if (window.jQuery) {
+      $(document).ready(function() {
+        if (window.devsite && window.devsite.search) {
+          
+          window.devsite.search.init('en')
+        }
+      });
+    }
+  </script></div><div id="gc-wrapper"itemscope itemtype="http://schema.org/Article"><input class="google-tag-manager-id" type="hidden" value="GTM-5CVQBG"><script>
+      var dataLayer = [{"freeTrialEligibleUser": "True", "userCountry": "HK", "language": {"requested": "en", "served": "en"}, "projectName": "Solutions", "scriptsafe": null, "signedIn": "False", "internalUser": "False"}];
+    </script>
+
+      
+        <div class="devsite-site-mask"></div>
+        
+  
+
+
+<nav class="devsite-nav-responsive devsite-nav nocontent" tabindex="0">
+  
+  <div class="devsite-nav-responsive-tabs-panel">
+    
+      
+        
+
+
+
+<nav class="devsite-nav-responsive-tabs devsite-nav">
+  <ul class="devsite-nav-list">
+  
+    <li class="devsite-nav-item devsite-nav-item-heading">
+    
+      <a 
+           href="https://cloud.google.com/why-google-cloud/?nav=true"
+         
+         class="devsite-nav-responsive-tab devsite-nav-title gc-analytics-event
+                "
+         data-category="Site-Wide Custom Events" data-label="Responsive Tab: Why Google">
+        Why Google
+      </a>
+      
+      
+    
+    </li>
+  
+    <li class="devsite-nav-item devsite-nav-item-heading">
+    
+      <a 
+           href="https://cloud.google.com/products/?nav=true"
+         
+         class="devsite-nav-responsive-tab devsite-nav-title gc-analytics-event
+                "
+         data-category="Site-Wide Custom Events" data-label="Responsive Tab: Products">
+        Products
+      </a>
+      
+      
+    
+    </li>
+  
+    <li class="devsite-nav-item devsite-nav-item-heading">
+    
+      <span class="devsite-nav-responsive-forward devsite-nav-responsive-tab devsite-nav-title
+                   devsite-nav-active gc-analytics-event"
+            data-category="Site-Wide Custom Events" data-label="Responsive Tab: Solutions"
+            tabindex="0">
+        Solutions
+      </span>
+    
+    </li>
+  
+    <li class="devsite-nav-item devsite-nav-item-heading">
+    
+      <a 
+           href="https://cloud.google.com/launcher/?nav=true"
+         
+         class="devsite-nav-responsive-tab devsite-nav-title gc-analytics-event
+                "
+         data-category="Site-Wide Custom Events" data-label="Responsive Tab: Launcher">
+        Launcher
+      </a>
+      
+      
+    
+    </li>
+  
+    <li class="devsite-nav-item devsite-nav-item-heading">
+    
+      <a 
+           href="https://cloud.google.com/pricing/?nav=true"
+         
+         class="devsite-nav-responsive-tab devsite-nav-title gc-analytics-event
+                "
+         data-category="Site-Wide Custom Events" data-label="Responsive Tab: Pricing">
+        Pricing
+      </a>
+      
+      
+    
+    </li>
+  
+    <li class="devsite-nav-item devsite-nav-item-heading">
+    
+      <a 
+           href="https://cloud.google.com/security/?nav=true"
+         
+         class="devsite-nav-responsive-tab devsite-nav-title gc-analytics-event
+                "
+         data-category="Site-Wide Custom Events" data-label="Responsive Tab: Security">
+        Security
+      </a>
+      
+      
+    
+    </li>
+  
+    <li class="devsite-nav-item devsite-nav-item-heading">
+    
+      <a 
+           href="https://cloud.google.com/customers/?nav=true"
+         
+         class="devsite-nav-responsive-tab devsite-nav-title gc-analytics-event
+                "
+         data-category="Site-Wide Custom Events" data-label="Responsive Tab: Customers">
+        Customers
+      </a>
+      
+      
+    
+    </li>
+  
+    <li class="devsite-nav-item devsite-nav-item-heading">
+    
+      <a 
+           href="https://cloud.google.com/docs/?nav=true"
+         
+         class="devsite-nav-responsive-tab devsite-nav-title gc-analytics-event
+                "
+         data-category="Site-Wide Custom Events" data-label="Responsive Tab: Documentation">
+        Documentation
+      </a>
+      
+      
+    
+    </li>
+  
+    <li class="devsite-nav-item devsite-nav-item-heading">
+    
+      <a 
+           href="https://cloud.google.com/support/?nav=true"
+         
+         class="devsite-nav-responsive-tab devsite-nav-title gc-analytics-event
+                "
+         data-category="Site-Wide Custom Events" data-label="Responsive Tab: Support">
+        Support
+      </a>
+      
+      
+    
+    </li>
+  
+    <li class="devsite-nav-item devsite-nav-item-heading">
+    
+      <a 
+           href="https://cloud.google.com/partners/?nav=true"
+         
+         class="devsite-nav-responsive-tab devsite-nav-title gc-analytics-event
+                "
+         data-category="Site-Wide Custom Events" data-label="Responsive Tab: Partners">
+        Partners
+      </a>
+      
+      
+    
+    </li>
+  
+  
+    <li class="devsite-nav-item devsite-nav-item-heading">
+      <a href="//console.cloud.google.com/"
+         class="devsite-nav-responsive-tab devsite-nav-title gc-analytics-event"
+         data-category="Site-Wide Custom Events"
+         data-label="Responsive Tab: console">
+        Console
+      </a>
+    </li>
+  
+  </ul>
+</nav>
+
+
+      
+    
+  </div>
+  
+  
+  <div class="devsite-nav-responsive-sidebar-panel">
+    
+    <div class="devsite-nav-responsive-back" tabindex="0"></div>
+    
+    <nav class="devsite-nav-responsive-sidebar"></nav>
+  </div>
+  
+  
+    <div class="devsite-nav-responsive-index-panel">
+      <div class="devsite-nav-index-back" tabindex="0"></div>
+      <nav>
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+      </nav>
+    </div>
+  
+</nav>
+
+
+        <div class="devsite-main-content clearfix">
+
+        
+        
+
+        
+  
+  
+    
+    
+      
+  <nav class="devsite-section-nav devsite-nav nocontent">
+    <ul class="devsite-nav-list devsite-nav-expandable"><li class="devsite-nav-item devsite-nav-item-heading"><span class="devsite-nav-title devsite-nav-title-no-path" track-type="leftNav" track-name="expandNavSectionNoLink" track-metadata-position="0">Solutions</span></li><li class="devsite-nav-item"><a href="https://cloud.google.com/solutions" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="0" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">Overview</a></li><li class="devsite-nav-item devsite-nav-item-section-expandable"><span class="devsite-nav-title devsite-nav-title-no-path" track-type="leftNav" track-name="expandNavSectionNoLink"track-metadata-position="0" aria-label="Media, click to expand/collapse" role="link">Media</span><a class="devsite-nav-toggle devsite-nav-toggle-collapsed material-icons" track-type="leftNav" track-name="expandNavSectionArrow" track-metadata-position="0" aria-hidden="true"></a><ul class="devsite-nav-section devsite-nav-section-collapsed"><li class="devsite-nav-item"><a href="https://cloud.google.com/solutions/media/" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="1" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">Overview</a></li><li class="devsite-nav-item"><a href="https://cloud.google.com/docs/tutorials#media" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="1" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">Articles</a></li></ul></li><li class="devsite-nav-item devsite-nav-item-section-expandable"><span class="devsite-nav-title devsite-nav-title-no-path" track-type="leftNav" track-name="expandNavSectionNoLink"track-metadata-position="0" aria-label="Gaming, click to expand/collapse" role="link">Gaming</span><a class="devsite-nav-toggle devsite-nav-toggle-collapsed material-icons" track-type="leftNav" track-name="expandNavSectionArrow" track-metadata-position="0" aria-hidden="true"></a><ul class="devsite-nav-section devsite-nav-section-collapsed"><li class="devsite-nav-item"><a href="https://cloud.google.com/solutions/gaming" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="1" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">Overview</a></li><li class="devsite-nav-item"><a href="https://cloud.google.com/docs/tutorials#gaming" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="1" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">Articles</a></li></ul></li><li class="devsite-nav-item devsite-nav-item-section-expandable"><span class="devsite-nav-title devsite-nav-title-no-path" track-type="leftNav" track-name="expandNavSectionNoLink"track-metadata-position="0" aria-label="Financial Services, click to expand/collapse" role="link">Financial Services</span><a class="devsite-nav-toggle devsite-nav-toggle-collapsed material-icons" track-type="leftNav" track-name="expandNavSectionArrow" track-metadata-position="0" aria-hidden="true"></a><ul class="devsite-nav-section devsite-nav-section-collapsed"><li class="devsite-nav-item"><a href="https://cloud.google.com/solutions/financial-services" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="1" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">Overview</a></li><li class="devsite-nav-item"><a href="https://cloud.google.com/docs/tutorials#financial_services" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="1" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">Articles</a></li></ul></li><li class="devsite-nav-item devsite-nav-item-section-expandable"><span class="devsite-nav-title devsite-nav-title-no-path" track-type="leftNav" track-name="expandNavSectionNoLink"track-metadata-position="0" aria-label="Internet of Things, click to expand/collapse" role="link">Internet of Things</span><a class="devsite-nav-toggle devsite-nav-toggle-collapsed material-icons" track-type="leftNav" track-name="expandNavSectionArrow" track-metadata-position="0" aria-hidden="true"></a><ul class="devsite-nav-section devsite-nav-section-collapsed"><li class="devsite-nav-item"><a href="https://cloud.google.com/solutions/iot" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="1" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">Overview</a></li><li class="devsite-nav-item"><a href="https://cloud.google.com/docs/tutorials#internet_of_things" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="1" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">Articles</a></li></ul></li><li class="devsite-nav-item devsite-nav-item-section-expandable"><span class="devsite-nav-title devsite-nav-title-no-path" track-type="leftNav" track-name="expandNavSectionNoLink"track-metadata-position="0" aria-label="Backup &amp; Archive, click to expand/collapse" role="link">Backup &amp; Archive</span><a class="devsite-nav-toggle devsite-nav-toggle-collapsed material-icons" track-type="leftNav" track-name="expandNavSectionArrow" track-metadata-position="0" aria-hidden="true"></a><ul class="devsite-nav-section devsite-nav-section-collapsed"><li class="devsite-nav-item"><a href="https://cloud.google.com/solutions/" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="1" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">Overview</a></li><li class="devsite-nav-item"><a href="https://cloud.google.com/docs/tutorials#backup%20archive" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="1" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">Articles</a></li></ul></li><li class="devsite-nav-item devsite-nav-item-section-expandable"><span class="devsite-nav-title devsite-nav-title-no-path" track-type="leftNav" track-name="expandNavSectionNoLink"track-metadata-position="0" aria-label="Digital Marketing, click to expand/collapse" role="link">Digital Marketing</span><a class="devsite-nav-toggle devsite-nav-toggle-collapsed material-icons" track-type="leftNav" track-name="expandNavSectionArrow" track-metadata-position="0" aria-hidden="true"></a><ul class="devsite-nav-section devsite-nav-section-collapsed"><li class="devsite-nav-item"><a href="https://cloud.google.com/solutions/" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="1" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">Overview</a></li><li class="devsite-nav-item"><a href="https://cloud.google.com/docs/tutorials#marketing" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="1" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">Articles</a></li></ul></li><li class="devsite-nav-item devsite-nav-item-section-expandable"><span class="devsite-nav-title devsite-nav-title-no-path" track-type="leftNav" track-name="expandNavSectionNoLink"track-metadata-position="0" aria-label="Retail &amp; Commerce, click to expand/collapse" role="link">Retail &amp; Commerce</span><a class="devsite-nav-toggle devsite-nav-toggle-expanded material-icons" track-type="leftNav" track-name="expandNavSectionArrow" track-metadata-position="0"></a><ul class="devsite-nav-section devsite-nav-section-expanded"><li class="devsite-nav-item"><a href="https://cloud.google.com/solutions/commerce" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="1" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">Overview</a></li><li class="devsite-nav-item devsite-nav-active"><a href="https://cloud.google.com/docs/tutorials#retail_and_commerce" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="1" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">Articles</a></li></ul></li><li class="devsite-nav-item devsite-nav-item-section-expandable"><span class="devsite-nav-title devsite-nav-title-no-path" track-type="leftNav" track-name="expandNavSectionNoLink"track-metadata-position="0" aria-label="Websites &amp; Web Apps, click to expand/collapse" role="link">Websites &amp; Web Apps</span><a class="devsite-nav-toggle devsite-nav-toggle-collapsed material-icons" track-type="leftNav" track-name="expandNavSectionArrow" track-metadata-position="0" aria-hidden="true"></a><ul class="devsite-nav-section devsite-nav-section-collapsed"><li class="devsite-nav-item"><a href="https://cloud.google.com/solutions/websites" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="1" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">Overview</a></li><li class="devsite-nav-item"><a href="https://cloud.google.com/docs/tutorials#computing" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="1" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">Articles</a></li></ul></li><li class="devsite-nav-item devsite-nav-item-section-expandable"><span class="devsite-nav-title devsite-nav-title-no-path" track-type="leftNav" track-name="expandNavSectionNoLink"track-metadata-position="0" aria-label="Big Data &amp; Machine Learning, click to expand/collapse" role="link">Big Data &amp; Machine Learning</span><a class="devsite-nav-toggle devsite-nav-toggle-collapsed material-icons" track-type="leftNav" track-name="expandNavSectionArrow" track-metadata-position="0" aria-hidden="true"></a><ul class="devsite-nav-section devsite-nav-section-collapsed"><li class="devsite-nav-item"><a href="https://cloud.google.com/solutions/big-data" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="1" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">Overview</a></li><li class="devsite-nav-item"><a href="https://cloud.google.com/docs/tutorials#big_data%20machine_learning" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="1" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">Articles</a></li></ul></li><li class="devsite-nav-item devsite-nav-item-section-expandable"><span class="devsite-nav-title devsite-nav-title-no-path" track-type="leftNav" track-name="expandNavSectionNoLink"track-metadata-position="0" aria-label="Development &amp; Test, click to expand/collapse" role="link">Development &amp; Test</span><a class="devsite-nav-toggle devsite-nav-toggle-collapsed material-icons" track-type="leftNav" track-name="expandNavSectionArrow" track-metadata-position="0" aria-hidden="true"></a><ul class="devsite-nav-section devsite-nav-section-collapsed"><li class="devsite-nav-item"><a href="https://cloud.google.com/solutions/devtest" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="1" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">Overview</a></li><li class="devsite-nav-item"><a href="https://cloud.google.com/docs/tutorials#development_and_test" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="1" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">Articles</a></li></ul></li><li class="devsite-nav-item devsite-nav-item-section-expandable"><span class="devsite-nav-title devsite-nav-title-no-path" track-type="leftNav" track-name="expandNavSectionNoLink"track-metadata-position="0" aria-label="Mobile Applications, click to expand/collapse" role="link">Mobile Applications</span><a class="devsite-nav-toggle devsite-nav-toggle-collapsed material-icons" track-type="leftNav" track-name="expandNavSectionArrow" track-metadata-position="0" aria-hidden="true"></a><ul class="devsite-nav-section devsite-nav-section-collapsed"><li class="devsite-nav-item"><a href="https://cloud.google.com/solutions/mobile" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="1" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">Overview</a></li><li class="devsite-nav-item"><a href="https://cloud.google.com/docs/tutorials#mobile" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="1" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">Articles</a></li></ul></li><li class="devsite-nav-item devsite-nav-item-section-expandable"><span class="devsite-nav-title devsite-nav-title-no-path" track-type="leftNav" track-name="expandNavSectionNoLink"track-metadata-position="0" aria-label="Life Sciences, click to expand/collapse" role="link">Life Sciences</span><a class="devsite-nav-toggle devsite-nav-toggle-collapsed material-icons" track-type="leftNav" track-name="expandNavSectionArrow" track-metadata-position="0" aria-hidden="true"></a><ul class="devsite-nav-section devsite-nav-section-collapsed"><li class="devsite-nav-item"><a href="https://cloud.google.com/solutions/" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="1" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">Overview</a></li><li class="devsite-nav-item"><a href="https://cloud.google.com/docs/tutorials#lifesciences" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="1" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">Articles</a></li></ul></li><li class="devsite-nav-item devsite-nav-item-section-expandable"><span class="devsite-nav-title devsite-nav-title-no-path" track-type="leftNav" track-name="expandNavSectionNoLink"track-metadata-position="0" aria-label="Hybrid, click to expand/collapse" role="link">Hybrid</span><a class="devsite-nav-toggle devsite-nav-toggle-collapsed material-icons" track-type="leftNav" track-name="expandNavSectionArrow" track-metadata-position="0" aria-hidden="true"></a><ul class="devsite-nav-section devsite-nav-section-collapsed"><li class="devsite-nav-item"><a href="https://cloud.google.com/solutions/" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="1" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">Overview</a></li><li class="devsite-nav-item"><a href="https://cloud.google.com/docs/tutorials#hybridcloud" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="1" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">Articles</a></li></ul></li><li class="devsite-nav-item devsite-nav-item-section-expandable"><span class="devsite-nav-title devsite-nav-title-no-path" track-type="leftNav" track-name="expandNavSectionNoLink"track-metadata-position="0" aria-label="Security, click to expand/collapse" role="link">Security</span><a class="devsite-nav-toggle devsite-nav-toggle-collapsed material-icons" track-type="leftNav" track-name="expandNavSectionArrow" track-metadata-position="0" aria-hidden="true"></a><ul class="devsite-nav-section devsite-nav-section-collapsed"><li class="devsite-nav-item"><a href="https://cloud.google.com/security/" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="1" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">Overview</a></li><li class="devsite-nav-item"><a href="https://cloud.google.com/docs/tutorials#security" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="1" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">Articles</a></li></ul></li><li class="devsite-nav-item"><a href="https://cloud.google.com/docs/tutorials#architecture" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="0" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">Architecture Diagrams</a></li><li class="devsite-nav-item"><a href="https://cloud.google.com/docs/tutorials#partner" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="0" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">Partner Solutions</a></li></ul>
+  </nav>
+
+    
+
+    
+  <nav class="devsite-page-nav devsite-nav"></nav>
+
+
+      <article class="devsite-article">
+        <article class="devsite-article-inner">
+  
+          
+  
+
+
+
+  
+  <nav class="devsite-breadcrumb-nav devsite-nav">
+    
+
+
+<ul class="devsite-breadcrumb-list">
+  
+  <li class="devsite-breadcrumb-item">
+    
+    
+    <a href="https://cloud.google.com/solutions/" class="devsite-breadcrumb-link gc-analytics-event"
+       data-category="Site-Wide Custom Events" data-label="Breadcrumbs"
+       data-value="1">
+    
+    
+      Solutions
+    
+    
+    </a>
+    
+  </li>
+  
+  <li class="devsite-breadcrumb-item">
+    
+    
+    <div class="devsite-breadcrumb-guillemet material-icons"></div>
+    
+    
+    <a href="https://cloud.google.com/solutions/" class="devsite-breadcrumb-link gc-analytics-event"
+       data-category="Site-Wide Custom Events" data-label="Breadcrumbs"
+       data-value="2">
+    
+    
+      Solutions
+    
+    
+    </a>
+    
+  </li>
+  
+</ul>
+
+  </nav>
+  
+  
+  <h1 itemprop="name" class="devsite-page-title">
+    Using Machine Learning on Compute Engine to Make Product Recommendations
+  </h1>
+  
+  
+  <nav class="devsite-page-nav-embedded devsite-nav"></nav>
+  
+  <div class="devsite-article-body clearfix
+            "
+       itemprop="articleBody">
+    
+    <div class="tutorial tutorial-lesson">
+    
+
+    <section id="overview">
+      
+<p>You can use Google Cloud Platform to build a scalable,
+efficient, and effective service for delivering relevant product recommendations
+to users in an online store.</p>
+<p>Competition in online-selling sites has never been as fierce as it is now.
+Customers spend more money across all their providers, but they spend less per
+retailer. The average size of a single cart has decreased, partly due to the
+fact that competition is just one click away. Offering relevant recommendations
+to potential customers can play a central role in converting shoppers to buyers
+and growing average order size.</p>
+<p>After reading this solution, you should be able to set up an
+environment that supports a basic recommendation engine that you can grow and
+improve, based on the needs of your particular workload. Running a
+recommendation engine on Cloud Platform will give you flexibility and
+scalability in the solutions that you want to run.</p>
+<p>In this solution, you will see how a real estate rental company can compute
+relevant recommendations and present them to customers who are browsing
+a website.</p>
+<h2 id="scenario">Scenario</h2>
+<p>Samantha is looking for a house to rent for her holidays. She has a profile on a
+vacation rentals website and has previously rented and rated several holiday
+packages. Sam is looking for recommendations based on her preferences and
+tastes. The system should already know Sam’s tastes. Apparently she seems to
+like accommodations of the type <code>house</code>, based on her rating page. The system
+should recommend something similar.</p>
+<p><img alt="User interface enables renting vacation properties" class="screenshot border" src="https://cloud.google.com/solutions/images/reco-ui-pics.png" width="800" /></p>
+<h2 id="solution_overview">Solution overview</h2>
+<p>To provide recommendations, whether in real time while customers browse or
+through email later on, several things need to happen. At first, while you know
+little about your users' tastes and preferences, you might base recommendations
+on item attributes alone. But your system needs to be able to learn from your
+users, collecting data about their tastes and preferences. Over time and with
+enough data, you can use machine learning algorithms to perform useful analysis
+and deliver meaningful recommendations. Other users’ inputs can also improve the
+results, enabling the system to be retrained periodically. This solution deals
+with a recommendations system that already has enough data to benefit from
+machine learning algorithms.</p>
+<p>A recommendation engine typically processes data through the following four phases:</p>
+<p><img alt="Collection, storage, analysis, and recommendation phases" src="https://cloud.google.com/solutions/images/reco-process.png" /></p>
+<p>The architecture of such a system can be represented by the following diagram:</p>
+<p><img alt="Architecture with front-end, storage, and machine learning" src="https://cloud.google.com/solutions/images/reco-arch.png" /></p>
+<p>Each step can be customized to meet the requirements. The system consists of:</p>
+<ol>
+<li>
+<p>A scalable front end that records user interactions to collect data.</p>
+</li>
+<li>
+<p>Permanent storage that can be accessed by a machine learning platform.
+Loading the data into this storage can include several steps, such as import-
+export and transformation of the data.</p>
+</li>
+<li>
+<p>A machine learning platform that can analyze the existing content to create
+relevant recommendations.</p>
+</li>
+<li>
+<p>Storage that can be used by the front end, in real time or later, based on
+the timeliness requirements for recommendations.</p>
+</li>
+</ol>
+
+    </section>
+
+    
+
+    
+
+    
+
+    <div id="completed">
+    
+  <div class="tutorial-completed"></div>
+
+    </div>
+
+
+
+    <div id="tutorial-content">
+    
+  <section class="tutorial-content">
+    
+
+
+
+
+
+
+
+
+
+
+
+<h2 id="choosing_the_components">Choosing the components</h2>
+<p>To achieve a good compromise between speed, simplicity, cost control, and
+accuracy, this solution uses <a href="https://cloud.google.com/appengine/docs/">Google App Engine</a>,
+<a href="https://cloud.google.com/sql/docs">Google Cloud SQL</a>, and <a href="https://spark.apache.org/" target="apache">Apache Spark</a>
+running on <a href="https://cloud.google.com/compute/docs">Google Compute Engine</a> using <a href="https://cloud.google.com/dataproc/">Cloud Dataproc</a>.</p>
+<p>App Engine can handle several tens of thousands of queries per second with
+little management required. Whether creating the website or saving the data to a
+backend storage, App Engine lets you write your code and deploy it to production
+in a matter of seconds.</p>
+<p>Cloud SQL offers simplicity of deployment, too. Cloud SQL can scale up to
+32-core virtual machines with up to 208 GB of RAM, and can grow storage on
+demand to 10 TB with 30 IOPS per GB and thousands of concurrent connections.
+These specifications are plenty sufficient for the example in this solution, and
+for a large number of real-world recommendation engines. Cloud SQL also offers
+the advantage that it can be directly accessed from Spark.</p>
+<p>Spark offers much better performance than a typical Hadoop setup; Spark can be
+10 to 100 times faster. With <a href="https://spark.apache.org/mllib/" target="apache">Spark MLlib</a>,
+you can analyze several hundreds of millions of ratings in
+minutes, which increases the agility of the recommendations, enabling the
+administrator to run the algorithm more often. Spark also tends to have simpler
+programming models, an easier API to use, and better language flexibility. It
+leverages memory for computing, as much as possible, to reduce round trips to
+disk. It also tries to minimize I/O. This solution uses Compute Engine to host
+the analysis infrastructure. Compute Engine helps to keep the price of the
+analysis as low as possible through its per-second, on-demand pricing.</p>
+<p>The following diagram maps to the previous architecture diagram, but shows the
+technology at use for each step:</p>
+<p><img alt="Architecture uses App Engine, Cloud SQL, Spark, and Compute Engine" src="https://cloud.google.com/solutions/images/reco-arch-tech.png" /></p>
+<h2 id="collecting_the_data">Collecting the data</h2>
+<p>A recommendation engine can collect data about users based on their implicit
+<em>behavior</em> or their explicit <em>input</em>.</p>
+<p>Behavior data is easy to collect because you can keep logs of user activities.
+Collecting this data is also straightforward because it doesn't require any
+additional action from the user; they're already using the application. The
+downside of this approach is that it's harder to analyze. For example, filtering
+the interesting logs from the less-interesting ones can be cumbersome. To see an
+example of implicit-data analysis that uses logs entries, see
+<a href="https://cloud.google.com/solutions/real-time/fluentd-bigquery">Real-time Log Analysis using Fluentd and BigQuery</a>.</p>
+<p>Input data can be harder to collect because users need to take additional
+actions, such as writing a review. Users might not want to provide this data for
+a variety of reasons. But when it comes to understanding user preferences, such
+results are quite precise.</p>
+<h2 id="storing_the_data">Storing the data</h2>
+<p>The more data you can make available to your algorithms, the better the
+recommendations will be. This means that any recommendations project can quickly
+turn into a big data project.</p>
+<p>The type of data that you use to create recommendations can help you decide the
+type of storage to use. You could choose to use a NoSQL database, a standard SQL
+database, or even some kind of object storage. Each of these options is viable
+depending on whether you're capturing user input or behavior and on factors such
+as ease of implementation, the amount of data that the storage can manage,
+integration with the rest of the environment, and portability.</p>
+<p>When saving user ratings or events, a scalable and managed database minimizes
+the amount of operational tasks needed and helps to focus on the recommendation.
+<a href="https://cloud.google.com/sql/">Cloud SQL</a> fulfills both of these needs and also makes it easy to load
+the data directly from Spark.</p>
+<p>The following example code shows the schemas of the Cloud SQL tables. The
+<code>Accommodation</code> table represents the rental property and the <code>Rating</code> table
+represents a user's rating for a particular property.</p>
+<pre class="prettyprint notranslate" translate="no"><code>CREATE TABLE Accommodation
+(
+  id varchar(255),
+  title varchar(255),
+  location varchar(255),
+  price int,
+  rooms int,
+  rating float,
+  type varchar(255),
+  PRIMARY KEY (ID)
+);
+
+CREATE TABLE Rating
+(
+  userId varchar(255),
+  accoId varchar(255),
+  rating int,
+  PRIMARY KEY(accoId, userId),
+  FOREIGN KEY (accoId)
+    REFERENCES Accommodation(id)
+);
+</code></pre>
+<p>Spark can receive data from various sources, such as Hadoop HDFS or Cloud
+Storage. This solution receives the data directly from Cloud SQL by using the
+Spark
+<a href="https://spark.apache.org/docs/latest/sql-programming-guide.html#jdbc-to-other-databases" target="apache">Java Database Connectivity (JDBC) connector</a>. Because Spark
+jobs run in parallel, the connector must be available on all cluster instances.</p>
+<h2 id="analyzing_the_data">Analyzing the data</h2>
+<p>Designing the analysis phase requires an understanding of the application's
+requirements. These requirements include:</p>
+<ul>
+<li>
+<p>The <em>timeliness</em> of a recommendation. How quickly does the application need
+ to present recommendations?</p>
+</li>
+<li>
+<p>The <em>filtering</em> approach for the data. Will the application base its
+ recommendation on the user's tastes alone, pivot the data based on what other
+ users think, or pivot on which products logically fit together?</p>
+</li>
+</ul>
+<h3 id="understanding_timeliness">Understanding timeliness</h3>
+<p>The first factor to consider in analyzing the data is how quickly you need to
+present the recommendations to the user. If you want to present recommendations
+immediately, such as when the user is viewing a product, you will need a more-
+nimble type of analysis than if, for example, you want to send the customer an
+email that contains recommendations at a later date.</p>
+<ul>
+<li>
+<p><em>Real-time</em> systems can process data as it's created. This type of system
+ usually involves tools that can process and analyze <em>streams</em> of events.
+ A real-time system would be required to give in-the-moment recommendations.</p>
+</li>
+<li>
+<p><em>Batch</em> analysis requires you to process the data periodically. This approach
+ implies that enough data needs to be created in order to make the analysis
+ relevant, such as daily sales volume. A batch system might work fine to send an
+ e-mail at a later date.</p>
+</li>
+<li>
+<p><em>Near-real-time</em> analysis lets you gather data quickly so you can refresh the
+ analytics every few minutes or seconds. A near-real-time system might be good
+ for providing recommendations during the same browsing session.</p>
+</li>
+</ul>
+<p>A recommendation could fall under any of these three <em>timeliness</em> categories
+but, for an online sales tool, you could consider something in between
+near-real-time and batch processing, depending on how much traffic and user
+input the application gets. The platform running the analysis could work
+directly from a database where the data is saved or on a dump saved periodically
+in persistent storage.</p>
+<h2 id="filtering_the_data">Filtering the data</h2>
+<p>A core component of building a recommendation engine is <em>filtering</em>. The most
+common approaches include:</p>
+<ul>
+<li>
+<p><strong>Content-based</strong>: A popular, recommended product has similar attributes to
+ what the user views or likes.</p>
+</li>
+<li>
+<p><strong>Cluster</strong>: Recommended products go well together, no matter what other
+ users have done.</p>
+</li>
+<li>
+<p><strong>Collaborative</strong>: Other users, who like the same products the user views or
+ likes, also liked a recommended product.</p>
+</li>
+</ul>
+<p>While Cloud Platform can support any of these approaches, this solution focuses
+on collaborative filtering, which is implemented by using Apache Spark. For more
+information about content-based filtering or cluster filtering, see the
+<a href="#Appendix">appendix</a>.</p>
+<p>Collaborative filtering enables you to make product attributes abstract and make
+predictions based on user tastes. The output of this filtering is based on the
+assumption that two different users who liked the same products in the past will
+probably like the same ones now.</p>
+<p>You can represent data about ratings or interactions as a set of matrices, with
+products and users as dimensions. Collaborative filtering tries to predict the
+missing cells in a matrix for a specific user-product pair. The following two
+matrices are similar, but the second is deduced from the first by replacing
+existing ratings with the number one and missing ratings by the number zero. The
+resulting matrix is a truth table where a number one represents an interaction
+by users with a product.</p>
+<table>
+<thead>
+<tr>
+<th align="center"><strong>Rating matrix</strong></th>
+<th align="center"><strong>Interaction matrix</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="center"><img alt="Rating matrix" src="https://cloud.google.com/solutions/images/reco-rating-matrix.png" /></td>
+<td align="center"><img alt="Rating matrix" src="https://cloud.google.com/solutions/images/reco-interaction-matrix.png" /></td>
+</tr>
+</tbody>
+</table>
+<p>There are two distinct approaches to employing collaborative filtering:</p>
+<ul>
+<li>
+<p><em>Memory-based filtering</em> calculates similarities between products or users.</p>
+</li>
+<li>
+<p><em>Model-based filtering</em> tries to learn the underlying pattern that dictates
+ how users rate or interact with items.</p>
+</li>
+</ul>
+<p>This solution uses the model-based approach, where users have rated items.</p>
+<p>All the analysis features this solution requires are available through
+<a href="https://spark.apache.org/docs/latest/api/python/pyspark.html" target="apache">PySpark</a>, which
+provides a Python interface to the Spark programming language. Other options are
+available using Scala or Java; see the
+<a href="https://spark.apache.org/docs/latest/rdd-programming-guide.html#initializing-spark" target="apache">Spark documentation</a>.</p>
+<h2 id="Training-the-models">Training the models</h2>
+<p>Spark MLlib implements the
+<a href="https://dl.acm.org/citation.cfm?id=1608614" target="_blank">Alternating Least Squares (ALS)</a>
+algorithm to train the models. You will use various combinations of the
+following parameters to get the best compromise between variance and bias:</p>
+<ul>
+<li>
+<p><strong>Rank</strong>: The number of unknown factors that led a user to give a rating.
+ These could include factors such as age, gender, or location. The higher the
+ rank, the better the recommendation will be, to some extent. Starting at 5 and
+ increasing by 5 until the recommendation improvement rate slows down, memory
+ and CPU permitting, is a good approach.</p>
+</li>
+<li>
+<p><strong>Lambda</strong>: A <em>regularization</em> parameter to prevent <em>overfitting</em>,
+ represented by high <em>variance</em>, and low <em>bias</em>. Variance represents how much
+ the predictions fluctuate at a given point, over multiple runs, compared to the
+ theoretically correct value for that point. Bias represents how far away the
+ generated predictions are from the true value you're trying to predict.
+ Overfitting happens when the model works well on training data using known
+ noise but doesn't perform well on the actual testing data. The higher the
+ lambda, the lower the overfitting but the greater the bias. Values of 0.01,
+ 1 and 10 are good values to test.</p>
+<p>The following diagram shows the relationship between variance and bias. The
+bullseye represents the value that the algorithm is trying to predict.</p>
+<table>
+<thead>
+<tr>
+<th align="center"><strong>Variance versus Bias (best is on the top left)</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="center"><img alt="Variance and bias" src="https://cloud.google.com/solutions/images/reco-variance-targets.png" /></td>
+</tr>
+</tbody>
+</table>
+</li>
+<li>
+<p><strong>Iteration</strong>: The number of times that the training will run.
+In this example, you will do 5, 10, and 20 iterations for various
+ combinations of rank and lambda.</p>
+</li>
+</ul>
+<p>The following example code shows how to start an ALS model training run in Spark.</p>
+<pre class="prettyprint notranslate" translate="no"><code>from pyspark.mllib.recommendation import ALS
+model = ALS.train(training, rank = 10, iterations = 5, lambda_=0.01)
+</code></pre>
+<h3 id="finding_the_right_model">Finding the right model</h3>
+<p>The collaborative filtering using the ALS algorithm is based on three different
+sets of data:</p>
+<ul>
+<li>
+<p><strong>Training set:</strong> Contains data with known output. This set is what a perfect
+ result would look like. In this solution, it contains the user ratings.</p>
+</li>
+<li>
+<p><strong>Validating set:</strong> Contains data that will help tune the training to pick
+ the right combination of parameters and choose the best model.</p>
+</li>
+<li>
+<p><strong>Testing set:</strong> Contains data that will be used to evaluate the performance
+ of the best trained model. This would be equivalent to running the analysis in
+  a real-world example.</p>
+</li>
+</ul>
+<p>To find the best model, you need to calculate the root-mean-square error (RMSE)
+based on the model that was calculated, the validation set, and its size. The
+lower the RMSE, the better the model.</p>
+<h2 id="delivering_the_recommendations">Delivering the recommendations</h2>
+<p>To make the results available to the user quickly and easily, you need to load
+them into a database that can be queried on demand. Again, Cloud SQL is a great
+option here. From Spark 1.4, you can write the results of the prediction
+directly to the database from PySpark.</p>
+<p>The schema of the <code>Recommendation</code> table looks like this:</p>
+<pre class="prettyprint notranslate" translate="no"><code>CREATE TABLE Recommendation
+(
+  userId varchar(255),
+  accoId varchar(255),
+  prediction float,
+  PRIMARY KEY(userId, accoId),
+  FOREIGN KEY (accoId)
+    REFERENCES Accommodation(id)
+);
+</code></pre>
+<h2 id="code_walkthrough">Code walkthrough</h2>
+<p>This section walks through the code to train the models.</p>
+<h3 id="get_the_data_from_cloud_sql">Get the data from Cloud SQL</h3>
+<p>The Spark SQL context lets you easily connect to a Cloud SQL instance through
+the JDBC connector. The loaded data is in <code>DataFrame</code> format.</p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  
+  
+
+
+<!-- Header -->
+
+<div class="github-docwidget-include" style="border: 1px solid #ddd; border-bottom: 0; padding: 4px; background-color: #4285f4; margin-bottom: -10px">
+  
+  <div class="github-docwidget-header" style="float: left; padding-top: 3px; margin-left: 5px;">
+    <a href="https://github.com/GoogleCloudPlatform/spark-recommendation-engine/blob/master/pyspark/app_collaborative.py" target="_blank" style="color: white;">
+      pyspark/app_collaborative.py
+    </a>
+  </div>
+  
+
+  
+  <div style="text-align: right; float: right;">
+    
+    
+      
+      <a class="button" target="_blank" href="https://github.com/GoogleCloudPlatform/spark-recommendation-engine/blob/master/pyspark/app_collaborative.py"
+      track-type="github" track-name="gitHubViewButton"
+      track-metadata-link-destination="https://github.com/GoogleCloudPlatform/spark-recommendation-engine/blob/master/pyspark/app_collaborative.py">View on GitHub</a>
+    
+    
+    
+    
+    
+  </div>
+  
+
+  <div style="clear: both;"></div>
+
+</div>
+
+
+<!-- Code -->
+<div class="github-docwidget-gitinclude-code">
+
+  
+  
+
+<pre class="prettyprint lang-py" track-metadata-position="GoogleCloudPlatform/spark-recommendation-engine/pyspark/app_collaborative.py/master/read_from_sql">jdbcUrl    = &#39;jdbc:mysql://%s:3306/%s?user=%s&amp;password=%s&#39; % (CLOUDSQL_INSTANCE_IP, CLOUDSQL_DB_NAME, CLOUDSQL_USER, CLOUDSQL_PWD)
+dfAccos = sqlContext.read.jdbc(url=jdbcUrl, table=TABLE_ITEMS)
+dfRates = sqlContext.read.jdbc(url=jdbcUrl, table=TABLE_RATINGS)</pre>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<h3 id="convert_the_dataframe_to_rdd_and_create_the_various_datasets">Convert the <code>DataFrame</code> to RDD and create the various datasets</h3>
+<p>Spark uses a concept called a
+<a href="https://spark.apache.org/docs/latest/rdd-programming-guide.html#resilient-distributed-datasets-rdds" target="apache">Resilient Distributed Dataset (RDD)</a>,
+which facilitates working on elements in parallel.
+RDDs are read-only collections created from persistent storage. They can be
+processed in memory, so they're well suited for iterative processing.</p>
+<p>Recall that to get the best model to make your prediction, you need to split
+your datasets into three different sets. The following code uses a helper
+function that randomly splits non-overlapping values on a 60/20/20 percentage
+basis:</p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  
+  
+
+
+<!-- Header -->
+
+<div class="github-docwidget-include" style="border: 1px solid #ddd; border-bottom: 0; padding: 4px; background-color: #4285f4; margin-bottom: -10px">
+  
+  <div class="github-docwidget-header" style="float: left; padding-top: 3px; margin-left: 5px;">
+    <a href="https://github.com/GoogleCloudPlatform/spark-recommendation-engine/blob/master/pyspark/app_collaborative.py" target="_blank" style="color: white;">
+      pyspark/app_collaborative.py
+    </a>
+  </div>
+  
+
+  
+  <div style="text-align: right; float: right;">
+    
+    
+      
+      <a class="button" target="_blank" href="https://github.com/GoogleCloudPlatform/spark-recommendation-engine/blob/master/pyspark/app_collaborative.py"
+      track-type="github" track-name="gitHubViewButton"
+      track-metadata-link-destination="https://github.com/GoogleCloudPlatform/spark-recommendation-engine/blob/master/pyspark/app_collaborative.py">View on GitHub</a>
+    
+    
+    
+    
+    
+  </div>
+  
+
+  <div style="clear: both;"></div>
+
+</div>
+
+
+<!-- Code -->
+<div class="github-docwidget-gitinclude-code">
+
+  
+  
+
+<pre class="prettyprint lang-py" track-metadata-position="GoogleCloudPlatform/spark-recommendation-engine/pyspark/app_collaborative.py/master/split_sets">rddTraining, rddValidating, rddTesting = dfRates.rdd.randomSplit([6,2,2])</pre>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<aside class="note"><strong>Note:</strong>
+It is important to create the <code>Rating</code> table with the columns in the
+following order: <code>accoId</code>, <code>userId</code>, <code>rating</code>.
+ALS needs to work with defined product-user
+pairs to make its prediction. If this isn't the case, you can either modify your
+database or use a call to <code>map</code> on the RDD to order the columns
+in the right way.</aside>
+
+<h3 id="train_models_based_on_various_parameters">Train models based on various parameters</h3>
+<p>Recall that, when using the ALS method, the system needs to work with the rank,
+regularization, and iteration parameters to find the best model. The ratings
+exist, so the results of the <code>train</code> function must be compared to the validation
+set. You want to make sure that the user’s tastes are also in the training set.</p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  
+  
+
+
+<!-- Header -->
+
+<div class="github-docwidget-include" style="border: 1px solid #ddd; border-bottom: 0; padding: 4px; background-color: #4285f4; margin-bottom: -10px">
+  
+  <div class="github-docwidget-header" style="float: left; padding-top: 3px; margin-left: 5px;">
+    <a href="https://github.com/GoogleCloudPlatform/spark-recommendation-engine/blob/master/pyspark/find_model_collaborative.py" target="_blank" style="color: white;">
+      pyspark/find_model_collaborative.py
+    </a>
+  </div>
+  
+
+  
+  <div style="text-align: right; float: right;">
+    
+    
+      
+      <a class="button" target="_blank" href="https://github.com/GoogleCloudPlatform/spark-recommendation-engine/blob/master/pyspark/find_model_collaborative.py"
+      track-type="github" track-name="gitHubViewButton"
+      track-metadata-link-destination="https://github.com/GoogleCloudPlatform/spark-recommendation-engine/blob/master/pyspark/find_model_collaborative.py">View on GitHub</a>
+    
+    
+    
+    
+    
+  </div>
+  
+
+  <div style="clear: both;"></div>
+
+</div>
+
+
+<!-- Code -->
+<div class="github-docwidget-gitinclude-code">
+
+  
+  
+
+<pre class="prettyprint lang-py" track-metadata-position="GoogleCloudPlatform/spark-recommendation-engine/pyspark/find_model_collaborative.py/master/train_model">for cRank, cRegul, cIter in itertools.product(ranks, reguls, iters):
+
+  model = ALS.train(rddTraining, cRank, cIter, float(cRegul))
+  dist = howFarAreWe(model, rddValidating, nbValidating)
+  if dist &lt; finalDist:
+    print(&quot;Best so far:%f&quot; % dist)
+    finalModel = model
+    finalRank  = cRank
+    finalRegul = cRegul
+    finalIter  = cIter
+    finalDist  = dist</pre>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<aside class="note"><strong>Note:</strong>The <code>howFarAreWe</code> function
+ uses the model to predict the ratings on the validation dataset, using only the
+ user-product pairs.</aside>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  
+  
+
+
+<!-- Header -->
+
+<div class="github-docwidget-include" style="border: 1px solid #ddd; border-bottom: 0; padding: 4px; background-color: #4285f4; margin-bottom: -10px">
+  
+  <div class="github-docwidget-header" style="float: left; padding-top: 3px; margin-left: 5px;">
+    <a href="https://github.com/GoogleCloudPlatform/spark-recommendation-engine/blob/master/pyspark/find_model_collaborative.py" target="_blank" style="color: white;">
+      pyspark/find_model_collaborative.py
+    </a>
+  </div>
+  
+
+  
+  <div style="text-align: right; float: right;">
+    
+    
+      
+      <a class="button" target="_blank" href="https://github.com/GoogleCloudPlatform/spark-recommendation-engine/blob/master/pyspark/find_model_collaborative.py"
+      track-type="github" track-name="gitHubViewButton"
+      track-metadata-link-destination="https://github.com/GoogleCloudPlatform/spark-recommendation-engine/blob/master/pyspark/find_model_collaborative.py">View on GitHub</a>
+    
+    
+    
+    
+    
+  </div>
+  
+
+  <div style="clear: both;"></div>
+
+</div>
+
+
+<!-- Code -->
+<div class="github-docwidget-gitinclude-code">
+
+  
+  
+
+<pre class="prettyprint lang-py" track-metadata-position="GoogleCloudPlatform/spark-recommendation-engine/pyspark/find_model_collaborative.py/master/how_far">def howFarAreWe(model, against, sizeAgainst):
+  # Ignore the rating column  
+  againstNoRatings = against.map(lambda x: (int(x[0]), int(x[1])) )
+
+  # Keep the rating to compare against
+  againstWiRatings = against.map(lambda x: ((int(x[0]),int(x[1])), int(x[2])) )
+
+  # Make a prediction and map it for later comparison
+  # The map has to be ((user,product), rating) not ((product,user), rating)
+  predictions = model.predictAll(againstNoRatings).map(lambda p: ( (p[0],p[1]), p[2]) )
+
+  # Returns the pairs (prediction, rating)
+  predictionsAndRatings = predictions.join(againstWiRatings).values()
+
+  # Returns the variance
+  return sqrt(predictionsAndRatings.map(lambda s: (s[0] - s[1]) ** 2).reduce(add) / float(sizeAgainst))</pre>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<h3 id="calculating_top_predictions_for_the_user">Calculating top predictions for the user</h3>
+<p>Now that you have a model that can give a reasonable prediction, you can use it
+to see what the user is most likely to be interested in based on their tastes
+and ratings by others with similar tastes. In this step, you can see the matrix-
+mapping that was described previously.</p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  
+  
+
+
+<!-- Header -->
+
+<div class="github-docwidget-include" style="border: 1px solid #ddd; border-bottom: 0; padding: 4px; background-color: #4285f4; margin-bottom: -10px">
+  
+  <div class="github-docwidget-header" style="float: left; padding-top: 3px; margin-left: 5px;">
+    <a href="https://github.com/GoogleCloudPlatform/spark-recommendation-engine/blob/master/pyspark/app_collaborative.py" target="_blank" style="color: white;">
+      pyspark/app_collaborative.py
+    </a>
+  </div>
+  
+
+  
+  <div style="text-align: right; float: right;">
+    
+    
+      
+      <a class="button" target="_blank" href="https://github.com/GoogleCloudPlatform/spark-recommendation-engine/blob/master/pyspark/app_collaborative.py"
+      track-type="github" track-name="gitHubViewButton"
+      track-metadata-link-destination="https://github.com/GoogleCloudPlatform/spark-recommendation-engine/blob/master/pyspark/app_collaborative.py">View on GitHub</a>
+    
+    
+    
+    
+    
+  </div>
+  
+
+  <div style="clear: both;"></div>
+
+</div>
+
+
+<!-- Code -->
+<div class="github-docwidget-gitinclude-code">
+
+  
+  
+
+<pre class="prettyprint lang-py" track-metadata-position="GoogleCloudPlatform/spark-recommendation-engine/pyspark/app_collaborative.py/master/predict"># Build our model with the best found values
+# Rating, Rank, Iteration, Regulation
+model = ALS.train(rddTraining, BEST_RANK, BEST_ITERATION, BEST_REGULATION)
+
+# Calculate all predictions
+predictions = model.predictAll(pairsPotential).map(lambda p: (str(p[0]), str(p[1]), float(p[2])))
+
+# Take the top 5 ones
+topPredictions = predictions.takeOrdered(5, key=lambda x: -x[2])
+print(topPredictions)
+
+schema = StructType([StructField(&quot;userId&quot;, StringType(), True), StructField(&quot;accoId&quot;, StringType(), True), StructField(&quot;prediction&quot;, FloatType(), True)])
+
+dfToSave = sqlContext.createDataFrame(topPredictions, schema)
+dfToSave.write.jdbc(url=jdbcUrl, table=TABLE_RECOMMENDATIONS, mode=&#39;overwrite&#39;)
+</pre>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<h3 id="saving_the_top_predictions">Saving the top predictions</h3>
+<p>Now that you have a list of all the predictions, you can save the top 10 in
+Cloud SQL so the system can offer some recommendations to the user. For example,
+a good time to use these predictions might be when the user logs into the site.</p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  
+  
+
+
+<!-- Header -->
+
+<div class="github-docwidget-include" style="border: 1px solid #ddd; border-bottom: 0; padding: 4px; background-color: #4285f4; margin-bottom: -10px">
+  
+  <div class="github-docwidget-header" style="float: left; padding-top: 3px; margin-left: 5px;">
+    <a href="https://github.com/GoogleCloudPlatform/spark-recommendation-engine/blob/master/pyspark/app_collaborative.py" target="_blank" style="color: white;">
+      pyspark/app_collaborative.py
+    </a>
+  </div>
+  
+
+  
+  <div style="text-align: right; float: right;">
+    
+    
+      
+      <a class="button" target="_blank" href="https://github.com/GoogleCloudPlatform/spark-recommendation-engine/blob/master/pyspark/app_collaborative.py"
+      track-type="github" track-name="gitHubViewButton"
+      track-metadata-link-destination="https://github.com/GoogleCloudPlatform/spark-recommendation-engine/blob/master/pyspark/app_collaborative.py">View on GitHub</a>
+    
+    
+    
+    
+    
+  </div>
+  
+
+  <div style="clear: both;"></div>
+
+</div>
+
+
+<!-- Code -->
+<div class="github-docwidget-gitinclude-code">
+
+  
+  
+
+<pre class="prettyprint lang-py" track-metadata-position="GoogleCloudPlatform/spark-recommendation-engine/pyspark/app_collaborative.py/master/save_top">dfToSave = sqlContext.createDataFrame(topPredictions, schema)
+dfToSave.write.jdbc(url=jdbcUrl, table=TABLE_RECOMMENDATIONS, mode=&#39;overwrite&#39;)</pre>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<h2 id="running_the_solution">Running the solution</h2>
+<p>To run this solution, follow the step-by step instructions of on the
+<a href="https://github.com/GoogleCloudPlatform/spark-recommendation-engine" target="_blank">GitHub page</a>.
+By following the directions, you should be able to calculate and display
+recommendations for the user.</p>
+<p>The final SQL code fetches the top recommendation from the database and display
+it on Samantha’s welcome page.</p>
+<p>The query, when run in the GCP Console or a MySQL client,
+returns a result similar to the following example:</p>
+<p><img alt="Results from SQL query for 5 users" src="https://cloud.google.com/solutions/images/reco-query-1.png" width="400" /></p>
+<p>In the website, the same query can enhance the welcome page and increase the
+likelihood of conversion of a visitor to a customer:</p>
+<p><img alt="User interface with results" class="screenshot border" src="https://cloud.google.com/solutions/images/reco-ui-search.png" width="800" /></p>
+<p>This seems to be quite similar to what Sam likes based on what the system
+already knew about Sam, as discussed in the <a href="#scenario">scenario description</a>.</p>
+<h2 id="Tutorial">Tutorial</h2>
+<p>You can get the complete contents of the tutorial, including setup instructions
+and source code,
+<a href="https://github.com/GoogleCloudPlatform/spark-recommendation-engine" target="_blank">from GitHub</a>.</p>
+<h2 id="next_steps">Next steps</h2>
+<ul>
+<li>
+
+Try out other Google Cloud Platform features for yourself. Have a look at our
+<a href="https://cloud.google.com/docs/tutorials"  track-type="tutorial" track-name="textLink" track-metadata-position="nextSteps">tutorials</a>.
+
+</li>
+<li>
+
+Learn how to use Google Cloud Platform products to build end-to-end
+<a href="https://cloud.google.com/docs/tutorials" track-type="tutorial" track-name="textLink"
+   track-metadata-position="nextSteps">solutions</a>.
+
+</li>
+<li>Learn more about monitoring by reading the Cloud Dataproc documentation on
+<a href="https://cloud.google.com/dataproc/driver-output">output</a> or
+<a href="https://cloud.google.com/dataproc/cluster-web-interfaces">web interfaces</a>.</li>
+</ul>
+<h2 id="Appendix">Appendix</h2>
+<h3 id="cross_filtering">Cross filtering</h3>
+<p>While you've seen how to build an effective and scalable collaborative filtering
+solution, crossing the results with other types of filtering can improve the
+recommendation. Recall the other two main types of filtering: content-based and
+clustering. A combination of these approaches can produce a better
+recommendation for the user.</p>
+<p><img alt="Filtering types" src="https://cloud.google.com/solutions/images/reco-filtering-types.png" /></p>
+<h3 id="content-based_filtering">Content-based filtering</h3>
+<p>Content-based filtering works directly with item attributes and understands
+their similarities, which facilitates creating recommendations for items that
+have attributes but few user ratings. As the user base grows, this type
+of filtering remains manageable, even with a large number of users.</p>
+<p>To add content-based filtering, you can use the previous ratings of other
+users for the items in the catalog. Based on these ratings, you can find the
+most-similar products to the current one.</p>
+<p>One common way to calculate similarity between two products is to use cosine
+similarity and find the closest neighbors:</p>
+<p><img alt="Cosine similarity formula" src="https://cloud.google.com/solutions/images/reco-cosine-sim-formula.png" /></p>
+<p><img alt="Cosine similarity diagram" src="https://cloud.google.com/solutions/images/reco-cosine-sim-diagram.png" /></p>
+<p>The similarity result will be between 0 and 1. The closer to 1, the more similar the products are.</p>
+<p><img alt="Cosine similarity spectrum" src="https://cloud.google.com/solutions/images/reco-sim-result.png" /></p>
+<p>Consider the following matrix:</p>
+<p><img alt="Cosine similarity formula" src="https://cloud.google.com/solutions/images/reco-appendix-matrix.png" /></p>
+<p>In this matrix, the similarity between P1 and P2 can be calculated as follows:</p>
+<p><img alt="Cosine similarity formula with result" src="https://cloud.google.com/solutions/images/reco-cosine-sim.png" /></p>
+<p>You can achieve content-based filtering through various tools. If you want to
+learn more, have a look at:</p>
+<ul>
+<li>
+<p><a href="https://blog.twitter.com/2014/all-pairs-similarity-via-dimsum" target="_blank">Twitter all-pairs similarity</a>.
+ The <code>CosineSimilarities</code> Scala function added to MLlib can be run in the Spark
+ environment.</p>
+</li>
+<li>
+<p><a href="https://mahout.apache.org" target="apache">Mahout</a>. If you want to get access to more
+ libraries to either complement or replace some MLlib algorithm, you can install
+ Mahout on your Dataproc master node either by using <code>ssh</code> to connect to the instance or by using an <a href="https://cloud.google.com/dataproc/docs/concepts/configuring-clusters/init-actions">initialization action</a>:</p>
+<pre class="prettyprint notranslate" translate="no"><code>sudo apt-get update
+sudo apt-get install mahout -y
+</code></pre>
+</li>
+</ul>
+<h3 id="clustering">Clustering</h3>
+<p>It's also important to understand the browsing context and what the user is
+currently looking at. The same person browsing at different times could be
+interested in two completely different products, or might even be buying a gift
+for someone else. Being able to understand which items are similar to the one
+currently displayed is essential. Using <em>K-mean clustering</em> enables the system
+to put similar items into buckets, based on their core attributes.</p>
+<p>For this solution, a person looking to rent a house in London, for example,
+probably isn't interested in renting something in Auckland at the moment, so the
+system should filter out those cases when doing a recommendation.</p>
+<pre class="prettyprint notranslate" translate="no"><code>from pyspark.mllib.clustering import KMeans, KMeansModel
+clusters = KMeans.train(parsedData, 2,
+                        maxIterations=10,
+                        runs=10,
+                        initializationMode="random")
+</code></pre>
+<h3 id="360-degree_view">360-degree view</h3>
+<p>You can improve the recommendation further by taking other customer data
+into consideration, such as past orders, support, and personal attributes
+such as age, location or gender. These attributes, which are often already
+available in a customer relationship management (CRM) or enterprise resource
+planning (ERP) system, will help narrow down the choices.</p>
+<p>Thinking further, it's not only internal system data that will have an impact on
+users' behavior and choices; external factors matter, too. In this solution's
+vacation rental use case, being able to know the quality of the air might be
+important to a young family. So integrating a recommendation engine built on
+Cloud Platform with another API, such as
+<a href="https://www.breezometer.com" target="_blank">Breezometer</a>, might bring a
+ competitive advantage.</p>
+<style>
+  nav.inline-toc ol>li>ol {
+    display: none;
+  }
+</style>
+
+
+  </section>
+
+    </div>
+  </div>
+  
+  </div>
+  
+    
+
+
+
+  
+
+  
+        
+  
+
+
+
+
+
+
+
+        
+<div class="devsite-content-footer nocontent">
+  
+  
+    <p>Except as otherwise noted, the content of this page is licensed under the <a href="http://creativecommons.org/licenses/by/3.0/">Creative Commons Attribution 3.0 License</a>, and code samples are licensed under the <a href="http://www.apache.org/licenses/LICENSE-2.0">Apache 2.0 License</a>. For details, see our <a href="https://developers.google.com/terms/site-policies">Site Policies</a>. Java is a registered trademark of Oracle and/or its affiliates.</p>
+  
+
+  
+    
+    <p class="devsite-content-footer-date" itemprop="datePublished"
+       content="2018-03-19T17:35:35.537690">
+      
+      Last updated March 19, 2018.
+    </p>
+  
+
+</div>
+
+        </article>
+      </article>
+  
+
+        </div>
+      
+
+<footer class="devsite-footer-linkboxes nocontent
+               devsite-footer-linkboxes-all-backup
+               devsite-footer-linkboxes-with-sites"><nav class="devsite-full-site-width"><ul class="devsite-footer-linkboxes-list"><li class="devsite-footer-linkbox devsite-footer-linkbox-backup"><h3 class="devsite-footer-linkbox-heading">Products</h3><ul class="devsite-footer-linkbox-list"><li class="devsite-footer-linkbox-item"><a href="https://cloud.google.com/products/compute/" class="gc-analytics-event"
+               data-category="Site-Wide Custom Events"
+               data-label="Footer Compute">
+                Compute
+            </a></li><li class="devsite-footer-linkbox-item"><a href="https://cloud.google.com/products/storage/" class="gc-analytics-event"
+               data-category="Site-Wide Custom Events"
+               data-label="Footer Storage">
+                Storage
+            </a></li><li class="devsite-footer-linkbox-item"><a href="https://cloud.google.com/products/networking/" class="gc-analytics-event"
+               data-category="Site-Wide Custom Events"
+               data-label="Footer Networking">
+                Networking
+            </a></li><li class="devsite-footer-linkbox-item"><a href="https://cloud.google.com/products/big-data/" class="gc-analytics-event"
+               data-category="Site-Wide Custom Events"
+               data-label="Footer Big Data">
+                Big Data
+            </a></li><li class="devsite-footer-linkbox-item"><a href="https://cloud.google.com/products/machine-learning/" class="gc-analytics-event"
+               data-category="Site-Wide Custom Events"
+               data-label="Footer Machine Learning">
+                Machine Learning
+            </a></li><li class="devsite-footer-linkbox-item"><a href="https://cloud.google.com/products/#management" class="gc-analytics-event"
+               data-category="Site-Wide Custom Events"
+               data-label="Footer Management Tools">
+                Management Tools
+            </a></li><li class="devsite-footer-linkbox-item"><a href="https://cloud.google.com/products/tools/" class="gc-analytics-event"
+               data-category="Site-Wide Custom Events"
+               data-label="Footer Developer Tools">
+                Developer Tools
+            </a></li><li class="devsite-footer-linkbox-item"><a href="https://cloud.google.com/products/#identity-security" class="gc-analytics-event"
+               data-category="Site-Wide Custom Events"
+               data-label="Footer Identity and Security">
+                Identity &amp; Security
+            </a></li><li class="devsite-footer-linkbox-item"><a href="//status.cloud.google.com" class="gc-analytics-event"
+               data-category="Site-Wide Custom Events"
+               data-label="Footer System Status">
+                System Status
+            </a></li></ul></li><li class="devsite-footer-linkbox devsite-footer-linkbox-backup"><h3 class="devsite-footer-linkbox-heading">Learn More</h3><ul class="devsite-footer-linkbox-list"><li class="devsite-footer-linkbox-item"><a href="https://cloud.google.com/why-google/" class="gc-analytics-event"
+               data-category="Site-Wide Custom Events"
+               data-label="Footer Why Google">
+                Why Google Cloud
+            </a></li><li class="devsite-footer-linkbox-item"><a href="https://cloud.google.com/pricing/" class="gc-analytics-event"
+               data-category="Site-Wide Custom Events"
+               data-label="Footer Pricing">
+                Pricing
+            </a></li><li class="devsite-footer-linkbox-item"><a href="https://cloud.google.com/docs/" class="gc-analytics-event"
+               data-category="Site-Wide Custom Events"
+               data-label="Footer Documentation">
+                Documentation
+            </a></li><li class="devsite-footer-linkbox-item"><a href="https://cloud.google.com/docs/tutorials/" class="gc-analytics-event"
+               data-category="Site-Wide Custom Events"
+               data-label="Footer Tutorials">
+                Tutorials
+            </a></li><li class="devsite-footer-linkbox-item"><a href="https://cloud.google.com/training/" class="gc-analytics-event"
+               data-category="Site-Wide Custom Events"
+               data-label="Footer Training">
+                Training
+            </a></li><li class="devsite-footer-linkbox-item"><a href="https://cloud.google.com/solutions/" class="gc-analytics-event"
+               data-category="Site-Wide Custom Events"
+               data-label="Footer Solutions">
+                Solutions
+            </a></li><li class="devsite-footer-linkbox-item"><a href="https://cloud.google.com/security/" class="gc-analytics-event"
+               data-category="Site-Wide Custom Events"
+               data-label="Footer Security &amp; Compliance">
+                Security &amp; Compliance
+            </a></li><li class="devsite-footer-linkbox-item"><a href="https://cloud.google.com/partners/" class="gc-analytics-event"
+               data-category="Site-Wide Custom Events"
+               data-label="Footer Partners">
+                Partners
+            </a></li><li class="devsite-footer-linkbox-item"><a href="https://cloud.google.com/customers/" class="gc-analytics-event"
+               data-category="Site-Wide Custom Events"
+               data-label="Footer Customers">
+                Customers
+            </a></li><li class="devsite-footer-linkbox-item"><a href="https://cloud.google.com/support/" class="gc-analytics-event"
+               data-category="Site-Wide Custom Events"
+               data-label="Footer Support">
+                Support
+            </a></li><li class="devsite-footer-linkbox-item"><a href="//careers.google.com/cloud/" class="gc-analytics-event"
+               data-category="Site-Wide Custom Events"
+               data-label="Footer Careers">
+                Careers
+            </a></li><li class="devsite-footer-linkbox-item"><a href="//www.google.com/cloud/press" class="gc-analytics-event"
+               data-category="Site-Wide Custom Events"
+               data-label="Footer Press">
+                Press
+            </a></li></ul></li><li class="devsite-footer-linkbox devsite-footer-linkbox-backup"><h3 class="devsite-footer-linkbox-heading">Engage</h3><ul class="devsite-footer-linkbox-list"><li class="devsite-footer-linkbox-item"><a href="https://cloud.google.com/free-trial/" class="gc-analytics-event"
+               data-category="Site-Wide Custom Events"
+               data-label="Footer Free Trial Sign Up">
+                Free Trial Sign Up
+            </a></li><li class="devsite-footer-linkbox-item"><a href="//cloudplatform.googleblog.com" class="gc-analytics-event"
+               data-category="Site-Wide Custom Events"
+               data-label="Footer Blog">
+                Blog
+            </a></li><li class="devsite-footer-linkbox-item"><a href="https://cloud.google.com/community/" class="gc-analytics-event"
+               data-category="Site-Wide Custom Events"
+               data-label="Footer Community">
+                Community
+            </a></li><li class="devsite-footer-linkbox-item"><a href="//plus.google.com/+googlecloudplatform" class="gc-analytics-event"
+               data-category="Site-Wide Custom Events"
+               data-label="Footer Google+">
+                Google+
+            </a></li><li class="devsite-footer-linkbox-item"><a href="//twitter.com/gcpcloud" class="gc-analytics-event"
+               data-category="Site-Wide Custom Events"
+               data-label="Footer Twitter">
+                Twitter
+            </a></li><li class="devsite-footer-linkbox-item"><a href="//www.linkedin.com/showcase/google-cloud" class="gc-analytics-event"
+               data-category="Site-Wide Custom Events"
+               data-label="Footer LinkedIn">
+                LinkedIn
+            </a></li><li class="devsite-footer-linkbox-item"><a href="//stackoverflow.com/questions/tagged/google-cloud-platform" class="gc-analytics-event"
+               data-category="Site-Wide Custom Events"
+               data-label="Footer Stack Overflow">
+                Stack Overflow
+            </a></li><li class="devsite-footer-linkbox-item"><a href="//www.youtube.com/googlecloudplatform" class="gc-analytics-event"
+               data-category="Site-Wide Custom Events"
+               data-label="Footer YouTube">
+                YouTube
+            </a></li><li class="devsite-footer-linkbox-item"><a href="//www.gcppodcast.com" class="gc-analytics-event"
+               data-category="Site-Wide Custom Events"
+               data-label="Footer Podcast">
+                Podcast
+            </a></li><li class="devsite-footer-linkbox-item"><a href="//cloud.google.com/newsletter/" class="gc-analytics-event"
+               data-category="Site-Wide Custom Events"
+               data-label="Footer Newsletter Signup">
+                Newsletter Signup
+            </a></li><li class="devsite-footer-linkbox-item"><a href="//cloud.google.com/usability" class="gc-analytics-event"
+               data-category="Site-Wide Custom Events"
+               data-label="Footer UX Research">
+                UX Research
+            </a></li></ul></li><li class="devsite-footer-linkbox devsite-footer-linkbox-sites"><a href="https://developers.google.com/"
+           class="gc-analytics-event devsite-footer-linkbox-logo-link"
+           data-category="Site-Wide Custom Events" data-label="Footer Google Developers Link"><img class="devsite-footer-linkbox-logo"
+               src="https://cloud.google.com/_static/d7147bb846/images/redesign-14/lockup-color-knockout.png"
+               alt="Google Developers"></a><ul class="devsite-footer-linkbox-list"><li class="devsite-footer-linkbox-item"><a href="//developer.android.com/index.html" class="gc-analytics-event"
+               data-category="Site-Wide Custom Events"
+               data-label="Footer Android Link">
+                Android
+            </a></li><li class="devsite-footer-linkbox-item"><a href="//developer.chrome.com/home" class="gc-analytics-event"
+               data-category="Site-Wide Custom Events"
+               data-label="Footer Chrome Link">
+                Chrome
+            </a></li><li class="devsite-footer-linkbox-item"><a href="//firebase.google.com" class="gc-analytics-event"
+               data-category="Site-Wide Custom Events"
+               data-label="Footer Firebase Link">
+                Firebase
+            </a></li><li class="devsite-footer-linkbox-item"><a href="//cloud.google.com" class="gc-analytics-event"
+               data-category="Site-Wide Custom Events"
+               data-label="Footer Cloud Link">
+                Google Cloud Platform
+            </a></li><li class="devsite-footer-linkbox-item"><a href="//developers.google.com/products/" class="gc-analytics-event"
+               data-category="Site-Wide Custom Events"
+               data-label="Footer Products Link">
+                All Products
+            </a></li></ul></li></ul></nav></footer><footer class="devsite-utility-footer"><nav class="devsite-utility-footer-nav devsite-nav devsite-full-site-width"><div class="devsite-utility-footer-nav-left"><form class="devsite-utility-footer-language" action="/i18n/setlang/" method="post"><input type="hidden" name="xsrf_token" value="xnEctJQTnQbAPSEg1rCU-tOJyb6h4rjLIzqdrW7waO86MTUyNDQ1ODI5NDc4OTY5MA" /><input type="hidden" name="next" value="/solutions/recommendations-using-machine-learning-on-compute-engine"><select class="devsite-utility-footer-language-select kd-select" name="language"
+                track-type="languageSelector" track-name="click"><option value="en"
+                 selected="selected" 
+                track-type="languageSelector" track-name="changed"
+                track-metadata-original-language="en"
+                track-metadata-selected-language="en">
+            English
+          </option><option value="es"
+                
+                track-type="languageSelector" track-name="changed"
+                track-metadata-original-language="en"
+                track-metadata-selected-language="es">
+            español
+          </option><option value="pt-br"
+                
+                track-type="languageSelector" track-name="changed"
+                track-metadata-original-language="en"
+                track-metadata-selected-language="pt-br">
+            Português Brasileiro
+          </option><option value="ja"
+                
+                track-type="languageSelector" track-name="changed"
+                track-metadata-original-language="en"
+                track-metadata-selected-language="ja">
+            日本語
+          </option><option value="zh-tw"
+                
+                track-type="languageSelector" track-name="changed"
+                track-metadata-original-language="en"
+                track-metadata-selected-language="zh-tw">
+            繁體中文
+          </option></select></form><span class="devsite-utility-footer-links"><a class="devsite-utility-footer-link gc-analytics-event"
+           href="https://cloud.google.com/terms/"
+           data-category="Site-Wide Custom Events"
+           data-label="Footer terms link"
+           data-footer-link-id="terms"
+           >Terms
+         </a><a class="devsite-utility-footer-link gc-analytics-event"
+           href="//www.google.com/policies/privacy/"
+           data-category="Site-Wide Custom Events"
+           data-label="Footer privacy link"
+           data-footer-link-id="privacy"
+           >Privacy
+         </a><a class="devsite-utility-footer-link gc-analytics-event"
+           href="//www.google.de/contact/impressum.html"
+           data-category="Site-Wide Custom Events"
+           data-label="Footer impressum link"
+           data-footer-link-id="impressum"
+           >Impressum
+         </a></span></div></nav></footer><div class="devsite-feedback-dialog devsite-dialog"><div class="devsite-dialog-contents"><h3>Send feedback about...</h3><div class="devsite-feedback-item"><a data-type="documentation" class="gc-analytics-event"
+           data-category="Site-Wide Custom Events" data-label="Docs Feedback Image"
+           track-type="feedback" track-name="feedbackDocIcon" track-metadata-position="header"><div class="devsite-feedback-item-icon-container"><div class="devsite-feedback-item-icon-white devsite-feedback-item-icon-docs
+                        material-icons"></div></div></a><div class="devsite-feedback-item-name">
+          
+          This page
+        </div><div class="devsite-feedback-item-description"><a data-type="documentation" tabindex="0" class="gc-analytics-event"
+             data-category="Site-Wide Custom Events" data-label="Docs Feedback Text"
+             track-type="feedback" track-name="feedbackDocText" track-metadata-position="header">
+            
+            Documentation feedback
+          </a></div></div><div class="devsite-feedback-item"><a data-type="product" tabindex="0" class="gc-analytics-event"
+           data-category="Site-Wide Custom Events" data-label="Product Feedback Image"
+           track-type="feedback" track-name="feedbackProductIcon" track-metadata-position="header"
+         ><img class="devsite-feedback-item-icon"
+               src="https://cloud.google.com/_static/d7147bb846/images/feedback/google_56px.svg"></a><div class="devsite-feedback-item-name">
+        Solutions
+        </div><div class="devsite-feedback-item-description"><a data-type="product" tabindex="0" class="gc-analytics-event"
+             data-category="Site-Wide Custom Events" data-label="Product Feedback Text"
+             track-type="feedback" track-name="feedbackProductText" track-metadata-position="header"
+           >
+            
+            Product feedback
+          </a></div></div></div><div class="devsite-dialog-buttons"><button type="button" class="devsite-feedback-cancel button-white gc-analytics-event"
+              data-category="Site-Wide Custom Events" data-label="Cancel Feedback Button"
+              track-type="feedback" track-name="cancelFeedbackButton"
+              track-metadata-position="header">
+        
+        Cancel
+      </button></div></div><script>
+  $(document).ready(function() {
+    new devsite.feedback.Widget({
+        'product_id': '410597',
+        'bucket': 'landingpages',
+        'context': '',
+        'version': 'devsite-20180420-r00-rc00.default'
+      },
+      document.querySelectorAll('.devsite-feedback-button'),
+      'en',
+      document.querySelector('.devsite-site-mask'),
+      document.querySelector('.devsite-feedback-dialog'),
+      document.querySelector('.devsite-feedback-cancel'),
+      document.querySelectorAll('.devsite-feedback-item a:not([href])')
+    );
+  });
+  </script></div><script async defer src="//www.gstatic.com/feedback/api.js"></script><script src="https://cloud.google.com/_static2/d7147bb846/jsi18n/"></script><script src="https://cloud.google.com/_static/d7147bb846/js/script_foot_closure.js"></script><script src="https://cloud.google.com/_static/d7147bb846/js/script_foot.js"></script><script>
+        (function($) {
+          
+          devsite.devsite.Init($, {'ENABLE_BLOCKED_VIDEO_PLACEHOLDER': 0, 'SITE_NAME': 'cloud', 'FULL_SITE_SEARCH_ENABLED': 1, 'ENABLE_CLOUDTRACK': 1, 'VTAGS_ENABLED': 1, 'HISTORY_ENABLED': 1, 'VERSION_HASH': 'd7147bb846', 'SCRIPTSAFE_DOMAIN': 'cloud-dot-google-developers.appspot.com', 'ENABLE_BLOCKED_LINK_TOOLTIP': 0, 'ALLOWED_HOSTS': ['.android.com', '.anvato.com', '.apigee.com', '.appspot.com', '.dialogflow.com', '.gonglchuangl.net', '.google.cn', '.google.com', '.googleplex.com', '.nest.com', '.openthread.io', '.openweave.io', '.orbitera.com', '.tensorflow.org'], 'BLOCK_RSS_FEEDS': 0},
+                               '[]','en',
+                               true, '',
+                               {"f62218c009ec029abef196bba5aa34cf": true, "8de7a048f21618359bd37f5ce44be073": false, "098dafe57affddc137df300142652cfd": false, "8e03e230de0bd8a6fe173fdf172e8b3f": true, "cb025a64a50094835616312f4774a53d": true, "51470233c56fc1fde50f00b73c52b216": false, "d169d485cf24243a263783dbe42029b1": true, "039e5d84b87fd75807ffb37b7f1bbf2c": true, "700def1a83e356c06c0925afb05de4b0": false, "6749dcb526ce9bde6993550c7d928d24": true}, '/solutions/',
+                               'https://cloud.google.com/');
+        })(jQuery);
+
+        
+        devsite.localInit = function() {
+          
+        };
+
+      </script><script>
+      $('.devsite-utility-footer-language-select').each(function() {
+        $(this).change(function(){$('.devsite-utility-footer-language').submit();});
+      });
+      </script></div><span id="devsite-request-elapsed" data-request-elapsed="234.139919281"></span></body></html>

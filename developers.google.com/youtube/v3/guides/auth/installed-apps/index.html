@@ -1,0 +1,2289 @@
+
+
+
+
+
+
+<!DOCTYPE html><html lang="en"
+      class="chekov"><head><script>var a=window.devsite||{};window.devsite=a;a.readyCallbacks=[];window.devsite.readyCallbacks=a.readyCallbacks;a.ready=function(b){a.readyCallbacks.push(b)};window.devsite.ready=a.ready;
+</script><meta charset="utf-8"><meta name="xsrf_token" content="IU7ZWgm4q1VmyTLO5yv_Bsu1B3yisBbWg6xijFkj28M6MTUyNDQ1ODMxNzQ3OTY4MA" /><link rel="canonical" href="https://developers.google.com/youtube/v3/guides/auth/installed-apps"><link rel="alternate" href="https://developers.google.com/youtube/v3/guides/auth/installed-apps?hl=ja" hreflang="ja"><link rel="alternate" href="https://developers.google.com/youtube/v3/guides/auth/installed-apps?hl=pt-br" hreflang="pt-br"><link rel="alternate" href="https://developers.google.com/youtube/v3/guides/auth/installed-apps?hl=es" hreflang="es"><link rel="alternate" href="https://developers.google.com/youtube/v3/guides/auth/installed-apps?hl=ko" hreflang="ko"><link rel="alternate" href="https://developers.google.com/youtube/v3/guides/auth/installed-apps" hreflang="en"><link rel="alternate" href="https://developers.google.cn/youtube/v3/guides/auth/installed-apps?hl=ja" hreflang="ja-cn"><link rel="alternate" href="https://developers.google.cn/youtube/v3/guides/auth/installed-apps?hl=pt-br" hreflang="pt-br-cn"><link rel="alternate" href="https://developers.google.cn/youtube/v3/guides/auth/installed-apps?hl=es" hreflang="es-cn"><link rel="alternate" href="https://developers.google.cn/youtube/v3/guides/auth/installed-apps?hl=ko" hreflang="ko-cn"><link rel="alternate" href="https://developers.google.cn/youtube/v3/guides/auth/installed-apps" hreflang="en-cn"><link rel="alternate" href="https://developers.google.com/youtube/v3/guides/auth/installed-apps" hreflang="x-default"><link rel="shortcut icon" href="https://developers.google.com/_static/d7147bb846/images/favicon.png"><link rel="apple-touch-icon" href="https://developers.google.com/_static/d7147bb846/images/touch-icon.png"><meta name="viewport" content="width=device-width, initial-scale=1"><link rel="stylesheet"
+      
+      href="//fonts.googleapis.com/css?family=Google+Sans:400|Roboto:400,400italic,500,500italic,700,700italic|Roboto+Mono:400,500,700|Material+Icons"
+      ><link rel="stylesheet"
+        href="https://developers.google.com/_static/d7147bb846/css/devsite-youtube-red.css"><link rel="search"
+        type="application/opensearchdescription+xml"
+        title="Google Developers"
+        href="https://developers.google.com/s/opensearch.xml"><script src="https://developers.google.com/_static/d7147bb846/js/jquery-bundle.js"></script><meta property="og:site_name" content="Google Developers"><meta property="og:type" content="website"><meta property="og:url" content="https://developers.google.com/youtube/v3/guides/auth/installed-apps"><meta property="og:locale" content="en"><script>
+    var ___gcfg = ___gcfg || {};
+    ___gcfg.lang = 'en';
+  </script><title>OAuth 2.0 for Mobile &amp; Desktop Apps &nbsp;|&nbsp; YouTube Data API
+      &nbsp;|&nbsp; Google Developers</title><meta property="og:title" content="OAuth 2.0 for Mobile &amp; Desktop Apps &nbsp;|&nbsp; YouTube Data API
+      &nbsp;|&nbsp; Google Developers"><meta property="og:image"
+          content="https://developers.google.com/_static/d7147bb846/images/share/devsite-youtube-red.png"><meta property="og:image:secure_url"
+          content="https://developers.google.com/_static/d7147bb846/images/share/devsite-youtube-red.png"><meta property="og:image:width" content="1200"><meta property="og:image:height" content="630"><style>
+    .code-var-color {
+      color: #ec407a;
+      font-weight: bold;
+    }
+  </style></head><body class="
+               devsite-doc-page
+               
+               
+               
+               devsite-header-no-upper-tabs
+               "
+        data-family="endorsed"
+        id="top_of_page"><div class="devsite-wrapper"><div class="devsite-top-section-wrapper
+            "><header class="devsite-top-section nocontent"><div class="devsite-top-logo-row-wrapper-wrapper"><div class="devsite-top-logo-row-wrapper"><div class="devsite-top-logo-row devsite-full-site-width"><button type="button" class="devsite-expand-section-nav devsite-header-icon-button
+                                       button-flat material-icons gc-analytics-event"
+                  data-category="Site-Wide Custom Events" data-label="Hamburger menu"></button><div class="devsite-product-name-wrapper"><a class="devsite-product-name-link gc-analytics-event"
+       href="https://developers.google.com/youtube/"
+       data-category="Site-Wide Custom Events"
+       data-label="Project logo (header)"><img src="https://developers.google.com/site-assets/logo-youtube.svg" class="devsite-product-logo"
+               alt="YouTube"></a><span class="devsite-product-name"><ul class="devsite-breadcrumb-list"><li class="devsite-breadcrumb-item"><a href="https://developers.google.com/youtube/" class="devsite-breadcrumb-link gc-analytics-event"
+       data-category="Site-Wide Custom Events" data-label="Upper Header"
+       data-value="1">
+    
+    
+      
+        YouTube
+      
+    
+    
+    </a></li><li class="devsite-breadcrumb-item"><div class="devsite-breadcrumb-guillemet material-icons"></div><a href="https://developers.google.com/youtube/v3/" class="devsite-breadcrumb-link gc-analytics-event"
+       data-category="Site-Wide Custom Events" data-label="Upper Header"
+       data-value="2">
+    
+    
+      Data API
+    
+    
+    </a></li></ul></span></div><div class="devsite-header-upper-tabs"></div><form class="devsite-search-form"
+                action="https://developers.google.com/s/results/"
+                method="GET"
+                id="top-search"
+                search-placeholder='Search'><div id="searchbox" class="devsite-searchbox"><input placeholder='Search'
+         
+         type="text"
+         class="devsite-search-field devsite-search-query"
+         name="q"
+         value=""
+         autocomplete="off"
+         
+         aria-label="Search box"><div class="devsite-search-image material-icons"></div></div><input type="hidden"
+       name="p"
+       id="search_project"
+       value="/youtube/v3/"
+       data-project-name="YouTube Data API"
+       data-project-path="/youtube/v3/"
+       data-query-match=""><input type="hidden" class="suggest-project" value="YouTube Data API" /><div class="suggest-project-metadata" data-home_url="/youtube/" data-path="/youtube/" data-name="YouTube" ></div><div class="suggest-project-metadata" data-home_url="/youtube/android/player/" data-path="/youtube/android/player/" data-name="YouTube Android Player API" ></div></form><a class="devsite-header-link devsite-top-button button gc-analytics-event"
+               href="https://developers.google.com/products/"
+               data-category="Site-Wide Custom Events"
+               data-label="Site header link"
+               track-type="navigateTo"
+               track-name="all products"
+               track-metadata-position="nav"><div class="devsite-header-link-label">All Products</div></a><button type="button" class="devsite-search-button devsite-header-icon-button button-flat
+                                       material-icons"></button><a href="https://www.google.com/accounts/ServiceLogin?passive=true&continue=https%3A%2F%2Fdevelopers.google.com%2Fyoutube%2Fv3%2Fguides%2Fauth%2Finstalled-apps%3Frefresh%3D1&service=ahsid"
+   class="devsite-user-signin devsite-top-button button gc-analytics-event"
+   data-category="Site-Wide Custom Events" data-label="Sign in button">
+  
+  Sign in
+</a></div></div></div><div class="devsite-collapsible-section"><div class="devsite-header-background devsite-full-site-width"><div class="devsite-doc-set-nav-row devsite-full-site-width"><nav class="devsite-doc-set-nav devsite-nav devsite-overflow-tabs-scroll-wrapper"><ul class="devsite-doc-set-nav-tab-list devsite-overflow-tabs-scroll"><li class="devsite-doc-set-nav-tab-container devsite-nav-tab
+               "><a href="https://developers.google.com/youtube/v3/"
+         class=" devsite-nav-tab
+                devsite-doc-set-nav-tab devsite-doc-set-nav-tab-link gc-analytics-event"
+         
+       
+         data-category="Site-Wide Custom Events"
+       
+         data-label="Tab: Home"
+       >
+        Home
+      </a></li><li class="devsite-doc-set-nav-tab-container devsite-nav-tab
+               "><a href="https://developers.google.com/youtube/v3/getting-started"
+         class="devsite-doc-set-nav-active devsite-nav-tab
+                devsite-doc-set-nav-tab devsite-doc-set-nav-tab-link gc-analytics-event"
+         aria-label="Guides, selected"
+       
+         data-category="Site-Wide Custom Events"
+       
+         data-label="Tab: Guides"
+       >
+        Guides
+      </a></li><li class="devsite-doc-set-nav-tab-container devsite-nav-tab
+               "><a href="https://developers.google.com/youtube/v3/docs/"
+         class=" devsite-nav-tab
+                devsite-doc-set-nav-tab devsite-doc-set-nav-tab-link gc-analytics-event"
+         
+       
+         data-category="Site-Wide Custom Events"
+       
+         data-label="Tab: Reference"
+       >
+        Reference
+      </a></li><li class="devsite-doc-set-nav-tab-container devsite-nav-tab
+               "><a href="https://developers.google.com/youtube/v3/code_samples/"
+         class=" devsite-nav-tab
+                devsite-doc-set-nav-tab devsite-doc-set-nav-tab-link gc-analytics-event"
+         
+       
+         data-category="Site-Wide Custom Events"
+       
+         data-label="Tab: Samples"
+       >
+        Samples
+      </a></li><li class="devsite-doc-set-nav-tab-container devsite-nav-tab
+               "><a href="https://developers.google.com/youtube/v3/support"
+         class=" devsite-nav-tab
+                devsite-doc-set-nav-tab devsite-doc-set-nav-tab-link gc-analytics-event"
+         
+       
+         data-category="Site-Wide Custom Events"
+       
+         data-label="Tab: Support"
+       >
+        Support
+      </a></li><button type="button" id="devsite-feedback-project"
+          class="devsite-feedback-button devsite-top-button gc-analytics-event"
+          data-category="Site-Wide Custom Events" data-label="Send Feedback Button"
+          track-type="feedback" track-name="sendFeedbackLink" track-metadata-position="header">
+  
+  Send feedback
+  </button></ul></nav></div></div></div></header><script>
+    if (window.jQuery) {
+      $(document).ready(function() {
+        if (window.devsite && window.devsite.search) {
+          
+          window.devsite.search.init('en')
+        }
+      });
+    }
+  </script></div><div id="gc-wrapper"itemscope itemtype="http://schema.org/Article"><input class="google-analytics-id-json" type="hidden" value="{&quot;dimensions&quot;: {&quot;dimension6&quot;: &quot;en&quot;, &quot;dimension4&quot;: &quot;YouTube Data API&quot;, &quot;dimension5&quot;: &quot;en&quot;, &quot;dimension3&quot;: false, &quot;dimension1&quot;: &quot;Signed out&quot;, &quot;dimension8&quot;: null}, &quot;gaid&quot;: &quot;UA-24532603-1&quot;}"><script>
+      var dataLayer = [{"freeTrialEligibleUser": "False", "userCountry": "HK", "language": {"requested": "en", "served": "en"}, "projectName": "YouTube Data API", "scriptsafe": null, "signedIn": "False", "internalUser": "False"}];
+    </script>
+
+      
+        <div class="devsite-site-mask"></div>
+        
+  
+
+
+<nav class="devsite-nav-responsive devsite-nav nocontent" tabindex="0">
+  
+  <div class="devsite-nav-responsive-tabs-panel">
+    
+      
+
+
+
+<nav class="devsite-nav-responsive-tabs devsite-nav">
+  <ul class="devsite-nav-list">
+  
+    <li class="devsite-nav-item devsite-nav-item-heading">
+    
+      <a 
+           href="https://developers.google.com/youtube/v3/"
+         
+         class="devsite-nav-responsive-tab devsite-nav-title gc-analytics-event
+                "
+         data-category="Site-Wide Custom Events" data-label="Responsive Tab: Home">
+        Home
+      </a>
+      
+      
+    
+    </li>
+  
+    <li class="devsite-nav-item devsite-nav-item-heading">
+    
+      <span class="devsite-nav-responsive-forward devsite-nav-responsive-tab devsite-nav-title
+                   devsite-nav-active gc-analytics-event"
+            data-category="Site-Wide Custom Events" data-label="Responsive Tab: Guides"
+            tabindex="0">
+        Guides
+      </span>
+    
+    </li>
+  
+    <li class="devsite-nav-item devsite-nav-item-heading">
+    
+      <a 
+           href="https://developers.google.com/youtube/v3/docs/?nav=true"
+         
+         class="devsite-nav-responsive-tab devsite-nav-title gc-analytics-event
+                "
+         data-category="Site-Wide Custom Events" data-label="Responsive Tab: Reference">
+        Reference
+      </a>
+      
+      
+    
+    </li>
+  
+    <li class="devsite-nav-item devsite-nav-item-heading">
+    
+      <a 
+           href="https://developers.google.com/youtube/v3/code_samples/?nav=true"
+         
+         class="devsite-nav-responsive-tab devsite-nav-title gc-analytics-event
+                "
+         data-category="Site-Wide Custom Events" data-label="Responsive Tab: Samples">
+        Samples
+      </a>
+      
+      
+    
+    </li>
+  
+    <li class="devsite-nav-item devsite-nav-item-heading">
+    
+      <a 
+           href="https://developers.google.com/youtube/v3/support?nav=true"
+         
+         class="devsite-nav-responsive-tab devsite-nav-title gc-analytics-event
+                "
+         data-category="Site-Wide Custom Events" data-label="Responsive Tab: Support">
+        Support
+      </a>
+      
+      
+    
+    </li>
+  
+  
+    <li class="devsite-nav-item devsite-nav-item-heading">
+      <a href="https://developers.google.com/products/"
+         class="devsite-nav-responsive-tab devsite-nav-title gc-analytics-event"
+         data-category="Site-Wide Custom Events"
+         data-label="Responsive Tab: all_products">
+        All Products
+      </a>
+    </li>
+  
+  </ul>
+</nav>
+
+
+    
+  </div>
+  
+  
+  <div class="devsite-nav-responsive-sidebar-panel">
+    
+    <div class="devsite-nav-responsive-back" tabindex="0"></div>
+    
+    <nav class="devsite-nav-responsive-sidebar"></nav>
+  </div>
+  
+  
+</nav>
+
+
+        <div class="devsite-main-content clearfix">
+
+        
+        
+
+        
+  
+  
+    
+    
+      
+  <nav class="devsite-section-nav devsite-nav nocontent">
+    <ul class="devsite-nav-list"><li class="devsite-nav-item"><a href="https://developers.google.com/youtube/v3/getting-started" class="devsite-nav-title">Overview</a></li><li class="devsite-nav-item"><a href="https://developers.google.com/youtube/v3/libraries" class="devsite-nav-title">Client Libraries</a></li><li class="devsite-nav-item devsite-nav-item-heading"><span class="devsite-nav-title devsite-nav-title-no-path" aria-label="Authorize Requests, click to expand/collapse" role="link">Authorize Requests</span><li class="devsite-nav-item"><a href="https://developers.google.com/youtube/v3/guides/authentication" class="devsite-nav-title">Overview</a></li><li class="devsite-nav-item"><a href="https://developers.google.com/youtube/registering_an_application" class="devsite-nav-title">Get Auth Credentials</a></li><li class="devsite-nav-item"><a href="https://developers.google.com/youtube/v3/guides/auth/server-side-web-apps" class="devsite-nav-title">Server-side Web Apps</a></li><li class="devsite-nav-item"><a href="https://developers.google.com/youtube/v3/guides/auth/client-side-web-apps" class="devsite-nav-title">Client-side Web Apps</a></li><li class="devsite-nav-item devsite-nav-active"><a href="https://developers.google.com/youtube/v3/guides/auth/installed-apps" class="devsite-nav-title">Installed Apps</a></li><li class="devsite-nav-item"><a href="https://developers.google.com/youtube/v3/guides/auth/devices" class="devsite-nav-title">Devices</a></li></li><li class="devsite-nav-item devsite-nav-item-heading"><span class="devsite-nav-title devsite-nav-title-no-path" aria-label="Quickstarts, click to expand/collapse" role="link">Quickstarts</span><li class="devsite-nav-item"><a href="https://developers.google.com/youtube/v3/quickstart/android" class="devsite-nav-title">Android</a></li><li class="devsite-nav-item"><a href="https://developers.google.com/youtube/v3/quickstart/apps-script" class="devsite-nav-title">Apps Script</a></li><li class="devsite-nav-item"><a href="https://developers.google.com/youtube/v3/quickstart/go" class="devsite-nav-title">Go</a></li><li class="devsite-nav-item"><a href="https://developers.google.com/youtube/v3/quickstart/ios" class="devsite-nav-title">iOS</a></li><li class="devsite-nav-item"><a href="https://developers.google.com/youtube/v3/quickstart/java" class="devsite-nav-title">Java</a></li><li class="devsite-nav-item"><a href="https://developers.google.com/youtube/v3/quickstart/js" class="devsite-nav-title">JavaScript</a></li><li class="devsite-nav-item"><a href="https://developers.google.com/youtube/v3/quickstart/nodejs" class="devsite-nav-title">Node.js</a></li><li class="devsite-nav-item"><a href="https://developers.google.com/youtube/v3/quickstart/php" class="devsite-nav-title">PHP</a></li><li class="devsite-nav-item"><a href="https://developers.google.com/youtube/v3/quickstart/python" class="devsite-nav-title">Python</a></li><li class="devsite-nav-item"><a href="https://developers.google.com/youtube/v3/quickstart/ruby" class="devsite-nav-title">Ruby</a></li></li><li class="devsite-nav-item devsite-nav-item-heading"><span class="devsite-nav-title devsite-nav-title-no-path" aria-label="Guides and Tutorials, click to expand/collapse" role="link">Guides and Tutorials</span><li class="devsite-nav-item"><a href="https://developers.google.com/youtube/v3/guides/uploading_a_video" class="devsite-nav-title">Upload a Video</a></li><li class="devsite-nav-item"><a href="https://developers.google.com/youtube/v3/guides/using_resumable_upload_protocol" class="devsite-nav-title">Send Resumable Uploads</a></li><li class="devsite-nav-item"><a href="https://developers.google.com/youtube/v3/guides/push_notifications" class="devsite-nav-title">Subscribe to Push Notifications</a></li><li class="devsite-nav-item"><a href="https://developers.google.com/youtube/v3/guides/working_with_channel_ids" class="devsite-nav-title">Work with Channel IDs</a></li><li class="devsite-nav-item"><a href="https://developers.google.com/youtube/v3/guides/moving_to_oauth" class="devsite-nav-title">Move from ClientLogin to OAuth</a></li></li><li class="devsite-nav-item"><a href="https://developers.google.com/youtube/v3/sample_requests" class="devsite-nav-title">Sample Requests</a></li><li class="devsite-nav-item devsite-nav-item-heading"><span class="devsite-nav-title devsite-nav-title-no-path" aria-label="Implementation and Migration Guide, click to expand/collapse" role="link">Implementation and Migration Guide</span><li class="devsite-nav-item"><a href="https://developers.google.com/youtube/v3/guides/implementation" class="devsite-nav-title">Overview</a></li><li class="devsite-nav-item"><a href="https://developers.google.com/youtube/v3/guides/implementation/activities" class="devsite-nav-title">Activities</a></li><li class="devsite-nav-item"><a href="https://developers.google.com/youtube/v3/guides/implementation/captions" class="devsite-nav-title">Captions</a></li><li class="devsite-nav-item"><a href="https://developers.google.com/youtube/v3/guides/implementation/channels" class="devsite-nav-title">Channels (profiles)</a></li><li class="devsite-nav-item"><a href="https://developers.google.com/youtube/v3/guides/implementation/comments" class="devsite-nav-title">Comments</a></li><li class="devsite-nav-item"><a href="https://developers.google.com/youtube/v3/guides/implementation/favorites" class="devsite-nav-title">Favorites</a></li><li class="devsite-nav-item"><a href="https://developers.google.com/youtube/v3/guides/implementation/pagination" class="devsite-nav-title">Pagination</a></li><li class="devsite-nav-item"><a href="https://developers.google.com/youtube/v3/guides/implementation/partial" class="devsite-nav-title">Partial responses</a></li><li class="devsite-nav-item"><a href="https://developers.google.com/youtube/v3/guides/implementation/playlists" class="devsite-nav-title">Playlists</a></li><li class="devsite-nav-item"><a href="https://developers.google.com/youtube/v3/guides/implementation/ratings" class="devsite-nav-title">Ratings</a></li><li class="devsite-nav-item"><a href="https://developers.google.com/youtube/v3/guides/implementation/search" class="devsite-nav-title">Search requests</a></li><li class="devsite-nav-item"><a href="https://developers.google.com/youtube/v3/guides/implementation/subscriptions" class="devsite-nav-title">Subscriptions</a></li><li class="devsite-nav-item"><a href="https://developers.google.com/youtube/v3/guides/implementation/videos" class="devsite-nav-title">Videos</a></li><li class="devsite-nav-item"><a href="https://developers.google.com/youtube/v3/guides/implementation/new_in_v3" class="devsite-nav-title">New features</a></li><li class="devsite-nav-item"><a href="https://developers.google.com/youtube/v3/guides/implementation/deprecated" class="devsite-nav-title">Deprecated</a></li></li><li class="devsite-nav-item devsite-nav-item-heading"><span class="devsite-nav-title devsite-nav-title-no-path" aria-label="Tools, click to expand/collapse" role="link">Tools</span><li class="devsite-nav-item"><a href="https://developers.google.com/youtube/v3/determine_quota_cost" class="devsite-nav-title">Quota Calculator</a></li><li class="devsite-nav-item devsite-nav-external devsite-nav-has-status"><a href="https://developers.google.com/apis-explorer/#p/youtube/v3/" class="devsite-nav-title"><span class="devsite-nav-text">APIs Explorer</span><span class="devsite-nav-icon-wrapper"><span class="devsite-nav-icon material-icons" title="External"></span></span></a></li></li></ul>
+  </nav>
+
+    
+
+    
+  <nav class="devsite-page-nav devsite-nav"></nav>
+
+
+      <article class="devsite-article">
+        <article class="devsite-article-inner">
+  
+          
+  
+
+
+
+  
+  <nav class="devsite-breadcrumb-nav devsite-nav">
+    
+
+
+<ul class="devsite-breadcrumb-list">
+  
+  <li class="devsite-breadcrumb-item">
+    
+    
+    <a href="https://developers.google.com/products/" class="devsite-breadcrumb-link gc-analytics-event"
+       data-category="Site-Wide Custom Events" data-label="Breadcrumbs"
+       data-value="1">
+    
+    
+      Products
+    
+    
+    </a>
+    
+  </li>
+  
+  <li class="devsite-breadcrumb-item">
+    
+    
+    <div class="devsite-breadcrumb-guillemet material-icons"></div>
+    
+    
+    <a href="https://developers.google.com/youtube/" class="devsite-breadcrumb-link gc-analytics-event"
+       data-category="Site-Wide Custom Events" data-label="Breadcrumbs"
+       data-value="2">
+    
+    
+      YouTube
+    
+    
+    </a>
+    
+  </li>
+  
+  <li class="devsite-breadcrumb-item">
+    
+    
+    <div class="devsite-breadcrumb-guillemet material-icons"></div>
+    
+    
+    <a href="https://developers.google.com/youtube/v3/" class="devsite-breadcrumb-link gc-analytics-event"
+       data-category="Site-Wide Custom Events" data-label="Breadcrumbs"
+       data-value="3">
+    
+    
+      Data API
+    
+    
+    </a>
+    
+  </li>
+  
+  <li class="devsite-breadcrumb-item">
+    
+    
+    <div class="devsite-breadcrumb-guillemet material-icons"></div>
+    
+    
+    <a href="https://developers.google.com/youtube/v3/getting-started" class="devsite-breadcrumb-link gc-analytics-event"
+       data-category="Site-Wide Custom Events" data-label="Breadcrumbs"
+       data-value="4">
+    
+    
+      Guides
+    
+    
+    </a>
+    
+  </li>
+  
+</ul>
+
+  </nav>
+  
+  
+  <h1 itemprop="name" class="devsite-page-title">
+    OAuth 2.0 for Mobile &amp; Desktop Apps
+  </h1>
+  
+  
+  <nav class="devsite-page-nav-embedded devsite-nav"></nav>
+  
+  <div class="devsite-article-body clearfix
+            "
+       itemprop="articleBody">
+    
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<p class="note"><b>Note:</b> If you are new to OAuth 2.0, we recommend that
+you read the <a href="https://developers.google.com/youtube/v3/guides/authentication">OAuth 2.0 overview</a>
+before getting started. The overview summarizes OAuth 2.0 flows that Google
+supports, which can help you to ensure that you've selected the right flow
+for your application.</p>
+<p>
+
+  This document explains how applications installed on devices like phones,
+  tablets, and computers use Google's OAuth 2.0 endpoints to authorize access
+  to Google APIs.
+
+OAuth 2.0 allows users to share specific data with an application while
+keeping their usernames, passwords, and other information private.
+
+For example, an application can use OAuth 2.0 to obtain permission
+to upload videos to a user's YouTube channel.
+
+
+<p>Installed apps are distributed to individual devices, and it is assumed
+that these apps cannot keep secrets. They can access Google APIs while the
+user is present at the app or when the app is running in the background.</p>
+
+<p>This authorization flow is similar to the one used for
+<a href="https://developers.google.com/youtube/v3/guides/auth/server-side-web-apps">web server applications</a>. The main
+difference is that installed apps must open the system browser and supply a
+local redirect URI to handle responses from Google's authorization server.</p>
+
+
+
+<p><b>Alternatives</b></p>
+<p>For mobile apps, you may prefer to use Google Sign-in for
+<a href="https://developers.google.com/identity/sign-in/android/">Android</a>
+or <a href="https://developers.google.com/identity/sign-in/ios/">iOS</a>.
+The Google Sign-in client libraries handle authentication and user
+authorization, and they may be simpler to implement than the lower-level
+protocol described here.</p>
+
+<p>For apps running on devices that do not support a system browser or
+   that have limited input capabilities, such as TVs, game consoles, cameras,
+   or printers, see <a href="https://developers.google.com/identity/protocols/OAuth2ForDevices">OAuth 2.0
+   for TVs &amp; Devices</a> or
+   <a href="https://developers.google.com/identity/sign-in/devices/">Google
+   Sign-in for devices</a>.</p>
+
+
+
+<h2 id="libraries">Libraries and samples</h2>
+<p>We recommend the following libraries and samples to help you implement
+the OAuth 2.0 flow described in this document:</p>
+
+<ul>
+  <li><a href="//openid.github.io/AppAuth-Android">AppAuth for Android</a>
+      library and
+      <a href="https://codelabs.developers.google.com/codelabs/appauth-android-codelab/">codelab</a>)</li>
+  <li><a href="//openid.github.io/AppAuth-iOS">AppAuth for iOS</a> library</li>
+  <li><a href="//github.com/googlesamples/oauth-apps-for-windows">OAuth for Apps: Windows Samples</a></li>
+</ul>
+
+
+
+<h2 id="prerequisites">Prerequisites</h2>
+
+
+<h3 id="enable-apis">Enable APIs for your project</h3>
+<p>Any application that calls Google APIs needs to enable those APIs in the
+API Console. To enable APIs for your project:</p>
+
+<ol>
+  <li>Open the <a href="https://console.developers.google.com/apis/library">Library</a> page in the
+    API Console.</li>
+  <li>Select the project associated with your application. Create a project if
+    you do not have one already.</li>
+
+  <li>Use the <b>Library</b> page to find and enable the
+    YouTube Data API. Find any other APIs that your application will
+    use and enable those, too.
+  </li>
+
+</ol>
+
+
+
+
+<h3 id="creatingcred">Create authorization credentials</h3>
+<p>Any application that uses OAuth 2.0 to access Google APIs must have
+authorization credentials that identify the application to Google's OAuth 2.0
+server. The following steps explain how to create credentials for your project.
+Your applications can then use the credentials to access APIs that you have
+enabled for that project.</p>
+
+
+
+<ol>
+  
+
+
+
+
+
+
+
+  <li>Open the <a href="https://console.developers.google.com/apis/credentials">Credentials page</a> in the API Console.</li>
+
+  <li>Click <b>Create credentials > OAuth client ID</b>.</li>
+  <li>Complete the form. The sections below describe the redirect methods that
+      Google's authorization server supports. Choose the one that is
+      recommended for your application and set the other fields in the form
+      as appropriate.
+
+      <ul>
+<li id="redirect-uri_custom-scheme">
+<p><b>Option 1: Custom URI scheme (Android, iOS, UWP)</b></p>
+
+<table class="responsive details">
+  <tr>
+    <td><b>Recommended usage</b></td>
+    <td>Android apps, iOS apps, Universal Windows Platform (UWP) apps</td>
+  </tr>
+  <tr>
+    <td><b>Form values</b></td>
+    <td>Set the application type to <b>Android</b> for Android apps and
+        to <b>iOS</b> otherwise. Also set the package name or bundle ID
+        &ndash; the field that is present depends on the application type
+        &ndash; to the custom URI scheme that you will use in the redirect
+        (e.g. <var>com.example.app</var>).<br><br>
+        For UWP apps, the scheme cannot be longer than 39 characters.</td>
+  </tr>
+</table>
+<p class="note"><b>Note:</b> See the
+<code><a href="#request-parameter-redirect_uri">redirect_uri</a></code>
+parameter definition for details about the format of the custom URI scheme
+value. In addition, the <a href="#libraries">libraries and samples</a>
+demonstrate some platform-specific implementations of custom URI scheme
+redirects.</p>
+</li>
+
+
+
+<li id="redirect-uri_loopback">
+<p><b>Option 2: Loopback IP address (macOS, Linux, Windows desktop)</b></p>
+<p>To receive the authorization code using this URL, your application
+   must be listening on the local web server. That is possible on many,
+   but not all, platforms. However, if your platform supports it, this
+   is the recommended mechanism for obtaining the authorization code.</p>
+
+<p>When your app receives the authorization response, for best usability it
+   should respond by displaying an HTML page that instructs the user to close
+   the browser and return to your app.</p>
+
+<table class="responsive details">
+  <tr>
+    <td><b>Recommended usage</b></td>
+    <td>macOS, Linux, and Windows desktop (but not Universal Windows Platform) apps</td>
+  </tr>
+  <tr>
+    <td><b>Form values</b></td>
+    <td>Set the application type to <b>Other</b>.</td>
+  </tr>
+</table>
+
+<p class="note"><b>Note:</b> See the
+<code><a href="#request-parameter-redirect_uri">redirect_uri</a></code>
+parameter definition for more information about the loopback IP address. It is
+also possible to use <code>localhost</code> in place of the loopback IP, but
+this may cause issues with client firewalls. Most, but not all, firewalls allow
+loopback communication.</p><br>
+</li>
+
+<li><p><b>Option 3: Manual copy/paste</b></p>
+  <p class="warning"><b>Important:</b> The
+     <a href="#redirect-uri_custom-scheme">custom URI scheme</a> and
+     <a href="#redirect-uri_loopback">loopback IP address</a> options now
+     provide more reliable, secure, and user-friendly ways to obtain user
+     authorization. This option may be discontinued in the future and should
+     only be used if the choices above are not viable.</p>
+  <section class="expandable">
+    <h4 id="redirect-uri_oob-manual" class="showalways">See manual copy/paste details</h4>
+    <p>This redirect method returns the authorization code in the HTML page's
+      <code>&lt;title&gt;</code> field and also displays the code to the user,
+      as shown in the image below. The user must then manually copy and paste
+      the code into your application.</p>
+
+    <img src="https://developers.google.com/accounts/images/installedresult.png"/>
+
+    <p>Traditionally, apps that used this option programmatically extracted the
+       authorization code from the HTML page. The copy/paste option served
+       as a fallback in case the value could not be parsed.</p>
+
+    <table class="responsive details">
+      <tr>
+        <td><b>Recommended usage</b></td>
+        <td>Platforms that cannot support an automatic browser redirect via
+            a <a href="#redirect-uri_custom-scheme">custom URI scheme</a> or
+            <a href="#redirect-uri_loopback">loopback IP address</a>. Note
+            that in most cases where the platform does not have a usable
+            browser, the <a href="https://developers.google.com/youtube/v3/guides/auth/devices">OAuth 2.0 for
+            TVs &amp; Devices</a> flow is recommended.</td>
+      </tr>
+      <tr>
+        <td><b>Form values</b></td>
+        <td>Set the application type to <b>Other</b>.</td>
+      </tr>
+    </table>
+  </section>
+</li>
+
+<li><p><b>Option 4: Programmatic extraction</b></p>
+  <p class="warning"><b>Important:</b> This method is identical to the manual
+     copy/paste method described above <i>except</i> the confirmation page does
+     not instruct the user to copy the authorization code. Instead, the page
+     just asks the user to close the window.<br><br>
+     This option is
+     <a href="https://developers.googleblog.com/2016/08/modernizing-oauth-interactions-in-native-apps.html">deprecated</a>
+     for OAuth 2.0 to Google. It was designed for embedded browsers, or
+     web-views. The <a href="#redirect-uri_custom-scheme">custom URI scheme</a>
+     and <a href="#redirect-uri_loopback">loopback IP address</a> options now
+     provide more reliable, secure, and user-friendly ways to obtain user
+     authorization.</p>
+
+  <section class="expandable">
+    <h4 id="redirect-uri_oob-manual" class="showalways">See programmatic extraction details</h4>
+
+    <table class="responsive details">
+      <tr>
+        <td><b>Recommended usage</b></td>
+        <td>Platforms that would use the manual copy/paste method but are
+            unequivocally able to extract the authorization code from the
+            redirect HTML page. In other words, you might use this method
+            on a platform that does not support a
+            <a href="#redirect-uri_custom-scheme">custom URI scheme</a> or
+            <a href="#redirect-uri_loopback">loopback IP address</a> but does
+            still enable the client to inspect the title of the redirect HTML
+            page.</td>
+      </tr>
+      <tr>
+        <td><b>Form values</b></td>
+        <td>Set the application type to <b>Other</b>.</td>
+      </tr>
+    </table>
+  </section>
+</li>
+
+</ul>
+
+  </li>
+</ol>
+ 
+
+
+<h3 id="identify-access-scopes">Identify access scopes</h3>
+
+<p>Scopes enable your application to only request access to the resources that
+it needs while also enabling users to control the amount of access that they
+grant to your application. Thus, there may be an inverse relationship between
+the number of scopes requested and the likelihood of obtaining user consent.</p>
+
+<p>Before you start implementing OAuth 2.0 authorization, we recommend that you
+identify the scopes that your app will need permission to access.</p>
+
+
+
+
+
+
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+        <p>The YouTube Data API uses the following scopes:</p>
+    
+    
+<table class="responsive">
+  <tr><th colspan="2">Scopes</th></tr>
+  <tr><td>https://www.googleapis.com/auth/youtube</td><td>Manage your YouTube account</td></tr>
+  <tr><td>https://www.googleapis.com/auth/youtube.force-ssl</td><td>Manage your YouTube account</td></tr>
+  <tr><td>https://www.googleapis.com/auth/youtube.readonly</td><td>View your YouTube account</td></tr>
+  <tr><td>https://www.googleapis.com/auth/youtube.upload</td><td>Manage your YouTube videos</td></tr>
+  <tr><td>https://www.googleapis.com/auth/youtubepartner</td><td>View and manage your assets and associated content on YouTube</td></tr>
+  <tr><td>https://www.googleapis.com/auth/youtubepartner-channel-audit</td><td>View private information of your YouTube channel relevant during the audit process with a YouTube partner</td></tr>
+</table>
+
+
+    
+
+    
+
+    
+
+
+<p>The <a href="https://developers.google.com/identity/protocols/googlescopes">OAuth 2.0 API Scopes</a>
+document contains a full list of scopes that you might use to access Google
+APIs.</p>
+
+
+<p class="note"><b>Note:</b> Incremental authorization is not supported for
+installed apps or devices.</p>
+
+
+ 
+
+ 
+
+
+
+
+<h2 id="obtainingaccesstokens">Obtaining OAuth 2.0 access tokens</h2>
+
+<p>The following steps show how your application interacts with Google's OAuth
+2.0 server to obtain a user's consent to perform an API request on the user's
+behalf. Your application must have that consent before it can execute a Google
+API request that requires user authorization.</p>
+
+
+
+
+
+
+
+
+
+
+
+  <h3>Step 1: Send a request to Google's OAuth 2.0 server</h3>
+
+  <p>To obtain user authorization, send a request to Google's authorization
+server at <code>https://accounts.google.com/o/oauth2/v2/auth</code>. This
+endpoint handles active session lookup, authenticates the user, and obtains
+user consent. The endpoint is only accessible over SSL, and it refuses HTTP
+(non-SSL) connections.</p>
+
+<p>The authorization server supports the following query string parameters
+for installed applications:</p>
+
+<table class="responsive details">
+  <th colspan="2">Parameters</th>
+  <tr id="request-parameter-client_id">
+    <td><code>client_id</code></td>
+    <td><b>Required</b>. The client ID for your application. You can find
+    this value in the <a href="https://console.developers.google.com/">API Console</a>.</td>
+  </tr>
+
+  <tr id="request-parameter-redirect_uri">
+    <td><code>redirect_uri</code></td>
+    <td><b>Required</b>. 
+    
+    Determines how Google's authorization server sends a response to your
+    app. There are several redirect options available to installed apps, and
+    you will have set up your
+    <a href="#creatingcred">authorization credentials</a> with a particular
+    redirect method in mind.<br><br>
+    The table below shows the appropriate <code>redirect_uri</code> parameter
+    value for each method:
+    <table>
+      <tr>
+        <th colspan="2" style="height: 36px">
+          <code style="color: #fff">redirect_uri</code> values
+        </th>
+      </tr>
+      <tr>
+        <td><b>Custom URI scheme</b></td>
+        <td>
+          <code><span class="code-var-color">com.example.app</span>:<span class="code-var-color">redirect_uri_path</span></code>
+          <ul>
+            <li><code class="code-var-color">com.example.app</code> is the
+              reverse DNS notation of a domain under your control. The custom
+              scheme must contain a period to be valid.</li>
+            <li><code class="code-var-color">redirect_uri_path</code> is an
+              optional path component, such as <code>/oauth2redirect</code>.
+              Note that the path should begin with a single slash, which is
+              different from regular HTTP URLs.</li>
+          </ul>
+        </td>
+      </tr>
+      <tr>
+        <td><b>Loopback IP address</b></td>
+        <td>
+          <code>http://127.0.0.1:<span class="code-var-color">port</span></code>
+          or
+          <code>http://[::1]:<span class="code-var-color">port</span></code>
+          <br><br>
+          Query your platform for the relevant loopback IP address and start
+          an HTTP listener on a random available port. Substitute
+          <var>port</var> with the actual port number your app is listening on.
+        </td>
+      </tr>
+      <tr>
+        <td><b>Manual copy/paste</b></td>
+        <td><code>urn:ietf:wg:oauth:2.0:oob</code></td>
+      </tr>
+      <tr>
+        <td><b>Programmatic extraction</b></td>
+        <td><code>urn:ietf:wg:oauth:2.0:oob:auto</code></td>
+      </tr>
+    </table>
+    
+    </td>
+  </tr>
+  <tr id="request-parameter-response_type">
+    <td><code>response_type</code></td>
+    <td><b>Required</b>. 
+      
+        Determines whether the Google OAuth 2.0 endpoint returns an
+        authorization code. 
+        
+          Set the parameter value to <code>code</code> for installed
+          applications.
+        
+      
+    </td>
+  </tr>
+
+  <tr id="request-parameter-scope">
+    <td id="scope"><code>scope</code></td>
+    <td><b>Required</b>. A space-delimited list of scopes that identify the
+    resources that your application could access on the user's behalf. These
+    values inform the consent screen that Google displays to the user.<br><br>
+    Scopes enable your application to only request access to the resources that
+    it needs while also enabling users to control the amount of access that
+    they grant to your application. Thus, there is an inverse relationship
+    between the number of scopes requested and the likelihood of obtaining user
+    consent.
+    
+    
+
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+        <p>The YouTube Data API uses the following scopes:</p>
+    
+    
+<table class="responsive">
+  <tr><th colspan="2">Scopes</th></tr>
+  <tr><td>https://www.googleapis.com/auth/youtube</td><td>Manage your YouTube account</td></tr>
+  <tr><td>https://www.googleapis.com/auth/youtube.force-ssl</td><td>Manage your YouTube account</td></tr>
+  <tr><td>https://www.googleapis.com/auth/youtube.readonly</td><td>View your YouTube account</td></tr>
+  <tr><td>https://www.googleapis.com/auth/youtube.upload</td><td>Manage your YouTube videos</td></tr>
+  <tr><td>https://www.googleapis.com/auth/youtubepartner</td><td>View and manage your assets and associated content on YouTube</td></tr>
+  <tr><td>https://www.googleapis.com/auth/youtubepartner-channel-audit</td><td>View private information of your YouTube channel relevant during the audit process with a YouTube partner</td></tr>
+</table>
+
+
+    
+
+    
+
+    
+    
+    The <a href="https://developers.google.com/identity/protocols/googlescopes">OAuth 2.0 API Scopes</a>
+    document provides a full list of scopes that you might use to access
+    Google APIs.
+    
+
+</td>
+  </tr>
+
+
+  <tr id="request-parameter-state">
+    <td><code>state</code></td>
+    <td><b>Recommended</b>. Specifies any string value that your application
+    uses to maintain state between your authorization request and the
+    authorization server's response. The server returns the exact value that
+    you send as a <code class="notranslate">name=value</code> pair in the hash
+    (<code class="notranslate">#</code>) fragment of the
+    <code class="notranslate">redirect_uri</code> after the user consents
+    to or denies your application's access request.<br><br>
+    You can use this parameter for several purposes, such as directing the
+    user to the correct resource in your application, sending nonces, and
+    mitigating cross-site request forgery. Since your <code>redirect_uri</code>
+    can be guessed, using a <code>state</code> value can increase your
+    assurance that an incoming connection is the result of an authentication
+    request. If you generate a random string or encode the hash of a cookie or
+    another value that captures the client's state, you can validate the
+    response to additionally ensure that the request and response originated
+    in the same browser, providing protection against attacks such as
+    cross-site request forgery. See the <a
+    href="https://developers.google.com/identity/protocols/OpenIDConnect#createxsrftoken">OpenID Connect</a>
+    documentation for an example of how to create and confirm a
+    <code>state</code> token.</td>
+    
+  </tr>
+
+
+
+  <tr id="request-parameter-login_hint">
+    <td><code>login_hint</code></td>
+    <td><b>Optional</b>. If your application knows which user is trying to
+    authenticate, it can use this parameter to provide a hint to the Google
+    Authentication Server.  The server uses the hint to simplify the login
+    flow either by prefilling the email field in the sign-in form or by
+    selecting the appropriate multi-login session.<br><br>
+    Set the parameter value to an email address or <code>sub</code>
+    identifier.</td>
+    
+  </tr>
+
+
+
+
+</table>
+
+
+<p class="note"><b>Note:</b> Due to the fact that the client cannot keep the
+<code>client_secret</code> confidential, you cannot do incremental authorization
+with installed apps.</p>
+
+
+
+<h4>Sample authorization URLs</h4>
+
+<p>The tabs below show sample authorization URLs for the different redirect
+URI options.
+
+
+
+Each URL requests access to a scope that permits access to view the user's
+YouTube account.
+
+
+The URLs are identical except for the value of the <code>redirect_uri</code>
+parameter. The URLs also contain the required <code>response_type</code> and
+<code>client_id</code> parameters as well as the optional <code>state</code>
+parameter. Each URL contains line breaks and spaces for readability.
+</p>
+
+<div class="ds-selector-dropdown" data-ds-scope="lang">
+<section>
+<h3 class="hide-from-toc">Custom URI scheme</h3>
+
+<pre>https://accounts.google.com/o/oauth2/v2/auth?
+&nbsp;scope=https%3A%2F%2Fwww.googleapis.com%2Fauth%2Fyoutube.readonly&
+&nbsp;response_type=code&
+&nbsp;state=security_token%3D138r5719ru3e1%26url%3Dhttps://oauth2.example.com/token&
+&nbsp;redirect_uri=<b>com.example.app:/oauth2redirect</b>&
+&nbsp;client_id=<var>client_id</var></pre>
+</section>
+<section>
+<h3 class="hide-from-toc">Loopback IP address</h3>
+
+<pre>https://accounts.google.com/o/oauth2/v2/auth?
+&nbsp;scope=https%3A%2F%2Fwww.googleapis.com%2Fauth%2Fyoutube.readonly&
+&nbsp;response_type=code&
+&nbsp;state=security_token%3D138r5719ru3e1%26url%3Dhttps://oauth2.example.com/token&
+&nbsp;redirect_uri=<b>http://127.0.0.1:9004</b>&
+&nbsp;client_id=<var>client_id</var></pre>
+</section>
+<section>
+<h3 class="hide-from-toc">Copy/Paste</h3>
+<p class="warning"><b>Important:</b> This redirect URI option uses practices
+that may be less secure or user-friendly than other options.</p>
+
+<pre>https://accounts.google.com/o/oauth2/v2/auth?
+&nbsp;scope=https%3A%2F%2Fwww.googleapis.com%2Fauth%2Fyoutube.readonly&
+&nbsp;response_type=code&
+&nbsp;state=security_token%3D138r5719ru3e1%26url%3Dhttps://oauth2.example.com/token&
+&nbsp;redirect_uri=<b>urn:ietf:wg:oauth:2.0:oob</b>&
+&nbsp;client_id=<var>client_id</var></pre>
+</section>
+<section>
+<h3 class="hide-from-toc">Programmatic extraction</h3>
+<p class="warning"><b>Important:</b> This redirect URI option, which is
+designed for embedded browsers, is deprecated. Like the copy/paste option,
+it uses practices that may be less secure or user-friendly than other
+options.</p>
+
+<pre>https://accounts.google.com/o/oauth2/v2/auth?
+&nbsp;scope=https%3A%2F%2Fwww.googleapis.com%2Fauth%2Fyoutube.readonly&
+&nbsp;response_type=code&
+&nbsp;state=security_token%3D138r5719ru3e1%26url%3Dhttps://oauth2.example.com/token&
+&nbsp;redirect_uri=<b>urn:ietf:wg:oauth:2.0:oob:auto</b>&
+&nbsp;client_id=<var>client_id</var></pre>
+</section>
+</div>
+
+
+
+
+
+ 
+
+
+<h3 id="handlingresponse">Step 2: Google prompts user for consent</h3>
+
+<p>In this step, the user decides whether to grant your application the
+requested access. At this stage, Google displays a consent window that shows
+the name of your application and the Google API services that it is requesting
+permission to access with the user's authorization credentials. The user can
+then consent or refuse to grant access to your application.</p>
+
+<p>Your application doesn't need to do anything at this stage as it waits for
+the response from Google's OAuth 2.0 server indicating whether the access was
+granted. That response is explained in the following step.</p>
+
+ 
+
+
+
+
+<h3 id="handlingresponse">Step 3: Handle the OAuth 2.0 server response</h3>
+
+<p>The manner in which your application receives the authorization response
+   depends on the <a href="#creatingcred">redirect URI scheme</a> that
+   it uses. Regardless of the scheme, the response will either contain an
+   authorization code (<code>code</code>) or an error (<code>error</code>).
+   For example, <code>error=access_denied</code> indicates that the user
+   declined the request.</p>
+
+<p>If the user grants access to your application, you can exchange the
+   authorization code for an access token and a refresh token as described
+   in the next step.</p>
+
+ 
+
+<h3 id="exchange-authorization-code">Step 4: Exchange authorization code for refresh and access tokens</h3>
+
+
+
+
+
+
+  <p>To exchange an authorization code for an access token, call the
+<code>https://www.googleapis.com/oauth2/v4/token</code> endpoint and set the following parameters:</p>
+
+<table class="responsive">
+  <tr>
+    <th colspan="2">Fields</th>
+  </tr>
+  <tr>
+    <td><code>code</code></td>
+    <td>The authorization code returned from the initial request.</td>
+  </tr>
+  <tr>
+    <td><code>client_id</code></td>
+    <td>The client ID obtained from the <a href="https://console.developers.google.com/">API Console</a>.</td>
+  </tr>
+  <tr>
+    <td><code>client_secret</code></td>
+    <td>The client secret obtained from the <a href="https://console.developers.google.com/">API Console</a>.
+
+This value is not needed for clients registered as Android, iOS, or Chrome
+applications.
+
+</td>
+  </tr>
+  <tr>
+    <td><code>redirect_uri</code></td>
+    <td>One of the redirect URIs listed for your project in the
+    <a href="https://console.developers.google.com/">API Console</a>.</td>
+  </tr>
+  <tr>
+    <td><code>grant_type</code></td>
+    <td>As defined in the OAuth 2.0 specification, this field must contain a
+    value of <code>authorization_code</code>.</td>
+  </tr>
+</table>
+
+<p>The following snippet shows a sample request:</p>
+
+<pre class="notranslate">POST /oauth2/v4/token HTTP/1.1
+Host: www.googleapis.com
+Content-Type: application/x-www-form-urlencoded
+
+code=4/P7q7W91a-oMsCeLvIaQm6bTrgtp7&
+client_id=<var class="apiparam">your_client_id</var>&
+client_secret=<var class="apiparam">your_client_secret</var>&
+redirect_uri=https://oauth2.example.com/code&
+grant_type=authorization_code</pre>
+
+<p>Google responds to this request by returning a JSON object that contains a
+short-lived access token and a refresh token.
+
+</p>
+
+<p>The response contains the following fields:</p>
+
+<table class="responsive details">
+  <tr>
+    <th colspan="2">Fields</th>
+  </tr>
+  <tr>
+    <td><code>access_token</code></td>
+    <td>The token that your application sends to authorize a Google API
+    request.</td>
+  </tr>
+
+
+  <tr>
+    <td><code>id_token</code></td>
+    <td><b>Note:</b> This property is only returned if your request included
+        an identity scope, such as <code>openid</code>,
+        <code>profile</code>, or <code>email</code>. The value is a JSON Web
+        Token (JWT) that contains digitally signed identity information about
+        the user.</td>
+  </tr>
+
+  <tr>
+    <td><code>refresh_token</code></td>
+    <td>A token that you can use to obtain a new access token. Refresh tokens
+        are valid until the user revokes access.
+    
+        Note that refresh tokens are always returned for installed applications.
+    
+    </td>
+  </tr>
+  <tr>
+    <td><code>expires_in</code></td>
+    <td>The remaining lifetime of the access token in seconds.</td>
+  </tr>
+  <tr>
+    <td><code>token_type</code></td>
+    <td>The type of token returned. At this time, this field's value is always
+    set to <code>Bearer</code>.</td>
+  </tr>
+</table>
+
+
+<p class="note"><b>Important:</b> Your application should store both
+tokens in a secure, long-lived location that is accessible between different
+invocations of your application. The refresh token enables your application
+to obtain a new access token if the one that you have expires. As such, if
+your application loses the refresh token, the user will need to repeat the
+OAuth 2.0 consent flow so that your application can obtain a new refresh
+token.</p>
+
+
+<p>The following snippet shows a sample response:</p>
+
+<pre>{
+  "access_token":"1/fFAGRNJru1FTz70BzhT3Zg",
+  "expires_in":3920,
+  "token_type":"Bearer",
+  "refresh_token":"1/xEoDL4iW3cxlI7yDbSRFYNG01kVKM2C-259HOF2aQbI"
+}</pre>
+
+<aside class="note"><strong>Note</strong>: Your application should ignore any
+unrecognized fields included in the response.</aside>
+
+
+
+ 
+
+
+
+
+
+<h2 id="callinganapi">Calling Google APIs</h2>
+
+ 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<p>After your application obtains an access token, you can use the token to
+make calls to a Google API on behalf of a given user account or service
+account. To do this, include the access token in a request to the API by
+including either an <code>access_token</code> query parameter or an
+<code>Authorization: Bearer</code> HTTP header. When possible, the HTTP header
+is preferable, because query strings tend to be visible in server logs. In most
+cases you can use a client library to set up your calls to Google APIs (for
+example, when <a href="https://developers.google.com/youtube/v3/docs/">calling the
+YouTube Data API</a>).</p>
+
+
+
+<p>Note that the YouTube Data API supports service accounts only for YouTube
+content owners that own and manage multiple YouTube channels, such as record
+labels and movie studios.</p>
+
+
+
+<p>You can try out all the Google APIs and view their scopes at the <a href="https://developers.google.com/oauthplayground/">OAuth 2.0 Playground</a>.</p>
+
+<h4>HTTP GET examples</h4>
+<p>A call to the <a href="https://developers.google.com/youtube/v3/docs/channels/list"><code>youtube.channels</code></a> endpoint (the YouTube Data API) using the <code>Authorization: Bearer</code> HTTP header might look like the following. Note that you need to specify your own access token:<p>
+<pre>
+GET /youtube/v3/channels?part=snippet&mine=true HTTP/1.1
+Authorization: Bearer <code class="code-var-color">&lt;access_token&gt;</code>
+Host: www.googleapis.com/
+</pre>
+<p>Here is a call to the same API for the authenticated user using the
+<code>access_token</code> query string parameter:</p>
+<pre>
+GET https://www.googleapis.com/youtube/v3/channels?access_token=<code class="code-var-color">&lt;access_token&gt;</code>&part=snippet&mine=true
+</pre>
+
+<h4><code>curl</code> examples</h4>
+<p>You can test these commands with the <code>curl</code> command-line application. Here's an example that uses the HTTP header option (preferred):
+<pre>
+curl -H "Authorization: Bearer <code class="code-var-color">&lt;access_token&gt;</code>" https://www.googleapis.com/youtube/v3/channels?part=snippet&mine=true
+</pre>
+<p>Or, alternatively, the query string parameter option:</p>
+<pre>
+curl https://www.googleapis.com/youtube/v3/channels?access_token=<code class="code-var-color">&lt;access_token&gt;</code>&part=snippet&mine=true
+</pre>
+
+ 
+
+ 
+ 
+
+
+<h2 id="offline">Refreshing an access token</h2>
+
+
+
+<p>Access tokens periodically expire. You can refresh an access token without
+prompting the user for permission (including when the user is not present) if
+you requested offline access to the scopes associated with the token.</p>
+
+
+
+ 
+  <p>To refresh an access token, your application sends an HTTPS <code class="notranslate">POST</code> request to Google's authorization server (<code>https://www.googleapis.com/oauth2/v4/token</code>) that includes the following parameters:
+
+<table class="responsive">
+  <th colspan="2">Fields</th>
+  <tr>
+    <td><code>refresh_token</code></td>
+    <td>The refresh token returned from the authorization code exchange.</td>
+  </tr>
+  <tr>
+    <td><code>client_id</code></td>
+    <td>The client ID obtained from the <a href="https://console.developers.google.com/">API Console</a>.</td>
+  </tr>
+  <tr>
+    <td><code>client_secret</code></td>
+    <td>The client secret obtained from the <a href="https://console.developers.google.com/">API Console</a>.
+
+(The <code>client_secret</code> is not applicable to requests from clients
+registered as Android, iOS, or Chrome applications.)
+
+    </td>
+  </tr>
+    <td><code>grant_type</code></td>
+    <td>As defined in the OAuth 2.0 specification, this field must contain a
+    value of <code>refresh_token</code>.</td>
+  </tr>
+</table>
+
+<p>The following snippet shows a sample request:</p>
+
+<pre class="notranslate">
+POST /oauth2/v4/token HTTP/1.1
+Host: www.googleapis.com
+Content-Type: application/x-www-form-urlencoded
+
+client_id=<code class="code-var-color">&lt;your_client_id&gt;</code>&amp;
+client_secret=<code class="code-var-color">&lt;your_client_secret&gt;</code>&amp;
+refresh_token=<code class="code-var-color">&lt;refresh_token&gt;</code>&amp;
+grant_type=refresh_token
+</pre>
+
+<p>As long as the user has not revoked the access granted to the application,
+the token server returns a JSON object that contains a new access token.
+The following snippet shows a sample response:</p>
+
+<pre class="notranslate">
+{
+  "access_token":"1/fFAGRNJru1FTz70BzhT3Zg",
+  "expires_in":3920,
+  "token_type":"Bearer"
+}
+</pre>
+
+<p>Note that there are limits on the number of refresh tokens that will be issued; one limit per client/user combination, and another per user across all clients. You should save refresh tokens in long-term storage and continue to use them as long as they remain valid. If your application requests too many refresh tokens, it may run into these limits, in which case older refresh tokens will stop working.</p>
+
+
+
+
+
+<h2 id="tokenrevoke">Revoking a token</h2>
+<p>In some cases a user may wish to revoke access given to an application. A
+user can revoke access by visiting
+<a href="https://security.google.com/settings/security/permissions" target="_blank">Account Settings</a>.
+It is also possible for an application to programmatically revoke the access
+given to it. Programmatic revocation is important in instances where a user
+unsubscribes or removes an application. In other words, part of the removal
+process can include an API request to ensure the permissions granted to the
+application are removed.</p>
+
+
+
+
+
+  <p>To programmatically revoke a token, your application makes a request to
+<code>https://accounts.google.com/o/oauth2/revoke</code> and includes the token
+as a parameter:</p>
+<pre>curl -H "Content-type:application/x-www-form-urlencoded" \
+        https://accounts.google.com/o/oauth2/revoke?token={token}</pre>
+
+<p>The token can be an access token or a refresh token. If the token is an
+access token and it has a corresponding refresh token, the refresh token will
+also be revoked.</p>
+
+
+
+<p>If the revocation is successfully processed, then the status code of the
+response is <code>200</code>. For error conditions, a status code
+<code>400</code> is returned along with an error code.</p>
+
+
+
+
+
+
+
+<aside class="note"><b>Note:</b> Following a successful revocation response, it
+might take some time before the revocation has full effect.</aside>
+
+
+
+
+
+  <h2 id="further_reading">Further Reading</h2>
+
+  <p>The Internet-Draft Best Current Practice:
+     <a href="https://tools.ietf.org/html/draft-ietf-oauth-native-apps">OAuth 2.0 for Apps</a>
+      establishes many of the best practices documented here.</p>
+
+
+
+  </div>
+  
+
+  
+        
+  
+
+
+
+
+
+
+
+        
+<div class="devsite-content-footer nocontent">
+  
+  
+    <p>Except as otherwise noted, the content of this page is licensed under the <a href="http://creativecommons.org/licenses/by/3.0/">Creative Commons Attribution 3.0 License</a>, and code samples are licensed under the <a href="http://www.apache.org/licenses/LICENSE-2.0">Apache 2.0 License</a>. For details, see our <a href="https://developers.google.com/terms/site-policies">Site Policies</a>. Java is a registered trademark of Oracle and/or its affiliates.</p>
+  
+
+  
+    
+    <p class="devsite-content-footer-date" itemprop="datePublished"
+       content="2017-02-09T18:08:18.022460">
+      
+      Last updated February 9, 2017.
+    </p>
+  
+
+</div>
+
+        </article>
+      </article>
+  
+
+        </div>
+      
+
+<footer class="devsite-footer-promos nocontent"><nav class="devsite-full-site-width"><ul class="devsite-footer-promos-list"><li class="devsite-footer-promo"><a href="http://apiblog.youtube.com"
+           class="devsite-footer-promo-title gc-analytics-event"
+           data-category="Site-Wide Custom Events"
+           data-label="Content Page Footer Promo"
+           ><img class="devsite-footer-promo-icon" src="https://www.gstatic.com/images/icons/material/product/2x/blogger_64dp.png">
+          
+          
+            Blog
+          
+        </a><div class="devsite-footer-promo-description">The latest news on the YouTube API blog</div></li><li class="devsite-footer-promo"><a href="https://github.com/youtube/api-samples"
+           class="devsite-footer-promo-title gc-analytics-event"
+           data-category="Site-Wide Custom Events"
+           data-label="Content Page Footer Promo"
+           ><img class="devsite-footer-promo-icon" src="https://developers.google.com/site-assets/logo-github.svg">
+          
+          
+            GitHub
+          
+        </a><div class="devsite-footer-promo-description">Find API code samples and other YouTube open-source projects.</div></li><li class="devsite-footer-promo"><a href="https://code.google.com/p/gdata-issues/issues/entry?template=YouTube%20(Defect%20Report)"
+           class="devsite-footer-promo-title gc-analytics-event"
+           data-category="Site-Wide Custom Events"
+           data-label="Content Page Footer Promo"
+           ><img class="devsite-footer-promo-icon" src="https://developers.google.com/site-assets/developers_64dp.png">
+          
+          
+            Issue Tracker
+          
+        </a><div class="devsite-footer-promo-description">Something wrong? Send us a bug report!</div></li><li class="devsite-footer-promo"><a href="http://stackoverflow.com/questions/ask?tags=youtube-api"
+           class="devsite-footer-promo-title gc-analytics-event"
+           data-category="Site-Wide Custom Events"
+           data-label="Content Page Footer Promo"
+           ><img class="devsite-footer-promo-icon" src="https://developers.google.com/site-assets/logo-stack-overflow.svg">
+          
+          
+            Stack Overflow
+          
+        </a><div class="devsite-footer-promo-description">Ask a question under the youtube-api tag</div></li><li class="devsite-footer-promo"><a href="https://www.youtube.com/user/YouTubeDev"
+           class="devsite-footer-promo-title gc-analytics-event"
+           data-category="Site-Wide Custom Events"
+           data-label="Content Page Footer Promo"
+           ><img class="devsite-footer-promo-icon" src="https://www.gstatic.com/images/icons/material/product/2x/youtube_64dp.png">
+          
+          
+            Videos
+          
+        </a><div class="devsite-footer-promo-description">Check out the YouTube Developer Relations team&#39;s YouTube channel</div></li></ul></nav></footer><footer class="devsite-footer-linkboxes nocontent
+               
+               devsite-footer-linkboxes-with-sites"><nav class="devsite-full-site-width"><ul class="devsite-footer-linkboxes-list"><li class="devsite-footer-linkbox "><h3 class="devsite-footer-linkbox-heading">Tools</h3><ul class="devsite-footer-linkbox-list"><li class="devsite-footer-linkbox-item"><a href="https://developers.google.com/apis-explorer/#p/" class="gc-analytics-event"
+               data-category="Site-Wide Custom Events"
+               data-label="Content Page Footer Linkbox">
+                Google APIs Explorer
+            </a></li><li class="devsite-footer-linkbox-item"><a href="https://developers.google.com/youtube/youtube_player_demo" class="gc-analytics-event"
+               data-category="Site-Wide Custom Events"
+               data-label="Content Page Footer Linkbox">
+                YouTube Player Demo
+            </a></li><li class="devsite-footer-linkbox-item"><a href="https://developers.google.com/youtube/youtube_subscribe_button" class="gc-analytics-event"
+               data-category="Site-Wide Custom Events"
+               data-label="Content Page Footer Linkbox">
+                Configure a Subscribe Button
+            </a></li></ul></li><li class="devsite-footer-linkbox "><h3 class="devsite-footer-linkbox-heading">Issue Tracker</h3><ul class="devsite-footer-linkbox-list"><li class="devsite-footer-linkbox-item"><a href="https://code.google.com/p/gdata-issues/issues/entry?template=YouTube%20(Defect%20Report)" class="gc-analytics-event"
+               data-category="Site-Wide Custom Events"
+               data-label="Content Page Footer Linkbox">
+                File a bug
+            </a></li><li class="devsite-footer-linkbox-item"><a href="https://code.google.com/p/gdata-issues/issues/entry?template=YouTube%20(Enhancement%20Request)" class="gc-analytics-event"
+               data-category="Site-Wide Custom Events"
+               data-label="Content Page Footer Linkbox">
+                Request a feature
+            </a></li><li class="devsite-footer-linkbox-item"><a href="https://code.google.com/p/gdata-issues/issues/list?q=label:API-YouTube" class="gc-analytics-event"
+               data-category="Site-Wide Custom Events"
+               data-label="Content Page Footer Linkbox">
+                See open issues
+            </a></li></ul></li><li class="devsite-footer-linkbox "><h3 class="devsite-footer-linkbox-heading">Product Info</h3><ul class="devsite-footer-linkbox-list"><li class="devsite-footer-linkbox-item"><a href="https://developers.google.com/youtube/terms" class="gc-analytics-event"
+               data-category="Site-Wide Custom Events"
+               data-label="Content Page Footer Linkbox">
+                Terms of Service
+            </a></li><li class="devsite-footer-linkbox-item"><a href="https://developers.google.com/youtube/branding_guidelines" class="gc-analytics-event"
+               data-category="Site-Wide Custom Events"
+               data-label="Content Page Footer Linkbox">
+                Branding Guidelines
+            </a></li><li class="devsite-footer-linkbox-item"><a href="https://developers.google.com/youtube/creating_monetizable_applications" class="gc-analytics-event"
+               data-category="Site-Wide Custom Events"
+               data-label="Content Page Footer Linkbox">
+                Monetization Guidelines
+            </a></li><li class="devsite-footer-linkbox-item"><a href="https://developers.google.com/youtube/youtube-api-list" class="gc-analytics-event"
+               data-category="Site-Wide Custom Events"
+               data-label="Content Page Footer Linkbox">
+                APIs subject to Deprecation Policy
+            </a></li></ul></li><li class="devsite-footer-linkbox devsite-footer-linkbox-sites"><a href="https://developers.google.com/"
+           class="gc-analytics-event devsite-footer-linkbox-logo-link"
+           data-category="Site-Wide Custom Events" data-label="Footer Google Developers Link"><img class="devsite-footer-linkbox-logo"
+               src="https://developers.google.com/_static/d7147bb846/images/redesign-14/lockup-color-knockout.png"
+               alt="Google Developers"></a><ul class="devsite-footer-linkbox-list"><li class="devsite-footer-linkbox-item"><a href="//developer.android.com/index.html" class="gc-analytics-event"
+               data-category="Site-Wide Custom Events"
+               data-label="Footer Android Link">
+                Android
+            </a></li><li class="devsite-footer-linkbox-item"><a href="//developer.chrome.com/home" class="gc-analytics-event"
+               data-category="Site-Wide Custom Events"
+               data-label="Footer Chrome Link">
+                Chrome
+            </a></li><li class="devsite-footer-linkbox-item"><a href="//firebase.google.com" class="gc-analytics-event"
+               data-category="Site-Wide Custom Events"
+               data-label="Footer Firebase Link">
+                Firebase
+            </a></li><li class="devsite-footer-linkbox-item"><a href="//cloud.google.com" class="gc-analytics-event"
+               data-category="Site-Wide Custom Events"
+               data-label="Footer Cloud Link">
+                Google Cloud Platform
+            </a></li><li class="devsite-footer-linkbox-item"><a href="//developers.google.com/products/" class="gc-analytics-event"
+               data-category="Site-Wide Custom Events"
+               data-label="Footer Products Link">
+                All Products
+            </a></li></ul></li></ul></nav></footer><footer class="devsite-utility-footer"><nav class="devsite-utility-footer-nav devsite-nav devsite-full-site-width"><div class="devsite-utility-footer-nav-left"><form class="devsite-utility-footer-language" action="/i18n/setlang/" method="post"><input type="hidden" name="xsrf_token" value="IU7ZWgm4q1VmyTLO5yv_Bsu1B3yisBbWg6xijFkj28M6MTUyNDQ1ODMxNzQ3OTY4MA" /><input type="hidden" name="next" value="/youtube/v3/guides/auth/installed-apps"><select class="devsite-utility-footer-language-select kd-select" name="language"
+                track-type="languageSelector" track-name="click"><option value="id"
+                
+                track-type="languageSelector" track-name="changed"
+                track-metadata-original-language="en"
+                track-metadata-selected-language="id">
+            Bahasa Indonesia
+          </option><option value="de"
+                
+                track-type="languageSelector" track-name="changed"
+                track-metadata-original-language="en"
+                track-metadata-selected-language="de">
+            Deutsch
+          </option><option value="en"
+                 selected="selected" 
+                track-type="languageSelector" track-name="changed"
+                track-metadata-original-language="en"
+                track-metadata-selected-language="en">
+            English
+          </option><option value="es"
+                
+                track-type="languageSelector" track-name="changed"
+                track-metadata-original-language="en"
+                track-metadata-selected-language="es">
+            español
+          </option><option value="fr"
+                
+                track-type="languageSelector" track-name="changed"
+                track-metadata-original-language="en"
+                track-metadata-selected-language="fr">
+            français
+          </option><option value="pt-br"
+                
+                track-type="languageSelector" track-name="changed"
+                track-metadata-original-language="en"
+                track-metadata-selected-language="pt-br">
+            Português Brasileiro
+          </option><option value="ru"
+                
+                track-type="languageSelector" track-name="changed"
+                track-metadata-original-language="en"
+                track-metadata-selected-language="ru">
+            Русский
+          </option><option value="ja"
+                
+                track-type="languageSelector" track-name="changed"
+                track-metadata-original-language="en"
+                track-metadata-selected-language="ja">
+            日本語
+          </option><option value="zh-cn"
+                
+                track-type="languageSelector" track-name="changed"
+                track-metadata-original-language="en"
+                track-metadata-selected-language="zh-cn">
+            简体中文
+          </option><option value="ko"
+                
+                track-type="languageSelector" track-name="changed"
+                track-metadata-original-language="en"
+                track-metadata-selected-language="ko">
+            한국어
+          </option></select></form><span class="devsite-utility-footer-links"><a class="devsite-utility-footer-link gc-analytics-event"
+           href="https://developers.google.com/terms/site-terms"
+           data-category="Site-Wide Custom Events"
+           data-label="Footer terms link"
+           data-footer-link-id="terms"
+           >Terms
+         </a><a class="devsite-utility-footer-link gc-analytics-event"
+           href="//www.google.com/policies/privacy/"
+           data-category="Site-Wide Custom Events"
+           data-label="Footer privacy link"
+           data-footer-link-id="privacy"
+           >Privacy
+         </a></span></div><div class="devsite-utility-footer-nav-right"><div class="devsite-utility-footer-newsletter-signup-text">
+        Sign up for the Google Developers newsletter
+      </div><a class="button button-primary devsite-utility-footer-newsletter-signup-button"
+         href="//services.google.com/fb/forms/googledevelopersnewsletter/?utm_medium=referral&amp;utm_source=google-products&amp;utm_team=googledevs&amp;utm_campaign=201611-newsletter-launch">
+        
+        Subscribe
+      </a></div></nav></footer><div class="devsite-feedback-dialog devsite-dialog"><div class="devsite-dialog-contents"><h3>Send feedback about...</h3><div class="devsite-feedback-item"><a data-type="documentation" class="gc-analytics-event"
+           data-category="Site-Wide Custom Events" data-label="Docs Feedback Image"
+           track-type="feedback" track-name="feedbackDocIcon" track-metadata-position="header"><div class="devsite-feedback-item-icon-container"><div class="devsite-feedback-item-icon-white devsite-feedback-item-icon-docs
+                        material-icons"></div></div></a><div class="devsite-feedback-item-name">
+          
+          This page
+        </div><div class="devsite-feedback-item-description"><a data-type="documentation" tabindex="0" class="gc-analytics-event"
+             data-category="Site-Wide Custom Events" data-label="Docs Feedback Text"
+             track-type="feedback" track-name="feedbackDocText" track-metadata-position="header">
+            
+            Documentation feedback
+          </a></div></div><div class="devsite-feedback-item"><a data-type="product" tabindex="0" class="gc-analytics-event"
+           data-category="Site-Wide Custom Events" data-label="Product Feedback Image"
+           track-type="feedback" track-name="feedbackProductIcon" track-metadata-position="header"
+         ><img src="https://developers.google.com/site-assets/logo-youtube.svg"
+                 class="devsite-feedback-item-icon"
+                 alt="YouTube Data API"></a><div class="devsite-feedback-item-name">
+        YouTube Data API
+        </div><div class="devsite-feedback-item-description"><a data-type="product" tabindex="0" class="gc-analytics-event"
+             data-category="Site-Wide Custom Events" data-label="Product Feedback Text"
+             track-type="feedback" track-name="feedbackProductText" track-metadata-position="header"
+           >
+            
+            Product feedback
+          </a></div></div></div><div class="devsite-dialog-buttons"><button type="button" class="devsite-feedback-cancel button-white gc-analytics-event"
+              data-category="Site-Wide Custom Events" data-label="Cancel Feedback Button"
+              track-type="feedback" track-name="cancelFeedbackButton"
+              track-metadata-position="header">
+        
+        Cancel
+      </button></div></div><script>
+  $(document).ready(function() {
+    new devsite.feedback.Widget({
+        'product_id': '5020320',
+        'bucket': 'Default',
+        'context': '',
+        'version': 'devsite-20180420-r00-rc00.default'
+      },
+      document.querySelectorAll('.devsite-feedback-button'),
+      'en',
+      document.querySelector('.devsite-site-mask'),
+      document.querySelector('.devsite-feedback-dialog'),
+      document.querySelector('.devsite-feedback-cancel'),
+      document.querySelectorAll('.devsite-feedback-item a:not([href])')
+    );
+  });
+  </script></div><script async defer src="//www.gstatic.com/feedback/api.js"></script><script src="https://developers.google.com/_static2/d7147bb846/jsi18n/"></script><script src="https://developers.google.com/_static/d7147bb846/js/script_foot_closure.js"></script><script src="https://developers.google.com/_static/d7147bb846/js/script_foot.js"></script><script>
+        (function($) {
+          
+          devsite.devsite.Init($, {'ENABLE_BLOCKED_VIDEO_PLACEHOLDER': 0, 'SITE_NAME': 'devsite', 'FULL_SITE_SEARCH_ENABLED': 1, 'ENABLE_CLOUDTRACK': 0, 'VTAGS_ENABLED': 0, 'HISTORY_ENABLED': 1, 'VERSION_HASH': 'd7147bb846', 'SCRIPTSAFE_DOMAIN': 'google-developers.appspot.com', 'ENABLE_BLOCKED_LINK_TOOLTIP': 0, 'ALLOWED_HOSTS': ['.android.com', '.anvato.com', '.apigee.com', '.appspot.com', '.dialogflow.com', '.gonglchuangl.net', '.google.cn', '.google.com', '.googleplex.com', '.nest.com', '.openthread.io', '.openweave.io', '.orbitera.com', '.tensorflow.org'], 'BLOCK_RSS_FEEDS': 0},
+                               '[]','en',
+                               true, '',
+                               {"f62218c009ec029abef196bba5aa34cf": true, "8de7a048f21618359bd37f5ce44be073": false, "098dafe57affddc137df300142652cfd": false, "8e03e230de0bd8a6fe173fdf172e8b3f": true, "cb025a64a50094835616312f4774a53d": true, "51470233c56fc1fde50f00b73c52b216": false, "d169d485cf24243a263783dbe42029b1": true, "039e5d84b87fd75807ffb37b7f1bbf2c": true, "700def1a83e356c06c0925afb05de4b0": false, "6749dcb526ce9bde6993550c7d928d24": true}, '/youtube/v3/',
+                               'https://developers.google.com/');
+        })(jQuery);
+
+        
+        devsite.localInit = function() {
+          
+        };
+
+      </script><script>
+      $('.devsite-utility-footer-language-select').each(function() {
+        $(this).change(function(){$('.devsite-utility-footer-language').submit();});
+      });
+      </script></div><span id="devsite-request-elapsed" data-request-elapsed="280.349969864"></span></body></html>

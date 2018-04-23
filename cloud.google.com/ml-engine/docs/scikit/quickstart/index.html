@@ -1,0 +1,2591 @@
+
+
+
+
+
+
+<!DOCTYPE html><html lang="en"
+      class="chekov"><head><script>var a=window.devsite||{};window.devsite=a;a.readyCallbacks=[];window.devsite.readyCallbacks=a.readyCallbacks;a.ready=function(b){a.readyCallbacks.push(b)};window.devsite.ready=a.ready;
+</script><meta charset="utf-8"><meta name="xsrf_token" content="ejYWdDLt_JLmDnnHrrpOVGlSyWIU-l48BQBKLzG7dlc6MTUyNDQ1ODI1MzIwNjc3MA" /><link rel="canonical" href="https://cloud.google.com/ml-engine/docs/scikit/quickstart"><link rel="alternate" href="https://cloud.google.com/ml-engine/docs/scikit/quickstart" hreflang="en"><link rel="alternate" href="https://cloud.google.com/ml-engine/docs/scikit/quickstart" hreflang="x-default"><link rel="shortcut icon" href="https://cloud.google.com/_static/d7147bb846/images/cloud/icons/favicons/onecloud/favicon.ico"><link rel="apple-touch-icon" href="https://cloud.google.com/_static/d7147bb846/images/cloud/icons/favicons/onecloud/apple-icon.png"><meta name="viewport" content="width=device-width, initial-scale=1"><link rel="stylesheet"
+      
+      href="//fonts.googleapis.com/css?family=Google+Sans:400|Roboto:400,400italic,500,500italic,700,700italic|Roboto+Mono:400,500,700|Material+Icons"
+      ><link rel="stylesheet"
+        href="https://cloud.google.com/_static/d7147bb846/css/devsite-cloud-white.css"><link rel="stylesheet" href="https://cloud.google.com/_static/d7147bb846/css/cloud/cloud-site.css"><link rel="search"
+        type="application/opensearchdescription+xml"
+        title="Google Cloud"
+        href="https://cloud.google.com/s/opensearch.xml"><script src="https://cloud.google.com/_static/d7147bb846/js/jquery-bundle.js"></script><meta property="og:site_name" content="Google Cloud"><meta property="og:type" content="website"><meta property="og:url" content="https://cloud.google.com/ml-engine/docs/scikit/quickstart"><meta property="og:locale" content="en"><script>
+    var ___gcfg = ___gcfg || {};
+    ___gcfg.lang = 'en';
+  </script><title>Quickstart with scikit-learn and XGBoost &nbsp;|&nbsp; Cloud ML Engine for scikit-learn &amp; XGBoost
+      &nbsp;|&nbsp; Google Cloud</title><meta property="og:title" content="Quickstart with scikit-learn and XGBoost &nbsp;|&nbsp; Cloud ML Engine for scikit-learn &amp; XGBoost
+      &nbsp;|&nbsp; Google Cloud"></head><body class="
+               devsite-doc-page
+               
+               
+               
+               
+               devsite-header-no-lower-tabs"
+        data-family="endorsed"
+        id="top_of_page"><div class="devsite-wrapper"><div class="devsite-top-section-wrapper
+            "><header class="devsite-top-section nocontent"><div class="devsite-top-logo-row-wrapper-wrapper"><div class="devsite-top-logo-row-wrapper"><div class="devsite-top-logo-row devsite-full-site-width"><button type="button" class="devsite-expand-section-nav devsite-header-icon-button
+                                       button-flat material-icons gc-analytics-event"
+                  data-category="Site-Wide Custom Events" data-label="Hamburger menu"></button><div class="devsite-product-name-wrapper"><a href="https://cloud.google.com/" class="devsite-site-logo-link gc-analytics-event"
+   data-category="Site-Wide Custom Events" data-label="Site logo"><img src="https://cloud.google.com/_static/d7147bb846/images/cloud/cloud-logo.svg"
+       class="devsite-site-logo" alt="Google Cloud"><span class="devsite-site-name devsite-product-name">Google Cloud</span></a></div><div class="devsite-header-upper-tabs"><nav class="devsite-doc-set-nav devsite-nav devsite-overflow-tabs-scroll-wrapper"><ul class="devsite-doc-set-nav-tab-list devsite-overflow-tabs-scroll"><li class="devsite-doc-set-nav-tab-container devsite-nav-tab
+               "><a href="https://cloud.google.com/why-google-cloud/"
+         class=" devsite-nav-tab
+                devsite-doc-set-nav-tab devsite-doc-set-nav-tab-link gc-analytics-event"
+         
+       
+         data-category="Site-Wide Custom Events"
+       
+         data-label="Tab: Why Google"
+       
+         track-type="globalNav"
+       
+         track-name="whyGoogle"
+       >
+        Why Google
+      </a></li><li class="devsite-doc-set-nav-tab-container devsite-nav-tab
+               "><a href="https://cloud.google.com/products/"
+         class=" devsite-nav-tab
+                devsite-doc-set-nav-tab devsite-doc-set-nav-tab-link gc-analytics-event"
+         
+       
+         data-category="Site-Wide Custom Events"
+       
+         data-label="Tab: Products"
+       
+         track-type="globalNav"
+       
+         track-name="products"
+       >
+        Products
+      </a></li><li class="devsite-doc-set-nav-tab-container devsite-nav-tab
+               "><a href="https://cloud.google.com/solutions/"
+         class=" devsite-nav-tab
+                devsite-doc-set-nav-tab devsite-doc-set-nav-tab-link gc-analytics-event"
+         
+       
+         data-category="Site-Wide Custom Events"
+       
+         data-label="Tab: Solutions"
+       
+         track-type="globalNav"
+       
+         track-name="solutions"
+       >
+        Solutions
+      </a></li><li class="devsite-doc-set-nav-tab-container devsite-nav-tab
+               "><a href="https://cloud.google.com/launcher/"
+         class=" devsite-nav-tab
+                devsite-doc-set-nav-tab devsite-doc-set-nav-tab-link gc-analytics-event"
+         
+       
+         data-category="Site-Wide Custom Events"
+       
+         data-label="Tab: Launcher"
+       
+         track-type="globalNav"
+       
+         track-name="launcher"
+       >
+        Launcher
+      </a></li><li class="devsite-doc-set-nav-tab-container devsite-nav-tab
+               "><a href="https://cloud.google.com/pricing/"
+         class=" devsite-nav-tab
+                devsite-doc-set-nav-tab devsite-doc-set-nav-tab-link gc-analytics-event"
+         
+       
+         data-category="Site-Wide Custom Events"
+       
+         data-label="Tab: Pricing"
+       
+         track-type="globalNav"
+       
+         track-name="pricing"
+       >
+        Pricing
+      </a></li><li class="devsite-doc-set-nav-tab-container devsite-nav-tab
+               "><a href="https://cloud.google.com/security/"
+         class=" devsite-nav-tab
+                devsite-doc-set-nav-tab devsite-doc-set-nav-tab-link gc-analytics-event"
+         
+       
+         data-category="Site-Wide Custom Events"
+       
+         data-label="Tab: Security"
+       
+         track-type="globalNav"
+       
+         track-name="security"
+       >
+        Security
+      </a></li><li class="devsite-doc-set-nav-tab-container devsite-nav-tab
+               "><a href="https://cloud.google.com/customers/"
+         class=" devsite-nav-tab
+                devsite-doc-set-nav-tab devsite-doc-set-nav-tab-link gc-analytics-event"
+         
+       
+         data-category="Site-Wide Custom Events"
+       
+         data-label="Tab: Customers"
+       
+         track-type="globalNav"
+       
+         track-name="customers"
+       >
+        Customers
+      </a></li><li class="devsite-doc-set-nav-tab-container devsite-nav-tab
+               "><a href="https://cloud.google.com/docs/"
+         class="devsite-doc-set-nav-active devsite-nav-tab
+                devsite-doc-set-nav-tab devsite-doc-set-nav-tab-link gc-analytics-event"
+         aria-label="Documentation, selected"
+       
+         data-category="Site-Wide Custom Events"
+       
+         data-label="Tab: Documentation"
+       >
+        Documentation
+      </a></li><li class="devsite-doc-set-nav-tab-container devsite-nav-tab
+               "><a href="https://cloud.google.com/support/"
+         class=" devsite-nav-tab
+                devsite-doc-set-nav-tab devsite-doc-set-nav-tab-link gc-analytics-event"
+         
+       
+         data-category="Site-Wide Custom Events"
+       
+         data-label="Tab: Support"
+       
+         track-type="globalNav"
+       
+         track-name="support"
+       >
+        Support
+      </a></li><li class="devsite-doc-set-nav-tab-container devsite-nav-tab
+               "><a href="https://cloud.google.com/partners/"
+         class=" devsite-nav-tab
+                devsite-doc-set-nav-tab devsite-doc-set-nav-tab-link gc-analytics-event"
+         
+       
+         data-category="Site-Wide Custom Events"
+       
+         data-label="Tab: Partners"
+       
+         track-type="globalNav"
+       
+         track-name="partners"
+       >
+        Partners
+      </a></li></ul></nav></div><form class="devsite-search-form"
+                action="https://cloud.google.com/s/results/"
+                method="GET"
+                id="top-search"
+                search-placeholder='Search'><div id="searchbox" class="devsite-searchbox"><input placeholder='Search'
+         
+         type="text"
+         class="devsite-search-field devsite-search-query"
+         name="q"
+         value=""
+         autocomplete="off"
+         
+         aria-label="Search box"><div class="devsite-search-image material-icons"></div></div><input type="hidden"
+       name="p"
+       id="search_project"
+       value="/ml-engine/docs/scikit/"
+       data-project-name="Cloud ML Engine for scikit-learn &amp; XGBoost"
+       data-project-path="/ml-engine/docs/scikit/"
+       data-query-match=""><input type="hidden" class="suggest-project" value="Cloud ML Engine for scikit-learn &amp; XGBoost" /></form><a class="devsite-header-link devsite-top-button button gc-analytics-event"
+               href="//console.cloud.google.com/"
+               data-category="Site-Wide Custom Events"
+               data-label="Site header link"
+               track-type="navigateTo"
+               track-name="console"
+               track-metadata-position="nav"><div class="devsite-header-link-label">Console</div></a><button type="button" class="devsite-search-button devsite-header-icon-button button-flat
+                                       material-icons"></button><a href="https://www.google.com/accounts/ServiceLogin?passive=true&continue=https%3A%2F%2Fcloud.google.com%2Fml-engine%2Fdocs%2Fscikit%2Fquickstart%3Frefresh%3D1&service=cloudconsole"
+   class="devsite-user-signin devsite-top-button button gc-analytics-event"
+   data-category="Site-Wide Custom Events" data-label="Sign in button">
+  
+  Sign in
+</a></div></div></div><div class="devsite-collapsible-section"><div class="devsite-header-background devsite-full-site-width"><div class="devsite-product-id-row devsite-full-site-width"><div class="devsite-product-description-row"><ul class="devsite-breadcrumb-list"><li class="devsite-breadcrumb-item">
+    
+    
+    
+      Documentation
+    
+    
+  </li></ul></div><div class="devsite-product-button-row
+            cloud-free-trial-eligible"><button type="button" id="devsite-feedback-project"
+          class="devsite-feedback-button devsite-top-button gc-analytics-event"
+          data-category="Site-Wide Custom Events" data-label="Send Feedback Button"
+          track-type="feedback" track-name="sendFeedbackLink" track-metadata-position="header">
+  
+  Send feedback
+  </button><a
+    
+      href="https://console.cloud.google.com/freetrial"
+    
+    
+      class="cloud-free-trial-button button-primary button"
+    
+    
+      
+      track-type="freeTrial"
+      
+      track-name="try"
+      
+      track-metadata-position="nav"
+      
+    >
+    Try It Free
+  </a><a
+    
+      href="https://cloud.google.com/contact/"
+    
+    
+      class="cloud-contact-sales-button button"
+    
+    
+      
+      track-type="sales"
+      
+      track-name="contact"
+      
+      track-metadata-position="nav"
+      
+    >
+    Contact Sales
+  </a></div></div></div></div></header><script>
+    if (window.jQuery) {
+      $(document).ready(function() {
+        if (window.devsite && window.devsite.search) {
+          
+          window.devsite.search.init('en')
+        }
+      });
+    }
+  </script></div><div id="gc-wrapper"itemscope itemtype="http://schema.org/Article"><input class="google-tag-manager-id" type="hidden" value="GTM-5CVQBG"><script>
+      var dataLayer = [{"freeTrialEligibleUser": "True", "userCountry": "HK", "language": {"requested": "en", "served": "en"}, "projectName": "Cloud ML Engine for scikit-learn & XGBoost", "scriptsafe": null, "signedIn": "False", "internalUser": "False"}];
+    </script>
+
+      
+        <div class="devsite-site-mask"></div>
+        
+  
+
+
+<nav class="devsite-nav-responsive devsite-nav nocontent" tabindex="0">
+  
+  <div class="devsite-nav-responsive-tabs-panel">
+    
+      
+        
+
+
+
+<nav class="devsite-nav-responsive-tabs devsite-nav">
+  <ul class="devsite-nav-list">
+  
+    <li class="devsite-nav-item devsite-nav-item-heading">
+    
+      <a 
+           href="https://cloud.google.com/why-google-cloud/?nav=true"
+         
+         class="devsite-nav-responsive-tab devsite-nav-title gc-analytics-event
+                "
+         data-category="Site-Wide Custom Events" data-label="Responsive Tab: Why Google">
+        Why Google
+      </a>
+      
+      
+    
+    </li>
+  
+    <li class="devsite-nav-item devsite-nav-item-heading">
+    
+      <a 
+           href="https://cloud.google.com/products/?nav=true"
+         
+         class="devsite-nav-responsive-tab devsite-nav-title gc-analytics-event
+                "
+         data-category="Site-Wide Custom Events" data-label="Responsive Tab: Products">
+        Products
+      </a>
+      
+      
+    
+    </li>
+  
+    <li class="devsite-nav-item devsite-nav-item-heading">
+    
+      <a 
+           href="https://cloud.google.com/solutions/?nav=true"
+         
+         class="devsite-nav-responsive-tab devsite-nav-title gc-analytics-event
+                "
+         data-category="Site-Wide Custom Events" data-label="Responsive Tab: Solutions">
+        Solutions
+      </a>
+      
+      
+    
+    </li>
+  
+    <li class="devsite-nav-item devsite-nav-item-heading">
+    
+      <a 
+           href="https://cloud.google.com/launcher/?nav=true"
+         
+         class="devsite-nav-responsive-tab devsite-nav-title gc-analytics-event
+                "
+         data-category="Site-Wide Custom Events" data-label="Responsive Tab: Launcher">
+        Launcher
+      </a>
+      
+      
+    
+    </li>
+  
+    <li class="devsite-nav-item devsite-nav-item-heading">
+    
+      <a 
+           href="https://cloud.google.com/pricing/?nav=true"
+         
+         class="devsite-nav-responsive-tab devsite-nav-title gc-analytics-event
+                "
+         data-category="Site-Wide Custom Events" data-label="Responsive Tab: Pricing">
+        Pricing
+      </a>
+      
+      
+    
+    </li>
+  
+    <li class="devsite-nav-item devsite-nav-item-heading">
+    
+      <a 
+           href="https://cloud.google.com/security/?nav=true"
+         
+         class="devsite-nav-responsive-tab devsite-nav-title gc-analytics-event
+                "
+         data-category="Site-Wide Custom Events" data-label="Responsive Tab: Security">
+        Security
+      </a>
+      
+      
+    
+    </li>
+  
+    <li class="devsite-nav-item devsite-nav-item-heading">
+    
+      <a 
+           href="https://cloud.google.com/customers/?nav=true"
+         
+         class="devsite-nav-responsive-tab devsite-nav-title gc-analytics-event
+                "
+         data-category="Site-Wide Custom Events" data-label="Responsive Tab: Customers">
+        Customers
+      </a>
+      
+      
+    
+    </li>
+  
+    <li class="devsite-nav-item devsite-nav-item-heading">
+    
+      <span class="devsite-nav-responsive-forward devsite-nav-responsive-tab devsite-nav-title
+                   devsite-nav-active gc-analytics-event"
+            data-category="Site-Wide Custom Events" data-label="Responsive Tab: Documentation"
+            tabindex="0">
+        Documentation
+      </span>
+    
+    </li>
+  
+    <li class="devsite-nav-item devsite-nav-item-heading">
+    
+      <a 
+           href="https://cloud.google.com/support/?nav=true"
+         
+         class="devsite-nav-responsive-tab devsite-nav-title gc-analytics-event
+                "
+         data-category="Site-Wide Custom Events" data-label="Responsive Tab: Support">
+        Support
+      </a>
+      
+      
+    
+    </li>
+  
+    <li class="devsite-nav-item devsite-nav-item-heading">
+    
+      <a 
+           href="https://cloud.google.com/partners/?nav=true"
+         
+         class="devsite-nav-responsive-tab devsite-nav-title gc-analytics-event
+                "
+         data-category="Site-Wide Custom Events" data-label="Responsive Tab: Partners">
+        Partners
+      </a>
+      
+      
+    
+    </li>
+  
+  
+    <li class="devsite-nav-item devsite-nav-item-heading">
+      <a href="//console.cloud.google.com/"
+         class="devsite-nav-responsive-tab devsite-nav-title gc-analytics-event"
+         data-category="Site-Wide Custom Events"
+         data-label="Responsive Tab: console">
+        Console
+      </a>
+    </li>
+  
+  </ul>
+</nav>
+
+
+      
+    
+  </div>
+  
+  
+  <div class="devsite-nav-responsive-sidebar-panel">
+    
+    <div class="devsite-nav-responsive-back" tabindex="0"></div>
+    
+    <nav class="devsite-nav-responsive-sidebar"></nav>
+  </div>
+  
+  
+    <div class="devsite-nav-responsive-index-panel">
+      <div class="devsite-nav-index-back" tabindex="0"></div>
+      <nav>
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+      </nav>
+    </div>
+  
+</nav>
+
+
+        <div class="devsite-main-content clearfix">
+
+        
+        
+
+        
+  
+  
+    
+    
+      
+  <nav class="devsite-section-nav devsite-nav nocontent">
+    <ul class="devsite-nav-list devsite-nav-expandable"><li class="devsite-nav-item devsite-nav-item-heading"><span class="devsite-nav-title devsite-nav-title-no-path" track-type="leftNav" track-name="expandNavSectionNoLink" track-metadata-position="0">Cloud ML Engine for scikit-learn &amp; XGBoost</span></li><li class="devsite-nav-item"><a href="https://cloud.google.com/ml-engine/" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="0" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">Product Overview</a></li><li class="devsite-nav-item"><a href="https://cloud.google.com/ml-engine/docs/" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="0" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">Machine Learning Framework Choices</a></li><li class="devsite-nav-item"><a href="https://cloud.google.com/ml-engine/docs/scikit/" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="0" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">Documentation</a></li><li class="devsite-nav-item devsite-nav-active"><a href="https://cloud.google.com/ml-engine/docs/scikit/quickstart" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="0" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">Quickstart</a></li><li class="devsite-nav-item devsite-nav-item-heading"><span class="devsite-nav-title devsite-nav-title-no-path" track-type="leftNav" track-name="expandNavSectionNoLink" track-metadata-position="0">How-to Guides</span></li><li class="devsite-nav-item"><a href="https://cloud.google.com/ml-engine/docs/scikit/how-tos" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="0" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">All Guides</a></li><li class="devsite-nav-item"><a href="https://cloud.google.com/ml-engine/docs/scikit/getting-predictions" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="0" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">Getting Predictions</a></li><li class="devsite-nav-item"><a href="https://cloud.google.com/ml-engine/docs/scikit/using-pipelines" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="0" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">Using scikit-learn Pipelines</a></li><li class="devsite-nav-item"><a href="https://cloud.google.com/ml-engine/docs/scikit/working-with-cloud-storage" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="0" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">Working with Cloud Storage</a></li><li class="devsite-nav-item"><a href="https://cloud.google.com/ml-engine/docs/scikit/versioning" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="0" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">Versioning Overview</a></li><li class="devsite-nav-item"><a href="https://cloud.google.com/ml-engine/docs/scikit/runtime-version-list" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="0" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">Runtime Version List</a></li><li class="devsite-nav-item"><a href="https://cloud.google.com/ml-engine/docs/scikit/troubleshooting" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="0" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">Troubleshooting</a></li><li class="devsite-nav-item devsite-nav-item-heading"><span class="devsite-nav-title devsite-nav-title-no-path" track-type="leftNav" track-name="expandNavSectionNoLink" track-metadata-position="0">APIs &amp; Reference</span></li><li class="devsite-nav-item"><a href="https://cloud.google.com/ml-engine/reference/" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="0" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">All Reference Docs</a></li><li class="devsite-nav-item devsite-nav-item-section-expandable"><span class="devsite-nav-title devsite-nav-title-no-path" track-type="leftNav" track-name="expandNavSectionNoLink"track-metadata-position="0" aria-label="Command-Line Reference, click to expand/collapse" role="link">Command-Line Reference</span><a class="devsite-nav-toggle devsite-nav-toggle-collapsed material-icons" track-type="leftNav" track-name="expandNavSectionArrow" track-metadata-position="0" aria-hidden="true"></a><ul class="devsite-nav-section devsite-nav-section-collapsed"><li class="devsite-nav-item"><a href="https://cloud.google.com/sdk/gcloud/reference/ml-engine" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="1" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">gcloud ml-engine</a></li></ul></li><li class="devsite-nav-item devsite-nav-item-section-expandable"><span class="devsite-nav-title devsite-nav-title-no-path" track-type="leftNav" track-name="expandNavSectionNoLink"track-metadata-position="0" aria-label="JSON Reference, click to expand/collapse" role="link">JSON Reference</span><a class="devsite-nav-toggle devsite-nav-toggle-collapsed material-icons" track-type="leftNav" track-name="expandNavSectionArrow" track-metadata-position="0" aria-hidden="true"></a><ul class="devsite-nav-section devsite-nav-section-collapsed"><li class="devsite-nav-item"><a href="https://cloud.google.com/ml-engine/reference/rest" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="1" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">Overview</a></li><li class="devsite-nav-item devsite-nav-item-section-expandable"><span class="devsite-nav-title devsite-nav-title-no-path" track-type="leftNav" track-name="expandNavSectionNoLink"track-metadata-position="1" aria-label="v1, click to expand/collapse" role="link">v1</span><a class="devsite-nav-toggle devsite-nav-toggle-collapsed material-icons" track-type="leftNav" track-name="expandNavSectionArrow" track-metadata-position="1" aria-hidden="true"></a><ul class="devsite-nav-section devsite-nav-section-collapsed"><li class="devsite-nav-item devsite-nav-item-heading"><span class="devsite-nav-title devsite-nav-title-no-path" track-type="leftNav" track-name="expandNavSectionNoLink" track-metadata-position="2">REST Resources</span></li><li class="devsite-nav-item devsite-nav-item-section-expandable"><span class="devsite-nav-title devsite-nav-title-no-path" track-type="leftNav" track-name="expandNavSectionNoLink"track-metadata-position="2" aria-label="projects, click to expand/collapse" role="link">projects</span><a class="devsite-nav-toggle devsite-nav-toggle-collapsed material-icons" track-type="leftNav" track-name="expandNavSectionArrow" track-metadata-position="2" aria-hidden="true"></a><ul class="devsite-nav-section devsite-nav-section-collapsed"><li class="devsite-nav-item"><a href="https://cloud.google.com/ml-engine/reference/rest/v1/projects" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="3" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">Overview</a></li><li class="devsite-nav-item"><a href="https://cloud.google.com/ml-engine/reference/rest/v1/projects/getConfig" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="3" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">getConfig</a></li><li class="devsite-nav-item"><a href="https://cloud.google.com/ml-engine/reference/rest/v1/projects/predict" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="3" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">predict</a></li></ul></li><li class="devsite-nav-item devsite-nav-item-section-expandable"><span class="devsite-nav-title devsite-nav-title-no-path" track-type="leftNav" track-name="expandNavSectionNoLink"track-metadata-position="2" aria-label="projects.jobs, click to expand/collapse" role="link">projects.jobs</span><a class="devsite-nav-toggle devsite-nav-toggle-collapsed material-icons" track-type="leftNav" track-name="expandNavSectionArrow" track-metadata-position="2" aria-hidden="true"></a><ul class="devsite-nav-section devsite-nav-section-collapsed"><li class="devsite-nav-item"><a href="https://cloud.google.com/ml-engine/reference/rest/v1/projects.jobs" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="3" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">Overview</a></li><li class="devsite-nav-item"><a href="https://cloud.google.com/ml-engine/reference/rest/v1/projects.jobs/cancel" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="3" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">cancel</a></li><li class="devsite-nav-item"><a href="https://cloud.google.com/ml-engine/reference/rest/v1/projects.jobs/create" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="3" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">create</a></li><li class="devsite-nav-item"><a href="https://cloud.google.com/ml-engine/reference/rest/v1/projects.jobs/get" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="3" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">get</a></li><li class="devsite-nav-item"><a href="https://cloud.google.com/ml-engine/reference/rest/v1/projects.jobs/getIamPolicy" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="3" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">getIamPolicy</a></li><li class="devsite-nav-item"><a href="https://cloud.google.com/ml-engine/reference/rest/v1/projects.jobs/list" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="3" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">list</a></li><li class="devsite-nav-item"><a href="https://cloud.google.com/ml-engine/reference/rest/v1/projects.jobs/setIamPolicy" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="3" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">setIamPolicy</a></li><li class="devsite-nav-item"><a href="https://cloud.google.com/ml-engine/reference/rest/v1/projects.jobs/testIamPermissions" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="3" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">testIamPermissions</a></li></ul></li><li class="devsite-nav-item devsite-nav-item-section-expandable"><span class="devsite-nav-title devsite-nav-title-no-path" track-type="leftNav" track-name="expandNavSectionNoLink"track-metadata-position="2" aria-label="projects.locations, click to expand/collapse" role="link">projects.locations</span><a class="devsite-nav-toggle devsite-nav-toggle-collapsed material-icons" track-type="leftNav" track-name="expandNavSectionArrow" track-metadata-position="2" aria-hidden="true"></a><ul class="devsite-nav-section devsite-nav-section-collapsed"><li class="devsite-nav-item"><a href="https://cloud.google.com/ml-engine/reference/rest/v1/projects.locations" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="3" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">Overview</a></li><li class="devsite-nav-item"><a href="https://cloud.google.com/ml-engine/reference/rest/v1/projects.locations/get" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="3" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">get</a></li><li class="devsite-nav-item"><a href="https://cloud.google.com/ml-engine/reference/rest/v1/projects.locations/list" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="3" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">list</a></li></ul></li><li class="devsite-nav-item devsite-nav-item-section-expandable"><span class="devsite-nav-title devsite-nav-title-no-path" track-type="leftNav" track-name="expandNavSectionNoLink"track-metadata-position="2" aria-label="projects.models, click to expand/collapse" role="link">projects.models</span><a class="devsite-nav-toggle devsite-nav-toggle-collapsed material-icons" track-type="leftNav" track-name="expandNavSectionArrow" track-metadata-position="2" aria-hidden="true"></a><ul class="devsite-nav-section devsite-nav-section-collapsed"><li class="devsite-nav-item"><a href="https://cloud.google.com/ml-engine/reference/rest/v1/projects.models" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="3" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">Overview</a></li><li class="devsite-nav-item"><a href="https://cloud.google.com/ml-engine/reference/rest/v1/projects.models/create" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="3" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">create</a></li><li class="devsite-nav-item"><a href="https://cloud.google.com/ml-engine/reference/rest/v1/projects.models/delete" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="3" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">delete</a></li><li class="devsite-nav-item"><a href="https://cloud.google.com/ml-engine/reference/rest/v1/projects.models/get" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="3" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">get</a></li><li class="devsite-nav-item"><a href="https://cloud.google.com/ml-engine/reference/rest/v1/projects.models/getIamPolicy" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="3" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">getIamPolicy</a></li><li class="devsite-nav-item"><a href="https://cloud.google.com/ml-engine/reference/rest/v1/projects.models/list" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="3" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">list</a></li><li class="devsite-nav-item"><a href="https://cloud.google.com/ml-engine/reference/rest/v1/projects.models/patch" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="3" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">patch</a></li><li class="devsite-nav-item"><a href="https://cloud.google.com/ml-engine/reference/rest/v1/projects.models/setIamPolicy" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="3" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">setIamPolicy</a></li><li class="devsite-nav-item"><a href="https://cloud.google.com/ml-engine/reference/rest/v1/projects.models/testIamPermissions" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="3" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">testIamPermissions</a></li></ul></li><li class="devsite-nav-item devsite-nav-item-section-expandable"><span class="devsite-nav-title devsite-nav-title-no-path" track-type="leftNav" track-name="expandNavSectionNoLink"track-metadata-position="2" aria-label="projects.models.versions, click to expand/collapse" role="link">projects.models.versions</span><a class="devsite-nav-toggle devsite-nav-toggle-collapsed material-icons" track-type="leftNav" track-name="expandNavSectionArrow" track-metadata-position="2" aria-hidden="true"></a><ul class="devsite-nav-section devsite-nav-section-collapsed"><li class="devsite-nav-item"><a href="https://cloud.google.com/ml-engine/reference/rest/v1/projects.models.versions" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="3" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">Overview</a></li><li class="devsite-nav-item"><a href="https://cloud.google.com/ml-engine/reference/rest/v1/projects.models.versions/create" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="3" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">create</a></li><li class="devsite-nav-item"><a href="https://cloud.google.com/ml-engine/reference/rest/v1/projects.models.versions/delete" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="3" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">delete</a></li><li class="devsite-nav-item"><a href="https://cloud.google.com/ml-engine/reference/rest/v1/projects.models.versions/get" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="3" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">get</a></li><li class="devsite-nav-item"><a href="https://cloud.google.com/ml-engine/reference/rest/v1/projects.models.versions/list" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="3" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">list</a></li><li class="devsite-nav-item"><a href="https://cloud.google.com/ml-engine/reference/rest/v1/projects.models.versions/patch" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="3" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">patch</a></li><li class="devsite-nav-item"><a href="https://cloud.google.com/ml-engine/reference/rest/v1/projects.models.versions/setDefault" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="3" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">setDefault</a></li></ul></li><li class="devsite-nav-item devsite-nav-item-section-expandable"><span class="devsite-nav-title devsite-nav-title-no-path" track-type="leftNav" track-name="expandNavSectionNoLink"track-metadata-position="2" aria-label="projects.operations, click to expand/collapse" role="link">projects.operations</span><a class="devsite-nav-toggle devsite-nav-toggle-collapsed material-icons" track-type="leftNav" track-name="expandNavSectionArrow" track-metadata-position="2" aria-hidden="true"></a><ul class="devsite-nav-section devsite-nav-section-collapsed"><li class="devsite-nav-item"><a href="https://cloud.google.com/ml-engine/reference/rest/v1/projects.operations" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="3" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">Overview</a></li><li class="devsite-nav-item"><a href="https://cloud.google.com/ml-engine/reference/rest/v1/projects.operations/cancel" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="3" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">cancel</a></li><li class="devsite-nav-item"><a href="https://cloud.google.com/ml-engine/reference/rest/v1/projects.operations/delete" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="3" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">delete</a></li><li class="devsite-nav-item"><a href="https://cloud.google.com/ml-engine/reference/rest/v1/projects.operations/get" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="3" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">get</a></li><li class="devsite-nav-item"><a href="https://cloud.google.com/ml-engine/reference/rest/v1/projects.operations/list" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="3" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">list</a></li></ul></li><li class="devsite-nav-item devsite-nav-item-heading"><span class="devsite-nav-title devsite-nav-title-no-path" track-type="leftNav" track-name="expandNavSectionNoLink" track-metadata-position="2">Types</span></li><li class="devsite-nav-item"><a href="https://cloud.google.com/ml-engine/reference/rest/v1/OperationMetadata" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="2" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">OperationMetadata</a></li><li class="devsite-nav-item"><a href="https://cloud.google.com/ml-engine/reference/rest/v1/OperationType" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="2" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">OperationType</a></li><li class="devsite-nav-item"><a href="https://cloud.google.com/ml-engine/reference/rest/v1/Policy" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="2" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">Policy</a></li><li class="devsite-nav-item"><a href="https://cloud.google.com/ml-engine/reference/rest/v1/TestIamPermissionsResponse" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="2" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">TestIamPermissionsResponse</a></li><li class="devsite-nav-item"><a href="https://cloud.google.com/ml-engine/docs/v1/predict-request" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="2" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">Predict Request Details</a></li></ul></li></ul></li><li class="devsite-nav-item devsite-nav-item-heading"><span class="devsite-nav-title devsite-nav-title-no-path" track-type="leftNav" track-name="expandNavSectionNoLink" track-metadata-position="0">Concepts</span></li><li class="devsite-nav-item"><a href="https://cloud.google.com/ml-engine/docs/scikit/concepts" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="0" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">All Concepts</a></li><li class="devsite-nav-item"><a href="https://cloud.google.com/ml-engine/docs/scikit/technical-overview" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="0" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">Cloud ML Engine Overview</a></li><li class="devsite-nav-item"><a href="https://cloud.google.com/ml-engine/docs/scikit/ml-solutions-overview" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="0" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">ML Workflow</a></li><li class="devsite-nav-item"><a href="https://cloud.google.com/ml-engine/docs/scikit/environment-overview" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="0" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">Development Environment</a></li><li class="devsite-nav-item"><a href="https://cloud.google.com/ml-engine/docs/scikit/access-control" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="0" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">Access Control</a></li><li class="devsite-nav-item devsite-nav-beta devsite-nav-has-status"><a href="https://cloud.google.com/ml-engine/docs/scikit/audit-logs" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="0" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click"><span class="devsite-nav-text">Viewing Audit Logs</span><span class="devsite-nav-icon-wrapper"><span class="devsite-nav-icon material-icons" title="Beta"></span></span></a></li><li class="devsite-nav-item"><a href="https://cloud.google.com/ml-engine/docs/scikit/regions" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="0" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">Regions</a></li><li class="devsite-nav-item devsite-nav-item-heading"><span class="devsite-nav-title devsite-nav-title-no-path" track-type="leftNav" track-name="expandNavSectionNoLink" track-metadata-position="0">Resources</span></li><li class="devsite-nav-item"><a href="https://cloud.google.com/ml-engine/docs/scikit/resources" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="0" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">All Resources</a></li><li class="devsite-nav-item"><a href="https://cloud.google.com/ml-engine/docs/scikit/pricing" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="0" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">Pricing</a></li><li class="devsite-nav-item"><a href="https://cloud.google.com/ml-engine/docs/scikit/quotas" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="0" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">Quotas &amp; Limits</a></li><li class="devsite-nav-item"><a href="https://cloud.google.com/ml-engine/docs/scikit/release-notes" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="0" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">Release Notes</a></li><li class="devsite-nav-item"><a href="https://cloud.google.com/ml-engine/docs/scikit/support" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="0" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">Support</a></li><li class="devsite-nav-item"><a href="https://cloud.google.com/ml-engine/sla" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="0" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">Service Level Agreement</a></li></ul>
+  </nav>
+
+    
+
+    
+  <nav class="devsite-page-nav devsite-nav"></nav>
+
+
+      <article class="devsite-article">
+        <article class="devsite-article-inner">
+  
+          
+  
+
+
+
+  
+  <nav class="devsite-breadcrumb-nav devsite-nav">
+    
+
+
+<ul class="devsite-breadcrumb-list">
+  
+  <li class="devsite-breadcrumb-item">
+    
+    
+    <a href="https://cloud.google.com/ml-engine/" class="devsite-breadcrumb-link gc-analytics-event"
+       data-category="Site-Wide Custom Events" data-label="Breadcrumbs"
+       data-value="1">
+    
+    
+      Cloud ML Engine
+    
+    
+    </a>
+    
+  </li>
+  
+  <li class="devsite-breadcrumb-item">
+    
+    
+    <div class="devsite-breadcrumb-guillemet material-icons"></div>
+    
+    
+    <a href="https://cloud.google.com/ml-engine/docs/" class="devsite-breadcrumb-link gc-analytics-event"
+       data-category="Site-Wide Custom Events" data-label="Breadcrumbs"
+       data-value="2">
+    
+    
+      Documentation
+    
+    
+    </a>
+    
+  </li>
+  
+  <li class="devsite-breadcrumb-item">
+    
+    
+    <div class="devsite-breadcrumb-guillemet material-icons"></div>
+    
+    
+    <a href="https://cloud.google.com/ml-engine/docs/scikit/" class="devsite-breadcrumb-link gc-analytics-event"
+       data-category="Site-Wide Custom Events" data-label="Breadcrumbs"
+       data-value="3">
+    
+    
+      scikit-learn &amp; XGBoost
+    
+    
+    </a>
+    
+  </li>
+  
+  <li class="devsite-breadcrumb-item">
+    
+    
+    <div class="devsite-breadcrumb-guillemet material-icons"></div>
+    
+    
+    <a href="https://cloud.google.com/docs/" class="devsite-breadcrumb-link gc-analytics-event"
+       data-category="Site-Wide Custom Events" data-label="Breadcrumbs"
+       data-value="4">
+    
+    
+      Documentation
+    
+    
+    </a>
+    
+  </li>
+  
+</ul>
+
+  </nav>
+  
+  
+  <h1 itemprop="name" class="devsite-page-title">
+    Quickstart with scikit-learn and XGBoost
+  </h1>
+  
+  
+  <nav class="devsite-page-nav-embedded devsite-nav"></nav>
+  
+  <div class="devsite-article-body clearfix
+            "
+       itemprop="articleBody">
+    
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<aside class="special">
+  <strong>
+    
+      Beta
+    
+  </strong>
+  <p>
+    This is
+    
+      a beta
+    
+    release of Cloud ML Engine support for scikit-learn and XGBoost.
+    
+      This feature
+    
+    might be changed in backward-incompatible ways
+    
+      and
+    
+    is not
+    subject to any SLA or deprecation policy.
+    
+    
+  </p>
+  
+</aside>
+
+
+
+  
+<p>The Cloud Machine Learning Engine online prediction service manages computing
+resources in the cloud to run your models. These models can be scikit-learn or
+XGBoost models that you have trained elsewhere (locally, or via another service)
+and exported to a file. This page describes the process to get online
+predictions from these exported models using Cloud Machine Learning Engine.</p>
+<h2 id="overview">Overview</h2>
+<p>In this quickstart, you train a simple model on the
+<a href="http://scikit-learn.org/stable/auto_examples/datasets/plot_iris_dataset.html" target="external">Iris dataset</a> locally, export
+the model, and deploy it to Cloud ML Engine to get online predictions.</p>
+<p>This quickstart requires <strong>Python 2.7</strong>. To use Python 3.5, see the
+<a href="https://cloud.google.com/ml-engine/docs/scikit/getting-predictions">full tutorial on getting predictions with scikit-learn and XGBoost</a>.</p>
+<h2 id="before_you_begin">Before you begin</h2>
+<p>Complete the following steps to set up a GCP account, activate the
+Cloud ML Engine API, and install and activate the Cloud SDK.</p>
+
+
+
+<h3>Set up your GCP project</h3>
+
+
+
+
+<ol>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  
+
+  
+
+
+
+
+
+
+
+
+
+  
+    
+    <li>
+    
+      <a href="https://accounts.google.com/Login" target="_blank"
+      track-type="commonIncludes" track-name="signInGoogleAccount"
+      track-metadata-position="prereqs"
+      track-metadata-link-destination="https://accounts.google.com/Login">
+      Sign in</a> to your Google Account.<p>If you don't already have one, <a
+      href="https://accounts.google.com/SignUp" target="_blank"
+      track-type="commonIncludes" track-name="createGoogleAccount"
+      track-metadata-position="prereqs"
+      track-metadata-link-destination="https://accounts.google.com/SignUp">
+      sign up for a new account</a>.</p>
+    
+    </li>
+    
+  
+
+
+  
+  
+    
+
+
+
+
+
+
+
+
+
+
+
+  
+    
+    <li>
+    
+      
+        <p>Select or create a GCP project.</p>
+        <p><a href="https://console.cloud.google.com/cloud-resource-manager" target="console"
+          track-type="commonIncludes"
+          track-name="consoleLink"
+          track-metadata-end-goal="createProject"
+          class="button button-primary">Go to the Manage resources page</a></p>
+      
+    
+    </li>
+    
+  
+
+
+  
+    
+      
+
+
+
+
+
+
+
+
+
+
+
+  
+  <li>
+  
+    <p>Make sure that billing is enabled for your project.</p>
+    <p><a
+       href="https://cloud.google.com/billing/docs/how-to/modify-project"
+       target="_blank" track-type="commonIncludes"
+       track-name="supportLink"
+       track-metadata-end-goal="enableBilling"
+       class="button button-primary">Learn how to enable billing</a></p>
+  
+  </li>
+  
+
+
+  
+    
+    
+      
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+  
+  <li>
+  
+  
+    
+      
+        Enable the
+        Cloud Machine Learning Engine and Compute Engine APIs.
+      
+      <p><a href="https://console.cloud.google.com/flows/enableapi?apiid=ml.googleapis.com,compute_component"
+        target="console" track-type="commonIncludes" track-name="consoleLink"
+        track-metadata-end-goal="enableAPI"
+        class="button button-primary">Enable the
+         APIs</a></p>
+    
+  
+  
+  </li>
+  
+
+<style>
+  .henhouse-text {
+    font-size:85%;
+    padding:2px 4px;
+    line-height:1;
+  }
+</style>
+  
+    
+    
+      
+      
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<li>
+Set up authentication:
+  <ol>
+
+    <li>
+      <p>
+        Go to the <b>Create service account key</b> page in the
+        GCP Console.
+      </p>
+      <a href="https://console.cloud.google.com/apis/credentials/serviceaccountkey"
+        class="button button-primary"
+        target="console"
+        track-name="consoleLink"
+        track-type="quickstart"
+        track-metadata-position="body">Go to the Create Service Account Key page</a>
+    </li>
+
+    <li>From the <b>Service account</b> drop-down list, select
+        <b>New service account</b>.</li>
+
+    <li>Enter a name into the <b>Service account name</b> field.</li>
+
+    
+
+    <li><p>From the <b>Role</b> drop-down list, select <b>Project</b> &gt; <b>Owner</b>.</p>
+
+        <div class="note">
+          <b>Note</b>: The <b>Role</b> field authorizes your service account
+          to access resources. You can view and change this field later using
+          <a href="https://console.cloud.google.com/">GCP Console</a>. If you are
+          developing a production application, specify more granular
+          permissions than <b>Project > Owner</b>. For more information, see
+          <a href="https://cloud.google.com/iam/docs/granting-roles-to-service-accounts">granting roles to service accounts</a>.
+        </div>
+    </li>
+
+    <li>Click <b>Create</b>. A JSON file that contains your key
+        downloads to your computer.</li>
+
+    
+
+
+  </ol>
+
+</li>
+
+
+
+
+
+
+
+
+  
+      
+        
+        
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<li>
+
+  <p>
+    Set the environment variable <var>GOOGLE_APPLICATION_CREDENTIALS</var>
+    to the file path of the JSON file that contains your service account key.
+  </p>
+
+  <section class="expandable">
+    <p class="showalways"><b>Example:</b> Linux or macOS</p>
+    <p>
+      Replace <var>[PATH]</var> with the file path of the JSON file that
+      contains your service account key.
+    </p>
+
+<pre class="prettyprint devsite-click-to-copy lang-sh">export GOOGLE_APPLICATION_CREDENTIALS="[PATH]"</pre>
+
+    <p>For example:</p>
+
+<pre class="prettyprint devsite-click-to-copy lang-sh">export GOOGLE_APPLICATION_CREDENTIALS="/home/user/Downloads/service-account-file.json"</pre>
+  </section>
+
+  <section class="expandable">
+    <p class="showalways"><b>Example:</b> Windows</p>
+    <p>
+      Replace <var>[PATH]</var> with the file path of the JSON file that
+      contains your service account key, and <var>[FILE_NAME]</var> with the
+      filename.
+    </p>
+
+    <p>With PowerShell:</p>
+
+<pre class="prettyprint devsite-click-to-copy lang-sh">$env:GOOGLE_APPLICATION_CREDENTIALS="[PATH]"</pre>
+
+    <p>For example:</p>
+
+<pre class="prettyprint devsite-click-to-copy lang-sh">$env:GOOGLE_APPLICATION_CREDENTIALS="C:\Users\username\Downloads\[FILE_NAME].json"</pre>
+
+    <p>With command prompt:</p>
+
+<pre class="prettyprint devsite-click-to-copy lang-sh">set GOOGLE_APPLICATION_CREDENTIALS=[PATH]</pre>
+  </section>
+
+
+</li>
+
+
+
+  
+      
+    
+  
+
+  
+    
+
+
+
+
+  
+
+
+
+
+
+
+
+
+  
+    <li>
+  
+  <a href="https://cloud.google.com/sdk/docs/" track-type="commonIncludes" track-name="sdkLink"
+      target="_blank">Install and initialize the Cloud SDK</a>.
+  
+  
+    </li>
+  
+  
+
+
+  
+    
+  
+
+
+
+  </ol></p>
+<h3>Set up your environment</h3>
+
+<p>Choose one of the options below to set up your environment locally on macOS or
+  in a remote environment on Cloud Shell.</p>
+
+<p>For macOS users, we recommend that you set up your environment using the
+  <b>MACOS</b> tab below. Cloud Shell, shown on the <b>CLOUD SHELL</b> tab, is
+  available on macOS, Linux, and Windows. Cloud Shell provides a quick way to
+  try Cloud Machine Learning Engine, but isn’t suitable for ongoing development work.</p>
+
+<div class="ds-selector-tabs">
+  <section>
+    <h3>macOS</h3>
+<ol>
+      <li>
+        <p>Install a virtual environment to create an isolated Python
+          development environment for this guide. For example, the following
+          commands install
+          <a href="https://virtualenv.pypa.io/en/stable/"
+             class="external"><code>virtualenv</code></a>
+          and activate an environment named <code>cmle-env</code>.</p>
+<pre class="prettyprint lang-sh">virtualenv cmle-env
+source cmle-env/bin/activate</pre>
+      </li>
+      <li>
+        <p>Confirm that you have
+          <a href="https://www.python.org/downloads/">Python</a> installed
+          and, if necessary, install it.</p>
+        <pre class="prettyprint lang-sh">python -V</pre>
+      </li>
+      <li>
+      <p><a href="https://pip.pypa.io/en/stable/installing/#installing-with-get-pip-py"
+            class="external">Install <code>pip</code></a>, Python’s package
+        manager. Check if you already have <code>pip</code> installed by running
+        <code>pip --version</code>.
+        Ensure that you have the latest version of <code>pip</code> and if not,
+        upgrade it using the following command:</p>
+      <pre class="prettyprint lang-sh">pip install -U pip</pre>
+      </li>
+    </ol>
+  </section>
+
+  <section>
+    <h3>Cloud Shell</h3>
+    <ol>
+      <li>
+        <p>Open the Google Cloud Platform Console.</p>
+        <p><a href="https://console.cloud.google.com/" target="console"
+              class="button button-primary">Google Cloud Platform Console</a></p>
+      </li>
+      <li>
+        <p>Click the <b>Activate Google Cloud Shell</b> button at the top
+          of the console window.</p>
+        <img src="https://cloud.google.com/shell/docs/images/shell_icon.png"
+          class="screenshot"
+          alt="Activate Google Cloud Shell" />
+        <p>A Cloud Shell session opens inside a new frame at the bottom of the
+          console and displays a command-line prompt. It can take a few seconds
+          for the shell session to be initialized.</p>
+        <img src="https://cloud.google.com/shell/docs/images/new-console.png"
+          class="screenshot"
+          alt="Cloud Shell session" />
+        <p>Your Cloud Shell session is ready to use.</p>
+      </li>
+      <li>
+        <p>Configure the gcloud command-line tool to use your selected project.
+        </p>
+        <pre class="prettyprint notranslate lang-sh" translate="no">
+        gcloud config set project [selected-project-id]
+        </pre>
+        <p>where <code>[selected-project-id]</code> is your project ID. (Omit
+          the enclosing brackets.)</p>
+      </li>
+    </ol>
+  </section>
+</div>
+
+<h3>Verify the Google Cloud SDK components</h3>
+
+<p>To verify that the Google Cloud SDK components are installed:</p>
+
+<ol>
+  <li>
+    <p>List your models:</p>
+    <pre class="prettyprint lang-sh">gcloud ml-engine models list</pre>
+  </li>
+  <li>
+    <p>If you have not created any models before, the command returns an empty list:</p>
+    <pre class="prettyprint notranslate lang-sh">Listed 0 items.</pre>
+    <p>After you start creating models, you can see them listed by using this
+      command.</p>
+  </li>
+</ol>
+
+<h2 id="install_frameworks">Install frameworks</h2>
+<ol>
+<li>
+<p>Install scikit-learn:</p>
+<pre class="prettyprint notranslate" translate="no"><code>pip install -U scikit-learn
+</code></pre>
+<p>For more details, see
+<a href="http://scikit-learn.org/stable/install.html" target="external">the scikit-learn installation instructions</a>.</p>
+</li>
+<li>
+<p>Install XGBoost:</p>
+<pre class="prettyprint notranslate" translate="no"><code>pip install -U xgboost
+</code></pre>
+<p>For more details, see
+<a href="http://xgboost.readthedocs.io/en/latest/build.html" target="external">how to install XGBoost</a>.</p>
+</li>
+<li>
+<p>Install pandas:</p>
+<pre class="prettyprint notranslate" translate="no"><code>pip install pandas
+</code></pre>
+<p>For more details, see
+<a href="https://pandas.pydata.org/pandas-docs/stable/install.html" target="external">how to install pandas</a>.</p>
+</li>
+</ol>
+<h3 id="scikit-xgb-versions">Versions of scikit-learn and XGBoost</h3>
+<p>The following versions of scikit-learn and XGBoost are supported in
+Cloud ML Engine:</p>
+<table>
+  <thead>
+  <th>Cloud ML Engine runtime version</th>
+  <th>Supported version of scikit-learn</th>
+  <th>Supported version of XGBoost</th>
+  </thead>
+  <tbody>
+    <tr>
+      <td><b>1.4</b></td>
+      <td>0.18.1</td>
+      <td>0.6a2</td>
+    </tr>
+    <tr>
+      <td><b>1.5</b></td>
+      <td>0.19.1</td>
+      <td>0.7.post3</td>
+    </tr>
+  </tbody>
+ </table>
+
+<p>Python 3 is available for runtime versions 1.4 and later. For more information,
+see the <a href="https://cloud.google.com/ml-engine/docs/scikit/runtime-version-list">list of Cloud ML Engine runtime versions</a>.</p>
+<h2 id="train_and_save_a_model">Train and save a model</h2>
+<p>Start by training a simple model for the
+<a href="http://scikit-learn.org/stable/auto_examples/datasets/plot_iris_dataset.html" target="external">Iris dataset</a>.</p>
+<div class="ds-selector-tabs" data-ds-scope="code-sample"><section><h3>scikit-learn</h3><p>Following the <a href="http://scikit-learn.org/stable/modules/model_persistence.html" target="external">scikit-learn example on model persistence</a>,
+  you can train and export a model as shown below:</p><pre class="prettyprint notranslate" translate="no"><code>from sklearn import datasets
+from sklearn import svm
+from sklearn.externals import joblib
+
+# Load the Iris dataset
+iris = datasets.load_iris()
+
+# Train a classifier
+classifier = svm.SVC()
+classifier.fit(iris.data, iris.target)
+
+# Export the classifier to a file
+joblib.dump(classifier, 'model.joblib')
+</code></pre><p>To export the model, you also have the option to use the
+  <a href="https://docs.python.org/3/library/pickle.html" target="external">pickle library</a> as follows:</p><pre class="prettyprint notranslate" translate="no"><code>import pickle
+with open('model.pkl', 'wb') as model_file:
+  pickle.dump(classifier, model_file)
+</code></pre></section><section><h3>XGBoost</h3><p>You can export the model by
+  <a href="http://xgboost.readthedocs.io/en/latest/python/python_intro.html#training" target="external">using the "save_model" method of the Booster object</a>.</p><pre class="prettyprint notranslate" translate="no"><code>from sklearn import datasets
+import xgboost as xgb
+
+# Load the Iris dataset
+iris = datasets.load_iris()
+
+# Load data into DMatrix object
+dtrain = xgb.DMatrix(iris.data, label=iris.target)
+
+# Train XGBoost model
+bst = xgb.train({}, dtrain, 20)
+
+# Export the classifier to a file
+bst.save_model('./model.bst')
+</code></pre><p>To export the model, you also have the option to use the
+  <a href="https://docs.python.org/3/library/pickle.html" target="external">pickle library</a> as follows:</p><pre class="prettyprint notranslate" translate="no"><code>import pickle
+with open('model.pkl', 'wb') as model_file:
+  pickle.dump(bst, model_file)
+</code></pre></section></div><h3 id="model_file_naming_requirements">Model file naming requirements</h3>
+<p>The file name of the exported model that you upload to Cloud Storage must reflect
+the library you used to export the model. This restriction ensures that
+Cloud ML Engine uses the same pattern to reconstruct the model on import
+as was used during export.</p>
+<div class="ds-selector-tabs" data-ds-scope="code-sample"><section><h3>scikit-learn</h3><p><table>
+    <thead>
+      <tr>
+        <th>Library used to export model</th>
+        <th>Correct model name</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><code>pickle</code></td>
+        <td><code>model.pkl</code></td>
+      </tr>
+      <tr>
+        <td><code>joblib</code></td>
+        <td><code>model.joblib</code></td>
+      </tr>
+    </tbody>
+  </table></p></section><section><h3>XGBoost</h3><p><table>
+    <thead>
+      <tr>
+        <th>Library used to export model</th>
+        <th>Correct model name</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><code>pickle</code></td>
+        <td><code>model.pkl</code></td>
+      </tr>
+      <tr>
+        <td><code>joblib</code></td>
+        <td><code>model.joblib</code></td>
+      </tr>
+      <tr>
+        <td><code>xgboost.Booster</code></td>
+        <td><code>model.bst</code></td>
+      </tr>
+    </tbody>
+  </table></p></section></div><h2 id="deploy_models_and_versions">Deploy models and versions</h2>
+<p>Cloud ML Engine organizes your trained models using <em>model</em> and
+<em>version</em> resources. A Cloud ML Engine model is a container for the
+versions of your machine learning model.</p>
+<p>To deploy a model, you store the model file in Cloud Storage, create a model
+resource in Cloud ML Engine, create a version of that model, then link
+the model version to the pipeline in Cloud Storage.</p>
+<h3 id="set-up-cloud-storage">Set up your Cloud Storage bucket</h3>
+
+  <p>This section shows you how to create a new bucket. You can use an existing bucket, but if it
+is not part of the project you are using to run Cloud ML Engine, you
+must explicitly
+<a href="https://cloud.google.com/ml-engine/docs/working-with-cloud-storage">grant access to the Cloud ML Engine service accounts</a>.</p>
+
+
+<p>Create a <a href="https://cloud.google.com/storage">Cloud Storage</a> bucket for reading and writing data
+during model training and batch prediction:</p>
+
+<ol>
+  <li>
+    <p>Specify a name for your new bucket. The name must be unique across all
+      buckets in Cloud Storage.</p>
+    <pre class="prettyprint lang-sh">
+BUCKET_NAME="<var>your_bucket_name</var>"</pre>
+    <p>For example, use your project name with <code>-mlengine</code> appended:
+    </p>
+    <pre class="prettyprint lang-sh">
+PROJECT_ID=$(gcloud config list project --format "value(core.project)")
+BUCKET_NAME=${PROJECT_ID}-mlengine</pre>
+  </li>
+  <li>
+    <p>Check the bucket name that you created.</p>
+    <pre class="prettyprint lang-sh">echo $BUCKET_NAME</pre>
+  </li>
+  <li>
+    <p>Select a region for your bucket and set a `REGION` environment variable.</p>
+    <p>Warning: You must specify a region (like <code>us-central1</code>) for
+      your bucket, not a multi-region location (like <code>us</code>). See the
+      <a href="https://cloud.google.com/ml-engine/docs/regions">available regions</a> for
+      Cloud ML Engine services.
+      For example, the following code creates `REGION` and sets it to `us-central1`.
+    </p>
+     <pre class="prettyprint lang-sh" translate="no">REGION=us-central1</pre>
+  </li>
+  <li>
+    <p>Create the new bucket:</p>
+    <pre class="prettyprint lang-sh">gsutil mb -l $REGION gs://$BUCKET_NAME</pre>
+    <p>Note: Use the same region where you plan on running Cloud ML Engine
+jobs. The example uses <code>us-central1</code> because that is the region used in the
+quickstart instructions.</p>
+   </li>
+</ol>
+
+<p>Ensure that your Cloud ML Engine service account has "list" access
+for the Cloud Storage bucket that contains your model file, and "read"
+access for the model file within the Cloud Storage bucket. Without the
+appropriate permissions, your request to create a version fails. See more
+about <a href="https://cloud.google.com/ml-engine/docs/scikit/working-with-cloud-storage">granting permissions for storage</a>.</p>
+<h3 :=":" id="upload-model">Upload the exported model file to Cloud Storage</h3>
+<p>Run the following command to upload the model you exported in the previous step,
+to your bucket in Cloud Storage:</p>
+<pre class="prettyprint"><code>$ gsutil cp ./model.joblib gs://$BUCKET_NAME/model.joblib
+</code></pre>
+
+<p>You can use the same Cloud Storage bucket for multiple model files. Each
+model file must be within its own directory inside the bucket.</p>
+<h3 id="create_a_model_resource">Create a model resource</h3>
+<p>If you have already created a model resource in Cloud ML Engine, see how
+to <a href="https://cloud.google.com/ml-engine/docs/scikit/quickstart#create_a_model_version">create a new version resource</a> to add to your model.</p>
+<p>GCP Console does not currently support creating models and versions
+for scikit-learn and XGBoost.</p>
+<div class="ds-selector-tabs" data-ds-scope="code-sample"><section><h3>gcloud</h3><p>Create the model that you are deploying a new version of:</p><pre class="prettyprint notranslate" translate="no"><code>    gcloud beta ml-engine models create "iris"
+</code></pre></section><section><h3>REST API</h3><ol><li><p>Format your request by placing the model object in the request body, as
+     follows:</p><pre class="prettyprint notranslate" translate="no"><code>  {"name": "iris" }
+</code></pre></li><li><p>Make your REST API call to the following path:</p><pre class="prettyprint notranslate" translate="no"><code>  $ POST https://ml.googleapis.com/v1/{parent=projects/*}/models
+</code></pre></li></ol></section></div><p>See the <a href="https://cloud.google.com/ml-engine/reference/rest/v1/projects.models#Model">Cloud ML Engine model API</a> for more details.</p>
+<h3 id="create_a_model_version">Create a model version</h3>
+<p>Now you are ready to create a model version with the trained model you
+previously uploaded to Cloud Storage. When you create a version, you need to
+specify the following parameters:</p>
+<ul>
+<li><code>name</code>: must be unique within the Cloud ML Engine model.</li>
+<li><code>deploymentUri</code>: the path to the directory where the exported model file is
+   stored. Make sure to specify the path to the directory containing the file,
+   not the path to the model file itself.<ul>
+<li><span class="compare-worse">Path to model</span> - gs://mybucket/model.pkl</li>
+<li><span class="compare-better">Path to directory containing model</span> - gs://mybucket/</li>
+</ul>
+</li>
+<li><code>framework</code>: "<code>SCIKIT_LEARN</code>" or "<code>XGBOOST</code>"</li>
+<li><code>runtimeVersion</code>: must be set to "1.4" or above to ensure you are using a
+   version of Cloud ML Engine that supports scikit-learn and XGBoost.</li>
+<li><code>pythonVersion</code>: must be set to "3.5" to be compatible with model files
+   exported using Python 3. If not set, this defaults to "2.7".</li>
+</ul>
+<p>See more information about each of these parameters in
+<a href="https://cloud.google.com/ml-engine/reference/rest/v1/projects.models.versions">the Cloud ML Engine API for a version resource</a>.</p>
+<div class="ds-selector-tabs" data-ds-scope="code-sample"><section><h3>gcloud</h3><ol><li><p>Set environment variables to store the path to the Cloud Storage
+    directory where your model binary is located, your model name, your
+    version name and your framework choice ("SCIKIT_LEARN" or "XGBOOST"):</p><pre class="prettyprint notranslate" translate="no"><code>DEPLOYMENT_SOURCE="gs://$BUCKET_NAME"
+VERSION_NAME="v1"
+MODEL_NAME="iris"
+FRAMEWORK="SCIKIT_LEARN"
+</code></pre></li><li><p>Create the version:</p><pre class="prettyprint notranslate" translate="no"><code>gcloud beta ml-engine versions create $VERSION_NAME \
+    --model $MODEL_NAME --origin $DEPLOYMENT_SOURCE \
+    --runtime-version="1.5" --framework $FRAMEWORK
+    --python-version="2.7"
+</code></pre></li><li><p>Get information about your new version:</p><pre class="prettyprint notranslate" translate="no"><code>gcloud beta ml-engine versions describe $VERSION_NAME \
+    --model $MODEL_NAME
+</code></pre><p>You should see output similar to this:</p><pre class="prettyprint notranslate" translate="no"><code>createTime: '2018-02-28T16:30:45Z'
+deploymentUri: gs://your_bucket_path
+framework: SCIKIT_LEARN
+isDefault: true
+name: projects/project_name/models/model_name/versions/version_name
+pythonVersion: '2.7'
+runtimeVersion: '1.5'
+</code></pre></li></ol></section><section><h3>REST API</h3><ol><li><p>Format your request body to contain the
+   <a href="https://cloud.google.com/ml-engine/reference/rest/v1/projects.models.versions#Version">version object</a>. This example specifies the version
+   <code>name</code>, <code>deploymentUri</code>, <code>runtimeVersion</code> and <code>framework</code> as follows:</p><pre class="prettyprint notranslate" translate="no"><code>{
+  "name": "v1",
+  "deploymentUri": "gs://mybucket/"
+  "runtimeVersion": "1.5"
+  "framework": "SCIKIT_LEARN"
+  "pythonVersion": "2.7"
+}
+</code></pre></li><li><p>Make your REST API call to the following path:</p><pre class="prettyprint notranslate" translate="no"><code>POST https://ml.googleapis.com/v1/{parent=projects/*/models/*}/versions
+</code></pre></li></ol></section></div><h2 id="get_online_predictions">Get online predictions</h2>
+<p>After you have successfully created a model version, Cloud ML Engine
+starts a new server that is ready to serve prediction requests.</p>
+<h3 id="format_input_for_prediction">Format input for prediction</h3>
+<div class="ds-selector-tabs" data-ds-scope="code-sample"><section><h3>gcloud</h3><p>Create an <code>input.json</code> file with each input instance on a separate line:</p><pre class="prettyprint notranslate" translate="no"><code>[6.8,  2.8,  4.8,  1.4]
+[6.0,  3.4,  4.5,  1.6]
+</code></pre><p>Note that the format of input instances needs to match what your model
+expects. In this example, the Iris model requires 4 features, so your input
+must be a matrix of shape (<code>num_instances, 4</code>).</p></section><section><h3>REST API</h3><p>Create an <code>input.json</code> file formatted as a simple list of floats, with each
+input instance on a separate line:</p><pre class="prettyprint notranslate" translate="no"><code>{
+  "instances": [
+
+    [6.8,  2.8,  4.8,  1.4],
+    [6.0,  3.4,  4.5,  1.6]
+
+  ]
+}
+</code></pre><p>Note that the format of input instances needs to match what your model
+expects. In this example, the Iris model requires 4 features, so your input
+must be a matrix of shape (<code>num_instances, 4</code>).</p></section></div><p>For XGBoost, Cloud ML Engine does not support sparse representation of
+input instances. If the value of a feature is zero, use <code>0.0</code> in the
+corresponding input. If the value of a feature is missing, use <code>NaN</code> in the
+corresponding input.</p>
+<p>See more information on
+<a href="https://cloud.google.com/ml-engine/docs/v1/predict-request#request-body">formatting your input for online prediction</a>.</p>
+<h3 id="send_prediction_request">Send prediction request</h3>
+<div class="ds-selector-tabs" data-ds-scope="code-sample"><section><h3>gcloud</h3><ol><li><p>Set environment variables for your model name, version name, and the
+    name of your input file:</p><pre class="prettyprint notranslate" translate="no"><code>MODEL_NAME = "iris"
+VERSION_NAME = "v1"
+INPUT_FILE = "input.json"
+</code></pre></li><li><p>Creating a model version can take several minutes. Check the status of
+    your model version to see if it is available:</p><pre class="prettyprint notranslate" translate="no"><code>gcloud beta ml-engine versions list --model $MODEL_NAME
+</code></pre><p>The response shows your model name, your Cloud Storage bucket, and the
+state of the model version:</p><pre class="prettyprint notranslate" translate="no"><code>NAME  DEPLOYMENT_URI                        STATE
+v1    gs://your-gcs-bucket/                 READY
+</code></pre></li><li><p>Send the prediction request:</p><pre class="prettyprint notranslate" translate="no"><code>gcloud beta ml-engine predict --model $MODEL_NAME --version \
+  $VERSION_NAME --json-instances $INPUT_FILE
+</code></pre></li></ol></section><section><h3>Python</h3><p>This sample assumes that you are familiar with the Google Cloud Client
+library for Python. If you aren't familiar with it, see
+<a href="https://cloud.google.com/ml-engine/docs/python-guide">Using the Python Client Library</a>.</p><pre class="prettyprint notranslate" translate="no"><code>def predict_json(project, model, instances, version=None):
+    """Send json data to a deployed model for prediction.
+    Args:
+        project (str): project where the Cloud ML Engine Model is deployed.
+        model (str): model name.
+        instances ([[float]]): List of input instances, where each input
+           instance is a list of floats.
+        version: str, version of the model to target.
+    Returns:
+        Mapping[str: any]: dictionary of prediction results defined by the
+            model.
+    """
+    # Create the ML Engine service object.
+    # To authenticate set the environment variable
+    # GOOGLE_APPLICATION_CREDENTIALS=&lt;path_to_service_account_file&gt;
+    service = googleapiclient.discovery.build('ml', 'v1')
+    name = 'projects/{}/models/{}'.format(project, model)
+
+    if version is not None:
+        name += '/versions/{}'.format(version)
+
+    response = service.projects().predict(
+        name=name,
+        body={'instances': instances}
+    ).execute()
+
+    if 'error' in response:
+        raise RuntimeError(response['error'])
+
+    return response['predictions']
+</code></pre></section><section><h3>Java</h3><p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  
+  
+
+
+<!-- Header -->
+
+<div class="github-docwidget-include" style="border: 1px solid #ddd; border-bottom: 0; padding: 4px; background-color: #4285f4; margin-bottom: -10px">
+  
+  <div class="github-docwidget-header" style="float: left; padding-top: 3px; margin-left: 5px;">
+    <a href="https://github.com/GoogleCloudPlatform/java-docs-samples/blob/master/mlengine/online-prediction/src/main/java/OnlinePredictionSample.java" target="_blank" style="color: white;">
+      mlengine/online-prediction/src/main/java/OnlinePredictionSample.java
+    </a>
+  </div>
+  
+
+  
+  <div style="text-align: right; float: right;">
+    
+    
+      
+      <a class="button" target="_blank" href="https://github.com/GoogleCloudPlatform/java-docs-samples/blob/master/mlengine/online-prediction/src/main/java/OnlinePredictionSample.java"
+      track-type="github" track-name="gitHubViewButton"
+      track-metadata-link-destination="https://github.com/GoogleCloudPlatform/java-docs-samples/blob/master/mlengine/online-prediction/src/main/java/OnlinePredictionSample.java">View on GitHub</a>
+    
+    
+    
+    
+    
+  </div>
+  
+
+  <div style="clear: both;"></div>
+
+</div>
+
+
+<!-- Code -->
+<div class="github-docwidget-gitinclude-code">
+
+  
+  
+
+<pre class="prettyprint lang-java" track-metadata-position="GoogleCloudPlatform/java-docs-samples/mlengine/online-prediction/src/main/java/OnlinePredictionSample.java/master/">/*
+ * Copyright 2017 Google Inc.
+ *
+ * Licensed under the Apache License, Version 2.0 (the &quot;License&quot;);
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ * http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an &quot;AS IS&quot; BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
+
+import com.google.api.client.googleapis.auth.oauth2.GoogleCredential;
+import com.google.api.client.googleapis.javanet.GoogleNetHttpTransport;
+import com.google.api.client.http.FileContent;
+import com.google.api.client.http.GenericUrl;
+import com.google.api.client.http.HttpContent;
+import com.google.api.client.http.HttpRequest;
+import com.google.api.client.http.HttpRequestFactory;
+import com.google.api.client.http.HttpTransport;
+import com.google.api.client.http.UriTemplate;
+import com.google.api.client.json.JsonFactory;
+import com.google.api.client.json.jackson2.JacksonFactory;
+import com.google.api.services.discovery.Discovery;
+import com.google.api.services.discovery.model.JsonSchema;
+import com.google.api.services.discovery.model.RestDescription;
+import com.google.api.services.discovery.model.RestMethod;
+import java.io.File;
+
+/*
+ * Sample code for doing Cloud Machine Learning Engine online prediction in Java.
+ */
+
+public class OnlinePredictionSample {
+  public static void main(String[] args) throws Exception {
+    HttpTransport httpTransport = GoogleNetHttpTransport.newTrustedTransport();
+    JsonFactory jsonFactory = JacksonFactory.getDefaultInstance();
+    Discovery discovery = new Discovery.Builder(httpTransport, jsonFactory, null).build();
+
+    RestDescription api = discovery.apis().getRest(&quot;ml&quot;, &quot;v1&quot;).execute();
+    RestMethod method = api.getResources().get(&quot;projects&quot;).getMethods().get(&quot;predict&quot;);
+
+    JsonSchema param = new JsonSchema();
+    String projectId = &quot;YOUR_PROJECT_ID&quot;;
+    // You should have already deployed a model and a version.
+    // For reference, see https://cloud.google.com/ml-engine/docs/deploying-models.
+    String modelId = &quot;YOUR_MODEL_ID&quot;;
+    String versionId = &quot;YOUR_VERSION_ID&quot;;
+    param.set(
+        &quot;name&quot;, String.format(&quot;projects/%s/models/%s/versions/%s&quot;, projectId, modelId, versionId));
+
+    GenericUrl url =
+        new GenericUrl(UriTemplate.expand(api.getBaseUrl() + method.getPath(), param, true));
+    System.out.println(url);
+
+    String contentType = &quot;application/json&quot;;
+    File requestBodyFile = new File(&quot;input.txt&quot;);
+    HttpContent content = new FileContent(contentType, requestBodyFile);
+    System.out.println(content.getLength());
+
+    GoogleCredential credential = GoogleCredential.getApplicationDefault();
+    HttpRequestFactory requestFactory = httpTransport.createRequestFactory(credential);
+    HttpRequest request = requestFactory.buildRequest(method.getHttpMethod(), url, content);
+
+    String response = request.execute().parseAsString();
+    System.out.println(response);
+  }
+}
+
+</pre>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</p></section></div><p>See more information about each of these parameters in
+<a href="https://cloud.google.com/ml-engine/reference/rest/v1/projects.jobs#predictioninput">the Cloud ML Engine API for prediction input</a>.</p>
+<h2 id="whats_next">What's next</h2>
+<ul>
+<li>Try a full tutorial on <a href="https://cloud.google.com/ml-engine/docs/scikit/getting-predictions">getting online predictions</a>.</li>
+<li>Try <a href="https://cloud.google.com/ml-engine/docs/scikit/using-pipelines">using scikit-learn pipelines with Cloud ML Engine</a>.</li>
+</ul>
+
+  </div>
+  
+    
+
+
+
+  
+
+  
+        
+  
+
+
+
+
+
+
+
+        
+<div class="devsite-content-footer nocontent">
+  
+  
+    <p>Except as otherwise noted, the content of this page is licensed under the <a href="http://creativecommons.org/licenses/by/3.0/">Creative Commons Attribution 3.0 License</a>, and code samples are licensed under the <a href="http://www.apache.org/licenses/LICENSE-2.0">Apache 2.0 License</a>. For details, see our <a href="https://developers.google.com/terms/site-policies">Site Policies</a>. Java is a registered trademark of Oracle and/or its affiliates.</p>
+  
+
+  
+    
+    <p class="devsite-content-footer-date" itemprop="datePublished"
+       content="2018-04-19T00:46:21.896220">
+      
+      Last updated April 19, 2018.
+    </p>
+  
+
+</div>
+
+        </article>
+      </article>
+  
+
+        </div>
+      
+
+<footer class="devsite-footer-linkboxes nocontent
+               devsite-footer-linkboxes-all-backup
+               devsite-footer-linkboxes-with-sites"><nav class="devsite-full-site-width"><ul class="devsite-footer-linkboxes-list"><li class="devsite-footer-linkbox devsite-footer-linkbox-backup"><h3 class="devsite-footer-linkbox-heading">Products</h3><ul class="devsite-footer-linkbox-list"><li class="devsite-footer-linkbox-item"><a href="https://cloud.google.com/products/compute/" class="gc-analytics-event"
+               data-category="Site-Wide Custom Events"
+               data-label="Footer Compute">
+                Compute
+            </a></li><li class="devsite-footer-linkbox-item"><a href="https://cloud.google.com/products/storage/" class="gc-analytics-event"
+               data-category="Site-Wide Custom Events"
+               data-label="Footer Storage">
+                Storage
+            </a></li><li class="devsite-footer-linkbox-item"><a href="https://cloud.google.com/products/networking/" class="gc-analytics-event"
+               data-category="Site-Wide Custom Events"
+               data-label="Footer Networking">
+                Networking
+            </a></li><li class="devsite-footer-linkbox-item"><a href="https://cloud.google.com/products/big-data/" class="gc-analytics-event"
+               data-category="Site-Wide Custom Events"
+               data-label="Footer Big Data">
+                Big Data
+            </a></li><li class="devsite-footer-linkbox-item"><a href="https://cloud.google.com/products/machine-learning/" class="gc-analytics-event"
+               data-category="Site-Wide Custom Events"
+               data-label="Footer Machine Learning">
+                Machine Learning
+            </a></li><li class="devsite-footer-linkbox-item"><a href="https://cloud.google.com/products/#management" class="gc-analytics-event"
+               data-category="Site-Wide Custom Events"
+               data-label="Footer Management Tools">
+                Management Tools
+            </a></li><li class="devsite-footer-linkbox-item"><a href="https://cloud.google.com/products/tools/" class="gc-analytics-event"
+               data-category="Site-Wide Custom Events"
+               data-label="Footer Developer Tools">
+                Developer Tools
+            </a></li><li class="devsite-footer-linkbox-item"><a href="https://cloud.google.com/products/#identity-security" class="gc-analytics-event"
+               data-category="Site-Wide Custom Events"
+               data-label="Footer Identity and Security">
+                Identity &amp; Security
+            </a></li><li class="devsite-footer-linkbox-item"><a href="//status.cloud.google.com" class="gc-analytics-event"
+               data-category="Site-Wide Custom Events"
+               data-label="Footer System Status">
+                System Status
+            </a></li></ul></li><li class="devsite-footer-linkbox devsite-footer-linkbox-backup"><h3 class="devsite-footer-linkbox-heading">Learn More</h3><ul class="devsite-footer-linkbox-list"><li class="devsite-footer-linkbox-item"><a href="https://cloud.google.com/why-google/" class="gc-analytics-event"
+               data-category="Site-Wide Custom Events"
+               data-label="Footer Why Google">
+                Why Google Cloud
+            </a></li><li class="devsite-footer-linkbox-item"><a href="https://cloud.google.com/pricing/" class="gc-analytics-event"
+               data-category="Site-Wide Custom Events"
+               data-label="Footer Pricing">
+                Pricing
+            </a></li><li class="devsite-footer-linkbox-item"><a href="https://cloud.google.com/docs/" class="gc-analytics-event"
+               data-category="Site-Wide Custom Events"
+               data-label="Footer Documentation">
+                Documentation
+            </a></li><li class="devsite-footer-linkbox-item"><a href="https://cloud.google.com/docs/tutorials/" class="gc-analytics-event"
+               data-category="Site-Wide Custom Events"
+               data-label="Footer Tutorials">
+                Tutorials
+            </a></li><li class="devsite-footer-linkbox-item"><a href="https://cloud.google.com/training/" class="gc-analytics-event"
+               data-category="Site-Wide Custom Events"
+               data-label="Footer Training">
+                Training
+            </a></li><li class="devsite-footer-linkbox-item"><a href="https://cloud.google.com/solutions/" class="gc-analytics-event"
+               data-category="Site-Wide Custom Events"
+               data-label="Footer Solutions">
+                Solutions
+            </a></li><li class="devsite-footer-linkbox-item"><a href="https://cloud.google.com/security/" class="gc-analytics-event"
+               data-category="Site-Wide Custom Events"
+               data-label="Footer Security &amp; Compliance">
+                Security &amp; Compliance
+            </a></li><li class="devsite-footer-linkbox-item"><a href="https://cloud.google.com/partners/" class="gc-analytics-event"
+               data-category="Site-Wide Custom Events"
+               data-label="Footer Partners">
+                Partners
+            </a></li><li class="devsite-footer-linkbox-item"><a href="https://cloud.google.com/customers/" class="gc-analytics-event"
+               data-category="Site-Wide Custom Events"
+               data-label="Footer Customers">
+                Customers
+            </a></li><li class="devsite-footer-linkbox-item"><a href="https://cloud.google.com/support/" class="gc-analytics-event"
+               data-category="Site-Wide Custom Events"
+               data-label="Footer Support">
+                Support
+            </a></li><li class="devsite-footer-linkbox-item"><a href="//careers.google.com/cloud/" class="gc-analytics-event"
+               data-category="Site-Wide Custom Events"
+               data-label="Footer Careers">
+                Careers
+            </a></li><li class="devsite-footer-linkbox-item"><a href="//www.google.com/cloud/press" class="gc-analytics-event"
+               data-category="Site-Wide Custom Events"
+               data-label="Footer Press">
+                Press
+            </a></li></ul></li><li class="devsite-footer-linkbox devsite-footer-linkbox-backup"><h3 class="devsite-footer-linkbox-heading">Engage</h3><ul class="devsite-footer-linkbox-list"><li class="devsite-footer-linkbox-item"><a href="https://cloud.google.com/free-trial/" class="gc-analytics-event"
+               data-category="Site-Wide Custom Events"
+               data-label="Footer Free Trial Sign Up">
+                Free Trial Sign Up
+            </a></li><li class="devsite-footer-linkbox-item"><a href="//cloudplatform.googleblog.com" class="gc-analytics-event"
+               data-category="Site-Wide Custom Events"
+               data-label="Footer Blog">
+                Blog
+            </a></li><li class="devsite-footer-linkbox-item"><a href="https://cloud.google.com/community/" class="gc-analytics-event"
+               data-category="Site-Wide Custom Events"
+               data-label="Footer Community">
+                Community
+            </a></li><li class="devsite-footer-linkbox-item"><a href="//plus.google.com/+googlecloudplatform" class="gc-analytics-event"
+               data-category="Site-Wide Custom Events"
+               data-label="Footer Google+">
+                Google+
+            </a></li><li class="devsite-footer-linkbox-item"><a href="//twitter.com/gcpcloud" class="gc-analytics-event"
+               data-category="Site-Wide Custom Events"
+               data-label="Footer Twitter">
+                Twitter
+            </a></li><li class="devsite-footer-linkbox-item"><a href="//www.linkedin.com/showcase/google-cloud" class="gc-analytics-event"
+               data-category="Site-Wide Custom Events"
+               data-label="Footer LinkedIn">
+                LinkedIn
+            </a></li><li class="devsite-footer-linkbox-item"><a href="//stackoverflow.com/questions/tagged/google-cloud-platform" class="gc-analytics-event"
+               data-category="Site-Wide Custom Events"
+               data-label="Footer Stack Overflow">
+                Stack Overflow
+            </a></li><li class="devsite-footer-linkbox-item"><a href="//www.youtube.com/googlecloudplatform" class="gc-analytics-event"
+               data-category="Site-Wide Custom Events"
+               data-label="Footer YouTube">
+                YouTube
+            </a></li><li class="devsite-footer-linkbox-item"><a href="//www.gcppodcast.com" class="gc-analytics-event"
+               data-category="Site-Wide Custom Events"
+               data-label="Footer Podcast">
+                Podcast
+            </a></li><li class="devsite-footer-linkbox-item"><a href="//cloud.google.com/newsletter/" class="gc-analytics-event"
+               data-category="Site-Wide Custom Events"
+               data-label="Footer Newsletter Signup">
+                Newsletter Signup
+            </a></li><li class="devsite-footer-linkbox-item"><a href="//cloud.google.com/usability" class="gc-analytics-event"
+               data-category="Site-Wide Custom Events"
+               data-label="Footer UX Research">
+                UX Research
+            </a></li></ul></li><li class="devsite-footer-linkbox devsite-footer-linkbox-sites"><a href="https://developers.google.com/"
+           class="gc-analytics-event devsite-footer-linkbox-logo-link"
+           data-category="Site-Wide Custom Events" data-label="Footer Google Developers Link"><img class="devsite-footer-linkbox-logo"
+               src="https://cloud.google.com/_static/d7147bb846/images/redesign-14/lockup-color-knockout.png"
+               alt="Google Developers"></a><ul class="devsite-footer-linkbox-list"><li class="devsite-footer-linkbox-item"><a href="//developer.android.com/index.html" class="gc-analytics-event"
+               data-category="Site-Wide Custom Events"
+               data-label="Footer Android Link">
+                Android
+            </a></li><li class="devsite-footer-linkbox-item"><a href="//developer.chrome.com/home" class="gc-analytics-event"
+               data-category="Site-Wide Custom Events"
+               data-label="Footer Chrome Link">
+                Chrome
+            </a></li><li class="devsite-footer-linkbox-item"><a href="//firebase.google.com" class="gc-analytics-event"
+               data-category="Site-Wide Custom Events"
+               data-label="Footer Firebase Link">
+                Firebase
+            </a></li><li class="devsite-footer-linkbox-item"><a href="//cloud.google.com" class="gc-analytics-event"
+               data-category="Site-Wide Custom Events"
+               data-label="Footer Cloud Link">
+                Google Cloud Platform
+            </a></li><li class="devsite-footer-linkbox-item"><a href="//developers.google.com/products/" class="gc-analytics-event"
+               data-category="Site-Wide Custom Events"
+               data-label="Footer Products Link">
+                All Products
+            </a></li></ul></li></ul></nav></footer><footer class="devsite-utility-footer"><nav class="devsite-utility-footer-nav devsite-nav devsite-full-site-width"><div class="devsite-utility-footer-nav-left"><form class="devsite-utility-footer-language" action="/i18n/setlang/" method="post"><input type="hidden" name="xsrf_token" value="ejYWdDLt_JLmDnnHrrpOVGlSyWIU-l48BQBKLzG7dlc6MTUyNDQ1ODI1MzIwNjc3MA" /><input type="hidden" name="next" value="/ml-engine/docs/scikit/quickstart"><select class="devsite-utility-footer-language-select kd-select" name="language"
+                track-type="languageSelector" track-name="click"><option value="en"
+                 selected="selected" 
+                track-type="languageSelector" track-name="changed"
+                track-metadata-original-language="en"
+                track-metadata-selected-language="en">
+            English
+          </option><option value="es"
+                
+                track-type="languageSelector" track-name="changed"
+                track-metadata-original-language="en"
+                track-metadata-selected-language="es">
+            español
+          </option><option value="pt-br"
+                
+                track-type="languageSelector" track-name="changed"
+                track-metadata-original-language="en"
+                track-metadata-selected-language="pt-br">
+            Português Brasileiro
+          </option><option value="ja"
+                
+                track-type="languageSelector" track-name="changed"
+                track-metadata-original-language="en"
+                track-metadata-selected-language="ja">
+            日本語
+          </option><option value="zh-tw"
+                
+                track-type="languageSelector" track-name="changed"
+                track-metadata-original-language="en"
+                track-metadata-selected-language="zh-tw">
+            繁體中文
+          </option></select></form><span class="devsite-utility-footer-links"><a class="devsite-utility-footer-link gc-analytics-event"
+           href="https://cloud.google.com/terms/"
+           data-category="Site-Wide Custom Events"
+           data-label="Footer terms link"
+           data-footer-link-id="terms"
+           >Terms
+         </a><a class="devsite-utility-footer-link gc-analytics-event"
+           href="//www.google.com/policies/privacy/"
+           data-category="Site-Wide Custom Events"
+           data-label="Footer privacy link"
+           data-footer-link-id="privacy"
+           >Privacy
+         </a><a class="devsite-utility-footer-link gc-analytics-event"
+           href="//www.google.de/contact/impressum.html"
+           data-category="Site-Wide Custom Events"
+           data-label="Footer impressum link"
+           data-footer-link-id="impressum"
+           >Impressum
+         </a></span></div></nav></footer><div class="devsite-feedback-dialog devsite-dialog"><div class="devsite-dialog-contents"><h3>Send feedback about...</h3><div class="devsite-feedback-item"><a data-type="documentation" class="gc-analytics-event"
+           data-category="Site-Wide Custom Events" data-label="Docs Feedback Image"
+           track-type="feedback" track-name="feedbackDocIcon" track-metadata-position="header"><div class="devsite-feedback-item-icon-container"><div class="devsite-feedback-item-icon-white devsite-feedback-item-icon-docs
+                        material-icons"></div></div></a><div class="devsite-feedback-item-name">
+          
+          This page
+        </div><div class="devsite-feedback-item-description"><a data-type="documentation" tabindex="0" class="gc-analytics-event"
+             data-category="Site-Wide Custom Events" data-label="Docs Feedback Text"
+             track-type="feedback" track-name="feedbackDocText" track-metadata-position="header">
+            
+            Documentation feedback
+          </a></div></div><div class="devsite-feedback-item"><a data-type="product" tabindex="0" class="gc-analytics-event"
+           data-category="Site-Wide Custom Events" data-label="Product Feedback Image"
+           track-type="feedback" track-name="feedbackProductIcon" track-metadata-position="header"
+         ><img class="devsite-feedback-item-icon"
+               src="https://cloud.google.com/_static/d7147bb846/images/feedback/google_56px.svg"></a><div class="devsite-feedback-item-name">
+        Cloud ML Engine for scikit-learn &amp; XGBoost
+        </div><div class="devsite-feedback-item-description"><a data-type="product" tabindex="0" class="gc-analytics-event"
+             data-category="Site-Wide Custom Events" data-label="Product Feedback Text"
+             track-type="feedback" track-name="feedbackProductText" track-metadata-position="header"
+           >
+            
+            Product feedback
+          </a></div></div></div><div class="devsite-dialog-buttons"><button type="button" class="devsite-feedback-cancel button-white gc-analytics-event"
+              data-category="Site-Wide Custom Events" data-label="Cancel Feedback Button"
+              track-type="feedback" track-name="cancelFeedbackButton"
+              track-metadata-position="header">
+        
+        Cancel
+      </button></div></div><script>
+  $(document).ready(function() {
+    new devsite.feedback.Widget({
+        'product_id': '715616',
+        'bucket': 'Cloud Machine Learning Engine Docs',
+        'context': 'Cloud ML Engine feedback link',
+        'version': 'devsite-20180420-r00-rc00.default'
+      },
+      document.querySelectorAll('.devsite-feedback-button'),
+      'en',
+      document.querySelector('.devsite-site-mask'),
+      document.querySelector('.devsite-feedback-dialog'),
+      document.querySelector('.devsite-feedback-cancel'),
+      document.querySelectorAll('.devsite-feedback-item a:not([href])')
+    );
+  });
+  </script></div><script async defer src="//www.gstatic.com/feedback/api.js"></script><script src="https://cloud.google.com/_static2/d7147bb846/jsi18n/"></script><script src="https://cloud.google.com/_static/d7147bb846/js/script_foot_closure.js"></script><script src="https://cloud.google.com/_static/d7147bb846/js/script_foot.js"></script><script>
+        (function($) {
+          
+          devsite.devsite.Init($, {'ENABLE_BLOCKED_VIDEO_PLACEHOLDER': 0, 'SITE_NAME': 'cloud', 'FULL_SITE_SEARCH_ENABLED': 1, 'ENABLE_CLOUDTRACK': 1, 'VTAGS_ENABLED': 1, 'HISTORY_ENABLED': 1, 'VERSION_HASH': 'd7147bb846', 'SCRIPTSAFE_DOMAIN': 'cloud-dot-google-developers.appspot.com', 'ENABLE_BLOCKED_LINK_TOOLTIP': 0, 'ALLOWED_HOSTS': ['.android.com', '.anvato.com', '.apigee.com', '.appspot.com', '.dialogflow.com', '.gonglchuangl.net', '.google.cn', '.google.com', '.googleplex.com', '.nest.com', '.openthread.io', '.openweave.io', '.orbitera.com', '.tensorflow.org'], 'BLOCK_RSS_FEEDS': 0},
+                               '[]','en',
+                               true, '',
+                               {"f62218c009ec029abef196bba5aa34cf": true, "8de7a048f21618359bd37f5ce44be073": false, "098dafe57affddc137df300142652cfd": false, "8e03e230de0bd8a6fe173fdf172e8b3f": true, "cb025a64a50094835616312f4774a53d": true, "51470233c56fc1fde50f00b73c52b216": false, "d169d485cf24243a263783dbe42029b1": true, "039e5d84b87fd75807ffb37b7f1bbf2c": true, "700def1a83e356c06c0925afb05de4b0": false, "6749dcb526ce9bde6993550c7d928d24": true}, '/ml-engine/docs/scikit/',
+                               'https://cloud.google.com/');
+        })(jQuery);
+
+        
+        devsite.localInit = function() {
+          
+        };
+
+      </script><script>
+      $('.devsite-utility-footer-language-select').each(function() {
+        $(this).change(function(){$('.devsite-utility-footer-language').submit();});
+      });
+      </script><script async defer src="//survey.g.doubleclick.net/async_survey?site=stkg5ekljdxo44krvvyudsrpfy"></script></div><span id="devsite-request-elapsed" data-request-elapsed="559.220075607"></span></body></html>

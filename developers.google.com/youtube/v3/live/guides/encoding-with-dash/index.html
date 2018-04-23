@@ -1,0 +1,991 @@
+
+
+
+
+
+
+<!DOCTYPE html><html lang="en"
+      class="chekov"><head><script>var a=window.devsite||{};window.devsite=a;a.readyCallbacks=[];window.devsite.readyCallbacks=a.readyCallbacks;a.ready=function(b){a.readyCallbacks.push(b)};window.devsite.ready=a.ready;
+</script><meta charset="utf-8"><meta name="xsrf_token" content="kDJpM9aFE2Fw2hQp26bxgG1La-f4KOtcBlvlPna0Rls6MTUyNDQ1ODMxNTU1ODY0MA" /><link rel="canonical" href="https://developers.google.com/youtube/v3/live/guides/encoding-with-dash"><link rel="alternate" href="https://developers.google.com/youtube/v3/live/guides/encoding-with-dash" hreflang="en"><link rel="alternate" href="https://developers.google.cn/youtube/v3/live/guides/encoding-with-dash" hreflang="en-cn"><link rel="alternate" href="https://developers.google.com/youtube/v3/live/guides/encoding-with-dash" hreflang="x-default"><link rel="shortcut icon" href="https://developers.google.com/_static/d7147bb846/images/favicon.png"><link rel="apple-touch-icon" href="https://developers.google.com/_static/d7147bb846/images/touch-icon.png"><meta name="viewport" content="width=device-width, initial-scale=1"><link rel="stylesheet"
+      
+      href="//fonts.googleapis.com/css?family=Google+Sans:400|Roboto:400,400italic,500,500italic,700,700italic|Roboto+Mono:400,500,700|Material+Icons"
+      ><link rel="stylesheet"
+        href="https://developers.google.com/_static/d7147bb846/css/devsite-youtube-red.css"><link rel="search"
+        type="application/opensearchdescription+xml"
+        title="Google Developers"
+        href="https://developers.google.com/s/opensearch.xml"><script src="https://developers.google.com/_static/d7147bb846/js/jquery-bundle.js"></script><meta property="og:site_name" content="Google Developers"><meta property="og:type" content="website"><meta property="og:url" content="https://developers.google.com/youtube/v3/live/guides/encoding-with-dash"><meta property="og:locale" content="en"><script>
+    var ___gcfg = ___gcfg || {};
+    ___gcfg.lang = 'en';
+  </script><title>Delivering Live YouTube Content via DASH &nbsp;|&nbsp; YouTube Live Streaming API
+      &nbsp;|&nbsp; Google Developers</title><meta property="og:title" content="Delivering Live YouTube Content via DASH &nbsp;|&nbsp; YouTube Live Streaming API
+      &nbsp;|&nbsp; Google Developers"><meta property="og:image"
+          content="https://developers.google.com/_static/d7147bb846/images/share/devsite-youtube-red.png"><meta property="og:image:secure_url"
+          content="https://developers.google.com/_static/d7147bb846/images/share/devsite-youtube-red.png"><meta property="og:image:width" content="1200"><meta property="og:image:height" content="630"></head><body class="
+               devsite-doc-page
+               
+               
+               
+               devsite-header-no-upper-tabs
+               "
+        data-family="endorsed"
+        id="top_of_page"><div class="devsite-wrapper"><div class="devsite-top-section-wrapper
+            "><header class="devsite-top-section nocontent"><div class="devsite-top-logo-row-wrapper-wrapper"><div class="devsite-top-logo-row-wrapper"><div class="devsite-top-logo-row devsite-full-site-width"><button type="button" class="devsite-expand-section-nav devsite-header-icon-button
+                                       button-flat material-icons gc-analytics-event"
+                  data-category="Site-Wide Custom Events" data-label="Hamburger menu"></button><div class="devsite-product-name-wrapper"><a class="devsite-product-name-link gc-analytics-event"
+       href="https://developers.google.com/youtube/"
+       data-category="Site-Wide Custom Events"
+       data-label="Project logo (header)"><img src="https://developers.google.com/site-assets/logo-youtube.svg" class="devsite-product-logo"
+               alt="YouTube"></a><span class="devsite-product-name"><ul class="devsite-breadcrumb-list"><li class="devsite-breadcrumb-item"><a href="https://developers.google.com/youtube/" class="devsite-breadcrumb-link gc-analytics-event"
+       data-category="Site-Wide Custom Events" data-label="Upper Header"
+       data-value="1">
+    
+    
+      
+        YouTube
+      
+    
+    
+    </a></li><li class="devsite-breadcrumb-item"><div class="devsite-breadcrumb-guillemet material-icons"></div><a href="https://developers.google.com/youtube/v3/live/getting-started" class="devsite-breadcrumb-link gc-analytics-event"
+       data-category="Site-Wide Custom Events" data-label="Upper Header"
+       data-value="2">
+    
+    
+      Live Streaming API
+    
+    
+    </a></li></ul></span></div><div class="devsite-header-upper-tabs"></div><form class="devsite-search-form"
+                action="https://developers.google.com/s/results/"
+                method="GET"
+                id="top-search"
+                search-placeholder='Search'><div id="searchbox" class="devsite-searchbox"><input placeholder='Search'
+         
+         type="text"
+         class="devsite-search-field devsite-search-query"
+         name="q"
+         value=""
+         autocomplete="off"
+         
+         aria-label="Search box"><div class="devsite-search-image material-icons"></div></div><input type="hidden"
+       name="p"
+       id="search_project"
+       value="/youtube/v3/live/"
+       data-project-name="YouTube Live Streaming API"
+       data-project-path="/youtube/v3/live/"
+       data-query-match=""><input type="hidden" class="suggest-project" value="YouTube Live Streaming API" /><div class="suggest-project-metadata" data-home_url="/youtube/" data-path="/youtube/" data-name="YouTube" ></div><div class="suggest-project-metadata" data-home_url="/youtube/android/player/" data-path="/youtube/android/player/" data-name="YouTube Android Player API" ></div></form><a class="devsite-header-link devsite-top-button button gc-analytics-event"
+               href="https://developers.google.com/products/"
+               data-category="Site-Wide Custom Events"
+               data-label="Site header link"
+               track-type="navigateTo"
+               track-name="all products"
+               track-metadata-position="nav"><div class="devsite-header-link-label">All Products</div></a><button type="button" class="devsite-search-button devsite-header-icon-button button-flat
+                                       material-icons"></button><a href="https://www.google.com/accounts/ServiceLogin?passive=true&continue=https%3A%2F%2Fdevelopers.google.com%2Fyoutube%2Fv3%2Flive%2Fguides%2Fencoding-with-dash%3Frefresh%3D1&service=ahsid"
+   class="devsite-user-signin devsite-top-button button gc-analytics-event"
+   data-category="Site-Wide Custom Events" data-label="Sign in button">
+  
+  Sign in
+</a></div></div></div><div class="devsite-collapsible-section"><div class="devsite-header-background devsite-full-site-width"><div class="devsite-doc-set-nav-row devsite-full-site-width"><nav class="devsite-doc-set-nav devsite-nav devsite-overflow-tabs-scroll-wrapper"><ul class="devsite-doc-set-nav-tab-list devsite-overflow-tabs-scroll"><li class="devsite-doc-set-nav-tab-container devsite-nav-tab
+               "><a href="https://developers.google.com/youtube/v3/live/getting-started"
+         class="devsite-doc-set-nav-active devsite-nav-tab
+                devsite-doc-set-nav-tab devsite-doc-set-nav-tab-link gc-analytics-event"
+         aria-label="Guides, selected"
+       
+         data-category="Site-Wide Custom Events"
+       
+         data-label="Tab: Guides"
+       >
+        Guides
+      </a></li><li class="devsite-doc-set-nav-tab-container devsite-nav-tab
+               "><a href="https://developers.google.com/youtube/v3/live/docs/"
+         class=" devsite-nav-tab
+                devsite-doc-set-nav-tab devsite-doc-set-nav-tab-link gc-analytics-event"
+         
+       
+         data-category="Site-Wide Custom Events"
+       
+         data-label="Tab: Reference"
+       >
+        Reference
+      </a></li><li class="devsite-doc-set-nav-tab-container devsite-nav-tab
+               "><a href="https://developers.google.com/youtube/v3/live/code_samples/"
+         class=" devsite-nav-tab
+                devsite-doc-set-nav-tab devsite-doc-set-nav-tab-link gc-analytics-event"
+         
+       
+         data-category="Site-Wide Custom Events"
+       
+         data-label="Tab: Samples"
+       >
+        Samples
+      </a></li><li class="devsite-doc-set-nav-tab-container devsite-nav-tab
+               "><a href="https://developers.google.com/youtube/v3/live/support"
+         class=" devsite-nav-tab
+                devsite-doc-set-nav-tab devsite-doc-set-nav-tab-link gc-analytics-event"
+         
+       
+         data-category="Site-Wide Custom Events"
+       
+         data-label="Tab: Support"
+       >
+        Support
+      </a></li></ul></nav></div></div></div></header><script>
+    if (window.jQuery) {
+      $(document).ready(function() {
+        if (window.devsite && window.devsite.search) {
+          
+          window.devsite.search.init('en')
+        }
+      });
+    }
+  </script></div><div id="gc-wrapper"itemscope itemtype="http://schema.org/Article"><input class="google-analytics-id-json" type="hidden" value="{&quot;dimensions&quot;: {&quot;dimension6&quot;: &quot;en&quot;, &quot;dimension4&quot;: &quot;YouTube Live Streaming API&quot;, &quot;dimension5&quot;: &quot;en&quot;, &quot;dimension3&quot;: false, &quot;dimension1&quot;: &quot;Signed out&quot;, &quot;dimension8&quot;: null}, &quot;gaid&quot;: &quot;UA-24532603-1&quot;}"><script>
+      var dataLayer = [{"freeTrialEligibleUser": "False", "userCountry": "HK", "language": {"requested": "en", "served": "en"}, "projectName": "YouTube Live Streaming API", "scriptsafe": null, "signedIn": "False", "internalUser": "False"}];
+    </script>
+
+      
+        <div class="devsite-site-mask"></div>
+        
+  
+
+
+<nav class="devsite-nav-responsive devsite-nav nocontent" tabindex="0">
+  
+  <div class="devsite-nav-responsive-tabs-panel">
+    
+      
+
+
+
+<nav class="devsite-nav-responsive-tabs devsite-nav">
+  <ul class="devsite-nav-list">
+  
+    <li class="devsite-nav-item devsite-nav-item-heading">
+    
+      <span class="devsite-nav-responsive-forward devsite-nav-responsive-tab devsite-nav-title
+                   devsite-nav-active gc-analytics-event"
+            data-category="Site-Wide Custom Events" data-label="Responsive Tab: Guides"
+            tabindex="0">
+        Guides
+      </span>
+    
+    </li>
+  
+    <li class="devsite-nav-item devsite-nav-item-heading">
+    
+      <a 
+           href="https://developers.google.com/youtube/v3/live/docs/?nav=true"
+         
+         class="devsite-nav-responsive-tab devsite-nav-title gc-analytics-event
+                "
+         data-category="Site-Wide Custom Events" data-label="Responsive Tab: Reference">
+        Reference
+      </a>
+      
+      
+    
+    </li>
+  
+    <li class="devsite-nav-item devsite-nav-item-heading">
+    
+      <a 
+           href="https://developers.google.com/youtube/v3/live/code_samples/?nav=true"
+         
+         class="devsite-nav-responsive-tab devsite-nav-title gc-analytics-event
+                "
+         data-category="Site-Wide Custom Events" data-label="Responsive Tab: Samples">
+        Samples
+      </a>
+      
+      
+    
+    </li>
+  
+    <li class="devsite-nav-item devsite-nav-item-heading">
+    
+      <a 
+           href="https://developers.google.com/youtube/v3/live/support"
+         
+         class="devsite-nav-responsive-tab devsite-nav-title gc-analytics-event
+                "
+         data-category="Site-Wide Custom Events" data-label="Responsive Tab: Support">
+        Support
+      </a>
+      
+      
+    
+    </li>
+  
+  
+    <li class="devsite-nav-item devsite-nav-item-heading">
+      <a href="https://developers.google.com/products/"
+         class="devsite-nav-responsive-tab devsite-nav-title gc-analytics-event"
+         data-category="Site-Wide Custom Events"
+         data-label="Responsive Tab: all_products">
+        All Products
+      </a>
+    </li>
+  
+  </ul>
+</nav>
+
+
+    
+  </div>
+  
+  
+  <div class="devsite-nav-responsive-sidebar-panel">
+    
+    <div class="devsite-nav-responsive-back" tabindex="0"></div>
+    
+    <nav class="devsite-nav-responsive-sidebar"></nav>
+  </div>
+  
+  
+</nav>
+
+
+        <div class="devsite-main-content clearfix">
+
+        
+        
+
+        
+  
+  
+    
+    
+      
+  <nav class="devsite-section-nav devsite-nav nocontent">
+    <ul class="devsite-nav-list"><li class="devsite-nav-item"><a href="https://developers.google.com/youtube/v3/live/getting-started" class="devsite-nav-title">Overview</a></li><li class="devsite-nav-item"><a href="https://developers.google.com/youtube/v3/live/libraries" class="devsite-nav-title">Client Libraries</a></li><li class="devsite-nav-item devsite-nav-item-heading"><span class="devsite-nav-title devsite-nav-title-no-path" aria-label="Authorize Requests, click to expand/collapse" role="link">Authorize Requests</span><li class="devsite-nav-item"><a href="https://developers.google.com/youtube/v3/live/authentication" class="devsite-nav-title">Overview</a></li><li class="devsite-nav-item"><a href="https://developers.google.com/youtube/v3/live/registering_an_application" class="devsite-nav-title">Get Auth Credentials</a></li><li class="devsite-nav-item"><a href="https://developers.google.com/youtube/v3/live/guides/auth/server-side-web-apps" class="devsite-nav-title">Server-side Web Apps</a></li><li class="devsite-nav-item"><a href="https://developers.google.com/youtube/v3/live/guides/auth/client-side-web-apps" class="devsite-nav-title">Client-side Web Apps</a></li><li class="devsite-nav-item"><a href="https://developers.google.com/youtube/v3/live/guides/auth/installed-apps" class="devsite-nav-title">Installed Apps</a></li><li class="devsite-nav-item"><a href="https://developers.google.com/youtube/v3/live/guides/auth/devices" class="devsite-nav-title">Devices</a></li></li><li class="devsite-nav-item devsite-nav-item-heading"><span class="devsite-nav-title devsite-nav-title-no-path" aria-label="Guides and Tutorials, click to expand/collapse" role="link">Guides and Tutorials</span><li class="devsite-nav-item"><a href="https://developers.google.com/youtube/v3/live/life-of-a-broadcast" class="devsite-nav-title">Life of a Broadcast</a></li><li class="devsite-nav-item"><a href="https://developers.google.com/youtube/v3/live/broadcasts-and-streams" class="devsite-nav-title">Broadcasts and Streams</a></li><li class="devsite-nav-item devsite-nav-active"><a href="https://developers.google.com/youtube/v3/live/guides/encoding-with-dash" class="devsite-nav-title">Delivering Content via DASH</a></li></li><li class="devsite-nav-item devsite-nav-item-heading"><span class="devsite-nav-title devsite-nav-title-no-path" aria-label="Tools, click to expand/collapse" role="link">Tools</span><li class="devsite-nav-item devsite-nav-external devsite-nav-has-status"><a href="https://developers.google.com/apis-explorer/#p/youtube/v3/" class="devsite-nav-title"><span class="devsite-nav-text">APIs Explorer</span><span class="devsite-nav-icon-wrapper"><span class="devsite-nav-icon material-icons" title="External"></span></span></a></li></li></ul>
+  </nav>
+
+    
+
+    
+  <nav class="devsite-page-nav devsite-nav"></nav>
+
+
+      <article class="devsite-article">
+        <article class="devsite-article-inner">
+  
+          
+  
+
+
+
+  
+  <nav class="devsite-breadcrumb-nav devsite-nav">
+    
+
+
+<ul class="devsite-breadcrumb-list">
+  
+  <li class="devsite-breadcrumb-item">
+    
+    
+    <a href="https://developers.google.com/products/" class="devsite-breadcrumb-link gc-analytics-event"
+       data-category="Site-Wide Custom Events" data-label="Breadcrumbs"
+       data-value="1">
+    
+    
+      Products
+    
+    
+    </a>
+    
+  </li>
+  
+  <li class="devsite-breadcrumb-item">
+    
+    
+    <div class="devsite-breadcrumb-guillemet material-icons"></div>
+    
+    
+    <a href="https://developers.google.com/youtube/" class="devsite-breadcrumb-link gc-analytics-event"
+       data-category="Site-Wide Custom Events" data-label="Breadcrumbs"
+       data-value="2">
+    
+    
+      YouTube
+    
+    
+    </a>
+    
+  </li>
+  
+  <li class="devsite-breadcrumb-item">
+    
+    
+    <div class="devsite-breadcrumb-guillemet material-icons"></div>
+    
+    
+    <a href="https://developers.google.com/youtube/v3/live/getting-started" class="devsite-breadcrumb-link gc-analytics-event"
+       data-category="Site-Wide Custom Events" data-label="Breadcrumbs"
+       data-value="3">
+    
+    
+      Live Streaming API
+    
+    
+    </a>
+    
+  </li>
+  
+  <li class="devsite-breadcrumb-item">
+    
+    
+    <div class="devsite-breadcrumb-guillemet material-icons"></div>
+    
+    
+    <a href="https://developers.google.com/youtube/v3/live/getting-started" class="devsite-breadcrumb-link gc-analytics-event"
+       data-category="Site-Wide Custom Events" data-label="Breadcrumbs"
+       data-value="4">
+    
+    
+      Guides
+    
+    
+    </a>
+    
+  </li>
+  
+</ul>
+
+  </nav>
+  
+  
+  <h1 itemprop="name" class="devsite-page-title">
+    Delivering Live YouTube Content via DASH
+  </h1>
+  
+  
+  <nav class="devsite-page-nav-embedded devsite-nav"></nav>
+  
+  <div class="devsite-article-body clearfix
+            "
+       itemprop="articleBody">
+    
+
+<p>This document provides guidelines for using the DASH Delivery format to stream live data on YouTube from an encoder. It is intended to help encoder vendors add DASH delivery support to their products.</p>
+
+<h2>Understanding DASH</h2>
+
+<p>The list below lists some key DASH features and attributes:</p>
+
+<ul>
+  <li>Based on open standards.</li>
+  <li>HTTP-based. As a result, DASH is Internet infrastructure friendly and can traverse firewalls.</li>
+  <li>Supports high transfer bitrate. DASH supports multiple, simultaneous HTTP sessions and nonsequential segment delivery, providing greater resiliency than protocols that rely on a single TCP connection.</li>
+  <li>Secure delivery via HTTPS.</li>
+  <li>Lossless delivery via HTTP and HTTPS.</li>
+  <li>Codec agnostic.</li>
+  <li>Supports MP4 containing H264 and AAC as well as WebM containing VP8/VP9 and Vorbis/Opus.</li>
+</ul>
+
+<h3>Specifications</h3>
+
+<ul>
+  <li>DASH is described in <a href="http://www.iso.org/iso/home/store/catalogue_tc/catalogue_detail.htm?csnumber=65274">ISO/IEC 23009-1:2014 Information technology -- Dynamic adaptive streaming over HTTP (DASH)</a>.</li>
+  <li>WebM over DASH is described in the <a href="http://wiki.webmproject.org/adaptive-streaming/webm-dash-specification">WebM DASH specification</a>.</li>
+</ul>
+
+<h2>Requirements</h2>
+
+<p>The following subsections explain requirements for using DASH to deliver live streams to YouTube.</p>
+
+<h3>Timing</h3>
+
+<p>The YouTube DASH endpoint behaves as a passive HTTP server, recording PUT method calls sent by an encoder.</p>
+
+<ul>
+  <li>The DASH endpoint supports simultaneous TCP connections. You can reuse connections as per HTTP/1.1.</li>
+  <li>The MPD and Initialization segments should be PUT within 3 seconds of the first media segment. (We recommend that you <a href="#initialization-segments-in-mpd">include the Initialization segment in the MPD</a>.)</li>
+  <li>PUT operations for media segments may overlap in time to improve upload bandwidth.</li>
+  <li>Segments can be provided in nonsequential order within a time window of approximately 3 seconds.</li>
+  <li>The MPD and Initialization segments should be updated at least every 60 seconds with an updated <code>availabilityStartTime</code> and <code>startNumber</code>. (As noted above, the Initialization segment can be <a href="#initialization-segments-in-mpd">included in the MPD</a>. In that case, one PUT request can update both segments.)</li>
+</ul>
+
+
+<h3>URL structure</h3>
+
+<p>Your encoder must form PUT URLs by appending a string to the YouTube endpoint base URL. You need to create the DASH ingestion endpoint by using the <a href="https://developers.google.com/youtube/v3/live/getting-started">YouTube Live Streaming API</a>.</p>
+
+<p>The encoder can subsequently obtain the endpoint's base URL programmatically via the <a href="https://developers.google.com/youtube/v3/live/getting-started">YouTube Live Streaming API</a>. The base URL is also visible in the YouTube Live Events UI if you want to provide the URL to the encoder manually.</p>
+
+<p>The string appended to the base URL can contain the following set of ASCII characters:</p>
+
+<p><ul>
+  <li>Lowercase letters: a-z</li>
+  <li>Uppercase letters: A-Z</li>
+  <li>Digits: 0-9</li>
+  <li>Special characters: _ (underscore), - (hyphen), . (period)</li>
+</ul>
+
+<h4>MPD URLs</h4>
+
+<p>In addition to the requirement above, the MPD URL must end with <code>.mpd</code>, enabling the YouTube server to easily identify the MPD. Other segment URLs must not end with <code>.mpd</code>.</p>
+
+<h4>Initialization and media segment URLs</h4>
+
+<p>The Initialization segment URL and all media segment URLs must end with <code>.mp4</code> if the data is in an ISO BMFF container or with <code>.webm</code> if the data is in a WebM container.</p>
+
+<h3>MPD contents</h3>
+
+<p>The MPD must be complete and conformant with the DASH standard. It must contain exactly one of each of the following elements. This list identifies elements specifically required by YouTube, and the DASH standard might identify additional required elements. The elements are represented using XPath syntax and are consistent with the DASH standard.</p>
+
+<ul>
+  <li><code>/mpd:MPD/attribute::type</code></li>
+  <li><code>/mpd:MPD/mpd:Period</code></li>
+  <li><code>/mpd:MPD/mpd:Period/mpd:AdaptationSet</code></li>
+  <li><code>/mpd:MPD/mpd:Period/mpd:AdaptationSet/attribute::mimeType (video/mp4 or video/webm)</code></li>
+  <li><code>/mpd:MPD/mpd:Period/mpd:AdaptationSet/mpd:SegmentTemplate</code></li>
+  <li><code>/mpd:MPD/mpd:Period/mpd:AdaptationSet/mpd:SegmentTemplate/attribute::media</code></li>
+  <li><code>/mpd:MPD/mpd:Period/mpd:AdaptationSet/mpd:SegmentTemplate/attribute::initialization</code></li>
+  <li><code>/mpd:MPD/mpd:Period/mpd:AdaptationSet/mpd:SegmentTemplate/attribute::startNumber</code></li>
+</ul>
+
+<p>Please note the following requirements for element values:</p>
+
+<ul>
+  <li>The <code>&lt;MPD&gt;</code> element's <code>minimumUpdatePeriod</code> attribute must be set to a value equal to or less than 60 seconds (<code>PT60S</code>).</li>
+  <li>The <code>&lt;SegmentTemplate&gt;</code> element's <code>media</code> attribute must specify that media segment URLs are generated using <code>$Number$</code>. (The <code>startNumber</code> attribute identifies the number that will be assigned to the first media segment.)</li>
+</ul>
+
+<h3>Initialization segment length</h3>
+
+<p>The Initialization segment must not be longer than 100kb. (Typically, an Initialization segment is much smaller than that.) If the Initialization segment is included in the MPD, then the <code>data:</code> URL, which contains the segment, must not be longer than 100kb.</p>
+
+<h3>Encoder output</h3>
+
+<p>The Initialization segment and media segments must constitute a multiplexed ISO BMFF or WebM file stream with closed GOPs (groups of pictures).</p>
+
+<ul>
+  <li>The GOP size should be about 2 seconds and must be less than 8 seconds.</li>
+  <li>The multiplexed stream must contain both audio and video tracks.</li>
+</ul>
+
+<h2>Additional best practices</h2>
+
+<h3>Encryption</h3>
+
+<p>YouTube supports stream encryption via HTTPS. We strongly recommend that you use this feature.</p>
+
+<h3>Initialization segments in MPD</h3>
+
+<p>You can represent the Initialization segment directly in the MPD using a <code>data:</code> URL, per <a href="https://www.ietf.org/rfc/rfc2397.txt">RFC 2397</a>. This simplifies your stream setup and reduces the possibility that the Initialization segment will not correspond to the rest of the stream.</p>
+
+<p>The XPath for this element is:</p>
+
+<pre>/mpd:MPD/mpd:Period/mpd:AdaptationSet/mpd:SegmentTemplate/attribute:data</pre>
+
+<aside class="note"><b>Note:</b> The <code>data:</code> URL must not be longer than 100k bytes.</aside>
+
+<h3>Target segment durations</h3>
+
+<p>For good ingestion performance and a good trade-off between throughput and latency, the length of your media segments should be between 1 and 5 seconds. We strongly recommend that you communicate the target duration of those segments in the MPD using these two elements:</p>
+
+<ul>
+  <li><code>/mpd:MPD/mpd:Period/mpd:AdaptationSet/mpd:SegmentTemplate/attribute::duration</code></li>
+  <li><code>/mpd:MPD/mpd:Period/mpd:AdaptationSet/mpd:SegmentTemplate/attribute::timescale</code></li>
+</ul>
+
+<p>The calculated duration from those attributes should be within a factor of 2 of all actual segment durations or streaming performance may suffer.</p>
+
+<p>Note that the target duration for the ingestion does not equal the chunk duration for the live stream that YouTube produces. YouTube transcodes and re-chunks the input, and the output target duration depends on whether a stream is optimized for streaming quality or for latency.</p>
+
+<h3>Retries and exponential backoff</h3>
+
+<p>All HTTP PUT requests should be performed with a timeout, which we recommend setting to a value 500 milliseconds greater than the segment duration.</p>
+
+<p>A media segment PUT request that fails, whether due to timeout or other errors, corresponds to a gap in the video stream. As such, you should retry any such request using a randomized <a href="http://en.wikipedia.org/wiki/Exponential_backoff#Binary_exponential_backoff_.2F_truncated_exponential_backoff">binary exponential backoff</a>:</p>
+
+<ol>
+  <li>After a failure, wait a random period between <code>[0 ... 100]</code> milliseconds and retry the request.</li>
+  <li>If the request fails again, wait a random period between <code>[0 ... 200]</code> milliseconds and retry the request.</li>
+  <li>If the request fails again, wait a random period between <code>[0 ... 400]</code> milliseconds and retry the request.</li>
+  <li>etc.</li>
+</ol>
+
+<p>Note that repeated failures should be signaled to the encoder operator since they correspond to a failing broadcast.</p>
+
+<h2>HTTP Response codes</h2>
+
+<p>The following sections explain the response codes that YouTube returns in response to segments delivered via DASH.</p>
+
+<h4>200 (OK)</h4>
+
+<p>An HTTP 200 (OK) response indicates that the YouTube server received an expected operation and handled it successfully.</p>
+
+<h4>202 (Accepted)</h4>
+
+<p>An HTTP 202 (Accepted) response to any PUT or POST operation indicates that the operation was unexpected and accepted for deferred processing. However, the deferred operation could succeed or fail, so the response does not guarantee that YouTube will actually be able to successfully process the operation.</p>
+
+<p>This response occurs most frequently when a segment is delivered non-sequentially. Usually, YouTube can correctly process the accepted segment after receiving the preceding segments, and you do not need to resend the segment.</p>
+
+<p>For example, YouTube can return a 202 response in any of the following cases:</p>
+
+<ul>
+  <li>An initialization segment is received before the MPD.</li>
+  <li>Media segments are received before the MPD and Initialization segments.</li>
+  <li>A media segment is received before an earlier segment, such as segment 3 being received before segment 2.</li>
+</ul>
+
+<p>However, a 202 response can also indicate that the item identifier is incorrect if YouTube cannot fully validate the identifier upon receipt of the POST or PUT request. For example, one of the times that this occurs is when YouTube receives and accepts an initialization segment before receiving the MPD, but the initialization segment turns out to be invalid. In this case, YouTube accepts the initialization segment and returns a 202, then determines whether the segment is valid upon receipt of the MPD. You can avoid this particular scenario by <a href="#initialization-segments-in-mpd">including the Initialization segment in the MPD</a>.</p>
+
+<h4>400 (Bad Request)</h4>
+
+<p>An HTTP 400 (Bad Request) response indicates one of the following problems occurred:</p>
+
+<ul>
+  <li>The URL is malformed</li>
+  <li>The post is too large (> 10MB)</li>
+  <li>The MPD cannot be parsed</li>
+  <li>The Initialization segment in the MPD is corrupt</li>
+</ul>
+
+<h4>401 (Unauthorized)</h4>
+
+<p>An HTTP 401 (Unauthorized) response indicates that the base URL for the YouTube DASH endpoint is corrupted or expired.</p>
+
+<h4>405 (Method Not Allowed)</h4>
+
+<p>An HTTP 405 (Method Not Allowed) response indicates that a request other than <code>POST</code> or <code>PUT</code> was sent.</p>
+
+<h4>409 (Conflict)</h4>
+
+<p>An HTTP 409 (Conflict) response to any PUT or POST operation indicates that YouTube cannot process the request. For example, this response might occur if the requester has sent numerous media segments, but YouTube still does not have the MPD, the Initialization segment, or both. In that example, the encoder would need to retransmit the MPD and Initialization segments before retrying the failed request.</p>
+
+<aside class="important"><b>Important:</b> An encoder MUST handle this response code correctly because it can be returned at any time, including during normal operations. Although there is no limit on the number of retries, repeated failures should be signalled to the encoder operator that the broadcast is failing.</aside>
+
+<h4>500 (Internal Server Error)</h4>
+
+<p>An HTTP 500 (Internal Server Error) response indicates that the server was unable to process the request. For this error, we recommend that you retry the request with <a href="#retries-and-exponential-backoff">exponential backoff</a>.</p>
+
+
+<h2>Examples</h2>
+
+<h3>URL Sequence</h3>
+
+<p>The URL sequence below shows a series of PUT requests that would be made to deliver content via DASH. The sequence assumes that the base URL for the YouTube DASH endpoint is:</p>
+
+<pre>http://upload.youtube.com/dash_upload?cid=xxxx-xxxx-xxxx-xxxx&amp;copy=0&amp;file=</pre>
+
+<p>The sequence shows the MPD and Initialization segments sent separately. However, the Initialization segment can be <a href="#initialization-segments-in-mpd">represented directly in the MPD</a>, and that practice is recommended. In addition, the MPD and Initialization segments should be <a href="#timing">updated at least every 60 seconds</a>. So, eventually, the URLs for those segements would occur again in this sequence, and they would then be followed by URLs for more media segments.</p>
+
+<pre>
+PUT upload.youtube.com/dash_upload?cid=xxxx-xxxx-xxxx-xxxx&amp;copy=0&amp;file=dash.mpd
+PUT upload.youtube.com/dash_upload?cid=xxxx-xxxx-xxxx-xxxx&amp;copy=0&amp;file=init.mp4
+PUT upload.youtube.com/dash_upload?cid=xxxx-xxxx-xxxx-xxxx&amp;copy=0&amp;file=media001.mp4
+PUT upload.youtube.com/dash_upload?cid=xxxx-xxxx-xxxx-xxxx&amp;copy=0&amp;file=media002.mp4
+PUT upload.youtube.com/dash_upload?cid=xxxx-xxxx-xxxx-xxxx&amp;copy=0&amp;file=media003.mp4
+...
+</pre>
+
+<h3>WebM segments</h3>
+
+<h4>MPD with embedded Initialization segment</h4>
+
+<p>The following sample MPD has an embedded Initialization segment in an RFC 2397 data URL. We recommend that you embed the Initialization segment in this manner rather than sending it separately.</p>
+
+<p>This example is conformant for WebM (VP8 or VP9, Opus) ingestion to YouTube. The majority of the data URL has been elided for readability:</p>
+
+<pre class="prettyprint lang-xml">
+&lt;?xml version="1.0" encoding="UTF-8"?&gt;
+&lt;MPD xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+     xmlns="urn:mpeg:dash:schema:mpd:2011"
+     xsi:schemaLocation="urn:mpeg:dash:schema:mpd:2011 DASH-MPD.xsd"
+     type="dynamic" 
+     profiles="urn:mpeg:dash:profile:isoff-live:2011" 
+     minimumUpdatePeriod="PT60S"
+     minBufferTime="PT12S"
+     availabilityStartTime="2016-04-13T20:52:58" &gt;
+  &lt;Period start="PT0S" id="1"&gt;
+    &lt;AdaptationSet mimeType="video/webm"&gt;
+      &lt;ContentComponent contentType="video" id="1"/&gt;
+      &lt;SegmentTemplate timescale="1000"
+           duration="2000"
+           startNumber="1"
+           initialization="data:video/mp4;base64,AAAAGGZ0eXBpc...AAA"
+           media="/dash_upload?cid=xxxx-xxxx-xxxx-xxxx&amp;copy=0&amp;file=media-$Number%09d$.webm"/&gt;
+      &lt;Representation id="1" width="1920" height="1080"&gt;
+        &lt;SubRepresentation contentComponent="1"/&gt;
+      &lt;/Representation&gt;
+    &lt;/AdaptationSet&gt;
+  &lt;/Period&gt;
+&lt;/MPD&gt;
+</pre>
+
+<h4>MPD</h4>
+
+<p>The following sample MPD, which does not have an embedded Initialization segment, is also conformant for WebM (VP8 or VP9, Opus) ingestion to YouTube:</p>
+
+<pre class="prettyprint lang-xml">
+&lt;?xml version="1.0" encoding="UTF-8"?&gt;
+&lt;MPD xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+     xmlns="urn:mpeg:dash:schema:mpd:2011"
+     xsi:schemaLocation="urn:mpeg:dash:schema:mpd:2011 DASH-MPD.xsd"
+     type="dynamic" 
+     profiles="urn:mpeg:dash:profile:isoff-live:2011" 
+     minimumUpdatePeriod="PT60S"
+     minBufferTime="PT12S"
+     availabilityStartTime="2016-04-13T20:52:58" &gt;
+  &lt;Period start="PT0S" id="1"&gt;
+    &lt;AdaptationSet mimeType="video/webm"&gt;
+      &lt;ContentComponent contentType="video" id="1"/&gt;
+      &lt;SegmentTemplate timescale="1000"
+           duration="2000"
+           startNumber="1"
+           initialization="/dash_upload?cid=xxxx-xxxx-xxxx-xxxx&amp;copy=0&amp;file=init.webm"
+           media="/dash_upload?cid=xxxx-xxxx-xxxx-xxxx&amp;copy=0&amp;file=media-$Number%09d$.webm"/&gt;
+      &lt;Representation id="1" width="1920" height="1080"&gt;
+        &lt;SubRepresentation contentComponent="1"/&gt;
+      &lt;/Representation&gt;
+    &lt;/AdaptationSet&gt;
+  &lt;/Period&gt;
+&lt;/MPD&gt;
+</pre>
+
+
+<h4>Initialization</h4>
+
+<p>The following shows the layout of a sample WebM Initialization segment. It consists of the portion of the WebM stream up to but not including the first cluster.</p>
+
+<img src="https://developers.google.com/youtube/images/live/dash-multiplexed-webm-init-segment.png"/>
+
+<h4>Media</h4>
+
+<p>The following shows the layout of a sample WebM media segment. It consists of a single WebM cluster. As with an ISO BMFF stream, the Initialization segment prepended to a series of clusters should produce a valid WebM stream.</p>
+
+<img src="https://developers.google.com/youtube/images/live/dash-multiplexed-webm-media-segment.png"/>
+
+<h3>ISO BMFF segments</h3>
+
+<h4>MPD with embedded Initialization segment</h4>
+
+<p>The following sample MPD has an embedded Initialization segment in an RFC 2397 data URL. We recommend that you embed the Initialization segment in this manner rather than sending it separately.</p>
+
+<p>This example is conformant for ISO BMFF (H.264, AAC) ingestion to YouTube. The majority of the data URL has been elided for readability:</p>
+
+<pre class="prettyprint lang-xml">
+&lt;?xml version="1.0" encoding="UTF-8"?&gt;
+&lt;MPD xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns="urn:mpeg:dash:schema:mpd:2011"   
+    xsi:schemaLocation="urn:mpeg:dash:schema:mpd:2011 DASH-MPD.xsd" 
+    type="dynamic"
+    minimumUpdatePeriod="PT30S" 
+    availabilityStartTime="2016-05-04T20:47:25" 
+    minBufferTime="PT12S" 
+    profiles="urn:mpeg:dash:profile:isoff-live:2011"&gt;
+  &lt;Period start="PT0S" id="1"&gt;
+    &lt;AdaptationSet mimeType="video/mp4" codecs="avc1.4d401e,mp4a.40.2"&gt;
+      &lt;ContentComponent contentType="video" id="1"/&gt;
+      &lt;ContentComponent contentType="audio" id="2"/&gt;
+      &lt;SegmentTemplate timescale="600"
+             media="/dash_upload?cid=ug50-xg26-cbc1-2p0h&amp;staging=1&amp;copy=0&amp;file=media$Number%09d$.mp4"
+             initialization="data:video/mp4;base64,AAAAGGZ0eXBpc281AA...AA"
+             duration="306"
+             startNumber="1"/&gt;
+      &lt;Representation id="1" width="640" height="360" bandwidth="526952"&gt;
+        &lt;SubRepresentation contentComponent="1" bandwidth="526952" 
+codecs="avc1.4d401e"/&gt;
+        &lt;SubRepresentation contentComponent="2" bandwidth="125584" codecs="mp4a.40.2"/&gt;
+      &lt;/Representation&gt;
+    &lt;/AdaptationSet&gt;
+  &lt;/Period&gt;
+&lt;/MPD&gt;
+</pre>
+
+<h4>MPD</h4>
+
+<p>The following sample MPD, which does not have an embedded Initialization segment, is also conformant for ISO BMFF (H.264, AAC) ingestion to YouTube:</p>
+
+<pre class="prettyprint lang-xml">
+&lt;?xml version="1.0" encoding="UTF-8"?&gt;
+&lt;MPD xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+     xmlns="urn:mpeg:dash:schema:mpd:2011"
+     xsi:schemaLocation="urn:mpeg:dash:schema:mpd:2011 DASH-MPD.xsd"
+     type="dynamic"
+     profiles="urn:mpeg:dash:profile:isoff-live:2011"
+     minimumUpdatePeriod="PT60S" 
+     minBufferTime="PT12S"
+     availabilityStartTime="2016-04-13T20:51:31" &gt;
+  &lt;Period start="PT0S" id="1"&gt;
+    &lt;AdaptationSet mimeType="video/mp4" codecs="avc1.4d401e,mp4a.40.2"&gt;
+      &lt;ContentComponent contentType="video" id="1"/&gt;
+      &lt;ContentComponent contentType="audio" id="2"/&gt;
+      &lt;SegmentTemplate timescale="600"
+           duration="1200"
+           startNumber="1"
+           initialization="/dash_upload?cid=xxxx-xxxx-xxxx-xxxx&amp;copy=0&amp;file=init.mp4"
+           media="/dash_upload?cid=xxxx-xxxx-xxxx-xxxx&amp;copy=0&amp;file=media$Number%09d$.mp4"/&gt;
+      &lt;Representation id="1" width="640" height="360" bandwidth="526952"&gt;
+        &lt;SubRepresentation contentComponent="1" bandwidth="526952" codecs="avc1.4d401e"/&gt;
+        &lt;SubRepresentation contentComponent="2" bandwidth="125584" codecs="mp4a.40.2"/&gt;
+      &lt;/Representation&gt;
+    &lt;/AdaptationSet&gt;
+  &lt;/Period&gt;
+&lt;/MPD&gt;
+</pre>
+
+
+<h4>Initialization</h4>
+
+<p>The following diagram shows the layout of a sample multiplexed ISO BMFF Initialization segment. YouTube does not necessarily use of the atoms, but this is a conforming example. In particular, both audio and video tracks are represented.</p>
+
+<img src="https://developers.google.com/youtube/images/live/dash-multiplexed-iso-bmff-init-segment.png"/>
+
+<h4>Media</h4>
+
+<p>The following diagram shows the layout of a sample multiplexed ISO BMFF media segment. YouTube does not necessarily use all of the atoms, but this is a conforming example. In particular, both audio and video tracks are represented. A series of these segments can be appended to an Initialization segment to produce a valid and complete multiplexed ISO BMFF stream.</p>
+
+<img src="https://developers.google.com/youtube/images/live/dash-multiplexed-iso-bmff-media-segment.png"/>
+
+<h2>Known Limitations</h2>
+
+<h3>RTMP and DASH ingestions</h3>
+
+<p>It is not possible to mix RTMP and DASH ingestions to YouTube. This applies to switching between the two during a broadcast as well as to using one as a primary ingestion method and the other for backup ingestion.</p>
+
+  
+  </div>
+  
+
+  
+        
+  
+
+
+
+
+
+
+
+        
+<div class="devsite-content-footer nocontent">
+  
+  
+    <p>Except as otherwise noted, the content of this page is licensed under the <a href="http://creativecommons.org/licenses/by/3.0/">Creative Commons Attribution 3.0 License</a>, and code samples are licensed under the <a href="http://www.apache.org/licenses/LICENSE-2.0">Apache 2.0 License</a>. For details, see our <a href="https://developers.google.com/terms/site-policies">Site Policies</a>. Java is a registered trademark of Oracle and/or its affiliates.</p>
+  
+
+  
+    
+    <p class="devsite-content-footer-date" itemprop="datePublished"
+       content="2016-05-26T13:44:33.731290">
+      
+      Last updated May 26, 2016.
+    </p>
+  
+
+</div>
+
+        </article>
+      </article>
+  
+
+        </div>
+      
+
+<footer class="devsite-footer-promos nocontent"><nav class="devsite-full-site-width"><ul class="devsite-footer-promos-list"><li class="devsite-footer-promo"><a href="http://apiblog.youtube.com"
+           class="devsite-footer-promo-title gc-analytics-event"
+           data-category="Site-Wide Custom Events"
+           data-label="Content Page Footer Promo"
+           ><img class="devsite-footer-promo-icon" src="https://www.gstatic.com/images/icons/material/product/2x/blogger_64dp.png">
+          
+          
+            Blog
+          
+        </a><div class="devsite-footer-promo-description">The latest news on the YouTube API blog</div></li><li class="devsite-footer-promo"><a href="https://github.com/youtube/api-samples"
+           class="devsite-footer-promo-title gc-analytics-event"
+           data-category="Site-Wide Custom Events"
+           data-label="Content Page Footer Promo"
+           ><img class="devsite-footer-promo-icon" src="https://developers.google.com/site-assets/logo-github.svg">
+          
+          
+            GitHub
+          
+        </a><div class="devsite-footer-promo-description">Find API code samples and other YouTube open-source projects.</div></li><li class="devsite-footer-promo"><a href="https://code.google.com/p/gdata-issues/issues/entry?template=YouTube%20(Defect%20Report)"
+           class="devsite-footer-promo-title gc-analytics-event"
+           data-category="Site-Wide Custom Events"
+           data-label="Content Page Footer Promo"
+           ><img class="devsite-footer-promo-icon" src="https://developers.google.com/site-assets/developers_64dp.png">
+          
+          
+            Issue Tracker
+          
+        </a><div class="devsite-footer-promo-description">Something wrong? Send us a bug report!</div></li><li class="devsite-footer-promo"><a href="http://stackoverflow.com/questions/ask?tags=youtube-livestreaming-api"
+           class="devsite-footer-promo-title gc-analytics-event"
+           data-category="Site-Wide Custom Events"
+           data-label="Content Page Footer Promo"
+           ><img class="devsite-footer-promo-icon" src="https://developers.google.com/site-assets/logo-stack-overflow.svg">
+          
+          
+            Stack Overflow
+          
+        </a><div class="devsite-footer-promo-description">Ask a question under the youtube-api tag</div></li><li class="devsite-footer-promo"><a href="https://www.youtube.com/user/YouTubeDev"
+           class="devsite-footer-promo-title gc-analytics-event"
+           data-category="Site-Wide Custom Events"
+           data-label="Content Page Footer Promo"
+           ><img class="devsite-footer-promo-icon" src="https://www.gstatic.com/images/icons/material/product/2x/youtube_64dp.png">
+          
+          
+            Videos
+          
+        </a><div class="devsite-footer-promo-description">Check out the YouTube Developer Relations team&#39;s YouTube channel</div></li></ul></nav></footer><footer class="devsite-footer-linkboxes nocontent
+               
+               devsite-footer-linkboxes-with-sites"><nav class="devsite-full-site-width"><ul class="devsite-footer-linkboxes-list"><li class="devsite-footer-linkbox "><h3 class="devsite-footer-linkbox-heading">Tools</h3><ul class="devsite-footer-linkbox-list"><li class="devsite-footer-linkbox-item"><a href="https://script.google.com/" class="gc-analytics-event"
+               data-category="Site-Wide Custom Events"
+               data-label="Content Page Footer Linkbox">
+                Script Editor
+            </a></li><li class="devsite-footer-linkbox-item"><a href="https://script.google.com/dashboard" class="gc-analytics-event"
+               data-category="Site-Wide Custom Events"
+               data-label="Content Page Footer Linkbox">
+                Service Health Dashboard
+            </a></li></ul></li><li class="devsite-footer-linkbox "><h3 class="devsite-footer-linkbox-heading">Issue Tracker</h3><ul class="devsite-footer-linkbox-list"><li class="devsite-footer-linkbox-item"><a href="https://code.google.com/p/gdata-issues/issues/entry?template=YouTube%20(Defect%20Report)" class="gc-analytics-event"
+               data-category="Site-Wide Custom Events"
+               data-label="Content Page Footer Linkbox">
+                File a bug
+            </a></li><li class="devsite-footer-linkbox-item"><a href="https://code.google.com/p/gdata-issues/issues/entry?template=YouTube%20(Enhancement%20Request)" class="gc-analytics-event"
+               data-category="Site-Wide Custom Events"
+               data-label="Content Page Footer Linkbox">
+                Request a feature
+            </a></li><li class="devsite-footer-linkbox-item"><a href="https://code.google.com/p/gdata-issues/issues/list?q=label:API-YouTube" class="gc-analytics-event"
+               data-category="Site-Wide Custom Events"
+               data-label="Content Page Footer Linkbox">
+                See open issues
+            </a></li></ul></li><li class="devsite-footer-linkbox "><h3 class="devsite-footer-linkbox-heading">Product Info</h3><ul class="devsite-footer-linkbox-list"><li class="devsite-footer-linkbox-item"><a href="https://developers.google.com/youtube/terms" class="gc-analytics-event"
+               data-category="Site-Wide Custom Events"
+               data-label="Content Page Footer Linkbox">
+                Terms of Service
+            </a></li><li class="devsite-footer-linkbox-item"><a href="https://developers.google.com/youtube/branding_guidelines" class="gc-analytics-event"
+               data-category="Site-Wide Custom Events"
+               data-label="Content Page Footer Linkbox">
+                Branding Guidelines
+            </a></li><li class="devsite-footer-linkbox-item"><a href="https://developers.google.com/youtube/creating_monetizable_applications" class="gc-analytics-event"
+               data-category="Site-Wide Custom Events"
+               data-label="Content Page Footer Linkbox">
+                Monetization Guidelines
+            </a></li><li class="devsite-footer-linkbox-item"><a href="https://developers.google.com/youtube/youtube-api-list" class="gc-analytics-event"
+               data-category="Site-Wide Custom Events"
+               data-label="Content Page Footer Linkbox">
+                APIs subject to Deprecation Policy
+            </a></li></ul></li><li class="devsite-footer-linkbox devsite-footer-linkbox-sites"><a href="https://developers.google.com/"
+           class="gc-analytics-event devsite-footer-linkbox-logo-link"
+           data-category="Site-Wide Custom Events" data-label="Footer Google Developers Link"><img class="devsite-footer-linkbox-logo"
+               src="https://developers.google.com/_static/d7147bb846/images/redesign-14/lockup-color-knockout.png"
+               alt="Google Developers"></a><ul class="devsite-footer-linkbox-list"><li class="devsite-footer-linkbox-item"><a href="//developer.android.com/index.html" class="gc-analytics-event"
+               data-category="Site-Wide Custom Events"
+               data-label="Footer Android Link">
+                Android
+            </a></li><li class="devsite-footer-linkbox-item"><a href="//developer.chrome.com/home" class="gc-analytics-event"
+               data-category="Site-Wide Custom Events"
+               data-label="Footer Chrome Link">
+                Chrome
+            </a></li><li class="devsite-footer-linkbox-item"><a href="//firebase.google.com" class="gc-analytics-event"
+               data-category="Site-Wide Custom Events"
+               data-label="Footer Firebase Link">
+                Firebase
+            </a></li><li class="devsite-footer-linkbox-item"><a href="//cloud.google.com" class="gc-analytics-event"
+               data-category="Site-Wide Custom Events"
+               data-label="Footer Cloud Link">
+                Google Cloud Platform
+            </a></li><li class="devsite-footer-linkbox-item"><a href="//developers.google.com/products/" class="gc-analytics-event"
+               data-category="Site-Wide Custom Events"
+               data-label="Footer Products Link">
+                All Products
+            </a></li></ul></li></ul></nav></footer><footer class="devsite-utility-footer"><nav class="devsite-utility-footer-nav devsite-nav devsite-full-site-width"><div class="devsite-utility-footer-nav-left"><form class="devsite-utility-footer-language" action="/i18n/setlang/" method="post"><input type="hidden" name="xsrf_token" value="kDJpM9aFE2Fw2hQp26bxgG1La-f4KOtcBlvlPna0Rls6MTUyNDQ1ODMxNTU1ODY0MA" /><input type="hidden" name="next" value="/youtube/v3/live/guides/encoding-with-dash"><select class="devsite-utility-footer-language-select kd-select" name="language"
+                track-type="languageSelector" track-name="click"><option value="id"
+                
+                track-type="languageSelector" track-name="changed"
+                track-metadata-original-language="en"
+                track-metadata-selected-language="id">
+            Bahasa Indonesia
+          </option><option value="de"
+                
+                track-type="languageSelector" track-name="changed"
+                track-metadata-original-language="en"
+                track-metadata-selected-language="de">
+            Deutsch
+          </option><option value="en"
+                 selected="selected" 
+                track-type="languageSelector" track-name="changed"
+                track-metadata-original-language="en"
+                track-metadata-selected-language="en">
+            English
+          </option><option value="es"
+                
+                track-type="languageSelector" track-name="changed"
+                track-metadata-original-language="en"
+                track-metadata-selected-language="es">
+            español
+          </option><option value="fr"
+                
+                track-type="languageSelector" track-name="changed"
+                track-metadata-original-language="en"
+                track-metadata-selected-language="fr">
+            français
+          </option><option value="pt-br"
+                
+                track-type="languageSelector" track-name="changed"
+                track-metadata-original-language="en"
+                track-metadata-selected-language="pt-br">
+            Português Brasileiro
+          </option><option value="ru"
+                
+                track-type="languageSelector" track-name="changed"
+                track-metadata-original-language="en"
+                track-metadata-selected-language="ru">
+            Русский
+          </option><option value="ja"
+                
+                track-type="languageSelector" track-name="changed"
+                track-metadata-original-language="en"
+                track-metadata-selected-language="ja">
+            日本語
+          </option><option value="zh-cn"
+                
+                track-type="languageSelector" track-name="changed"
+                track-metadata-original-language="en"
+                track-metadata-selected-language="zh-cn">
+            简体中文
+          </option><option value="ko"
+                
+                track-type="languageSelector" track-name="changed"
+                track-metadata-original-language="en"
+                track-metadata-selected-language="ko">
+            한국어
+          </option></select></form><span class="devsite-utility-footer-links"><a class="devsite-utility-footer-link gc-analytics-event"
+           href="https://developers.google.com/terms/site-terms"
+           data-category="Site-Wide Custom Events"
+           data-label="Footer terms link"
+           data-footer-link-id="terms"
+           >Terms
+         </a><a class="devsite-utility-footer-link gc-analytics-event"
+           href="//www.google.com/policies/privacy/"
+           data-category="Site-Wide Custom Events"
+           data-label="Footer privacy link"
+           data-footer-link-id="privacy"
+           >Privacy
+         </a></span></div><div class="devsite-utility-footer-nav-right"><div class="devsite-utility-footer-newsletter-signup-text">
+        Sign up for the Google Developers newsletter
+      </div><a class="button button-primary devsite-utility-footer-newsletter-signup-button"
+         href="//services.google.com/fb/forms/googledevelopersnewsletter/?utm_medium=referral&amp;utm_source=google-products&amp;utm_team=googledevs&amp;utm_campaign=201611-newsletter-launch">
+        
+        Subscribe
+      </a></div></nav></footer></div><script async defer src="//www.gstatic.com/feedback/api.js"></script><script src="https://developers.google.com/_static2/d7147bb846/jsi18n/"></script><script src="https://developers.google.com/_static/d7147bb846/js/script_foot_closure.js"></script><script src="https://developers.google.com/_static/d7147bb846/js/script_foot.js"></script><script>
+        (function($) {
+          
+          devsite.devsite.Init($, {'ENABLE_BLOCKED_VIDEO_PLACEHOLDER': 0, 'SITE_NAME': 'devsite', 'FULL_SITE_SEARCH_ENABLED': 1, 'ENABLE_CLOUDTRACK': 0, 'VTAGS_ENABLED': 0, 'HISTORY_ENABLED': 1, 'VERSION_HASH': 'd7147bb846', 'SCRIPTSAFE_DOMAIN': 'google-developers.appspot.com', 'ENABLE_BLOCKED_LINK_TOOLTIP': 0, 'ALLOWED_HOSTS': ['.android.com', '.anvato.com', '.apigee.com', '.appspot.com', '.dialogflow.com', '.gonglchuangl.net', '.google.cn', '.google.com', '.googleplex.com', '.nest.com', '.openthread.io', '.openweave.io', '.orbitera.com', '.tensorflow.org'], 'BLOCK_RSS_FEEDS': 0},
+                               '[]','en',
+                               true, '',
+                               {"f62218c009ec029abef196bba5aa34cf": true, "8de7a048f21618359bd37f5ce44be073": false, "098dafe57affddc137df300142652cfd": false, "8e03e230de0bd8a6fe173fdf172e8b3f": true, "cb025a64a50094835616312f4774a53d": true, "51470233c56fc1fde50f00b73c52b216": false, "d169d485cf24243a263783dbe42029b1": true, "039e5d84b87fd75807ffb37b7f1bbf2c": true, "700def1a83e356c06c0925afb05de4b0": false, "6749dcb526ce9bde6993550c7d928d24": true}, '/youtube/v3/live/',
+                               'https://developers.google.com/');
+        })(jQuery);
+
+        
+        devsite.localInit = function() {
+          
+        };
+
+      </script><script>
+      $('.devsite-utility-footer-language-select').each(function() {
+        $(this).change(function(){$('.devsite-utility-footer-language').submit();});
+      });
+      </script></div><span id="devsite-request-elapsed" data-request-elapsed="198.299884796"></span></body></html>

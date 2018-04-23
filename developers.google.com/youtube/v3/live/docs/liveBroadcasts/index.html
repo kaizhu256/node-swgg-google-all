@@ -1,0 +1,994 @@
+
+
+
+
+
+
+<!DOCTYPE html><html lang="en"
+      class="chekov"><head><script>var a=window.devsite||{};window.devsite=a;a.readyCallbacks=[];window.devsite.readyCallbacks=a.readyCallbacks;a.ready=function(b){a.readyCallbacks.push(b)};window.devsite.ready=a.ready;
+</script><meta charset="utf-8"><meta name="xsrf_token" content="eQumuRTiKzAYqsE1xDFLbvIXtveY1VEJHViDOk09H6Q6MTUyNDQ1ODMwNjY5MzcyMA" /><link rel="canonical" href="https://developers.google.com/youtube/v3/live/docs/liveBroadcasts"><link rel="alternate" href="https://developers.google.com/youtube/v3/live/docs/liveBroadcasts" hreflang="en"><link rel="alternate" href="https://developers.google.cn/youtube/v3/live/docs/liveBroadcasts" hreflang="en-cn"><link rel="alternate" href="https://developers.google.com/youtube/v3/live/docs/liveBroadcasts" hreflang="x-default"><link rel="shortcut icon" href="https://developers.google.com/_static/d7147bb846/images/favicon.png"><link rel="apple-touch-icon" href="https://developers.google.com/_static/d7147bb846/images/touch-icon.png"><meta name="viewport" content="width=device-width, initial-scale=1"><link rel="stylesheet"
+      
+      href="//fonts.googleapis.com/css?family=Google+Sans:400|Roboto:400,400italic,500,500italic,700,700italic|Roboto+Mono:400,500,700|Material+Icons"
+      ><link rel="stylesheet"
+        href="https://developers.google.com/_static/d7147bb846/css/devsite-youtube-red.css"><link rel="search"
+        type="application/opensearchdescription+xml"
+        title="Google Developers"
+        href="https://developers.google.com/s/opensearch.xml"><script src="https://developers.google.com/_static/d7147bb846/js/jquery-bundle.js"></script><meta property="og:site_name" content="Google Developers"><meta property="og:type" content="website"><meta property="og:url" content="https://developers.google.com/youtube/v3/live/docs/liveBroadcasts"><meta property="og:locale" content="en"><script>
+    var ___gcfg = ___gcfg || {};
+    ___gcfg.lang = 'en';
+  </script><title>LiveBroadcasts &nbsp;|&nbsp; YouTube Live Streaming API
+      &nbsp;|&nbsp; Google Developers</title><meta property="og:title" content="LiveBroadcasts &nbsp;|&nbsp; YouTube Live Streaming API
+      &nbsp;|&nbsp; Google Developers"><meta property="og:image"
+          content="https://developers.google.com/_static/d7147bb846/images/share/devsite-youtube-red.png"><meta property="og:image:secure_url"
+          content="https://developers.google.com/_static/d7147bb846/images/share/devsite-youtube-red.png"><meta property="og:image:width" content="1200"><meta property="og:image:height" content="630"></head><body class="
+               devsite-doc-page
+               
+               
+               
+               devsite-header-no-upper-tabs
+               "
+        data-family="endorsed"
+        id="top_of_page"><div class="devsite-wrapper"><div class="devsite-top-section-wrapper
+            "><header class="devsite-top-section nocontent"><div class="devsite-top-logo-row-wrapper-wrapper"><div class="devsite-top-logo-row-wrapper"><div class="devsite-top-logo-row devsite-full-site-width"><button type="button" class="devsite-expand-section-nav devsite-header-icon-button
+                                       button-flat material-icons gc-analytics-event"
+                  data-category="Site-Wide Custom Events" data-label="Hamburger menu"></button><div class="devsite-product-name-wrapper"><a class="devsite-product-name-link gc-analytics-event"
+       href="https://developers.google.com/youtube/"
+       data-category="Site-Wide Custom Events"
+       data-label="Project logo (header)"><img src="https://developers.google.com/site-assets/logo-youtube.svg" class="devsite-product-logo"
+               alt="YouTube"></a><span class="devsite-product-name"><ul class="devsite-breadcrumb-list"><li class="devsite-breadcrumb-item"><a href="https://developers.google.com/youtube/" class="devsite-breadcrumb-link gc-analytics-event"
+       data-category="Site-Wide Custom Events" data-label="Upper Header"
+       data-value="1">
+    
+    
+      
+        YouTube
+      
+    
+    
+    </a></li><li class="devsite-breadcrumb-item"><div class="devsite-breadcrumb-guillemet material-icons"></div><a href="https://developers.google.com/youtube/v3/live/getting-started" class="devsite-breadcrumb-link gc-analytics-event"
+       data-category="Site-Wide Custom Events" data-label="Upper Header"
+       data-value="2">
+    
+    
+      Live Streaming API
+    
+    
+    </a></li></ul></span></div><div class="devsite-header-upper-tabs"></div><form class="devsite-search-form"
+                action="https://developers.google.com/s/results/"
+                method="GET"
+                id="top-search"
+                search-placeholder='Search'><div id="searchbox" class="devsite-searchbox"><input placeholder='Search'
+         
+         type="text"
+         class="devsite-search-field devsite-search-query"
+         name="q"
+         value=""
+         autocomplete="off"
+         
+         aria-label="Search box"><div class="devsite-search-image material-icons"></div></div><input type="hidden"
+       name="p"
+       id="search_project"
+       value="/youtube/v3/live/"
+       data-project-name="YouTube Live Streaming API"
+       data-project-path="/youtube/v3/live/"
+       data-query-match=""><input type="hidden" class="suggest-project" value="YouTube Live Streaming API" /><div class="suggest-project-metadata" data-home_url="/youtube/" data-path="/youtube/" data-name="YouTube" ></div><div class="suggest-project-metadata" data-home_url="/youtube/android/player/" data-path="/youtube/android/player/" data-name="YouTube Android Player API" ></div></form><a class="devsite-header-link devsite-top-button button gc-analytics-event"
+               href="https://developers.google.com/products/"
+               data-category="Site-Wide Custom Events"
+               data-label="Site header link"
+               track-type="navigateTo"
+               track-name="all products"
+               track-metadata-position="nav"><div class="devsite-header-link-label">All Products</div></a><button type="button" class="devsite-search-button devsite-header-icon-button button-flat
+                                       material-icons"></button><a href="https://www.google.com/accounts/ServiceLogin?passive=true&continue=https%3A%2F%2Fdevelopers.google.com%2Fyoutube%2Fv3%2Flive%2Fdocs%2FliveBroadcasts%3Frefresh%3D1&service=ahsid"
+   class="devsite-user-signin devsite-top-button button gc-analytics-event"
+   data-category="Site-Wide Custom Events" data-label="Sign in button">
+  
+  Sign in
+</a></div></div></div><div class="devsite-collapsible-section"><div class="devsite-header-background devsite-full-site-width"><div class="devsite-doc-set-nav-row devsite-full-site-width"><nav class="devsite-doc-set-nav devsite-nav devsite-overflow-tabs-scroll-wrapper"><ul class="devsite-doc-set-nav-tab-list devsite-overflow-tabs-scroll"><li class="devsite-doc-set-nav-tab-container devsite-nav-tab
+               "><a href="https://developers.google.com/youtube/v3/live/getting-started"
+         class=" devsite-nav-tab
+                devsite-doc-set-nav-tab devsite-doc-set-nav-tab-link gc-analytics-event"
+         
+       
+         data-category="Site-Wide Custom Events"
+       
+         data-label="Tab: Guides"
+       >
+        Guides
+      </a></li><li class="devsite-doc-set-nav-tab-container devsite-nav-tab
+               "><a href="https://developers.google.com/youtube/v3/live/docs/"
+         class="devsite-doc-set-nav-active devsite-nav-tab
+                devsite-doc-set-nav-tab devsite-doc-set-nav-tab-link gc-analytics-event"
+         aria-label="Reference, selected"
+       
+         data-category="Site-Wide Custom Events"
+       
+         data-label="Tab: Reference"
+       >
+        Reference
+      </a></li><li class="devsite-doc-set-nav-tab-container devsite-nav-tab
+               "><a href="https://developers.google.com/youtube/v3/live/code_samples/"
+         class=" devsite-nav-tab
+                devsite-doc-set-nav-tab devsite-doc-set-nav-tab-link gc-analytics-event"
+         
+       
+         data-category="Site-Wide Custom Events"
+       
+         data-label="Tab: Samples"
+       >
+        Samples
+      </a></li><li class="devsite-doc-set-nav-tab-container devsite-nav-tab
+               "><a href="https://developers.google.com/youtube/v3/live/support"
+         class=" devsite-nav-tab
+                devsite-doc-set-nav-tab devsite-doc-set-nav-tab-link gc-analytics-event"
+         
+       
+         data-category="Site-Wide Custom Events"
+       
+         data-label="Tab: Support"
+       >
+        Support
+      </a></li></ul></nav></div></div></div></header><script>
+    if (window.jQuery) {
+      $(document).ready(function() {
+        if (window.devsite && window.devsite.search) {
+          
+          window.devsite.search.init('en')
+        }
+      });
+    }
+  </script></div><div id="gc-wrapper"itemscope itemtype="http://schema.org/APIReference"><input class="google-analytics-id-json" type="hidden" value="{&quot;dimensions&quot;: {&quot;dimension6&quot;: &quot;en&quot;, &quot;dimension4&quot;: &quot;YouTube Live Streaming API&quot;, &quot;dimension5&quot;: &quot;en&quot;, &quot;dimension3&quot;: false, &quot;dimension1&quot;: &quot;Signed out&quot;, &quot;dimension8&quot;: null}, &quot;gaid&quot;: &quot;UA-24532603-1&quot;}"><script>
+      var dataLayer = [{"freeTrialEligibleUser": "False", "userCountry": "HK", "language": {"requested": "en", "served": "en"}, "projectName": "YouTube Live Streaming API", "scriptsafe": null, "signedIn": "False", "internalUser": "False"}];
+    </script>
+
+      
+        <div class="devsite-site-mask"></div>
+        
+  
+
+
+<nav class="devsite-nav-responsive devsite-nav nocontent" tabindex="0">
+  
+  <div class="devsite-nav-responsive-tabs-panel">
+    
+      
+
+
+
+<nav class="devsite-nav-responsive-tabs devsite-nav">
+  <ul class="devsite-nav-list">
+  
+    <li class="devsite-nav-item devsite-nav-item-heading">
+    
+      <a 
+           href="https://developers.google.com/youtube/v3/live/getting-started?nav=true"
+         
+         class="devsite-nav-responsive-tab devsite-nav-title gc-analytics-event
+                "
+         data-category="Site-Wide Custom Events" data-label="Responsive Tab: Guides">
+        Guides
+      </a>
+      
+      
+    
+    </li>
+  
+    <li class="devsite-nav-item devsite-nav-item-heading">
+    
+      <span class="devsite-nav-responsive-forward devsite-nav-responsive-tab devsite-nav-title
+                   devsite-nav-active gc-analytics-event"
+            data-category="Site-Wide Custom Events" data-label="Responsive Tab: Reference"
+            tabindex="0">
+        Reference
+      </span>
+    
+    </li>
+  
+    <li class="devsite-nav-item devsite-nav-item-heading">
+    
+      <a 
+           href="https://developers.google.com/youtube/v3/live/code_samples/?nav=true"
+         
+         class="devsite-nav-responsive-tab devsite-nav-title gc-analytics-event
+                "
+         data-category="Site-Wide Custom Events" data-label="Responsive Tab: Samples">
+        Samples
+      </a>
+      
+      
+    
+    </li>
+  
+    <li class="devsite-nav-item devsite-nav-item-heading">
+    
+      <a 
+           href="https://developers.google.com/youtube/v3/live/support"
+         
+         class="devsite-nav-responsive-tab devsite-nav-title gc-analytics-event
+                "
+         data-category="Site-Wide Custom Events" data-label="Responsive Tab: Support">
+        Support
+      </a>
+      
+      
+    
+    </li>
+  
+  
+    <li class="devsite-nav-item devsite-nav-item-heading">
+      <a href="https://developers.google.com/products/"
+         class="devsite-nav-responsive-tab devsite-nav-title gc-analytics-event"
+         data-category="Site-Wide Custom Events"
+         data-label="Responsive Tab: all_products">
+        All Products
+      </a>
+    </li>
+  
+  </ul>
+</nav>
+
+
+    
+  </div>
+  
+  
+  <div class="devsite-nav-responsive-sidebar-panel">
+    
+    <div class="devsite-nav-responsive-back" tabindex="0"></div>
+    
+    <nav class="devsite-nav-responsive-sidebar"></nav>
+  </div>
+  
+  
+</nav>
+
+
+        <div class="devsite-main-content clearfix">
+
+        
+        
+
+        
+  
+  
+    
+    
+      
+  <nav class="devsite-section-nav devsite-nav nocontent">
+    <ul class="devsite-nav-list devsite-nav-expandable"><li class="devsite-nav-item"><a href="https://developers.google.com/youtube/v3/live/docs/" class="devsite-nav-title">Resource Summary</a></li><li class="devsite-nav-item devsite-nav-item-section-expandable"><span class="devsite-nav-title devsite-nav-title-no-path" aria-label="LiveBroadcasts, click to expand/collapse" role="link">LiveBroadcasts</span><a class="devsite-nav-toggle devsite-nav-toggle-expanded material-icons" track-type="leftNav" track-name="expandNavSectionArrow" track-metadata-position="0"></a><ul class="devsite-nav-section devsite-nav-section-expanded"><li class="devsite-nav-item devsite-nav-active"><a href="https://developers.google.com/youtube/v3/live/docs/liveBroadcasts" class="devsite-nav-title">Overview</a></li><li class="devsite-nav-item"><a href="https://developers.google.com/youtube/v3/live/docs/liveBroadcasts/list" class="devsite-nav-title">list</a></li><li class="devsite-nav-item"><a href="https://developers.google.com/youtube/v3/live/docs/liveBroadcasts/insert" class="devsite-nav-title">insert</a></li><li class="devsite-nav-item"><a href="https://developers.google.com/youtube/v3/live/docs/liveBroadcasts/update" class="devsite-nav-title">update</a></li><li class="devsite-nav-item"><a href="https://developers.google.com/youtube/v3/live/docs/liveBroadcasts/bind" class="devsite-nav-title">bind</a></li><li class="devsite-nav-item"><a href="https://developers.google.com/youtube/v3/live/docs/liveBroadcasts/transition" class="devsite-nav-title">transition</a></li><li class="devsite-nav-item"><a href="https://developers.google.com/youtube/v3/live/docs/liveBroadcasts/control" class="devsite-nav-title">control</a></li><li class="devsite-nav-item"><a href="https://developers.google.com/youtube/v3/live/docs/liveBroadcasts/delete" class="devsite-nav-title">delete</a></li></ul></li><li class="devsite-nav-item devsite-nav-item-section-expandable"><span class="devsite-nav-title devsite-nav-title-no-path" aria-label="LiveChatBans, click to expand/collapse" role="link">LiveChatBans</span><a class="devsite-nav-toggle devsite-nav-toggle-collapsed material-icons" track-type="leftNav" track-name="expandNavSectionArrow" track-metadata-position="0" aria-hidden="true"></a><ul class="devsite-nav-section devsite-nav-section-collapsed"><li class="devsite-nav-item"><a href="https://developers.google.com/youtube/v3/live/docs/liveChatBans" class="devsite-nav-title">Overview</a></li><li class="devsite-nav-item"><a href="https://developers.google.com/youtube/v3/live/docs/liveChatBans/insert" class="devsite-nav-title">insert</a></li><li class="devsite-nav-item"><a href="https://developers.google.com/youtube/v3/live/docs/liveChatBans/delete" class="devsite-nav-title">delete</a></li></ul></li><li class="devsite-nav-item devsite-nav-item-section-expandable"><span class="devsite-nav-title devsite-nav-title-no-path" aria-label="LiveChatMessages, click to expand/collapse" role="link">LiveChatMessages</span><a class="devsite-nav-toggle devsite-nav-toggle-collapsed material-icons" track-type="leftNav" track-name="expandNavSectionArrow" track-metadata-position="0" aria-hidden="true"></a><ul class="devsite-nav-section devsite-nav-section-collapsed"><li class="devsite-nav-item"><a href="https://developers.google.com/youtube/v3/live/docs/liveChatMessages" class="devsite-nav-title">Overview</a></li><li class="devsite-nav-item"><a href="https://developers.google.com/youtube/v3/live/docs/liveChatMessages/list" class="devsite-nav-title">list</a></li><li class="devsite-nav-item"><a href="https://developers.google.com/youtube/v3/live/docs/liveChatMessages/insert" class="devsite-nav-title">insert</a></li><li class="devsite-nav-item"><a href="https://developers.google.com/youtube/v3/live/docs/liveChatMessages/delete" class="devsite-nav-title">delete</a></li></ul></li><li class="devsite-nav-item devsite-nav-item-section-expandable"><span class="devsite-nav-title devsite-nav-title-no-path" aria-label="LiveChatModerators, click to expand/collapse" role="link">LiveChatModerators</span><a class="devsite-nav-toggle devsite-nav-toggle-collapsed material-icons" track-type="leftNav" track-name="expandNavSectionArrow" track-metadata-position="0" aria-hidden="true"></a><ul class="devsite-nav-section devsite-nav-section-collapsed"><li class="devsite-nav-item"><a href="https://developers.google.com/youtube/v3/live/docs/liveChatModerators" class="devsite-nav-title">Overview</a></li><li class="devsite-nav-item"><a href="https://developers.google.com/youtube/v3/live/docs/liveChatModerators/list" class="devsite-nav-title">list</a></li><li class="devsite-nav-item"><a href="https://developers.google.com/youtube/v3/live/docs/liveChatModerators/insert" class="devsite-nav-title">insert</a></li><li class="devsite-nav-item"><a href="https://developers.google.com/youtube/v3/live/docs/liveChatModerators/delete" class="devsite-nav-title">delete</a></li></ul></li><li class="devsite-nav-item devsite-nav-item-section-expandable"><span class="devsite-nav-title devsite-nav-title-no-path" aria-label="LiveCuepoints, click to expand/collapse" role="link">LiveCuepoints</span><a class="devsite-nav-toggle devsite-nav-toggle-collapsed material-icons" track-type="leftNav" track-name="expandNavSectionArrow" track-metadata-position="0" aria-hidden="true"></a><ul class="devsite-nav-section devsite-nav-section-collapsed"><li class="devsite-nav-item"><a href="https://developers.google.com/youtube/v3/live/docs/liveCuepoints" class="devsite-nav-title">Overview</a></li><li class="devsite-nav-item"><a href="https://developers.google.com/youtube/v3/live/docs/liveCuepoints/insert" class="devsite-nav-title">insert</a></li></ul></li><li class="devsite-nav-item devsite-nav-item-section-expandable"><span class="devsite-nav-title devsite-nav-title-no-path" aria-label="LiveStreams, click to expand/collapse" role="link">LiveStreams</span><a class="devsite-nav-toggle devsite-nav-toggle-collapsed material-icons" track-type="leftNav" track-name="expandNavSectionArrow" track-metadata-position="0" aria-hidden="true"></a><ul class="devsite-nav-section devsite-nav-section-collapsed"><li class="devsite-nav-item"><a href="https://developers.google.com/youtube/v3/live/docs/liveStreams" class="devsite-nav-title">Overview</a></li><li class="devsite-nav-item"><a href="https://developers.google.com/youtube/v3/live/docs/liveStreams/list" class="devsite-nav-title">list</a></li><li class="devsite-nav-item"><a href="https://developers.google.com/youtube/v3/live/docs/liveStreams/insert" class="devsite-nav-title">insert</a></li><li class="devsite-nav-item"><a href="https://developers.google.com/youtube/v3/live/docs/liveStreams/update" class="devsite-nav-title">update</a></li><li class="devsite-nav-item"><a href="https://developers.google.com/youtube/v3/live/docs/liveStreams/delete" class="devsite-nav-title">delete</a></li></ul></li><li class="devsite-nav-item devsite-nav-item-section-expandable"><span class="devsite-nav-title devsite-nav-title-no-path" aria-label="Sponsors, click to expand/collapse" role="link">Sponsors</span><a class="devsite-nav-toggle devsite-nav-toggle-collapsed material-icons" track-type="leftNav" track-name="expandNavSectionArrow" track-metadata-position="0" aria-hidden="true"></a><ul class="devsite-nav-section devsite-nav-section-collapsed"><li class="devsite-nav-item"><a href="https://developers.google.com/youtube/v3/live/docs/sponsors" class="devsite-nav-title">Overview</a></li><li class="devsite-nav-item"><a href="https://developers.google.com/youtube/v3/live/docs/sponsors/list" class="devsite-nav-title">list</a></li></ul></li><li class="devsite-nav-item devsite-nav-item-section-expandable"><span class="devsite-nav-title devsite-nav-title-no-path" aria-label="SuperChatEvents, click to expand/collapse" role="link">SuperChatEvents</span><a class="devsite-nav-toggle devsite-nav-toggle-collapsed material-icons" track-type="leftNav" track-name="expandNavSectionArrow" track-metadata-position="0" aria-hidden="true"></a><ul class="devsite-nav-section devsite-nav-section-collapsed"><li class="devsite-nav-item"><a href="https://developers.google.com/youtube/v3/live/docs/superChatEvents" class="devsite-nav-title">Overview</a></li><li class="devsite-nav-item"><a href="https://developers.google.com/youtube/v3/live/docs/superChatEvents/list" class="devsite-nav-title">list</a></li></ul></li><li class="devsite-nav-item devsite-nav-item-section-expandable devsite-nav-deprecated devsite-nav-has-status"><span class="devsite-nav-title devsite-nav-title-no-path" aria-label="FanFundingEvents, click to expand/collapse" role="link"><span class="devsite-nav-text">FanFundingEvents</span><span class="devsite-nav-icon-wrapper"><span class="devsite-nav-icon material-icons" title="Deprecated"></span></span></span><a class="devsite-nav-toggle devsite-nav-toggle-collapsed material-icons" track-type="leftNav" track-name="expandNavSectionArrow" track-metadata-position="0" aria-hidden="true"></a><ul class="devsite-nav-section devsite-nav-section-collapsed"><li class="devsite-nav-item devsite-nav-deprecated"><a href="https://developers.google.com/youtube/v3/live/docs/fanFundingEvents" class="devsite-nav-title">Overview</a></li><li class="devsite-nav-item devsite-nav-deprecated"><a href="https://developers.google.com/youtube/v3/live/docs/fanFundingEvents/list" class="devsite-nav-title">list</a></li></ul></li><li class="devsite-nav-item"><hr class="devsite-nav-break"></li><li class="devsite-nav-item devsite-nav-item-heading"><span class="devsite-nav-title devsite-nav-title-no-path">Error Handling</span></li><li class="devsite-nav-item"><a href="https://developers.google.com/youtube/v3/live/docs/errors" class="devsite-nav-title">YouTube Live Streaming API Errors</a></li><li class="devsite-nav-item"><a href="https://developers.google.com/youtube/v3/live/docs/liveStreams/health_status_messages" class="devsite-nav-title">Live Stream Configuration Issues</a></li><li class="devsite-nav-item"><hr class="devsite-nav-break"></li><li class="devsite-nav-item"><a href="https://developers.google.com/youtube/v3/live/revision_history" class="devsite-nav-title">Revision History</a></li></ul>
+  </nav>
+
+    
+
+    
+  <nav class="devsite-page-nav devsite-nav"></nav>
+
+
+      <article class="devsite-article">
+        <article class="devsite-article-inner">
+  
+          
+  
+
+
+
+  
+  <nav class="devsite-breadcrumb-nav devsite-nav">
+    
+
+
+<ul class="devsite-breadcrumb-list">
+  
+  <li class="devsite-breadcrumb-item">
+    
+    
+    <a href="https://developers.google.com/products/" class="devsite-breadcrumb-link gc-analytics-event"
+       data-category="Site-Wide Custom Events" data-label="Breadcrumbs"
+       data-value="1">
+    
+    
+      Products
+    
+    
+    </a>
+    
+  </li>
+  
+  <li class="devsite-breadcrumb-item">
+    
+    
+    <div class="devsite-breadcrumb-guillemet material-icons"></div>
+    
+    
+    <a href="https://developers.google.com/youtube/" class="devsite-breadcrumb-link gc-analytics-event"
+       data-category="Site-Wide Custom Events" data-label="Breadcrumbs"
+       data-value="2">
+    
+    
+      YouTube
+    
+    
+    </a>
+    
+  </li>
+  
+  <li class="devsite-breadcrumb-item">
+    
+    
+    <div class="devsite-breadcrumb-guillemet material-icons"></div>
+    
+    
+    <a href="https://developers.google.com/youtube/v3/live/getting-started" class="devsite-breadcrumb-link gc-analytics-event"
+       data-category="Site-Wide Custom Events" data-label="Breadcrumbs"
+       data-value="3">
+    
+    
+      Live Streaming API
+    
+    
+    </a>
+    
+  </li>
+  
+  <li class="devsite-breadcrumb-item">
+    
+    
+    <div class="devsite-breadcrumb-guillemet material-icons"></div>
+    
+    
+    <a href="https://developers.google.com/youtube/v3/live/docs/" class="devsite-breadcrumb-link gc-analytics-event"
+       data-category="Site-Wide Custom Events" data-label="Breadcrumbs"
+       data-value="4">
+    
+    
+      Reference
+    
+    
+    </a>
+    
+  </li>
+  
+</ul>
+
+  </nav>
+  
+  
+  <h1 itemprop="name" class="devsite-page-title">
+    LiveBroadcasts
+  </h1>
+  
+  
+  <nav class="devsite-page-nav-embedded devsite-nav"></nav>
+  
+  <div class="devsite-article-body clearfix
+            "
+       itemprop="articleBody">
+    
+    <div itemscope itemtype="http://developers.google.com/ReferenceObject">
+    <meta itemprop="name" content="liveBroadcasts"/>
+
+
+
+<section id="overview">
+  <p>A <code><strong>liveBroadcast</strong></code> resource represents an event that will be streamed, via live video, on YouTube.</p>
+</section>
+
+
+<section id="methods">
+<h2>Methods</h2>
+
+<p>The API supports the following methods for <code>liveBroadcasts</code> resources:</p>
+
+<dl>
+
+      <dt class="notranslate"><a href="https://developers.google.com/youtube/v3/live/docs/liveBroadcasts/list">list</a></dt>
+      <dd>Returns a list of YouTube broadcasts that match the API request parameters.
+ <a href="https://developers.google.com/youtube/v3/live/docs/liveBroadcasts/list#try-it">Try it now</a>.</dd>
+
+      <dt class="notranslate"><a href="https://developers.google.com/youtube/v3/live/docs/liveBroadcasts/insert">insert</a></dt>
+      <dd>Creates a broadcast.
+ <a href="https://developers.google.com/youtube/v3/live/docs/liveBroadcasts/insert#try-it">Try it now</a>.</dd>
+
+      <dt class="notranslate"><a href="https://developers.google.com/youtube/v3/live/docs/liveBroadcasts/update">update</a></dt>
+      <dd>Updates a broadcast. For example, you could modify the broadcast settings defined in the <code>liveBroadcast</code> resource's <code>contentDetails</code> object.
+ <a href="https://developers.google.com/youtube/v3/live/docs/liveBroadcasts/update#try-it">Try it now</a>.</dd>
+
+      <dt class="notranslate"><a href="https://developers.google.com/youtube/v3/live/docs/liveBroadcasts/delete">delete</a></dt>
+      <dd>Deletes a broadcast.
+ <a href="https://developers.google.com/youtube/v3/live/docs/liveBroadcasts/delete#try-it">Try it now</a>.</dd>
+
+      <dt class="notranslate"><a href="https://developers.google.com/youtube/v3/live/docs/liveBroadcasts/bind">bind</a></dt>
+      <dd>Binds a YouTube broadcast to a stream or removes an existing binding between a broadcast and a stream. A broadcast can only be bound to one video stream, though a video stream may be bound to more than one broadcast.
+ <a href="https://developers.google.com/youtube/v3/live/docs/liveBroadcasts/bind#try-it">Try it now</a>.</dd>
+
+      <dt class="notranslate"><a href="https://developers.google.com/youtube/v3/live/docs/liveBroadcasts/transition">transition</a></dt>
+      <dd>Changes the status of a YouTube live broadcast and initiates any processes associated with the new status. For example, when you transition a broadcast's status to <code>testing</code>, YouTube starts to transmit video to that broadcast's monitor stream. Before calling this method, you should confirm that the value of the <code><a href="https://developers.google.com/youtube/v3/live/docs/liveStreams#status.streamStatus">status.streamStatus</a></code> property for the stream bound to your broadcast is <code>active</code>.
+ <a href="https://developers.google.com/youtube/v3/live/docs/liveBroadcasts/transition#try-it">Try it now</a>.</dd>
+
+      <dt class="notranslate"><a href="https://developers.google.com/youtube/v3/live/docs/liveBroadcasts/control">control</a></dt>
+      <dd>Controls the settings for a slate that can be displayed in the broadcast stream.
+ <a href="https://developers.google.com/youtube/v3/live/docs/liveBroadcasts/control#try-it">Try it now</a>.</dd>
+
+
+</dl>
+</section>
+
+
+<section id="resource">
+<h2>Resource representation</h2>
+
+<p>The following JSON structure shows the format of a <code>liveBroadcasts</code> resource:</p>
+<pre id="alt-json" class="prettyprint notranslate" style="max-height: 500px; overflow: auto">&#123;
+  &quot;<a href="#kind">kind</a>&quot;: &quot;youtube#liveBroadcast&quot;,
+  &quot;<a href="#etag">etag</a>&quot;: <var class="apiparam">etag</var>,
+  &quot;<a href="#id">id</a>&quot;: <var class="apiparam">string</var>,
+  &quot;<a href="#snippet">snippet</a>&quot;: &#123;
+    &quot;<a href="#snippet.publishedAt">publishedAt</a>&quot;: <var class="apiparam">datetime</var>,
+    &quot;<a href="#snippet.channelId">channelId</a>&quot;: <var class="apiparam">string</var>,
+    &quot;<a href="#snippet.title">title</a>&quot;: <var class="apiparam">string</var>,
+    &quot;<a href="#snippet.description">description</a>&quot;: <var class="apiparam">string</var>,
+    &quot;<a href="#snippet.thumbnails">thumbnails</a>&quot;: &#123;
+      <var class="apiparam">(key)</var>: &#123;
+        &quot;<a href="#snippet.thumbnails.(key).url">url</a>&quot;: <var class="apiparam">string</var>,
+        &quot;<a href="#snippet.thumbnails.(key).width">width</a>&quot;: <var class="apiparam">unsigned integer</var>,
+        &quot;<a href="#snippet.thumbnails.(key).height">height</a>&quot;: <var class="apiparam">unsigned integer</var>
+      &#125;
+    &#125;,
+    &quot;<a href="#snippet.scheduledStartTime">scheduledStartTime</a>&quot;: <var class="apiparam">datetime</var>,
+    &quot;<a href="#snippet.scheduledEndTime">scheduledEndTime</a>&quot;: <var class="apiparam">datetime</var>,
+    &quot;<a href="#snippet.actualStartTime">actualStartTime</a>&quot;: <var class="apiparam">datetime</var>,
+    &quot;<a href="#snippet.actualEndTime">actualEndTime</a>&quot;: <var class="apiparam">datetime</var>,
+    &quot;<a href="#snippet.isDefaultBroadcast">isDefaultBroadcast</a>&quot;: <var class="apiparam">boolean</var>,
+    &quot;<a href="#snippet.liveChatId">liveChatId</a>&quot;: <var class="apiparam">string</var>
+  &#125;,
+  &quot;<a href="#status">status</a>&quot;: &#123;
+    &quot;<a href="#status.lifeCycleStatus">lifeCycleStatus</a>&quot;: <var class="apiparam">string</var>,
+    &quot;<a href="#status.privacyStatus">privacyStatus</a>&quot;: <var class="apiparam">string</var>,
+    &quot;<a href="#status.recordingStatus">recordingStatus</a>&quot;: <var class="apiparam">string</var>,
+  &#125;,
+  &quot;<a href="#contentDetails">contentDetails</a>&quot;: &#123;
+    &quot;<a href="#contentDetails.boundStreamId">boundStreamId</a>&quot;: <var class="apiparam">string</var>,
+    &quot;<a href="#contentDetails.boundStreamLastUpdateTimeMs">boundStreamLastUpdateTimeMs</a>&quot;: <var class="apiparam">datetime</var>,
+    &quot;<a href="#contentDetails.monitorStream">monitorStream</a>&quot;: &#123;
+      &quot;<a href="#contentDetails.monitorStream.enableMonitorStream">enableMonitorStream</a>&quot;: <var class="apiparam">boolean</var>,
+      &quot;<a href="#contentDetails.monitorStream.broadcastStreamDelayMs">broadcastStreamDelayMs</a>&quot;: <var class="apiparam">unsigned integer</var>,
+      &quot;<a href="#contentDetails.monitorStream.embedHtml">embedHtml</a>&quot;: <var class="apiparam">string</var>
+    &#125;,
+    &quot;<a href="#contentDetails.enableEmbed">enableEmbed</a>&quot;: <var class="apiparam">boolean</var>,
+    &quot;<a href="#contentDetails.enableDvr">enableDvr</a>&quot;: <var class="apiparam">boolean</var>,
+    &quot;<a href="#contentDetails.enableContentEncryption">enableContentEncryption</a>&quot;: <var class="apiparam">boolean</var>,
+    &quot;<a href="#contentDetails.startWithSlate">startWithSlate</a>&quot;: <var class="apiparam">boolean</var>,
+    &quot;<a href="#contentDetails.recordFromStart">recordFromStart</a>&quot;: <var class="apiparam">boolean</var>,
+    &quot;<a href="#contentDetails.enableClosedCaptions">enableClosedCaptions</a>&quot;: <var class="apiparam">boolean</var>,
+    &quot;<a href="#contentDetails.closedCaptionsType">closedCaptionsType</a>&quot;: <var class="apiparam">string</var>,
+    &quot;<a href="#contentDetails.projection">projection</a>&quot;: <var class="apiparam">string</var>,
+    &quot;<a href="#contentDetails.enableLowLatency">enableLowLatency</a>&quot;: <var class="apiparam">boolean</var>
+    &quot;<a href="#contentDetails.latencyPreference">latencyPreference</a>&quot;: <var class="apiparam">boolean</var>
+    &quot;<a href="#contentDetails.enableAutoStart">enableAutoStart</a>&quot;: <var class="apiparam">boolean</var>
+  &#125;,
+  &quot;<a href="#statistics">statistics</a>&quot;: &#123;
+    &quot;<a href="#statistics.totalChatCount">totalChatCount</a>&quot;: <var class="apiparam">unsigned long</var>
+  &#125;
+&#125;</pre>
+</section>
+
+
+<section id="properties">
+<h3>Properties</h3>
+
+<p>The following table defines the properties that appear in this resource:</p>
+<table class="responsive properties" id="property-table">
+  <thead>
+    <tr>
+      <th colspan="2">Properties</th>
+    </tr>
+  </thead>
+  <tbody>
+      <tr id="kind">
+      <td><code itemprop="property">kind</code></td>
+      <td><code class="apitype notranslate">string</code><br>
+      Identifies the API resource's type. The value will be <code>youtube#liveBroadcast</code>.</td>
+    </tr>
+    <tr id="etag">
+      <td><code itemprop="property">etag</code></td>
+      <td><code class="apitype notranslate">etag</code><br>
+      The Etag of this resource.</td>
+    </tr>
+    <tr id="id">
+      <td><code itemprop="property">id</code></td>
+      <td><code class="apitype notranslate">string</code><br>
+      The ID that YouTube assigns to uniquely identify the broadcast.</td>
+    </tr>
+    <tr id="snippet">
+      <td><code itemprop="property">snippet</code></td>
+      <td><code class="apitype notranslate">object</code><br>
+      The <code>snippet</code> object contains basic details about the event, including its title, description, start time, and end time.</td>
+    </tr>
+    <tr id="snippet.publishedAt">
+      <td><code itemprop="property"><span class="quiet">snippet.</span>publishedAt</code></td>
+      <td><code class="apitype notranslate">datetime</code><br>
+      The date and time that the broadcast was added to YouTube's live broadcast schedule. The value is specified in <a href="//www.w3.org/TR/NOTE-datetime">ISO 8601</a> (<code>YYYY-MM-DDThh:mm:ss.sZ</code>) format.</td>
+    </tr>
+    <tr id="snippet.channelId">
+      <td><code itemprop="property"><span class="quiet">snippet.</span>channelId</code></td>
+      <td><code class="apitype notranslate">string</code><br>
+      The ID that YouTube uses to uniquely identify the channel that is publishing the broadcast.</td>
+    </tr>
+    <tr id="snippet.title">
+      <td><code itemprop="property"><span class="quiet">snippet.</span>title</code></td>
+      <td><code class="apitype notranslate">string</code><br>
+      The broadcast's title. Note that the broadcast represents exactly one YouTube video. You can set this field by modifying the broadcast resource or by setting the <code><a href="https://developers.google.com/youtube/v3/docs/videos#snippet.title">title</a></code> field of the corresponding video resource.</td>
+    </tr>
+    <tr id="snippet.description">
+      <td><code itemprop="property"><span class="quiet">snippet.</span>description</code></td>
+      <td><code class="apitype notranslate">string</code><br>
+      The broadcast's description. As with the <code>title</code>, you can set this field by modifying the broadcast resource or by setting the <code><a href="https://developers.google.com/youtube/v3/docs/videos#snippet.description">description</a></code> field of the corresponding video resource.</td>
+    </tr>
+    <tr id="snippet.thumbnails">
+      <td><code itemprop="property"><span class="quiet">snippet.</span>thumbnails</code></td>
+      <td><code class="apitype notranslate">object</code><br>
+      A map of thumbnail images associated with the broadcast. For each nested object in this object, the key is the name of the thumbnail image, and the value is an object that contains other information about the thumbnail.</td>
+    </tr>
+    <tr id="snippet.thumbnails.(key)">
+      <td><code itemprop="property"><span class="quiet">snippet.thumbnails.</span>(key)</code></td>
+      <td><code class="apitype notranslate">object</code><br>
+      Valid key values are:<ul><li><code>default</code> &ndash; The default thumbnail image. The default thumbnail for a video &ndash; or a resource that refers to a video, such as a playlist item or search result &ndash; is 120px wide and 90px tall. The default thumbnail for a channel is 88px wide and 88px tall.</li><li><code>medium</code> &ndash; A higher resolution version of the thumbnail image. For a video (or a resource that refers to a video), this image is 320px wide and 180px tall. For a channel, this image is 240px wide and 240px tall.</li><li><code>high</code> &ndash; A high resolution version of the thumbnail image. For a video (or a resource that refers to a video), this image is 480px wide and 360px tall. For a channel, this image is 800px wide and 800px tall.</li></ul></td>
+    </tr>
+    <tr id="snippet.thumbnails.(key).url">
+      <td><code itemprop="property"><span class="quiet">snippet.thumbnails.(key).</span>url</code></td>
+      <td><code class="apitype notranslate">string</code><br>
+      The image's URL.</td>
+    </tr>
+    <tr id="snippet.thumbnails.(key).width">
+      <td><code itemprop="property"><span class="quiet">snippet.thumbnails.(key).</span>width</code></td>
+      <td><code class="apitype notranslate">unsigned integer</code><br>
+      The image's width.</td>
+    </tr>
+    <tr id="snippet.thumbnails.(key).height">
+      <td><code itemprop="property"><span class="quiet">snippet.thumbnails.(key).</span>height</code></td>
+      <td><code class="apitype notranslate">unsigned integer</code><br>
+      The image's height.</td>
+    </tr>
+    <tr id="snippet.scheduledStartTime">
+      <td><code itemprop="property"><span class="quiet">snippet.</span>scheduledStartTime</code></td>
+      <td><code class="apitype notranslate">datetime</code><br>
+      The date and time that the broadcast is scheduled to start. The value is specified in <a href="//www.w3.org/TR/NOTE-datetime">ISO 8601</a> (<code>YYYY-MM-DDThh:mm:ss.sZ</code>) format.</td>
+    </tr>
+    <tr id="snippet.scheduledEndTime">
+      <td><code itemprop="property"><span class="quiet">snippet.</span>scheduledEndTime</code></td>
+      <td><code class="apitype notranslate">datetime</code><br>
+      The date and time that the broadcast is scheduled to end. The value is specified in <a href="//www.w3.org/TR/NOTE-datetime">ISO 8601</a> (<code>YYYY-MM-DDThh:mm:ss.sZ</code>) format. If a <code>liveBroadcast</code> resource does not specify a value for this property, then the broadcast is scheduled to continue indefinitely. Similarly, if you do not specify a value for this property, then YouTube treats the broadcast as if it will go on indefinitely.</td>
+    </tr>
+    <tr id="snippet.actualStartTime">
+      <td><code itemprop="property"><span class="quiet">snippet.</span>actualStartTime</code></td>
+      <td><code class="apitype notranslate">datetime</code><br>
+      The date and time that the broadcast actually started. This information is only available once the broadcast's state is <code>live</code>. The value is specified in <a href="//www.w3.org/TR/NOTE-datetime">ISO 8601</a> (<code>YYYY-MM-DDThh:mm:ss.sZ</code>) format.</td>
+    </tr>
+    <tr id="snippet.actualEndTime">
+      <td><code itemprop="property"><span class="quiet">snippet.</span>actualEndTime</code></td>
+      <td><code class="apitype notranslate">datetime</code><br>
+      The date and time that the broadcast actually ended. This information is only available once the broadcast's state is <code>complete</code>. The value is specified in <a href="//www.w3.org/TR/NOTE-datetime">ISO 8601</a> (<code>YYYY-MM-DDThh:mm:ss.sZ</code>) format.</td>
+    </tr>
+    <tr id="snippet.isDefaultBroadcast">
+      <td><code itemprop="property"><span class="quiet">snippet.</span>isDefaultBroadcast</code></td>
+      <td><code class="apitype notranslate">boolean</code><br>
+      Indicates whether this broadcast is the default broadcast.<br><br><b>How default broadcasts work</b><br><br>When a YouTube channel is enabled for live streaming, YouTube creates a default stream and a default broadcast for the channel. The stream defines how the channel owner sends live video to YouTube, and the broadcast is how viewers can see the default stream. A channel owner can use the <code><a href="https://developers.google.com/youtube/v3/live/docs/liveStreams/list">liveStreams.list</a></code> and <code><a href="https://developers.google.com/youtube/v3/live/docs/liveBroadcasts/list">liveBroadcasts.list</a></code> methods to identify these resources.<br><br>When a channel starts streaming video to its default stream, the video is visible on the channel's default broadcast. When the stream ends, YouTube converts the completed broadcast to a YouTube video and assigns the video a YouTube video ID.<br><br>After the conversion is complete, the video is included in the channel's list of uploaded videos. The video is not available immediately after the broadcast concludes, and the length of the delay is related to the actual length of the broadcast.</td>
+    </tr>
+    <tr id="snippet.liveChatId">
+      <td><code itemprop="property"><span class="quiet">snippet.</span>liveChatId</code></td>
+      <td><code class="apitype notranslate">string</code><br>
+      The ID for the broadcast's YouTube live chat. With this ID, you can use the <code><a href="https://developers.google.com/youtube/v3/live/docs/liveChatMessages">liveChatMessage</a></code> resource's methods to retrieve, insert, or delete chat messages. You can also add or remove chat moderators, ban users from participating in live chats, or remove existing bans.</td>
+    </tr>
+    <tr id="status">
+      <td><code itemprop="property">status</code></td>
+      <td><code class="apitype notranslate">object</code><br>
+      The <code>status</code> object contains information about the event's status.</td>
+    </tr>
+    <tr id="status.lifeCycleStatus">
+      <td><code itemprop="property"><span class="quiet">status.</span>lifeCycleStatus</code></td>
+      <td><code class="apitype notranslate">string</code><br>
+      The broadcast's status. The status can be updated using the API's <code><a href="https://developers.google.com/youtube/v3/live/docs/liveBroadcasts/transition">liveBroadcasts.transition</a></code> method.<br/><br/>Valid values for this property are:
+<ul>
+<li><code>abandoned</code> &ndash; This broadcast was never started.</li>
+<li><code>complete</code> &ndash; The broadcast is finished.</li>
+<li><code>created</code> &ndash; The broadcast has incomplete settings, so it is not ready to transition to a <code>live</code> or <code>testing</code> status, but it has been created and is otherwise valid.</li>
+<li><code>live</code> &ndash; The broadcast is active.</li>
+<li><code>liveStarting</code> &ndash; The broadcast is in the process of transitioning to <code>live</code> status.</li>
+<li><code>ready</code> &ndash; The broadcast settings are complete and the broadcast can transition to a <code>live</code> or <code>testing</code> status.</li>
+<li><code>reclaimed</code> &ndash; This broadcast has been reclaimed.</li>
+<li><code>revoked</code> &ndash; This broadcast was removed by an admin action.</li>
+<li><code>testStarting</code> &ndash; The broadcast is in the process of transitioning to <code>testing</code> status.</li>
+<li><code>testing</code> &ndash; The broadcast is only visible to the partner.</li>
+</ul>
+</td>
+    </tr>
+    <tr id="status.privacyStatus">
+      <td><code itemprop="property"><span class="quiet">status.</span>privacyStatus</code></td>
+      <td><code class="apitype notranslate">string</code><br>
+      The broadcast's privacy status. Note that the broadcast represents exactly one YouTube video, so the privacy settings are identical to those supported for videos. In addition, you can set this field by modifying the broadcast resource or by setting the <code><a href="https://developers.google.com/youtube/v3/docs/videos#status.privacyStatus">privacyStatus</a></code> field of the corresponding video resource.<br/><br/>Valid values for this property are:
+<ul>
+  <li><code>private</code></li>
+<li><code>public</code></li>
+<li><code>unlisted</code></li>
+
+</ul>
+</td>
+    </tr>
+    <tr id="status.recordingStatus">
+      <td><code itemprop="property"><span class="quiet">status.</span>recordingStatus</code></td>
+      <td><code class="apitype notranslate">string</code><br>
+      The broadcast's recording status.<br/><br/>Valid values for this property are:
+<ul>
+  <li><code>notRecording</code></li>
+<li><code>recorded</code></li>
+<li><code>recording</code></li>
+
+</ul>
+</td>
+    </tr>
+    <tr id="contentDetails">
+      <td><code itemprop="property">contentDetails</code></td>
+      <td><code class="apitype notranslate">object</code><br>
+      The <code>contentDetails</code> object contains information about the event's video content, such as whether the content can be shown in an embedded video player or if it will be archived and therefore available for viewing after the event has concluded.</td>
+    </tr>
+    <tr id="contentDetails.boundStreamId">
+      <td><code itemprop="property"><span class="quiet">contentDetails.</span>boundStreamId</code></td>
+      <td><code class="apitype notranslate">string</code><br>
+      This value uniquely identifies the <code><a href="https://developers.google.com/youtube/v3/live/docs/liveStreams">live stream</a></code> bound to the broadcast.</td>
+    </tr>
+    <tr id="contentDetails.boundStreamLastUpdateTimeMs">
+      <td><code itemprop="property"><span class="quiet">contentDetails.</span>boundStreamLastUpdateTimeMs</code></td>
+      <td><code class="apitype notranslate">datetime</code><br>
+      The date and time that the live stream referenced by <code>boundStreamId</code> was last updated.</td>
+    </tr>
+    <tr id="contentDetails.monitorStream">
+      <td><code itemprop="property"><span class="quiet">contentDetails.</span>monitorStream</code></td>
+      <td><code class="apitype notranslate">object</code><br>
+      The <code>monitorStream</code> object contains information about the monitor stream, which the broadcaster can use to review the event content before the broadcast stream is shown publicly.</td>
+    </tr>
+    <tr id="contentDetails.monitorStream.enableMonitorStream">
+      <td><code itemprop="property"><span class="quiet">contentDetails.monitorStream.</span>enableMonitorStream</code></td>
+      <td><code class="apitype notranslate">boolean</code><br>
+      This value determines whether the monitor stream is enabled for the broadcast. If the monitor stream is enabled, then YouTube will broadcast the event content on a special stream intended only for the broadcaster's consumption. The broadcaster can use the stream to review the event content and also to identify the optimal times to insert cuepoints.<br><br> You need to set this value to <code>true</code> if you intend to have a <code>testing</code> stage for your broadcast or if you want to have a broadcast delay for your event. In addition, if this property's value is <code>true</code>, then you must transition your broadcast to the <code>testing</code> state before you can transition it to the <code>live</code> state. (If the property's value is <code>false</code>, your broadcast cannot have a <code>testing</code> stage, so you can transition the broadcast directly to the <code>live</code> state.)<br><br> When you <code><a href="https://developers.google.com/youtube/v3/live/docs/liveBroadcasts/update">update a broadcast</a></code>, this property must be set if your API request includes the <code>contentDetails</code> part in the <code>part</code> parameter value. However, when you <code><a href="https://developers.google.com/youtube/v3/live/docs/liveBroadcasts/insert">insert a broadcast</a></code>, the property is optional and has a default value of <code>true</code>.<br><br> <strong>Important:</strong> This property cannot be updated once the broadcast is in the <code>testing</code> or <code>live</code> state.</td>
+    </tr>
+    <tr id="contentDetails.monitorStream.broadcastStreamDelayMs">
+      <td><code itemprop="property"><span class="quiet">contentDetails.monitorStream.</span>broadcastStreamDelayMs</code></td>
+      <td><code class="apitype notranslate">unsigned integer</code><br>
+      If you have set the <code><a href="#enableMonitorStream">enableMonitorStream</a></code> property to <code>true</code>, then this property determines the length of the live broadcast delay.<br><br> When you <code><a href="https://developers.google.com/youtube/v3/live/docs/liveBroadcasts/update">update a broadcast</a></code>, this property must be set if your API request includes the <code>contentDetails</code> part in the <code>part</code> parameter value. However, when you <code><a href="https://developers.google.com/youtube/v3/live/docs/liveBroadcasts/insert">insert a broadcast</a></code>, the property is optional and has a default value of <code>0</code>. This value indicates that the broadcast does not have a broadcast delay. <strong>Note:</strong> This property cannot be updated once the broadcast is in the <code>testing</code> or <code>live</code> state.</td>
+    </tr>
+    <tr id="contentDetails.monitorStream.embedHtml">
+      <td><code itemprop="property"><span class="quiet">contentDetails.monitorStream.</span>embedHtml</code></td>
+      <td><code class="apitype notranslate">string</code><br>
+      HTML code that embeds a player that plays the monitor stream.</td>
+    </tr>
+    <tr id="contentDetails.enableEmbed">
+      <td><code itemprop="property"><span class="quiet">contentDetails.</span>enableEmbed</code></td>
+      <td><code class="apitype notranslate">boolean</code><br>
+      This setting indicates whether the broadcast video can be played in an embedded player. If you choose to archive the video (using the <code>enableArchive</code> property), this setting will also apply to the archived video.<br><br> When you <code><a href="https://developers.google.com/youtube/v3/live/docs/liveBroadcasts/update">update a broadcast</a></code>, this property must be set if your API request includes the <code>contentDetails</code> part in the <code>part</code> parameter value. However, when you <code><a href="https://developers.google.com/youtube/v3/live/docs/liveBroadcasts/insert">insert a broadcast</a></code>, the property is optional and has a default value of <code>true</code>.<br><br>  <strong>Note:</strong> This property cannot be updated once the broadcast is in the <code>testing</code> or <code>live</code> state.</td>
+    </tr>
+    <tr id="contentDetails.enableDvr">
+      <td><code itemprop="property"><span class="quiet">contentDetails.</span>enableDvr</code></td>
+      <td><code class="apitype notranslate">boolean</code><br>
+      This setting determines whether viewers can access DVR controls while watching the video. DVR controls enable the viewer to control the video playback experience by pausing, rewinding, or fast forwarding content. The default value for this property is <code>true</code>. <br><br> When you <code><a href="https://developers.google.com/youtube/v3/live/docs/liveBroadcasts/update">update a broadcast</a></code>, this property must be set if your API request includes the <code>contentDetails</code> part in the <code>part</code> parameter value. However, when you <code><a href="https://developers.google.com/youtube/v3/live/docs/liveBroadcasts/insert">insert a broadcast</a></code>, the property is optional and has a default value of <code>true</code>.<br><br>  <strong>Important:</strong> You must set the value to <code>true</code> and also set the <code>enableArchive</code> property's value to <code>true</code> if you want to make playback available immediately after the broadcast ends. In addition, this property cannot be updated once the broadcast is in the <code>testing</code> or <code>live</code> state.</td>
+    </tr>
+    <tr id="contentDetails.enableContentEncryption">
+      <td><code itemprop="property"><span class="quiet">contentDetails.</span>enableContentEncryption</code></td>
+      <td><code class="apitype notranslate">boolean</code><br>
+      This setting indicates whether YouTube should enable content encryption for the broadcast.<br><br>  When you <code><a href="https://developers.google.com/youtube/v3/live/docs/liveBroadcasts/update">update a broadcast</a></code>, this property must be set if your API request includes the <code>contentDetails</code> part in the <code>part</code> parameter value. However, when you <code><a href="https://developers.google.com/youtube/v3/live/docs/liveBroadcasts/insert">insert a broadcast</a></code>, the property is optional and has a default value of <code>false</code>.<br><br>  <strong>Note:</strong> This property cannot be updated once the broadcast is in the <code>testing</code> or <code>live</code> state.</td>
+    </tr>
+    <tr id="contentDetails.startWithSlate">
+      <td><code itemprop="property"><span class="quiet">contentDetails.</span>startWithSlate</code></td>
+      <td><code class="apitype notranslate">boolean</code><br>
+      This setting indicates whether the broadcast should automatically begin with an <a href="https://developers.google.com/youtube/v3/live/getting-started#Displaying_Slates">in-stream slate</a> when you update the broadcast's status to <code>live</code>. After updating the status, you then need to send a <code><a href="https://developers.google.com/youtube/v3/live/docs/liveCuepoints/insert">liveCuepoints.insert</a></code> request that sets the cuepoint's <code>eventState</code> to <code>end</code> to remove the slate and make your broadcast stream visible to viewers.  When you <code><a href="https://developers.google.com/youtube/v3/live/docs/liveBroadcasts/update">update a broadcast</a></code>, this property must be set if your API request includes the <code>contentDetails</code> part in the <code>part</code> parameter value. However, when you <code><a href="https://developers.google.com/youtube/v3/live/docs/liveBroadcasts/insert">insert a broadcast</a></code>, the property is optional and has a default value of <code>false</code>.<br><br>  <strong>Note:</strong> This property cannot be updated once the broadcast is in the <code>testing</code> or <code>live</code> state.</td>
+    </tr>
+    <tr id="contentDetails.recordFromStart">
+      <td><code itemprop="property"><span class="quiet">contentDetails.</span>recordFromStart</code></td>
+      <td><code class="apitype notranslate">boolean</code><br>
+      This setting indicates whether YouTube will automatically start recording the broadcast after the event's status changes to live.<br><br> This property's default value is <code>true</code>, and it can only be set to <code>false</code> if the broadcasting channel is allowed to disable recordings for live broadcasts.<br><br> If your channel does not have permission to disable recordings, and you attempt to insert a broadcast with the <code>recordFromStart</code> property set to <code>false</code>, the API will return a <code>Forbidden</code> error. In addition, if your channel does not have that permission and you attempt to update a broadcast to set the <code>recordFromStart</code> property to <code>false</code>, the API will return a <code>modificationNotAllowed</code> error.<br><br> When you <code><a href="https://developers.google.com/youtube/v3/live/docs/liveBroadcasts/update">update a broadcast</a></code>, this property must be set if your API request includes the <code>contentDetails</code> part in the <code>part</code> parameter value. However, when you <code><a href="https://developers.google.com/youtube/v3/live/docs/liveBroadcasts/insert">insert a broadcast</a></code>, the property is optional and has a default value of <code>true</code>.<br><br>  <strong>Important:</strong> You must also set the <code>enableDvr</code> property's value to <code>true</code> if you want the playback to be available immediately after the broadcast ends. If you set this property's value to <code>true</code> but do not also set the <code>enableDvr</code> property to <code>true</code>, there may be a delay of around one day before the archived video will be available for playback.<br><br>  <strong>Note:</strong> This property cannot be updated once the broadcast is in the <code>testing</code> or <code>live</code> state.</td>
+    </tr>
+    <tr id="contentDetails.enableClosedCaptions">
+      <td><code itemprop="property"><span class="quiet">contentDetails.</span>enableClosedCaptions</code></td>
+      <td><code class="apitype notranslate">boolean</code><br>
+      This property has been deprecated as of December 17, 2015. Use the <code><a href="#contentDetails.closedCaptionsType">contentDetails.closedCaptionsType</a></code> property instead.<br><br>This setting indicates whether HTTP POST closed captioning is enabled for this broadcast. For API clients that are already using this property:<ul><li>Setting the property value to <code>true</code> is equivalent to setting the <code>contentDetails.closedCaptionsType</code> property to <code>closedCaptionsHttpPost</code>.</li><li>Setting the property value to <code>false</code> is equivalent to setting the <code>contentDetails.closedCaptionsType</code> property to <code>closedCaptionsDisabled</code>.</td>
+    </tr>
+    <tr id="contentDetails.closedCaptionsType">
+      <td><code itemprop="property"><span class="quiet">contentDetails.</span>closedCaptionsType</code></td>
+      <td><code class="apitype notranslate">string</code><br>
+<b>Note: This property <em>replaces</em> the <code>contentDetails.enableClosedCaptions</code> property.</b><br><br>This property indicates whether closed captioning is enabled for your broadcast and, if so, what type of closed captions you are providing:<ul><li><code>closedCaptionsDisabled</code>: Closed captions are disabled for the live broadcast.</li><li><code>closedCaptionsHttpPost</code>: You will send captions, via HTTP POST, to an <a href="https://developers.google.com/youtube/v3/live/docs/liveStreams#contentDetails.closedCaptionsIngestionUrl">ingestion URL</a> associated with your live stream.</li><li><code>closedCaptionsEmbedded</code>: Captions will be encoded in the video stream using EIA-608 and/or CEA-708 formats.</li></ul>
+</td>
+    </tr>
+    <tr id="contentDetails.projection">
+      <td><code itemprop="property"><span class="quiet">contentDetails.</span>projection</code></td>
+      <td><code class="apitype notranslate">string</code><br>
+      The projection format of this broadcast. The property's default value is <code>rectangular</code>.<br/><br/>Valid values for this property are:
+<ul>
+  <li><code>360</code></li>
+<li><code>rectangular</code></li>
+
+</ul>
+</td>
+    </tr>
+    <tr id="contentDetails.enableLowLatency">
+      <td><code itemprop="property"><span class="quiet">contentDetails.</span>enableLowLatency</code></td>
+      <td><code class="apitype notranslate">boolean</code><br>
+      Indicates whether this broadcast should be encoded for low-latency streaming. A low-latency stream can reduce the amount of time it takes for video to be visible to users watching a broadcast, though it can also impact the resolution for viewers of the stream.</td>
+    </tr>
+    <tr id="contentDetails.latencyPreference">
+      <td><code itemprop="property"><span class="quiet">contentDetails.</span>latencyPreference</code></td>
+      <td><code class="apitype notranslate">string</code><br>
+        Indicates which latency setting to use for this broadcast. This property may be used instead of <code>enableLowLatency</code>, which does not support <code>ultraLow</code>.<br><br>A low-latency stream can reduce the amount of time it takes for video to be visible to users watching a broadcast, though it can also affect the smoothness of playback.<br><br>An ultra-low-latency stream further reduces the time it takes for video to be visible to viewers, making interaction with viewers easier, but ultra-low latency does not support DVR, closed captions, or resolutions higher than 1080p.<br/><br/>Valid values for this property are:
+        <ul>
+          <li><code>normal</code></li>
+          <li><code>low</code></li>
+          <li><code>ultraLow</code></li>
+        </ul>
+      </td>
+    </tr>
+    <tr id="contentDetails.enableAutoStart">
+      <td><code itemprop="property"><span class="quiet">contentDetails.</span>enableAutoStart</code></td>
+      <td><code class="apitype notranslate">boolean</code><br>
+      Indicates whether this broadcast should start automatically when you start streaming video on the bound <code><a href="https://developers.google.com/youtube/v3/live/docs/liveStreams">live stream</a></code>.</td>
+    </tr>
+    <tr id="statistics">
+      <td><code itemprop="property">statistics</code></td>
+      <td><code class="apitype notranslate">object</code><br>
+      The <code>statistics</code> object contains statistics related to a live broadcast. The values for these statistics can change during the broadcast and can only be retrieved while the broadcast is live.</td>
+    </tr>
+    <tr id="statistics.totalChatCount">
+      <td><code itemprop="property"><span class="quiet">statistics.</span>totalChatCount</code></td>
+      <td><code class="apitype notranslate">unsigned long</code><br>
+      The total number of live chat messages associated with the broadcast. The property and its value are present if the broadcast is visible to the user, has the live chat feature enabled, and has at least one message. Note that this property will not specify a value after the broadcast ends. So, this property would not identify the number of chat messages for an archived video of a completed live broadcast.</td>
+    </tr>
+
+  </tbody>
+</table>
+</section>
+
+
+
+
+    </div>
+  
+  </div>
+  
+
+  
+        
+  
+
+
+
+
+
+
+
+        
+<div class="devsite-content-footer nocontent">
+  
+  
+    <p>Except as otherwise noted, the content of this page is licensed under the <a href="http://creativecommons.org/licenses/by/3.0/">Creative Commons Attribution 3.0 License</a>, and code samples are licensed under the <a href="http://www.apache.org/licenses/LICENSE-2.0">Apache 2.0 License</a>. For details, see our <a href="https://developers.google.com/terms/site-policies">Site Policies</a>. Java is a registered trademark of Oracle and/or its affiliates.</p>
+  
+
+  
+    
+    <p class="devsite-content-footer-date" itemprop="datePublished"
+       content="2017-12-01T21:00:40.043190">
+      
+      Last updated December 1, 2017.
+    </p>
+  
+
+</div>
+
+        </article>
+      </article>
+  
+
+        </div>
+      
+
+<footer class="devsite-footer-promos nocontent"><nav class="devsite-full-site-width"><ul class="devsite-footer-promos-list"><li class="devsite-footer-promo"><a href="http://apiblog.youtube.com"
+           class="devsite-footer-promo-title gc-analytics-event"
+           data-category="Site-Wide Custom Events"
+           data-label="Content Page Footer Promo"
+           ><img class="devsite-footer-promo-icon" src="https://www.gstatic.com/images/icons/material/product/2x/blogger_64dp.png">
+          
+          
+            Blog
+          
+        </a><div class="devsite-footer-promo-description">The latest news on the YouTube API blog</div></li><li class="devsite-footer-promo"><a href="https://github.com/youtube/api-samples"
+           class="devsite-footer-promo-title gc-analytics-event"
+           data-category="Site-Wide Custom Events"
+           data-label="Content Page Footer Promo"
+           ><img class="devsite-footer-promo-icon" src="https://developers.google.com/site-assets/logo-github.svg">
+          
+          
+            GitHub
+          
+        </a><div class="devsite-footer-promo-description">Find API code samples and other YouTube open-source projects.</div></li><li class="devsite-footer-promo"><a href="https://code.google.com/p/gdata-issues/issues/entry?template=YouTube%20(Defect%20Report)"
+           class="devsite-footer-promo-title gc-analytics-event"
+           data-category="Site-Wide Custom Events"
+           data-label="Content Page Footer Promo"
+           ><img class="devsite-footer-promo-icon" src="https://developers.google.com/site-assets/developers_64dp.png">
+          
+          
+            Issue Tracker
+          
+        </a><div class="devsite-footer-promo-description">Something wrong? Send us a bug report!</div></li><li class="devsite-footer-promo"><a href="http://stackoverflow.com/questions/ask?tags=youtube-livestreaming-api"
+           class="devsite-footer-promo-title gc-analytics-event"
+           data-category="Site-Wide Custom Events"
+           data-label="Content Page Footer Promo"
+           ><img class="devsite-footer-promo-icon" src="https://developers.google.com/site-assets/logo-stack-overflow.svg">
+          
+          
+            Stack Overflow
+          
+        </a><div class="devsite-footer-promo-description">Ask a question under the youtube-api tag</div></li><li class="devsite-footer-promo"><a href="https://www.youtube.com/user/YouTubeDev"
+           class="devsite-footer-promo-title gc-analytics-event"
+           data-category="Site-Wide Custom Events"
+           data-label="Content Page Footer Promo"
+           ><img class="devsite-footer-promo-icon" src="https://www.gstatic.com/images/icons/material/product/2x/youtube_64dp.png">
+          
+          
+            Videos
+          
+        </a><div class="devsite-footer-promo-description">Check out the YouTube Developer Relations team&#39;s YouTube channel</div></li></ul></nav></footer><footer class="devsite-footer-linkboxes nocontent
+               
+               devsite-footer-linkboxes-with-sites"><nav class="devsite-full-site-width"><ul class="devsite-footer-linkboxes-list"><li class="devsite-footer-linkbox "><h3 class="devsite-footer-linkbox-heading">Tools</h3><ul class="devsite-footer-linkbox-list"><li class="devsite-footer-linkbox-item"><a href="https://script.google.com/" class="gc-analytics-event"
+               data-category="Site-Wide Custom Events"
+               data-label="Content Page Footer Linkbox">
+                Script Editor
+            </a></li><li class="devsite-footer-linkbox-item"><a href="https://script.google.com/dashboard" class="gc-analytics-event"
+               data-category="Site-Wide Custom Events"
+               data-label="Content Page Footer Linkbox">
+                Service Health Dashboard
+            </a></li></ul></li><li class="devsite-footer-linkbox "><h3 class="devsite-footer-linkbox-heading">Issue Tracker</h3><ul class="devsite-footer-linkbox-list"><li class="devsite-footer-linkbox-item"><a href="https://code.google.com/p/gdata-issues/issues/entry?template=YouTube%20(Defect%20Report)" class="gc-analytics-event"
+               data-category="Site-Wide Custom Events"
+               data-label="Content Page Footer Linkbox">
+                File a bug
+            </a></li><li class="devsite-footer-linkbox-item"><a href="https://code.google.com/p/gdata-issues/issues/entry?template=YouTube%20(Enhancement%20Request)" class="gc-analytics-event"
+               data-category="Site-Wide Custom Events"
+               data-label="Content Page Footer Linkbox">
+                Request a feature
+            </a></li><li class="devsite-footer-linkbox-item"><a href="https://code.google.com/p/gdata-issues/issues/list?q=label:API-YouTube" class="gc-analytics-event"
+               data-category="Site-Wide Custom Events"
+               data-label="Content Page Footer Linkbox">
+                See open issues
+            </a></li></ul></li><li class="devsite-footer-linkbox "><h3 class="devsite-footer-linkbox-heading">Product Info</h3><ul class="devsite-footer-linkbox-list"><li class="devsite-footer-linkbox-item"><a href="https://developers.google.com/youtube/terms" class="gc-analytics-event"
+               data-category="Site-Wide Custom Events"
+               data-label="Content Page Footer Linkbox">
+                Terms of Service
+            </a></li><li class="devsite-footer-linkbox-item"><a href="https://developers.google.com/youtube/branding_guidelines" class="gc-analytics-event"
+               data-category="Site-Wide Custom Events"
+               data-label="Content Page Footer Linkbox">
+                Branding Guidelines
+            </a></li><li class="devsite-footer-linkbox-item"><a href="https://developers.google.com/youtube/creating_monetizable_applications" class="gc-analytics-event"
+               data-category="Site-Wide Custom Events"
+               data-label="Content Page Footer Linkbox">
+                Monetization Guidelines
+            </a></li><li class="devsite-footer-linkbox-item"><a href="https://developers.google.com/youtube/youtube-api-list" class="gc-analytics-event"
+               data-category="Site-Wide Custom Events"
+               data-label="Content Page Footer Linkbox">
+                APIs subject to Deprecation Policy
+            </a></li></ul></li><li class="devsite-footer-linkbox devsite-footer-linkbox-sites"><a href="https://developers.google.com/"
+           class="gc-analytics-event devsite-footer-linkbox-logo-link"
+           data-category="Site-Wide Custom Events" data-label="Footer Google Developers Link"><img class="devsite-footer-linkbox-logo"
+               src="https://developers.google.com/_static/d7147bb846/images/redesign-14/lockup-color-knockout.png"
+               alt="Google Developers"></a><ul class="devsite-footer-linkbox-list"><li class="devsite-footer-linkbox-item"><a href="//developer.android.com/index.html" class="gc-analytics-event"
+               data-category="Site-Wide Custom Events"
+               data-label="Footer Android Link">
+                Android
+            </a></li><li class="devsite-footer-linkbox-item"><a href="//developer.chrome.com/home" class="gc-analytics-event"
+               data-category="Site-Wide Custom Events"
+               data-label="Footer Chrome Link">
+                Chrome
+            </a></li><li class="devsite-footer-linkbox-item"><a href="//firebase.google.com" class="gc-analytics-event"
+               data-category="Site-Wide Custom Events"
+               data-label="Footer Firebase Link">
+                Firebase
+            </a></li><li class="devsite-footer-linkbox-item"><a href="//cloud.google.com" class="gc-analytics-event"
+               data-category="Site-Wide Custom Events"
+               data-label="Footer Cloud Link">
+                Google Cloud Platform
+            </a></li><li class="devsite-footer-linkbox-item"><a href="//developers.google.com/products/" class="gc-analytics-event"
+               data-category="Site-Wide Custom Events"
+               data-label="Footer Products Link">
+                All Products
+            </a></li></ul></li></ul></nav></footer><footer class="devsite-utility-footer"><nav class="devsite-utility-footer-nav devsite-nav devsite-full-site-width"><div class="devsite-utility-footer-nav-left"><form class="devsite-utility-footer-language" action="/i18n/setlang/" method="post"><input type="hidden" name="xsrf_token" value="eQumuRTiKzAYqsE1xDFLbvIXtveY1VEJHViDOk09H6Q6MTUyNDQ1ODMwNjY5MzcyMA" /><input type="hidden" name="next" value="/youtube/v3/live/docs/liveBroadcasts"><select class="devsite-utility-footer-language-select kd-select" name="language"
+                track-type="languageSelector" track-name="click"><option value="id"
+                
+                track-type="languageSelector" track-name="changed"
+                track-metadata-original-language="en"
+                track-metadata-selected-language="id">
+            Bahasa Indonesia
+          </option><option value="de"
+                
+                track-type="languageSelector" track-name="changed"
+                track-metadata-original-language="en"
+                track-metadata-selected-language="de">
+            Deutsch
+          </option><option value="en"
+                 selected="selected" 
+                track-type="languageSelector" track-name="changed"
+                track-metadata-original-language="en"
+                track-metadata-selected-language="en">
+            English
+          </option><option value="es"
+                
+                track-type="languageSelector" track-name="changed"
+                track-metadata-original-language="en"
+                track-metadata-selected-language="es">
+            español
+          </option><option value="fr"
+                
+                track-type="languageSelector" track-name="changed"
+                track-metadata-original-language="en"
+                track-metadata-selected-language="fr">
+            français
+          </option><option value="pt-br"
+                
+                track-type="languageSelector" track-name="changed"
+                track-metadata-original-language="en"
+                track-metadata-selected-language="pt-br">
+            Português Brasileiro
+          </option><option value="ru"
+                
+                track-type="languageSelector" track-name="changed"
+                track-metadata-original-language="en"
+                track-metadata-selected-language="ru">
+            Русский
+          </option><option value="ja"
+                
+                track-type="languageSelector" track-name="changed"
+                track-metadata-original-language="en"
+                track-metadata-selected-language="ja">
+            日本語
+          </option><option value="zh-cn"
+                
+                track-type="languageSelector" track-name="changed"
+                track-metadata-original-language="en"
+                track-metadata-selected-language="zh-cn">
+            简体中文
+          </option><option value="ko"
+                
+                track-type="languageSelector" track-name="changed"
+                track-metadata-original-language="en"
+                track-metadata-selected-language="ko">
+            한국어
+          </option></select></form><span class="devsite-utility-footer-links"><a class="devsite-utility-footer-link gc-analytics-event"
+           href="https://developers.google.com/terms/site-terms"
+           data-category="Site-Wide Custom Events"
+           data-label="Footer terms link"
+           data-footer-link-id="terms"
+           >Terms
+         </a><a class="devsite-utility-footer-link gc-analytics-event"
+           href="//www.google.com/policies/privacy/"
+           data-category="Site-Wide Custom Events"
+           data-label="Footer privacy link"
+           data-footer-link-id="privacy"
+           >Privacy
+         </a></span></div><div class="devsite-utility-footer-nav-right"><div class="devsite-utility-footer-newsletter-signup-text">
+        Sign up for the Google Developers newsletter
+      </div><a class="button button-primary devsite-utility-footer-newsletter-signup-button"
+         href="//services.google.com/fb/forms/googledevelopersnewsletter/?utm_medium=referral&amp;utm_source=google-products&amp;utm_team=googledevs&amp;utm_campaign=201611-newsletter-launch">
+        
+        Subscribe
+      </a></div></nav></footer></div><script async defer src="//www.gstatic.com/feedback/api.js"></script><script src="https://developers.google.com/_static2/d7147bb846/jsi18n/"></script><script src="https://developers.google.com/_static/d7147bb846/js/script_foot_closure.js"></script><script src="https://developers.google.com/_static/d7147bb846/js/script_foot.js"></script><script>
+        (function($) {
+          
+          devsite.devsite.Init($, {'ENABLE_BLOCKED_VIDEO_PLACEHOLDER': 0, 'SITE_NAME': 'devsite', 'FULL_SITE_SEARCH_ENABLED': 1, 'ENABLE_CLOUDTRACK': 0, 'VTAGS_ENABLED': 0, 'HISTORY_ENABLED': 1, 'VERSION_HASH': 'd7147bb846', 'SCRIPTSAFE_DOMAIN': 'google-developers.appspot.com', 'ENABLE_BLOCKED_LINK_TOOLTIP': 0, 'ALLOWED_HOSTS': ['.android.com', '.anvato.com', '.apigee.com', '.appspot.com', '.dialogflow.com', '.gonglchuangl.net', '.google.cn', '.google.com', '.googleplex.com', '.nest.com', '.openthread.io', '.openweave.io', '.orbitera.com', '.tensorflow.org'], 'BLOCK_RSS_FEEDS': 0},
+                               '[]','en',
+                               true, '',
+                               {"f62218c009ec029abef196bba5aa34cf": true, "8de7a048f21618359bd37f5ce44be073": false, "098dafe57affddc137df300142652cfd": false, "8e03e230de0bd8a6fe173fdf172e8b3f": true, "cb025a64a50094835616312f4774a53d": true, "51470233c56fc1fde50f00b73c52b216": false, "d169d485cf24243a263783dbe42029b1": true, "039e5d84b87fd75807ffb37b7f1bbf2c": true, "700def1a83e356c06c0925afb05de4b0": false, "6749dcb526ce9bde6993550c7d928d24": true}, '/youtube/v3/live/',
+                               'https://developers.google.com/');
+        })(jQuery);
+
+        
+        devsite.localInit = function() {
+          
+        };
+
+      </script><script>
+      $('.devsite-utility-footer-language-select').each(function() {
+        $(this).change(function(){$('.devsite-utility-footer-language').submit();});
+      });
+      </script></div><span id="devsite-request-elapsed" data-request-elapsed="397.940158844"></span></body></html>

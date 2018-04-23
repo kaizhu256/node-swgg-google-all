@@ -1,0 +1,1279 @@
+
+
+
+
+
+
+<!DOCTYPE html><html lang="en"
+      class="chekov"><head><script>var a=window.devsite||{};window.devsite=a;a.readyCallbacks=[];window.devsite.readyCallbacks=a.readyCallbacks;a.ready=function(b){a.readyCallbacks.push(b)};window.devsite.ready=a.ready;
+</script><meta charset="utf-8"><meta name="xsrf_token" content="Lyr5_G7XXCdIJaAGdz4yvYcOXbqEhxgzQpEP1gECXOI6MTUyNDQ1ODI3ODUzNjc5MA" /><link rel="canonical" href="https://cloud.google.com/security/data-loss-prevention/preventing-data-exfiltration"><link rel="alternate" href="https://cloud.google.com/security/data-loss-prevention/preventing-data-exfiltration?hl=ja" hreflang="ja"><link rel="alternate" href="https://cloud.google.com/security/data-loss-prevention/preventing-data-exfiltration" hreflang="en"><link rel="alternate" href="https://cloud.google.com/security/data-loss-prevention/preventing-data-exfiltration?hl=pt-br" hreflang="pt-br"><link rel="alternate" href="https://cloud.google.com/security/data-loss-prevention/preventing-data-exfiltration?hl=de" hreflang="de"><link rel="alternate" href="https://cloud.google.com/security/data-loss-prevention/preventing-data-exfiltration" hreflang="x-default"><link rel="shortcut icon" href="https://cloud.google.com/_static/d7147bb846/images/cloud/icons/favicons/onecloud/favicon.ico"><link rel="apple-touch-icon" href="https://cloud.google.com/_static/d7147bb846/images/cloud/icons/favicons/onecloud/apple-icon.png"><meta name="viewport" content="width=device-width, initial-scale=1"><link rel="stylesheet"
+      
+      href="//fonts.googleapis.com/css?family=Google+Sans:400|Roboto:400,400italic,500,500italic,700,700italic|Roboto+Mono:400,500,700|Material+Icons"
+      ><link rel="stylesheet"
+        href="https://cloud.google.com/_static/d7147bb846/css/devsite-cloud-white.css"><link rel="stylesheet" href="https://cloud.google.com/_static/d7147bb846/css/cloud/cloud-site.css"><link rel="search"
+        type="application/opensearchdescription+xml"
+        title="Google Cloud"
+        href="https://cloud.google.com/s/opensearch.xml"><script src="https://cloud.google.com/_static/d7147bb846/js/jquery-bundle.js"></script><meta property="og:site_name" content="Google Cloud"><meta property="og:type" content="website"><meta property="og:url" content="https://cloud.google.com/security/data-loss-prevention/preventing-data-exfiltration"><meta property="og:locale" content="en"><script>
+    var ___gcfg = ___gcfg || {};
+    ___gcfg.lang = 'en';
+  </script><title>Preventing Data Exfiltration &nbsp;|&nbsp; Documentation
+      &nbsp;|&nbsp; Google Cloud</title><meta property="og:title" content="Preventing Data Exfiltration &nbsp;|&nbsp; Documentation
+      &nbsp;|&nbsp; Google Cloud"><link href="https://cloud.google.com/assets/css/tutorial.css" type="text/css" rel="stylesheet"><style></style></head><body class="
+               devsite-doc-page
+               
+               
+               
+               
+               devsite-header-no-lower-tabs"
+        data-family="endorsed"
+        id="top_of_page"><div class="devsite-wrapper"><div class="devsite-top-section-wrapper
+            "><header class="devsite-top-section nocontent"><div class="devsite-top-logo-row-wrapper-wrapper"><div class="devsite-top-logo-row-wrapper"><div class="devsite-top-logo-row devsite-full-site-width"><button type="button" class="devsite-expand-section-nav devsite-header-icon-button
+                                       button-flat material-icons gc-analytics-event"
+                  data-category="Site-Wide Custom Events" data-label="Hamburger menu"></button><div class="devsite-product-name-wrapper"><a href="https://cloud.google.com/" class="devsite-site-logo-link gc-analytics-event"
+   data-category="Site-Wide Custom Events" data-label="Site logo"><img src="https://cloud.google.com/_static/d7147bb846/images/cloud/cloud-logo.svg"
+       class="devsite-site-logo" alt="Google Cloud"><span class="devsite-site-name devsite-product-name">Google Cloud</span></a></div><div class="devsite-header-upper-tabs"><nav class="devsite-doc-set-nav devsite-nav devsite-overflow-tabs-scroll-wrapper"><ul class="devsite-doc-set-nav-tab-list devsite-overflow-tabs-scroll"><li class="devsite-doc-set-nav-tab-container devsite-nav-tab
+               "><a href="https://cloud.google.com/why-google-cloud/"
+         class=" devsite-nav-tab
+                devsite-doc-set-nav-tab devsite-doc-set-nav-tab-link gc-analytics-event"
+         
+       
+         data-category="Site-Wide Custom Events"
+       
+         data-label="Tab: Why Google"
+       
+         track-type="globalNav"
+       
+         track-name="whyGoogle"
+       >
+        Why Google
+      </a></li><li class="devsite-doc-set-nav-tab-container devsite-nav-tab
+               "><a href="https://cloud.google.com/products/"
+         class=" devsite-nav-tab
+                devsite-doc-set-nav-tab devsite-doc-set-nav-tab-link gc-analytics-event"
+         
+       
+         data-category="Site-Wide Custom Events"
+       
+         data-label="Tab: Products"
+       
+         track-type="globalNav"
+       
+         track-name="products"
+       >
+        Products
+      </a></li><li class="devsite-doc-set-nav-tab-container devsite-nav-tab
+               "><a href="https://cloud.google.com/solutions/"
+         class=" devsite-nav-tab
+                devsite-doc-set-nav-tab devsite-doc-set-nav-tab-link gc-analytics-event"
+         
+       
+         data-category="Site-Wide Custom Events"
+       
+         data-label="Tab: Solutions"
+       
+         track-type="globalNav"
+       
+         track-name="solutions"
+       >
+        Solutions
+      </a></li><li class="devsite-doc-set-nav-tab-container devsite-nav-tab
+               "><a href="https://cloud.google.com/launcher/"
+         class=" devsite-nav-tab
+                devsite-doc-set-nav-tab devsite-doc-set-nav-tab-link gc-analytics-event"
+         
+       
+         data-category="Site-Wide Custom Events"
+       
+         data-label="Tab: Launcher"
+       
+         track-type="globalNav"
+       
+         track-name="launcher"
+       >
+        Launcher
+      </a></li><li class="devsite-doc-set-nav-tab-container devsite-nav-tab
+               "><a href="https://cloud.google.com/pricing/"
+         class=" devsite-nav-tab
+                devsite-doc-set-nav-tab devsite-doc-set-nav-tab-link gc-analytics-event"
+         
+       
+         data-category="Site-Wide Custom Events"
+       
+         data-label="Tab: Pricing"
+       
+         track-type="globalNav"
+       
+         track-name="pricing"
+       >
+        Pricing
+      </a></li><li class="devsite-doc-set-nav-tab-container devsite-nav-tab
+               "><a href="https://cloud.google.com/security/"
+         class=" devsite-nav-tab
+                devsite-doc-set-nav-tab devsite-doc-set-nav-tab-link gc-analytics-event"
+         
+       
+         data-category="Site-Wide Custom Events"
+       
+         data-label="Tab: Security"
+       
+         track-type="globalNav"
+       
+         track-name="security"
+       >
+        Security
+      </a></li><li class="devsite-doc-set-nav-tab-container devsite-nav-tab
+               "><a href="https://cloud.google.com/customers/"
+         class=" devsite-nav-tab
+                devsite-doc-set-nav-tab devsite-doc-set-nav-tab-link gc-analytics-event"
+         
+       
+         data-category="Site-Wide Custom Events"
+       
+         data-label="Tab: Customers"
+       
+         track-type="globalNav"
+       
+         track-name="customers"
+       >
+        Customers
+      </a></li><li class="devsite-doc-set-nav-tab-container devsite-nav-tab
+               "><a href="https://cloud.google.com/docs/"
+         class="devsite-doc-set-nav-active devsite-nav-tab
+                devsite-doc-set-nav-tab devsite-doc-set-nav-tab-link gc-analytics-event"
+         aria-label="Documentation, selected"
+       
+         data-category="Site-Wide Custom Events"
+       
+         data-label="Tab: Documentation"
+       >
+        Documentation
+      </a></li><li class="devsite-doc-set-nav-tab-container devsite-nav-tab
+               "><a href="https://cloud.google.com/support/"
+         class=" devsite-nav-tab
+                devsite-doc-set-nav-tab devsite-doc-set-nav-tab-link gc-analytics-event"
+         
+       
+         data-category="Site-Wide Custom Events"
+       
+         data-label="Tab: Support"
+       
+         track-type="globalNav"
+       
+         track-name="support"
+       >
+        Support
+      </a></li><li class="devsite-doc-set-nav-tab-container devsite-nav-tab
+               "><a href="https://cloud.google.com/partners/"
+         class=" devsite-nav-tab
+                devsite-doc-set-nav-tab devsite-doc-set-nav-tab-link gc-analytics-event"
+         
+       
+         data-category="Site-Wide Custom Events"
+       
+         data-label="Tab: Partners"
+       
+         track-type="globalNav"
+       
+         track-name="partners"
+       >
+        Partners
+      </a></li></ul></nav></div><form class="devsite-search-form"
+                action="https://cloud.google.com/s/results/"
+                method="GET"
+                id="top-search"
+                search-placeholder='Search'><div id="searchbox" class="devsite-searchbox"><input placeholder='Search'
+         
+         type="text"
+         class="devsite-search-field devsite-search-query"
+         name="q"
+         value=""
+         autocomplete="off"
+         
+         aria-label="Search box"><div class="devsite-search-image material-icons"></div></div><input type="hidden"
+       name="p"
+       id="search_project"
+       value="/docs/"
+       data-project-name="Documentation"
+       data-project-path="/docs/"
+       data-query-match=""><input type="hidden" class="suggest-project" value="Documentation" /></form><a class="devsite-header-link devsite-top-button button gc-analytics-event"
+               href="//console.cloud.google.com/"
+               data-category="Site-Wide Custom Events"
+               data-label="Site header link"
+               track-type="navigateTo"
+               track-name="console"
+               track-metadata-position="nav"><div class="devsite-header-link-label">Console</div></a><button type="button" class="devsite-search-button devsite-header-icon-button button-flat
+                                       material-icons"></button><a href="https://www.google.com/accounts/ServiceLogin?passive=true&continue=https%3A%2F%2Fcloud.google.com%2Fsecurity%2Fdata-loss-prevention%2Fpreventing-data-exfiltration%3Frefresh%3D1&service=cloudconsole"
+   class="devsite-user-signin devsite-top-button button gc-analytics-event"
+   data-category="Site-Wide Custom Events" data-label="Sign in button">
+  
+  Sign in
+</a></div></div></div><div class="devsite-collapsible-section"><div class="devsite-header-background devsite-full-site-width"><div class="devsite-product-id-row devsite-full-site-width"><div class="devsite-product-description-row"><ul class="devsite-breadcrumb-list"><li class="devsite-breadcrumb-item">
+    
+    
+    
+      Documentation
+    
+    
+  </li></ul></div><div class="devsite-product-button-row
+            cloud-free-trial-eligible"><button type="button" id="devsite-feedback-project"
+          class="devsite-feedback-button devsite-top-button gc-analytics-event"
+          data-category="Site-Wide Custom Events" data-label="Send Feedback Button"
+          track-type="feedback" track-name="sendFeedbackLink" track-metadata-position="header">
+  
+  Send feedback
+  </button><a
+    
+      href="https://console.cloud.google.com/freetrial"
+    
+    
+      class="cloud-free-trial-button button-primary button"
+    
+    
+      
+      track-type="freeTrial"
+      
+      track-name="try"
+      
+      track-metadata-position="nav"
+      
+    >
+    Try It Free
+  </a><a
+    
+      href="https://cloud.google.com/contact/"
+    
+    
+      class="cloud-contact-sales-button button"
+    
+    
+      
+      track-type="sales"
+      
+      track-name="contact"
+      
+      track-metadata-position="nav"
+      
+    >
+    Contact Sales
+  </a></div></div></div></div></header><script>
+    if (window.jQuery) {
+      $(document).ready(function() {
+        if (window.devsite && window.devsite.search) {
+          
+          window.devsite.search.init('en')
+        }
+      });
+    }
+  </script></div><div id="gc-wrapper"itemscope itemtype="http://schema.org/Article"><input class="google-tag-manager-id" type="hidden" value="GTM-5CVQBG"><script>
+      var dataLayer = [{"freeTrialEligibleUser": "True", "userCountry": "HK", "language": {"requested": "en", "served": "en"}, "projectName": "Documentation", "scriptsafe": null, "signedIn": "False", "internalUser": "False"}];
+    </script>
+
+      
+        <div class="devsite-site-mask"></div>
+        
+  
+
+
+<nav class="devsite-nav-responsive devsite-nav nocontent" tabindex="0">
+  
+  <div class="devsite-nav-responsive-tabs-panel">
+    
+      
+        
+
+
+
+<nav class="devsite-nav-responsive-tabs devsite-nav">
+  <ul class="devsite-nav-list">
+  
+    <li class="devsite-nav-item devsite-nav-item-heading">
+    
+      <a 
+           href="https://cloud.google.com/why-google-cloud/?nav=true"
+         
+         class="devsite-nav-responsive-tab devsite-nav-title gc-analytics-event
+                "
+         data-category="Site-Wide Custom Events" data-label="Responsive Tab: Why Google">
+        Why Google
+      </a>
+      
+      
+    
+    </li>
+  
+    <li class="devsite-nav-item devsite-nav-item-heading">
+    
+      <a 
+           href="https://cloud.google.com/products/?nav=true"
+         
+         class="devsite-nav-responsive-tab devsite-nav-title gc-analytics-event
+                "
+         data-category="Site-Wide Custom Events" data-label="Responsive Tab: Products">
+        Products
+      </a>
+      
+      
+    
+    </li>
+  
+    <li class="devsite-nav-item devsite-nav-item-heading">
+    
+      <a 
+           href="https://cloud.google.com/solutions/?nav=true"
+         
+         class="devsite-nav-responsive-tab devsite-nav-title gc-analytics-event
+                "
+         data-category="Site-Wide Custom Events" data-label="Responsive Tab: Solutions">
+        Solutions
+      </a>
+      
+      
+    
+    </li>
+  
+    <li class="devsite-nav-item devsite-nav-item-heading">
+    
+      <a 
+           href="https://cloud.google.com/launcher/?nav=true"
+         
+         class="devsite-nav-responsive-tab devsite-nav-title gc-analytics-event
+                "
+         data-category="Site-Wide Custom Events" data-label="Responsive Tab: Launcher">
+        Launcher
+      </a>
+      
+      
+    
+    </li>
+  
+    <li class="devsite-nav-item devsite-nav-item-heading">
+    
+      <a 
+           href="https://cloud.google.com/pricing/?nav=true"
+         
+         class="devsite-nav-responsive-tab devsite-nav-title gc-analytics-event
+                "
+         data-category="Site-Wide Custom Events" data-label="Responsive Tab: Pricing">
+        Pricing
+      </a>
+      
+      
+    
+    </li>
+  
+    <li class="devsite-nav-item devsite-nav-item-heading">
+    
+      <a 
+           href="https://cloud.google.com/security/?nav=true"
+         
+         class="devsite-nav-responsive-tab devsite-nav-title gc-analytics-event
+                "
+         data-category="Site-Wide Custom Events" data-label="Responsive Tab: Security">
+        Security
+      </a>
+      
+      
+    
+    </li>
+  
+    <li class="devsite-nav-item devsite-nav-item-heading">
+    
+      <a 
+           href="https://cloud.google.com/customers/?nav=true"
+         
+         class="devsite-nav-responsive-tab devsite-nav-title gc-analytics-event
+                "
+         data-category="Site-Wide Custom Events" data-label="Responsive Tab: Customers">
+        Customers
+      </a>
+      
+      
+    
+    </li>
+  
+    <li class="devsite-nav-item devsite-nav-item-heading">
+    
+      <span class="devsite-nav-responsive-forward devsite-nav-responsive-tab devsite-nav-title
+                   devsite-nav-active gc-analytics-event"
+            data-category="Site-Wide Custom Events" data-label="Responsive Tab: Documentation"
+            tabindex="0">
+        Documentation
+      </span>
+    
+    </li>
+  
+    <li class="devsite-nav-item devsite-nav-item-heading">
+    
+      <a 
+           href="https://cloud.google.com/support/?nav=true"
+         
+         class="devsite-nav-responsive-tab devsite-nav-title gc-analytics-event
+                "
+         data-category="Site-Wide Custom Events" data-label="Responsive Tab: Support">
+        Support
+      </a>
+      
+      
+    
+    </li>
+  
+    <li class="devsite-nav-item devsite-nav-item-heading">
+    
+      <a 
+           href="https://cloud.google.com/partners/?nav=true"
+         
+         class="devsite-nav-responsive-tab devsite-nav-title gc-analytics-event
+                "
+         data-category="Site-Wide Custom Events" data-label="Responsive Tab: Partners">
+        Partners
+      </a>
+      
+      
+    
+    </li>
+  
+  
+    <li class="devsite-nav-item devsite-nav-item-heading">
+      <a href="//console.cloud.google.com/"
+         class="devsite-nav-responsive-tab devsite-nav-title gc-analytics-event"
+         data-category="Site-Wide Custom Events"
+         data-label="Responsive Tab: console">
+        Console
+      </a>
+    </li>
+  
+  </ul>
+</nav>
+
+
+      
+    
+  </div>
+  
+  
+  <div class="devsite-nav-responsive-sidebar-panel">
+    
+    <div class="devsite-nav-responsive-back" tabindex="0"></div>
+    
+    <nav class="devsite-nav-responsive-sidebar"></nav>
+  </div>
+  
+  
+    <div class="devsite-nav-responsive-index-panel">
+      <div class="devsite-nav-index-back" tabindex="0"></div>
+      <nav>
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+      </nav>
+    </div>
+  
+</nav>
+
+
+        <div class="devsite-main-content clearfix">
+
+        
+        
+
+        
+  
+  
+    
+    
+      
+  <nav class="devsite-section-nav devsite-nav nocontent">
+    <ul class="devsite-nav-list devsite-nav-expandable"><li class="devsite-nav-item devsite-nav-item-heading"><span class="devsite-nav-title devsite-nav-title-no-path" track-type="leftNav" track-name="expandNavSectionNoLink" track-metadata-position="0">Platform Overview</span></li><li class="devsite-nav-item devsite-nav-item-section-expandable"><span class="devsite-nav-title devsite-nav-title-no-path" track-type="leftNav" track-name="expandNavSectionNoLink"track-metadata-position="0" aria-label="The Basics, click to expand/collapse" role="link">The Basics</span><a class="devsite-nav-toggle devsite-nav-toggle-collapsed material-icons" track-type="leftNav" track-name="expandNavSectionArrow" track-metadata-position="0" aria-hidden="true"></a><ul class="devsite-nav-section devsite-nav-section-collapsed"><li class="devsite-nav-item"><a href="https://cloud.google.com/docs/overview/" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="1" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">Platform Overview</a></li><li class="devsite-nav-item"><a href="https://cloud.google.com/docs/platform-launch-checklist" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="1" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">Launch Checklist</a></li><li class="devsite-nav-item"><a href="https://cloud.google.com/docs/geography-and-regions" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="1" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">Geography and Regions</a></li><li class="devsite-nav-item"><a href="https://cloud.google.com/solutions/web-serving-overview" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="1" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">Serving Websites</a></li><li class="devsite-nav-item"><a href="https://cloud.google.com/free/docs/frequently-asked-questions" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="1" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">Free Trial Guide</a></li><li class="devsite-nav-item devsite-nav-item-section-expandable"><span class="devsite-nav-title devsite-nav-title-no-path" track-type="leftNav" track-name="expandNavSectionNoLink"track-metadata-position="1" aria-label="Concepts and Terminology, click to expand/collapse" role="link">Concepts and Terminology</span><a class="devsite-nav-toggle devsite-nav-toggle-collapsed material-icons" track-type="leftNav" track-name="expandNavSectionArrow" track-metadata-position="1" aria-hidden="true"></a><ul class="devsite-nav-section devsite-nav-section-collapsed"><li class="devsite-nav-item"><a href="https://cloud.google.com/what-is-cloud-computing/" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="2" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">What is Cloud Computing?</a></li><li class="devsite-nav-item"><a href="https://cloud.google.com/what-is-machine-learning/" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="2" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">What is Machine Learning?</a></li><li class="devsite-nav-item"><a href="https://cloud.google.com/what-is-big-data/" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="2" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">What is Big Data?</a></li><li class="devsite-nav-item"><a href="https://cloud.google.com/security/data-safety/" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="2" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">Data Safety in the Cloud</a></li></ul></li></ul></li><li class="devsite-nav-item devsite-nav-item-section-expandable"><span class="devsite-nav-title devsite-nav-title-no-path" track-type="leftNav" track-name="expandNavSectionNoLink"track-metadata-position="0" aria-label="Compare Platforms, click to expand/collapse" role="link">Compare Platforms</span><a class="devsite-nav-toggle devsite-nav-toggle-collapsed material-icons" track-type="leftNav" track-name="expandNavSectionArrow" track-metadata-position="0" aria-hidden="true"></a><ul class="devsite-nav-section devsite-nav-section-collapsed"><li class="devsite-nav-item"><a href="https://cloud.google.com/docs/compare/" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="1" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">Overview</a></li><li class="devsite-nav-item"><a href="https://cloud.google.com/docs/compare/aws" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="1" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">Google Cloud Platform for AWS Professionals</a></li><li class="devsite-nav-item"><a href="https://cloud.google.com/docs/compare/azure" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="1" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">Google Cloud Platform for Azure Professionals</a></li><li class="devsite-nav-item"><a href="https://cloud.google.com/docs/compare/openstack" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="1" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">Google Cloud Platform for OpenStack Users</a></li><li class="devsite-nav-item"><a href="https://cloud.google.com/docs/compare/data-centers" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="1" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">Google Cloud Platform for Data Center Professionals</a></li></ul></li><li class="devsite-nav-item"><a href="https://cloud.google.com/docs/tutorials" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="0" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">All Tutorials &amp; Solutions</a></li><li class="devsite-nav-item"><a href="https://cloud.google.com/docs/enterprise/best-practices-for-enterprise-organizations" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="0" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">Enterprise Guide</a></li><li class="devsite-nav-item"><a href="https://cloud.google.com/billing/docs/" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="0" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">Billing</a></li><li class="devsite-nav-item"><a href="https://cloud.google.com/support/docs/" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="0" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">Support</a></li><li class="devsite-nav-item devsite-nav-item-heading"><span class="devsite-nav-title devsite-nav-title-no-path" track-type="leftNav" track-name="expandNavSectionNoLink" track-metadata-position="0">Getting Started</span></li><li class="devsite-nav-item"><a href="https://cloud.google.com/docs/" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="0" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">Documentation Home</a></li><li class="devsite-nav-item devsite-nav-item-section-expandable"><span class="devsite-nav-title devsite-nav-title-no-path" track-type="leftNav" track-name="expandNavSectionNoLink"track-metadata-position="0" aria-label="Start by Programming Language, click to expand/collapse" role="link">Start by Programming Language</span><a class="devsite-nav-toggle devsite-nav-toggle-collapsed material-icons" track-type="leftNav" track-name="expandNavSectionArrow" track-metadata-position="0" aria-hidden="true"></a><ul class="devsite-nav-section devsite-nav-section-collapsed"><li class="devsite-nav-item"><a href="https://cloud.google.com/dotnet/docs/" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="1" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">C# / .NET</a></li><li class="devsite-nav-item"><a href="https://cloud.google.com/go/docs/" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="1" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">Go</a></li><li class="devsite-nav-item"><a href="https://cloud.google.com/java/docs/" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="1" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">Java</a></li><li class="devsite-nav-item"><a href="https://cloud.google.com/nodejs/docs/" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="1" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">Node.js</a></li><li class="devsite-nav-item"><a href="https://cloud.google.com/php/docs/" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="1" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">PHP</a></li><li class="devsite-nav-item"><a href="https://cloud.google.com/python/docs/" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="1" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">Python</a></li><li class="devsite-nav-item"><a href="https://cloud.google.com/ruby/docs/" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="1" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">Ruby</a></li></ul></li><li class="devsite-nav-item"><a href="https://cloud.google.com/docs/tutorials#getting_started" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="0" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">Start by Use Case</a></li><li class="devsite-nav-item devsite-nav-item-heading"><span class="devsite-nav-title devsite-nav-title-no-path" track-type="leftNav" track-name="expandNavSectionNoLink" track-metadata-position="0">APIs &amp; Libraries</span></li><li class="devsite-nav-item"><a href="https://cloud.google.com/apis/docs/overview" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="0" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">Overview</a></li><li class="devsite-nav-item devsite-nav-item-section-expandable"><span class="devsite-nav-title devsite-nav-title-no-path" track-type="leftNav" track-name="expandNavSectionNoLink"track-metadata-position="0" aria-label="APIs by Language, click to expand/collapse" role="link">APIs by Language</span><a class="devsite-nav-toggle devsite-nav-toggle-collapsed material-icons" track-type="leftNav" track-name="expandNavSectionArrow" track-metadata-position="0" aria-hidden="true"></a><ul class="devsite-nav-section devsite-nav-section-collapsed"><li class="devsite-nav-item"><a href="https://cloud.google.com/dotnet/apis" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="1" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">C# / .NET</a></li><li class="devsite-nav-item"><a href="https://cloud.google.com/go/apis" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="1" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">Go</a></li><li class="devsite-nav-item"><a href="https://cloud.google.com/java/apis" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="1" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">Java</a></li><li class="devsite-nav-item"><a href="https://cloud.google.com/nodejs/apis" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="1" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">Node.js</a></li><li class="devsite-nav-item"><a href="https://cloud.google.com/php/apis" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="1" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">PHP</a></li><li class="devsite-nav-item"><a href="https://cloud.google.com/python/apis" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="1" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">Python</a></li><li class="devsite-nav-item"><a href="https://cloud.google.com/ruby/apis" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="1" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">Ruby</a></li></ul></li><li class="devsite-nav-item devsite-nav-item-heading"><span class="devsite-nav-title devsite-nav-title-no-path" track-type="leftNav" track-name="expandNavSectionNoLink" track-metadata-position="0">Application Development</span></li><li class="devsite-nav-item devsite-nav-item-section-expandable"><span class="devsite-nav-title devsite-nav-title-no-path" track-type="leftNav" track-name="expandNavSectionNoLink"track-metadata-position="0" aria-label="Serverless, click to expand/collapse" role="link">Serverless</span><a class="devsite-nav-toggle devsite-nav-toggle-collapsed material-icons" track-type="leftNav" track-name="expandNavSectionArrow" track-metadata-position="0" aria-hidden="true"></a><ul class="devsite-nav-section devsite-nav-section-collapsed"><li class="devsite-nav-item"><a href="https://cloud.google.com/docs/choosing-a-compute-option" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="1" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">Choosing a Computing Option</a></li><li class="devsite-nav-item"><a href="https://cloud.google.com/appengine/docs/" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="1" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">App Engine</a></li><li class="devsite-nav-item devsite-nav-beta devsite-nav-has-status"><a href="https://cloud.google.com/functions/docs/" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="1" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click"><span class="devsite-nav-text">Cloud Functions</span><span class="devsite-nav-icon-wrapper"><span class="devsite-nav-icon material-icons" title="Beta"></span></span></a></li></ul></li><li class="devsite-nav-item devsite-nav-item-section-expandable"><span class="devsite-nav-title devsite-nav-title-no-path" track-type="leftNav" track-name="expandNavSectionNoLink"track-metadata-position="0" aria-label="Storage, click to expand/collapse" role="link">Storage</span><a class="devsite-nav-toggle devsite-nav-toggle-collapsed material-icons" track-type="leftNav" track-name="expandNavSectionArrow" track-metadata-position="0" aria-hidden="true"></a><ul class="devsite-nav-section devsite-nav-section-collapsed"><li class="devsite-nav-item"><a href="https://cloud.google.com/docs/storing-your-data" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="1" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">Choosing a Storage Option</a></li><li class="devsite-nav-item"><a href="https://cloud.google.com/bigtable/docs/" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="1" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">Cloud Bigtable</a></li><li class="devsite-nav-item"><a href="https://cloud.google.com/datastore/docs/" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="1" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">Cloud Datastore</a></li><li class="devsite-nav-item devsite-nav-beta devsite-nav-has-status"><a href="https://cloud.google.com/firestore/docs/" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="1" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click"><span class="devsite-nav-text">Cloud Firestore</span><span class="devsite-nav-icon-wrapper"><span class="devsite-nav-icon material-icons" title="Beta"></span></span></a></li><li class="devsite-nav-item"><a href="https://cloud.google.com/spanner/docs/" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="1" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">Cloud Spanner</a></li><li class="devsite-nav-item"><a href="https://cloud.google.com/sql/docs/" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="1" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">Cloud SQL</a></li><li class="devsite-nav-item"><a href="https://cloud.google.com/storage/docs/" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="1" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">Cloud Storage</a></li><li class="devsite-nav-item"><a href="https://cloud.google.com/docs/tutorials#storage" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="1" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">Storage Solutions</a></li></ul></li><li class="devsite-nav-item devsite-nav-item-section-expandable"><span class="devsite-nav-title devsite-nav-title-no-path" track-type="leftNav" track-name="expandNavSectionNoLink"track-metadata-position="0" aria-label="Developer Tools, click to expand/collapse" role="link">Developer Tools</span><a class="devsite-nav-toggle devsite-nav-toggle-collapsed material-icons" track-type="leftNav" track-name="expandNavSectionArrow" track-metadata-position="0" aria-hidden="true"></a><ul class="devsite-nav-section devsite-nav-section-collapsed"><li class="devsite-nav-item"><a href="https://cloud.google.com/tools/docs/" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="1" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">Overview</a></li><li class="devsite-nav-item"><a href="https://cloud.google.com/sdk/docs/" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="1" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">Cloud SDK</a></li><li class="devsite-nav-item"><a href="https://cloud.google.com/container-registry/docs/" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="1" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">Container Registry</a></li><li class="devsite-nav-item"><a href="https://cloud.google.com/container-builder/docs" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="1" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">Container Builder</a></li><li class="devsite-nav-item"><a href="https://cloud.google.com/source-repositories/docs/" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="1" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">Cloud Source Repositories</a></li><li class="devsite-nav-item"><a href="https://cloud.google.com/tools/intellij/docs/" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="1" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">Cloud Tools for IntelliJ</a></li><li class="devsite-nav-item devsite-nav-beta devsite-nav-has-status"><a href="https://cloud.google.com/tools/powershell/docs/" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="1" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click"><span class="devsite-nav-text">Cloud Tools for PowerShell</span><span class="devsite-nav-icon-wrapper"><span class="devsite-nav-icon material-icons" title="Beta"></span></span></a></li><li class="devsite-nav-item"><a href="https://cloud.google.com/tools/visual-studio/docs/" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="1" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">Cloud Tools for Visual Studio</a></li><li class="devsite-nav-item"><a href="https://cloud.google.com/eclipse/docs/" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="1" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">Cloud Tools for Eclipse</a></li><li class="devsite-nav-item"><a href="https://cloud.google.com/apis/docs/" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="1" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">Cloud APIs</a></li><li class="devsite-nav-item"><a href="https://cloud.google.com/shell/docs/" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="1" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">Cloud Shell</a></li><li class="devsite-nav-item"><a href="https://cloud.google.com/tools/android-studio/docs/" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="1" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">Cloud Tools for Android Studio</a></li></ul></li><li class="devsite-nav-item devsite-nav-item-heading"><span class="devsite-nav-title devsite-nav-title-no-path" track-type="leftNav" track-name="expandNavSectionNoLink" track-metadata-position="0">Big Data and Machine Learning</span></li><li class="devsite-nav-item devsite-nav-item-section-expandable"><span class="devsite-nav-title devsite-nav-title-no-path" track-type="leftNav" track-name="expandNavSectionNoLink"track-metadata-position="0" aria-label="Big Data, click to expand/collapse" role="link">Big Data</span><a class="devsite-nav-toggle devsite-nav-toggle-collapsed material-icons" track-type="leftNav" track-name="expandNavSectionArrow" track-metadata-position="0" aria-hidden="true"></a><ul class="devsite-nav-section devsite-nav-section-collapsed"><li class="devsite-nav-item"><a href="https://cloud.google.com/data-science/" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="1" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">Overview</a></li><li class="devsite-nav-item"><a href="https://cloud.google.com/bigquery/docs/quickstarts" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="1" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">BigQuery</a></li><li class="devsite-nav-item"><a href="https://cloud.google.com/dataflow/docs/quickstarts" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="1" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">Cloud Dataflow</a></li><li class="devsite-nav-item"><a href="https://cloud.google.com/dataproc/docs/quickstarts" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="1" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">Cloud Dataproc</a></li><li class="devsite-nav-item"><a href="https://cloud.google.com/datalab/docs/quickstarts" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="1" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">Cloud Datalab</a></li><li class="devsite-nav-item"><a href="https://cloud.google.com/pubsub/docs/quickstarts" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="1" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">Cloud Pub/Sub</a></li><li class="devsite-nav-item"><a href="https://cloud.google.com/hadoop/" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="1" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">Hadoop on Google Cloud Platform</a></li><li class="devsite-nav-item"><a href="https://cloud.google.com/docs/tutorials#big_data" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="1" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">Big Data Solutions</a></li></ul></li><li class="devsite-nav-item devsite-nav-item-section-expandable"><span class="devsite-nav-title devsite-nav-title-no-path" track-type="leftNav" track-name="expandNavSectionNoLink"track-metadata-position="0" aria-label="Machine Learning, click to expand/collapse" role="link">Machine Learning</span><a class="devsite-nav-toggle devsite-nav-toggle-collapsed material-icons" track-type="leftNav" track-name="expandNavSectionArrow" track-metadata-position="0" aria-hidden="true"></a><ul class="devsite-nav-section devsite-nav-section-collapsed"><li class="devsite-nav-item"><a href="https://cloud.google.com/products/machine-learning/" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="1" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">Overview</a></li><li class="devsite-nav-item devsite-nav-beta devsite-nav-has-status"><a href="https://cloud.google.com/tpu/docs/" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="1" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click"><span class="devsite-nav-text">Cloud TPUs</span><span class="devsite-nav-icon-wrapper"><span class="devsite-nav-icon material-icons" title="Beta"></span></span></a></li><li class="devsite-nav-item"><a href="https://cloud.google.com/ml-engine/docs/getting-started-training-prediction" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="1" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">Cloud ML Engine</a></li><li class="devsite-nav-item"><a href="https://cloud.google.com/vision/docs/quickstarts" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="1" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">Vision API</a></li><li class="devsite-nav-item"><a href="https://cloud.google.com/video-intelligence/docs/quickstarts" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="1" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">Video Intelligence API</a></li><li class="devsite-nav-item"><a href="https://cloud.google.com/speech/docs/quickstarts" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="1" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">Speech API</a></li><li class="devsite-nav-item"><a href="https://cloud.google.com/natural-language/docs/quickstarts" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="1" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">Natural Language API</a></li><li class="devsite-nav-item"><a href="https://cloud.google.com/translate/docs/quickstarts" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="1" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">Translation API</a></li><li class="devsite-nav-item"><a href="https://cloud.google.com/dialogflow-enterprise/docs/quickstarts" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="1" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">Dialogflow Enterprise Edition</a></li><li class="devsite-nav-item"><a href="https://cloud.google.com/docs/tutorials#machine_learning" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="1" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">Machine Learning Solutions</a></li></ul></li><li class="devsite-nav-item devsite-nav-item-section-expandable"><span class="devsite-nav-title devsite-nav-title-no-path" track-type="leftNav" track-name="expandNavSectionNoLink"track-metadata-position="0" aria-label="Internet of Things, click to expand/collapse" role="link">Internet of Things</span><a class="devsite-nav-toggle devsite-nav-toggle-collapsed material-icons" track-type="leftNav" track-name="expandNavSectionArrow" track-metadata-position="0" aria-hidden="true"></a><ul class="devsite-nav-section devsite-nav-section-collapsed"><li class="devsite-nav-item"><a href="https://cloud.google.com/iot/docs/" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="1" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">Cloud IoT Core</a></li></ul></li><li class="devsite-nav-item devsite-nav-item-heading"><span class="devsite-nav-title devsite-nav-title-no-path" track-type="leftNav" track-name="expandNavSectionNoLink" track-metadata-position="0">Infrastructure and Operations</span></li><li class="devsite-nav-item devsite-nav-item-section-expandable"><span class="devsite-nav-title devsite-nav-title-no-path" track-type="leftNav" track-name="expandNavSectionNoLink"track-metadata-position="0" aria-label="Compute and Containers, click to expand/collapse" role="link">Compute and Containers</span><a class="devsite-nav-toggle devsite-nav-toggle-collapsed material-icons" track-type="leftNav" track-name="expandNavSectionArrow" track-metadata-position="0" aria-hidden="true"></a><ul class="devsite-nav-section devsite-nav-section-collapsed"><li class="devsite-nav-item"><a href="https://cloud.google.com/docs/choosing-a-compute-option" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="1" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">Choosing a Computing Option</a></li><li class="devsite-nav-item"><a href="https://cloud.google.com/compute/docs/" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="1" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">Compute Engine</a></li><li class="devsite-nav-item"><a href="https://cloud.google.com/kubernetes-engine/docs/" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="1" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">Kubernetes Engine</a></li></ul></li><li class="devsite-nav-item devsite-nav-item-section-expandable"><span class="devsite-nav-title devsite-nav-title-no-path" track-type="leftNav" track-name="expandNavSectionNoLink"track-metadata-position="0" aria-label="Networking, click to expand/collapse" role="link">Networking</span><a class="devsite-nav-toggle devsite-nav-toggle-collapsed material-icons" track-type="leftNav" track-name="expandNavSectionArrow" track-metadata-position="0" aria-hidden="true"></a><ul class="devsite-nav-section devsite-nav-section-collapsed"><li class="devsite-nav-item"><a href="https://cloud.google.com/products/networking/" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="1" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">Overview</a></li><li class="devsite-nav-item devsite-nav-item-section-expandable"><span class="devsite-nav-title devsite-nav-title-no-path" track-type="leftNav" track-name="expandNavSectionNoLink"track-metadata-position="1" aria-label="VPC Network, click to expand/collapse" role="link">VPC Network</span><a class="devsite-nav-toggle devsite-nav-toggle-collapsed material-icons" track-type="leftNav" track-name="expandNavSectionArrow" track-metadata-position="1" aria-hidden="true"></a><ul class="devsite-nav-section devsite-nav-section-collapsed"><li class="devsite-nav-item"><a href="https://cloud.google.com/vpc/docs/" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="2" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">VPC Networks</a></li><li class="devsite-nav-item"><a href="https://cloud.google.com/compute/docs/ip-addresses/" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="2" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">External IP Addresses</a></li><li class="devsite-nav-item"><a href="https://cloud.google.com/vpc/docs/firewalls/" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="2" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">Firewall Rules</a></li><li class="devsite-nav-item"><a href="https://cloud.google.com/vpc/docs/routes/" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="2" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">Routes</a></li><li class="devsite-nav-item"><a href="https://cloud.google.com/vpc/docs/vpc-peering/" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="2" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">VPC Network Peering</a></li><li class="devsite-nav-item"><a href="https://cloud.google.com/vpc/docs/shared-vpc/" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="2" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">Shared VPC</a></li></ul></li><li class="devsite-nav-item devsite-nav-item-section-expandable"><span class="devsite-nav-title devsite-nav-title-no-path" track-type="leftNav" track-name="expandNavSectionNoLink"track-metadata-position="1" aria-label="Network Services, click to expand/collapse" role="link">Network Services</span><a class="devsite-nav-toggle devsite-nav-toggle-collapsed material-icons" track-type="leftNav" track-name="expandNavSectionArrow" track-metadata-position="1" aria-hidden="true"></a><ul class="devsite-nav-section devsite-nav-section-collapsed"><li class="devsite-nav-item"><a href="https://cloud.google.com/compute/docs/load-balancing/" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="2" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">Load Balancing</a></li><li class="devsite-nav-item devsite-nav-alpha devsite-nav-has-status"><a href="https://cloud.google.com/network-tiers/docs/" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="2" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click"><span class="devsite-nav-text">Network Service Tiers</span><span class="devsite-nav-icon-wrapper"><span class="devsite-nav-icon material-icons" title="Alpha"></span></span></a></li><li class="devsite-nav-item"><a href="https://cloud.google.com/dns/docs/" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="2" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">Cloud DNS</a></li><li class="devsite-nav-item"><a href="https://cloud.google.com/cdn/docs/" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="2" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">Cloud CDN</a></li></ul></li><li class="devsite-nav-item devsite-nav-item-section-expandable"><span class="devsite-nav-title devsite-nav-title-no-path" track-type="leftNav" track-name="expandNavSectionNoLink"track-metadata-position="1" aria-label="Hybrid Connectivity, click to expand/collapse" role="link">Hybrid Connectivity</span><a class="devsite-nav-toggle devsite-nav-toggle-collapsed material-icons" track-type="leftNav" track-name="expandNavSectionArrow" track-metadata-position="1" aria-hidden="true"></a><ul class="devsite-nav-section devsite-nav-section-collapsed"><li class="devsite-nav-item"><a href="https://cloud.google.com/vpn/docs/" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="2" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">VPN</a></li><li class="devsite-nav-item"><a href="https://cloud.google.com/interconnect/docs/" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="2" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">Interconnect</a></li><li class="devsite-nav-item"><a href="https://cloud.google.com/router/docs/" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="2" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">Cloud Router</a></li></ul></li><li class="devsite-nav-item devsite-nav-item-section-expandable"><span class="devsite-nav-title devsite-nav-title-no-path" track-type="leftNav" track-name="expandNavSectionNoLink"track-metadata-position="1" aria-label="Network Security, click to expand/collapse" role="link">Network Security</span><a class="devsite-nav-toggle devsite-nav-toggle-collapsed material-icons" track-type="leftNav" track-name="expandNavSectionArrow" track-metadata-position="1" aria-hidden="true"></a><ul class="devsite-nav-section devsite-nav-section-collapsed"><li class="devsite-nav-item"><a href="https://cloud.google.com/armor/docs/" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="2" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">Cloud Armor</a></li></ul></li><li class="devsite-nav-item devsite-nav-item-section-expandable"><span class="devsite-nav-title devsite-nav-title-no-path" track-type="leftNav" track-name="expandNavSectionNoLink"track-metadata-position="1" aria-label="External Peering, click to expand/collapse" role="link">External Peering</span><a class="devsite-nav-toggle devsite-nav-toggle-collapsed material-icons" track-type="leftNav" track-name="expandNavSectionArrow" track-metadata-position="1" aria-hidden="true"></a><ul class="devsite-nav-section devsite-nav-section-collapsed"><li class="devsite-nav-item"><a href="https://cloud.google.com/interconnect/docs/how-to/direct-peering/" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="2" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">Direct Peering</a></li><li class="devsite-nav-item"><a href="https://cloud.google.com/interconnect/docs/how-to/carrier-peering/" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="2" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">Carrier Peering</a></li><li class="devsite-nav-item"><a href="https://cloud.google.com/interconnect/docs/how-to/cdn-interconnect/" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="2" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">CDN Interconnect</a></li></ul></li><li class="devsite-nav-item"><a href="https://cloud.google.com/docs/tutorials#networking" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="1" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">Networking Solutions</a></li></ul></li><li class="devsite-nav-item devsite-nav-item-section-expandable"><span class="devsite-nav-title devsite-nav-title-no-path" track-type="leftNav" track-name="expandNavSectionNoLink"track-metadata-position="0" aria-label="Operations, click to expand/collapse" role="link">Operations</span><a class="devsite-nav-toggle devsite-nav-toggle-collapsed material-icons" track-type="leftNav" track-name="expandNavSectionArrow" track-metadata-position="0" aria-hidden="true"></a><ul class="devsite-nav-section devsite-nav-section-collapsed"><li class="devsite-nav-item"><a href="https://cloud.google.com/endpoints/docs/" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="1" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">Cloud Endpoints</a></li><li class="devsite-nav-item"><a href="https://cloud.google.com/security-scanner/docs/" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="1" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">Cloud Security Scanner</a></li><li class="devsite-nav-item"><a href="https://cloud.google.com/debugger/docs/" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="1" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">Stackdriver Debugger</a></li><li class="devsite-nav-item"><a href="https://cloud.google.com/error-reporting/docs/" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="1" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">Stackdriver Error Reporting</a></li><li class="devsite-nav-item"><a href="https://cloud.google.com/logging/docs/" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="1" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">Stackdriver Logging</a></li><li class="devsite-nav-item"><a href="https://cloud.google.com/monitoring/docs" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="1" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">Stackdriver Monitoring</a></li><li class="devsite-nav-item devsite-nav-beta devsite-nav-has-status"><a href="https://cloud.google.com/profiler/docs" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="1" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click"><span class="devsite-nav-text">Stackdriver Profiler</span><span class="devsite-nav-icon-wrapper"><span class="devsite-nav-icon material-icons" title="Beta"></span></span></a></li><li class="devsite-nav-item"><a href="https://cloud.google.com/trace/docs/" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="1" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">Stackdriver Trace</a></li></ul></li><li class="devsite-nav-item devsite-nav-item-section-expandable"><span class="devsite-nav-title devsite-nav-title-no-path" track-type="leftNav" track-name="expandNavSectionNoLink"track-metadata-position="0" aria-label="Identity &amp; Security, click to expand/collapse" role="link">Identity &amp; Security</span><a class="devsite-nav-toggle devsite-nav-toggle-expanded material-icons" track-type="leftNav" track-name="expandNavSectionArrow" track-metadata-position="0"></a><ul class="devsite-nav-section devsite-nav-section-expanded"><li class="devsite-nav-item devsite-nav-item-section-expandable"><span class="devsite-nav-title devsite-nav-title-no-path" track-type="leftNav" track-name="expandNavSectionNoLink"track-metadata-position="1" aria-label="Authentication, click to expand/collapse" role="link">Authentication</span><a class="devsite-nav-toggle devsite-nav-toggle-collapsed material-icons" track-type="leftNav" track-name="expandNavSectionArrow" track-metadata-position="1" aria-hidden="true"></a><ul class="devsite-nav-section devsite-nav-section-collapsed"><li class="devsite-nav-item"><a href="https://cloud.google.com/docs/authentication/" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="2" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">Overview</a></li><li class="devsite-nav-item"><a href="https://cloud.google.com/docs/authentication/getting-started" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="2" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">Getting Started</a></li><li class="devsite-nav-item"><a href="https://cloud.google.com/docs/authentication/production" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="2" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">Authentication for Server to Server Production Applications</a></li><li class="devsite-nav-item"><a href="https://cloud.google.com/docs/authentication/end-user" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="2" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">Authenticating as an End User</a></li><li class="devsite-nav-item"><a href="https://cloud.google.com/docs/authentication/api-keys" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="2" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">Using API Keys</a></li></ul></li><li class="devsite-nav-item"><a href="https://cloud.google.com/iam/docs/" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="1" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">Cloud Identity and Access Management</a></li><li class="devsite-nav-item"><a href="https://cloud.google.com/iap/docs/" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="1" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">Cloud Identity-Aware Proxy</a></li><li class="devsite-nav-item"><a href="https://cloud.google.com/kms/docs/" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="1" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">Cloud Key Management Service</a></li><li class="devsite-nav-item"><a href="https://cloud.google.com/security-scanner/docs/" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="1" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">Cloud Security Scanner</a></li><li class="devsite-nav-item"><a href="https://cloud.google.com/dlp/docs/" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="1" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">Data Loss Prevention API</a></li><li class="devsite-nav-item devsite-nav-active"><a href="https://cloud.google.com/security/data-loss-prevention/preventing-data-exfiltration" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="1" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">Preventing Data Exfiltration</a></li><li class="devsite-nav-item"><a href="https://cloud.google.com/security/compromised-credentials/" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="1" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">Handling Compromised GCP Credentials</a></li><li class="devsite-nav-item"><a href="https://cloud.google.com/security/data-loss-prevention/revoking-user-access" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="1" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">Best Practices for Revoking Access</a></li><li class="devsite-nav-item"><a href="https://cloud.google.com/solutions/securing-gcp-account-security-keys" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="1" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">Securing your Account with Security Keys</a></li><li class="devsite-nav-item"><a href="https://cloud.google.com/solutions/connecting-securely" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="1" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">Securely Connecting to VM Instances</a></li><li class="devsite-nav-item"><a href="https://cloud.google.com/security/security-design/" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="1" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">Google Infrastructure Security</a></li><li class="devsite-nav-item"><a href="https://cloud.google.com/security/" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="1" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">Cloud Platform Security Overview</a></li><li class="devsite-nav-item"><a href="https://cloud.google.com/docs/tutorials#security" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="1" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">Security Solutions</a></li></ul></li><li class="devsite-nav-item devsite-nav-item-section-expandable"><span class="devsite-nav-title devsite-nav-title-no-path" track-type="leftNav" track-name="expandNavSectionNoLink"track-metadata-position="0" aria-label="Resource Management, click to expand/collapse" role="link">Resource Management</span><a class="devsite-nav-toggle devsite-nav-toggle-collapsed material-icons" track-type="leftNav" track-name="expandNavSectionArrow" track-metadata-position="0" aria-hidden="true"></a><ul class="devsite-nav-section devsite-nav-section-collapsed"><li class="devsite-nav-item"><a href="https://cloud.google.com/deployment-manager/overview" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="1" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">Deployment Manager</a></li><li class="devsite-nav-item"><a href="https://cloud.google.com/launcher/docs/" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="1" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">Cloud Launcher</a></li><li class="devsite-nav-item"><a href="https://cloud.google.com/resource-manager/docs/" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="1" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">Cloud Resource Manager</a></li><li class="devsite-nav-item"><a href="https://cloud.google.com/docs/tutorials#resource" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="1" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">Resource Management Solutions</a></li></ul></li></ul>
+  </nav>
+
+    
+
+    
+  <nav class="devsite-page-nav devsite-nav"></nav>
+
+
+      <article class="devsite-article">
+        <article class="devsite-article-inner">
+  
+          
+  
+
+
+
+  
+  <nav class="devsite-breadcrumb-nav devsite-nav">
+    
+
+
+<ul class="devsite-breadcrumb-list">
+  
+  <li class="devsite-breadcrumb-item">
+    
+    
+    <a href="https://cloud.google.com/docs/" class="devsite-breadcrumb-link gc-analytics-event"
+       data-category="Site-Wide Custom Events" data-label="Breadcrumbs"
+       data-value="1">
+    
+    
+      Documentation
+    
+    
+    </a>
+    
+  </li>
+  
+  <li class="devsite-breadcrumb-item">
+    
+    
+    <div class="devsite-breadcrumb-guillemet material-icons"></div>
+    
+    
+    <a href="https://cloud.google.com/docs/" class="devsite-breadcrumb-link gc-analytics-event"
+       data-category="Site-Wide Custom Events" data-label="Breadcrumbs"
+       data-value="2">
+    
+    
+      Documentation
+    
+    
+    </a>
+    
+  </li>
+  
+</ul>
+
+  </nav>
+  
+  
+  <h1 itemprop="name" class="devsite-page-title">
+    Preventing Data Exfiltration
+  </h1>
+  
+  
+  <nav class="devsite-page-nav-embedded devsite-nav"></nav>
+  
+  <div class="devsite-article-body clearfix
+            "
+       itemprop="articleBody">
+    
+    <div class="tutorial tutorial-lesson">
+    
+
+    <section id="overview">
+      
+<p>An essential function of computer and network security is keeping sensitive data
+inaccessible to unauthorized third parties. This document explores
+characteristics of data exfiltration risks, and discusses industry-wide best
+practices for securing data. It explains how to use tools and features in
+Google Cloud Platform to reduce risks, detect data exfiltration, and respond to
+exfiltration events. When possible, security threats and defense approaches will
+be described in a cloud-independent context. The evolving regulatory
+environment, especially the European General Data Protection Regulation (GDPR)
+that becomes mandatory in 2018, has added new emphasis to the deployment of data
+exfiltration prevention mechanisms.</p>
+
+    </section>
+
+    
+
+    
+
+    
+
+    <div id="completed">
+    
+  <div class="tutorial-completed"></div>
+
+    </div>
+
+
+
+    <div id="tutorial-content">
+    
+  <section class="tutorial-content">
+    
+<h2 id="defining_data_exfiltration">Defining data exfiltration</h2>
+<p>In this document, <em>data exfiltration</em> is defined as when an authorized person
+extracts data from the secured systems where it belongs, and either shares it
+with unauthorized third parties or moves it to insecure systems. Authorized
+persons include employees, system administrators, and trusted users. Data
+exfiltration can occur due to the actions of malicious or compromised actors, or
+accidentally.</p>
+<p>To reduce the risk of data exfiltration, organizations must integrate security
+awareness and best practices into their culture. They must consistently evaluate
+the risks of every interaction with computer networks, devices, applications,
+data, and other users. Organizations may also decide to institute periodic
+audits to verify that best practices are followed.</p>
+<h3 id="confronting_data_exfiltration_risks_in_the_cloud">Confronting data exfiltration risks in the cloud</h3>
+<p>Many traditional data security strategies are based on hardening the physical
+perimeter defenses of private networks. As a cloud consumer, however, you don't
+control the physical network infrastructure your services use. In public clouds,
+the network fabric of the hosting provider is shared, and there is no perimeter
+in the traditional sense. Securing data in the cloud requires new security
+approaches and methods of auditing data access.</p>
+<p>As an analogy, consider that public cloud infrastructures were among the first
+in the industry to adopt the use of commodity hardware in the data center. While
+this can result in higher rates of hardware failure, fallout from such failures
+is minimized through redundancy and intelligent service architecture. In such an
+environment, services must be able to absorb multiple failures gracefully.
+Service architectures are designed for hardware and network failures by dividing
+up processing, storage, authentication, and other tasks across multiple machines
+and geographies, thereby minimizing the impacts from any one failure event. In
+securing your data, you should take a similar approach: design an architecture
+to minimize downtime and limit the effects to the rest of your system in the
+event of a security compromise.</p>
+<p>To satisfy the most security-conscious customers, the public cloud security
+model incorporates this thinking. For example, in cloud-based virtual machines
+(VM), providers can deploy specialized agents to produce telemetry about
+user and host activity. This provides the Security Operations Center (SOC) with
+visibility into activities within and around the frequently-morphing security
+boundary. </p>
+<aside class="note"><strong>Note:</strong><span> By default, Google does not currently install agents to provide this
+telemetry in VMs. Customers are free to do so in their VMS.</span></aside>
+<p>Providers also introduce explicit chokepoints, such as
+<a href="https://cloud.google.com/solutions/connecting-securely#bastion">bastion host</a> for communication with
+fleets of VMs, network proxy servers, network egress servers, and cross-project
+networks. These measures can reduce the risk of data exfiltration, but cannot
+eliminate it completely. </p>
+<p>Your organization must also establish a strong detection and response
+infrastructure for data exfiltration events. The right cloud infrastructure will
+give you rapid detection of risky or improper activity, limit the "blast radius"
+of the activity, and minimize the window of opportunity for the exfiltrating
+actor.</p>
+<h2 id="data_exfiltration_event_categories">Data exfiltration event categories</h2>
+<p>Data exfiltration events can be categorized by common technological,
+organizational, and physical characteristics. In the sections that follow, we'll
+look at some of these categories and discuss prevention and mitigation
+strategies for each.</p>
+<h3 id="outbound_mail">Outbound mail</h3>
+<p>In this scenario, actors use authorized telecommunications infrastructure, such
+as business email or mobile devices, to transmit sensitive data from secure
+computer systems to untrusted third parties or insecure private systems. The
+sensitive data can be transmitted as plain text in an email or text message, or
+attached as a file. This method is often used to exfiltrate the contents of
+organization emails, calendars, databases, images, planning documents, business
+forecasts, and source code.</p>
+<p>Many email and messaging systems save drafts to the cloud, so it isn't
+sufficient to check for sensitive data when the message is sent. If a person has
+outside access to their business email or other messaging service that supports
+saved drafts, they can use that feature for exfiltration. By saving a draft from
+devices and networks with access to sensitive data, and then accessing the draft
+from another client, the actor avoids logging and auditing systems.</p>
+<p><strong>Prevention and Mitigation</strong></p>
+<p>This scenario involves telecommunications systems selected and authorized by
+your organization, which gives you more options for securing against data
+exfiltration than scenarios involving private or third party tools.</p>
+<p>Consider implementing some of the following prevention and mitigation
+strategies:</p>
+<ul>
+<li>Monitor the volume and frequency of data transmission by your users over
+    email and other organizational messaging tools. If the average user sends
+    5 megabytes of data on average per day, a user sending 500 megabytes should
+    trigger an alert.</li>
+<li>Retain a log of addresses used to send email, what devices emails are sent
+    from, and the addresses of recipients. These can help you identify the
+    nature and scope of a data exfiltration event. The
+    <a href="https://support.google.com/a/answer/2984349?hl=en&amp;ref_topic=2683865">Administrator security checklist</a>
+    explains how to audit an email account for security risks in
+    <a href="https://gsuite.google.com/intl/en_us/products/gmail/">Gmail Enterprise</a>.</li>
+<li>Scan emails sent from systems with access to sensitive data to ensure they
+    don't contain unauthorized content. This can be made easier by tagging
+    sensitive content with markers, like keywords or hashes.</li>
+<li>Prevent sending messages over insecure channels, such as using http instead
+    of https, and alert your IT security staff of attempts.</li>
+</ul>
+<h3 id="downloads_to_insecure_devices">Downloads to insecure devices</h3>
+<p>These cases occur when a user accesses sensitive data through authorized
+channels and then transfers the data to an insecure local device. Actors may use
+laptops, smartphones, external drives, cameras, or specialized devices to
+capture sensitive data for exfiltration. The actor can download existing files
+from your services in the cloud, or copy data into new files. If the files are
+transferred to unmonitored or insecure devices, they are at high risk for
+exfiltration.</p>
+<p><strong>Prevention and Mitigation</strong></p>
+<p>Cloud-based networks have advantages in preventing this kind of event. Many
+methods for transferring data to a local device require a physical connection to
+transferrable media. If the data is instead stored in the cloud, it has to be
+downloaded before it's transferred. These downloads are subject to security and
+tracking features of the hosting service and clients.</p>
+<p>Consider implementing some of these policies and techniques:</p>
+<ul>
+<li>Prohibit downloads of very sensitive data. Depending on how your data is
+    used and processed in the cloud, users may never need to download it to
+    local hardware. If possible, keep all data in the cloud and perform all
+    computation in the cloud. If data is technically downloadable, establish a
+    policy that prohibits downloads, classify and label sensitive data, and keep
+    access logs of data that is requested and served via secured interactions
+    and API calls. See <a href="https://cloud.google.com/compute/docs/activity-logs">Viewing Activity Logs</a> for
+    details.</li>
+<li>Use a Cloud Access Security Broker (CASB) to regulate connections between
+    authorized clients and cloud services according to your organization's
+    security policies.</li>
+<li>Wrap files with Digital Rights Management (DRM) tools. This puts
+    permissions-aware security and encryption on each file.</li>
+<li>Implement dynamic watermarking in your authorized clients to record the user
+    responsible for screenshots or photographs of computer displays containing
+    sensitive information.</li>
+</ul>
+<h3 id="uploads_to_external_services">Uploads to external services</h3>
+<p>Similar to the previous category of events, this category often involves
+downloading sensitive data to local infrastructure. The actor then uploads the
+data to a third-party through a web browser client or other unmonitored
+software. Third party services could be innocuous-seeming web sites like a
+social network, where the actor could accidentally upload the wrong images or
+paste the wrong text. Sophisticated malicious actors may be able to pass small
+amounts of sensitive data, like user credentials or encryption keys, as URL
+parameters to specialized web applications.</p>
+<p><strong>Prevention and Mitigation</strong></p>
+<p>The risk of this kind of event can be reduced through the same policy
+restrictions on downloads that protect against local copying of sensitive data.
+However, a policy does not eliminate the risk of screenshots or copied text
+being uploaded to social media, file sharing web sites, or other cloud services.</p>
+<p>Security practices to consider for combating this kind of risk include:</p>
+<ul>
+<li>Prohibit any data from being downloaded. Keep all data in the cloud and
+    perform all computation in the cloud. Data should be requested and served by
+    secured and logged API interactions. See
+    <a href="https://cloud.google.com/compute/docs/activity-logs">Viewing Activity Logs</a> for details.</li>
+<li>Prevent installation of insecure third party software, such as social media
+    apps or unauthorized browser plugins, on devices with access to sensitive
+    data.</li>
+<li>Use a CASB to regulate traffic from cloud access points and enforce
+    encryption policies for all data transmitted to clients.</li>
+</ul>
+<h3 id="insecure_cloud_behavior">Insecure cloud behavior</h3>
+<p>Using cloud services introduces some new categories of data exfiltration risks
+that IT security professionals should be conscious of. These include a range of
+cases where employees, users, or administrators use features of the cloud
+provider suite in insecure ways. There is data exfiltration potential from any
+actor who has the ability to requisition or modify virtual machines (VMs),
+deploy code, or make requests to cloud storage or computation services.</p>
+<p>Cloud networks have public frontends and the ability to communicate with the
+broader internet. Securing and authorizing the behavior of services running in
+the cloud is essential to providing data security. Actors with sufficient
+permissions can initiate outbound transmission of sensitive data, move sensitive
+data from secure containers to less secure ones, or create unauthorized cloud
+services on behalf of an organization.</p>
+<p><strong>Prevention and Mitigation</strong></p>
+<p>Maintaining secure behavior for your cloud services requires precise, narrowly
+scoped permissions, and comprehensive logging. Wherever possible, prohibit
+actors from accessing the backends of your services. For most tasks that an
+employee or administrator needs to complete on a VM, there are automated agents
+and frontend clients that are secure and monitorable. Use these where it is
+possible to limit the number of persons with direct SSH access to your cloud
+machines. When feasible, scan all data sent to the broader Internet to identify
+sensitive information. For applications that process information from external
+users or systems, consider scanning that information to prevent inadvertent
+collection, storage, or sharing of sensitive data like Personally Identifiable
+Information (PII).</p>
+<p>For VMs in the cloud, consider these security principles:</p>
+<ul>
+<li>Set up IP tables on your VMs that prohibit outgoing connections to unknown
+    addresses. This can reduce the risk that an actor successfully transmits
+    sensitive data out of your network.</li>
+<li>Avoid giving your VMs public IP addresses, and use a Network Address
+    Translation (NAT) service to process ingoing and outgoing connections. Read
+    <a href="https://cloud.google.com/compute/docs/networking#natgateway">this guide on setting up a NAT gateway</a>
+    for Compute Engine to learn more.</li>
+<li>Consider using a <a href="https://cloud.google.com/solutions/connecting-securely#bastion">bastion host</a> in
+    the cloud to mediate and monitor connections to other hosts.</li>
+<li>Disable remote management software like Remote Desktop Protocol (RDP) or
+    Windows Remote Management (WinRM) agents on machines that do not need them.</li>
+<li>Use <a href="https://cloud.google.com/compute/docs/private-google-access">Private Google Access</a> to enable
+    virtual machine (VM) instances on a subnetwork to reach Google APIs and
+    Services using an internal IP address rather than an external IP address.</li>
+<li>Consider <a href="https://cloud.google.com/compute/docs/xpn/">Cross-Project Networking (XPN)</a> to share
+    Google Cloud Platform (GCP) virtual networks across projects in your
+    Cloud Organization.</li>
+<li>Limit direct SSH access to VMs to those persons with critical and
+    unavoidable need. Google Compute Engine provides comprehensive
+    <a href="https://cloud.google.com/compute/docs/instances/ssh-keys">SSH key management tools</a> for controlling
+    access to VMs.</li>
+</ul>
+<p>For cloud storage services like <a href="https://cloud.google.com/storage">Cloud Storage</a> or
+<a href="https://cloud.google.com/bigtable">Cloud Bigtable</a>, the following practices can reduce exfiltration
+risks:</p>
+<ul>
+<li>Use <a href="https://cloud.google.com/iam">Identity and Access Management (Cloud IAM)</a> to provide users and
+    applications with the narrowest set of permissions necessary for accessing
+    data. Store data with different sensitivity and access requirements in
+    different containers, to allow for permissions to be as granular as
+    possible.</li>
+<li>Monitor and limit the rate at which data can be read from your storage
+    resources. Use monitoring agents to alert your security team if there are
+    attempts to move much more data than expected in the normal use case.</li>
+<li>Make permissions to very sensitive data temporary and subject to frequent
+    review and revocation. For example, <a href="https://cloud.google.com/appengine/docs/quotas">App Engine</a>
+    quotas can be useful here.</li>
+<li>Have a human team regularly audit the set of persons with access to very
+    sensitive containers.</li>
+<li>Keep thorough logs of all access to your storage services. Ideally, the set
+    of persons granted access to the storage services will be separate from the
+    set of persons with access to the logs. This reduces the risk tampering with
+    the logs by malicious actors. Consider using Cloud Storage
+    <a href="https://cloud.google.com/storage/docs/access-logs">access log utilities</a> to write log data to a
+    separate storage bucket.</li>
+<li>More comprehensive <a href="https://cloud.google.com/storage/docs/best-practices#security">security best practices</a>
+    for Cloud Storage are available.</li>
+</ul>
+<h3 id="enforcing_compliance_with_security_policies">Enforcing compliance with security policies</h3>
+<p>The rich infrastructure provided by the Google Cloud Platform (GCP) creates
+multiple opportunities for customers to develop solutions that target their
+needs. At the same time, the rich infrastructure also brings new challenges such
+as enforcing desired security policies across different projects in an
+organization. To simplify security management, GCP introduced a hierarchy of
+entities in which all resources reside. This hierarchy is rooted in the concept
+of Organizations. Organizations may optionally contain folders or projects.
+Folders may optionally contain  sub-folders or projects. All GCP Service
+resources belong to a project. </p>
+<p>Using this hierarchy, Organization -&gt; Folder -&gt; Project -&gt; GCP Service -&gt;
+Resource, security policies can be set at any level of the hierarchy and are
+inherited down the lower levels of the hierarchy. Security policies are
+evaluated from top-to-bottom in the resource hierarchy and, as soon as an
+“allow” answer is obtained, the access to the resource is granted.</p>
+<p><strong>Enforcing compliance</strong></p>
+<p>Using the resource hierarchy, and the inheritance of security policies
+simplifies auditing to ensure that desired security policies are uniformly
+followed. Because of the inheritance property, administrators can demonstrate
+that, for example, all projects allow the same set of auditors to inspect their
+data. They achieve this by having such a security policy at the Organization
+level and never overriding it at a lower level. These security policies are
+specified in software audit activities and their verification can be automated.</p>
+<h3 id="identification_and_redaction_of_sensitive_data">Identification and redaction of sensitive data</h3>
+<p>One of the first steps in managing sensitive data is knowing where it is. Once
+identified, you are better equipped to set access control to ensure proper
+access/handling and use techniques to reduce the sensitivity through redaction,
+masking, or de-identification of the data. Once the data is in redacted form it
+ceases to convey the sensitive nature of it, like being a specific social
+security number, a valid credit card number, or Personally Identifiable
+Information (PII).</p>
+<p>The traditional challenge in redacting large amounts of
+diverse data is the need to automate recognition, classification, and
+appropriate redaction. An advancement is to have system support to reason about
+the content in data fields in an automated manner. This level of automated
+visibility into arbitrary data streams allows applications to decide what data
+to transmit to which end-points, which systems to use to store the different
+kinds of data that are being managed, and when to alert about specific kinds of
+data being transmitted.</p>
+<p><strong>Prevention and mitigation</strong></p>
+<p>In Google Cloud, the Data Loss Prevention (DLP) API lets you understand and
+manage sensitive data. It provides fast, scalable classification and optional
+redaction for sensitive data elements like credit card numbers, names, Social
+Security numbers, passport numbers, US and selected international driver’s
+license numbers, and phone numbers. The DLP API supports text, structured data,
+and images – just submit data to the DLP API or specify data stored on your
+Google Cloud Storage, BigQuery, and Cloud Datastore instances. The findings from
+the DLP API can be used to automatically monitor or inform configuration of
+Identity and Access Management (Cloud IAM) settings, data residency, or other
+policies. The DLP API can also help you redact or mask certain parts of this data
+in order to reduce the sensitivity or help with data minimization as part of a
+least-privileged or need-to-know policy. Techniques available are masking,
+format-preserving encryption, tokenization, and bucketing across structured or
+free text data. </p>
+<h3 id="rogue_administrators">Rogue administrators</h3>
+<p>By design, most computer systems grant unchecked power to designated
+administrators. Malicious or compromised administrators will have sufficient
+permissions to perpetrate any of the scenarios discussed in this document, and
+furthermore have the greatest ability to obliterate logs and evidence of their
+actions. Reducing these risks requires separation of powers and authority over
+parts of your network, and enabling administrators to monitor each other.</p>
+<p><strong>Prevention and Mitigation</strong></p>
+<p>Limiting the authority of any single actor is essential to reducing the risks
+presented by a rogue administrator.</p>
+<p>In order to accomplish their assigned tasks, administrators will have the
+ability to exfiltrate data, however the following principles can be applied to
+reduce the scope and magnitude of such events should they occur:</p>
+<ul>
+<li>Secure a large network against administrator malfeasance by logging the
+    actions of administrators in a place they cannot access. Use a separate
+    security team to manage monitoring and logging services.</li>
+<li>Consider making all administrator access temporary with a short expiration
+    period. In many networks, administrators do not need persistent access.</li>
+<li>Require multiple actors to approve administrative actions. By treating all
+    administrative actions like source code that requires approval, you can
+    reduce the risks presented by a single actor.</li>
+</ul>
+<h3 id="employee_terminations">Employee terminations</h3>
+<p>The Computer Emergency Response Team (CERT) at the
+<a href="http://www.sei.cmu.edu/">Software Engineering Institute</a> of Carnegie Mellon
+University produced a
+<a href="http://resources.sei.cmu.edu/library/asset-view.cfm?assetID=9875">2011 paper</a>
+showing that employees were more likely to engage in data exfiltration when they
+anticipated imminent termination. A pending employee termination is a period of
+increased risk which demands additional attention from IT security teams. </p>
+<p><strong>Prevention and Mitigation</strong></p>
+<p>For networks with very sensitive data, consider connecting logging and
+monitoring systems to HR software that records an upcoming termination and set
+more conservative thresholds for alerting security teams to abnormal behavior by
+these users.</p>
+<h2 id="conclusion">Conclusion</h2>
+<p>The flexibility, cost-savings, and power of using public cloud infrastructure
+requires increased vigilance and new approaches to securing data from
+exfiltration. You can architect your organization's policies and implementations
+to account for the environment by using techniques described in this paper:</p>
+<ul>
+<li>Minimize the "blast radius" of data exfiltration events through
+    compartmentalization of data.</li>
+<li>Create redundancy and approvals in system administrator workflows to
+    increase accountability.</li>
+<li>Use granular permissions and grant access to sensitive data only to those
+    whose job function requires it.</li>
+<li>Use logging to increase the transparency into the access and movement of
+    data in your organization.</li>
+<li>Restrict and monitor ingress and egress to machines in your organization
+    using networking rules, identity and access management (Cloud IAM), and
+    bastion hosts.</li>
+<li>Create a baseline of normal data flows, such as amounts of data accessed or
+    transferred, and geographical locations of access against which to compare
+    abnormal behaviors.</li>
+</ul>
+<h2 id="next_steps">Next steps</h2>
+<ul>
+<li>Read about the <a href="https://cloud.google.com/resource-manager/docs/organization-policy/overview">Organization Policy Service</a>.</li>
+<li>Read about the <a href="https://cloud.google.com/dlp/">Data Loss Prevention (DLP) API</a>.</li>
+<li>Read the <a href="https://cloud.google.com/security/">Google Cloud Security Overview</a>.</li>
+<li>Visit the <a href="https://cloud.google.com/security/partners/">Security Partner Ecosystem</a> page to learn
+  about security-centric GCP partners.</li>
+<li>Visit the <a href="https://cloud.google.com/security/gdpr/">Google Cloud &amp; the GDPR</a> page.</li>
+</ul>
+
+  </section>
+
+    </div>
+  </div>
+  
+  </div>
+  
+    
+
+
+
+  
+
+  
+        
+  
+
+
+
+
+
+
+
+        
+<div class="devsite-content-footer nocontent">
+  
+  
+    <p>All rights reserved. Java is a registered trademark of Oracle and/or its affiliates.</p>
+  
+
+  
+    
+    <p class="devsite-content-footer-date" itemprop="datePublished"
+       content="2018-03-21T19:27:59.713180">
+      
+      Last updated March 21, 2018.
+    </p>
+  
+
+</div>
+
+        </article>
+      </article>
+  
+
+        </div>
+      
+
+<footer class="devsite-footer-linkboxes nocontent
+               devsite-footer-linkboxes-all-backup
+               devsite-footer-linkboxes-with-sites"><nav class="devsite-full-site-width"><ul class="devsite-footer-linkboxes-list"><li class="devsite-footer-linkbox devsite-footer-linkbox-backup"><h3 class="devsite-footer-linkbox-heading">Products</h3><ul class="devsite-footer-linkbox-list"><li class="devsite-footer-linkbox-item"><a href="https://cloud.google.com/products/compute/" class="gc-analytics-event"
+               data-category="Site-Wide Custom Events"
+               data-label="Footer Compute">
+                Compute
+            </a></li><li class="devsite-footer-linkbox-item"><a href="https://cloud.google.com/products/storage/" class="gc-analytics-event"
+               data-category="Site-Wide Custom Events"
+               data-label="Footer Storage">
+                Storage
+            </a></li><li class="devsite-footer-linkbox-item"><a href="https://cloud.google.com/products/networking/" class="gc-analytics-event"
+               data-category="Site-Wide Custom Events"
+               data-label="Footer Networking">
+                Networking
+            </a></li><li class="devsite-footer-linkbox-item"><a href="https://cloud.google.com/products/big-data/" class="gc-analytics-event"
+               data-category="Site-Wide Custom Events"
+               data-label="Footer Big Data">
+                Big Data
+            </a></li><li class="devsite-footer-linkbox-item"><a href="https://cloud.google.com/products/machine-learning/" class="gc-analytics-event"
+               data-category="Site-Wide Custom Events"
+               data-label="Footer Machine Learning">
+                Machine Learning
+            </a></li><li class="devsite-footer-linkbox-item"><a href="https://cloud.google.com/products/#management" class="gc-analytics-event"
+               data-category="Site-Wide Custom Events"
+               data-label="Footer Management Tools">
+                Management Tools
+            </a></li><li class="devsite-footer-linkbox-item"><a href="https://cloud.google.com/products/tools/" class="gc-analytics-event"
+               data-category="Site-Wide Custom Events"
+               data-label="Footer Developer Tools">
+                Developer Tools
+            </a></li><li class="devsite-footer-linkbox-item"><a href="https://cloud.google.com/products/#identity-security" class="gc-analytics-event"
+               data-category="Site-Wide Custom Events"
+               data-label="Footer Identity and Security">
+                Identity &amp; Security
+            </a></li><li class="devsite-footer-linkbox-item"><a href="//status.cloud.google.com" class="gc-analytics-event"
+               data-category="Site-Wide Custom Events"
+               data-label="Footer System Status">
+                System Status
+            </a></li></ul></li><li class="devsite-footer-linkbox devsite-footer-linkbox-backup"><h3 class="devsite-footer-linkbox-heading">Learn More</h3><ul class="devsite-footer-linkbox-list"><li class="devsite-footer-linkbox-item"><a href="https://cloud.google.com/why-google/" class="gc-analytics-event"
+               data-category="Site-Wide Custom Events"
+               data-label="Footer Why Google">
+                Why Google Cloud
+            </a></li><li class="devsite-footer-linkbox-item"><a href="https://cloud.google.com/pricing/" class="gc-analytics-event"
+               data-category="Site-Wide Custom Events"
+               data-label="Footer Pricing">
+                Pricing
+            </a></li><li class="devsite-footer-linkbox-item"><a href="https://cloud.google.com/docs/" class="gc-analytics-event"
+               data-category="Site-Wide Custom Events"
+               data-label="Footer Documentation">
+                Documentation
+            </a></li><li class="devsite-footer-linkbox-item"><a href="https://cloud.google.com/docs/tutorials/" class="gc-analytics-event"
+               data-category="Site-Wide Custom Events"
+               data-label="Footer Tutorials">
+                Tutorials
+            </a></li><li class="devsite-footer-linkbox-item"><a href="https://cloud.google.com/training/" class="gc-analytics-event"
+               data-category="Site-Wide Custom Events"
+               data-label="Footer Training">
+                Training
+            </a></li><li class="devsite-footer-linkbox-item"><a href="https://cloud.google.com/solutions/" class="gc-analytics-event"
+               data-category="Site-Wide Custom Events"
+               data-label="Footer Solutions">
+                Solutions
+            </a></li><li class="devsite-footer-linkbox-item"><a href="https://cloud.google.com/security/" class="gc-analytics-event"
+               data-category="Site-Wide Custom Events"
+               data-label="Footer Security &amp; Compliance">
+                Security &amp; Compliance
+            </a></li><li class="devsite-footer-linkbox-item"><a href="https://cloud.google.com/partners/" class="gc-analytics-event"
+               data-category="Site-Wide Custom Events"
+               data-label="Footer Partners">
+                Partners
+            </a></li><li class="devsite-footer-linkbox-item"><a href="https://cloud.google.com/customers/" class="gc-analytics-event"
+               data-category="Site-Wide Custom Events"
+               data-label="Footer Customers">
+                Customers
+            </a></li><li class="devsite-footer-linkbox-item"><a href="https://cloud.google.com/support/" class="gc-analytics-event"
+               data-category="Site-Wide Custom Events"
+               data-label="Footer Support">
+                Support
+            </a></li><li class="devsite-footer-linkbox-item"><a href="//careers.google.com/cloud/" class="gc-analytics-event"
+               data-category="Site-Wide Custom Events"
+               data-label="Footer Careers">
+                Careers
+            </a></li><li class="devsite-footer-linkbox-item"><a href="//www.google.com/cloud/press" class="gc-analytics-event"
+               data-category="Site-Wide Custom Events"
+               data-label="Footer Press">
+                Press
+            </a></li></ul></li><li class="devsite-footer-linkbox devsite-footer-linkbox-backup"><h3 class="devsite-footer-linkbox-heading">Engage</h3><ul class="devsite-footer-linkbox-list"><li class="devsite-footer-linkbox-item"><a href="https://cloud.google.com/free-trial/" class="gc-analytics-event"
+               data-category="Site-Wide Custom Events"
+               data-label="Footer Free Trial Sign Up">
+                Free Trial Sign Up
+            </a></li><li class="devsite-footer-linkbox-item"><a href="//cloudplatform.googleblog.com" class="gc-analytics-event"
+               data-category="Site-Wide Custom Events"
+               data-label="Footer Blog">
+                Blog
+            </a></li><li class="devsite-footer-linkbox-item"><a href="https://cloud.google.com/community/" class="gc-analytics-event"
+               data-category="Site-Wide Custom Events"
+               data-label="Footer Community">
+                Community
+            </a></li><li class="devsite-footer-linkbox-item"><a href="//plus.google.com/+googlecloudplatform" class="gc-analytics-event"
+               data-category="Site-Wide Custom Events"
+               data-label="Footer Google+">
+                Google+
+            </a></li><li class="devsite-footer-linkbox-item"><a href="//twitter.com/gcpcloud" class="gc-analytics-event"
+               data-category="Site-Wide Custom Events"
+               data-label="Footer Twitter">
+                Twitter
+            </a></li><li class="devsite-footer-linkbox-item"><a href="//www.linkedin.com/showcase/google-cloud" class="gc-analytics-event"
+               data-category="Site-Wide Custom Events"
+               data-label="Footer LinkedIn">
+                LinkedIn
+            </a></li><li class="devsite-footer-linkbox-item"><a href="//stackoverflow.com/questions/tagged/google-cloud-platform" class="gc-analytics-event"
+               data-category="Site-Wide Custom Events"
+               data-label="Footer Stack Overflow">
+                Stack Overflow
+            </a></li><li class="devsite-footer-linkbox-item"><a href="//www.youtube.com/googlecloudplatform" class="gc-analytics-event"
+               data-category="Site-Wide Custom Events"
+               data-label="Footer YouTube">
+                YouTube
+            </a></li><li class="devsite-footer-linkbox-item"><a href="//www.gcppodcast.com" class="gc-analytics-event"
+               data-category="Site-Wide Custom Events"
+               data-label="Footer Podcast">
+                Podcast
+            </a></li><li class="devsite-footer-linkbox-item"><a href="//cloud.google.com/newsletter/" class="gc-analytics-event"
+               data-category="Site-Wide Custom Events"
+               data-label="Footer Newsletter Signup">
+                Newsletter Signup
+            </a></li><li class="devsite-footer-linkbox-item"><a href="//cloud.google.com/usability" class="gc-analytics-event"
+               data-category="Site-Wide Custom Events"
+               data-label="Footer UX Research">
+                UX Research
+            </a></li></ul></li><li class="devsite-footer-linkbox devsite-footer-linkbox-sites"><a href="https://developers.google.com/"
+           class="gc-analytics-event devsite-footer-linkbox-logo-link"
+           data-category="Site-Wide Custom Events" data-label="Footer Google Developers Link"><img class="devsite-footer-linkbox-logo"
+               src="https://cloud.google.com/_static/d7147bb846/images/redesign-14/lockup-color-knockout.png"
+               alt="Google Developers"></a><ul class="devsite-footer-linkbox-list"><li class="devsite-footer-linkbox-item"><a href="//developer.android.com/index.html" class="gc-analytics-event"
+               data-category="Site-Wide Custom Events"
+               data-label="Footer Android Link">
+                Android
+            </a></li><li class="devsite-footer-linkbox-item"><a href="//developer.chrome.com/home" class="gc-analytics-event"
+               data-category="Site-Wide Custom Events"
+               data-label="Footer Chrome Link">
+                Chrome
+            </a></li><li class="devsite-footer-linkbox-item"><a href="//firebase.google.com" class="gc-analytics-event"
+               data-category="Site-Wide Custom Events"
+               data-label="Footer Firebase Link">
+                Firebase
+            </a></li><li class="devsite-footer-linkbox-item"><a href="//cloud.google.com" class="gc-analytics-event"
+               data-category="Site-Wide Custom Events"
+               data-label="Footer Cloud Link">
+                Google Cloud Platform
+            </a></li><li class="devsite-footer-linkbox-item"><a href="//developers.google.com/products/" class="gc-analytics-event"
+               data-category="Site-Wide Custom Events"
+               data-label="Footer Products Link">
+                All Products
+            </a></li></ul></li></ul></nav></footer><footer class="devsite-utility-footer"><nav class="devsite-utility-footer-nav devsite-nav devsite-full-site-width"><div class="devsite-utility-footer-nav-left"><form class="devsite-utility-footer-language" action="/i18n/setlang/" method="post"><input type="hidden" name="xsrf_token" value="Lyr5_G7XXCdIJaAGdz4yvYcOXbqEhxgzQpEP1gECXOI6MTUyNDQ1ODI3ODUzNjc5MA" /><input type="hidden" name="next" value="/security/data-loss-prevention/preventing-data-exfiltration"><select class="devsite-utility-footer-language-select kd-select" name="language"
+                track-type="languageSelector" track-name="click"><option value="de"
+                
+                track-type="languageSelector" track-name="changed"
+                track-metadata-original-language="en"
+                track-metadata-selected-language="de">
+            Deutsch
+          </option><option value="en"
+                 selected="selected" 
+                track-type="languageSelector" track-name="changed"
+                track-metadata-original-language="en"
+                track-metadata-selected-language="en">
+            English
+          </option><option value="es"
+                
+                track-type="languageSelector" track-name="changed"
+                track-metadata-original-language="en"
+                track-metadata-selected-language="es">
+            español
+          </option><option value="pt-br"
+                
+                track-type="languageSelector" track-name="changed"
+                track-metadata-original-language="en"
+                track-metadata-selected-language="pt-br">
+            Português Brasileiro
+          </option><option value="ja"
+                
+                track-type="languageSelector" track-name="changed"
+                track-metadata-original-language="en"
+                track-metadata-selected-language="ja">
+            日本語
+          </option><option value="zh-tw"
+                
+                track-type="languageSelector" track-name="changed"
+                track-metadata-original-language="en"
+                track-metadata-selected-language="zh-tw">
+            繁體中文
+          </option></select></form><span class="devsite-utility-footer-links"><a class="devsite-utility-footer-link gc-analytics-event"
+           href="https://cloud.google.com/terms/"
+           data-category="Site-Wide Custom Events"
+           data-label="Footer terms link"
+           data-footer-link-id="terms"
+           >Terms
+         </a><a class="devsite-utility-footer-link gc-analytics-event"
+           href="//www.google.com/policies/privacy/"
+           data-category="Site-Wide Custom Events"
+           data-label="Footer privacy link"
+           data-footer-link-id="privacy"
+           >Privacy
+         </a><a class="devsite-utility-footer-link gc-analytics-event"
+           href="//www.google.de/contact/impressum.html"
+           data-category="Site-Wide Custom Events"
+           data-label="Footer impressum link"
+           data-footer-link-id="impressum"
+           >Impressum
+         </a></span></div></nav></footer><div class="devsite-feedback-dialog devsite-dialog"><div class="devsite-dialog-contents"><h3>Send feedback about...</h3><div class="devsite-feedback-item"><a data-type="documentation" class="gc-analytics-event"
+           data-category="Site-Wide Custom Events" data-label="Docs Feedback Image"
+           track-type="feedback" track-name="feedbackDocIcon" track-metadata-position="header"><div class="devsite-feedback-item-icon-container"><div class="devsite-feedback-item-icon-white devsite-feedback-item-icon-docs
+                        material-icons"></div></div></a><div class="devsite-feedback-item-name">
+          
+          This page
+        </div><div class="devsite-feedback-item-description"><a data-type="documentation" tabindex="0" class="gc-analytics-event"
+             data-category="Site-Wide Custom Events" data-label="Docs Feedback Text"
+             track-type="feedback" track-name="feedbackDocText" track-metadata-position="header">
+            
+            Documentation feedback
+          </a></div></div><div class="devsite-feedback-item"><a data-type="product" tabindex="0" class="gc-analytics-event"
+           data-category="Site-Wide Custom Events" data-label="Product Feedback Image"
+           track-type="feedback" track-name="feedbackProductIcon" track-metadata-position="header"
+         ><img class="devsite-feedback-item-icon"
+               src="https://cloud.google.com/_static/d7147bb846/images/feedback/google_56px.svg"></a><div class="devsite-feedback-item-name">
+        Documentation
+        </div><div class="devsite-feedback-item-description"><a data-type="product" tabindex="0" class="gc-analytics-event"
+             data-category="Site-Wide Custom Events" data-label="Product Feedback Text"
+             track-type="feedback" track-name="feedbackProductText" track-metadata-position="header"
+           >
+            
+            Product feedback
+          </a></div></div></div><div class="devsite-dialog-buttons"><button type="button" class="devsite-feedback-cancel button-white gc-analytics-event"
+              data-category="Site-Wide Custom Events" data-label="Cancel Feedback Button"
+              track-type="feedback" track-name="cancelFeedbackButton"
+              track-metadata-position="header">
+        
+        Cancel
+      </button></div></div><script>
+  $(document).ready(function() {
+    new devsite.feedback.Widget({
+        'product_id': '83405',
+        'bucket': 'Documentation',
+        'context': '',
+        'version': 'devsite-20180420-r00-rc00.default'
+      },
+      document.querySelectorAll('.devsite-feedback-button'),
+      'en',
+      document.querySelector('.devsite-site-mask'),
+      document.querySelector('.devsite-feedback-dialog'),
+      document.querySelector('.devsite-feedback-cancel'),
+      document.querySelectorAll('.devsite-feedback-item a:not([href])')
+    );
+  });
+  </script></div><script async defer src="//www.gstatic.com/feedback/api.js"></script><script src="https://cloud.google.com/_static2/d7147bb846/jsi18n/"></script><script src="https://cloud.google.com/_static/d7147bb846/js/script_foot_closure.js"></script><script src="https://cloud.google.com/_static/d7147bb846/js/script_foot.js"></script><script>
+        (function($) {
+          
+          devsite.devsite.Init($, {'ENABLE_BLOCKED_VIDEO_PLACEHOLDER': 0, 'SITE_NAME': 'cloud', 'FULL_SITE_SEARCH_ENABLED': 1, 'ENABLE_CLOUDTRACK': 1, 'VTAGS_ENABLED': 1, 'HISTORY_ENABLED': 1, 'VERSION_HASH': 'd7147bb846', 'SCRIPTSAFE_DOMAIN': 'cloud-dot-google-developers.appspot.com', 'ENABLE_BLOCKED_LINK_TOOLTIP': 0, 'ALLOWED_HOSTS': ['.android.com', '.anvato.com', '.apigee.com', '.appspot.com', '.dialogflow.com', '.gonglchuangl.net', '.google.cn', '.google.com', '.googleplex.com', '.nest.com', '.openthread.io', '.openweave.io', '.orbitera.com', '.tensorflow.org'], 'BLOCK_RSS_FEEDS': 0},
+                               '[]','en',
+                               true, '',
+                               {"f62218c009ec029abef196bba5aa34cf": true, "8de7a048f21618359bd37f5ce44be073": false, "098dafe57affddc137df300142652cfd": false, "8e03e230de0bd8a6fe173fdf172e8b3f": true, "cb025a64a50094835616312f4774a53d": true, "51470233c56fc1fde50f00b73c52b216": false, "d169d485cf24243a263783dbe42029b1": true, "039e5d84b87fd75807ffb37b7f1bbf2c": true, "700def1a83e356c06c0925afb05de4b0": false, "6749dcb526ce9bde6993550c7d928d24": true}, '/docs/',
+                               'https://cloud.google.com/');
+        })(jQuery);
+
+        
+        devsite.localInit = function() {
+          
+        };
+
+      </script><script>
+      $('.devsite-utility-footer-language-select').each(function() {
+        $(this).change(function(){$('.devsite-utility-footer-language').submit();});
+      });
+      </script></div><span id="devsite-request-elapsed" data-request-elapsed="334.300041199"></span></body></html>
