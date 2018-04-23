@@ -17618,7 +17618,7 @@ local.assetsDict['/favicon.ico'] = '';
                         // recurse - ajax
                         local.ajaxCrawl(
                             local.objectSetDefault(
-                                local.objectSetDefault(options2.element, options2),
+                                local.objectSetOverride(options2.element, options2),
                                 options
                             ),
                             onParallel
@@ -17667,15 +17667,12 @@ local.assetsDict['/favicon.ico'] = '';
                     options.xhr.responseText.replace(options.rgx, function (match0, match1) {
                         match0 = match1;
                         // recurse - push
-                        local.ajaxCrawl(local.objectSetOverride(local.objectSetDefault({
+                        local.ajaxCrawl(local.objectSetDefault({
                             depth: options.depth - 1,
                             modeNext: 1,
                             url: match0,
                             urlParsed0: options.urlParsed
-                        }, options), {
-                            ii: null,
-                            retry: 0
-                        }), local.nop);
+                        }, options), local.nop);
                     });
                     options.onNext(error, options);
                     break;
@@ -18105,14 +18102,14 @@ local.assetsDict['/favicon.ico'] = '';
                     break;
                 // node.electron.browserWindow.webview - print default-test
                 case 33:
-                    //!! if (options.modeBrowserTest !== 'test' || window.utility2_modeTestRun) {
-                        //!! return;
-                    //!! }
-                    //!! console.error(options.fileElectronHtml + ' global_test_results ' +
-                        //!! JSON.stringify({ global_test_results: {
-                            //!! coverage: window.__coverage__,
-                            //!! testReport: { testPlatformList: [{}] }
-                        //!! } }));
+                    if (options.modeBrowserTest !== 'test' || window.utility2_modeTestRun) {
+                        return;
+                    }
+                    console.error(options.fileElectronHtml + ' global_test_results ' +
+                        JSON.stringify({ global_test_results: {
+                            coverage: window.__coverage__,
+                            testReport: { testPlatformList: [{}] }
+                        } }));
                     break;
                 // node.electron.browserWindow - handle event console-message
                 case 22:
