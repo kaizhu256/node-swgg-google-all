@@ -16,7 +16,7 @@ shNpmScriptApidocRawCreate () {(set -e
 shNpmScriptApidocRawFetch () {(set -e
 # this function will fetch the raw apidoc
     mkdir -p tmp/apidoc.raw && cd tmp/apidoc.raw
-    rm -fr apidocRawFetch.log cloud.google.com developers.google.com
+    # rm -fr cloud.google.com developers.google.com
     node -e '
 // <script>
 /*jslint
@@ -54,11 +54,18 @@ local.onParallelList({
 /* jslint-ignore-begin */
 "\
 android|\
+apps-script|\
 c\\+\\+|\
+dotnet|\
+go|\
 ios|\
 java|\
 javascript|\
+js|\
+nodejs|\
+php|\
 python|\
+ruby|\
 sdk" +
 /* jslint-ignore-end */
                 ")\\b").test(options.url);
@@ -71,14 +78,6 @@ sdk" +
 }, local.onErrorDefault);
 // </script>
 ' '
-https://cloud.google.com/ml-engine/reference/rest/
-https://cloud.google.com/translate/docs/reference/rest
-https://developers.google.com/android/management/reference/rest/
-https://developers.google.com/android/over-the-air/reference/rest/
-https://developers.google.com/maps/documentation/
-https://developers.google.com/youtube/v3/docs/
-https://developers.google.com/youtube/v3/live/docs/
-
 #!! https://cloud.google.com/bigquery/docs/reference/datatransfer/rest/
 #!! https://cloud.google.com/bigquery/docs/reference/rest/v2/
 #!! https://cloud.google.com/billing/reference/rest/
@@ -91,7 +90,6 @@ https://developers.google.com/youtube/v3/live/docs/
 #!! https://cloud.google.com/speech-to-text/docs/reference/rest/
 #!! https://cloud.google.com/translate/docs/reference/rest
 #!! https://cloud.google.com/vision/docs/reference/rest/
-#!! https://developers.google.com/ad-exchange/buyer-rest/reference/rest/
 #!! https://developers.google.com/ad-exchange/buyer-rest/v1.4/
 #!! https://developers.google.com/ad-exchange/seller-rest/reference/v2.0/
 #!! https://developers.google.com/admin-sdk/reports/v1/reference/
@@ -100,12 +98,21 @@ https://developers.google.com/youtube/v3/live/docs/
 #!! https://developers.google.com/apps-script/api/reference/rest/
 #!! https://developers.google.com/blogger/docs/3.0/reference/
 #!! https://developers.google.com/civic-information/docs/v2/
+#!! https://developers.google.com/doubleclick-publishers/docs/reference/v201802/ActivityGroupService.ActivityGroup
 #!! https://developers.google.com/fusiontables/docs/v2/reference/
-#!! https://developers.google.com/google-apps/activity/v1/reference/
 #!! https://developers.google.com/gsuite/marketplace/v2/reference/
 #!! https://developers.google.com/speed/docs/insights/v4/reference/
-#!! https://developers.google.com/zero-touch/reference/reseller/rest/
-' 2>&1 | tee -a apidocRawFetch.log
+https://developers.google.com/zero-touch/reference/reseller/rest/
+#!! https://developers.google.com/google-apps/activity/v1/reference/
+#!! https://cloud.google.com/ml-engine/reference/rest/
+#!! https://cloud.google.com/translate/docs/reference/rest
+#!! https://developers.google.com/ad-exchange/buyer-rest/reference/rest/
+#!! https://developers.google.com/android/management/reference/rest/
+#!! https://developers.google.com/android/over-the-air/reference/rest/
+#!! https://developers.google.com/maps/documentation/
+#!! https://developers.google.com/youtube/v3/docs/
+#!! https://developers.google.com/youtube/v3/live/docs/
+' 2>&1 | tee apidocRawFetch.log
 )}
 
 shNpmScriptPostinstall () {
