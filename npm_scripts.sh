@@ -40,16 +40,18 @@ local.onParallelList({
     var url;
     url = options2.element;
     onParallel.counter += 1;
-    if (!(url && url[0] !== "#")) {
+    if (!url || url[0] == "#") {
         onParallel();
         return;
     }
+    debugInline(url);
     local.ajaxCrawl({
         depth: 2,
         dict: local.dict,
         dir: ".",
         filterBlacklist: function (options) {
-            return new RegExp("\\b(?:" +
+            return true;
+            return !(/\b(?:rest)\b/).test(options.url) && new RegExp("\\b(?:" +
 /* jslint-ignore-begin */
 "\
 android|\
@@ -66,13 +68,18 @@ sdk" +
             return (/^https?:\/\/(?:cloud.google.com|developers.google.com)/).test(options.url);
         },
         urlList: [url],
-    }, local.onErrorDefault);
-});
+    }, onParallel);
+}, local.onErrorDefault);
 // </script>
 ' '
 https://cloud.google.com/ml-engine/reference/rest/
-https://developers.google.com/maps/documentation/
 https://cloud.google.com/translate/docs/reference/rest
+https://developers.google.com/android/management/reference/rest/
+https://developers.google.com/android/over-the-air/reference/rest/
+https://developers.google.com/maps/documentation/
+https://developers.google.com/youtube/v3/docs/
+https://developers.google.com/youtube/v3/live/docs/
+
 #!! https://cloud.google.com/bigquery/docs/reference/datatransfer/rest/
 #!! https://cloud.google.com/bigquery/docs/reference/rest/v2/
 #!! https://cloud.google.com/billing/reference/rest/
@@ -91,8 +98,6 @@ https://cloud.google.com/translate/docs/reference/rest
 #!! https://developers.google.com/admin-sdk/reports/v1/reference/
 #!! https://developers.google.com/adsense/management/v1.4/reference/
 #!! https://developers.google.com/amp/cache/reference/acceleratedmobilepageurl/rest/
-#!! https://developers.google.com/android/management/reference/rest/
-#!! https://developers.google.com/android/over-the-air/reference/rest/
 #!! https://developers.google.com/apps-script/api/reference/rest/
 #!! https://developers.google.com/blogger/docs/3.0/reference/
 #!! https://developers.google.com/civic-information/docs/v2/
@@ -100,8 +105,6 @@ https://cloud.google.com/translate/docs/reference/rest
 #!! https://developers.google.com/google-apps/activity/v1/reference/
 #!! https://developers.google.com/gsuite/marketplace/v2/reference/
 #!! https://developers.google.com/speed/docs/insights/v4/reference/
-#!! https://developers.google.com/youtube/v3/docs/
-#!! https://developers.google.com/youtube/v3/live/docs/
 #!! https://developers.google.com/zero-touch/reference/reseller/rest/
 ' 2>&1 | tee -a apidocRawFetch.log
 )}

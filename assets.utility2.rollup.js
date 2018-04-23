@@ -17581,7 +17581,7 @@ local.assetsDict['/favicon.ico'] = '';
             options = local.objectSetDefault(options, {
                 depth: 0,
                 dict: {},
-                dir: 'tmp/ajaxCraw',
+                dir: 'tmp/ajaxCrawl',
                 filterBlacklist: local.nop,
                 filterWhitelist: function (options) {
                     return options.url.replace((/^https?:\/\//), '').indexOf(options.urlParsed0.href
@@ -17593,13 +17593,13 @@ local.assetsDict['/favicon.ico'] = '';
                 onEach: function (options, onError) {
                     if (options.xhr.responseText.replace((/[\w\t <>]/g), '').length >
                             0.5 * options.xhr.responseText.length) {
-                        console.error((options.ii + 1) + '/' + options.list.length +
-                            ' ajaxCrawl - skip ' + options.url);
+                        console.error('ajaxCrawl - ' + (options.ii + 1) + '/' +
+                            options.list.length + ' - skip ' + options.url);
                         onError(null, options);
                         return;
                     }
                     local.fsWriteFileWithMkdirpSync(options.file, options.xhr.responseText);
-                    console.error((options.ii + 1) + '/' + options.list.length +
+                    console.error('ajaxCrawl - ' + (options.ii + 1) + '/' + options.list.length +
                         ' ajaxCrawl - save ' + options.url + ' -> ' + options.file);
                     onError(null, options);
                 },
@@ -17622,8 +17622,8 @@ local.assetsDict['/favicon.ico'] = '';
                         // recurse - ajax
                         local.ajaxCrawl(
                             local.objectSetDefault(
-                                local.objectSetDefault(options2.element, options),
-                                options2
+                                local.objectSetDefault(options2.element, options2),
+                                options
                             ),
                             onParallel
                         );
@@ -17666,19 +17666,26 @@ local.assetsDict['/favicon.ico'] = '';
                     options.xhr.responseText.replace(options.rgx, function (match0, match1) {
                         match0 = match1;
                         // recurse - push
-                        local.ajaxCrawl({
+                        local.ajaxCrawl(local.objectSetDefault({
                             depth: options.depth - 1,
-                            dict: options.dict,
-                            dir: options.dir,
-                            filterBlacklist: options.filterBlacklist,
-                            filterWhitelist: options.filterWhitelist,
-                            list: options.list,
                             modeNext: 1,
-                            onEach: options.onEach,
-                            rgx: options.rgx,
                             url: match0,
                             urlParsed0: options.urlParsed
-                        }, local.nop);
+                        }, options), local.nop);
+                        //!! // recurse - push
+                        //!! local.ajaxCrawl({
+                            //!! depth: options.depth - 1,
+                            //!! dict: options.dict,
+                            //!! dir: options.dir,
+                            //!! filterBlacklist: options.filterBlacklist,
+                            //!! filterWhitelist: options.filterWhitelist,
+                            //!! list: options.list,
+                            //!! modeNext: 1,
+                            //!! onEach: options.onEach,
+                            //!! rgx: options.rgx,
+                            //!! url: match0,
+                            //!! urlParsed0: options.urlParsed
+                        //!! }, local.nop);
                     });
                     options.onNext(error, options);
                     break;
