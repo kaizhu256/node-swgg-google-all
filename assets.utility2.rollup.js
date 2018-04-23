@@ -15422,6 +15422,11 @@ split_lines=split_lines,exports.MAP=MAP,exports.ast_squeeze_more=require("./sque
             }
             local[key] = local[key] || {};
         });
+        // coverage-hack - test normalize-function-before handling-behavior
+        local.ajaxProgressCounter = function () {
+            return;
+        };
+        local.ajaxProgressCounter();
         // init assets and templates
         local.assetsDict = local.assetsDict || {};
 
@@ -16426,7 +16431,7 @@ instruction\n\
 \n\
 \n\
 \n\
-    // run shared js-env code - init-before\n\
+    // run shared js\-env code - init-before\n\
     (function () {\n\
         // init local\n\
         local = {};\n\
@@ -17390,7 +17395,7 @@ local.assetsDict['/favicon.ico'] = '';
             }
             local.browserTest({
                 fileScreenshot: local.env.npm_config_dir_build +
-                    '/screenshot.' + local.env.MODE_BUILD + '.browser.%2F',
+                    '/screenshot.' + local.env.MODE_BUILD + '.browser.%2F.png',
                 modeCoverageMerge: true,
                 url: local.assetsDict['/']
                     .indexOf('<script src="assets.test.js"></script>') >= 0
@@ -18266,9 +18271,9 @@ local.assetsDict['/favicon.ico'] = '';
          * with either 'utf8' (default) or 'base64' encoding
          */
 // bug-workaround - TextEncoder.encode polyfill
+/* istanbul ignore next */
 /* jslint-ignore-begin */
 // utility2-uglifyjs https://github.com/feross/buffer/blob/v4.9.1/index.js#L1670
-/* istanbul ignore next */
 function utf8ToBytes(e,t){t=t||Infinity;var n,r=e.length,i=null,s=[];for(var o=0
 ;o<r;++o){n=e.charCodeAt(o);if(n>55295&&n<57344){if(!i){if(n>56319){(t-=3)>-1&&s
 .push(239,191,189);continue}if(o+1===r){(t-=3)>-1&&s.push(239,191,189);continue}
@@ -18612,15 +18617,11 @@ return Utf8ArrayToStr(bff);
                 options.dataTo
             );
             // normalize function-before
-            /* istanbul ignore next */
             [
                 'lib.' + local.env.npm_package_nameLib + '.js',
                 'lib.' + local.env.npm_package_nameLib + '.sh',
                 'npm_scripts.sh'
             ].forEach(function (file) {
-                if (local.env.npm_config_mode_coverage) {
-                    return;
-                }
                 options.dataFunctionBefore = local.tryCatchReadFile(
                     file,
                     'utf8'
@@ -18636,7 +18637,8 @@ return Utf8ArrayToStr(bff);
                                 : match0;
                         });
                     });
-                if (options.dataFunctionBefore) {
+                /* istanbul ignore next */
+                if (options.dataFunctionBefore && !local.env.npm_config_mode_coverage) {
                     local.fs.writeFileSync(file, options.dataFunctionBefore);
                 }
             });
@@ -22824,15 +22826,7 @@ instruction\n\
                 }
             }
         }
-        break;
-    }
-    switch (local.modeJs) {
-
-
-
-    // run node js-env code - init-after-rollup
-    /* istanbul ignore next */
-    case 'node':
+/* validateLineSortedReset */
         // override assets
         [
             'assets.index.css',
@@ -30054,12 +30048,10 @@ x-request-header-test: aa\\r\\n\
         /*\n\
          * this function will test bufferCreate's polyfill handling-behavior\n\
          */\n\
-            options = [\n\
+            local.testMock([\n\
                 [local.global, { TextDecoder: null, TextEncoder: null }]\n\
-            ];\n\
-            // test exit's default handling-behavior\n\
-            local.testMock(options, function (onError) {\n\
-                local.testCase_bufferCreate_default(null, onError);\n\
+            ], function (onError) {\n\
+                local.testCase_bufferCreate_default(options, onError);\n\
             }, onError);\n\
         };\n\
 \n\
