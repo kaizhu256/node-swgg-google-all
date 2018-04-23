@@ -17593,20 +17593,20 @@ local.assetsDict['/favicon.ico'] = '';
                 onEach: function (options, onError) {
                     if (options.xhr.responseText.replace((/\w/g), '').length >
                             0.5 * options.xhr.responseText.length) {
-                        console.error(options.ii + '/' + options.list.length +
+                        console.error((options.ii + 1) + '/' + options.list.length +
                             ' ajaxCrawl - skip ' + options.url);
                         onError(null, options);
                         return;
                     }
-                    options.file = (options.url.replace((/^https?:\/\//), options.dir + '/') +
-                        '/index.html').replace((/\/{2,}/g), '/');
                     local.fsWriteFileWithMkdirpSync(options.file, options.xhr.responseText);
-                    console.error(options.ii + '/' + options.list.length +
+                    console.error((options.ii + 1) + '/' + options.list.length +
                         ' ajaxCrawl - saved ' + options.url + ' -> ' + options.file);
                     onError(null, options);
                 },
                 rgx: (/href="(.*?)"/g)
             });
+            options.file = ((options.url || '').replace((/^https?:\/\//), options.dir + '/') +
+                '/index.html').replace((/\/{2,}/g), '/');
             local.onNext(options, function (error, data) {
                 switch (options.modeNext) {
                 // onParallelList(options);
@@ -17638,8 +17638,6 @@ local.assetsDict['/favicon.ico'] = '';
                             '/' + options.url;
                     }
                     options.url = options.url.replace((/\/{2,}/g), '/').replace('/', '//');
-                    options.file = (options.url.replace((/^https?:\/\//), options.dir + '/') +
-                        '/index.html').replace((/\/{2,}/g), '/');
                     // optimization - hasOwnProperty
                     if (!options.dict.hasOwnProperty(options.url.replace((/^https?:\/\//), '')) &&
                             !options.filterBlacklist(options) &&
