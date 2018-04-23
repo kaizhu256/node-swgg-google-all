@@ -17666,26 +17666,19 @@ local.assetsDict['/favicon.ico'] = '';
                     options.xhr.responseText.replace(options.rgx, function (match0, match1) {
                         match0 = match1;
                         // recurse - push
-                        local.ajaxCrawl(local.objectSetDefault({
+                        local.ajaxCrawl({
                             depth: options.depth - 1,
+                            dict: options.dict,
+                            dir: options.dir,
+                            filterBlacklist: options.filterBlacklist,
+                            filterWhitelist: options.filterWhitelist,
+                            list: options.list,
                             modeNext: 1,
+                            onEach: options.onEach,
+                            rgx: options.rgx,
                             url: match0,
                             urlParsed0: options.urlParsed
-                        }, options), local.nop);
-                        //!! // recurse - push
-                        //!! local.ajaxCrawl({
-                            //!! depth: options.depth - 1,
-                            //!! dict: options.dict,
-                            //!! dir: options.dir,
-                            //!! filterBlacklist: options.filterBlacklist,
-                            //!! filterWhitelist: options.filterWhitelist,
-                            //!! list: options.list,
-                            //!! modeNext: 1,
-                            //!! onEach: options.onEach,
-                            //!! rgx: options.rgx,
-                            //!! url: match0,
-                            //!! urlParsed0: options.urlParsed
-                        //!! }, local.nop);
+                        }, local.nop);
                     });
                     options.onNext(error, options);
                     break;
