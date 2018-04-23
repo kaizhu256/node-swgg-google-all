@@ -40,7 +40,7 @@ local.onParallelList({
     var url;
     url = options2.element;
     onParallel.counter += 1;
-    if (!url || url[0] == "#") {
+    if (!url || url[0] === "#") {
         onParallel();
         return;
     }
@@ -50,7 +50,6 @@ local.onParallelList({
         dict: local.dict,
         dir: ".",
         filterBlacklist: function (options) {
-            return true;
             return !(/\b(?:rest)\b/).test(options.url) && new RegExp("\\b(?:" +
 /* jslint-ignore-begin */
 "\
@@ -67,7 +66,7 @@ sdk" +
         filterWhitelist: function (options) {
             return (/^https?:\/\/(?:cloud.google.com|developers.google.com)/).test(options.url);
         },
-        urlList: [url],
+        urlList: [url]
     }, onParallel);
 }, local.onErrorDefault);
 // </script>
