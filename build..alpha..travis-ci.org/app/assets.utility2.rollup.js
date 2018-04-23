@@ -17389,7 +17389,7 @@ local.assetsDict['/favicon.ico'] = '';
                 return;
             }
             local.browserTest({
-                fileScreenshotBase: local.env.npm_config_dir_build +
+                fileScreenshot: local.env.npm_config_dir_build +
                     '/screenshot.' + local.env.MODE_BUILD + '.browser.%2F',
                 modeCoverageMerge: true,
                 url: local.assetsDict['/']
@@ -17582,13 +17582,7 @@ local.assetsDict['/favicon.ico'] = '';
                 depth: 0,
                 dict: {},
                 dir: 'tmp/ajaxCrawl',
-                filterBlacklist: local.nop,
-                filterWhitelist: function (options) {
-                    return options.url.replace((/^https?:\/\//), '').indexOf(options.urlParsed0.href
-                        .replace((/^https?:\/\//), '')
-                        .replace((/([^\/])$/), '$1/')
-                        .replace((/\/{2,}/), '/')) === 0;
-                },
+                filter: local.echo,
                 list: [],
                 onEach: function (options, onError) {
                     if (options.xhr.responseText.replace((/[\w\t <>]/g), '').length >
@@ -17633,6 +17627,7 @@ local.assetsDict['/favicon.ico'] = '';
                     break;
                 // options.list.push(options);
                 case 2:
+                    // normalize url
                     options.url = options.url.replace((/[?#].*?$/), '');
                     if (!(/^https?:\/\//).test(options.url)) {
                         if (options.url[0] !== '/') {
@@ -17644,8 +17639,9 @@ local.assetsDict['/favicon.ico'] = '';
                     options.url = options.url.replace((/\/{2,}/g), '/').replace('/', '//');
                     // optimization - hasOwnProperty
                     if (!options.dict.hasOwnProperty(options.url.replace((/^https?:\/\//), '')) &&
-                            !options.filterBlacklist(options) &&
-                            options.filterWhitelist(options) &&
+                            (!options.urlParsed0 ||
+                                local.urlParse(options).host === options.urlParsed0.host) &&
+                            options.filter(options) &&
                             !local.fs.existsSync(options.file)) {
                         options.modeNext = 2;
                         options.dict[options.url.replace((/^https?:\/\//), '')] = true;
@@ -17671,19 +17667,15 @@ local.assetsDict['/favicon.ico'] = '';
                     options.xhr.responseText.replace(options.rgx, function (match0, match1) {
                         match0 = match1;
                         // recurse - push
-                        local.ajaxCrawl({
+                        local.ajaxCrawl(local.objectSetOverride(local.objectSetDefault({
                             depth: options.depth - 1,
-                            dict: options.dict,
-                            dir: options.dir,
-                            filterBlacklist: options.filterBlacklist,
-                            filterWhitelist: options.filterWhitelist,
-                            list: options.list,
                             modeNext: 1,
-                            onEach: options.onEach,
-                            rgx: options.rgx,
                             url: match0,
                             urlParsed0: options.urlParsed
-                        }, local.nop);
+                        }, options), {
+                            ii: null,
+                            retry: 0
+                        }), local.nop);
                     });
                     options.onNext(error, options);
                     break;
@@ -17939,82 +17931,33 @@ local.assetsDict['/favicon.ico'] = '';
             }
         };
 
+        /* istanbul ignore next */
         local.browserTest = function (options, onError) {
         /*
          * this function will spawn an electron process to test options.url
          */
-            var fileScreenshotBaseScrape, isDone, onParallel, timerTimeout;
-            local.onNext(options, function (error, data) {
-                switch (options.modeNext) {
+            var isDone, modeNext, onNext, onParallel, timerTimeout;
+            if (typeof local === 'object' && local && local.modeJs === 'node') {
+                local.objectSetDefault(options, local.envSanitize(local.env));
+                options.timeoutDefault = options.timeoutDefault || local.timeoutDefault;
+            }
+            onNext = function (error, data) {
+                modeNext = error instanceof Error
+                    ? Infinity
+                    : modeNext + 1;
+                switch (modeNext) {
                 // node - init
                 case 1:
-                    fileScreenshotBaseScrape = function (url) {
-                        return options.npm_config_dir_build + '/screenshot.scrape.browser.' +
-                            encodeURIComponent(url.split(/[?#]/)[0]);
-                    };
                     // init options
-                    [
-                        'CI_BRANCH',
-                        'CI_HOST',
-                        'DISPLAY',
-                        'MODE_BUILD',
-                        'PATH',
-                        'fileCoverage',
-                        'fileScreenshotBase',
-                        'fileTestReport',
-                        'modeBrowserTest',
-                        'modeBrowserTestRecurseDepth',
-                        'modeBrowserTestRecurseExclude',
-                        'modeBrowserTestRecurseInclude',
-                        'modeBrowserTestRecursePath',
-                        'modeBrowserTestShow',
-                        'modeBrowserTestTranslate',
-                        'modeBrowserTestTranslating',
-                        'modeCoverageMerge',
-                        'modeSilent',
-                        'npm_config_dir_build',
-                        'npm_config_dir_tmp',
-                        'rateLimit',
-                        'timeExit',
-                        'timeoutDefault',
-                        'timeoutScreenshot',
-                        'url'
-                    ].forEach(function (key) {
-                        if (typeof options[key] === 'number') {
-                            return;
-                        }
-                        options[key] = options[key] || local.env[key] || '';
-                        local.assert(!(options[key] && typeof options[key] === 'object'));
-                    });
-                    options.modeBrowserTestRecurseDepth = Number(
-                        options.modeBrowserTestRecurseDepth
-                    ) || 0;
-                    if (options.modeBrowserTest === 'translateAfterScrape') {
-                        options.modeBrowserTest = 'scrape';
-                        options.modeBrowserTest2 = 'translateAfterScrape';
-                    }
-                    options.timeoutDefault = options.timeoutDefault || local.timeoutDefault;
                     // init url
                     if (!(/^\w+:\/\//).test(options.url)) {
                         options.url = local.path.resolve(process.cwd(), options.url);
-                        if (options.modeBrowserTest2 === 'translateAfterScrape' &&
-                                !options.modeBrowserTestTranslating) {
-                            options.fileScreenshotBase = options.url;
-                        }
                     }
                     options.urlParsed = local.urlParse(options.url);
                     // init testName
                     options.testName = options.urlParsed.pathname;
                     if (options.testName.indexOf(process.cwd()) === 0) {
                         options.testName = options.testName.replace(process.cwd(), '');
-                    }
-                    if (options.modeBrowserTest === 'scrape') {
-                        options.testName = options.urlParsed.href
-                            .split('/')
-                            .slice(0, 3)
-                            .join('/') + options.testName;
-                        options.fileScreenshotBase = options.fileScreenshotBase ||
-                            fileScreenshotBaseScrape(options.url);
                     }
                     options.testName = options.MODE_BUILD + '.browser.' +
                         encodeURIComponent(options.testName.replace(
@@ -18024,215 +17967,22 @@ local.assetsDict['/favicon.ico'] = '';
                     local.objectSetDefault(options, {
                         fileCoverage: options.npm_config_dir_tmp +
                             '/coverage.' + options.testName + '.json',
-                        fileScreenshotBase: options.npm_config_dir_build +
-                            '/screenshot.' + options.testName,
+                        fileScreenshot: options.npm_config_dir_build +
+                            '/screenshot.' + options.testName + '.png',
                         fileTestReport: options.npm_config_dir_tmp +
                             '/test-report.' + options.testName + '.json',
                         modeBrowserTest: 'test',
                         timeExit: Date.now() + options.timeoutDefault,
                         timeoutScreenshot: options.timeoutScreenshot || 15000
                     }, 1);
-                    options.npm_config_time_exit = options.timeExit;
-                    options.fileScreenshot = options.fileScreenshotBase + '.png';
-                    // node.electron - init
-                    if (process.versions.electron) {
-                        options.modeNext = 10;
-                        options.onNext();
-                        return;
-                    }
-                    // node - translating
-                    if (options.modeBrowserTestTranslating) {
-                        options.onNext();
-                        return;
-                    }
-                    // node - recurse
-/*
-https://cloud.google.com/translate/docs/languages
-example usage:
-mkdir -p /tmp/100 && \
-    rm -f /tmp/100/screenshot.* && \
-    modeBrowserTestRecurseDepth=1 \
-    modeBrowserTestRecurseInclude=/www.iana.org/,/example.com/ \
-    modeBrowserTestTranslate=zh-CN \
-    npm_config_dir_build=/tmp/100 \
-    timeoutScreenshot=5000 \
-    shBrowserTest 'http://example.com/' scrape && \
-    ls -l /tmp/100
-mkdir -p /tmp/100 && \
-    rm -f /tmp/100/screenshot.* && \
-    modeBrowserTestRecurseDepth=1 \
-    modeBrowserTestRecurseExclude=/english/ \
-    modeBrowserTestRecurseInclude=.xinhuanet.com/,/xinhuanet.com/ \
-    modeBrowserTestTranslate2=en \
-    npm_config_dir_build=/tmp/100 \
-    rateLimit=4 \
-    timeoutScreenshot=10000 \
-    shBrowserTest 'http://xinhuanet.com/' scrape && \
-    ls -l /tmp/100
-*/
-                    if (options.modeBrowserTestRecursePath) {
-                        if (options.modeBrowserTestRecurseDepth < 0 ||
-                                local.fs.existsSync(options.fileScreenshot)) {
-                            options.modeNext = Infinity;
-                        } else {
-                            console.error('\nbrowserTest - recurse ' +
-                                options.modeBrowserTestRecurseDepth + ' ' +
-                                options.modeBrowserTestRecursePath + options.url +
-                                '\n');
-                            local.fs.writeFileSync(options.fileScreenshot, '');
-                        }
-                        options.onNext();
-                        return;
-                    }
-                    options.onNext();
-                    break;
-                // node - spawn electron
-                case 2:
-                    // node - translateAfterScrape
-                    if (options.modeBrowserTest2 === 'translateAfterScrape' &&
-                            !options.modeBrowserTestTranslating) {
-                        options.onNext();
-                        return;
-                    }
-                    if (options.modeBrowserTest !== 'scrape') {
-                        options.modeNext = Infinity;
-                    }
-                    local.childProcessSpawnWithTimeout('electron', [
-                        __filename,
-                        'utility2.browserTest',
-                        options.url,
-                        '--enable-logging'
-                    ], {
-                        env: options,
-                        stdio: options.modeSilent
-                            ? 'ignore'
-                            : ['ignore', 1, 2],
-                        timeout: options.timeoutDefault
-                    })
-                        .on('error', options.onNext)
-                        .once('exit', options.onNext);
-                    break;
-                // node - google-translate options.url
-                // to the languages in options.modeBrowserTranslate
-                case 3:
-                    if (options.modeBrowserTest2 === 'translateAfterScrape' ||
-                            options.modeBrowserTestTranslating) {
-                        options.modeNext = Infinity;
-                    }
-                    local.onParallelList({
-                        list: (!options.modeBrowserTestTranslating &&
-                            options.modeBrowserTestTranslate
-                            .split(/[\s,]+/)
-                            .filter(function (element) {
-                                return element;
-                            }))
-                    }, function (options2, onParallel) {
-                        options2.fileScreenshotBase = options.fileScreenshotBase +
-                            '.translateAfterScrape.' + options2.element;
-                        local.fs.writeFileSync(
-                            options2.fileScreenshotBase + '.html',
-                            local.fs.readFileSync(options.fileScreenshotBase + '.html', 'utf8')
-/* jslint-ignore-begin */
-// local.ajax({url: 'https://translate.googleapis.com/translate_a/l?client=te' }, function () { console.log(local.jsonStringifyOrdered(JSON.parse(arguments[1].responseText), null, 4)); });
-+ '\
-\n\
-<div id="google_translate_element"></div>\n\
-<script type="text/javascript">\n\
-function TranslateElementInit() {\n\
-    new google.translate.TranslateElement({\n\
-        includedLanguages: "' + options2.element + '",\n\
-        layout: google.translate.TranslateElement.InlineLayout.HORIZONTAL\n\
-    }, "google_translate_element");\n\
-    document.querySelector(".goog-te-combo").selectedIndex = 1;\n\
-    document.querySelector(".goog-te-combo").dispatchEvent(new Event("change"));\n\
-    document.querySelector(".goog-te-combo").dispatchEvent(new Event("change"));\n\
-    setInterval(function () {\n\
-        window.scrollTo(0, 0);\n\
-    }, 1000);\n\
-}\n\
-</script>\n\
-<script type="text/javascript" src="https://translate.google.com/translate_a/element.js?cb=TranslateElementInit"></script>\n\
-'
-/* jslint-ignore-end */
-                        );
-                        onParallel.counter += 1;
-                        local.browserTest({
-                            modeBrowserTest: options2.modeBrowserTest,
-                            fileScreenshotBase: options2.fileScreenshotBase,
-                            modeBrowserTestTranslating: options2.element,
-                            timeoutScreenshot: options.timeoutScreenshot,
-                            url: (options2.fileScreenshotBase + '.html').replace((/%/g), '%25')
-                        }, onParallel);
-                    }, options.onNext);
-                    break;
-                // node - recurse
-                case 4:
-                    local.fs.readFileSync(
-                        options.fileScreenshotBase + '.html',
-                        'utf8'
-                    ).replace((/ data-scrape="([\S\s]*?)"/), function (match0, match1) {
-                        match0 = match1;
-                        data = JSON.parse(match0
-                            .replace((/&quot;/g), '"')
-                            .replace((/&amp;/g), '&'));
-                    });
-                    data.readdirDict = {};
-                    data.recurseDict = {};
-                    data.tmp = local.fs.readdirSync(options.npm_config_dir_build);
-                    data.tmp.forEach(function (file) {
-                        data.readdirDict[options.npm_config_dir_build + '/' + file] = true;
-                    });
-                    data.exclude = options.modeBrowserTestRecurseExclude
-                        .split(/[\s,]+/)
-                        .filter(function (element) {
-                            return element;
-                        });
-                    data.include = (options.modeBrowserTestRecurseInclude ||
-                        (options.url.split((/[\/?#]/)).slice(0, 3).join('/')))
-                        .split(/[\s,]+/)
-                        .filter(function (element) {
-                            return element;
-                        });
-                    Object.keys(data.hrefDict).forEach(function (url) {
-                        if (url && data.exclude.every(function (element) {
-                                return url.indexOf(element) < 0;
-                            }) && data.include.some(function (element) {
-                                return url.indexOf(element) >= 0;
-                            })) {
-                            data.recurseDict[url] = true;
-                        }
-                    });
-                    local.onParallelList({
-                        list: Object.keys(data.recurseDict).sort(),
-                        rateLimit: options.rateLimit || 1
-                    }, function (options2, onParallel) {
-                        onParallel.counter += 1;
-                        local.browserTest({
-                            modeBrowserTest: options.modeBrowserTest,
-                            modeBrowserTestRecurseDepth:
-                                options.modeBrowserTestRecurseDepth - 1,
-                            modeBrowserTestRecurseExclude:
-                                options.modeBrowserTestRecurseExclude,
-                            modeBrowserTestRecurseInclude:
-                                options.modeBrowserTestRecurseInclude,
-                            modeBrowserTestRecursePath: options.modeBrowserTestRecursePath +
-                                options.url + ' -> ',
-                            modeBrowserTestTranslate: options.modeBrowserTestTranslate,
-                            timeoutScreenshot: options.timeoutScreenshot,
-                            url: options2.element
-                        }, onParallel);
-                    }, options.onNext);
-                    break;
-                // node.electron - init
-                case 11:
                     // init timerTimeout
                     timerTimeout = local.onTimeout(
-                        options.onNext,
+                        onNext,
                         options.timeoutDefault,
                         options.testName
                     ).unref();
                     // init file fileElectronHtml
-                    options.browserTestScript = local.browserTestElectron
+                    options.browserTestScript = local.browserTest
                         .toString()
                         .replace((/<\//g), '<\\/')
                         // coverage-hack - un-instrument function
@@ -18266,17 +18016,28 @@ function TranslateElementInit() {\n\
                         '(' + options.browserTestScript + '(' + JSON.stringify(options) +
                             '))'
                     );
-                    // reset modeNext
-                    options.modeNext = 11;
-                    local.electron = options.electron;
-                    local.tryCatchOnError(function () {
-                        local.electron = require('electron');
-                    }, local.nop);
+                    // spawn an electron process to test a url
+                    options.modeNext = 10;
+                    options.npm_config_time_exit = options.timeExit;
+                    local.childProcessSpawnWithTimeout('electron', [
+                        __filename,
+                        'utility2.browserTest',
+                        options.url,
+                        '--enable-logging'
+                    ], { env: options, stdio: options.modeSilent
+                        ? 'ignore'
+                        : ['ignore', 1, 2], timeout: options.timeoutDefault })
+                        .on('error', onNext)
+                        .once('exit', onNext);
+                    break;
+                // node.electron - init
+                case 11:
+                    local.electron = require('electron');
                     // handle uncaughtexception
-                    process.once('uncaughtException', options.onNext);
+                    process.once('uncaughtException', onNext);
                     // wait for electron to init
                     local.electron.app.once('ready', function () {
-                        options.onNext();
+                        onNext();
                     });
                     break;
                 // node.electron - after ready
@@ -18285,14 +18046,14 @@ function TranslateElementInit() {\n\
                     local.objectSetDefault(options, {
                         frame: false,
                         height: 768,
-                        show: !!options.modeBrowserTestShow,
+                        show: false,
                         width: 1024,
                         x: 0,
                         y: 0
                     });
                     // init browserWindow
                     options.browserWindow = new options.BrowserWindow(options);
-                    onParallel = local.onParallel(options.onNext);
+                    onParallel = local.onParallel(onNext);
                     // onParallel - html
                     onParallel.counter += 1;
                     // onParallel - test
@@ -18309,97 +18070,8 @@ function TranslateElementInit() {\n\
                         }
                     });
                     // load url in browserWindow
-                    options.browserWindow.loadURL('file://' + options.fileElectronHtml, {
-                        userAgent: options.modeBrowserTest === 'scrape' &&
-                            'Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 ' +
-                            '(KHTML, like Gecko) Chrome/64.0.1234.123 Safari/537.36'
-                    });
+                    options.browserWindow.loadURL('file://' + options.fileElectronHtml);
                     break;
-                // node.electron - after html
-                case 13:
-                    options.browserWindow.capturePage(options, function (data) {
-                        local.fs.writeFileSync(options.fileScreenshot, data.toPng());
-                        console.error('\nbrowserTest - created screenshot file ' +
-                            options.fileScreenshot + '\n');
-                        options.onNext();
-                    });
-                    break;
-                // node.electron - after screenshot
-                case 14:
-                    console.error('browserTest - created screenshot file ' +
-                        options.fileScreenshotBase + '.html');
-                    options.onNext();
-                    local.exit();
-                    break;
-                default:
-                    if (isDone) {
-                        return;
-                    }
-                    isDone = true;
-                    local.onErrorDefault(error);
-                    if (options.modeBrowserTestRecursePath) {
-                        error = null;
-                    }
-                    // cleanup timerTimeout
-                    clearTimeout(timerTimeout);
-                    // cleanup fileElectronHtml
-                    local.tryCatchOnError(function () {
-                        local.fs.unlinkSync(options.fileElectronHtml);
-                        local.fs.unlinkSync(options.fileElectronHtml + '.preload.js');
-                    }, local.nop);
-                    // create test-report
-                    if (!(options.modeBrowserTest === 'test' &&
-                            local.modeJs === 'node' &&
-                            !process.versions.electron)) {
-                        onError(error);
-                        return;
-                    }
-                    // merge browser coverage
-                    // try to JSON.parse the string
-                    data = null;
-                    local.tryCatchOnError(function () {
-                        data = options.modeCoverageMerge && JSON.parse(
-                            local.fs.readFileSync(options.fileCoverage, 'utf8')
-                        );
-                    }, local.nop);
-                    local.istanbulCoverageMerge(local.global.__coverage__, data);
-                    console.error('\nbrowserTest - merged coverage from file ' +
-                        options.fileCoverage + '\n');
-                    // try to merge browser test-report
-                    data = null;
-                    local.tryCatchOnError(function () {
-                        data = !error && JSON.parse(
-                            local.fs.readFileSync(options.fileTestReport, 'utf8')
-                        );
-                    }, local.nop);
-                    if (data && !options.modeTestIgnore) {
-                        local.testReportMerge(local.testReport, data);
-                        console.error('\nbrowserTest - merged test-report from file ' +
-                            options.fileTestReport + '\n');
-                    }
-                    // create test-report.json
-                    local.fs.writeFileSync(
-                        options.npm_config_dir_build + '/test-report.json',
-                        JSON.stringify(local.testReport)
-                    );
-                    onError(data && data.testsFailed && new Error(data.testsFailed));
-                }
-            });
-            options.modeNext = Number(options.modeNext) || 0;
-            options.onNext();
-        };
-
-        /* istanbul ignore next */
-        local.browserTestElectron = function (options) {
-        /*
-         * this function will spawn an electron process to test options.url
-         */
-            var modeNext, onNext, tmp;
-            onNext = function (error, data) {
-                modeNext = error instanceof Error
-                    ? Infinity
-                    : modeNext + 1;
-                switch (modeNext) {
                 // node.electron.browserWindow - init
                 case 21:
                     options.fs = require('fs');
@@ -18407,20 +18079,44 @@ function TranslateElementInit() {\n\
                     options.webview1.addEventListener('did-get-response-details', function () {
                         document.title = options.fileElectronHtml + ' opened';
                     });
+                    options.rgx = new RegExp('^' + options.fileElectronHtml + ' (\\w+) ');
                     options.webview1.addEventListener('console-message', function (event) {
-                        modeNext = 21;
                         try {
+                            modeNext = 21;
                             onNext(null, event);
                         } catch (errorCaught) {
                             console.error(errorCaught);
                         }
                     });
                     break;
+                // node.electron.browserWindow.webview - init
+                case 31:
+                    // init fileElectronHtml for testRun
+                    if (options.modeBrowserTest === 'test') {
+                        window.fileElectronHtml = options.fileElectronHtml;
+                    }
+                    setTimeout(onNext, options.timeoutScreenshot);
+                    break;
+                // node.electron.browserWindow.webview - print html
+                case 32:
+                    console.error(options.fileElectronHtml + ' html ' +
+                        document.documentElement.outerHTML);
+                    setTimeout(onNext, 1000);
+                    break;
+                // node.electron.browserWindow.webview - print default-test
+                case 33:
+                    //!! if (options.modeBrowserTest !== 'test' || window.utility2_modeTestRun) {
+                        //!! return;
+                    //!! }
+                    //!! console.error(options.fileElectronHtml + ' global_test_results ' +
+                        //!! JSON.stringify({ global_test_results: {
+                            //!! coverage: window.__coverage__,
+                            //!! testReport: { testPlatformList: [{}] }
+                        //!! } }));
+                    break;
                 // node.electron.browserWindow - handle event console-message
                 case 22:
-                    data.message.replace(new RegExp(
-                        '^' + options.fileElectronHtml + ' (\\w+) '
-                    ), function (match0, match1) {
+                    data.message.replace(options.rgx, function (match0, match1) {
                         data.type2 = match1;
                         data.data = data.message.slice(match0.length);
                     });
@@ -18453,8 +18149,10 @@ function TranslateElementInit() {\n\
                         }
                         break;
                     case 'html':
-                        data = data.data;
-                        options.fs.writeFileSync(options.fileScreenshotBase + '.html', data);
+                        options.fs.writeFileSync(
+                            options.fileScreenshot.replace((/\.\w+$/), '.html'),
+                            data.data
+                        );
                         setTimeout(function () {
                             document.title = options.fileElectronHtml + ' html written';
                         });
@@ -18463,117 +18161,79 @@ function TranslateElementInit() {\n\
                         console.error(data.message);
                     }
                     break;
-                // preload.js
-                // node.electron.browserWindow.webview - init event-handling
-                case 31:
-                    if (options.modeBrowserTest === 'test') {
-                        window.fileElectronHtml = options.fileElectronHtml;
-                    }
-                    setTimeout(onNext, options.timeoutScreenshot);
+                // node.electron - screenshot
+                case 13:
+                    options.browserWindow.capturePage(options, function (data) {
+                        local.fs.writeFileSync(options.fileScreenshot, data.toPng());
+                        console.error('\nbrowserTest - created screenshot file ' +
+                            options.fileScreenshot + '\n');
+                        onNext();
+                    });
                     break;
-                // node.electron.browserWindow.webview - emit event console-message-html
-                case 32:
-                    // init data
-                    data = {};
-                    try {
-                        data.hrefDict = {};
-                        // disable <script> tag
-                        Array.from(
-                            document.querySelectorAll('script')
-                        ).forEach(function (element) {
-                            element.outerHTML = '<script></script>';
-                        });
-                        // absolute href and src attribute
-                        Array.from(
-                            document.querySelectorAll('[href],[src]')
-                        ).forEach(function (element) {
-                            ['href', 'src'].forEach(function (key) {
-                                tmp = element[key];
-                                if (!tmp) {
-                                    return;
-                                }
-                                if ((/^http:|^https:/).test(tmp)) {
-                                    element[key] = tmp;
-                                    if (key === 'href') {
-                                        tmp = tmp.split(/[?#]/)[0];
-                                        data.hrefDict[tmp] = data.hrefDict[tmp] ||
-                                            element.textContent.slice(0, 0x100000)
-                                            .trim()
-                                            .replace((/^["']+|["']+$/), '')
-                                            .slice(0, 256);
-                                    }
-                                    return;
-                                }
-                                if ((/^javascript/).test(tmp)) {
-                                    element[key] = '#';
-                                }
-                            });
-                        });
-                        // deduplicate '/'
-                        Object.keys(data.hrefDict).forEach(function (key) {
-                            // optimization - hasOwnProperty
-                            if (data.hrefDict.hasOwnProperty(key + '/') ||
-                                    (/\.(?:css|js)$/).test(key)) {
-                                data.hrefDict[key] = undefined;
-                            }
-                        });
-                        data.href = location.href;
-                        data.url = location.href.split(/[?#]/)[0];
-                        // body.textContent
-                        tmp = '';
-                        try {
-                            tmp = document.body.textContent.slice(0, 0x100000);
-                            Array.from(
-                                document.querySelectorAll('style')
-                            ).forEach(function (element) {
-                                tmp = tmp.replace(element.textContent.slice(0, 65536), '');
-                            });
-                            tmp = (tmp.trim() + '\n\n')
-                                .replace((/\s*?\n/g), '\n')
-                                .replace((/\S[\S\s]*?\n{2,}/g), function (match0) {
-                                    match0 = match0.trim() + '\n\n';
-                                    return match0.length >= 256 + 2
-                                        ? match0
-                                        : '';
-                                })
-                                .trim()
-                                .slice(0, 65536);
-                        } catch (errorCaught) {
-                            console.error(errorCaught);
-                        }
-                        data.bodyTextContent = tmp;
-                        document.documentElement.dataset.scrape = JSON.stringify(data, null, 4);
-                    } catch (errorCaught) {
-                        console.error(errorCaught);
+                // node.electron - screenshot-after
+                case 14:
+                    console.error('browserTest - created screenshot file ' +
+                        options.fileScreenshot.replace((/\.\w+$/), '.html'));
+                    onNext();
+                    local.exit();
+                    break;
+                // node - after electron
+                case 2:
+                    // cleanup fileElectronHtml
+                    local.tryCatchOnError(function () {
+                        local.fs.unlinkSync(options.fileElectronHtml);
+                        local.fs.unlinkSync(options.fileElectronHtml + '.preload.js');
+                    }, local.nop);
+                    console.error('\nbrowserTest - exit-code ' + error + ' - ' + options.url +
+                        '\n');
+                    if (options.modeBrowserTest !== 'test') {
+                        modeNext = Infinity;
+                        onNext();
+                        return;
                     }
-                    // print html
-                    console.error(options.fileElectronHtml + ' html ' +
-                        document.documentElement.outerHTML);
-                    // print test
-                    setTimeout(function () {
-                        if (options.modeBrowserTest !== 'test' || window.utility2_modeTestRun) {
-                            return;
-                        }
-                        console.error(options.fileElectronHtml + ' global_test_results ' +
-                            JSON.stringify({ global_test_results: {
-                                coverage: window.__coverage__,
-                                testReport: { testPlatformList: [{}] }
-                            } }));
-                    }, 1000);
+                    // merge browser coverage
+                    // try to JSON.parse the string
+                    data = null;
+                    local.tryCatchOnError(function () {
+                        data = options.modeCoverageMerge && JSON.parse(
+                            local.fs.readFileSync(options.fileCoverage, 'utf8')
+                        );
+                    }, local.nop);
+                    local.istanbulCoverageMerge(local.global.__coverage__, data);
+                    console.error('\nbrowserTest - merged coverage from file ' +
+                        options.fileCoverage + '\n');
+                    // try to merge browser test-report
+                    // try to JSON.parse the string
+                    data = null;
+                    local.tryCatchOnError(function () {
+                        data = !error && JSON.parse(
+                            local.fs.readFileSync(options.fileTestReport, 'utf8')
+                        );
+                    }, local.nop);
+                    if (data && !options.modeTestIgnore) {
+                        local.testReportMerge(local.testReport, data);
+                        console.error('\nbrowserTest - merged test-report from file ' +
+                            options.fileTestReport + '\n');
+                    }
+                    // create test-report.json
+                    local.fs.writeFileSync(
+                        options.npm_config_dir_build + '/test-report.json',
+                        JSON.stringify(local.testReport)
+                    );
+                    onNext(local._debugTryCatchErrorCaught ||
+                        (data && data.testsFailed && new Error(data.testsFailed)));
                     break;
                 default:
-                    if (error) {
-                        console.error(options.fileScreenshot);
-                        console.error(error);
+                    if (isDone) {
+                        return;
                     }
-                    // close window
-                    try {
-                        options.browserWindow.close();
-                    } catch (ignore) {
-                    }
+                    isDone = true;
+                    // cleanup timerTimeout
+                    clearTimeout(timerTimeout);
+                    onError(error);
                 }
             };
-            modeNext = Number(options.modeNext);
+            modeNext = Number(options.modeNext || 0);
             onNext();
         };
 
@@ -30381,107 +30041,6 @@ x-request-header-test: aa\\r\\n\
             }, onError);\n\
         };\n\
 \n\
-        local.testCase_browserTest_default = function (options, onError) {\n\
-        /*\n\
-         * this function will test browserTest's default handling-behavior\n\
-         */\n\
-            var options2;\n\
-            if (local.modeJs !== 'node') {\n\
-                onError(null, options);\n\
-                return;\n\
-            }\n\
-            options = {};\n\
-            local.onNext(options, function (error) {\n\
-                switch (options.modeNext) {\n\
-                // test scrape handling-behavior\n\
-                case 1:\n\
-                    options2 = {};\n\
-                    options2.modeBrowserTest = 'scrape';\n\
-                    options2.modeBrowserTestRecurseDepth = 1;\n\
-                    options2.modeBrowserTestRecurseExclude = 'undefined';\n\
-                    options2.modeTestIgnore = true;\n\
-                    options2.timeoutScreenshot = 1000;\n\
-                    options2.url = local.serverLocalHost + '/assets.recurse1';\n\
-                    local.browserTest(options2, options.onNext);\n\
-                    break;\n\
-                // test translateAfterScrape handling-behavior\n\
-                case 2:\n\
-                    options2.modeBrowserTest = 'translateAfterScrape';\n\
-                    options2.modeBrowserTestTranslate = 'ru,zh-CN';\n\
-                    options2.modeNext = 0;\n\
-                    options2.url = options2.fileScreenshotBase;\n\
-                    local.browserTest(options2, options.onNext);\n\
-                    break;\n\
-                case 3:\n\
-                    // validate scraped files\n\
-                    [\n\
-                        options2.fileScreenshotBase + '.html',\n\
-                        options2.fileScreenshotBase + '.png',\n\
-                        options2.fileScreenshotBase + '.translateAfterScrape.ru.html',\n\
-                        options2.fileScreenshotBase + '.translateAfterScrape.ru.png',\n\
-                        options2.fileScreenshotBase + '.translateAfterScrape.zh-CN.html',\n\
-                        options2.fileScreenshotBase + '.translateAfterScrape.zh-CN.png',\n\
-                        options2.fileScreenshotBase.replace('recurse1', 'recurse2') + '.html',\n\
-                        options2.fileScreenshotBase.replace('recurse1', 'recurse2') + '.png'\n\
-                    ].forEach(function (file) {\n\
-                        local.assert(local.fs.existsSync(file), file);\n\
-                        local.fs.unlinkSync(file);\n\
-                    });\n\
-                    options.onNext();\n\
-                    break;\n\
-                default:\n\
-                    onError(error, options);\n\
-                }\n\
-            });\n\
-            options.modeNext = 0;\n\
-            options.onNext();\n\
-        };\n\
-        local.testCase_browserTest_default.timeout = 60000;\n\
-\n\
-        local.testCase_browserTest_electron = function (options, onError) {\n\
-        /*\n\
-         * this function will test browserTest's electron handling-behavior\n\
-         */\n\
-            if (local.modeJs !== 'node') {\n\
-                onError(null, options);\n\
-                return;\n\
-            }\n\
-            options = function (arg0, arg1) {\n\
-                // test onParallel handling-behavior\n\
-                if (typeof arg0 === 'function') {\n\
-                    arg0();\n\
-                }\n\
-                // test on handling-behavior\n\
-                if (typeof arg1 === 'function') {\n\
-                    arg1(options, '');\n\
-                    arg1(options, options.fileElectronHtml);\n\
-                    arg1(options, options.fileElectronHtml + ' opened');\n\
-                }\n\
-                return options;\n\
-            };\n\
-            options.BrowserWindow = options;\n\
-            options.app = options;\n\
-            options.electron = options;\n\
-            options.capturePage = options;\n\
-            options.loadURL = options;\n\
-            options.on = options;\n\
-            options.once = options;\n\
-            options.prototype = options;\n\
-            options.toPng = options;\n\
-            options.unref = options;\n\
-            local.testMock([\n\
-                [local.global, { setTimeout: options }],\n\
-                [process.versions, { electron: true }],\n\
-                [local, { onParallel: options }]\n\
-            ], function (onError) {\n\
-                local.browserTest(options, local.nop);\n\
-                options.modeNext = 0;\n\
-                options.modeBrowserTest = 'scrape';\n\
-                local.browserTest(options, local.nop);\n\
-                onError(null, options);\n\
-            }, onError);\n\
-        };\n\
-\n\
         local.testCase_bufferCreate_default = function (options, onError) {\n\
         /*\n\
          * this function will test bufferCreate's default handling-behavior\n\
@@ -32588,14 +32147,6 @@ bb>```');\n\
                 (/^\\/test\\./).test(url);\n\
         };\n\
     }());\n\
-    switch (local.modeJs) {\n\
-\n\
-\n\
-\n\
-    // run node js-env code - function\n\
-    case 'node':\n\
-        break;\n\
-    }\n\
 \n\
 \n\
 \n\
