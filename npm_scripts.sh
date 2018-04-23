@@ -49,8 +49,8 @@ local.onParallelList({
         depth: 2,
         dict: local.dict,
         dir: ".",
-        filterBlacklist: function (options) {
-            return !(/\b(?:rest)\b/).test(options.url) && new RegExp("\\b(?:" +
+        filtert: function (options) {
+            return (/\b(?:rest)\b/).test(options.url) || !new RegExp("\\b(?:" +
 /* jslint-ignore-begin */
 "\
 android|\
@@ -69,9 +69,6 @@ ruby|\
 sdk" +
 /* jslint-ignore-end */
                 ")\\b").test(options.url);
-        },
-        filterWhitelist: function (options) {
-            return (/^https?:\/\/(?:cloud.google.com|developers.google.com)/).test(options.url);
         },
         urlList: [url]
     }, onParallel);
