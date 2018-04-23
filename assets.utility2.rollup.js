@@ -17613,7 +17613,6 @@ local.assetsDict['/favicon.ico'] = '';
                 // onParallelList(options);
                 case 1:
                     options.urlList.forEach(function (url) {
-                        options.dict[url.replace((/^https?:\/\//), '')] = true;
                         // recurse - push
                         local.ajaxCrawl(local.objectSetDefault({ modeNext: 1, url: url }, options));
                     });

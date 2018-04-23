@@ -32,12 +32,21 @@ shNpmScriptApidocRawFetch () {(set -e
 "use strict";
 var local;
 local = require("../../assets.utility2.rollup.js");
-process.argv[1].split("\n").forEach(function (url) {
+local.dict = {};
+local.onParallelList({
+    list: process.argv[1].split("\n"),
+    rateLimit: 1
+}, function (options2, onParallel) {
+    var url;
+    url = options2.element;
+    onParallel.counter += 1;
     if (!(url && url[0] !== "#")) {
+        onParallel();
         return;
     }
     local.ajaxCrawl({
         depth: 2,
+        dict: local.dict,
         dir: ".",
         filterBlacklist: function (options) {
             return new RegExp("\\b(?:" +
@@ -61,6 +70,9 @@ sdk" +
 });
 // </script>
 ' '
+https://cloud.google.com/ml-engine/reference/rest/
+https://developers.google.com/maps/documentation/
+https://cloud.google.com/translate/docs/reference/rest
 #!! https://cloud.google.com/bigquery/docs/reference/datatransfer/rest/
 #!! https://cloud.google.com/bigquery/docs/reference/rest/v2/
 #!! https://cloud.google.com/billing/reference/rest/
@@ -68,7 +80,6 @@ sdk" +
 #!! https://cloud.google.com/container-builder/docs/api/reference/rest/
 #!! https://cloud.google.com/dlp/docs/reference/rest/
 #!! https://cloud.google.com/kms/docs/reference/rest/
-https://cloud.google.com/ml-engine/reference/rest/
 #!! https://cloud.google.com/natural-language/docs/reference/rest/
 #!! https://cloud.google.com/resource-manager/reference/rest/
 #!! https://cloud.google.com/speech-to-text/docs/reference/rest/
@@ -88,7 +99,6 @@ https://cloud.google.com/ml-engine/reference/rest/
 #!! https://developers.google.com/fusiontables/docs/v2/reference/
 #!! https://developers.google.com/google-apps/activity/v1/reference/
 #!! https://developers.google.com/gsuite/marketplace/v2/reference/
-https://developers.google.com/maps/documentation/
 #!! https://developers.google.com/speed/docs/insights/v4/reference/
 #!! https://developers.google.com/youtube/v3/docs/
 #!! https://developers.google.com/youtube/v3/live/docs/
