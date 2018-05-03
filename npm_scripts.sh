@@ -41,10 +41,7 @@ case "swgg-google-maps":
 default:
     local.list = [];
 }
-local.onParallelList({
-    list: process.argv[1].split("\n"),
-    rateLimit: 1
-}, function (options2, onParallel) {
+local.onParallelList({ list: local.list, rateLimit: 1 }, function (options2, onParallel) {
     var url;
     url = options2.element;
     onParallel.counter += 1;
