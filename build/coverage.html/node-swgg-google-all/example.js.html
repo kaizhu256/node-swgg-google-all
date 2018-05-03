@@ -225,7 +225,7 @@
     width: 100%;
 }
 .x-istanbul .tableHeader td {
-    background: #eee;
+    background: #fff;
     border: 1px solid #666;
     padding: 5px;
 }
@@ -235,9 +235,37 @@
 </style>
 </head>
 <body class="x-istanbul">
+<script>
+// init domOnEventSelectAllWithinPre
+(function () {
+/*
+ * this function will limit select-all within <pre tabIndex="0"> elements
+ * https://stackoverflow.com/questions/985272/selecting-text-in-an-element-akin-to-highlighting-with-your-mouse
+ */
+    "use strict";
+    if (window.domOnEventSelectAllWithinPre) {
+        return;
+    }
+    window.domOnEventSelectAllWithinPre = function (event) {
+        var range, selection;
+        if (event &&
+                event.code === "KeyA" &&
+                (event.ctrlKey || event.metaKey) &&
+                event.target.closest("pre")) {
+            range = document.createRange();
+            range.selectNodeContents(event.target.closest("pre"));
+            selection = window.getSelection();
+            selection.removeAllRanges();
+            selection.addRange(range);
+            event.preventDefault();
+        }
+    };
+    document.addEventListener("keydown", window.domOnEventSelectAllWithinPre);
+}());
+</script>
 <div class="header high">
     <h1 style="font-weight: bold;">
-        <a href="https://github.com/kaizhu256/node-swgg-google-all">swgg-google-all (v2018.1.13)</a>
+        <a href="https://github.com/kaizhu256/node-swgg-google-all">swgg-google-all (2018.1.13)</a>
     </h1>
     <h1>Code coverage report for <span class="entity">node-swgg-google-all/example.js</span></h1>
     <table class="tableHeader">
@@ -251,9 +279,9 @@
     </tr>
     </thead>
     <tbody>
-        <td>branches: 20<br>statements: 22<br>functions: 2</td>
+        <td>branches: 21<br>statements: 23<br>functions: 2</td>
         <td>100%<br>(79 / 79)</td>
-        <td>100%<br>(45 / 45)</td>
+        <td>88.89%<br>(40 / 45)</td>
         <td>100%<br>(6 / 6)</td>
         <td>100%<br>(79 / 79)</td>
     </tbody>
@@ -683,20 +711,20 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">2</span>
+<span class="cline-any cline-yes">1</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">2</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">2</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">2</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">2</span>
-<span class="cline-any cline-yes">2</span>
-<span class="cline-any cline-yes">2</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-yes">1</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -708,19 +736,19 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">2</span>
+<span class="cline-any cline-yes">1</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">2</span>
+<span class="cline-any cline-yes">1</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">2</span>
+<span class="cline-any cline-yes">1</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">2</span>
+<span class="cline-any cline-yes">1</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">2</span>
+<span class="cline-any cline-yes">1</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -844,7 +872,7 @@
 <span class="cline-any cline-yes">1</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">&nbsp;
+<span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js" tabIndex="0">&nbsp;
 &nbsp;
 &nbsp;
 &nbsp;
@@ -988,9 +1016,9 @@ instruction
         local.modeJs = (function () {
             try {
                 return typeof navigator.userAgent === 'string' &amp;&amp;
-                    typeof document.querySelector('body') === 'object' &amp;&amp;
-                    typeof XMLHttpRequest.prototype.open === 'function' &amp;&amp;
-                    'browser';
+<span class="branch-1 cbranch-no" title="branch not covered" >                    typeof document.querySelector('body') === 'object' </span>&amp;&amp;
+<span class="branch-2 cbranch-no" title="branch not covered" >                    typeof XMLHttpRequest.prototype.open === 'function' </span>&amp;&amp;
+<span class="branch-3 cbranch-no" title="branch not covered" >                    'browser';</span>
             } catch (errorCaughtBrowser) {
                 return module.exports &amp;&amp;
                     typeof process.versions.node === 'string' &amp;&amp;
@@ -1000,11 +1028,11 @@ instruction
         }());
         // init global
         local.global = local.modeJs === 'browser'
-            ? window
+            ? <span class="branch-0 cbranch-no" title="branch not covered" >window</span>
             : global;
         // init utility2_rollup
         local = local.global.utility2_rollup || (local.modeJs === 'browser'
-            ? local.global.utility2_swgg_google_all
+            ? <span class="branch-0 cbranch-no" title="branch not covered" >local.global.utility2_swgg_google_all</span>
             : global.utility2_moduleExports);
         // init exports
         local.global.local = local;
@@ -1017,8 +1045,8 @@ instruction
 &nbsp;
     // run browser js-env code - init-test
     /* istanbul ignore next */
-    case 'browser':
-        break;
+<span class="branch-0 cbranch-skip" title="branch not covered" >    case 'browser':</span>
+<span class="cstat-skip" title="statement not covered" >        break;</span>
 &nbsp;
 &nbsp;
 &nbsp;
@@ -1139,7 +1167,7 @@ instruction
 </table></pre>
 </div>
 <div class="footer">
-    <div class="meta">Generated by <a href="https://github.com/kaizhu256/node-utility2" target="_blank">utility2</a> at Mon Apr 23 2018 16:15:55 GMT+0000 (UTC)</div>
+    <div class="meta">Generated by <a href="https://github.com/kaizhu256/node-utility2" target="_blank">utility2</a> at Thu May 03 2018 13:09:56 GMT+0000 (UTC)</div>
 </div>
 </body>
 </html>

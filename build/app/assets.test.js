@@ -16,6 +16,32 @@
 
 
 
+    /* istanbul ignore next */
+    // init debug_inline
+    (function () {
+        var consoleError, context, key;
+        context = (typeof window === "object" && window) || global;
+        key = "debug_inline".replace("_i", "I");
+        if (context[key]) {
+            return;
+        }
+        consoleError = console.error;
+        context[key] = function (arg0) {
+        /*
+         * this function will both print arg0 to stderr and return it
+         */
+            // debug arguments
+            context["_" + key + "Arguments"] = arguments;
+            consoleError("\n\n" + key);
+            consoleError.apply(console, arguments);
+            consoleError("\n");
+            // return arg0 for inspection
+            return arg0;
+        };
+    }());
+
+
+
     // run shared js-env code - init-before
     (function () {
         // init local
@@ -43,5 +69,12 @@
             require('./assets.utility2.rollup.js')).requireReadme();
         // init test
         local.testRunInit(local);
+    }());
+
+
+
+    // run shared js-env code - function
+    (function () {
+        return;
     }());
 }());
