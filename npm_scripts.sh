@@ -55,7 +55,6 @@ local.onParallelList({
 "\
 android|\
 apps-script|\
-c\\+\\+|\
 dotnet|\
 go|\
 ios|\
@@ -68,7 +67,7 @@ python|\
 ruby|\
 sdk" +
 /* jslint-ignore-end */
-                ")\\b").test(options.url);
+                ")\\b|\bc\\+\\+").test(options.url);
         },
         urlList: [url]
     }, onParallel);

@@ -18167,7 +18167,7 @@ local.assetsDict['/favicon.ico'] = '';
                         .replace((/[?#].*?$/), '')
                         .replace((/\/{2,}/g), '/')
                         .replace('/', '//');
-                    options.file = (options.url + ((/|\.html?$/).test(options.url)
+                    options.file = (options.url + ((/\.html?$/).test(options.url)
                         ? ''
                         : '/index.html'))
                         .replace((/^https?:\/\//), options.dir + '/')
@@ -18185,7 +18185,8 @@ local.assetsDict['/favicon.ico'] = '';
                     break;
                 // ajax(options);
                 case 3:
-                    local.ajax(debugInline(options), function (error, xhr) {
+debugInline(options.url, Object.keys(options).sort());
+                    local.ajax(options, function (error, xhr) {
                         options.xhr = xhr;
                         // validate xhr
                         local.assert(options.xhr, error);
@@ -18220,7 +18221,7 @@ local.assetsDict['/favicon.ico'] = '';
                             depth: options.depth - 1,
                             modeNext: 1,
                             url: match0,
-                            urlParsed0: options.urlParsed
+                            urlParsed0: options.xhr.urlParsed
                         }, options), local.nop);
                     });
                     options.onNext(error, options);
