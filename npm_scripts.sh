@@ -19,6 +19,7 @@ shNpmScriptApidocRawFetch () {(set -e
     rm -fr cloud.google.com developers.google.com
     node -e '
 // <script>
+/* jslint-utility2 */
 /*jslint
     bitwise: true,
     browser: true,
@@ -46,7 +47,7 @@ local.onParallelList({
     }
     console.error("\n\n" + options2.ii + ". " + url + "\n");
     local.ajaxCrawl({
-        depth: 2,
+        depth: 1,
         dict: local.dict,
         dir: ".",
         filter: function (options) {
@@ -67,7 +68,12 @@ python|\
 ruby|\
 sdk" +
 /* jslint-ignore-end */
-                ")\\b|\bc\\+\\+").test(options.url);
+                ")\\b|\\bc\\+\\+").test(options.url);
+        },
+        postProcess: function (data) {
+            return data
+                .replace((/<[^>]*? name="xsrf_token"[^>]*?>/g), "")
+                .replace((/ data-request-elapsed="[^"]*?"/g), "");
         },
         urlList: [url]
     }, onParallel);
