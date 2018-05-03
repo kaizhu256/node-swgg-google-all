@@ -17,7 +17,30 @@
 
 
     // run shared js-env code - init-before
+    /* istanbul ignore next */
     (function () {
+        // init debug_inline
+        (function () {
+            var consoleError, context, key;
+            context = (typeof window === "object" && window) || global;
+            key = "debug_inline".replace("_i", "I");
+            if (context[key]) {
+                return;
+            }
+            consoleError = console.error;
+            context[key] = function (arg0) {
+            /*
+             * this function will both print arg0 to stderr and return it
+             */
+                // debug arguments
+                context["_" + key + "Arguments"] = arguments;
+                consoleError("\n\n" + key);
+                consoleError.apply(console, arguments);
+                consoleError("\n");
+                // return arg0 for inspection
+                return arg0;
+            };
+        }());
         // init local
         local = {};
         // init modeJs
@@ -40,13 +63,19 @@
             : global;
         // init utility2_rollup
         local = local.global.utility2_rollup || local;
-        /* istanbul ignore next */
         if (local) {
             local = local.global.utility2_rollup ||
                 local.global.utility2_rollup_old ||
                 require('./assets.utility2.rollup.js');
             local.fs = null;
         }
+        // init nop
+        local.nop = function () {
+        /*
+         * this function will do nothing
+         */
+            return;
+        };
         // init exports
         if (local.modeJs === 'browser') {
             local.global.utility2_swgg_google_all = local;
@@ -85,7 +114,6 @@
             local.v8 = require('v8');
             local.vm = require('vm');
             local.zlib = require('zlib');
-/* validateLineSortedReset */
             module.exports = local;
             module.exports.__dirname = __dirname;
         }
