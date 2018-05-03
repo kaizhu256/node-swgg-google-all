@@ -16,7 +16,7 @@ shNpmScriptApidocRawCreate () {(set -e
 shNpmScriptApidocRawFetch () {(set -e
 # this function will fetch the raw apidoc
     mkdir -p tmp/apidoc.raw && cd tmp/apidoc.raw
-    # rm -fr cloud.google.com developers.google.com
+    rm -fr cloud.google.com developers.google.com
     node -e '
 // <script>
 /*jslint
@@ -49,7 +49,7 @@ local.onParallelList({
         depth: 2,
         dict: local.dict,
         dir: ".",
-        filtert: function (options) {
+        filter: function (options) {
             return (/\b(?:rest)\b/).test(options.url) || !new RegExp("\\b(?:" +
 /* jslint-ignore-begin */
 "\
@@ -75,6 +75,7 @@ sdk" +
 }, local.onErrorDefault);
 // </script>
 ' '
+# https://console.cloud.google.com/apis/library
 #!! https://cloud.google.com/compute/docs/oslogin/rest/
 #!! https://cloud.google.com/container-builder/docs/api/reference/rest/
 #!! https://cloud.google.com/dlp/docs/reference/rest/
@@ -93,20 +94,25 @@ sdk" +
 #!! https://developers.google.com/fusiontables/docs/v2/reference/
 #!! https://developers.google.com/gsuite/marketplace/v2/reference/
 #!! https://developers.google.com/speed/docs/insights/v4/reference/
-https://developers.google.com/zero-touch/reference/customer/rest/
-https://developers.google.com/google-apps/activity/v1/reference/
-https://cloud.google.com/ml-engine/reference/rest/
-https://cloud.google.com/translate/docs/reference/rest
-https://developers.google.com/ad-exchange/buyer-rest/reference/rest/
-https://developers.google.com/android/management/reference/rest/
-https://developers.google.com/android/over-the-air/reference/rest/
+
+
+
+#!! https://developers.google.com/zero-touch/reference/customer/rest/
+#!! https://developers.google.com/google-apps/activity/v1/reference/
+#!! https://cloud.google.com/ml-engine/reference/rest/
+#!! https://cloud.google.com/translate/docs/reference/rest
+#!! https://developers.google.com/ad-exchange/buyer-rest/reference/rest/
+#!! https://developers.google.com/android/management/reference/rest/
+#!! https://developers.google.com/android/over-the-air/reference/rest/
+
 https://developers.google.com/maps/documentation/
-https://developers.google.com/youtube/v3/docs/
-https://developers.google.com/youtube/v3/live/docs/
-https://cloud.google.com/bigquery/docs/reference/
-https://cloud.google.com/billing/reference/rest/
-https://cloud.google.com/kms/docs/reference/rest/
-https://cloud.google.com/natural-language/docs/reference/rest/
+
+#!! https://developers.google.com/youtube/v3/docs/
+#!! https://developers.google.com/youtube/v3/live/docs/
+#!! https://cloud.google.com/bigquery/docs/reference/
+#!! https://cloud.google.com/billing/reference/rest/
+#!! https://cloud.google.com/kms/docs/reference/rest/
+#!! https://cloud.google.com/natural-language/docs/reference/rest/
 ' 2>&1 | tee apidocRawFetch.log
 )}
 
