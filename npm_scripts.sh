@@ -34,6 +34,13 @@ shNpmScriptApidocRawFetch () {(set -e
 var local;
 local = require("../../assets.utility2.rollup.js");
 local.dict = {};
+switch (process.argv[1]) {
+case "swgg-google-maps":
+    local.list = ["https://developers.google.com/maps/documentation/"];
+    break;
+default:
+    local.list = [];
+}
 local.onParallelList({
     list: process.argv[1].split("\n"),
     rateLimit: 1
@@ -47,7 +54,7 @@ local.onParallelList({
     }
     console.error("\n\n" + options2.ii + ". " + url + "\n");
     local.ajaxCrawl({
-        depth: 1,
+        depth: 2,
         dict: local.dict,
         dir: ".",
         filter: function (options) {
@@ -79,7 +86,9 @@ sdk" +
     }, onParallel);
 }, local.onErrorDefault);
 // </script>
-' '
+' 2>&1 | tee apidocRawFetch.log
+
+: '
 # https://console.cloud.google.com/apis/library
 #!! https://cloud.google.com/compute/docs/oslogin/rest/
 #!! https://cloud.google.com/container-builder/docs/api/reference/rest/
