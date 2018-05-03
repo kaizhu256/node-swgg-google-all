@@ -5,6 +5,7 @@
 /* script-begin /assets.utility2.rollup.begin.js */
 /* utility2.rollup.js begin */
 /* istanbul ignore all */
+/* jslint-utility2 */
 /*jslint
     bitwise: true,
     browser: true,
@@ -43,7 +44,7 @@
 
 
 /* script-begin /assets.utility2.lib.apidoc.js */
-///usr/bin/env node
+// usr/bin/env node
 /* istanbul instrument in package apidoc */
 /* jslint-utility2 */
 /*jslint
@@ -63,7 +64,30 @@
 
 
     // run shared js-env code - init-before
+    /* istanbul ignore next */
     (function () {
+        // init debug_inline
+        (function () {
+            var consoleError, context, key;
+            context = (typeof window === "object" && window) || global;
+            key = "debug_inline".replace("_i", "I");
+            if (context[key]) {
+                return;
+            }
+            consoleError = console.error;
+            context[key] = function (arg0) {
+            /*
+             * this function will both print arg0 to stderr and return it
+             */
+                // debug arguments
+                context["_" + key + "Arguments"] = arguments;
+                consoleError("\n\n" + key);
+                consoleError.apply(console, arguments);
+                consoleError("\n");
+                // return arg0 for inspection
+                return arg0;
+            };
+        }());
         // init local
         local = {};
         // init modeJs
@@ -86,13 +110,19 @@
             : global;
         // init utility2_rollup
         local = local.global.utility2_rollup || local;
-        /* istanbul ignore next */
         if (!local) {
             local = local.global.utility2_rollup ||
                 local.global.utility2_rollup_old ||
                 require('./assets.utility2.rollup.js');
             local.fs = null;
         }
+        // init nop
+        local.nop = function () {
+        /*
+         * this function will do nothing
+         */
+            return;
+        };
         // init exports
         if (local.modeJs === 'browser') {
             local.global.utility2_apidoc = local;
@@ -131,19 +161,12 @@
             local.v8 = require('v8');
             local.vm = require('vm');
             local.zlib = require('zlib');
-/* validateLineSortedReset */
             module.exports = local;
             module.exports.__dirname = __dirname;
         }
         // init lib
         local.local = local.apidoc = local;
-    }());
-
-
-
-    // run shared js-env code - function-before
-    /* istanbul ignore next */
-    (function () {
+/* validateLineSortedReset */
         local.assert = function (passed, message, onError) {
         /*
          * this function will throw the error message if passed is falsey
@@ -313,13 +336,6 @@
                     return result;
                 });
             return result || '';
-        };
-
-        local.nop = function () {
-        /*
-         * this function will do nothing
-         */
-            return;
         };
 
         local.objectSetDefault = function (arg0, defaults, depth) {
@@ -1123,7 +1139,7 @@ vendor\\)s\\{0,1\\}\\(\\b\\|_\\)\
 
 
 /* script-begin /assets.utility2.lib.db.js */
-///usr/bin/env node
+// usr/bin/env node
 /*
  * assets.db-lite.js
  *
@@ -1179,7 +1195,30 @@ vendor\\)s\\{0,1\\}\\(\\b\\|_\\)\
 
 
     // run shared js-env code - init-before
+    /* istanbul ignore next */
     (function () {
+        // init debug_inline
+        (function () {
+            var consoleError, context, key;
+            context = (typeof window === "object" && window) || global;
+            key = "debug_inline".replace("_i", "I");
+            if (context[key]) {
+                return;
+            }
+            consoleError = console.error;
+            context[key] = function (arg0) {
+            /*
+             * this function will both print arg0 to stderr and return it
+             */
+                // debug arguments
+                context["_" + key + "Arguments"] = arguments;
+                consoleError("\n\n" + key);
+                consoleError.apply(console, arguments);
+                consoleError("\n");
+                // return arg0 for inspection
+                return arg0;
+            };
+        }());
         // init local
         local = {};
         // init modeJs
@@ -1202,13 +1241,19 @@ vendor\\)s\\{0,1\\}\\(\\b\\|_\\)\
             : global;
         // init utility2_rollup
         local = local.global.utility2_rollup || local;
-        /* istanbul ignore next */
         if (!local) {
             local = local.global.utility2_rollup ||
                 local.global.utility2_rollup_old ||
                 require('./assets.utility2.rollup.js');
             local.fs = null;
         }
+        // init nop
+        local.nop = function () {
+        /*
+         * this function will do nothing
+         */
+            return;
+        };
         // init exports
         if (local.modeJs === 'browser') {
             local.global.utility2_db = local;
@@ -1247,19 +1292,12 @@ vendor\\)s\\{0,1\\}\\(\\b\\|_\\)\
             local.v8 = require('v8');
             local.vm = require('vm');
             local.zlib = require('zlib');
-/* validateLineSortedReset */
             module.exports = local;
             module.exports.__dirname = __dirname;
         }
         // init lib
         local.local = local.db = local;
-    }());
-
-
-
-    // run shared js-env code - function-before
-    /* istanbul ignore next */
-    (function () {
+/* validateLineSortedReset */
         local.assert = function (passed, message, onError) {
         /*
          * this function will throw the error message if passed is falsey
@@ -1488,13 +1526,6 @@ vendor\\)s\\{0,1\\}\\(\\b\\|_\\)\
                 list[random] = swap;
             }
             return list;
-        };
-
-        local.nop = function () {
-        /*
-         * this function will do nothing
-         */
-            return;
         };
 
         local.objectSetOverride = function (arg0, overrides, depth, env) {
@@ -3215,7 +3246,7 @@ vendor\\)s\\{0,1\\}\\(\\b\\|_\\)\
 
 
 /* script-begin /assets.utility2.lib.github_crud.js */
-///usr/bin/env node
+// usr/bin/env node
 /* istanbul instrument in package github_crud */
 /* jslint-utility2 */
 /*jslint
@@ -3235,7 +3266,30 @@ vendor\\)s\\{0,1\\}\\(\\b\\|_\\)\
 
 
     // run shared js-env code - init-before
+    /* istanbul ignore next */
     (function () {
+        // init debug_inline
+        (function () {
+            var consoleError, context, key;
+            context = (typeof window === "object" && window) || global;
+            key = "debug_inline".replace("_i", "I");
+            if (context[key]) {
+                return;
+            }
+            consoleError = console.error;
+            context[key] = function (arg0) {
+            /*
+             * this function will both print arg0 to stderr and return it
+             */
+                // debug arguments
+                context["_" + key + "Arguments"] = arguments;
+                consoleError("\n\n" + key);
+                consoleError.apply(console, arguments);
+                consoleError("\n");
+                // return arg0 for inspection
+                return arg0;
+            };
+        }());
         // init local
         local = {};
         // init modeJs
@@ -3258,13 +3312,19 @@ vendor\\)s\\{0,1\\}\\(\\b\\|_\\)\
             : global;
         // init utility2_rollup
         local = local.global.utility2_rollup || local;
-        /* istanbul ignore next */
         if (!local) {
             local = local.global.utility2_rollup ||
                 local.global.utility2_rollup_old ||
                 require('./assets.utility2.rollup.js');
             local.fs = null;
         }
+        // init nop
+        local.nop = function () {
+        /*
+         * this function will do nothing
+         */
+            return;
+        };
         // init exports
         if (local.modeJs === 'browser') {
             local.global.utility2_github_crud = local;
@@ -3303,19 +3363,12 @@ vendor\\)s\\{0,1\\}\\(\\b\\|_\\)\
             local.v8 = require('v8');
             local.vm = require('vm');
             local.zlib = require('zlib');
-/* validateLineSortedReset */
             module.exports = local;
             module.exports.__dirname = __dirname;
         }
         // init lib
         local.local = local.github_crud = local;
-    }());
-
-
-
-    /* istanbul ignore next */
-    // run shared js-env code - function-before
-    (function () {
+/* validateLineSortedReset */
         local.ajax = function (options, onError) {
         /*
          * this function will send an ajax-request with error-handling and timeout
@@ -3709,13 +3762,6 @@ vendor\\)s\\{0,1\\}\\(\\b\\|_\\)\
                 local.cliDict._default();
             };
             fnc();
-        };
-
-        local.nop = function () {
-        /*
-         * this function will do nothing
-         */
-            return;
         };
 
         local.onErrorWithStack = function (onError) {
@@ -4185,8 +4231,8 @@ vendor\\)s\\{0,1\\}\\(\\b\\|_\\)\
 
 
 
-    /* istanbul ignore next */
     // run node js-env code - init-after
+    /* istanbul ignore next */
     case 'node':
         // init cli
         if (module !== require.main || local.global.utility2_rollup) {
@@ -4271,7 +4317,7 @@ vendor\\)s\\{0,1\\}\\(\\b\\|_\\)\
 
 
 /* script-begin /assets.utility2.lib.istanbul.js */
-///usr/bin/env node
+// usr/bin/env node
 /* istanbul instrument in package istanbul */
 /* jslint-utility2 */
 /*jslint
@@ -4291,7 +4337,30 @@ vendor\\)s\\{0,1\\}\\(\\b\\|_\\)\
 
 
     // run shared js-env code - init-before
+    /* istanbul ignore next */
     (function () {
+        // init debug_inline
+        (function () {
+            var consoleError, context, key;
+            context = (typeof window === "object" && window) || global;
+            key = "debug_inline".replace("_i", "I");
+            if (context[key]) {
+                return;
+            }
+            consoleError = console.error;
+            context[key] = function (arg0) {
+            /*
+             * this function will both print arg0 to stderr and return it
+             */
+                // debug arguments
+                context["_" + key + "Arguments"] = arguments;
+                consoleError("\n\n" + key);
+                consoleError.apply(console, arguments);
+                consoleError("\n");
+                // return arg0 for inspection
+                return arg0;
+            };
+        }());
         // init local
         local = {};
         // init modeJs
@@ -4314,13 +4383,19 @@ vendor\\)s\\{0,1\\}\\(\\b\\|_\\)\
             : global;
         // init utility2_rollup
         local = local.global.utility2_rollup || local;
-        /* istanbul ignore next */
         if (!local) {
             local = local.global.utility2_rollup ||
                 local.global.utility2_rollup_old ||
                 require('./assets.utility2.rollup.js');
             local.fs = null;
         }
+        // init nop
+        local.nop = function () {
+        /*
+         * this function will do nothing
+         */
+            return;
+        };
         // init exports
         if (local.modeJs === 'browser') {
             local.global.utility2_istanbul = local;
@@ -4359,25 +4434,19 @@ vendor\\)s\\{0,1\\}\\(\\b\\|_\\)\
             local.v8 = require('v8');
             local.vm = require('vm');
             local.zlib = require('zlib');
-/* validateLineSortedReset */
             module.exports = local;
             module.exports.__dirname = __dirname;
         }
         // init lib
         local.local = local.istanbul = local;
+/* validateLineSortedReset */
         // init custom
         if (local.modeJs === 'node') {
             local._istanbul_module = require('module');
             local.process = process;
             local.require = require;
         }
-    }());
 
-
-
-    // run shared js-env code - function-before
-    /* istanbul ignore next */
-    (function () {
         local.cliRun = function (fnc) {
         /*
          * this function will run the cli
@@ -4515,13 +4584,6 @@ vendor\\)s\\{0,1\\}\\(\\b\\|_\\)\
                 // re-write to file
                 require('fs').writeFileSync(file, data);
             }
-        };
-
-        local.nop = function () {
-        /*
-         * this function will do nothing
-         */
-            return;
         };
     }());
 
@@ -4754,11 +4816,11 @@ vendor\\)s\\{0,1\\}\\(\\b\\|_\\)\
 
 
 // init lib esprima
-/* istanbul ignore next */
-/* jslint-ignore-begin */
 // 2016-08-24T04:32:49Z
 // https://github.com/jquery/esprima/blob/2.7.3/esprima.js
 // utility2-uglifyjs https://raw.githubusercontent.com/jquery/esprima/2.7.3/esprima.js
+/* istanbul ignore next */
+/* jslint-ignore-begin */
 (function () { var exports; exports = local.esprima = {};
 (function(e,t){"use strict";typeof define=="function"&&define.amd?define(["exports"
 ],t):typeof exports!="undefined"?t(exports):t(e.esprima={})})(this,function(e){"use strict"
@@ -5459,16 +5521,14 @@ Tr,e.parse=Nr,e.Syntax=function(){var e,t={};typeof Object.create=="function"&&(
 t=Object.create(null));for(e in i)i.hasOwnProperty(e)&&(t[e]=i[e]);return typeof
 Object.freeze=="function"&&Object.freeze(t),t}()})
 }());
-/* jslint-ignore-end */
 
 
 
 // init lib estraverse
-/* istanbul ignore next */
-/* jslint-ignore-begin */
 // 2015-03-05T15:18:29Z
 // https://github.com/estools/estraverse/blob/1.9.3/estraverse.js
 // utility2-uglifyjs https://raw.githubusercontent.com/estools/estraverse/1.9.3/estraverse.js
+/* istanbul ignore next */
 (function () { var exports; exports = local.estraverse = {};
 (function(e,t){"use strict";typeof define=="function"&&define.amd?define(["exports"
 ],t):typeof exports!="undefined"?t(exports):t(e.estraverse={})})(this,function e
@@ -5599,16 +5659,14 @@ m));else{if(!w(S[m]))continue;d=new y(S[m],[N,m],null,new g(S,m))}s.push(d)}}els
 Syntax=n,t.traverse=S,t.replace=x,t.attachComments=N,t.VisitorKeys=s,t.VisitorOption=
 i,t.Controller=b,t.cloneEnvironment=function(){return e({})},t})
 }());
-/* jslint-ignore-end */
 
 
 
 // init lib esutils.code
-/* istanbul ignore next */
-/* jslint-ignore-begin */
 // 2015-03-14T16:42:41Z
 // https://github.com/estools/esutils/blob/2.0.2/lib/code.js
 // utility2-uglifyjs https://raw.githubusercontent.com/estools/esutils/2.0.2/lib/code.js
+/* istanbul ignore next */
 (function () { var module; module = {};
 (function(){"use strict";function o(e){return 48<=e&&e<=57}function u(e){return 48<=
 e&&e<=57||97<=e&&e<=102||65<=e&&e<=70}function a(e){return e>=48&&e<=55}function f
@@ -5630,16 +5688,14 @@ s<=57||s===36||s===95;module.exports={isDecimalDigit:o,isHexDigit:u,isOctalDigit
 :a,isWhiteSpace:f,isLineTerminator:l,isIdentifierStartES5:h,isIdentifierPartES5:
 p,isIdentifierStartES6:d,isIdentifierPartES6:v}})()
 local.esutils = { code: module.exports }; }());
-/* jslint-ignore-end */
 
 
 
 // init lib escodegen
-/* istanbul ignore next */
-/* jslint-ignore-begin */
 // 2016-08-05T16:02:12Z
 // https://github.com/estools/escodegen/blob/1.8.1/escodegen.js
 // utility2-uglifyjs https://raw.githubusercontent.com/estools/escodegen/1.8.1/escodegen.js
+/* istanbul ignore next */
 (function () { var exports; exports = local.escodegen = {};
 (function(){"use strict";function k(e){return bt.Expression.hasOwnProperty(e.type
 )}function L(e){return bt.Statement.hasOwnProperty(e.type)}function V(){return{indent
@@ -6130,11 +6186,11 @@ G({},t),exports.browser=!1,exports.FORMAT_MINIFY=N,exports.FORMAT_DEFAULTS=C})()
 
 
 // init lib istanbul.insertion-text
-/* istanbul ignore next */
-/* jslint-ignore-begin */
 // 2012-09-12T06:39:52Z
 // https://github.com/gotwarlost/istanbul/blob/v0.2.16/lib/util/insertion-text.js
 // utility2-uglifyjs https://raw.githubusercontent.com/gotwarlost/istanbul/v0.2.16/lib/util/insertion-text.js
+/* istanbul ignore next */
+/* jslint-ignore-begin */
 (function () { var module; module = {};
 function InsertionText(e,t){this.text=e,this.origLength=e.length,this.offsets=[]
 ,this.consumeBlanks=t,this.startPos=this.findFirstNonBlank(),this.endPos=this.findLastNonBlank
@@ -6153,17 +6209,15 @@ len;if(i.pos>=e)break}return i&&i.pos===e?i.len+=t:r.splice(o,0,{pos:e,len:t}),s
 ),this},wrapLine:function(e,t){this.wrap(0,e,this.originalLength(),t)},toString:
 function(){return this.text}},module.exports=InsertionText
 local['../util/insertion-text'] = module.exports; }());
-/* jslint-ignore-end */
 
 
 
 // init lib istanbul.instrumenter
-/* istanbul ignore next */
-/* jslint-ignore-begin */
 // 2016-06-26T22:12:08Z
 // https://github.com/gotwarlost/istanbul/blob/v0.4.5/lib/instrumenter.js
 // utility2-uglifyjs https://raw.githubusercontent.com/gotwarlost/istanbul/v0.4.5/lib/instrumenter.js
 // replace '(t?"":r)' with 'Math.random().toString(16).slice(2)'
+/* istanbul ignore next */
 (function () { var escodegen, esprima, module, window; escodegen = local.escodegen; esprima = local.esprima; module = undefined; window = local;
 (function(e){"use strict";function p(e,t){var n,r;return s!==null?(n=s.createHash
 ("md5"),n.update(e),r=n.digest("base64"),r=r.replace(new RegExp("=","g"),"").replace
@@ -6374,16 +6428,14 @@ e,n,r,i){e.type===t.LogicalExpression.name?(this.findLeaves(e.left,n,e,"left"),t
 t.Property.name)}},e?module.exports=g:window.Instrumenter=g})(typeof module!="undefined"&&typeof
 module.exports!="undefined"&&typeof exports!="undefined")
 }());
-/* jslint-ignore-end */
 
 
 
 // init lib istanbul.object-utils
-/* istanbul ignore next */
-/* jslint-ignore-begin */
 // 2013-12-19T03:39:58Z
 // https://github.com/gotwarlost/istanbul/blob/v0.2.16/lib/object-utils.js
 // utility2-uglifyjs https://raw.githubusercontent.com/gotwarlost/istanbul/v0.2.16/lib/object-utils.js
+/* istanbul ignore next */
 (function () { var module, window; module = undefined; window = local;
 (function(e){function t(e){var t=e.statementMap,n=e.s,r;e.l||(e.l=r={},Object.keys
 (n).forEach(function(e){var i=t[e].start.line,s=n[e],o=r[i];s===0&&t[e].skip&&(s=1
@@ -6420,16 +6472,14 @@ n){e[n].total+=t[n].total,e[n].covered+=t[n].covered,e[n].skipped+=t[n].skipped}
 };e?module.exports=p:window.coverageUtils=p})(typeof module!="undefined"&&typeof
 module.exports!="undefined"&&typeof exports!="undefined")
 local['../object-utils'] = window.coverageUtils; }());
-/* jslint-ignore-end */
 
 
 
 // init lib istanbul.report.common.defaults
-/* istanbul ignore next */
-/* jslint-ignore-begin */
 // 2013-12-28T06:33:02Z
 // https://github.com/gotwarlost/istanbul/blob/v0.2.16/lib/report/common/defaults.js
 // utility2-uglifyjs https://raw.githubusercontent.com/gotwarlost/istanbul/v0.2.16/lib/report/common/defaults.js
+/* istanbul ignore next */
 (function () { var module; module = {};
 module.exports={watermarks:function(){return{statements:[50,80],lines:[50,80],functions
 :[50,80],branches:[50,80]}},classFor:function(e,t,n){var r=n[e],i=t[e].pct;return i>=
@@ -6454,9 +6504,9 @@ local['./common/defaults'] = module.exports; }());
 
 
 // init lib istanbul.report.templates.foot
-/* jslint-ignore-begin */
 // 2014-07-04T07:47:53Z
 // https://github.com/gotwarlost/istanbul/blob/v0.2.16/lib/report/templates/foot.txt
+/* jslint-ignore-begin */
 local['foot.txt'] = '\
 </div>\n\
 <div class="footer">\n\
@@ -6769,7 +6819,6 @@ local['head.txt'] = '\
 
 
 // init lib istanbul.util.file-writer
-/* istanbul ignore next */
 // 2013-03-31T22:11:41Z
 // https://github.com/gotwarlost/istanbul/blob/v0.2.16/lib/util/file-writer.js
         local.writer = {
@@ -6790,15 +6839,15 @@ local['head.txt'] = '\
 
 
 // init lib istanbul.util.tree-summarizer
-/* istanbul ignore next */
 // 2014-03-05T18:58:42Z
 // https://github.com/gotwarlost/istanbul/blob/v0.2.16/lib/util/tree-summarizer.js
+        /* istanbul ignore next */
         (function () {
             var module;
             module = {};
-/* jslint-ignore-begin */
 // https://github.com/gotwarlost/istanbul/blob/v0.2.16/lib/util/tree-summarizer.js
 // utility2-uglifyjs https://raw.githubusercontent.com/gotwarlost/istanbul/v0.2.16/lib/util/tree-summarizer.js
+/* jslint-ignore-begin */
 function commonArrayPrefix(e,t){var n=e.length<t.length?e.length:t.length,r,i=[]
 ;for(r=0;r<n;r+=1){if(e[r]!==t[r])break;i.push(e[r])}return i}function findCommonArrayPrefix
 (e){if(e.length===0)return[];var t=e.map(function(e){return e.split(SEP)}),n=t.pop
@@ -6847,11 +6896,11 @@ TreeSummary(this.summaryMap,e)}},module.exports=TreeSummarizer
 
 
 // init lib istanbul.report.html
-/* istanbul ignore next */
-/* jslint-ignore-begin */
 // 2014-01-17T21:08:38Z
 // https://github.com/gotwarlost/istanbul/blob/v0.2.16/lib/report/html.js
 // utility2-uglifyjs https://raw.githubusercontent.com/gotwarlost/istanbul/v0.2.16/lib/report/html.js
+/* istanbul ignore next */
+/* jslint-ignore-begin */
 (function () { var module; module = {};
 function customEscape(e){return e=e.toString(),e.replace(RE_AMP,"&amp;").replace
 (RE_LT,"&lt;").replace(RE_GT,"&gt;").replace(RE_lt,"<").replace(RE_gt,">")}function title
@@ -6963,16 +7012,14 @@ o;e.files().forEach(function(t){i.addFileCoverageSummary(t,utils.summarizeFileCo
 e),i=path.resolve(r,e),o=fs.statSync(t);o.isFile()&&(n.verbose&&console.log("Write asset: "+
 i),s.copyFile(t,i))}),this.writeFiles(s,o.root,r,e)}}),module.exports=HtmlReport
 local.HtmlReport = module.exports; }());
-/* jslint-ignore-end */
 
 
 
 // init lib istanbul.report.text
-/* istanbul ignore next */
-/* jslint-ignore-begin */
 // 2014-06-26T02:15:16Z
 // https://github.com/gotwarlost/istanbul/blob/v0.2.16/lib/report/text.js
 // utility2-uglifyjs https://raw.githubusercontent.com/gotwarlost/istanbul/v0.2.16/lib/report/text.js
+/* istanbul ignore next */
 (function () { var module; module = {};
 function TextReport(e){Report.call(this),e=e||{},this.dir=e.dir||process.cwd(),this
 .file=e.file,this.summary=e.summary,this.maxCols=e.maxCols||0,this.watermarks=e.
@@ -7008,11 +7055,9 @@ maxCols>0&&(o=this.maxCols-s-2,i>o&&(i=o)),walk(r,i,u,0,this.watermarks),a=u.joi
 ("\n")+"\n",this.file?(mkdirp.sync(this.dir),fs.writeFileSync(path.join(this.dir
 ,this.file),a,"utf8")):console.log(a)}}),module.exports=TextReport
 local.TextReport = module.exports; }());
-/* jslint-ignore-end */
 
 
 
-/* jslint-ignore-begin */
 // https://img.shields.io/badge/coverage-100.0%-00dd00.svg?style=flat
 local.templateCoverageBadgeSvg =
 '<svg xmlns="http://www.w3.org/2000/svg" width="117" height="20"><linearGradient id="a" x2="0" y2="100%"><stop offset="0" stop-color="#bbb" stop-opacity=".1"/><stop offset="1" stop-opacity=".1"/></linearGradient><rect rx="0" width="117" height="20" fill="#555"/><rect rx="0" x="63" width="54" height="20" fill="#0d0"/><path fill="#0d0" d="M63 0h4v20h-4z"/><rect rx="0" width="117" height="20" fill="url(#a)"/><g fill="#fff" text-anchor="middle" font-family="DejaVu Sans,Verdana,Geneva,sans-serif" font-size="11"><text x="32.5" y="15" fill="#010101" fill-opacity=".3">coverage</text><text x="32.5" y="14">coverage</text><text x="89" y="15" fill="#010101" fill-opacity=".3">100.0%</text><text x="89" y="14">100.0%</text></g></svg>';
@@ -7111,7 +7156,7 @@ local.templateCoverageBadgeSvg =
 
 
 /* script-begin /assets.utility2.lib.jslint.js */
-///usr/bin/env node
+// usr/bin/env node
 /* istanbul instrument in package jslint */
 /* jslint-utility2 */
 /*jslint
@@ -7131,7 +7176,30 @@ local.templateCoverageBadgeSvg =
 
 
     // run shared js-env code - init-before
+    /* istanbul ignore next */
     (function () {
+        // init debug_inline
+        (function () {
+            var consoleError, context, key;
+            context = (typeof window === "object" && window) || global;
+            key = "debug_inline".replace("_i", "I");
+            if (context[key]) {
+                return;
+            }
+            consoleError = console.error;
+            context[key] = function (arg0) {
+            /*
+             * this function will both print arg0 to stderr and return it
+             */
+                // debug arguments
+                context["_" + key + "Arguments"] = arguments;
+                consoleError("\n\n" + key);
+                consoleError.apply(console, arguments);
+                consoleError("\n");
+                // return arg0 for inspection
+                return arg0;
+            };
+        }());
         // init local
         local = {};
         // init modeJs
@@ -7154,13 +7222,19 @@ local.templateCoverageBadgeSvg =
             : global;
         // init utility2_rollup
         local = local.global.utility2_rollup || local;
-        /* istanbul ignore next */
         if (!local) {
             local = local.global.utility2_rollup ||
                 local.global.utility2_rollup_old ||
                 require('./assets.utility2.rollup.js');
             local.fs = null;
         }
+        // init nop
+        local.nop = function () {
+        /*
+         * this function will do nothing
+         */
+            return;
+        };
         // init exports
         if (local.modeJs === 'browser') {
             local.global.utility2_jslint = local;
@@ -7199,19 +7273,12 @@ local.templateCoverageBadgeSvg =
             local.v8 = require('v8');
             local.vm = require('vm');
             local.zlib = require('zlib');
-/* validateLineSortedReset */
             module.exports = local;
             module.exports.__dirname = __dirname;
         }
         // init lib
         local.local = local.jslint = local;
-    }());
-
-
-
-    // run shared js-env code - function-before
-    /* istanbul ignore next */
-    (function () {
+/* validateLineSortedReset */
         local.cliRun = function (fnc) {
         /*
          * this function will run the cli
@@ -7335,12 +7402,12 @@ local.templateCoverageBadgeSvg =
 
 
 
-/* jslint-ignore-begin */
 // init lib csslint
-/* istanbul ignore next */
 // 2013-08-15T10:18:30Z
 // https://github.com/CSSLint/csslint/blob/v1.0.5/dist/csslint.js
 // utility2-uglifyjs https://raw.githubusercontent.com/CSSLint/csslint/v1.0.5/dist/csslint.js
+/* istanbul ignore next */
+/* jslint-ignore-begin */
 (function () {
 var CSSLint=function(){function s(e,t,n,r){"use strict";this.messages=[],this.stats=
 [],this.lines=e,this.ruleset=t,this.allow=n,this.allow||(this.allow={}),this.ignore=
@@ -8758,9 +8825,9 @@ t+1)+": "+e.type+" at line "+e.line+", col "+e.col,s+="\n"+e.message,s+="\n"+e.e
 
 
 // init lib jslint
-/* istanbul ignore next */
 // 2014-07-08T19:15:40Z
 // https://github.com/douglascrockford/JSLint/blob/394bf291bfa3881bb9827b9fc7b7d1112d83f313/jslint.js
+/* istanbul ignore next */
 // jslint.js
 // 2014-07-08
 
@@ -13053,10 +13120,10 @@ klass:              do {
 
 
 // init lib jslintEs6
-/* istanbul ignore next */
 // 2016-10-24T18:30:02Z
 // https://github.com/douglascrockford/JSLint/blob/4075c9955e6eefdfafc1a6d9c1183e6147cd73f1/jslint.js
 // utility2-uglifyjs https://raw.githubusercontent.com/douglascrockford/JSLint/4075c9955e6eefdfafc1a6d9c1183e6147cd73f1/jslint.js
+/* istanbul ignore next */
 var jslint=function(){"use strict";function t(){return Object.create(null)}function n
 (e,t,n){t.forEach(function(t){e[t]=n})}function D(e){return e>="a"&&e<="z\uffff"||
 e>="A"&&e<="Z\uffff"}function P(e,t){return e.replace(l,function(e,n){var r=t[n]
@@ -13713,6 +13780,30 @@ local.CSSLint = CSSLint; local.JSLINT = JSLINT, local.jslintEs6 = jslint; }());
             }
             scriptParsed = script;
             if ((/^\/\* jslint-utility2 \*\/$|^# jslint-utility2$/m).test(scriptParsed)) {
+                scriptParsed = scriptParsed
+                    // ignore shebang
+                    .replace((/^#!\/.*/), '')
+                    // ignore comment
+                    .replace((
+                        /^ *?(?:#!! |\/\/!! |(?: \*|\/\/) (?:utility2-uglifyjs )?https?:\/\/).*?$/gm
+                    ), '')
+                    // ignore text-block
+                    .replace(
+/* jslint-ignore-begin */
+(/^ *?\/\* jslint-ignore-begin \*\/$[\S\s]+?^ *?\/\* jslint-ignore-end \*\/$/gm),
+/* jslint-ignore-end */
+                        function (match0) {
+                            return match0.replace((/^.*?$/gm), '');
+                        }
+                    )
+                    // ignore next-line
+                    .replace(
+/* jslint-ignore-next-line */
+(/^ *?\/\* jslint-ignore-next-line \*\/\n.*/gm),
+                        function (match0) {
+                            return match0.replace((/^.*?$/gm), '');
+                        }
+                    );
                 ii = 0;
                 scriptParsed.replace((/^.*?$/gm), function (line) {
                     ii += 1;
@@ -13744,29 +13835,6 @@ local.CSSLint = CSSLint; local.JSLINT = JSLINT, local.jslintEs6 = jslint; }());
                     }
                 });
             }
-            // parse script
-            scriptParsed = script
-                // ignore shebang
-                .replace((/^#!.*/), '')
-                // ignore comment
-                .replace((/^ *?(?:#!! |\/\/!! |\* https?:\/\/|\/\/ https?:\/\/).*?$/gm), '')
-                // ignore text-block
-                .replace(
-/* jslint-ignore-begin */
-(/^ *?\/\* jslint-ignore-begin \*\/$[\S\s]+?^ *?\/\* jslint-ignore-end \*\/$/gm),
-/* jslint-ignore-end */
-                    function (match0) {
-                        return match0.replace((/^.*?$/gm), '');
-                    }
-                )
-                // ignore next-line
-                .replace(
-/* jslint-ignore-next-line */
-(/^ *?\/\* jslint-ignore-next-line \*\/\n.*/gm),
-                    function (match0) {
-                        return match0.replace((/^.*?$/gm), '');
-                    }
-                );
             switch (file.replace((/^.*\./), '.')) {
             // csslint script
             case '.css':
@@ -14258,11 +14326,11 @@ local.marked = module.exports; }());
 
 
 
-/* jslint-ignore-begin */
 // init lib sjcl
 // 2016-09-10T10:34:50Z
 // https://github.com/bitwiseshiftleft/sjcl/blob/1.0.6/sjcl.js
 // utility2-uglifyjs https://raw.githubusercontent.com/bitwiseshiftleft/sjcl/1.0.6/sjcl.js
+/* jslint-ignore-begin */
 (function () { var module;
 "use strict";function t(e,t,n){if(4!==t.length)throw new sjcl.exception.invalid("invalid aes block size"
 );var r=e.b[n],i=t[0]^r[0],s=t[n?3:1]^r[1],o=t[2]^r[2];t=t[n?1:3]^r[3];var u,a,f
@@ -14653,7 +14721,7 @@ s=0;s<i;s++)n[r+s]=e[t+s]|0},sjcl.misc.scrypt.blockxor=function(e,t,n,r,i){var s
 
 
 /* script-begin /assets.utility2.lib.uglifyjs.js */
-///usr/bin/env node
+// usr/bin/env node
 /* istanbul instrument in package uglifyjs */
 /* jslint-utility2 */
 /*jslint
@@ -14673,7 +14741,30 @@ s=0;s<i;s++)n[r+s]=e[t+s]|0},sjcl.misc.scrypt.blockxor=function(e,t,n,r,i){var s
 
 
     // run shared js-env code - init-before
+    /* istanbul ignore next */
     (function () {
+        // init debug_inline
+        (function () {
+            var consoleError, context, key;
+            context = (typeof window === "object" && window) || global;
+            key = "debug_inline".replace("_i", "I");
+            if (context[key]) {
+                return;
+            }
+            consoleError = console.error;
+            context[key] = function (arg0) {
+            /*
+             * this function will both print arg0 to stderr and return it
+             */
+                // debug arguments
+                context["_" + key + "Arguments"] = arguments;
+                consoleError("\n\n" + key);
+                consoleError.apply(console, arguments);
+                consoleError("\n");
+                // return arg0 for inspection
+                return arg0;
+            };
+        }());
         // init local
         local = {};
         // init modeJs
@@ -14696,13 +14787,19 @@ s=0;s<i;s++)n[r+s]=e[t+s]|0},sjcl.misc.scrypt.blockxor=function(e,t,n,r,i){var s
             : global;
         // init utility2_rollup
         local = local.global.utility2_rollup || local;
-        /* istanbul ignore next */
         if (!local) {
             local = local.global.utility2_rollup ||
                 local.global.utility2_rollup_old ||
                 require('./assets.utility2.rollup.js');
             local.fs = null;
         }
+        // init nop
+        local.nop = function () {
+        /*
+         * this function will do nothing
+         */
+            return;
+        };
         // init exports
         if (local.modeJs === 'browser') {
             local.global.utility2_uglifyjs = local;
@@ -14741,18 +14838,12 @@ s=0;s<i;s++)n[r+s]=e[t+s]|0},sjcl.misc.scrypt.blockxor=function(e,t,n,r,i){var s
             local.v8 = require('v8');
             local.vm = require('vm');
             local.zlib = require('zlib');
-/* validateLineSortedReset */
             module.exports = local;
             module.exports.__dirname = __dirname;
         }
         // init lib
         local.local = local.uglifyjs = local;
-    }());
-
-
-
-    // run shared js-env code - function-before
-    (function () {
+/* validateLineSortedReset */
         local.cliRun = function (fnc) {
         /*
          * this function will run the cli
@@ -15462,7 +15553,7 @@ split_lines=split_lines,exports.MAP=MAP,exports.ast_squeeze_more=require("./sque
             tmp = local.parse(code
                 .trim()
                 // comment shebang
-                .replace((/^#!/), '//'));
+                .replace((/^#!\//), '// '));
             // get a new AST with mangled names
             tmp = local.ast_mangle(tmp);
             // get an AST with compression optimizations
@@ -15528,7 +15619,7 @@ split_lines=split_lines,exports.MAP=MAP,exports.ast_squeeze_more=require("./sque
 
 
 /* script-begin /assets.utility2.js */
-///usr/bin/env node
+// usr/bin/env node
 /* istanbul instrument in package utility2 */
 /* jslint-utility2 */
 /*jslint
@@ -15548,7 +15639,30 @@ split_lines=split_lines,exports.MAP=MAP,exports.ast_squeeze_more=require("./sque
 
 
     // run shared js-env code - init-before
+    /* istanbul ignore next */
     (function () {
+        // init debug_inline
+        (function () {
+            var consoleError, context, key;
+            context = (typeof window === "object" && window) || global;
+            key = "debug_inline".replace("_i", "I");
+            if (context[key]) {
+                return;
+            }
+            consoleError = console.error;
+            context[key] = function (arg0) {
+            /*
+             * this function will both print arg0 to stderr and return it
+             */
+                // debug arguments
+                context["_" + key + "Arguments"] = arguments;
+                consoleError("\n\n" + key);
+                consoleError.apply(console, arguments);
+                consoleError("\n");
+                // return arg0 for inspection
+                return arg0;
+            };
+        }());
         // init local
         local = {};
         // init modeJs
@@ -15571,13 +15685,19 @@ split_lines=split_lines,exports.MAP=MAP,exports.ast_squeeze_more=require("./sque
             : global;
         // init utility2_rollup
         local = local.global.utility2_rollup || local;
-        /* istanbul ignore next */
         if (!local) {
             local = local.global.utility2_rollup ||
                 local.global.utility2_rollup_old ||
                 require('./assets.utility2.rollup.js');
             local.fs = null;
         }
+        // init nop
+        local.nop = function () {
+        /*
+         * this function will do nothing
+         */
+            return;
+        };
         // init exports
         if (local.modeJs === 'browser') {
             local.global.utility2_utility2 = local;
@@ -15616,29 +15736,15 @@ split_lines=split_lines,exports.MAP=MAP,exports.ast_squeeze_more=require("./sque
             local.v8 = require('v8');
             local.vm = require('vm');
             local.zlib = require('zlib');
-/* validateLineSortedReset */
             module.exports = local;
             module.exports.__dirname = __dirname;
         }
         // init lib
         local.local = local.utility2 = local;
+/* validateLineSortedReset */
         // init lib utility2
         local.global.utility2 = local.global.utility2_utility2 = local.utility2 = local;
-        // init nop
-        local.nop = function () {
-        /*
-         * this function will do nothing
-         */
-            return;
-        };
-
-    }());
-
-
-
-    // run shared js-env code - function-before
-    (function () {
-        // init lib
+        // init lib extra
         [
             'apidoc',
             'db',
@@ -16146,7 +16252,8 @@ local.assetsDict['/assets.index.template.html'].replace((/\n/g), '\\n\\\n') + '\
         /* jslint-ignore-begin */\n\
         local.assetsDict[\'/assets.jslint.js\'] = local.assetsDict[\'/assets.jslint.js\'] ||\n\
             local.fs.readFileSync(local.__dirname + \'/lib.jslint.js\', \'utf8\'\n\
-        ).replace((/^#!/), \'//\');\n\
+        ).replace((/^#!\\//), \'// \');\n\
+        /* jslint-ignore-end */\n\
 /* validateLineSortedReset */\n\
         local.assetsDict[\'/\'] =\n\
             local.assetsDict[\'/assets.example.html\'] =\n\
@@ -16172,7 +16279,6 @@ local.assetsDict['/assets.index.template.html'].replace((/\n/g), '\\n\\\n') + '\
         local.assetsDict[\'/assets.example.js\'] =\n\
             local.assetsDict[\'/assets.example.js\'] ||\n\
             local.fs.readFileSync(__filename, \'utf8\');\n\
-        /* jslint-ignore-end */\n\
         local.assetsDict[\'/favicon.ico\'] = local.assetsDict[\'/favicon.ico\'] || \'\';\n\
         // if $npm_config_timeout_exit exists,\n\
         // then exit this process after $npm_config_timeout_exit ms\n\
@@ -16202,6 +16308,7 @@ local.assetsDict['/assets.index.template.html'].replace((/\n/g), '\\n\\\n') + '\
 
 
 local.assetsDict['/assets.lib.template.js'] = '\
+#!/usr/bin/env node\n\
 /* istanbul instrument in package jslint */\n\
 /* jslint-utility2 */\n\
 /*jslint\n\
@@ -16221,7 +16328,30 @@ local.assetsDict['/assets.lib.template.js'] = '\
 \n\
 \n\
     // run shared js\-env code - init-before\n\
+    /* istanbul ignore next */\n\
     (function () {\n\
+        // init debug_inline\n\
+        (function () {\n\
+            var consoleError, context, key;\n\
+            context = (typeof window === "object" && window) || global;\n\
+            key = "debug_inline".replace("_i", "I");\n\
+            if (context[key]) {\n\
+                return;\n\
+            }\n\
+            consoleError = console.error;\n\
+            context[key] = function (arg0) {\n\
+            /*\n\
+             * this function will both print arg0 to stderr and return it\n\
+             */\n\
+                // debug arguments\n\
+                context["_" + key + "Arguments"] = arguments;\n\
+                consoleError("\\n\\n" + key);\n\
+                consoleError.apply(console, arguments);\n\
+                consoleError("\\n");\n\
+                // return arg0 for inspection\n\
+                return arg0;\n\
+            };\n\
+        }());\n\
         // init local\n\
         local = {};\n\
         // init modeJs\n\
@@ -16244,13 +16374,19 @@ local.assetsDict['/assets.lib.template.js'] = '\
             : global;\n\
         // init utility2_rollup\n\
         local = local.global.utility2_rollup || local;\n\
-        /* istanbul ignore next */\n\
         if (!local) {\n\
             local = local.global.utility2_rollup ||\n\
                 local.global.utility2_rollup_old ||\n\
                 require(\'./assets.utility2.rollup.js\');\n\
             local.fs = null;\n\
         }\n\
+        // init nop\n\
+        local.nop = function () {\n\
+        /*\n\
+         * this function will do nothing\n\
+         */\n\
+            return;\n\
+        };\n\
         // init exports\n\
         if (local.modeJs === \'browser\') {\n\
             local.global.utility2_jslint = local;\n\
@@ -16289,7 +16425,6 @@ local.assetsDict['/assets.lib.template.js'] = '\
             local.v8 = require(\'v8\');\n\
             local.vm = require(\'vm\');\n\
             local.zlib = require(\'zlib\');\n\
-/* validateLineSortedReset */\n\
             module.exports = local;\n\
             module.exports.__dirname = __dirname;\n\
         }\n\
@@ -16782,32 +16917,6 @@ local.assetsDict['/assets.test.template.js'] = '\
 \n\
 \n\
 \n\
-    /* istanbul ignore next */\n\
-    // init debug_inline\n\
-    (function () {\n\
-        var consoleError, context, key;\n\
-        context = (typeof window === "object" && window) || global;\n\
-        key = "debug_inline".replace("_i", "I");\n\
-        if (context[key]) {\n\
-            return;\n\
-        }\n\
-        consoleError = console.error;\n\
-        context[key] = function (arg0) {\n\
-        /*\n\
-         * this function will both print arg0 to stderr and return it\n\
-         */\n\
-            // debug arguments\n\
-            context["_" + key + "Arguments"] = arguments;\n\
-            consoleError("\\n\\n" + key);\n\
-            consoleError.apply(console, arguments);\n\
-            consoleError("\\n");\n\
-            // return arg0 for inspection\n\
-            return arg0;\n\
-        };\n\
-    }());\n\
-\n\
-\n\
-\n\
     // run shared js\-env code - init-before\n\
     (function () {\n\
         // init local\n\
@@ -17006,6 +17115,7 @@ local.assetsDict['/assets.testReportBadge.template.svg'] =
 local.assetsDict['/assets.utility2.rollup.begin.js'] = '\
 /* utility2.rollup.js begin */\n\
 /* istanbul ignore all */\n\
+/* jslint-utility2 */\n\
 /*jslint\n\
     bitwise: true,\n\
     browser: true,\n\
@@ -17652,6 +17762,19 @@ local.assetsDict['/favicon.ico'] = '';
             return self;
         };
 
+        local._middlewareError = function (error, request, response) {
+        /*
+         * this function will run the middleware that will handle errors
+         */
+            // if error occurred, then respond with '500 Internal Server Error',
+            // else respond with '404 Not Found'
+            local.serverRespondDefault(request, response, error
+                ? (error.statusCode >= 400 && error.statusCode < 600
+                    ? error.statusCode
+                    : 500)
+                : 404, error);
+        };
+
         local._testCase_buildApidoc_default = function (options, onError) {
         /*
          * this function will test buildApidoc's default handling-behavior
@@ -18042,7 +18165,8 @@ local.assetsDict['/favicon.ico'] = '';
                     local.assert((/^https?:\/\//).test(options.url), options.url);
                     options.url = options.url
                         .replace((/[?#].*?$/), '')
-                        .replace((/\/{2,}/g), '/');
+                        .replace((/\/{2,}/g), '/')
+                        .replace('/', '//');
                     options.file = (options.url + ((/|\.html?$/).test(options.url)
                         ? ''
                         : '/index.html'))
@@ -18061,7 +18185,7 @@ local.assetsDict['/favicon.ico'] = '';
                     break;
                 // ajax(options);
                 case 3:
-                    local.ajax(options, function (error, xhr) {
+                    local.ajax(debugInline(options), function (error, xhr) {
                         options.xhr = xhr;
                         // validate xhr
                         local.assert(options.xhr, error);
@@ -18786,8 +18910,8 @@ n<65536){if((t-=3)<0)break;s.push(n>>12|224,n>>6&63|128,n&63|128)}else{if(!(n<11
                 return new local.global.TextDecoder('utf-8').decode(bff);
             }
 // bug-workaround - TextDecoder.decode polyfill
-/* jslint-ignore-begin */
 // http://stackoverflow.com/questions/17191945/conversion-between-utf-8-arraybuffer-and-string
+/* jslint-ignore-begin */
 function Utf8ArrayToStr(e){var t,n,r,i,s,o;t="",r=e.length,n=0;while(n<r){i=e[n++
 ];switch(i>>4){case 0:case 1:case 2:case 3:case 4:case 5:case 6:case 7:t+=String
 .fromCharCode(i);break;case 12:case 13:s=e[n++],t+=String.fromCharCode((i&31)<<6|
@@ -19008,8 +19132,6 @@ return Utf8ArrayToStr(bff);
             [
                 // customize body before istanbul instrument in package
                 (/[\S\s]*?^\/\* istanbul instrument in package /m),
-                // customize body after use strict
-                (/\n {4}'use strict';\n[\S\s]*?\n\n\n\n/),
                 // customize body after init lib
                 (/\n {8}\/\/ init lib\n[\S\s]*?$/)
             ].forEach(function (rgx) {
@@ -19023,7 +19145,7 @@ return Utf8ArrayToStr(bff);
                     });
                 });
             });
-            // customize local
+            // customize local for assets.utility2.rollup.js
             if (local.fs.existsSync('./assets.utility2.rollup.js') &&
                     local.env.npm_package_nameLib !== 'swgg') {
                 options.dataTo = options.dataTo.replace(
@@ -19043,26 +19165,18 @@ return Utf8ArrayToStr(bff);
                 'lib.' + local.env.npm_package_nameLib + '.sh',
                 'npm_scripts.sh'
             ].forEach(function (file) {
-                options.dataFunctionBefore = local.tryCatchReadFile(
-                    file,
-                    'utf8'
-                ).replace(file.slice(-3) === '.js'
-                    ? new RegExp('\\n {4}\\/\\/ run shared js-env code - function-before\\n' +
-                        '[\\S\\s]+?\\n {4}\\}\\(\\)\\);\\n')
-                    : (/^[\S\s]*?$/), function (match0) {
-                        return match0.replace((
-                            /^ {8}local\.(\w+) = function \([\S\s]+?\n {8}\};$/gm
-                        ), function (match0, match1) {
-                            [{}, local, local.github_crud, local.swgg].some(function (dict) {
-                                if (typeof dict[match1] === 'function') {
-                                    match0 = '        local.' + match1 + ' = ' +
-                                        String(dict[match1]) + ';';
-                                    return true;
-                                }
-                            });
-                            return match0;
-                        });
+                options.dataFunctionBefore = local.tryCatchReadFile(file, 'utf8').replace((
+                    /^ {8}local\.(\w+) = function \([\S\s]+?\n {8}\};$/gm
+                ), function (match0, match1) {
+                    [local, local.github_crud, local.swgg].some(function (dict) {
+                        if (match1[0] !== '_' && typeof dict[match1] === 'function') {
+                            match0 = '        local.' + match1 + ' = ' +
+                                String(dict[match1]) + ';';
+                            return true;
+                        }
                     });
+                    return match0;
+                });
                 /* istanbul ignore next */
                 if (options.dataFunctionBefore && !local.env.npm_config_mode_coverage) {
                     local.fs.writeFileSync(file, options.dataFunctionBefore);
@@ -19202,7 +19316,7 @@ return Utf8ArrayToStr(bff);
             }
             // customize comment
             options.dataFrom.replace((
-                /^( *?)(?:#!\! |#\/\/ |\/\/!\! |<!-- )(.*?)(?: -->)?$/gm
+                /^( *?)(?:#\!\! |#\/\/ |\/\/\!\! |<!-- )(.*?)(?: -->)?$/gm
             ), function (match0, match1, match2) {
                 options.dataTo = options.dataTo.replace(
                     '\n' + match1 + match2 + '\n',
@@ -20251,19 +20365,6 @@ return Utf8ArrayToStr(bff);
             nextMiddleware();
         };
 
-        local.middlewareError = function (error, request, response) {
-        /*
-         * this function will run the middleware that will handle errors
-         */
-            // if error occurred, then respond with '500 Internal Server Error',
-            // else respond with '404 Not Found'
-            local.serverRespondDefault(request, response, error
-                ? (error.statusCode >= 400 && error.statusCode < 600
-                    ? error.statusCode
-                    : 500)
-                : 404, error);
-        };
-
         local.middlewareFileServer = function (request, response, nextMiddleware) {
         /*
          * this function will run the middleware that will serve files
@@ -21188,7 +21289,7 @@ vendor\\)s\\{0,1\\}\\(\\b\\|_\\)\
                 local.assetsDict['/assets.app.js'] = local.fs.readFileSync(
                     __filename,
                     'utf8'
-                ).replace((/^#!/), '//');
+                ).replace((/^#!\//), '// ');
                 // init exports
                 local[local.env.npm_package_nameLib] = local;
                 module.exports = local;
@@ -21237,7 +21338,7 @@ vendor\\)s\\{0,1\\}\\(\\b\\|_\\)\
             // init assets
             tmp = process.cwd() + '/' + local.env.npm_package_main;
             local.assetsDict['/assets.' + local.env.npm_package_nameLib + '.js'] =
-                local.fs.readFileSync(tmp, 'utf8').replace((/^#!/), '//');
+                local.fs.readFileSync(tmp, 'utf8').replace((/^#!\//), '// ');
             local.objectSetOverride(local.assetsDict, module.exports.assetsDict);
             local.assetsDict['/assets.' + local.env.npm_package_nameLib + '.js'] =
                 local.istanbulInstrumentInPackage(
@@ -21946,7 +22047,6 @@ instruction\n\
                 (/node-jslint-lite/g),
                 options.githubRepo[1]
             );
-            template = template.replace((/^#!/), '//');
             template = template.replace((/jslint-lite/g), options.packageJson.name);
             template = template.replace(
                 '/* istanbul instrument in package jslint */',
@@ -22543,8 +22643,7 @@ instruction\n\
                 self = {};
                 local.onNext(self, function (error) {
                     if (error || self.modeNext >= local.middlewareList.length) {
-                        // default to middlewareError
-                        local.middlewareError(error, request, response);
+                        local._middlewareError(error, request, response);
                         return;
                     }
                     // recurse with next middleware in middlewareList
@@ -23260,13 +23359,13 @@ instruction\n\
                 local.assetsDict['/assets.' + key] = local.tryCatchReadFile(
                     __dirname + '/lib.' + key,
                     'utf8'
-                ).replace((/^#!/), '//');
+                ).replace((/^#!\//), '// ');
                 break;
             default:
                 local.assetsDict['/assets.utility2.' + key] = local.tryCatchReadFile(
                     __dirname + '/' + key,
                     'utf8'
-                ).replace((/^#!/), '//');
+                ).replace((/^#!\//), '// ');
             }
         });
         local.assetsDict['/assets.utility2.rollup.js'] = [
@@ -23319,7 +23418,7 @@ instruction\n\
                 script.trim() +
                 '\n/* script-end ' + key + ' */\n';
         }).join('\n\n\n');
-        // init lib
+        // init lib dependents
         [
             'swgg'
         ].forEach(function (lib) {
@@ -23352,19 +23451,34 @@ instruction\n\
 (function () {
     'use strict';
     var local;
-    /* istanbul ignore next */
-    if (typeof global === 'object' &&
-            !global.utility2_app &&
-            global.utility2_rollup &&
-            global.process &&
-            global.process.env.npm_package_nameLib === 'swgg') {
-        return;
-    }
 
 
 
     // run shared js-env code - init-before
+    /* istanbul ignore next */
     (function () {
+        // init debug_inline
+        (function () {
+            var consoleError, context, key;
+            context = (typeof window === "object" && window) || global;
+            key = "debug_inline".replace("_i", "I");
+            if (context[key]) {
+                return;
+            }
+            consoleError = console.error;
+            context[key] = function (arg0) {
+            /*
+             * this function will both print arg0 to stderr and return it
+             */
+                // debug arguments
+                context["_" + key + "Arguments"] = arguments;
+                consoleError("\n\n" + key);
+                consoleError.apply(console, arguments);
+                consoleError("\n");
+                // return arg0 for inspection
+                return arg0;
+            };
+        }());
         // init local
         local = {};
         // init modeJs
@@ -23387,13 +23501,19 @@ instruction\n\
             : global;
         // init utility2_rollup
         local = local.global.utility2_rollup || local;
-        /* istanbul ignore next */
         if (!local) {
             local = local.global.utility2_rollup ||
                 local.global.utility2_rollup_old ||
                 require('./assets.utility2.rollup.js');
             local.fs = null;
         }
+        // init nop
+        local.nop = function () {
+        /*
+         * this function will do nothing
+         */
+            return;
+        };
         // init exports
         if (local.modeJs === 'browser') {
             local.global.utility2_swgg = local;
@@ -23432,14 +23552,14 @@ instruction\n\
             local.v8 = require('v8');
             local.vm = require('vm');
             local.zlib = require('zlib');
-/* validateLineSortedReset */
             module.exports = local;
             module.exports.__dirname = __dirname;
         }
         // init lib
         local.local = local.swgg = local;
+/* validateLineSortedReset */
         // init lib swgg
-        local.global.swgg = local.global.utility2_swgg = local.swgg = local;
+        local.global.swgg = local.global.utility2_swgg = local;
         // init lib utility2
         local.utility2 = local.global.utility2_rollup || (local.modeJs === 'browser'
             ? local.global.utility2
@@ -23454,8 +23574,8 @@ instruction\n\
         local.utility2.swgg = local;
 /* validateLineSortedReset */
         // init assets and templates
-/* jslint-ignore-begin */
 // https://github.com/json-schema-org/json-schema-org.github.io/blob/eb4805e94c3e27932352344767d19cc4c3c3381c/draft-04/schema
+/* jslint-ignore-begin */
 // curl -Ls https://raw.githubusercontent.com/json-schema-org/json-schema-org.github.io/eb4805e94c3e27932352344767d19cc4c3c3381c/draft-04/schema > /tmp/aa.json; node -e "console.log(JSON.stringify(require('/tmp/aa.json')));"
 local.assetsDict['/assets.swgg.json-schema.json'] = JSON.stringify(
 {"id":"http://json-schema.org/draft-04/schema#","$schema":"http://json-schema.org/draft-04/schema#","description":"Core schema meta-schema","definitions":{"schemaArray":{"type":"array","minItems":1,"items":{"$ref":"#"}},"positiveInteger":{"type":"integer","minimum":0},"positiveIntegerDefault0":{"allOf":[{"$ref":"#/definitions/positiveInteger"},{"default":0}]},"simpleTypes":{"enum":["array","boolean","integer","null","number","object","string"]},"stringArray":{"type":"array","items":{"type":"string"},"minItems":1,"uniqueItems":true}},"type":"object","properties":{"id":{"type":"string","format":"uri"},"$schema":{"type":"string","format":"uri"},"title":{"type":"string"},"description":{"type":"string"},"default":{},"multipleOf":{"type":"number","minimum":0,"exclusiveMinimum":true},"maximum":{"type":"number"},"exclusiveMaximum":{"type":"boolean","default":false},"minimum":{"type":"number"},"exclusiveMinimum":{"type":"boolean","default":false},"maxLength":{"$ref":"#/definitions/positiveInteger"},"minLength":{"$ref":"#/definitions/positiveIntegerDefault0"},"pattern":{"type":"string","format":"regex"},"additionalItems":{"anyOf":[{"type":"boolean"},{"$ref":"#"}],"default":{}},"items":{"anyOf":[{"$ref":"#"},{"$ref":"#/definitions/schemaArray"}],"default":{}},"maxItems":{"$ref":"#/definitions/positiveInteger"},"minItems":{"$ref":"#/definitions/positiveIntegerDefault0"},"uniqueItems":{"type":"boolean","default":false},"maxProperties":{"$ref":"#/definitions/positiveInteger"},"minProperties":{"$ref":"#/definitions/positiveIntegerDefault0"},"required":{"$ref":"#/definitions/stringArray"},"additionalProperties":{"anyOf":[{"type":"boolean"},{"$ref":"#"}],"default":{}},"definitions":{"type":"object","additionalProperties":{"$ref":"#"},"default":{}},"properties":{"type":"object","additionalProperties":{"$ref":"#"},"default":{}},"patternProperties":{"type":"object","additionalProperties":{"$ref":"#"},"default":{}},"dependencies":{"type":"object","additionalProperties":{"anyOf":[{"$ref":"#"},{"$ref":"#/definitions/stringArray"}]}},"enum":{"type":"array","minItems":1,"uniqueItems":true},"type":{"anyOf":[{"$ref":"#/definitions/simpleTypes"},{"type":"array","items":{"$ref":"#/definitions/simpleTypes"},"minItems":1,"uniqueItems":true}]},"allOf":{"$ref":"#/definitions/schemaArray"},"anyOf":{"$ref":"#/definitions/schemaArray"},"oneOf":{"$ref":"#/definitions/schemaArray"},"not":{"$ref":"#"}},"dependencies":{"exclusiveMaximum":["maximum"],"exclusiveMinimum":["minimum"]},"default":{}}
@@ -28527,7 +28647,7 @@ window.swgg.uiEventListenerDict[".onEventUiReload"]({ swggInit: true });\n\
             local.apiDict["GET /user/userLogout"].ajax(options, onError);
         };
 
-        local.utility2.middlewareError = function (error, request, response) {
+        local.utility2._middlewareError = function (error, request, response) {
         /*
          * this function will run the middleware that will
          * handle errors according to http://jsonapi.org/format/#errors
@@ -29526,7 +29646,8 @@ utility2-comment -->\\n\
         /* jslint-ignore-begin */\n\
         local.assetsDict['/assets.utility2.js'] = local.assetsDict['/assets.utility2.js'] ||\n\
             local.fs.readFileSync(local.__dirname + '/lib.utility2.js', 'utf8'\n\
-        ).replace((/^#!/), '//');\n\
+        ).replace((/^#!\\//), '// ');\n\
+        /* jslint-ignore-end */\n\
 /* validateLineSortedReset */\n\
         local.assetsDict['/'] =\n\
             local.assetsDict['/assets.example.html'] =\n\
@@ -29552,7 +29673,6 @@ utility2-comment -->\\n\
         local.assetsDict['/assets.example.js'] =\n\
             local.assetsDict['/assets.example.js'] ||\n\
             local.fs.readFileSync(__filename, 'utf8');\n\
-        /* jslint-ignore-end */\n\
         local.assetsDict['/favicon.ico'] = local.assetsDict['/favicon.ico'] || '';\n\
         // if $npm_config_timeout_exit exists,\n\
         // then exit this process after $npm_config_timeout_exit ms\n\
@@ -29917,35 +30037,6 @@ local.assetsDict["/assets.utility2.test.js"] = "/* istanbul instrument in packag
 (function () {\n\
     'use strict';\n\
     var local;\n\
-\n\
-\n\
-\n\
-    /* istanbul ignore next */\n\
-    // init debug_inline\n\
-    (function () {\n\
-        var consoleError, context, key;\n\
-        context = (typeof window === \"object\" && window) || global;\n\
-        key = \"debug_inline\".replace(\"_i\", \"I\");\n\
-        if (context[key]) {\n\
-            return;\n\
-        }\n\
-        consoleError = console.error;\n\
-        context[key] = function (arg0) {\n\
-        /*\n\
-         * this function will both print arg0 to stderr and return it\n\
-         */\n\
-            // debug arguments\n\
-            context[\"_\" + key + \"Arguments\"] = arguments;\n\
-            consoleError(\"\\n\
-\\n\
-\" + key);\n\
-            consoleError.apply(console, arguments);\n\
-            consoleError(\"\\n\
-\");\n\
-            // return arg0 for inspection\n\
-            return arg0;\n\
-        };\n\
-    }());\n\
 \n\
 \n\
 \n\
@@ -31080,19 +31171,6 @@ x-request-header-test: aa\\r\\n\
                 onError(null, options);\n\
             }, local.onErrorThrow);\n\
             onError(null, options);\n\
-        };\n\
-\n\
-        local.testCase_debug_inline_default = function (options, onError) {\n\
-        /*\n\
-         * this function will test debug_inline's default handling-behavior\n\
-         */\n\
-            options = {};\n\
-            local.testMock([\n\
-                [local, { _consoleError: null }]\n\
-            ], function (onError) {\n\
-                local.global['debug_inline'.replace('_i', 'I')]('aa');\n\
-                onError(null, options);\n\
-            }, onError);\n\
         };\n\
 \n\
         local.testCase_domElementRender_default = function (options, onError) {\n\
@@ -32685,7 +32763,7 @@ bb>```');\n\
                     var error;\n\
                     error = new Error('error');\n\
                     error.statusCode = 500;\n\
-                    local.middlewareError(error, request, response);\n\
+                    local._middlewareError(error, request, response);\n\
                     onError();\n\
                 }, local.onErrorThrow);\n\
                 break;\n\

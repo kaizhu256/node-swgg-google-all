@@ -279,11 +279,11 @@
     </tr>
     </thead>
     <tbody>
-        <td>branches: 2</td>
-        <td>98%<br>(49 / 50)</td>
-        <td>73.68%<br>(14 / 19)</td>
-        <td>100%<br>(3 / 3)</td>
-        <td>98%<br>(49 / 50)</td>
+        <td>branches: 9<br>statements: 8<br>functions: 1</td>
+        <td>100%<br>(65 / 65)</td>
+        <td>100%<br>(24 / 24)</td>
+        <td>100%<br>(6 / 6)</td>
+        <td>100%<br>(65 / 65)</td>
     </tbody>
     </table>
     <div class="path"><a href="../index.html">All files</a> &#187; <a href="index.html">node-swgg-google-all/</a> &#187; lib.swgg_google_all.js</div>
@@ -386,7 +386,35 @@
 94
 95
 96
-97</td><td class="line-coverage"><span class="cline-any cline-neutral">&nbsp;</span>
+97
+98
+99
+100
+101
+102
+103
+104
+105
+106
+107
+108
+109
+110
+111
+112
+113
+114
+115
+116
+117
+118
+119
+120
+121
+122
+123
+124
+125</td><td class="line-coverage"><span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -405,7 +433,30 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">1</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -428,7 +479,6 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">1</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">1</span>
 <span class="cline-any cline-yes">1</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -437,7 +487,14 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">1</span>
-<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">3036</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-yes">1</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -473,7 +530,6 @@
 <span class="cline-any cline-yes">1</span>
 <span class="cline-any cline-yes">1</span>
 <span class="cline-any cline-yes">1</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">1</span>
 <span class="cline-any cline-yes">1</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -501,16 +557,39 @@
 &nbsp;
 &nbsp;
     // run shared js-env code - init-before
+    /* istanbul ignore next */
     (function () {
+        // init debug_inline
+        (function () {
+            var consoleError, context, key;
+            context = (typeof window === "object" &amp;&amp; <span class="branch-1 cbranch-skip" title="branch not covered" >window)</span> || global;
+            key = "debug_inline".replace("_i", "I");
+            <span class="skip-if-branch" title="else path not taken" >E</span>if (context[key]) {
+                return;
+            }
+<span class="cstat-skip" title="statement not covered" >            consoleError = console.error;</span>
+<span class="cstat-skip" title="statement not covered" >            context[key] = <span class="fstat-skip" title="function not covered" >function (arg0) {</span></span>
+            /*
+             * this function will both print arg0 to stderr and return it
+             */
+                // debug arguments
+<span class="cstat-skip" title="statement not covered" >                context["_" + key + "Arguments"] = arguments;</span>
+<span class="cstat-skip" title="statement not covered" >                consoleError("\n\n" + key);</span>
+<span class="cstat-skip" title="statement not covered" >                consoleError.apply(console, arguments);</span>
+<span class="cstat-skip" title="statement not covered" >                consoleError("\n");</span>
+                // return arg0 for inspection
+<span class="cstat-skip" title="statement not covered" >                return arg0;</span>
+            };
+        }());
         // init local
         local = {};
         // init modeJs
         local.modeJs = (function () {
             try {
                 return typeof navigator.userAgent === 'string' &amp;&amp;
-<span class="branch-1 cbranch-no" title="branch not covered" >                    typeof document.querySelector('body') === 'object' </span>&amp;&amp;
-<span class="branch-2 cbranch-no" title="branch not covered" >                    typeof XMLHttpRequest.prototype.open === 'function' </span>&amp;&amp;
-<span class="branch-3 cbranch-no" title="branch not covered" >                    'browser';</span>
+<span class="branch-1 cbranch-skip" title="branch not covered" >                    typeof document.querySelector('body') === 'object' </span>&amp;&amp;
+<span class="branch-2 cbranch-skip" title="branch not covered" >                    typeof XMLHttpRequest.prototype.open === 'function' </span>&amp;&amp;
+<span class="branch-3 cbranch-skip" title="branch not covered" >                    'browser';</span>
             } catch (errorCaughtBrowser) {
                 return module.exports &amp;&amp;
                     typeof process.versions.node === 'string' &amp;&amp;
@@ -520,20 +599,26 @@
         }());
         // init global
         local.global = local.modeJs === 'browser'
-            ? <span class="branch-0 cbranch-no" title="branch not covered" >window</span>
+            ? <span class="branch-0 cbranch-skip" title="branch not covered" >window</span>
             : global;
         // init utility2_rollup
         local = local.global.utility2_rollup || local;
-        /* istanbul ignore next */
         <span class="skip-if-branch" title="else path not taken" >E</span>if (local) {
             local = local.global.utility2_rollup ||
                 local.global.utility2_rollup_old ||
 <span class="branch-2 cbranch-skip" title="branch not covered" >                require('./assets.utility2.rollup.js');</span>
             local.fs = null;
         }
+        // init nop
+        local.nop = function () {
+        /*
+         * this function will do nothing
+         */
+            return;
+        };
         // init exports
-        <span class="missing-if-branch" title="if path not taken" >I</span>if (local.modeJs === 'browser') {
-<span class="cstat-no" title="statement not covered" >            local.global.utility2_swgg_google_all = local;</span>
+        <span class="skip-if-branch" title="if path not taken" >I</span>if (local.modeJs === 'browser') {
+<span class="cstat-skip" title="statement not covered" >            local.global.utility2_swgg_google_all = local;</span>
         } else {
             // require builtins
             // local.assert = require('assert');
@@ -569,7 +654,6 @@
             local.v8 = require('v8');
             local.vm = require('vm');
             local.zlib = require('zlib');
-/* validateLineSortedReset */
             module.exports = local;
             module.exports.__dirname = __dirname;
         }
@@ -582,7 +666,7 @@
 </table></pre>
 </div>
 <div class="footer">
-    <div class="meta">Generated by <a href="https://github.com/kaizhu256/node-utility2" target="_blank">utility2</a> at Thu May 03 2018 16:52:42 GMT+0000 (UTC)</div>
+    <div class="meta">Generated by <a href="https://github.com/kaizhu256/node-utility2" target="_blank">utility2</a> at Thu May 03 2018 21:25:23 GMT+0000 (UTC)</div>
 </div>
 </body>
 </html>
