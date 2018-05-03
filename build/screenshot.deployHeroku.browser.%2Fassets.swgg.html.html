@@ -36,6 +36,11 @@
 a {
     overflow-wrap: break-word;
 }
+body {
+    background: #eef;
+    font-family: Arial, Helvetica, sans-serif;
+    margin: 0 40px;
+}
 body > div,
 body > pre,
 body > textarea,
@@ -461,10 +466,10 @@ textarea {
 }
 </style>
 </head>
-<body style="background: #eef; font-family: Arial, Helvetica, sans-serif; margin: 0 40px;">
+<body>
 <div id="ajaxProgressDiv1" style="background: transparent; height: 2px; left: 0px; margin: 0px; padding: 0px; position: fixed; top: 0px; transition: background 500ms, width 1500ms; width: 0%; z-index: 1;"></div>
 <div class="uiAnimateSpin" style="animation: uiAnimateSpin 2s linear infinite; border: 5px solid #999; border-radius: 50%; border-top: 5px solid #7d7; display: none; height: 25px; vertical-align: middle; width: 25px;"></div>
-<code style="display: none;"></code><div class="button uiAnimateShake uiAnimateSlide utility2FooterDiv zeroPixel" style="display: none;"></div><pre style="display: none;"></pre><textarea readonly="" style="display: none;"></textarea>
+<code style="display: none;"></code><div class="button colorError uiAnimateShake uiAnimateSlide utility2FooterDiv zeroPixel" style="display: none;"></div><pre style="display: none;"></pre><textarea readonly="" style="display: none;"></textarea>
 <script>
 /* jslint-utility2 */
 /*jslint
@@ -477,12 +482,18 @@ textarea {
     regexp: true,
     stupid: true
 */
+// init timerIntervalAjaxProgressUpdate
 (function () {
+/*
+ * this function will increment the ajax-progress-bar until the webpage has loaded
+ */
     "use strict";
     var ajaxProgressDiv1,
         ajaxProgressState,
-        ajaxProgressUpdate,
-        timerIntervalAjaxProgressUpdate;
+        ajaxProgressUpdate;
+    if (window.timerIntervalAjaxProgressUpdate) {
+        return;
+    }
     ajaxProgressDiv1 = document.querySelector("#ajaxProgressDiv1");
     setTimeout(function () {
         ajaxProgressDiv1.style.width = "25%";
@@ -498,17 +509,43 @@ textarea {
             }, 500);
         }, 1500);
     };
-    timerIntervalAjaxProgressUpdate = setInterval(function () {
+    window.timerIntervalAjaxProgressUpdate = setInterval(function () {
         ajaxProgressState += 1;
         ajaxProgressDiv1.style.width = Math.max(
             100 - 75 * Math.exp(-0.125 * ajaxProgressState),
-            Number(ajaxProgressDiv1.style.width.slice(0, -1)) || 0
+            ajaxProgressDiv1.style.width.slice(0, -1) | 0
         ) + "%";
     }, 1000);
     window.addEventListener("load", function () {
-        clearInterval(timerIntervalAjaxProgressUpdate);
+        clearInterval(window.timerIntervalAjaxProgressUpdate);
         ajaxProgressUpdate();
     });
+}());
+// init domOnEventSelectAllWithinPre
+(function () {
+/*
+ * this function will limit select-all within <pre tabIndex="0"> elements
+ * https://stackoverflow.com/questions/985272/selecting-text-in-an-element-akin-to-highlighting-with-your-mouse
+ */
+    "use strict";
+    if (window.domOnEventSelectAllWithinPre) {
+        return;
+    }
+    window.domOnEventSelectAllWithinPre = function (event) {
+        var range, selection;
+        if (event &&
+                event.code === "KeyA" &&
+                (event.ctrlKey || event.metaKey) &&
+                event.target.closest("pre")) {
+            range = document.createRange();
+            range.selectNodeContents(event.target.closest("pre"));
+            selection = window.getSelection();
+            selection.removeAllRanges();
+            selection.addRange(range);
+            event.preventDefault();
+        }
+    };
+    document.addEventListener("keydown", window.domOnEventSelectAllWithinPre);
 }());
 </script>
 <div class="swggUiContainer" style="margin: 0 auto; max-width: 1200px;"><!-- <div class="swggUiContainer"> -->
@@ -562,7 +599,7 @@ textarea {
 </div>
 
 <h4 class="label">nodejs initialization</h4>
-<pre id="swggAjaxProgressPre1">/*
+<pre id="swggAjaxProgressPre1" tabindex="0">/*
  * initialize nodejs swgg-client
  * 1. download currently-loaded apis to file swagger.json:
  *     $ curl -L -o swagger.json "https://h1-swgg-google-all-alpha.herokuapp.com/assets.swgg.swagger.json"
@@ -696,7 +733,7 @@ console.log("initialized nodejs swgg-client");
     <div class="colorError"></div>
 </span>
 <span class="td td4">
-    <pre>{
+    <pre tabindex="0">{
     "carrier": {
         "description": "The carrier name.",
         "type": "string"
@@ -766,7 +803,7 @@ console.log("initialized nodejs swgg-client");
     
     <button class="button onEventOperationAjax">try it out!</button>
     <h4 class="label">nodejs request</h4>
-    <pre class="requestJavascript">/*
+    <pre class="requestJavascript" tabindex="0">/*
  * reproduce api-call "POST /geolocation/v1/geolocate"
  * 1. initialize nodejs swgg-client from previous step
  * 2. run code below to reproduce api-call
@@ -802,7 +839,7 @@ swgg.apiDict["POST /geolocation/v1/geolocate"].ajax({
 });
 </pre>
     <h4 class="label">curl request</h4>
-    <pre class="requestCurl">curl \
+    <pre class="requestCurl" tabindex="0">curl \
 --request POST \
 --header 'Content-Type: application/json' \
 --data-binary '{
@@ -828,9 +865,9 @@ swgg.apiDict["POST /geolocation/v1/geolocate"].ajax({
     <h4 class="label">response status code</h4>
     <pre class="responseStatusCode" tabindex="0"></pre>
     <h4 class="label">response headers</h4>
-    <pre class="responseHeaders"></pre>
+    <pre class="responseHeaders" tabindex="0"></pre>
     <h4 class="label">response body</h4>
-    <pre class="responseBody"></pre>
+    <pre class="responseBody" tabindex="0"></pre>
     <div class="responseMedia"></div>
 </form>
 </div>
@@ -1973,15 +2010,15 @@ Las Vegas, NV</pre>
     
     <button class="button onEventOperationAjax">try it out!</button>
     <h4 class="label">nodejs request</h4>
-    <pre class="requestJavascript"></pre>
+    <pre class="requestJavascript" tabindex="0"></pre>
     <h4 class="label">curl request</h4>
-    <pre class="requestCurl"></pre>
+    <pre class="requestCurl" tabindex="0"></pre>
     <h4 class="label">response status code</h4>
     <pre class="responseStatusCode" tabindex="0"></pre>
     <h4 class="label">response headers</h4>
-    <pre class="responseHeaders"></pre>
+    <pre class="responseHeaders" tabindex="0"></pre>
     <h4 class="label">response body</h4>
-    <pre class="responseBody"></pre>
+    <pre class="responseBody" tabindex="0"></pre>
     <div class="responseMedia"></div>
 </form>
 </div>
@@ -3075,15 +3112,15 @@ enc:gfo}EtohhU:</pre>
     
     <button class="button onEventOperationAjax">try it out!</button>
     <h4 class="label">nodejs request</h4>
-    <pre class="requestJavascript"></pre>
+    <pre class="requestJavascript" tabindex="0"></pre>
     <h4 class="label">curl request</h4>
-    <pre class="requestCurl"></pre>
+    <pre class="requestCurl" tabindex="0"></pre>
     <h4 class="label">response status code</h4>
     <pre class="responseStatusCode" tabindex="0"></pre>
     <h4 class="label">response headers</h4>
-    <pre class="responseHeaders"></pre>
+    <pre class="responseHeaders" tabindex="0"></pre>
     <h4 class="label">response body</h4>
-    <pre class="responseBody"></pre>
+    <pre class="responseBody" tabindex="0"></pre>
     <div class="responseMedia"></div>
 </form>
 </div>
@@ -3187,15 +3224,15 @@ enc:gfo}EtohhU:</pre>
     
     <button class="button onEventOperationAjax">try it out!</button>
     <h4 class="label">nodejs request</h4>
-    <pre class="requestJavascript"></pre>
+    <pre class="requestJavascript" tabindex="0"></pre>
     <h4 class="label">curl request</h4>
-    <pre class="requestCurl"></pre>
+    <pre class="requestCurl" tabindex="0"></pre>
     <h4 class="label">response status code</h4>
     <pre class="responseStatusCode" tabindex="0"></pre>
     <h4 class="label">response headers</h4>
-    <pre class="responseHeaders"></pre>
+    <pre class="responseHeaders" tabindex="0"></pre>
     <h4 class="label">response body</h4>
-    <pre class="responseBody"></pre>
+    <pre class="responseBody" tabindex="0"></pre>
     <div class="responseMedia"></div>
 </form>
 </div>
@@ -3325,15 +3362,15 @@ enc:gfo}EtohhU:</pre>
     
     <button class="button onEventOperationAjax">try it out!</button>
     <h4 class="label">nodejs request</h4>
-    <pre class="requestJavascript"></pre>
+    <pre class="requestJavascript" tabindex="0"></pre>
     <h4 class="label">curl request</h4>
-    <pre class="requestCurl"></pre>
+    <pre class="requestCurl" tabindex="0"></pre>
     <h4 class="label">response status code</h4>
     <pre class="responseStatusCode" tabindex="0"></pre>
     <h4 class="label">response headers</h4>
-    <pre class="responseHeaders"></pre>
+    <pre class="responseHeaders" tabindex="0"></pre>
     <h4 class="label">response body</h4>
-    <pre class="responseBody"></pre>
+    <pre class="responseBody" tabindex="0"></pre>
     <div class="responseMedia"></div>
 </form>
 </div>
@@ -4185,15 +4222,15 @@ country:US</pre>
     
     <button class="button onEventOperationAjax">try it out!</button>
     <h4 class="label">nodejs request</h4>
-    <pre class="requestJavascript"></pre>
+    <pre class="requestJavascript" tabindex="0"></pre>
     <h4 class="label">curl request</h4>
-    <pre class="requestCurl"></pre>
+    <pre class="requestCurl" tabindex="0"></pre>
     <h4 class="label">response status code</h4>
     <pre class="responseStatusCode" tabindex="0"></pre>
     <h4 class="label">response headers</h4>
-    <pre class="responseHeaders"></pre>
+    <pre class="responseHeaders" tabindex="0"></pre>
     <h4 class="label">response body</h4>
-    <pre class="responseBody"></pre>
+    <pre class="responseBody" tabindex="0"></pre>
     <div class="responseMedia"></div>
 </form>
 </div>
@@ -5018,15 +5055,15 @@ country:US</pre>
     
     <button class="button onEventOperationAjax">try it out!</button>
     <h4 class="label">nodejs request</h4>
-    <pre class="requestJavascript"></pre>
+    <pre class="requestJavascript" tabindex="0"></pre>
     <h4 class="label">curl request</h4>
-    <pre class="requestCurl"></pre>
+    <pre class="requestCurl" tabindex="0"></pre>
     <h4 class="label">response status code</h4>
     <pre class="responseStatusCode" tabindex="0"></pre>
     <h4 class="label">response headers</h4>
-    <pre class="responseHeaders"></pre>
+    <pre class="responseHeaders" tabindex="0"></pre>
     <h4 class="label">response body</h4>
-    <pre class="responseBody"></pre>
+    <pre class="responseBody" tabindex="0"></pre>
     <div class="responseMedia"></div>
 </form>
 </div>
@@ -5386,15 +5423,15 @@ latlng — The latitude and longitude values specifying the location for which y
     
     <button class="button onEventOperationAjax">try it out!</button>
     <h4 class="label">nodejs request</h4>
-    <pre class="requestJavascript"></pre>
+    <pre class="requestJavascript" tabindex="0"></pre>
     <h4 class="label">curl request</h4>
-    <pre class="requestCurl"></pre>
+    <pre class="requestCurl" tabindex="0"></pre>
     <h4 class="label">response status code</h4>
     <pre class="responseStatusCode" tabindex="0"></pre>
     <h4 class="label">response headers</h4>
-    <pre class="responseHeaders"></pre>
+    <pre class="responseHeaders" tabindex="0"></pre>
     <h4 class="label">response body</h4>
-    <pre class="responseBody"></pre>
+    <pre class="responseBody" tabindex="0"></pre>
     <div class="responseMedia"></div>
 </form>
 </div>
@@ -5752,15 +5789,15 @@ place_id — The place ID of the place for which you wish to obtain the human-re
     
     <button class="button onEventOperationAjax">try it out!</button>
     <h4 class="label">nodejs request</h4>
-    <pre class="requestJavascript"></pre>
+    <pre class="requestJavascript" tabindex="0"></pre>
     <h4 class="label">curl request</h4>
-    <pre class="requestCurl"></pre>
+    <pre class="requestCurl" tabindex="0"></pre>
     <h4 class="label">response status code</h4>
     <pre class="responseStatusCode" tabindex="0"></pre>
     <h4 class="label">response headers</h4>
-    <pre class="responseHeaders"></pre>
+    <pre class="responseHeaders" tabindex="0"></pre>
     <h4 class="label">response body</h4>
-    <pre class="responseBody"></pre>
+    <pre class="responseBody" tabindex="0"></pre>
     <div class="responseMedia"></div>
 </form>
 </div>
@@ -6182,15 +6219,15 @@ country:mp</pre>
     
     <button class="button onEventOperationAjax">try it out!</button>
     <h4 class="label">nodejs request</h4>
-    <pre class="requestJavascript"></pre>
+    <pre class="requestJavascript" tabindex="0"></pre>
     <h4 class="label">curl request</h4>
-    <pre class="requestCurl"></pre>
+    <pre class="requestCurl" tabindex="0"></pre>
     <h4 class="label">response status code</h4>
     <pre class="responseStatusCode" tabindex="0"></pre>
     <h4 class="label">response headers</h4>
-    <pre class="responseHeaders"></pre>
+    <pre class="responseHeaders" tabindex="0"></pre>
     <h4 class="label">response body</h4>
-    <pre class="responseBody"></pre>
+    <pre class="responseBody" tabindex="0"></pre>
     <div class="responseMedia"></div>
 </form>
 </div>
@@ -6970,15 +7007,15 @@ Once you have a place_id or a reference from a Place Search, you can request mor
     
     <button class="button onEventOperationAjax">try it out!</button>
     <h4 class="label">nodejs request</h4>
-    <pre class="requestJavascript"></pre>
+    <pre class="requestJavascript" tabindex="0"></pre>
     <h4 class="label">curl request</h4>
-    <pre class="requestCurl"></pre>
+    <pre class="requestCurl" tabindex="0"></pre>
     <h4 class="label">response status code</h4>
     <pre class="responseStatusCode" tabindex="0"></pre>
     <h4 class="label">response headers</h4>
-    <pre class="responseHeaders"></pre>
+    <pre class="responseHeaders" tabindex="0"></pre>
     <h4 class="label">response body</h4>
-    <pre class="responseBody"></pre>
+    <pre class="responseBody" tabindex="0"></pre>
     <div class="responseMedia"></div>
 </form>
 </div>
@@ -7757,15 +7794,15 @@ Once you have a place_id or a reference from a Place Search, you can request mor
     
     <button class="button onEventOperationAjax">try it out!</button>
     <h4 class="label">nodejs request</h4>
-    <pre class="requestJavascript"></pre>
+    <pre class="requestJavascript" tabindex="0"></pre>
     <h4 class="label">curl request</h4>
-    <pre class="requestCurl"></pre>
+    <pre class="requestCurl" tabindex="0"></pre>
     <h4 class="label">response status code</h4>
     <pre class="responseStatusCode" tabindex="0"></pre>
     <h4 class="label">response headers</h4>
-    <pre class="responseHeaders"></pre>
+    <pre class="responseHeaders" tabindex="0"></pre>
     <h4 class="label">response body</h4>
-    <pre class="responseBody"></pre>
+    <pre class="responseBody" tabindex="0"></pre>
     <div class="responseMedia"></div>
 </form>
 </div>
@@ -7865,15 +7902,15 @@ Once you have a place_id or a reference from a Place Search, you can request mor
     
     <button class="button onEventOperationAjax">try it out!</button>
     <h4 class="label">nodejs request</h4>
-    <pre class="requestJavascript"></pre>
+    <pre class="requestJavascript" tabindex="0"></pre>
     <h4 class="label">curl request</h4>
-    <pre class="requestCurl"></pre>
+    <pre class="requestCurl" tabindex="0"></pre>
     <h4 class="label">response status code</h4>
     <pre class="responseStatusCode" tabindex="0"></pre>
     <h4 class="label">response headers</h4>
-    <pre class="responseHeaders"></pre>
+    <pre class="responseHeaders" tabindex="0"></pre>
     <h4 class="label">response body</h4>
-    <pre class="responseBody"></pre>
+    <pre class="responseBody" tabindex="0"></pre>
     <div class="responseMedia"></div>
 </form>
 </div>
@@ -9041,15 +9078,15 @@ Once you have a place_id or a reference from a Place Search, you can request mor
     
     <button class="button onEventOperationAjax">try it out!</button>
     <h4 class="label">nodejs request</h4>
-    <pre class="requestJavascript"></pre>
+    <pre class="requestJavascript" tabindex="0"></pre>
     <h4 class="label">curl request</h4>
-    <pre class="requestCurl"></pre>
+    <pre class="requestCurl" tabindex="0"></pre>
     <h4 class="label">response status code</h4>
     <pre class="responseStatusCode" tabindex="0"></pre>
     <h4 class="label">response headers</h4>
-    <pre class="responseHeaders"></pre>
+    <pre class="responseHeaders" tabindex="0"></pre>
     <h4 class="label">response body</h4>
-    <pre class="responseBody"></pre>
+    <pre class="responseBody" tabindex="0"></pre>
     <div class="responseMedia"></div>
 </form>
 </div>
@@ -10221,15 +10258,15 @@ Once you have a place_id or a reference from a Place Search, you can request mor
     
     <button class="button onEventOperationAjax">try it out!</button>
     <h4 class="label">nodejs request</h4>
-    <pre class="requestJavascript"></pre>
+    <pre class="requestJavascript" tabindex="0"></pre>
     <h4 class="label">curl request</h4>
-    <pre class="requestCurl"></pre>
+    <pre class="requestCurl" tabindex="0"></pre>
     <h4 class="label">response status code</h4>
     <pre class="responseStatusCode" tabindex="0"></pre>
     <h4 class="label">response headers</h4>
-    <pre class="responseHeaders"></pre>
+    <pre class="responseHeaders" tabindex="0"></pre>
     <h4 class="label">response body</h4>
-    <pre class="responseBody"></pre>
+    <pre class="responseBody" tabindex="0"></pre>
     <div class="responseMedia"></div>
 </form>
 </div>
@@ -10354,15 +10391,15 @@ Once you have a place_id or a reference from a Place Search, you can request mor
     
     <button class="button onEventOperationAjax">try it out!</button>
     <h4 class="label">nodejs request</h4>
-    <pre class="requestJavascript"></pre>
+    <pre class="requestJavascript" tabindex="0"></pre>
     <h4 class="label">curl request</h4>
-    <pre class="requestCurl"></pre>
+    <pre class="requestCurl" tabindex="0"></pre>
     <h4 class="label">response status code</h4>
     <pre class="responseStatusCode" tabindex="0"></pre>
     <h4 class="label">response headers</h4>
-    <pre class="responseHeaders"></pre>
+    <pre class="responseHeaders" tabindex="0"></pre>
     <h4 class="label">response body</h4>
-    <pre class="responseBody"></pre>
+    <pre class="responseBody" tabindex="0"></pre>
     <div class="responseMedia"></div>
 </form>
 </div>
@@ -10487,15 +10524,15 @@ Once you have a place_id or a reference from a Place Search, you can request mor
     
     <button class="button onEventOperationAjax">try it out!</button>
     <h4 class="label">nodejs request</h4>
-    <pre class="requestJavascript"></pre>
+    <pre class="requestJavascript" tabindex="0"></pre>
     <h4 class="label">curl request</h4>
-    <pre class="requestCurl"></pre>
+    <pre class="requestCurl" tabindex="0"></pre>
     <h4 class="label">response status code</h4>
     <pre class="responseStatusCode" tabindex="0"></pre>
     <h4 class="label">response headers</h4>
-    <pre class="responseHeaders"></pre>
+    <pre class="responseHeaders" tabindex="0"></pre>
     <h4 class="label">response body</h4>
-    <pre class="responseBody"></pre>
+    <pre class="responseBody" tabindex="0"></pre>
     <div class="responseMedia"></div>
 </form>
 </div>
@@ -10809,15 +10846,15 @@ Once you have a place_id or a reference from a Place Search, you can request mor
     
     <button class="button onEventOperationAjax">try it out!</button>
     <h4 class="label">nodejs request</h4>
-    <pre class="requestJavascript"></pre>
+    <pre class="requestJavascript" tabindex="0"></pre>
     <h4 class="label">curl request</h4>
-    <pre class="requestCurl"></pre>
+    <pre class="requestCurl" tabindex="0"></pre>
     <h4 class="label">response status code</h4>
     <pre class="responseStatusCode" tabindex="0"></pre>
     <h4 class="label">response headers</h4>
-    <pre class="responseHeaders"></pre>
+    <pre class="responseHeaders" tabindex="0"></pre>
     <h4 class="label">response body</h4>
-    <pre class="responseBody"></pre>
+    <pre class="responseBody" tabindex="0"></pre>
     <div class="responseMedia"></div>
 </form>
 </div>
@@ -10917,15 +10954,15 @@ Once you have a place_id or a reference from a Place Search, you can request mor
     
     <button class="button onEventOperationAjax">try it out!</button>
     <h4 class="label">nodejs request</h4>
-    <pre class="requestJavascript"></pre>
+    <pre class="requestJavascript" tabindex="0"></pre>
     <h4 class="label">curl request</h4>
-    <pre class="requestCurl"></pre>
+    <pre class="requestCurl" tabindex="0"></pre>
     <h4 class="label">response status code</h4>
     <pre class="responseStatusCode" tabindex="0"></pre>
     <h4 class="label">response headers</h4>
-    <pre class="responseHeaders"></pre>
+    <pre class="responseHeaders" tabindex="0"></pre>
     <h4 class="label">response body</h4>
-    <pre class="responseBody"></pre>
+    <pre class="responseBody" tabindex="0"></pre>
     <div class="responseMedia"></div>
 </form>
 </div>
@@ -11552,15 +11589,15 @@ Once you have a place_id or a reference from a Place Search, you can request mor
     
     <button class="button onEventOperationAjax">try it out!</button>
     <h4 class="label">nodejs request</h4>
-    <pre class="requestJavascript"></pre>
+    <pre class="requestJavascript" tabindex="0"></pre>
     <h4 class="label">curl request</h4>
-    <pre class="requestCurl"></pre>
+    <pre class="requestCurl" tabindex="0"></pre>
     <h4 class="label">response status code</h4>
     <pre class="responseStatusCode" tabindex="0"></pre>
     <h4 class="label">response headers</h4>
-    <pre class="responseHeaders"></pre>
+    <pre class="responseHeaders" tabindex="0"></pre>
     <h4 class="label">response body</h4>
-    <pre class="responseBody"></pre>
+    <pre class="responseBody" tabindex="0"></pre>
     <div class="responseMedia"></div>
 </form>
 </div>
@@ -12161,15 +12198,15 @@ Once you have a place_id or a reference from a Place Search, you can request mor
     
     <button class="button onEventOperationAjax">try it out!</button>
     <h4 class="label">nodejs request</h4>
-    <pre class="requestJavascript"></pre>
+    <pre class="requestJavascript" tabindex="0"></pre>
     <h4 class="label">curl request</h4>
-    <pre class="requestCurl"></pre>
+    <pre class="requestCurl" tabindex="0"></pre>
     <h4 class="label">response status code</h4>
     <pre class="responseStatusCode" tabindex="0"></pre>
     <h4 class="label">response headers</h4>
-    <pre class="responseHeaders"></pre>
+    <pre class="responseHeaders" tabindex="0"></pre>
     <h4 class="label">response body</h4>
-    <pre class="responseBody"></pre>
+    <pre class="responseBody" tabindex="0"></pre>
     <div class="responseMedia"></div>
 </form>
 </div>
@@ -12431,15 +12468,15 @@ Once you have a place_id or a reference from a Place Search, you can request mor
     
     <button class="button onEventOperationAjax">try it out!</button>
     <h4 class="label">nodejs request</h4>
-    <pre class="requestJavascript"></pre>
+    <pre class="requestJavascript" tabindex="0"></pre>
     <h4 class="label">curl request</h4>
-    <pre class="requestCurl"></pre>
+    <pre class="requestCurl" tabindex="0"></pre>
     <h4 class="label">response status code</h4>
     <pre class="responseStatusCode" tabindex="0"></pre>
     <h4 class="label">response headers</h4>
-    <pre class="responseHeaders"></pre>
+    <pre class="responseHeaders" tabindex="0"></pre>
     <h4 class="label">response body</h4>
-    <pre class="responseBody"></pre>
+    <pre class="responseBody" tabindex="0"></pre>
     <div class="responseMedia"></div>
 </form>
 </div>
@@ -12543,15 +12580,15 @@ Once you have a place_id or a reference from a Place Search, you can request mor
     
     <button class="button onEventOperationAjax">try it out!</button>
     <h4 class="label">nodejs request</h4>
-    <pre class="requestJavascript"></pre>
+    <pre class="requestJavascript" tabindex="0"></pre>
     <h4 class="label">curl request</h4>
-    <pre class="requestCurl"></pre>
+    <pre class="requestCurl" tabindex="0"></pre>
     <h4 class="label">response status code</h4>
     <pre class="responseStatusCode" tabindex="0"></pre>
     <h4 class="label">response headers</h4>
-    <pre class="responseHeaders"></pre>
+    <pre class="responseHeaders" tabindex="0"></pre>
     <h4 class="label">response body</h4>
-    <pre class="responseBody"></pre>
+    <pre class="responseBody" tabindex="0"></pre>
     <div class="responseMedia"></div>
 </form>
 </div>
@@ -12689,15 +12726,15 @@ Once you have a place_id or a reference from a Place Search, you can request mor
     
     <button class="button onEventOperationAjax">try it out!</button>
     <h4 class="label">nodejs request</h4>
-    <pre class="requestJavascript"></pre>
+    <pre class="requestJavascript" tabindex="0"></pre>
     <h4 class="label">curl request</h4>
-    <pre class="requestCurl"></pre>
+    <pre class="requestCurl" tabindex="0"></pre>
     <h4 class="label">response status code</h4>
     <pre class="responseStatusCode" tabindex="0"></pre>
     <h4 class="label">response headers</h4>
-    <pre class="responseHeaders"></pre>
+    <pre class="responseHeaders" tabindex="0"></pre>
     <h4 class="label">response body</h4>
-    <pre class="responseBody"></pre>
+    <pre class="responseBody" tabindex="0"></pre>
     <div class="responseMedia"></div>
 </form>
 </div>
@@ -12835,15 +12872,15 @@ Once you have a place_id or a reference from a Place Search, you can request mor
     
     <button class="button onEventOperationAjax">try it out!</button>
     <h4 class="label">nodejs request</h4>
-    <pre class="requestJavascript"></pre>
+    <pre class="requestJavascript" tabindex="0"></pre>
     <h4 class="label">curl request</h4>
-    <pre class="requestCurl"></pre>
+    <pre class="requestCurl" tabindex="0"></pre>
     <h4 class="label">response status code</h4>
     <pre class="responseStatusCode" tabindex="0"></pre>
     <h4 class="label">response headers</h4>
-    <pre class="responseHeaders"></pre>
+    <pre class="responseHeaders" tabindex="0"></pre>
     <h4 class="label">response body</h4>
-    <pre class="responseBody"></pre>
+    <pre class="responseBody" tabindex="0"></pre>
     <div class="responseMedia"></div>
 </form>
 </div>
@@ -12980,15 +13017,15 @@ ChIJLQcticc0GQ0RoiNZJVa5GxU</pre>
     
     <button class="button onEventOperationAjax">try it out!</button>
     <h4 class="label">nodejs request</h4>
-    <pre class="requestJavascript"></pre>
+    <pre class="requestJavascript" tabindex="0"></pre>
     <h4 class="label">curl request</h4>
-    <pre class="requestCurl"></pre>
+    <pre class="requestCurl" tabindex="0"></pre>
     <h4 class="label">response status code</h4>
     <pre class="responseStatusCode" tabindex="0"></pre>
     <h4 class="label">response headers</h4>
-    <pre class="responseHeaders"></pre>
+    <pre class="responseHeaders" tabindex="0"></pre>
     <h4 class="label">response body</h4>
-    <pre class="responseBody"></pre>
+    <pre class="responseBody" tabindex="0"></pre>
     <div class="responseMedia"></div>
 </form>
 </div>
@@ -13074,15 +13111,15 @@ ChIJLQcticc0GQ0RoiNZJVa5GxU</pre>
     
     <button class="button onEventOperationAjax">try it out!</button>
     <h4 class="label">nodejs request</h4>
-    <pre class="requestJavascript"></pre>
+    <pre class="requestJavascript" tabindex="0"></pre>
     <h4 class="label">curl request</h4>
-    <pre class="requestCurl"></pre>
+    <pre class="requestCurl" tabindex="0"></pre>
     <h4 class="label">response status code</h4>
     <pre class="responseStatusCode" tabindex="0"></pre>
     <h4 class="label">response headers</h4>
-    <pre class="responseHeaders"></pre>
+    <pre class="responseHeaders" tabindex="0"></pre>
     <h4 class="label">response body</h4>
-    <pre class="responseBody"></pre>
+    <pre class="responseBody" tabindex="0"></pre>
     <div class="responseMedia"></div>
 </form>
 </div>
@@ -13726,15 +13763,15 @@ Translates input text, returning translated text.</p>
     
     <button class="button onEventOperationAjax">try it out!</button>
     <h4 class="label">nodejs request</h4>
-    <pre class="requestJavascript"></pre>
+    <pre class="requestJavascript" tabindex="0"></pre>
     <h4 class="label">curl request</h4>
-    <pre class="requestCurl"></pre>
+    <pre class="requestCurl" tabindex="0"></pre>
     <h4 class="label">response status code</h4>
     <pre class="responseStatusCode" tabindex="0"></pre>
     <h4 class="label">response headers</h4>
-    <pre class="responseHeaders"></pre>
+    <pre class="responseHeaders" tabindex="0"></pre>
     <h4 class="label">response body</h4>
-    <pre class="responseBody"></pre>
+    <pre class="responseBody" tabindex="0"></pre>
     <div class="responseMedia"></div>
 </form>
 </div>
@@ -13839,15 +13876,15 @@ Detects the language of text within a request.</p>
     
     <button class="button onEventOperationAjax">try it out!</button>
     <h4 class="label">nodejs request</h4>
-    <pre class="requestJavascript"></pre>
+    <pre class="requestJavascript" tabindex="0"></pre>
     <h4 class="label">curl request</h4>
-    <pre class="requestCurl"></pre>
+    <pre class="requestCurl" tabindex="0"></pre>
     <h4 class="label">response status code</h4>
     <pre class="responseStatusCode" tabindex="0"></pre>
     <h4 class="label">response headers</h4>
-    <pre class="responseHeaders"></pre>
+    <pre class="responseHeaders" tabindex="0"></pre>
     <h4 class="label">response body</h4>
-    <pre class="responseBody"></pre>
+    <pre class="responseBody" tabindex="0"></pre>
     <div class="responseMedia"></div>
 </form>
 </div>
@@ -14195,15 +14232,15 @@ Returns a list of supported languages for translation.</p>
     
     <button class="button onEventOperationAjax">try it out!</button>
     <h4 class="label">nodejs request</h4>
-    <pre class="requestJavascript"></pre>
+    <pre class="requestJavascript" tabindex="0"></pre>
     <h4 class="label">curl request</h4>
-    <pre class="requestCurl"></pre>
+    <pre class="requestCurl" tabindex="0"></pre>
     <h4 class="label">response status code</h4>
     <pre class="responseStatusCode" tabindex="0"></pre>
     <h4 class="label">response headers</h4>
-    <pre class="responseHeaders"></pre>
+    <pre class="responseHeaders" tabindex="0"></pre>
     <h4 class="label">response body</h4>
-    <pre class="responseBody"></pre>
+    <pre class="responseBody" tabindex="0"></pre>
     <div class="responseMedia"></div>
 </form>
 </div>
