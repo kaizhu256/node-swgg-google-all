@@ -56,11 +56,11 @@ this zero-dependency package will provide a (nodejs-compatible) swagger-client f
 [![apidoc](https://kaizhu256.github.io/node-swgg-google-all/build/screenshot.buildCi.browser.%252Ftmp%252Fbuild%252Fapidoc.html.png)](https://kaizhu256.github.io/node-swgg-google-all/build..beta..travis-ci.org/apidoc.html)
 
 #### todo
-- npm publish v2018.1.13
+- npm publish 2018.1.13
 - continue adding extra google-all web-apis
 - none
 
-#### changelog for v2018.1.13
+#### changelog 2018.1.13
 - auto-sync master swagger.json from ../swgg-$npm_package_swggAll/assets.swgg.swagger.json
 - disable heroku test-server
 - ignore env var \$npm_package_swggAll and \$npm_package_swggTags0 if package-name has -all sufix
@@ -412,7 +412,7 @@ shBuildCiBefore () {(set -e
 )}
 
 # run shBuildCi
-eval $(utility2 source)
+eval "$(utility2 source)"
 shBuildCi
 ```
 
