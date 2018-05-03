@@ -17587,12 +17587,6 @@ local.assetsDict['/favicon.ico'] = '';
                 .on('error', this.onError);
         };
 
-        /*
-         * Overrides the MIME type returned by the server.
-         * https://developer.mozilla.org/en-US/docs/Web/API/XMLHttpRequest#overrideMimeType()
-         */
-        local._http.XMLHttpRequest.prototype.overrideMimeType = local.nop;
-
         local._http.XMLHttpRequest.prototype.send = function (data) {
         /*
          * Sends the request. If the request is asynchronous (which is the default),
@@ -18004,36 +17998,19 @@ local.assetsDict['/favicon.ico'] = '';
         /*
          * this function will recursively web-crawl options.urlList to options.depth
          */
-            options = local.objectSetDefault(options, {
-                depth: 0,
-                dict: {},
-                dir: 'tmp/ajaxCrawl',
-                filter: local.echo,
-                list: [],
-                onEach: function (options, onError) {
-                    if (options.xhr.responseText.replace((/[\w\t <>]/g), '').length >
-                            0.5 * options.xhr.responseText.length) {
-                        console.error('ajaxCrawl - ' + (options.ii + 1) + '/' +
-                            options.list.length + ' - skip ' + options.url);
-                        onError(null, options);
-                        return;
-                    }
-                    // coverage-hack - ignore else-statement
-                    local.nop(!local.fs.existsSync(options.file) &&
-                        local.fsWriteFileWithMkdirpSync(options.file, options.xhr.responseText));
-                    console.error('ajaxCrawl - ' + (options.ii + 1) + '/' + options.list.length +
-                        ' - save ' + options.url + ' -> ' + options.file);
-                    onError(null, options);
-                },
-                rgx: (/href="(.*?)"/g),
-                urlList: []
-            });
-            options.file = ((options.url || '').replace((/^https?:\/\//), options.dir + '/') +
-                '/index.html').replace((/\/{2,}/g), '/');
-            local.onNext(options, function (error, data) {
+            local.onNext(options, function (error) {
                 switch (options.modeNext) {
                 // onParallelList(options);
                 case 1:
+                    options = local.objectSetDefault(options, {
+                        depth: 0,
+                        dict: {},
+                        dir: 'tmp/ajaxCrawl',
+                        filter: local.echo,
+                        list: [],
+                        rgx: (/href="(.*?)"/g),
+                        urlList: []
+                    });
                     options.urlList.forEach(function (url) {
                         // recurse - push
                         local.ajaxCrawl(local.objectSetDefault({ modeNext: 1, url: url }, options));
@@ -18054,7 +18031,6 @@ local.assetsDict['/favicon.ico'] = '';
                 // options.list.push(options);
                 case 2:
                     // normalize url
-                    options.url = options.url.replace((/[?#].*?$/), '');
                     if (!(/^https?:\/\//).test(options.url)) {
                         if (options.url[0] !== '/') {
                             options.url = options.urlParsed0.pathname + '/' + options.url;
@@ -18062,34 +18038,57 @@ local.assetsDict['/favicon.ico'] = '';
                         options.url = options.urlParsed0.protocol + '//' + options.urlParsed0.host +
                             '/' + options.url;
                     }
-                    options.url = options.url.replace((/\/{2,}/g), '/').replace('/', '//');
+                    // validate url
+                    local.assert((/^https?:\/\//).test(options.url), options.url);
+                    options.url = options.url
+                        .replace((/[?#].*?$/), '')
+                        .replace((/\/{2,}/g), '/');
+                    options.file = (options.url + ((/|\.html?$/).test(options.url)
+                        ? ''
+                        : '/index.html'))
+                        .replace((/^https?:\/\//), options.dir + '/')
+                        .replace((/\/{2,}/g), '/');
                     // optimization - hasOwnProperty
-                    if (!options.dict.hasOwnProperty(options.url.replace((/^https?:\/\//), '')) &&
+                    if (!options.dict.hasOwnProperty(options.file) &&
                             (!options.urlParsed0 ||
-                                local.urlParse(options).host === options.urlParsed0.host) &&
+                                local.urlParse(options.url).host === options.urlParsed0.host) &&
                             options.filter(options) &&
                             !local.fs.existsSync(options.file)) {
                         options.modeNext = 2;
-                        options.dict[options.url.replace((/^https?:\/\//), '')] = true;
+                        options.dict[options.file] = true;
                         options.list.push(options);
                     }
                     break;
                 // ajax(options);
                 case 3:
                     local.ajax(options, function (error, xhr) {
-                        local.onErrorDefault(error);
                         options.xhr = xhr;
+                        // validate xhr
+                        local.assert(options.xhr, error);
+                        local.onErrorDefault(error);
                         options.onNext();
                     });
                     break;
                 case 4:
-                    options.onEach(options, options.onNext);
-                    break;
-                case 5:
-                    if (!(options.depth > 0)) {
-                        onError(error, options);
+                    // skip file
+                    if (options.xhr.responseText.replace((/[\w\t <>]/g), '').length >
+                            0.5 * options.xhr.responseText.length ||
+                            local.fs.existsSync(options.file)) {
+                        console.error('ajaxCrawl - ' + (options.ii + 1) + '/' +
+                            options.list.length + ' - skip ' + options.url);
+                        options.onNext();
                         return;
                     }
+                    // save file
+                    local.fsWriteFileWithMkdirpSync(options.file, options.xhr.responseText);
+                    console.error('ajaxCrawl - ' + (options.ii + 1) + '/' + options.list.length +
+                        ' - save ' + options.url + ' -> ' + options.file);
+                    // skip file
+                    if (!(options.depth > 0)) {
+                        options.onNext();
+                        return;
+                    }
+                    // crawl file
                     options.xhr.responseText.replace(options.rgx, function (match0, match1) {
                         match0 = match1;
                         // recurse - push
@@ -18103,7 +18102,6 @@ local.assetsDict['/favicon.ico'] = '';
                     options.onNext(error, options);
                     break;
                 default:
-                    options.xhr = options.xhr || data;
                     onError(error, options);
                 }
             });
