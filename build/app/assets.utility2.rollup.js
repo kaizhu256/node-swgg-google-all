@@ -18131,7 +18131,8 @@ local.assetsDict['/favicon.ico'] = '';
                         dir: 'tmp/ajaxCrawl',
                         filter: local.echo,
                         list: [],
-                        rgx: (/href="(.*?)"/g),
+                        postProcess: local.echo,
+                        rgx: (/<a\b[\S\s]*?href="(.*?)"/g),
                         urlList: []
                     });
                     options.urlList.forEach(function (url) {
@@ -18154,6 +18155,9 @@ local.assetsDict['/favicon.ico'] = '';
                 // options.list.push(options);
                 case 2:
                     // normalize url
+                    if (options.url.slice(0, 2) === '//') {
+                        options.url = options.urlParsed0.protocol + options.url;
+                    }
                     if (!(/^https?:\/\//).test(options.url)) {
                         if (options.url[0] !== '/') {
                             options.url = options.urlParsed0.pathname + '/' + options.url;
@@ -18167,7 +18171,7 @@ local.assetsDict['/favicon.ico'] = '';
                         .replace((/[?#].*?$/), '')
                         .replace((/\/{2,}/g), '/')
                         .replace('/', '//');
-                    options.file = (options.url + ((/|\.html?$/).test(options.url)
+                    options.file = (options.url + ((/\.html?$/).test(options.url)
                         ? ''
                         : '/index.html'))
                         .replace((/^https?:\/\//), options.dir + '/')
@@ -18185,7 +18189,7 @@ local.assetsDict['/favicon.ico'] = '';
                     break;
                 // ajax(options);
                 case 3:
-                    local.ajax(debugInline(options), function (error, xhr) {
+                    local.ajax(options, function (error, xhr) {
                         options.xhr = xhr;
                         // validate xhr
                         local.assert(options.xhr, error);
@@ -18204,7 +18208,10 @@ local.assetsDict['/favicon.ico'] = '';
                         return;
                     }
                     // save file
-                    local.fsWriteFileWithMkdirpSync(options.file, options.xhr.responseText);
+                    local.fsWriteFileWithMkdirpSync(
+                        options.file,
+                        options.postProcess(options.xhr.responseText)
+                    );
                     console.error('ajaxCrawl - ' + (options.ii + 1) + '/' + options.list.length +
                         ' - save ' + options.url + ' -> ' + options.file);
                     // skip file
@@ -18220,7 +18227,7 @@ local.assetsDict['/favicon.ico'] = '';
                             depth: options.depth - 1,
                             modeNext: 1,
                             url: match0,
-                            urlParsed0: options.urlParsed
+                            urlParsed0: options.xhr.urlParsed
                         }, options), local.nop);
                     });
                     options.onNext(error, options);
