@@ -3,20 +3,25 @@
 
 shNpmScriptApidocRawCreate () {(set -e
 # this function will create the raw apidoc
+    export npm_config_npm_package_name="${npm_config_npm_package_name:-$npm_package_name}"
     cd tmp/apidoc.raw
-    find developer.github.com/v3 -name index.html -type f | \
-        sed -e "s/\/index.html//" | \
+    find . -path ./.git -prune -o -type f | \
+        xargs -I % -n 1 sh -c "[ ! -s % ] && printf 'empty-file %\\n' 1>&2"
+    find . -path ./.git -prune -o -name index.html -type f | \
+        sed -e "s/^\.\///" -e "s/\/index.html//" | \
         sort | \
-        sed -e "s/\(developer.github.com\/.*\)/\1\/index.html/" | \
-        xargs -I @ -n 1 sh -c "printf '\\n@\\n' && cat @" | \
-        sed -e "s| *\$||" > .apidoc.raw.html
-    cp .apidoc.raw.html ../..
+        xargs -I % -n 1 sh -c \
+            "printf '\\n\\n# curl -L %\\n' && cat %/index.html | sed -e '/./,\$!d'" | \
+        sed -e "s| *\$||" > ".apidoc.raw.$npm_config_npm_package_name.html"
+    cp ".apidoc.raw.$npm_config_npm_package_name.html" ../..
 )}
 
 shNpmScriptApidocRawFetch () {(set -e
 # this function will fetch the raw apidoc
+    export npm_config_npm_package_name="${npm_config_npm_package_name:-$npm_package_name}"
     mkdir -p tmp/apidoc.raw && cd tmp/apidoc.raw
     rm -fr cloud.google.com developers.google.com
+    rm -f "apidocRawFetch.$npm_config_npm_package_name.log"
     node -e '
 // <script>
 /* jslint-utility2 */
@@ -31,31 +36,26 @@ shNpmScriptApidocRawFetch () {(set -e
     stupid: true
 */
 "use strict";
-var local;
+var local, options;
 local = require("../../assets.utility2.rollup.js");
 local.dict = {};
-switch (process.argv[1]) {
+switch (process.env.npm_config_npm_package_name) {
 case "swgg-google-maps":
-    local.list = ["https://developers.google.com/maps/documentation/"];
+    options = {
+        depthMax: 10,
+        urlList: ["https://developers.google.com/maps/documentation/"]
+    };
     break;
 default:
-    local.list = [];
+    options = {
+        urlList: []
+    };
 }
-local.onParallelList({ list: local.list, rateLimit: 1 }, function (options2, onParallel) {
-    var url;
-    url = options2.element;
-    onParallel.counter += 1;
-    if (!url || url[0] === "#") {
-        onParallel();
-        return;
-    }
-    console.error("\n\n" + options2.ii + ". " + url + "\n");
-    local.ajaxCrawl({
-        depth: 2,
-        dict: local.dict,
-        dir: ".",
-        filter: function (options) {
-            return (/\b(?:rest)\b/).test(options.url) || !new RegExp("\\b(?:" +
+local.ajaxCrawl(local.objectSetDefault({
+    dict: local.dict,
+    dir: ".",
+    filter: function (options) {
+        return (/\b(?:rest)\b/).test(options.url) || !new RegExp("\\b(?:" +
 /* jslint-ignore-begin */
 "\
 android|\
@@ -72,18 +72,19 @@ python|\
 ruby|\
 sdk" +
 /* jslint-ignore-end */
-                ")\\b|\\bc\\+\\+").test(options.url);
-        },
-        postProcess: function (data) {
-            return data
-                .replace((/<[^>]*? name="xsrf_token"[^>]*?>/g), "")
-                .replace((/ data-request-elapsed="[^"]*?"/g), "");
-        },
-        urlList: [url]
-    }, onParallel);
-}, local.onErrorDefault);
+            ")\\b|\\bc\\+\\+").test(options.url);
+    },
+    postProcess: function (data) {
+        return data
+            .replace((/<[^>]*? name="xsrf_token"[^>]*?>/g), "")
+            .replace((/ data-request-elapsed="[^"]*?"/g), "");
+    }
+}, options), local.onErrorDefault);
 // </script>
-' 2>&1 | tee apidocRawFetch.log
+' 2>&1 | tee -a "apidocRawFetch.$npm_config_npm_package_name.log"
+    find . -path ./.git -prune -o -type f | \
+        xargs -I % -n 1 sh -c "[ ! -s % ] && printf 'empty-file %\\n' 1>&2" | \
+        tee -a "apidocRawFetch.$npm_config_npm_package_name.log"
 
 : '
 # https://console.cloud.google.com/apis/library
@@ -124,7 +125,7 @@ https://developers.google.com/maps/documentation/
 #!! https://cloud.google.com/billing/reference/rest/
 #!! https://cloud.google.com/kms/docs/reference/rest/
 #!! https://cloud.google.com/natural-language/docs/reference/rest/
-' 2>&1 | tee apidocRawFetch.log
+'
 )}
 
 shNpmScriptPostinstall () {

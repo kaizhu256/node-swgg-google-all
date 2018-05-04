@@ -3525,7 +3525,7 @@ vendor\\)s\\{0,1\\}\\(\\b\\|_\\)\
                             method: xhr.method,
                             url: xhr.url,
                             statusCode: xhr.statusCode,
-                            timeElapsed: Date.now() - xhr.timeStart,
+                            timeElapsed: xhr.timeElapsed,
                             // extra
                             data: (function () {
                                 try {
@@ -3999,7 +3999,7 @@ vendor\\)s\\{0,1\\}\\(\\b\\|_\\)\
                     method: xhr.method,
                     url: xhr.url,
                     statusCode: xhr.statusCode,
-                    timeElapsed: Date.now() - xhr.timeStart
+                    timeElapsed: xhr.timeElapsed
                 }));
                 try {
                     options.responseJson = JSON.parse(xhr.response);
@@ -18013,6 +18013,7 @@ local.assetsDict['/favicon.ico'] = '';
                         return;
                     }
                     isDone = xhr._isDone = true;
+                    xhr.timeElapsed = Date.now() - xhr.timeStart;
                     // debug ajaxResponse
                     if (xhr.modeDebug) {
                         console.error('serverLog - ' + JSON.stringify({
@@ -18021,7 +18022,7 @@ local.assetsDict['/favicon.ico'] = '';
                             method: xhr.method,
                             url: xhr.url,
                             statusCode: xhr.statusCode,
-                            timeElapsed: Date.now() - xhr.timeStart,
+                            timeElapsed: xhr.timeElapsed,
                             // extra
                             data: (function () {
                                 try {
@@ -18119,7 +18120,7 @@ local.assetsDict['/favicon.ico'] = '';
         /* istanbul ignore next */
         local.ajaxCrawl = function (options, onError) {
         /*
-         * this function will recursively web-crawl options.urlList to options.depth
+         * this function will recursively web-crawl options.urlList to options.depthMax
          */
             local.onNext(options, function (error) {
                 switch (options.modeNext) {
@@ -18133,6 +18134,7 @@ local.assetsDict['/favicon.ico'] = '';
                         list: [],
                         postProcess: local.echo,
                         rgx: (/<a\b[\S\s]*?href="(.*?)"/g),
+                        rgxParent0: (/z^/),
                         urlList: []
                     });
                     options.urlList.forEach(function (url) {
@@ -18171,19 +18173,26 @@ local.assetsDict['/favicon.ico'] = '';
                         .replace((/[?#].*?$/), '')
                         .replace((/\/{2,}/g), '/')
                         .replace('/', '//');
-                    options.file = (options.url + ((/\.html?$/).test(options.url)
+                    options.file = (options.url + ((/\.(?:html?|txt|xml)$/).test(options.url)
                         ? ''
                         : '/index.html'))
                         .replace((/^https?:\/\//), options.dir + '/')
                         .replace((/\/{2,}/g), '/');
                     // optimization - hasOwnProperty
-                    if (!options.dict.hasOwnProperty(options.file) &&
-                            (!options.urlParsed0 ||
-                                local.urlParse(options.url).host === options.urlParsed0.host) &&
+                    if (options.dict.hasOwnProperty(options.file)) {
+                        break;
+                    }
+                    options.dict[options.file] = true;
+                    if ((!options.depth ||
+                            (options.rgxParent0.test(options.url) &&
+                            local.urlParse(options.url).host === options.urlParsed0.host)) &&
                             options.filter(options) &&
                             !local.fs.existsSync(options.file)) {
                         options.modeNext = 2;
-                        options.dict[options.file] = true;
+                        if (!options.depth) {
+                            options.rgxParent0 = new RegExp(options.rgxParent0.source + '|^' +
+                                local.stringRegexpEscape(options.url.replace((/\/[^\/]*$/), '/')));
+                        }
                         options.list.push(options);
                     }
                     break;
@@ -18192,30 +18201,44 @@ local.assetsDict['/favicon.ico'] = '';
                     local.ajax(options, function (error, xhr) {
                         options.xhr = xhr;
                         // validate xhr
-                        local.assert(options.xhr, error);
-                        local.onErrorDefault(error);
+                        local.assert(xhr, error);
+                        // handle redirect
+                        if (300 <= xhr.statusCode && xhr.statusCode < 400) {
+                            options.modeNext = Infinity;
+                            // recurse - redirect
+                            local.ajaxCrawl(local.objectSetDefault({
+                                depth: options.depth,
+                                modeNext: 1,
+                                url: xhr.responseStream.headers.location,
+                                urlParsed0: options.xhr.urlParsed
+                            }, options), local.nop);
+                        }
                         options.onNext();
                     });
                     break;
                 case 4:
-                    // skip file
-                    if (options.xhr.responseText.replace((/[\w\t <>]/g), '').length >
-                            0.5 * options.xhr.responseText.length ||
-                            local.fs.existsSync(options.file)) {
-                        console.error('ajaxCrawl - ' + (options.ii + 1) + '/' +
-                            options.list.length + ' - skip ' + options.url);
-                        options.onNext();
-                        return;
-                    }
+                    // debug ajaxCrawl
+                    console.error('serverLog - ' + JSON.stringify({
+                        time: new Date(options.xhr.timeStart).toISOString(),
+                        type: 'ajaxCrawl',
+                        method: options.xhr.method,
+                        url: options.xhr.url,
+                        statusCode: options.xhr.statusCode,
+                        timeElapsed: options.xhr.timeElapsed,
+                        // extra
+                        responseContentLength: options.xhr.response.length,
+                        depth: options.depth,
+                        ii: options.ii,
+                        listLength: options.list.length,
+                        dictSize: Object.keys(options.dict).length
+                    }));
                     // save file
                     local.fsWriteFileWithMkdirpSync(
                         options.file,
                         options.postProcess(options.xhr.responseText)
                     );
-                    console.error('ajaxCrawl - ' + (options.ii + 1) + '/' + options.list.length +
-                        ' - save ' + options.url + ' -> ' + options.file);
-                    // skip file
-                    if (!(options.depth > 0)) {
+                    // skip crawl
+                    if (!(options.depth < options.depthMax)) {
                         options.onNext();
                         return;
                     }
@@ -18224,7 +18247,7 @@ local.assetsDict['/favicon.ico'] = '';
                         match0 = match1;
                         // recurse - push
                         local.ajaxCrawl(local.objectSetDefault({
-                            depth: options.depth - 1,
+                            depth: options.depth + 1,
                             modeNext: 1,
                             url: match0,
                             urlParsed0: options.xhr.urlParsed
@@ -19439,7 +19462,7 @@ return Utf8ArrayToStr(bff);
             // search-and-replace - customize dataTo
             [
                 // customize shared js\-env code - function
-                (/\n {4}\}\(\)\);\n\n\n\n {4}\/\/ run shared js-env code - function\n[\S\s]*?$/)
+                (/\n {4}\}\(\)\);\n\n\n\n {4}\/\/ run shared js\-env code - function\n[\S\s]*?$/)
             ].forEach(function (rgx) {
                 // handle large string-replace
                 options.dataFrom.replace(rgx, function (match0) {
