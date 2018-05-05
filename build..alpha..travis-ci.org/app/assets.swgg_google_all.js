@@ -67,7 +67,6 @@
             local = local.global.utility2_rollup ||
                 local.global.utility2_rollup_old ||
                 require('./assets.utility2.rollup.js');
-            local.fs = null;
         }
         // init nop
         local.nop = function () {
