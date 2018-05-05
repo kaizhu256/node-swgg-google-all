@@ -3,24 +3,24 @@
 
 shNpmScriptApidocRawCreate () {(set -e
 # this function will create the raw apidoc
-    export npm_config_npm_package_name="${npm_config_npm_package_name:-$npm_package_name}"
+    export npm_config_nameLib="${npm_config_nameLib:-$npm_package_nameLib}"
     cd tmp/apidoc.raw
     find . -path ./.git -prune -o -type f | \
         xargs -I % -n 1 sh -c "[ ! -s % ] && printf 'empty-file %\\n' 1>&2"
     find . -path ./.git -prune -o -name index.html -type f | \
         sed -e "s/^\.\///" -e "s/\/index.html//" | \
         sort | \
-        xargs -I % -n 1 sh -c \
-            "printf '\\n\\n# curl -L %\\n' && cat %/index.html | sed -e '/./,\$!d'" | \
-        sed -e "s| *\$||" > ".apidoc.raw.$npm_config_npm_package_name.html"
-    cp ".apidoc.raw.$npm_config_npm_package_name.html" ../..
+        xargs -I % -n 1 sh -c "printf '\\n\\n# curl -L %\\n' &&
+            cat %/index.html | sed -e '/./,$!d;/^\n*$/{$d;N;};/\n$/ba'" | \
+        sed -e "s| *\$||" > ".apidoc.raw.$npm_config_nameLib.html"
+    cp ".apidoc.raw.$npm_config_nameLib.html" ../..
 )}
 
 shNpmScriptApidocRawFetch () {(set -e
 # this function will fetch the raw apidoc
-    export npm_config_npm_package_name="${npm_config_npm_package_name:-$npm_package_name}"
+    export npm_config_nameLib="${npm_config_nameLib:-$npm_package_nameLib}"
     mkdir -p tmp/apidoc.raw && cd tmp/apidoc.raw
-    rm -f "apidocRawFetch.$npm_config_npm_package_name.log"
+    rm -f "apidocRawFetch.$npm_config_nameLib.log"
     rm -fr cloud.google.com developers.google.com
     node -e '
 // <script>
@@ -38,8 +38,8 @@ shNpmScriptApidocRawFetch () {(set -e
 "use strict";
 var local, options;
 local = require("../../assets.utility2.rollup.js");
-switch (process.env.npm_config_npm_package_name) {
-case "swgg-google-maps":
+switch (process.env.npm_config_nameLib) {
+case "swgg_google_maps":
     options = { urlList: ["https://developers.google.com/maps/documentation/"] };
     break;
 default:
@@ -68,15 +68,16 @@ sdk" +
     },
     postProcess: function (data) {
         return data
+            .replace((/\"https:\/\/developers.google.com\/_static\/[^\"]*?\"/g), "\"\"")
             .replace((/<[^>]*? name="xsrf_token"[^>]*?>/g), "")
             .replace((/ data-request-elapsed="[^"]*?"/g), "");
     }
 }, options), local.onErrorDefault);
 // </script>
-' 2>&1 | tee -a "apidocRawFetch.$npm_config_npm_package_name.log"
+' 2>&1 | tee -a "apidocRawFetch.$npm_config_nameLib.log"
     find . -path ./.git -prune -o -type f | \
         xargs -I % -n 1 sh -c "[ ! -s % ] && printf 'empty-file %\\n' 1>&2" | \
-        tee -a "apidocRawFetch.$npm_config_npm_package_name.log"
+        tee -a "apidocRawFetch.$npm_config_nameLib.log"
 
 : '
 # https://console.cloud.google.com/apis/library

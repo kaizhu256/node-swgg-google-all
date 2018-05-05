@@ -18127,7 +18127,7 @@ local.assetsDict['/favicon.ico'] = '';
                         filter: local.echo,
                         list: [],
                         postProcess: local.echo,
-                        rgx: (/<a\b[\S\s]*?href="(.*?)"/g),
+                        rgxCrawl: (/<a\b[\S\s]*?href="(.*?)"/g),
                         rgxParent0: (/z^/),
                         urlList: []
                     });
@@ -18156,7 +18156,8 @@ local.assetsDict['/favicon.ico'] = '';
                     }
                     if (!(/^https?:\/\//).test(options.url)) {
                         if (options.url[0] !== '/') {
-                            options.url = options.urlParsed0.pathname + '/' + options.url;
+                            options.url = options.urlParsed0.pathname.replace((/\/[^\/]*?$/), '/') +
+                                options.url;
                         }
                         options.url = options.urlParsed0.protocol + '//' + options.urlParsed0.host +
                             '/' + options.url;
@@ -18224,7 +18225,8 @@ local.assetsDict['/favicon.ico'] = '';
                         depth: options.depth,
                         ii: options.ii,
                         listLength: options.list.length,
-                        dictSize: Object.keys(options.dict).length
+                        dictSize: Object.keys(options.dict).length,
+                        rgxCrawlMatch1: options.rgxCrawlMatch1
                     }));
                     // save file
                     local.fsWriteFileWithMkdirpSync(
@@ -18237,12 +18239,13 @@ local.assetsDict['/favicon.ico'] = '';
                         return;
                     }
                     // crawl file
-                    options.xhr.responseText.replace(options.rgx, function (match0, match1) {
+                    options.xhr.responseText.replace(options.rgxCrawl, function (match0, match1) {
                         match0 = match1;
                         // recurse - push
                         local.ajaxCrawl(local.objectSetDefault({
                             depth: options.depth + 1,
                             modeNext: 1,
+                            rgxCrawlMatch1: match1,
                             url: match0,
                             urlParsed0: options.xhr.urlParsed
                         }, options), local.nop);
