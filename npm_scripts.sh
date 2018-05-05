@@ -39,7 +39,7 @@ shNpmScriptApidocRawFetch () {(set -e
 var local, options;
 local = require("../../assets.utility2.rollup.js");
 switch (process.env.npm_config_nameLib) {
-case "swgg_google_maps":
+case "swgg-google-maps":
     options = { urlList: ["https://developers.google.com/maps/documentation/"] };
     break;
 default:

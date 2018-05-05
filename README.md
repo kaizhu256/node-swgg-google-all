@@ -371,7 +371,7 @@ instruction
         "url": "https://github.com/kaizhu256/node-swgg-google-all.git"
     },
     "scripts": {
-        "apidocRawCreate": "utility2 shNpmApidocRawCreate",
+        "apidocRawCreate": "[ ! -f npm_scripts.sh ] || ./npm_scripts.sh shNpmScriptApidocRawCreate",
         "apidocRawFetch": "[ ! -f npm_scripts.sh ] || ./npm_scripts.sh shNpmScriptApidocRawFetch",
         "build-ci": "utility2 shReadmeTest build_ci.sh",
         "env": "env",
