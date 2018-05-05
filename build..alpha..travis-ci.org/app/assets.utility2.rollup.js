@@ -114,7 +114,6 @@
             local = local.global.utility2_rollup ||
                 local.global.utility2_rollup_old ||
                 require('./assets.utility2.rollup.js');
-            local.fs = null;
         }
         // init nop
         local.nop = function () {
@@ -1245,7 +1244,6 @@ vendor\\)s\\{0,1\\}\\(\\b\\|_\\)\
             local = local.global.utility2_rollup ||
                 local.global.utility2_rollup_old ||
                 require('./assets.utility2.rollup.js');
-            local.fs = null;
         }
         // init nop
         local.nop = function () {
@@ -3316,7 +3314,6 @@ vendor\\)s\\{0,1\\}\\(\\b\\|_\\)\
             local = local.global.utility2_rollup ||
                 local.global.utility2_rollup_old ||
                 require('./assets.utility2.rollup.js');
-            local.fs = null;
         }
         // init nop
         local.nop = function () {
@@ -3517,6 +3514,7 @@ vendor\\)s\\{0,1\\}\\(\\b\\|_\\)\
                         return;
                     }
                     isDone = xhr._isDone = true;
+                    xhr.timeElapsed = Date.now() - xhr.timeStart;
                     // debug ajaxResponse
                     if (xhr.modeDebug) {
                         console.error('serverLog - ' + JSON.stringify({
@@ -3525,7 +3523,7 @@ vendor\\)s\\{0,1\\}\\(\\b\\|_\\)\
                             method: xhr.method,
                             url: xhr.url,
                             statusCode: xhr.statusCode,
-                            timeElapsed: Date.now() - xhr.timeStart,
+                            timeElapsed: xhr.timeElapsed,
                             // extra
                             data: (function () {
                                 try {
@@ -3999,7 +3997,7 @@ vendor\\)s\\{0,1\\}\\(\\b\\|_\\)\
                     method: xhr.method,
                     url: xhr.url,
                     statusCode: xhr.statusCode,
-                    timeElapsed: Date.now() - xhr.timeStart
+                    timeElapsed: xhr.timeElapsed
                 }));
                 try {
                     options.responseJson = JSON.parse(xhr.response);
@@ -4387,7 +4385,6 @@ vendor\\)s\\{0,1\\}\\(\\b\\|_\\)\
             local = local.global.utility2_rollup ||
                 local.global.utility2_rollup_old ||
                 require('./assets.utility2.rollup.js');
-            local.fs = null;
         }
         // init nop
         local.nop = function () {
@@ -7226,7 +7223,6 @@ local.templateCoverageBadgeSvg =
             local = local.global.utility2_rollup ||
                 local.global.utility2_rollup_old ||
                 require('./assets.utility2.rollup.js');
-            local.fs = null;
         }
         // init nop
         local.nop = function () {
@@ -14791,7 +14787,6 @@ s=0;s<i;s++)n[r+s]=e[t+s]|0},sjcl.misc.scrypt.blockxor=function(e,t,n,r,i){var s
             local = local.global.utility2_rollup ||
                 local.global.utility2_rollup_old ||
                 require('./assets.utility2.rollup.js');
-            local.fs = null;
         }
         // init nop
         local.nop = function () {
@@ -15689,7 +15684,6 @@ split_lines=split_lines,exports.MAP=MAP,exports.ast_squeeze_more=require("./sque
             local = local.global.utility2_rollup ||
                 local.global.utility2_rollup_old ||
                 require('./assets.utility2.rollup.js');
-            local.fs = null;
         }
         // init nop
         local.nop = function () {
@@ -16378,7 +16372,6 @@ local.assetsDict['/assets.lib.template.js'] = '\
             local = local.global.utility2_rollup ||\n\
                 local.global.utility2_rollup_old ||\n\
                 require(\'./assets.utility2.rollup.js\');\n\
-            local.fs = null;\n\
         }\n\
         // init nop\n\
         local.nop = function () {\n\
@@ -18013,6 +18006,7 @@ local.assetsDict['/favicon.ico'] = '';
                         return;
                     }
                     isDone = xhr._isDone = true;
+                    xhr.timeElapsed = Date.now() - xhr.timeStart;
                     // debug ajaxResponse
                     if (xhr.modeDebug) {
                         console.error('serverLog - ' + JSON.stringify({
@@ -18021,7 +18015,7 @@ local.assetsDict['/favicon.ico'] = '';
                             method: xhr.method,
                             url: xhr.url,
                             statusCode: xhr.statusCode,
-                            timeElapsed: Date.now() - xhr.timeStart,
+                            timeElapsed: xhr.timeElapsed,
                             // extra
                             data: (function () {
                                 try {
@@ -18119,7 +18113,7 @@ local.assetsDict['/favicon.ico'] = '';
         /* istanbul ignore next */
         local.ajaxCrawl = function (options, onError) {
         /*
-         * this function will recursively web-crawl options.urlList to options.depth
+         * this function will recursively web-crawl options.urlList to options.depthMax
          */
             local.onNext(options, function (error) {
                 switch (options.modeNext) {
@@ -18127,12 +18121,14 @@ local.assetsDict['/favicon.ico'] = '';
                 case 1:
                     options = local.objectSetDefault(options, {
                         depth: 0,
+                        depthMax: 10,
                         dict: {},
-                        dir: 'tmp/ajaxCrawl',
+                        dir: '.',
                         filter: local.echo,
                         list: [],
                         postProcess: local.echo,
-                        rgx: (/<a\b[\S\s]*?href="(.*?)"/g),
+                        rgxCrawl: (/<a\b[\S\s]*?href="(.*?)"/g),
+                        rgxParent0: (/z^/),
                         urlList: []
                     });
                     options.urlList.forEach(function (url) {
@@ -18160,7 +18156,8 @@ local.assetsDict['/favicon.ico'] = '';
                     }
                     if (!(/^https?:\/\//).test(options.url)) {
                         if (options.url[0] !== '/') {
-                            options.url = options.urlParsed0.pathname + '/' + options.url;
+                            options.url = options.urlParsed0.pathname.replace((/\/[^\/]*?$/), '/') +
+                                options.url;
                         }
                         options.url = options.urlParsed0.protocol + '//' + options.urlParsed0.host +
                             '/' + options.url;
@@ -18171,19 +18168,26 @@ local.assetsDict['/favicon.ico'] = '';
                         .replace((/[?#].*?$/), '')
                         .replace((/\/{2,}/g), '/')
                         .replace('/', '//');
-                    options.file = (options.url + ((/\.html?$/).test(options.url)
+                    options.file = (options.url + ((/\.(?:html?|txt|xml)$/).test(options.url)
                         ? ''
                         : '/index.html'))
                         .replace((/^https?:\/\//), options.dir + '/')
                         .replace((/\/{2,}/g), '/');
                     // optimization - hasOwnProperty
-                    if (!options.dict.hasOwnProperty(options.file) &&
-                            (!options.urlParsed0 ||
-                                local.urlParse(options.url).host === options.urlParsed0.host) &&
+                    if (options.dict.hasOwnProperty(options.file)) {
+                        break;
+                    }
+                    options.dict[options.file] = true;
+                    if ((!options.depth ||
+                            (options.rgxParent0.test(options.url) &&
+                            local.urlParse(options.url).host === options.urlParsed0.host)) &&
                             options.filter(options) &&
                             !local.fs.existsSync(options.file)) {
                         options.modeNext = 2;
-                        options.dict[options.file] = true;
+                        if (!options.depth) {
+                            options.rgxParent0 = new RegExp(options.rgxParent0.source + '|^' +
+                                local.stringRegexpEscape(options.url.replace((/\/[^\/]*$/), '/')));
+                        }
                         options.list.push(options);
                     }
                     break;
@@ -18192,40 +18196,56 @@ local.assetsDict['/favicon.ico'] = '';
                     local.ajax(options, function (error, xhr) {
                         options.xhr = xhr;
                         // validate xhr
-                        local.assert(options.xhr, error);
-                        local.onErrorDefault(error);
+                        local.assert(xhr, error);
+                        // handle redirect
+                        if (300 <= xhr.statusCode && xhr.statusCode < 400) {
+                            options.modeNext = Infinity;
+                            // recurse - redirect
+                            local.ajaxCrawl(local.objectSetDefault({
+                                depth: options.depth,
+                                modeNext: 1,
+                                url: xhr.responseStream.headers.location,
+                                urlParsed0: options.xhr.urlParsed
+                            }, options), local.nop);
+                        }
                         options.onNext();
                     });
                     break;
                 case 4:
-                    // skip file
-                    if (options.xhr.responseText.replace((/[\w\t <>]/g), '').length >
-                            0.5 * options.xhr.responseText.length ||
-                            local.fs.existsSync(options.file)) {
-                        console.error('ajaxCrawl - ' + (options.ii + 1) + '/' +
-                            options.list.length + ' - skip ' + options.url);
-                        options.onNext();
-                        return;
-                    }
+                    // debug ajaxCrawl
+                    console.error('serverLog - ' + JSON.stringify({
+                        time: new Date(options.xhr.timeStart).toISOString(),
+                        type: 'ajaxCrawl',
+                        method: options.xhr.method,
+                        url: options.xhr.url,
+                        statusCode: options.xhr.statusCode,
+                        timeElapsed: options.xhr.timeElapsed,
+                        // extra
+                        responseContentLength: options.xhr.response.length,
+                        depth: options.depth,
+                        ii: options.ii,
+                        listLength: options.list.length,
+                        dictSize: Object.keys(options.dict).length,
+                        rgxCrawlMatch1: options.rgxCrawlMatch1
+                    }));
                     // save file
                     local.fsWriteFileWithMkdirpSync(
                         options.file,
                         options.postProcess(options.xhr.responseText)
                     );
-                    console.error('ajaxCrawl - ' + (options.ii + 1) + '/' + options.list.length +
-                        ' - save ' + options.url + ' -> ' + options.file);
-                    // skip file
-                    if (!(options.depth > 0)) {
+                    // skip crawl
+                    if (!(options.depth < options.depthMax)) {
                         options.onNext();
                         return;
                     }
                     // crawl file
-                    options.xhr.responseText.replace(options.rgx, function (match0, match1) {
+                    options.xhr.responseText.replace(options.rgxCrawl, function (match0, match1) {
                         match0 = match1;
                         // recurse - push
                         local.ajaxCrawl(local.objectSetDefault({
-                            depth: options.depth - 1,
+                            depth: options.depth + 1,
                             modeNext: 1,
+                            rgxCrawlMatch1: match1,
                             url: match0,
                             urlParsed0: options.xhr.urlParsed
                         }, options), local.nop);
@@ -19439,7 +19459,7 @@ return Utf8ArrayToStr(bff);
             // search-and-replace - customize dataTo
             [
                 // customize shared js\-env code - function
-                (/\n {4}\}\(\)\);\n\n\n\n {4}\/\/ run shared js-env code - function\n[\S\s]*?$/)
+                (/\n {4}\}\(\)\);\n\n\n\n {4}\/\/ run shared js\-env code - function\n[\S\s]*?$/)
             ].forEach(function (rgx) {
                 // handle large string-replace
                 options.dataFrom.replace(rgx, function (match0) {
@@ -23512,7 +23532,6 @@ instruction\n\
             local = local.global.utility2_rollup ||
                 local.global.utility2_rollup_old ||
                 require('./assets.utility2.rollup.js');
-            local.fs = null;
         }
         // init nop
         local.nop = function () {
@@ -24508,7 +24527,7 @@ console.log("initialized nodejs swgg-client");\n\
 // https://github.com/swagger-api/swagger-ui/blob/v2.1.3/src/main/template/operation.handlebars
 local.templateUiOperation = '\
 <div class="operation" data-_method-path="{{_methodPath}}" id="{{id}}">\n\
-<div class="onEventInputValidate onEventOperationDisplayShow thead" tabindex="0">\n\
+<div class="onEventInputValidateAndAjax onEventOperationDisplayShow thead" tabindex="0">\n\
     <span class="td td1"></span>\n\
     <span class="method{{_method}} td td2">{{_method}}</span>\n\
     <span\n\
@@ -25235,10 +25254,11 @@ window.swgg.uiEventListenerDict[".onEventUiReload"]({ swggInit: true });\n\
             options.url += local.swaggerJsonBasePath;
             options.url += options.inPath + '?' + options.inQuery.slice(1);
             options.url = options.url.replace((/\?$/), '');
-            if (options.error || options.modeValidate) {
+            if (options.modeAjax === 'validate' || (options.error && options.modeAjax !== 'ajax')) {
                 onError(options.error);
                 return;
             }
+            options.error = null;
             // send ajax-request
             return local.ajax(options, function (error, xhr) {
                 // try to init responseJson
@@ -27961,7 +27981,8 @@ window.swgg.uiEventListenerDict[".onEventUiReload"]({ swggInit: true });\n\
                 local.timerTimeoutOnEventInputValidate = setTimeout(function () {
                     local.timerTimeoutOnEventInputValidate = null;
                     // validate input
-                    local.uiEventListenerDict['.onEventInputValidate'](event);
+                    event.modeAjax = 'validate';
+                    local.uiEventListenerDict['.onEventInputValidateAndAjax'](event);
                 }, 25);
             }
         };
@@ -27983,7 +28004,7 @@ window.swgg.uiEventListenerDict[".onEventUiReload"]({ swggInit: true });\n\
             }
         };
 
-        local.uiEventListenerDict['.onEventInputValidate'] = function (options, onError) {
+        local.uiEventListenerDict['.onEventInputValidateAndAjax'] = function (options, onError) {
         /*
          * this function will validate the input parameters
          * against the schemas in options.parameters
@@ -28002,7 +28023,6 @@ window.swgg.uiEventListenerDict[".onEventUiReload"]({ swggInit: true });\n\
             options.api = local.apiDict[options.targetOperation.dataset._methodPath];
             options.headers = {};
             options.modeNoDefault = true;
-            options.modeValidate = !options.modeAjax;
             options.paramDict = {};
             options.url = '';
             options.api.parameters.forEach(function (schemaP) {
@@ -28123,13 +28143,13 @@ window.swgg.uiEventListenerDict[".onEventUiReload"]({ swggInit: true });\n\
             local.onNext(options, function (error, data) {
                 switch (options.modeNext) {
                 case 1:
-                    // init ajax
-                    options.modeAjax = true;
+                    // force ajax
+                    options.modeAjax = 'ajax';
                     // validate input
-                    local.uiEventListenerDict['.onEventInputValidate'](options, options.onNext);
-                    if (options.error) {
-                        return;
-                    }
+                    local.uiEventListenerDict['.onEventInputValidateAndAjax'](
+                        options,
+                        options.onNext
+                    );
                     // reset response output
                     Array.from(options.targetOperation.querySelectorAll(
                         '.responseBody, .responseHeaders, .responseStatusCode'
@@ -28143,9 +28163,6 @@ window.swgg.uiEventListenerDict[".onEventUiReload"]({ swggInit: true });\n\
                     break;
                 default:
                     local.onErrorDefault(error);
-                    if (options.error) {
-                        return;
-                    }
                     data = local.objectSetDefault(data, {
                         contentType: 'undefined',
                         statusCode: 'undefined'
@@ -28216,7 +28233,8 @@ window.swgg.uiEventListenerDict[".onEventUiReload"]({ swggInit: true });\n\
                     element.querySelector('[tabIndex]').blur();
                     element.querySelector('[tabIndex]').focus();
                     // validate input
-                    local.uiEventListenerDict['.onEventInputValidate']({
+                    local.uiEventListenerDict['.onEventInputValidateAndAjax']({
+                        modeAjax: 'validate',
                         targetOperation: element
                     });
                     local.setTimeoutOnError(onError, 0, null, element);
@@ -28267,7 +28285,8 @@ window.swgg.uiEventListenerDict[".onEventUiReload"]({ swggInit: true });\n\
                         )).forEach(function (element) {
                             local.uiAnimateSlideDown(element);
                             // validate input
-                            local.uiEventListenerDict['.onEventInputValidate']({
+                            local.uiEventListenerDict['.onEventInputValidateAndAjax']({
+                                modeAjax: 'validate',
                                 targetOperation: element.closest('.operation')
                             });
                         });
@@ -30184,6 +30203,19 @@ $/).test(xhr.responseText), xhr.responseText);\n\
                 onError(null, options);\n\
             });\n\
         };\n\
+\n\
+        //!! local.testCase_ajaxCrawl_default = function (options, onError) {\n\
+        //!! /*\n\
+         //!! * this function will test ajaxCrawl's default handling-behavior\n\
+         //!! */\n\
+            //!! if (!local.modeJs === 'node') {\n\
+                //!! onError(null, options);\n\
+                //!! return;\n\
+            //!! }\n\
+            //!! local.ajaxCrawl({\n\
+                //!! urlList: [local.serverLocalHost + '/assets.testCase_ajaxCrawl_default.html']\n\
+            //!! }, onError);\n\
+        //!! };\n\
 \n\
         local.testCase_ajaxProgressUpdate_misc = function (options, onError) {\n\
         /*\n\
