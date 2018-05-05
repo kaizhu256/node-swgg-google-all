@@ -20,8 +20,8 @@ shNpmScriptApidocRawFetch () {(set -e
 # this function will fetch the raw apidoc
     export npm_config_npm_package_name="${npm_config_npm_package_name:-$npm_package_name}"
     mkdir -p tmp/apidoc.raw && cd tmp/apidoc.raw
-    rm -fr cloud.google.com developers.google.com
     rm -f "apidocRawFetch.$npm_config_npm_package_name.log"
+    rm -fr cloud.google.com developers.google.com
     node -e '
 // <script>
 /* jslint-utility2 */
@@ -38,22 +38,14 @@ shNpmScriptApidocRawFetch () {(set -e
 "use strict";
 var local, options;
 local = require("../../assets.utility2.rollup.js");
-local.dict = {};
 switch (process.env.npm_config_npm_package_name) {
 case "swgg-google-maps":
-    options = {
-        depthMax: 10,
-        urlList: ["https://developers.google.com/maps/documentation/"]
-    };
+    options = { urlList: ["https://developers.google.com/maps/documentation/"] };
     break;
 default:
-    options = {
-        urlList: []
-    };
+    options = { urlList: [] };
 }
 local.ajaxCrawl(local.objectSetDefault({
-    dict: local.dict,
-    dir: ".",
     filter: function (options) {
         return (/\b(?:rest)\b/).test(options.url) || !new RegExp("\\b(?:" +
 /* jslint-ignore-begin */

@@ -114,7 +114,6 @@
             local = local.global.utility2_rollup ||
                 local.global.utility2_rollup_old ||
                 require('./assets.utility2.rollup.js');
-            local.fs = null;
         }
         // init nop
         local.nop = function () {
@@ -1245,7 +1244,6 @@ vendor\\)s\\{0,1\\}\\(\\b\\|_\\)\
             local = local.global.utility2_rollup ||
                 local.global.utility2_rollup_old ||
                 require('./assets.utility2.rollup.js');
-            local.fs = null;
         }
         // init nop
         local.nop = function () {
@@ -3316,7 +3314,6 @@ vendor\\)s\\{0,1\\}\\(\\b\\|_\\)\
             local = local.global.utility2_rollup ||
                 local.global.utility2_rollup_old ||
                 require('./assets.utility2.rollup.js');
-            local.fs = null;
         }
         // init nop
         local.nop = function () {
@@ -3517,6 +3514,7 @@ vendor\\)s\\{0,1\\}\\(\\b\\|_\\)\
                         return;
                     }
                     isDone = xhr._isDone = true;
+                    xhr.timeElapsed = Date.now() - xhr.timeStart;
                     // debug ajaxResponse
                     if (xhr.modeDebug) {
                         console.error('serverLog - ' + JSON.stringify({
@@ -4387,7 +4385,6 @@ vendor\\)s\\{0,1\\}\\(\\b\\|_\\)\
             local = local.global.utility2_rollup ||
                 local.global.utility2_rollup_old ||
                 require('./assets.utility2.rollup.js');
-            local.fs = null;
         }
         // init nop
         local.nop = function () {
@@ -7226,7 +7223,6 @@ local.templateCoverageBadgeSvg =
             local = local.global.utility2_rollup ||
                 local.global.utility2_rollup_old ||
                 require('./assets.utility2.rollup.js');
-            local.fs = null;
         }
         // init nop
         local.nop = function () {
@@ -14791,7 +14787,6 @@ s=0;s<i;s++)n[r+s]=e[t+s]|0},sjcl.misc.scrypt.blockxor=function(e,t,n,r,i){var s
             local = local.global.utility2_rollup ||
                 local.global.utility2_rollup_old ||
                 require('./assets.utility2.rollup.js');
-            local.fs = null;
         }
         // init nop
         local.nop = function () {
@@ -15689,7 +15684,6 @@ split_lines=split_lines,exports.MAP=MAP,exports.ast_squeeze_more=require("./sque
             local = local.global.utility2_rollup ||
                 local.global.utility2_rollup_old ||
                 require('./assets.utility2.rollup.js');
-            local.fs = null;
         }
         // init nop
         local.nop = function () {
@@ -16378,7 +16372,6 @@ local.assetsDict['/assets.lib.template.js'] = '\
             local = local.global.utility2_rollup ||\n\
                 local.global.utility2_rollup_old ||\n\
                 require(\'./assets.utility2.rollup.js\');\n\
-            local.fs = null;\n\
         }\n\
         // init nop\n\
         local.nop = function () {\n\
@@ -18128,8 +18121,9 @@ local.assetsDict['/favicon.ico'] = '';
                 case 1:
                     options = local.objectSetDefault(options, {
                         depth: 0,
+                        depthMax: 10,
                         dict: {},
-                        dir: 'tmp/ajaxCrawl',
+                        dir: '.',
                         filter: local.echo,
                         list: [],
                         postProcess: local.echo,
@@ -23535,7 +23529,6 @@ instruction\n\
             local = local.global.utility2_rollup ||
                 local.global.utility2_rollup_old ||
                 require('./assets.utility2.rollup.js');
-            local.fs = null;
         }
         // init nop
         local.nop = function () {
@@ -24531,7 +24524,7 @@ console.log("initialized nodejs swgg-client");\n\
 // https://github.com/swagger-api/swagger-ui/blob/v2.1.3/src/main/template/operation.handlebars
 local.templateUiOperation = '\
 <div class="operation" data-_method-path="{{_methodPath}}" id="{{id}}">\n\
-<div class="onEventInputValidate onEventOperationDisplayShow thead" tabindex="0">\n\
+<div class="onEventInputValidateAndAjax onEventOperationDisplayShow thead" tabindex="0">\n\
     <span class="td td1"></span>\n\
     <span class="method{{_method}} td td2">{{_method}}</span>\n\
     <span\n\
@@ -25258,10 +25251,11 @@ window.swgg.uiEventListenerDict[".onEventUiReload"]({ swggInit: true });\n\
             options.url += local.swaggerJsonBasePath;
             options.url += options.inPath + '?' + options.inQuery.slice(1);
             options.url = options.url.replace((/\?$/), '');
-            if (options.error || options.modeValidate) {
+            if (options.modeAjax === 'validate' || (options.error && options.modeAjax !== 'ajax')) {
                 onError(options.error);
                 return;
             }
+            options.error = null;
             // send ajax-request
             return local.ajax(options, function (error, xhr) {
                 // try to init responseJson
@@ -27984,7 +27978,8 @@ window.swgg.uiEventListenerDict[".onEventUiReload"]({ swggInit: true });\n\
                 local.timerTimeoutOnEventInputValidate = setTimeout(function () {
                     local.timerTimeoutOnEventInputValidate = null;
                     // validate input
-                    local.uiEventListenerDict['.onEventInputValidate'](event);
+                    event.modeAjax = 'validate';
+                    local.uiEventListenerDict['.onEventInputValidateAndAjax'](event);
                 }, 25);
             }
         };
@@ -28006,7 +28001,7 @@ window.swgg.uiEventListenerDict[".onEventUiReload"]({ swggInit: true });\n\
             }
         };
 
-        local.uiEventListenerDict['.onEventInputValidate'] = function (options, onError) {
+        local.uiEventListenerDict['.onEventInputValidateAndAjax'] = function (options, onError) {
         /*
          * this function will validate the input parameters
          * against the schemas in options.parameters
@@ -28025,7 +28020,6 @@ window.swgg.uiEventListenerDict[".onEventUiReload"]({ swggInit: true });\n\
             options.api = local.apiDict[options.targetOperation.dataset._methodPath];
             options.headers = {};
             options.modeNoDefault = true;
-            options.modeValidate = !options.modeAjax;
             options.paramDict = {};
             options.url = '';
             options.api.parameters.forEach(function (schemaP) {
@@ -28146,13 +28140,13 @@ window.swgg.uiEventListenerDict[".onEventUiReload"]({ swggInit: true });\n\
             local.onNext(options, function (error, data) {
                 switch (options.modeNext) {
                 case 1:
-                    // init ajax
-                    options.modeAjax = true;
+                    // force ajax
+                    options.modeAjax = 'ajax';
                     // validate input
-                    local.uiEventListenerDict['.onEventInputValidate'](options, options.onNext);
-                    if (options.error) {
-                        return;
-                    }
+                    local.uiEventListenerDict['.onEventInputValidateAndAjax'](
+                        options,
+                        options.onNext
+                    );
                     // reset response output
                     Array.from(options.targetOperation.querySelectorAll(
                         '.responseBody, .responseHeaders, .responseStatusCode'
@@ -28166,9 +28160,6 @@ window.swgg.uiEventListenerDict[".onEventUiReload"]({ swggInit: true });\n\
                     break;
                 default:
                     local.onErrorDefault(error);
-                    if (options.error) {
-                        return;
-                    }
                     data = local.objectSetDefault(data, {
                         contentType: 'undefined',
                         statusCode: 'undefined'
@@ -28239,7 +28230,8 @@ window.swgg.uiEventListenerDict[".onEventUiReload"]({ swggInit: true });\n\
                     element.querySelector('[tabIndex]').blur();
                     element.querySelector('[tabIndex]').focus();
                     // validate input
-                    local.uiEventListenerDict['.onEventInputValidate']({
+                    local.uiEventListenerDict['.onEventInputValidateAndAjax']({
+                        modeAjax: 'validate',
                         targetOperation: element
                     });
                     local.setTimeoutOnError(onError, 0, null, element);
@@ -28290,7 +28282,8 @@ window.swgg.uiEventListenerDict[".onEventUiReload"]({ swggInit: true });\n\
                         )).forEach(function (element) {
                             local.uiAnimateSlideDown(element);
                             // validate input
-                            local.uiEventListenerDict['.onEventInputValidate']({
+                            local.uiEventListenerDict['.onEventInputValidateAndAjax']({
+                                modeAjax: 'validate',
                                 targetOperation: element.closest('.operation')
                             });
                         });
@@ -30207,6 +30200,19 @@ $/).test(xhr.responseText), xhr.responseText);\n\
                 onError(null, options);\n\
             });\n\
         };\n\
+\n\
+        //!! local.testCase_ajaxCrawl_default = function (options, onError) {\n\
+        //!! /*\n\
+         //!! * this function will test ajaxCrawl's default handling-behavior\n\
+         //!! */\n\
+            //!! if (!local.modeJs === 'node') {\n\
+                //!! onError(null, options);\n\
+                //!! return;\n\
+            //!! }\n\
+            //!! local.ajaxCrawl({\n\
+                //!! urlList: [local.serverLocalHost + '/assets.testCase_ajaxCrawl_default.html']\n\
+            //!! }, onError);\n\
+        //!! };\n\
 \n\
         local.testCase_ajaxProgressUpdate_misc = function (options, onError) {\n\
         /*\n\
